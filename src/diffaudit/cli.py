@@ -9,8 +9,10 @@ from pathlib import Path
 
 from diffaudit.attacks.secmi import build_secmi_plan
 from diffaudit.attacks.secmi_adapter import (
+    bootstrap_secmi_smoke_assets,
     prepare_secmi_adapter,
     probe_secmi_dry_run,
+    probe_secmi_runtime,
     run_secmi_dry_run,
     summarize_secmi_adapter,
 )
@@ -57,6 +59,32 @@ def build_parser() -> argparse.ArgumentParser:
         default="third_party/secmi",
         help="path to vendored or local SecMI repository root",
     )
+
+    runtime_probe_parser = subparsers.add_parser(
+        "runtime-probe-secmi",
+        help="validate SecMI runtime readiness by loading flags and model",
+    )
+    runtime_probe_parser.add_argument("--config", required=True, help="path to audit yaml")
+    runtime_probe_parser.add_argument(
+        "--repo-root",
+        default="third_party/secmi",
+        help="path to vendored or local SecMI repository root",
+    )
+
+    bootstrap_parser = subparsers.add_parser(
+        "bootstrap-secmi-smoke-assets",
+        help="create synthetic SecMI smoke assets for local runtime probes",
+    )
+    bootstrap_parser.add_argument(
+        "--target-dir",
+        required=True,
+        help="directory where smoke assets should be written",
+    )
+    bootstrap_parser.add_argument(
+        "--flagfile-source",
+        default="external/SecMI/config/CIFAR10.txt",
+        help="path to the reference SecMI flagfile template",
+    )
     return parser
 
 
@@ -87,6 +115,17 @@ def main(argv: list[str] | None = None) -> int:
         exit_code, payload = probe_secmi_dry_run(config, args.repo_root)
         print(json.dumps(payload, indent=2, ensure_ascii=True))
         return exit_code
+
+    if args.command == "runtime-probe-secmi":
+        config = load_audit_config(args.config)
+        exit_code, payload = probe_secmi_runtime(config, args.repo_root)
+        print(json.dumps(payload, indent=2, ensure_ascii=True))
+        return exit_code
+
+    if args.command == "bootstrap-secmi-smoke-assets":
+        payload = bootstrap_secmi_smoke_assets(args.target_dir, args.flagfile_source)
+        print(json.dumps(payload, indent=2, ensure_ascii=True))
+        return 0
 
     parser.error(f"Unsupported command: {args.command}")
     return 2
