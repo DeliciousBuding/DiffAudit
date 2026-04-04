@@ -15,3 +15,9 @@
 - 共享代码放 `src/diffaudit/`
 - 配置放 `configs/`
 - 实验输出放 `experiments/`
+
+## 当前入口
+
+- 黑盒计划：`workspaces/black-box/plan.md`
+- 白盒计划：`workspaces/white-box/plan.md`
+- 灰盒计划：`workspaces/gray-box/plan.md`
