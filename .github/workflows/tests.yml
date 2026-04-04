@@ -1,0 +1,36 @@
+name: Tests
+
+on:
+  push:
+    branches:
+      - main
+  pull_request:
+
+jobs:
+  unit-tests:
+    runs-on: windows-latest
+    defaults:
+      run:
+        shell: pwsh -l {0}
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Setup Conda Environment
+        uses: conda-incubator/setup-miniconda@v3
+        with:
+          activate-environment: diffaudit-research
+          environment-file: environment.yml
+          auto-activate-base: false
+          miniforge-version: latest
+          use-mamba: true
+
+      - name: Verify CLI Install
+        run: |
+          python -m diffaudit --help
+          diffaudit --help
+
+      - name: Run Core Tests
+        run: |
+          python -m unittest tests.test_attack_registry tests.test_smoke_pipeline

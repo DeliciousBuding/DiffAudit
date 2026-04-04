@@ -1,0 +1,14 @@
+track: black-box
+required:
+  - dataset_id
+  - dataset_name
+  - dataset_root
+  - model_id
+  - model_dir
+optional:
+  - prompt_or_caption
+  - api_endpoint
+  - member_split_root
+notes:
+  - pure API black-box should not assume gradients, parameters, or internal activations
+  - if prompt-conditioned, record whether captions are known or inferred

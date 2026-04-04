@@ -1,0 +1,36 @@
+{
+  "status": "blocked",
+  "track": "black-box",
+  "method": "secmi",
+  "paper": "2025-324-paper",
+  "mode": "dry-run",
+  "device": "cpu",
+  "workspace": "experiments/example-run",
+  "assets": {
+    "dataset_id": "your-dataset-id",
+    "dataset_root": "REPLACE_WITH_YOUR_DATASET_ROOT",
+    "model_id": "your-model-id",
+    "model_dir": "REPLACE_WITH_YOUR_MODEL_DIR",
+    "member_split_root": "third_party/secmi/mia_evals/member_splits"
+  },
+  "checks": {
+    "checkpoint": false,
+    "flagfile": false,
+    "dataset_root": false,
+    "member_split": true
+  },
+  "metrics": {
+    "auc": null,
+    "asr": null,
+    "tpr_at_low_fpr": null
+  },
+  "cost": {
+    "queries_per_sample": null,
+    "timesteps_observed": null,
+    "optimization_steps": null,
+    "gpu_hours": null
+  },
+  "notes": [
+    "fill threat model and paper-specific assumptions before claiming reproduction success"
+  ]
+}

@@ -130,7 +130,7 @@ PR 描述至少写清楚：
 提交前最少运行：
 
 ```powershell
-python -m unittest
+conda run -n diffaudit-research python -m unittest tests.test_attack_registry tests.test_smoke_pipeline
 ```
 
 新增能力时，优先补：
@@ -139,6 +139,11 @@ python -m unittest
 - planner / adapter 测试
 - dry-run 测试
 - vendored import smoke test
+
+仓库当前也已经有最小 GitHub Actions 工作流，默认跑：
+
+- `python -m diffaudit --help`
+- `python -m unittest tests.test_attack_registry tests.test_smoke_pipeline`
 
 ## 九、GitHub 协作建议
 

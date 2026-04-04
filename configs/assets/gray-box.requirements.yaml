@@ -1,0 +1,17 @@
+track: gray-box
+required:
+  - dataset_id
+  - dataset_name
+  - dataset_root
+  - model_id
+  - model_dir
+  - observable_contract_level
+optional:
+  - epsilon_t_access
+  - partial_latent_access
+  - caption_known
+  - surrogate_embedding
+  - member_split_root
+notes:
+  - gray-box assumptions must state exactly which intermediate signals are visible
+  - compare methods only after aligning observable level and attack cost
