@@ -169,6 +169,7 @@ python -m diffaudit dry-run-secmi --config configs/attacks/secmi_plan.yaml --rep
 - [AGENTS.md](/D:/Code/DiffAudit/Project/AGENTS.md)
 - [CONTRIBUTING.md](/D:/Code/DiffAudit/Project/CONTRIBUTING.md)
 - [docs/github-collaboration.md](/D:/Code/DiffAudit/Project/docs/github-collaboration.md)
+- [docs/getting-started.md](/D:/Code/DiffAudit/Project/docs/getting-started.md)
 
 推荐的 GitHub 协作方式是：
 
