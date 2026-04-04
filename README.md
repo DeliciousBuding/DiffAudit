@@ -116,7 +116,6 @@ python -m ipykernel install --user --name diffaudit-research --display-name "Pyt
 环境验证：
 
 ```powershell
-$env:PYTHONPATH='src;.'
 python scripts/verify_env.py
 ```
 
@@ -131,35 +130,30 @@ conda run -n diffaudit-research python scripts/verify_env.py
 运行 smoke pipeline：
 
 ```powershell
-$env:PYTHONPATH='src;.'
 python -m diffaudit run-smoke --config configs/benchmarks/secmi_smoke.yaml --workspace .
 ```
 
 生成 `SecMI` 计划：
 
 ```powershell
-$env:PYTHONPATH='src;.'
 python -m diffaudit plan-secmi --config configs/attacks/secmi_plan.yaml
 ```
 
 探测 `SecMI` 资产是否齐全：
 
 ```powershell
-$env:PYTHONPATH='src;.'
 python -m diffaudit probe-secmi-assets --config configs/attacks/secmi_plan.yaml
 ```
 
 准备 `SecMI` adapter 上下文：
 
 ```powershell
-$env:PYTHONPATH='src;.'
 python -m diffaudit prepare-secmi --config configs/attacks/secmi_plan.yaml --repo-root third_party/secmi
 ```
 
 运行 `SecMI` dry-run：
 
 ```powershell
-$env:PYTHONPATH='src;.'
 python -m diffaudit dry-run-secmi --config configs/attacks/secmi_plan.yaml --repo-root third_party/secmi
 ```
 
@@ -170,7 +164,6 @@ python -m diffaudit dry-run-secmi --config configs/attacks/secmi_plan.yaml --rep
 运行 `SecMI` runtime probe：
 
 ```powershell
-$env:PYTHONPATH='src;.'
 python -m diffaudit runtime-probe-secmi --config configs/attacks/secmi_plan.yaml --repo-root third_party/secmi
 ```
 
@@ -183,7 +176,6 @@ python -m diffaudit runtime-probe-secmi --config configs/attacks/secmi_plan.yaml
 生成本地 smoke 资产：
 
 ```powershell
-$env:PYTHONPATH='src;.'
 python -m diffaudit bootstrap-secmi-smoke-assets --target-dir tmp/secmi-smoke-assets
 ```
 
