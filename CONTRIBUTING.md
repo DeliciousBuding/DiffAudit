@@ -130,7 +130,6 @@ PR 描述至少写清楚：
 提交前最少运行：
 
 ```powershell
-$env:PYTHONPATH='src;.'
 python -m unittest
 ```
 

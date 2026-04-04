@@ -15,6 +15,6 @@
 ## 第一轮建议任务
 
 1. 先整理两篇论文的攻击假设、输入输出、指标和资产要求
-2. 先跑仓库内 `plan-secmi / prepare-secmi / dry-run-secmi`
+2. 先跑仓库内 `plan-secmi / probe-secmi-assets / prepare-secmi / dry-run-secmi`
 3. 先补黑盒方向阅读笔记和复现计划
 4. 真实资产到位后再开始跑实验
