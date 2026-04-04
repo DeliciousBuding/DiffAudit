@@ -1,8 +1,8 @@
-# Gray-Box Workspace
+# 灰盒工作区
 
-Use this workspace for:
+用于存放：
 
-- gray-box or semi-white-box assumptions
-- partial observability attack notes
-- explanation-enhanced attack studies
-- reproduction planning
+- 灰盒或半白盒论文阅读笔记
+- 部分可观测信息下的攻击设定
+- 解释增强类实验思路
+- 灰盒方向任务认领

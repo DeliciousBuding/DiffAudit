@@ -1,9 +1,8 @@
-# Black-Box Workspace
+# 黑盒工作区
 
-Use this workspace for:
+用于存放：
 
-- black-box paper selection
-- reading notes
-- reproduction plans
-- benchmark assumptions
-- task ownership notes
+- 黑盒论文阅读笔记
+- 黑盒复现计划
+- 黑盒实验对比表
+- 黑盒方向任务认领

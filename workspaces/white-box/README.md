@@ -1,8 +1,8 @@
-# White-Box Workspace
+# 白盒工作区
 
-Use this workspace for:
+用于存放：
 
-- white-box paper intake
-- internal-signal attack planning
-- checkpoint and gradient access assumptions
-- reproduction notes
+- 白盒论文阅读笔记
+- 白盒攻击假设
+- 内部信号利用方案
+- 白盒方向任务认领

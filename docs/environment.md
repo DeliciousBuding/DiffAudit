@@ -1,27 +1,32 @@
-# Research Environment
+# 科研环境说明
 
-This project uses a dedicated conda environment named `diffaudit-research`.
+本项目使用独立 conda 环境 `diffaudit-research`。
 
-## Scope
+## 环境目标
 
-The environment is intentionally designed for the current research stage:
+当前环境服务于调研与原型阶段，覆盖：
 
-- Python numerical computing: `numpy`, `pandas`, `matplotlib`
-- PyTorch fundamentals: tensors, autograd, training and inference basics
-- Diffusion-model research preparation: `diffusers`, `transformers`, `accelerate`
-- Notebook-based reading, exploration, and small-scale experiments
+- Python 数值分析：`numpy`、`pandas`、`matplotlib`
+- PyTorch 基础：`Tensor`、`Autograd`、训练与推理
+- 扩散模型研究准备：`diffusers`、`transformers`、`accelerate`
+- notebook、脚本与 smoke 实验
 
-It is not yet tied to a specific membership-inference implementation.
+目前它还没有绑定到某一篇论文的完整执行资产。
 
-## Why Python 3.11
+## 为什么用 Python 3.11
 
-Python 3.11 is chosen instead of 3.12 because the current PyTorch and diffusion-model ecosystem is generally more stable on 3.11 for research workflows.
+当前 PyTorch 与扩散模型生态在 `Python 3.11` 下更稳，因此这里没有使用系统里的 3.12。
 
-## Package Strategy
+## 包管理策略
 
-This setup uses conda only for the isolated Python runtime and uses `pip` for the scientific and deep-learning packages. That is intentional because the local conda cache currently contains corrupted scientific packages.
+本项目采用：
 
-## Create The Environment
+- `conda`：负责隔离 Python 运行时
+- `pip`：负责大部分科研包和深度学习包
+
+这样做的原因是当前机器曾出现过 conda 科学计算包缓存损坏问题，使用混合方案更稳。
+
+## 创建环境
 
 ```powershell
 conda env create -f environment.yml
@@ -29,14 +34,13 @@ conda activate diffaudit-research
 python -m ipykernel install --user --name diffaudit-research --display-name "Python (diffaudit-research)"
 ```
 
-GPU-enabled PyTorch is pinned to the CUDA 12.1 wheel index in `environment.yml`.
-The current validated stack is:
+## 当前已验证的 GPU 栈
 
 - `torch==2.5.1+cu121`
 - `torchvision==0.20.1+cu121`
 - `torchaudio==2.5.1+cu121`
 
-## Verify
+## 验证环境
 
 ```powershell
 $env:PYTHONPATH='src;.'
@@ -45,6 +49,6 @@ python -c "import numpy, pandas, matplotlib, diffusers, transformers"
 python scripts/verify_env.py
 ```
 
-## Later Additions
+## 后续扩展原则
 
-Only add algorithm-specific dependencies after the first concrete attack direction is confirmed. That keeps the environment stable during the survey stage.
+只有在某条算法方向真正确定后，才继续增加该论文专用依赖。调研期尽量保持环境稳定，不要为了单篇论文把环境改得过重。

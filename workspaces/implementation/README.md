@@ -1,9 +1,9 @@
-# Implementation Workspace
+# 工程实现工作区
 
-Use this workspace for shared engineering work that supports all research directions:
+用于存放跨方向共享的工程任务说明，例如：
 
-- adapters
-- runners
-- config schemas
-- result formats
-- reporting and tooling
+- adapter 设计
+- runner 设计
+- 配置 schema
+- 结果结构
+- 报告层

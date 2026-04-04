@@ -1,12 +1,17 @@
-# Workspaces
+# 工作区说明
 
-This directory separates collaboration by research direction and engineering ownership.
+这个目录用于多人协作时按方向拆分工作区，避免大家把阅读笔记、实验计划和共享代码混在一起。
 
-## Subdirectories
+## 子目录
 
-- `black-box/`: black-box paper reading, reproduction notes, and experiment planning
-- `white-box/`: white-box paper reading and reproduction notes
-- `gray-box/`: gray-box or semi-white-box attack studies
-- `implementation/`: shared engineering tasks that support all directions
+- `black-box/`：黑盒方向
+- `white-box/`：白盒方向
+- `gray-box/`：灰盒方向
+- `implementation/`：共享工程实现
 
-Keep shared code in `src/diffaudit/`. Use these folders to organize parallel work without turning the source tree into a scratch area.
+## 原则
+
+- 阅读笔记、任务认领、阶段总结放工作区
+- 共享代码放 `src/diffaudit/`
+- 配置放 `configs/`
+- 实验输出放 `experiments/`

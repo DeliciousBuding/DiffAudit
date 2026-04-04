@@ -1,144 +1,156 @@
-# DiffAudit Repository Guide
+# DiffAudit 仓库协作指南
 
-This repository is a research codebase, not a generic product application.
+这是一个研究仓库，不是普通业务系统。
 
-## Mission
+## 核心目标
 
-Prioritize:
+优先级按以下顺序执行：
 
-1. reproducibility
-2. clear experiment boundaries
-3. minimal valid integrations
-4. documentation and evidence
-5. only then UI or workflow polish
+1. 可复现
+2. 实验边界清晰
+3. 最短路径集成
+4. 文档和证据完整
+5. 最后才是界面和流程美化
 
-## Research Focus
+## 默认研究主线
 
-The default repository focus is `black-box membership inference on diffusion models`.
+当前默认主线是：
 
-White-box and gray-box work are valid extensions, but they must not fork the repository into unrelated structures. Reuse the same config, adapter, dry-run, and result-recording patterns.
+`扩散模型上的 black-box membership inference`
 
-## Workspace Structure
+白盒和灰盒可以推进，但不得破坏黑盒主线的代码结构。三条线都应复用：
 
-The repository is organized for multiple collaborators.
+- config 结构
+- adapter 结构
+- dry-run 机制
+- 结果记录方式
 
-Use these workspace areas intentionally:
+## 工作区规则
+
+多人协作统一按工作区拆分：
 
 - `workspaces/black-box/`
 - `workspaces/white-box/`
 - `workspaces/gray-box/`
 - `workspaces/implementation/`
 
-Workspace folders are for planning notes, reproduction tracking, reading summaries, and task ownership. Shared executable code belongs in `src/diffaudit/`.
+这些目录只放：
 
-## Coding Priorities
+- 阅读笔记
+- 复现计划
+- 任务归属
+- 阻塞记录
+- 阶段总结
 
-Prefer adding:
+共享可执行代码统一放在 `src/diffaudit/`。
 
-- config schemas
-- adapter layers
-- dry-run validation
-- artifact and result recording
-- import and execution smoke tests
+## 编码优先级
 
-Do not start with:
+优先补：
 
-- complex frontends
-- platform-style user management
-- database-heavy orchestration
-- broad “all attacks” frameworks with no working path
+- 配置 schema
+- planner / adapter
+- dry-run 验证
+- 结果记录
+- import 和执行 smoke 测试
 
-## Third-Party Code Policy
+不要先做：
 
-Use `third_party/` only for the smallest necessary vendored subset.
+- 复杂前端
+- 平台化用户系统
+- 数据库重系统设计
+- 没有真实攻击路径支撑的大而全框架
 
-When vendoring third-party code:
+## 第三方代码规范
 
-- keep the vendored scope minimal
-- add a local README with source attribution
-- patch only what is needed for integration, portability, or testing
-- avoid rewriting upstream logic unless there is a concrete compatibility reason
+`third_party/` 只允许放最小必要 vendored 子集。
 
-`external/` is for local exploratory clones only and must never be committed.
+要求：
 
-Do not put personal scratch files into shared source directories. If temporary files are needed, keep them under local ignored paths or clearly marked workspace scratch areas.
+- 体量尽可能小
+- 必须保留来源说明
+- 只做必要补丁，不随意大改 upstream 逻辑
+- `external/` 只用于本地探索 clone，禁止提交
 
-## Experiment Asset Policy
+## 实验资产规范
 
-Checkpoints, training flag dumps, dataset roots, and member split files are experiment assets.
+以下都属于实验资产：
 
-If assets are missing:
+- checkpoint
+- `flagfile.txt`
+- dataset root
+- member split 文件
 
-- prefer returning a `blocked` dry-run result
-- do not claim the experiment is runnable
-- do not fabricate outputs or benchmark conclusions
+如果资产缺失：
 
-Always distinguish:
+- 优先实现 `dry-run` 或 `blocked` 状态
+- 不要伪造实验完成
+- 不要产出没有运行证据的结论
+
+必须区分：
 
 - `code-ready`
 - `asset-ready`
 - `experiment-ready`
 
-## Research Integrity Rules
+## 研究诚信规则
 
-- Do not claim a paper has been reproduced without fresh execution evidence.
-- Do not describe smoke outputs as benchmark results.
-- Do not generalize black-box findings to white-box or gray-box settings.
-- Do not present a single paper’s assumptions as universal facts.
+- 没有真实运行证据，不得声称“复现成功”
+- smoke 输出不能写成 benchmark 结果
+- 黑盒结论不能直接外推到白盒或灰盒
+- 单篇论文的假设不能表述成普遍事实
 
-## Testing Expectations
+## 测试规则
 
-New repository behavior should generally come with tests first.
+新增仓库行为，默认先写测试再写实现。
 
-At minimum, maintain coverage for:
+至少维持以下测试能力：
 
 - config loading
 - attack planning
 - adapter preparation
 - dry-run validation
-- vendored module import smoke tests
+- vendored 模块 import smoke test
 
-## Documentation Expectations
+## 文档同步规则
 
-When adding a new attack direction or major capability, update:
+新增攻击线或重大能力时，至少同步更新：
 
 - `README.md`
-- relevant example configs under `configs/`
-- reference indexes under `references/`
-- environment notes if dependencies changed
+- `configs/`
+- `references/`
+- `docs/`
 
-The repository should always answer:
+仓库始终要能回答：
 
-- what already works
-- what is blocked
-- what assets are missing
-- what command verifies the current claim
+- 现在做到哪了
+- 差什么
+- 缺什么资产
+- 用什么命令验证
 
-## Multi-Person Coordination
+## 多人协作纪律
 
-- Prefer one research direction per contributor at a time.
-- Keep branch work focused on one of: `black-box`, `white-box`, `gray-box`, or `implementation`.
-- Use small commits with explicit messages.
-- Before changing shared interfaces, update the relevant workspace or repository docs.
-- When a task is blocked by assets, record the blocker instead of leaving silent partial work.
+- 一次尽量只负责一个方向
+- 分支应聚焦于 `black-box` / `white-box` / `gray-box` / `implementation`
+- 提交要小步快跑
+- 修改共享接口前先补文档
+- 被资产阻塞时必须显式记录
 
-## Public Repository Constraints
+## 公开仓库约束
 
-Before committing large files:
+提交大文件前必须检查：
 
-- check total size
-- check largest file size
-- keep mirrored research materials indexed
+- 总体量
+- 最大单文件大小
+- 是否已更新资料索引
 
-Prefer documenting why a large file is tracked.
+## 输出风格
 
-## Output Style
+研究结论优先按这四项组织：
 
-Research conclusions should be expressed as:
+- 假设
+- 方法
+- 证据
+- 阻塞项
 
-- assumption
-- method
-- evidence
-- blocker
-
-Avoid vague status language such as “probably works” or “should be fine”.
+不要使用“应该可以”“差不多能跑”这类模糊表述。
