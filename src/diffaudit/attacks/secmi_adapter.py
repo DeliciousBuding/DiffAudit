@@ -221,10 +221,23 @@ def run_synthetic_secmi_stat_smoke(workspace: str | Path, device: str = "cpu") -
 
     result = {
         "status": "ready",
+        "method": "secmi",
+        "mode": "synthetic-stat-smoke",
         "auc": round(float(attack_results["auc"]), 6),
         "asr": round(float(attack_results["asr"]), 6),
         "device": device,
         "workspace": str(workspace_path),
+        "artifact_paths": {
+            "summary": str(workspace_path / "summary.json"),
+            "flagfile": smoke_assets["flagfile_path"],
+            "checkpoint": smoke_assets["checkpoint_path"],
+        },
+        "score_stats": {
+            "member_count": int(attack_results["member_scores"].numel()),
+            "nonmember_count": int(attack_results["nonmember_scores"].numel()),
+            "member_mean": round(float(attack_results["member_scores"].mean()), 6),
+            "nonmember_mean": round(float(attack_results["nonmember_scores"].mean()), 6),
+        },
     }
     (workspace_path / "summary.json").write_text(
         __import__("json").dumps(result, indent=2, ensure_ascii=True),
@@ -262,3 +275,4 @@ def probe_secmi_runtime(config: AuditConfig, repo_root: str) -> tuple[int, dict[
         "model_T": flags_obj.T,
         **summarize_secmi_adapter(context),
     }
+
