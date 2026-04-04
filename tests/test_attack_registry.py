@@ -209,6 +209,112 @@ report:
         self.assertEqual(payload["status"], "blocked")
         self.assertIn("flagfile", payload["error"])
 
+    def test_parses_secmi_flagfile_without_absl_state(self) -> None:
+        from diffaudit.attacks.secmi_adapter import parse_secmi_flagfile
+
+        flag_text = """--T=100
+--attn=1
+--batch_size=8
+--beta_1=0.0001
+--beta_T=0.02
+--ch=32
+--ch_mult=1
+--ch_mult=2
+--dropout=0.1
+--img_size=32
+--num_res_blocks=1
+--mean_type=epsilon
+--var_type=fixedlarge
+"""
+
+        with tempfile.TemporaryDirectory() as tmpdir:
+            flagfile = Path(tmpdir) / "flagfile.txt"
+            flagfile.write_text(flag_text, encoding="utf-8")
+            flags = parse_secmi_flagfile(flagfile)
+
+        self.assertEqual(flags.T, 100)
+        self.assertEqual(flags.ch, 32)
+        self.assertEqual(flags.ch_mult, [1, 2])
+        self.assertEqual(flags.num_res_blocks, 1)
+
+    def test_runs_synthetic_secmi_stat_smoke(self) -> None:
+        from diffaudit.attacks.secmi_adapter import run_synthetic_secmi_stat_smoke
+
+        with tempfile.TemporaryDirectory() as tmpdir:
+            result = run_synthetic_secmi_stat_smoke(Path(tmpdir), device="cpu")
+
+        self.assertEqual(result["status"], "ready")
+        self.assertIn("auc", result)
+        self.assertIn("asr", result)
+        self.assertEqual(result["device"], "cpu")
+
+    def test_bootstrap_secmi_smoke_assets_creates_flagfile_and_checkpoint(self) -> None:
+        from diffaudit.attacks.secmi_adapter import bootstrap_secmi_smoke_assets
+
+        with tempfile.TemporaryDirectory() as tmpdir:
+            target_dir = Path(tmpdir) / "smoke-assets"
+            result = bootstrap_secmi_smoke_assets(
+                target_dir=target_dir,
+                flagfile_source=Path("external/SecMI/config/CIFAR10.txt"),
+            )
+
+        self.assertTrue(result["flagfile_path"].endswith("flagfile.txt"))
+        self.assertTrue(result["checkpoint_path"].endswith("checkpoint.pt"))
+
+    def test_cli_runtime_probe_secmi_reports_ready(self) -> None:
+        from diffaudit.cli import main
+
+        config_text = """
+task:
+  name: secmi-runtime
+  model_family: diffusion
+  access_level: black_box
+assets:
+  dataset_id: cifar10-half
+  dataset_name: cifar10
+  dataset_root: D:/datasets/cifar10
+  model_id: cifar10-ddpm
+  model_dir: PLACEHOLDER
+attack:
+  method: secmi
+  num_samples: 8
+  parameters:
+    t_sec: 100
+    k: 10
+report:
+  output_dir: experiments/secmi-runtime
+"""
+
+        with tempfile.TemporaryDirectory() as tmpdir:
+            root = Path(tmpdir)
+            model_dir = root / "model"
+            model_dir.mkdir()
+            (model_dir / "flagfile.txt").write_text("", encoding="utf-8")
+            (model_dir / "checkpoint.pt").write_text("best", encoding="utf-8")
+
+            config_path = root / "audit.yaml"
+            config_path.write_text(
+                config_text.replace("PLACEHOLDER", str(model_dir).replace("\\", "/")),
+                encoding="utf-8",
+            )
+
+            stdout = StringIO()
+            with redirect_stdout(stdout):
+                exit_code = main(
+                    [
+                        "runtime-probe-secmi",
+                        "--config",
+                        str(config_path),
+                        "--repo-root",
+                        "third_party/secmi",
+                    ]
+                )
+
+        payload = json.loads(stdout.getvalue())
+        self.assertEqual(exit_code, 0)
+        self.assertEqual(payload["status"], "ready")
+        self.assertIn("flagfile_loaded", payload["checks"])
+
     def test_prepares_secmi_adapter_context(self) -> None:
         from diffaudit.attacks.secmi_adapter import prepare_secmi_adapter
         from diffaudit.config import load_audit_config

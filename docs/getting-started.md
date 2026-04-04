@@ -1,66 +1,45 @@
-# 新成员上手指南
+# 入手指南
 
-这份文档面向第一次进入 DiffAudit 仓库的组员，目标是让你在最短时间内知道：
+这份文档面向第一次进入 DiffAudit 仓库的组员。
 
-- 我们在做什么
-- 你该在哪个方向工作
-- 你本地先跑什么命令
-- 你当前缺什么资产
+## 先做什么
 
-## 一、先理解项目目标
+建议按这个顺序入手：
 
-DiffAudit 不是“让模型生成更好图片”的项目。
+1. 阅读根目录 [README.md](/D:/Code/DiffAudit/Project/README.md)
+2. 阅读 [docs/environment.md](/D:/Code/DiffAudit/Project/docs/environment.md)
+3. 阅读 [docs/github-collaboration.md](/D:/Code/DiffAudit/Project/docs/github-collaboration.md)
+4. 进入自己负责的工作区
+5. 跑一次环境验证和 `dry-run`
 
-它的核心目标是：
+## 你应该先知道的几件事
 
-- 研究扩散模型是否记住了训练样本
-- 复现黑盒、白盒、灰盒成员推断方法
-- 把攻击结果整理成可审计、可解释的证据
+- 这是研究仓库，不是产品仓库
+- 当前主线优先是 `black-box`
+- 代码、资产、实验三者必须分开表述
+- 没有真实运行证据，不要说“复现成功”
 
-## 二、先确定你属于哪个工作区
-
-- 做黑盒方向：看 `workspaces/black-box/`
-- 做白盒方向：看 `workspaces/white-box/`
-- 做灰盒方向：看 `workspaces/gray-box/`
-- 做共享工程：看 `workspaces/implementation/`
-
-## 三、本地第一步命令
+## 第一次本地验证
 
 ```powershell
-conda env create -f environment.yml
 conda activate diffaudit-research
 $env:PYTHONPATH='src;.'
 python scripts/verify_env.py
 python -m unittest
-```
-
-## 四、如果你接黑盒方向
-
-优先跑：
-
-```powershell
-$env:PYTHONPATH='src;.'
-python -m diffaudit plan-secmi --config configs/attacks/secmi_plan.yaml
-python -m diffaudit prepare-secmi --config configs/attacks/secmi_plan.yaml --repo-root third_party/secmi
 python -m diffaudit dry-run-secmi --config configs/attacks/secmi_plan.yaml --repo-root third_party/secmi
 ```
 
-如果输出 `blocked`，说明不是代码没接好，而是你还缺实验资产。
+## 你应该去哪个工作区
 
-## 五、当前最常见阻塞项
+- 负责黑盒：`workspaces/black-box/`
+- 负责白盒：`workspaces/white-box/`
+- 负责灰盒：`workspaces/gray-box/`
+- 负责共享工程：`workspaces/implementation/`
 
-- 缺 `flagfile.txt`
-- 缺 checkpoint
-- 缺真实 `dataset_root`
-- 缺论文对应的实验设定
+## 做事方式
 
-## 六、你应该先交什么
-
-不要一上来就说“我要复现整篇论文”。
-
-建议先交：
-
-- 一页论文总结
-- 一份复现计划
-- 一份资产清单
-- 当前阻塞项
+1. 先写计划
+2. 再写配置
+3. 再写 adapter / probe
+4. 先跑 dry-run
+5. 最后才跑真实实验
