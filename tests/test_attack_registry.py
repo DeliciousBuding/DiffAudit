@@ -1,6 +1,9 @@
 import unittest
 from pathlib import Path
 import tempfile
+from contextlib import redirect_stdout
+from io import StringIO
+import json
 
 
 class AttackRegistryTests(unittest.TestCase):
@@ -38,6 +41,73 @@ class AttackRegistryTests(unittest.TestCase):
 
         self.assertEqual(result["status"], "ready")
         self.assertIn("mia_evals", result["entrypoint"])
+
+    def test_cli_prepares_secmi_adapter(self) -> None:
+        from diffaudit.cli import main
+
+        config_text = """
+task:
+  name: secmi-adapter
+  model_family: diffusion
+  access_level: black_box
+assets:
+  dataset_id: cifar10-half
+  dataset_name: cifar10
+  dataset_root: D:/datasets/cifar10
+  model_id: cifar10-ddpm
+  model_dir: PLACEHOLDER
+attack:
+  method: secmi
+  num_samples: 8
+  parameters:
+    t_sec: 100
+    k: 10
+report:
+  output_dir: experiments/secmi-adapter
+"""
+
+        with tempfile.TemporaryDirectory() as tmpdir:
+            root = Path(tmpdir)
+            model_dir = root / "model"
+            model_dir.mkdir()
+            (model_dir / "flagfile.txt").write_text("flags", encoding="utf-8")
+            (model_dir / "checkpoint.pt").write_text("best", encoding="utf-8")
+
+            repo_root = root / "third_party" / "secmi"
+            (repo_root / "mia_evals").mkdir(parents=True)
+            (repo_root / "__init__.py").write_text('"""secmi"""', encoding="utf-8")
+            (repo_root / "model.py").write_text("# model", encoding="utf-8")
+            (repo_root / "diffusion.py").write_text("# diffusion", encoding="utf-8")
+            (repo_root / "mia_evals" / "__init__.py").write_text('"""mia"""', encoding="utf-8")
+            (repo_root / "mia_evals" / "dataset_utils.py").write_text("# util", encoding="utf-8")
+            (repo_root / "mia_evals" / "secmia.py").write_text(
+                "def get_FLAGS(*args, **kwargs):\n    return None\n"
+                "def secmi_attack(*args, **kwargs):\n    return None\n",
+                encoding="utf-8",
+            )
+
+            config_path = root / "audit.yaml"
+            config_path.write_text(
+                config_text.replace("PLACEHOLDER", str(model_dir).replace("\\", "/")),
+                encoding="utf-8",
+            )
+
+            stdout = StringIO()
+            with redirect_stdout(stdout):
+                exit_code = main(
+                    [
+                        "prepare-secmi",
+                        "--config",
+                        str(config_path),
+                        "--repo-root",
+                        str(repo_root),
+                    ]
+                )
+
+        payload = json.loads(stdout.getvalue())
+        self.assertEqual(exit_code, 0)
+        self.assertEqual(payload["python_module"], "mia_evals.secmia")
+        self.assertIn("checkpoint.pt", payload["checkpoint_path"])
 
     def test_prepares_secmi_adapter_context(self) -> None:
         from diffaudit.attacks.secmi_adapter import prepare_secmi_adapter

@@ -8,6 +8,7 @@ from dataclasses import asdict
 from pathlib import Path
 
 from diffaudit.attacks.secmi import build_secmi_plan
+from diffaudit.attacks.secmi_adapter import prepare_secmi_adapter, summarize_secmi_adapter
 from diffaudit.config import load_audit_config
 from diffaudit.pipelines.smoke import run_smoke_pipeline
 
@@ -29,6 +30,17 @@ def build_parser() -> argparse.ArgumentParser:
         help="build a SecMI integration plan from audit config",
     )
     secmi_parser.add_argument("--config", required=True, help="path to audit yaml")
+
+    prepare_parser = subparsers.add_parser(
+        "prepare-secmi",
+        help="prepare adapter context for a local SecMI workspace",
+    )
+    prepare_parser.add_argument("--config", required=True, help="path to audit yaml")
+    prepare_parser.add_argument(
+        "--repo-root",
+        default="third_party/secmi",
+        help="path to vendored or local SecMI repository root",
+    )
     return parser
 
 
@@ -46,6 +58,12 @@ def main(argv: list[str] | None = None) -> int:
         config = load_audit_config(args.config)
         plan = build_secmi_plan(config)
         print(json.dumps(asdict(plan), indent=2, ensure_ascii=True))
+        return 0
+
+    if args.command == "prepare-secmi":
+        config = load_audit_config(args.config)
+        context = prepare_secmi_adapter(config, args.repo_root)
+        print(json.dumps(summarize_secmi_adapter(context), indent=2, ensure_ascii=True))
         return 0
 
     parser.error(f"Unsupported command: {args.command}")
