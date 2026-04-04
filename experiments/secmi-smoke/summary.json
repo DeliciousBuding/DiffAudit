@@ -1,0 +1,10 @@
+{
+  "run_name": "secmi-smoke",
+  "model_family": "diffusion",
+  "access_level": "black_box",
+  "dataset_id": "toy-membership-set",
+  "model_id": "stable-diffusion-smoke",
+  "attack_method": "secmi",
+  "num_samples": 8,
+  "output_dir": "experiments/secmi-smoke"
+}

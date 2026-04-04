@@ -1,0 +1,12 @@
+task:
+  name: secmi-smoke
+  model_family: diffusion
+  access_level: black_box
+assets:
+  dataset_id: toy-membership-set
+  model_id: stable-diffusion-smoke
+attack:
+  method: secmi
+  num_samples: 8
+report:
+  output_dir: experiments/secmi-smoke

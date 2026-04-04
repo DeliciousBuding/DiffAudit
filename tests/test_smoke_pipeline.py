@@ -1,5 +1,7 @@
 import tempfile
 import unittest
+from contextlib import redirect_stdout
+from io import StringIO
 from pathlib import Path
 
 
@@ -61,6 +63,47 @@ report:
 
             with self.assertRaisesRegex(ValueError, "Unsupported access_level"):
                 load_audit_config(config_path)
+
+    def test_cli_runs_smoke_and_writes_summary_file(self) -> None:
+        from diffaudit.cli import main
+
+        config_text = """
+task:
+  name: cli-smoke
+  model_family: diffusion
+  access_level: black_box
+assets:
+  dataset_id: toy-membership-set
+  model_id: stable-diffusion-smoke
+attack:
+  method: secmi
+  num_samples: 4
+report:
+  output_dir: experiments/cli-smoke
+"""
+
+        with tempfile.TemporaryDirectory() as tmpdir:
+            workspace = Path(tmpdir)
+            config_path = workspace / "audit.yaml"
+            config_path.write_text(config_text, encoding="utf-8")
+
+            stdout = StringIO()
+            with redirect_stdout(stdout):
+                exit_code = main(
+                    [
+                        "run-smoke",
+                        "--config",
+                        str(config_path),
+                        "--workspace",
+                        str(workspace),
+                    ]
+                )
+
+            summary_path = workspace / "experiments" / "cli-smoke" / "summary.json"
+
+            self.assertEqual(exit_code, 0)
+            self.assertTrue(summary_path.exists())
+            self.assertIn("summary.json", stdout.getvalue())
 
 
 if __name__ == "__main__":
