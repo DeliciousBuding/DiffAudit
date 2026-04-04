@@ -53,3 +53,29 @@ def summarize_secmi_adapter(context: SecmiAdapterContext) -> dict[str, Any]:
         "entrypoint_path": context.runner.entrypoint_path,
         "python_module": context.runner.python_module,
     }
+
+
+def run_secmi_dry_run(context: SecmiAdapterContext) -> dict[str, Any]:
+    available_functions = [
+        name
+        for name in ("get_FLAGS", "get_model", "secmi_attack", "load_member_data")
+        if hasattr(context.module, name)
+    ]
+    return {
+        "status": "ready",
+        "available_functions": available_functions,
+        **summarize_secmi_adapter(context),
+    }
+
+
+def probe_secmi_dry_run(config: AuditConfig, repo_root: str) -> tuple[int, dict[str, Any]]:
+    try:
+        context = prepare_secmi_adapter(config, repo_root)
+    except FileNotFoundError as exc:
+        return 1, {
+            "status": "blocked",
+            "error": str(exc),
+            "repo_root": repo_root,
+        }
+
+    return 0, run_secmi_dry_run(context)

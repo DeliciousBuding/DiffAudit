@@ -109,6 +109,106 @@ report:
         self.assertEqual(payload["python_module"], "mia_evals.secmia")
         self.assertIn("checkpoint.pt", payload["checkpoint_path"])
 
+    def test_cli_runs_secmi_dry_run(self) -> None:
+        from diffaudit.cli import main
+
+        config_text = """
+task:
+  name: secmi-dry-run
+  model_family: diffusion
+  access_level: black_box
+assets:
+  dataset_id: cifar10-half
+  dataset_name: cifar10
+  dataset_root: D:/datasets/cifar10
+  model_id: cifar10-ddpm
+  model_dir: PLACEHOLDER
+attack:
+  method: secmi
+  num_samples: 8
+  parameters:
+    t_sec: 100
+    k: 10
+report:
+  output_dir: experiments/secmi-dry-run
+"""
+
+        with tempfile.TemporaryDirectory() as tmpdir:
+            root = Path(tmpdir)
+            model_dir = root / "model"
+            model_dir.mkdir()
+            (model_dir / "flagfile.txt").write_text("", encoding="utf-8")
+            (model_dir / "checkpoint.pt").write_text("best", encoding="utf-8")
+
+            config_path = root / "audit.yaml"
+            config_path.write_text(
+                config_text.replace("PLACEHOLDER", str(model_dir).replace("\\", "/")),
+                encoding="utf-8",
+            )
+
+            stdout = StringIO()
+            with redirect_stdout(stdout):
+                exit_code = main(
+                    [
+                        "dry-run-secmi",
+                        "--config",
+                        str(config_path),
+                        "--repo-root",
+                        "external/SecMI",
+                    ]
+                )
+
+        payload = json.loads(stdout.getvalue())
+        self.assertEqual(exit_code, 0)
+        self.assertEqual(payload["status"], "ready")
+        self.assertIn("get_FLAGS", payload["available_functions"])
+
+    def test_cli_dry_run_reports_missing_assets(self) -> None:
+        from diffaudit.cli import main
+
+        config_text = """
+task:
+  name: secmi-dry-run
+  model_family: diffusion
+  access_level: black_box
+assets:
+  dataset_id: cifar10-half
+  dataset_name: cifar10
+  dataset_root: D:/datasets/cifar10
+  model_id: cifar10-ddpm
+  model_dir: D:/missing/model
+attack:
+  method: secmi
+  num_samples: 8
+  parameters:
+    t_sec: 100
+    k: 10
+report:
+  output_dir: experiments/secmi-dry-run
+"""
+
+        with tempfile.TemporaryDirectory() as tmpdir:
+            root = Path(tmpdir)
+            config_path = root / "audit.yaml"
+            config_path.write_text(config_text, encoding="utf-8")
+
+            stdout = StringIO()
+            with redirect_stdout(stdout):
+                exit_code = main(
+                    [
+                        "dry-run-secmi",
+                        "--config",
+                        str(config_path),
+                        "--repo-root",
+                        "external/SecMI",
+                    ]
+                )
+
+        payload = json.loads(stdout.getvalue())
+        self.assertEqual(exit_code, 1)
+        self.assertEqual(payload["status"], "blocked")
+        self.assertIn("flagfile", payload["error"])
+
     def test_prepares_secmi_adapter_context(self) -> None:
         from diffaudit.attacks.secmi_adapter import prepare_secmi_adapter
         from diffaudit.config import load_audit_config

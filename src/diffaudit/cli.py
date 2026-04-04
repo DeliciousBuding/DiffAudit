@@ -8,7 +8,12 @@ from dataclasses import asdict
 from pathlib import Path
 
 from diffaudit.attacks.secmi import build_secmi_plan
-from diffaudit.attacks.secmi_adapter import prepare_secmi_adapter, summarize_secmi_adapter
+from diffaudit.attacks.secmi_adapter import (
+    prepare_secmi_adapter,
+    probe_secmi_dry_run,
+    run_secmi_dry_run,
+    summarize_secmi_adapter,
+)
 from diffaudit.config import load_audit_config
 from diffaudit.pipelines.smoke import run_smoke_pipeline
 
@@ -41,6 +46,17 @@ def build_parser() -> argparse.ArgumentParser:
         default="third_party/secmi",
         help="path to vendored or local SecMI repository root",
     )
+
+    dry_run_parser = subparsers.add_parser(
+        "dry-run-secmi",
+        help="validate SecMI adapter readiness without executing the attack",
+    )
+    dry_run_parser.add_argument("--config", required=True, help="path to audit yaml")
+    dry_run_parser.add_argument(
+        "--repo-root",
+        default="third_party/secmi",
+        help="path to vendored or local SecMI repository root",
+    )
     return parser
 
 
@@ -65,6 +81,12 @@ def main(argv: list[str] | None = None) -> int:
         context = prepare_secmi_adapter(config, args.repo_root)
         print(json.dumps(summarize_secmi_adapter(context), indent=2, ensure_ascii=True))
         return 0
+
+    if args.command == "dry-run-secmi":
+        config = load_audit_config(args.config)
+        exit_code, payload = probe_secmi_dry_run(config, args.repo_root)
+        print(json.dumps(payload, indent=2, ensure_ascii=True))
+        return exit_code
 
     parser.error(f"Unsupported command: {args.command}")
     return 2
