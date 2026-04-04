@@ -284,6 +284,43 @@ report:
         self.assertEqual(result["status"], "ready")
         self.assertTrue(result["entrypoint"].endswith("mia_evals\\secmia.py"))
 
+class SecmiAssetExplanationTests(unittest.TestCase):
+    def test_explains_missing_secmi_assets(self) -> None:
+        from diffaudit.attacks.secmi import explain_secmi_assets
+        from diffaudit.config import load_audit_config
+
+        config_text = """
+task:
+  name: secmi-assets
+  model_family: diffusion
+  access_level: black_box
+assets:
+  dataset_id: cifar10-half
+  dataset_name: cifar10
+  dataset_root: D:/datasets/cifar10
+  model_id: cifar10-ddpm
+  model_dir: D:/missing/secmi-model
+attack:
+  method: secmi
+  num_samples: 8
+  parameters:
+    t_sec: 100
+    k: 10
+report:
+  output_dir: experiments/secmi-assets
+"""
+
+        with tempfile.TemporaryDirectory() as tmpdir:
+            config_path = Path(tmpdir) / "audit.yaml"
+            config_path.write_text(config_text, encoding="utf-8")
+            config = load_audit_config(config_path)
+            summary = explain_secmi_assets(config)
+
+        self.assertEqual(summary["status"], "blocked")
+        self.assertIn("flagfile.txt", summary["missing_items"])
+        self.assertIn("checkpoint", summary["missing_description"])
+
 
 if __name__ == "__main__":
     unittest.main()
+

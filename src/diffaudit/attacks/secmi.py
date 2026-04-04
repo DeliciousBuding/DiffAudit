@@ -46,6 +46,13 @@ REQUIRED_SECMI_WORKSPACE_FILES = (
     "diffusion.py",
 )
 
+SECMI_MEMBER_SPLIT_FILENAMES = {
+    "CIFAR10": "CIFAR10_train_ratio0.5.npz",
+    "CIFAR100": "CIFAR100_train_ratio0.5.npz",
+    "STL10-U": "STL10_Unlabeled_train_ratio0.5.npz",
+    "TINY-IN": "TINY-IN_train_ratio0.5.npz",
+}
+
 
 def build_secmi_plan(config: AuditConfig) -> SecmiPlan:
     if config.attack.method != "secmi":
@@ -116,6 +123,74 @@ def validate_secmi_workspace(workspace_dir: str | Path) -> dict[str, str]:
     }
 
 
+def resolve_secmi_member_split_path(
+    dataset: str,
+    member_split_root: str | Path,
+) -> Path | None:
+    split_name = SECMI_MEMBER_SPLIT_FILENAMES.get(dataset.upper())
+    if split_name is None:
+        return None
+    return Path(member_split_root) / split_name
+
+
+def probe_secmi_assets(
+    dataset: str,
+    dataset_root: str | Path,
+    model_dir: str | Path,
+    member_split_root: str | Path,
+) -> dict[str, object]:
+    dataset_root_path = Path(dataset_root)
+    model_dir_path = Path(model_dir)
+    member_split_root_path = Path(member_split_root)
+    flagfile_path = model_dir_path / "flagfile.txt"
+    checkpoint_path = model_dir_path / "checkpoint.pt"
+    ckpt_step_candidates = sorted(model_dir_path.glob("ckpt-step*.pt"))
+    resolved_checkpoint_path = checkpoint_path if checkpoint_path.exists() else (
+        ckpt_step_candidates[-1] if ckpt_step_candidates else checkpoint_path
+    )
+    member_split_path = resolve_secmi_member_split_path(dataset, member_split_root_path)
+
+    checkpoint_exists = resolved_checkpoint_path.exists()
+    flagfile_exists = flagfile_path.exists()
+    dataset_root_exists = dataset_root_path.exists()
+    member_split_exists = bool(member_split_path and member_split_path.exists())
+
+    checks = {
+        "checkpoint": checkpoint_exists,
+        "flagfile": flagfile_exists,
+        "dataset_root": dataset_root_exists,
+        "member_split": member_split_exists,
+    }
+    status = "ready" if all(checks.values()) else "blocked"
+    paths = {
+        "model_dir": str(model_dir_path),
+        "dataset_root": str(dataset_root_path),
+        "member_split_root": str(member_split_root_path),
+        "flagfile": str(flagfile_path),
+        "checkpoint": str(resolved_checkpoint_path),
+        "member_split": str(member_split_path) if member_split_path else "",
+    }
+    labels = {
+        "checkpoint": "checkpoint",
+        "flagfile": "flagfile",
+        "dataset_root": "dataset_root",
+        "member_split": "member split",
+    }
+    missing_keys = [name for name, is_ready in checks.items() if not is_ready]
+    missing = [paths[name] or labels[name] for name in missing_keys]
+
+    return {
+        "status": status,
+        "dataset": dataset,
+        "checks": checks,
+        "paths": paths,
+        "missing": missing,
+        "missing_keys": missing_keys,
+        "missing_items": [Path(item).name for item in missing],
+        "missing_description": " / ".join(labels[name] for name in missing_keys),
+    }
+
+
 def build_secmi_runner_spec(
     plan: SecmiPlan,
     artifacts: SecmiArtifacts,
@@ -138,3 +213,21 @@ def build_secmi_runner_spec(
         k=plan.k,
         batch_size=plan.batch_size,
     )
+
+
+def explain_secmi_assets(
+    config: AuditConfig,
+    member_split_root: str | Path = "third_party/secmi/mia_evals/member_splits",
+) -> dict[str, object]:
+    plan = build_secmi_plan(config)
+    summary = probe_secmi_assets(
+        dataset=plan.dataset,
+        dataset_root=plan.data_root,
+        model_dir=plan.model_dir,
+        member_split_root=member_split_root,
+    )
+    return {
+        **summary,
+        "model_dir": plan.model_dir,
+        "data_root": plan.data_root,
+    }

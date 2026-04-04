@@ -7,16 +7,7 @@ import json
 from dataclasses import asdict
 from pathlib import Path
 
-from diffaudit.attacks.secmi import build_secmi_plan
-from diffaudit.attacks.secmi_adapter import (
-    bootstrap_secmi_smoke_assets,
-    prepare_secmi_adapter,
-    probe_secmi_dry_run,
-    probe_secmi_runtime,
-    run_synthetic_secmi_stat_smoke,
-    run_secmi_dry_run,
-    summarize_secmi_adapter,
-)
+from diffaudit.attacks.secmi import build_secmi_plan, explain_secmi_assets
 from diffaudit.config import load_audit_config
 from diffaudit.pipelines.smoke import run_smoke_pipeline
 
@@ -38,6 +29,17 @@ def build_parser() -> argparse.ArgumentParser:
         help="build a SecMI integration plan from audit config",
     )
     secmi_parser.add_argument("--config", required=True, help="path to audit yaml")
+
+    asset_probe_parser = subparsers.add_parser(
+        "probe-secmi-assets",
+        help="inspect SecMI asset readiness without importing the full runtime",
+    )
+    asset_probe_parser.add_argument("--config", required=True, help="path to audit yaml")
+    asset_probe_parser.add_argument(
+        "--member-split-root",
+        default="third_party/secmi/mia_evals/member_splits",
+        help="path to SecMI member split npz files",
+    )
 
     prepare_parser = subparsers.add_parser(
         "prepare-secmi",
@@ -120,30 +122,46 @@ def main(argv: list[str] | None = None) -> int:
         print(json.dumps(asdict(plan), indent=2, ensure_ascii=True))
         return 0
 
+    if args.command == "probe-secmi-assets":
+        config = load_audit_config(args.config)
+        payload = explain_secmi_assets(config, member_split_root=args.member_split_root)
+        print(json.dumps(payload, indent=2, ensure_ascii=True))
+        return 0 if payload["status"] == "ready" else 1
+
     if args.command == "prepare-secmi":
+        from diffaudit.attacks.secmi_adapter import prepare_secmi_adapter, summarize_secmi_adapter
+
         config = load_audit_config(args.config)
         context = prepare_secmi_adapter(config, args.repo_root)
         print(json.dumps(summarize_secmi_adapter(context), indent=2, ensure_ascii=True))
         return 0
 
     if args.command == "dry-run-secmi":
+        from diffaudit.attacks.secmi_adapter import probe_secmi_dry_run
+
         config = load_audit_config(args.config)
         exit_code, payload = probe_secmi_dry_run(config, args.repo_root)
         print(json.dumps(payload, indent=2, ensure_ascii=True))
         return exit_code
 
     if args.command == "runtime-probe-secmi":
+        from diffaudit.attacks.secmi_adapter import probe_secmi_runtime
+
         config = load_audit_config(args.config)
         exit_code, payload = probe_secmi_runtime(config, args.repo_root)
         print(json.dumps(payload, indent=2, ensure_ascii=True))
         return exit_code
 
     if args.command == "bootstrap-secmi-smoke-assets":
+        from diffaudit.attacks.secmi_adapter import bootstrap_secmi_smoke_assets
+
         payload = bootstrap_secmi_smoke_assets(args.target_dir, args.flagfile_source)
         print(json.dumps(payload, indent=2, ensure_ascii=True))
         return 0
 
     if args.command == "run-secmi-synth-smoke":
+        from diffaudit.attacks.secmi_adapter import run_synthetic_secmi_stat_smoke
+
         payload = run_synthetic_secmi_stat_smoke(args.workspace, device=args.device)
         print(json.dumps(payload, indent=2, ensure_ascii=True))
         return 0

@@ -10,8 +10,6 @@ from pathlib import Path
 from types import ModuleType
 from typing import Any
 
-import torch
-
 from diffaudit.attacks.secmi import (
     SecmiArtifacts,
     SecmiPlan,
@@ -87,6 +85,8 @@ def probe_secmi_dry_run(config: AuditConfig, repo_root: str) -> tuple[int, dict[
 
 
 def bootstrap_secmi_smoke_assets(target_dir: str | Path, flagfile_source: str | Path) -> dict[str, str]:
+    import torch
+
     from third_party.secmi.model import UNet
 
     target_path = Path(target_dir)
@@ -181,6 +181,8 @@ def parse_secmi_flagfile(flagfile_path: str | Path) -> SimpleNamespace:
 
 
 def run_synthetic_secmi_stat_smoke(workspace: str | Path, device: str = "cpu") -> dict[str, Any]:
+    import torch
+
     workspace_path = Path(workspace)
     workspace_path.mkdir(parents=True, exist_ok=True)
     smoke_assets = bootstrap_secmi_smoke_assets(
