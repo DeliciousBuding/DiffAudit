@@ -23,6 +23,7 @@
 | `Towards Black-Box Membership Inference Attack for Diffusion Model.pdf` | 扩散模型黑盒成员推断 | black-box | 必读 |
 | `参考论文/Towards Black-Box Membership Inference Attack for Diffusion .pdf` | 黑盒成员推断补充材料 | black-box | 可选 |
 | `参考论文/2025-324-paper.pdf` | 微调扩散模型上的黑盒成员推断 | black-box | 必读 |
+| `参考论文/WhiteBox_PoPETs2025.pdf` | 扩散模型白盒成员推断主论文 | white-box | 必读 |
 | `参考论文/SecMI_ICML2023.pdf` | 扩散模型成员推断基础论文 | gray-box | 必读 |
 | `参考论文/PIA_ICLR2024.pdf` | 面向扩散模型的高效成员推断 | gray-box | 必读 |
 | `参考论文/CLiD_NeurIPS2024.pdf` | text-to-image 场景下的成员推断 | black-box | 必读 |
