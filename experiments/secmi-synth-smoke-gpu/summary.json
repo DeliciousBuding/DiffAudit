@@ -1,0 +1,20 @@
+{
+  "status": "ready",
+  "method": "secmi",
+  "mode": "synthetic-stat-smoke",
+  "auc": 0.5,
+  "asr": 1.0,
+  "device": "cuda",
+  "workspace": "experiments\\secmi-synth-smoke-gpu",
+  "artifact_paths": {
+    "summary": "experiments\\secmi-synth-smoke-gpu\\summary.json",
+    "flagfile": "experiments\\secmi-synth-smoke-gpu\\synthetic-secmi-assets\\flagfile.txt",
+    "checkpoint": "experiments\\secmi-synth-smoke-gpu\\synthetic-secmi-assets\\checkpoint.pt"
+  },
+  "score_stats": {
+    "member_count": 2,
+    "nonmember_count": 2,
+    "member_mean": 0.0,
+    "nonmember_mean": 0.0
+  }
+}
