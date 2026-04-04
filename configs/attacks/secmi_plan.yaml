@@ -1,0 +1,19 @@
+task:
+  name: secmi-plan
+  model_family: diffusion
+  access_level: black_box
+assets:
+  dataset_id: cifar10-half
+  dataset_name: cifar10
+  dataset_root: D:/datasets/cifar10
+  model_id: cifar10-ddpm
+  model_dir: D:/models/secmi/cifar10
+attack:
+  method: secmi
+  num_samples: 8
+  parameters:
+    t_sec: 100
+    k: 10
+    batch_size: 16
+report:
+  output_dir: experiments/secmi-plan

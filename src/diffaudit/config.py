@@ -2,8 +2,9 @@
 
 from __future__ import annotations
 
-from dataclasses import dataclass
+from dataclasses import dataclass, field
 from pathlib import Path
+from typing import Any
 
 import yaml
 
@@ -22,12 +23,16 @@ class TaskConfig:
 class AssetConfig:
     dataset_id: str
     model_id: str
+    dataset_name: str | None = None
+    dataset_root: str | None = None
+    model_dir: str | None = None
 
 
 @dataclass(frozen=True)
 class AttackConfig:
     method: str
     num_samples: int
+    parameters: dict[str, Any] = field(default_factory=dict)
 
 
 @dataclass(frozen=True)

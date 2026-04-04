@@ -3,8 +3,11 @@
 from __future__ import annotations
 
 import argparse
+import json
+from dataclasses import asdict
 from pathlib import Path
 
+from diffaudit.attacks.secmi import build_secmi_plan
 from diffaudit.config import load_audit_config
 from diffaudit.pipelines.smoke import run_smoke_pipeline
 
@@ -20,6 +23,12 @@ def build_parser() -> argparse.ArgumentParser:
         default=".",
         help="workspace root used to resolve output paths",
     )
+
+    secmi_parser = subparsers.add_parser(
+        "plan-secmi",
+        help="build a SecMI integration plan from audit config",
+    )
+    secmi_parser.add_argument("--config", required=True, help="path to audit yaml")
     return parser
 
 
@@ -31,6 +40,12 @@ def main(argv: list[str] | None = None) -> int:
         config = load_audit_config(args.config)
         summary_path = run_smoke_pipeline(config, Path(args.workspace))
         print(f"Smoke summary written to {summary_path}")
+        return 0
+
+    if args.command == "plan-secmi":
+        config = load_audit_config(args.config)
+        plan = build_secmi_plan(config)
+        print(json.dumps(asdict(plan), indent=2, ensure_ascii=True))
         return 0
 
     parser.error(f"Unsupported command: {args.command}")

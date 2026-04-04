@@ -2,6 +2,7 @@ import tempfile
 import unittest
 from contextlib import redirect_stdout
 from io import StringIO
+import json
 from pathlib import Path
 
 
@@ -104,6 +105,84 @@ report:
             self.assertEqual(exit_code, 0)
             self.assertTrue(summary_path.exists())
             self.assertIn("summary.json", stdout.getvalue())
+
+    def test_cli_prints_secmi_plan(self) -> None:
+        from diffaudit.cli import main
+
+        config_text = """
+task:
+  name: secmi-plan
+  model_family: diffusion
+  access_level: black_box
+assets:
+  dataset_id: cifar10-half
+  dataset_name: cifar10
+  dataset_root: D:/datasets/cifar10
+  model_id: cifar10-ddpm
+  model_dir: D:/models/secmi/cifar10
+attack:
+  method: secmi
+  num_samples: 8
+  parameters:
+    t_sec: 100
+    k: 10
+report:
+  output_dir: experiments/secmi-plan
+"""
+
+        with tempfile.TemporaryDirectory() as tmpdir:
+            config_path = Path(tmpdir) / "audit.yaml"
+            config_path.write_text(config_text, encoding="utf-8")
+
+            stdout = StringIO()
+            with redirect_stdout(stdout):
+                exit_code = main(["plan-secmi", "--config", str(config_path)])
+
+        payload = json.loads(stdout.getvalue())
+        self.assertEqual(exit_code, 0)
+        self.assertEqual(payload["entrypoint"], "mia_evals/secmia.py")
+        self.assertEqual(payload["dataset"], "cifar10")
+
+    def test_builds_secmi_plan_from_config(self) -> None:
+        from diffaudit.attacks.secmi import build_secmi_plan
+        from diffaudit.config import load_audit_config
+
+        config_text = """
+task:
+  name: secmi-plan
+  model_family: diffusion
+  access_level: black_box
+assets:
+  dataset_id: cifar10-half
+  dataset_name: cifar10
+  dataset_root: D:/datasets/cifar10
+  model_id: cifar10-ddpm
+  model_dir: D:/models/secmi/cifar10
+attack:
+  method: secmi
+  num_samples: 8
+  parameters:
+    t_sec: 100
+    k: 10
+    batch_size: 16
+report:
+  output_dir: experiments/secmi-plan
+"""
+
+        with tempfile.TemporaryDirectory() as tmpdir:
+            config_path = Path(tmpdir) / "audit.yaml"
+            config_path.write_text(config_text, encoding="utf-8")
+
+            config = load_audit_config(config_path)
+            plan = build_secmi_plan(config)
+
+        self.assertEqual(plan.entrypoint, "mia_evals/secmia.py")
+        self.assertEqual(plan.dataset, "cifar10")
+        self.assertEqual(plan.data_root, "D:/datasets/cifar10")
+        self.assertEqual(plan.model_dir, "D:/models/secmi/cifar10")
+        self.assertEqual(plan.t_sec, 100)
+        self.assertEqual(plan.k, 10)
+        self.assertEqual(plan.batch_size, 16)
 
 
 if __name__ == "__main__":
