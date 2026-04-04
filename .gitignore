@@ -37,3 +37,7 @@ tmp/
 # Environment files
 .env
 .env.*
+
+# Local environments
+.conda/
+condaenv.*.requirements.txt
