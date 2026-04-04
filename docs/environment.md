@@ -39,6 +39,7 @@ The current validated stack is:
 ## Verify
 
 ```powershell
+$env:PYTHONPATH='src;.'
 python -c "import torch; print(torch.__version__); print(torch.cuda.is_available())"
 python -c "import numpy, pandas, matplotlib, diffusers, transformers"
 python scripts/verify_env.py
