@@ -34,6 +34,30 @@ conda activate diffaudit-research
 python -m ipykernel install --user --name diffaudit-research --display-name "Python (diffaudit-research)"
 ```
 
+`environment.yml` 会把当前仓库以 editable 方式安装进环境，所以环境创建完成后可以直接运行：
+
+```powershell
+python -m diffaudit --help
+diffaudit --help
+```
+
+## 如果当前 shell 没有激活 conda
+
+有些终端线程不会自动继承你本地已经激活过的环境。这时不要直接用系统 Python 跑仓库命令，优先显式前缀：
+
+```powershell
+conda run -n diffaudit-research python scripts/verify_env.py
+conda run -n diffaudit-research python -m unittest
+```
+
+如果当前 shell 没有激活 conda，也可以直接显式指定环境来运行命令：
+
+```powershell
+conda run -n diffaudit-research python -m diffaudit probe-secmi-assets --config configs/attacks/secmi_plan.yaml
+```
+
+建议先用 `conda env list` 确认 `diffaudit-research` 确实存在，再执行后续命令。
+
 ## 当前已验证的 GPU 栈
 
 - `torch==2.5.1+cu121`
@@ -43,10 +67,10 @@ python -m ipykernel install --user --name diffaudit-research --display-name "Pyt
 ## 验证环境
 
 ```powershell
-$env:PYTHONPATH='src;.'
 python -c "import torch; print(torch.__version__); print(torch.cuda.is_available())"
 python -c "import numpy, pandas, matplotlib, diffusers, transformers"
 python scripts/verify_env.py
+python -m diffaudit --help
 ```
 
 ## 后续扩展原则

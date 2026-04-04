@@ -10,7 +10,7 @@
 2. 阅读 [docs/environment.md](/D:/Code/DiffAudit/Project/docs/environment.md)
 3. 阅读 [docs/github-collaboration.md](/D:/Code/DiffAudit/Project/docs/github-collaboration.md)
 4. 进入自己负责的工作区
-5. 跑一次环境验证和 `dry-run`
+5. 跑一次环境验证、资产探针和 `dry-run`
 
 ## 你应该先知道的几件事
 
@@ -23,10 +23,20 @@
 
 ```powershell
 conda activate diffaudit-research
-$env:PYTHONPATH='src;.'
 python scripts/verify_env.py
+python -m diffaudit --help
 python -m unittest
+python -m diffaudit probe-secmi-assets --config configs/attacks/secmi_plan.yaml
 python -m diffaudit dry-run-secmi --config configs/attacks/secmi_plan.yaml --repo-root third_party/secmi
+```
+
+如果当前 shell 还没激活 conda，也可以直接写成：
+
+```powershell
+conda run -n diffaudit-research python scripts/verify_env.py
+conda run -n diffaudit-research python -m diffaudit --help
+conda run -n diffaudit-research python -m unittest
+conda run -n diffaudit-research python -m diffaudit probe-secmi-assets --config configs/attacks/secmi_plan.yaml
 ```
 
 ## 你应该去哪个工作区
@@ -41,5 +51,5 @@ python -m diffaudit dry-run-secmi --config configs/attacks/secmi_plan.yaml --rep
 1. 先写计划
 2. 再写配置
 3. 再写 adapter / probe
-4. 先跑 dry-run
+4. 先跑 `probe-secmi-assets`
 5. 最后才跑真实实验
