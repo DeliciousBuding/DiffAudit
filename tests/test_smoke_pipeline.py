@@ -184,6 +184,35 @@ report:
         self.assertEqual(plan.k, 10)
         self.assertEqual(plan.batch_size, 16)
 
+    def test_resolves_secmi_artifacts_from_model_dir(self) -> None:
+        from diffaudit.attacks.secmi import resolve_secmi_artifacts
+
+        with tempfile.TemporaryDirectory() as tmpdir:
+            model_dir = Path(tmpdir) / "model"
+            model_dir.mkdir()
+            (model_dir / "flagfile.txt").write_text("flags", encoding="utf-8")
+            (model_dir / "ckpt-step100.pt").write_text("100", encoding="utf-8")
+            (model_dir / "ckpt-step200.pt").write_text("200", encoding="utf-8")
+
+            artifacts = resolve_secmi_artifacts(model_dir)
+
+        self.assertTrue(artifacts.checkpoint_path.endswith("ckpt-step200.pt"))
+        self.assertTrue(artifacts.flagfile_path.endswith("flagfile.txt"))
+
+    def test_prefers_checkpoint_pt_when_present(self) -> None:
+        from diffaudit.attacks.secmi import resolve_secmi_artifacts
+
+        with tempfile.TemporaryDirectory() as tmpdir:
+            model_dir = Path(tmpdir) / "model"
+            model_dir.mkdir()
+            (model_dir / "flagfile.txt").write_text("flags", encoding="utf-8")
+            (model_dir / "checkpoint.pt").write_text("best", encoding="utf-8")
+            (model_dir / "ckpt-step200.pt").write_text("200", encoding="utf-8")
+
+            artifacts = resolve_secmi_artifacts(model_dir)
+
+        self.assertTrue(artifacts.checkpoint_path.endswith("checkpoint.pt"))
+
 
 if __name__ == "__main__":
     unittest.main()

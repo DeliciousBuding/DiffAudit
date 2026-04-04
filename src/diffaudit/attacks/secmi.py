@@ -3,6 +3,7 @@
 from __future__ import annotations
 
 from dataclasses import dataclass
+from pathlib import Path
 
 from diffaudit.config import AuditConfig
 
@@ -16,6 +17,12 @@ class SecmiPlan:
     t_sec: int
     k: int
     batch_size: int
+
+
+@dataclass(frozen=True)
+class SecmiArtifacts:
+    checkpoint_path: str
+    flagfile_path: str
 
 
 def build_secmi_plan(config: AuditConfig) -> SecmiPlan:
@@ -46,4 +53,23 @@ def build_secmi_plan(config: AuditConfig) -> SecmiPlan:
         t_sec=int(params["t_sec"]),
         k=int(params["k"]),
         batch_size=int(params.get("batch_size", 32)),
+    )
+
+
+def resolve_secmi_artifacts(model_dir: str | Path) -> SecmiArtifacts:
+    model_path = Path(model_dir)
+    flagfile_path = model_path / "flagfile.txt"
+    if not flagfile_path.exists():
+        raise FileNotFoundError(f"Missing SecMI flagfile: {flagfile_path}")
+
+    checkpoint_path = model_path / "checkpoint.pt"
+    if not checkpoint_path.exists():
+        candidates = sorted(model_path.glob("ckpt-step*.pt"))
+        if not candidates:
+            raise FileNotFoundError(f"No SecMI checkpoint found in {model_path}")
+        checkpoint_path = candidates[-1]
+
+    return SecmiArtifacts(
+        checkpoint_path=str(checkpoint_path),
+        flagfile_path=str(flagfile_path),
     )
