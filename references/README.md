@@ -6,6 +6,13 @@
 
 - `materials/`：从本地调研资料目录镜像过来的 PDF 材料
 
+## 当前维护方式
+
+参考资料不再只靠文件名管理。
+
+- `materials/README.md`：人工可读索引
+- `materials/manifest.csv`：文件级 manifest，记录来源、哈希与说明
+
 ## 使用原则
 
 这些材料用于：

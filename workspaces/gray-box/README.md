@@ -10,5 +10,6 @@
 ## 当前建议任务
 
 1. 先界定灰盒到底允许看到哪些中间信息
-2. 选择 1 到 2 篇与扩散模型灰盒设定最接近的论文
-3. 先形成实验假设和资产需求，不要直接写执行代码
+2. 先看 `observable-contract.md`，把 gray-box 权限分层写清楚
+3. 优先围绕 `PIA_ICLR2024.pdf`、`CLiD_NeurIPS2024.pdf`、`StructuralMemorization_arXiv2024.pdf`
+4. 先形成实验假设和资产需求，不要直接写执行代码

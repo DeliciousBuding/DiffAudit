@@ -9,6 +9,7 @@
 
 ## 当前建议任务
 
-1. 先筛选 1 到 2 篇较新的扩散模型白盒成员推断论文
+1. 先围绕 `WhiteBox_PoPETs2025.pdf` 和 `FindingNeMo_NeurIPS2024.pdf` 收束首批目标
 2. 明确需要的内部访问权限：loss、gradient、intermediate states、完整 checkpoint 等
-3. 把白盒方向的最小实验假设写清楚，再考虑接代码
+3. 先看 `signal-access-matrix.md`，把可用内部信号写成统一表
+4. 把白盒方向的最小实验假设写清楚，再考虑接代码

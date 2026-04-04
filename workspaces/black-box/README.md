@@ -12,6 +12,12 @@
 - 主论文：`2025-324-paper.pdf`
 - 对照论文：`Towards Black-Box Membership Inference Attack for Diffusion Model.pdf`
 
+## 当前补充文档
+
+- `plan.md`
+- `paper-matrix-2024-2026.md`
+- `experiment-entrypoints.md`
+
 ## 第一轮建议任务
 
 1. 先整理两篇论文的攻击假设、输入输出、指标和资产要求
