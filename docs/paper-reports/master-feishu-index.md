@@ -3,36 +3,30 @@
 **GitHub 仓库主页**：[DeliciousBuding/DiffAudit](https://github.com/DeliciousBuding/DiffAudit/)
 
 **更新时间**：
-2026-04-05 18:49:49 +08:00
+2026-04-06 04:03:17 +08:00
 
 **文档用途**：供团队内部查看当前研究范围、复现状态、关键阻塞，以及每篇材料的详细阅读报告入口。当前版本已切换到研究归档与展示版口径。
 
 **同步基线提交**：
-1ebe73f
+830850c
 
 ## 当前状态概览
 | 模块 | 当前阶段 | 当前判断 | 主要阻塞 | 下一步 |
 | --- | --- | --- | --- | --- |
-| 黑盒 | code-ready + evidence-ready | 主线论文、补充人脸场景、CLiD 条件似然路线都已完成详细阅读报告与单篇飞书归档。 | 真实资产与可重复 benchmark 仍不足。 | 继续补真实数据并把报告结论映射到实验路线。 |
-| 灰盒 | code-ready + evidence-ready | SecMI、PIA 及多篇后续方法线的详细阅读报告已完成，可支撑方法比较与路线分层。 | 仍缺统一资产协议与大规模对照实验。 | 把报告中的方法差异映射到统一实验计划。 |
+| 黑盒 | runtime evidence expanding | 黑盒主线已不止停留在文档刷新，`recon` 已打通 `Stable Diffusion + DDIM` 与 `kandinsky_v22` 的最小真实 runtime-mainline，`DiT` 官方 sample smoke 也已通。 | 公开资产仍只覆盖极小子集，target/shadow/member/non-member 语义映射尚未最终核准。 | 扩大 `recon` 公开子集规模，补统一状态文档与在线索引同步。 |
+| 灰盒 | quality-refresh in progress | 灰盒条目已全部建档；其中 SecMI、Structural Memorization、CDI 与 MoFit 四篇已按新规范完成报告、精修原文与 PDF 三件套收口，其余灰盒条目仍沿用旧批次文档。 | 旧批次文档风格和互链尚未统一。 | 继续按同一流程刷新其余灰盒论文，并把方法差异映射到统一实验计划。 |
 | 白盒 | research-ready | 白盒主论文与解释型路线已完成详细阅读报告，研究脉络已经明确。 | 缺 checkpoint、梯度/激活接口与复现实验资产。 | 先补资产，再决定优先复现哪条白盒线。 |
 | 防御/综述 | research-ready + indexed | 综述、防御和扩展方向材料已形成完整阅读归档，可直接支撑团队选题与对外叙事。 | 尚未全部映射为仓库实验路线。 | 按优先级挑选进入下一轮实验实现。 |
 
 ## 阅读报告进度
-- 本地详细阅读报告：
-27
- / 
-27
- 已完成。
-- 单篇飞书文档：
-27
- / 
-27
- 已创建并设置为链接可读。
-- 每篇条目下方的 `阅读报告` 链接均指向独立飞书文档，适合团队成员按主题深入阅读。
+- 目录层面：`27 / 27` 篇论文均已有单篇飞书文档链接。
+- 新规范刷新进度：黑盒 `4 / 4` 已完成按新标准重发。
+- 当前可直接阅读的黑盒三件套已全部落入各自飞书目录，包含 `报告 + 精修原文 + PDF`。
+- 新规范刷新进度：灰盒首批 `4` 篇已完成按新标准重发，分别是 `SecMI`、`Structural Memorization`、`CDI` 与 `MoFit`。
+- 说明：这里区分“已有文档”与“按新规范刷新完成”两种状态，避免把旧草稿误记为已达标展示稿。
 
 ## 当前主线
-当前实验主线仍然是黑盒方向中的微调扩散模型成员推断，但文档层面已经从“路线搜集”推进到“逐篇可复核阅读报告 + 总索引摘要”的状态。后续总索引里的简述不再是手工一句话摘要，而是直接抽取自单篇详细报告。
+当前实验主线仍然是黑盒方向中的微调扩散模型成员推断，但仓库状态已经从单纯文档整理推进到真实运行证据积累阶段。当前最强证据来自 `recon` 的公开最小子集：`Stable Diffusion + DDIM` 与 `kandinsky_v22` 都已经打通 runtime-mainline，`DiT` 则处于官方 sample smoke 已通、尚未进入真实 benchmark 的状态。
 
 ## 关键入口
 - 复现状态总览：[docs/reproduction-status.md](https://github.com/DeliciousBuding/DiffAudit/blob/main/docs/reproduction-status.md)
@@ -95,7 +89,7 @@
 - 核心方法 / 结论：作者提出 `SecMI`，核心思想是比较扩散模型在某个时间步上的后验估计误差。论文用 deterministic reverse 与 denoise 近似单样本的 posterior estimation error，定义 `t-error` 作为成员信号，并给出阈值版 `SecMI_stat` 与学习版 `SecMI_NNs`。在 DDPM 四个数据集上，两者平均 `ASR/AUC` 分别达到 `0.810/0.881` 与 `0.889/0.949`，在 LDM 和 Stable Diffusion 上也保持了明显高于随机的可分性。
 - 和 DiffAudit 的关系：它对 DiffAudit 的意义在于奠定了灰盒主线的基准接口与证据标准：要获得强成员推断性能，攻击者通常需要接触中间 timestep 的误差信号，而不是只看最终生成结果。当前仓库已经围绕 `SecMI` 准备了 vendored 子集、planner、adapter 与 smoke 流程，因此这篇论文既是灰盒路线的理论起点，也是现有工程骨架最直接对应的基础文献。
 - 开源仓库：[jinhaoduan/SecMI](https://github.com/jinhaoduan/SecMI)
-- 阅读报告：[Are Diffusion Models Vulnerable to Membership Inference Attacks?](https://www.feishu.cn/docx/N5nAd21UioXyXcxtSH9cUTwdnFd)
+- 阅读报告：[Are Diffusion Models Vulnerable to Membership Inference Attacks?](https://www.feishu.cn/docx/ALF5d68CpoIXePxkUUBcnJ0cnPb)
 
 ### SIDE: Surrogate Conditional Data Extraction from Diffusion Models
 
@@ -113,7 +107,7 @@
 - 核心方法 / 结论：论文提出一种结构式灰盒攻击。做法是先把输入图像编码到 latent 空间，用 BLIP 生成近似文本提示，再执行 DDIM inversion 得到带噪 latent，最后解码回图像空间，并用原图与输出图的 SSIM 作为成员分数。实验在 Latent Diffusion Model 和 Stable Diffusion v1-1 上表明，该方法在 AUC、ASR、`TPR@1%FPR` 等指标上普遍优于 `SecMI`、`PIA` 和 `Naive Loss`，同时对附加噪声等扰动更稳健。
 - 和 DiffAudit 的关系：对 DiffAudit 来说，这篇论文的重要性在于它补足了灰盒路线中的“结构记忆”分支。当前仓库已覆盖 `SecMI` 与 `PIA` 等像素级或噪声级基线，而本文提供了一个不同的比较轴：在相近的灰盒访问条件下，直接利用前向扩散中的结构保持性做成员审计。这使它非常适合作为后续灰盒实验和路线叙事中的对照论文。
 - 开源仓库：暂未找到
-- 阅读报告：[Unveiling Structural Memorization: Structural Membership Inference Attack for Text-to-Image Diffusion Models](https://www.feishu.cn/docx/YMEKdKiAfoSVUsxkFn6cadz5nrd)
+- 阅读报告：[Unveiling Structural Memorization: Structural Membership Inference Attack for Text-to-Image Diffusion Models](https://www.feishu.cn/docx/CQ1VdhIhxoowmbxW1qWc9a6FnTd)
 
 ### An Efficient Membership Inference Attack for the Diffusion Model by Proximal Initialization
 
@@ -149,7 +143,7 @@
 - 核心方法 / 结论：论文提出 CDI，将公开嫌疑集合 `P` 与同分布未公开集合 `U` 做对照，从现有 MIA 与三种新增特征中抽取成员性信号，经逻辑回归评分器聚合后，再用单尾 Welch t 检验输出集合级显著性结论。实验显示，CDI 在多类扩散模型上均有效，部分 COCO 文本条件模型只需约 70 个样本即可达到 `p < 0.01`，且统计检验与新特征都会显著降低样本需求。
 - 和 DiffAudit 的关系：对 DiffAudit 而言，这篇论文的意义在于提供了一条“数据集级审计 / 证据聚合”路线，适合补强单样本灰盒 MIA 难以解释的场景。它尤其提示：在灰盒设定下，应优先聚合已有 MIA 和 Multiple Loss 这类可访问特征，再叠加统计检验形成更可用于审计叙事的集合级证据。
 - 开源仓库：[sprintml/copyrighted_data_identification](https://github.com/sprintml/copyrighted_data_identification)
-- 阅读报告：[CDI: Copyrighted Data Identification in Diffusion Models](https://www.feishu.cn/docx/WSbodCTahoEkLIxIlIecyTmUnwh)
+- 阅读报告：[CDI: Copyrighted Data Identification in Diffusion Models](https://www.feishu.cn/docx/QRzhdNv6NoryLIxPbz7crXbRnd5)
 
 ### Noise as a Probe: Membership Inference Attacks on Diffusion Models Leveraging Initial Noise
 
@@ -167,7 +161,7 @@
 - 核心方法 / 结论：论文提出 MOFIT。其做法不是恢复真实 caption，而是先在无条件分支上优化扰动，把查询图像推向目标模型学到的先验流形，得到 model-fitted surrogate；再从该 surrogate 中优化出与之紧耦合的条件嵌入 `\phi^\*`。推断时用原图与 `\phi^\*` 的故意失配来放大成员样本的条件损失响应，并用 `L_{\text{MOFIT}}=L_{cond}-L_{uncond}` 及辅助分数做判定。论文报告该方法在 Pokemon、MS-COCO、Flickr 上都显著优于 VLM-captioned 基线，并在 MS-COCO 上超过了使用真实 caption 的 CLiD。
 - 和 DiffAudit 的关系：对 DiffAudit 来说，这篇工作的重要性在于它把 gray-box 路线推进到“不依赖真实 caption”的实际审计场景，并提供了一个可复用的两阶段优化框架。它也明确暴露了方法边界：需要可微访问目标模型、计算成本较高、且在 LoRA 场景下效果明显退化，因此既适合作为 caption-free gray-box 主线文献，也适合作为后续防御评估的参照点。
 - 开源仓库：[JoonsungJeon/MoFit](https://github.com/JoonsungJeon/MoFit)
-- 阅读报告：[No Caption, No Problem: Caption-Free Membership Inference via Model-Fitted Embeddings](https://www.feishu.cn/docx/Fup5dbRC4oBoiGx2HaGc15QpnEe)
+- 阅读报告：[No Caption, No Problem: Caption-Free Membership Inference via Model-Fitted Embeddings](https://www.feishu.cn/docx/SuUudTKOSoakt8x9owuc1OhAnqf)
 
 ## 白盒
 
