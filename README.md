@@ -135,7 +135,8 @@ workspaces/              多人协作工作区
 3. `dry-run-recon`
 4. `run-recon-eval-smoke`
 5. `summarize-recon-artifacts`
-6. 真实资产到位后再接生成、embedding 和攻击评估三阶段执行
+6. `run-recon-upstream-eval-smoke`
+7. 真实资产到位后再接生成、embedding 和攻击评估三阶段执行
 
 对 `variation` 这条 API-only 黑盒线，当前推荐命令顺序是：
 
@@ -321,6 +322,12 @@ python -m diffaudit run-recon-eval-smoke --workspace experiments/recon-eval-smok
 
 ```powershell
 python -m diffaudit summarize-recon-artifacts --artifact-dir path/to/recon-scores --workspace experiments/recon-artifact-summary
+```
+
+运行 `recon` 上游 `threshold` 评估 smoke：
+
+```powershell
+python -m diffaudit run-recon-upstream-eval-smoke --workspace experiments/recon-upstream-eval-smoke --repo-root external/Reconstruction-based-Attack --method threshold
 ```
 
 生成 `variation` 计划：

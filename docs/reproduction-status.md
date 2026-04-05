@@ -15,7 +15,7 @@
 | 方法 | 论文 | 当前状态 | 仓库命令 | 当前证据 | 主要阻塞 |
 | --- | --- | --- | --- | --- | --- |
 | `clid` | `2024-neurips-clid-membership-inference-text-to-image-diffusion.pdf` | `evidence-ready` | `plan-clid` / `probe-clid-assets` / `dry-run-clid` / `run-clid-dry-run-smoke` / `summarize-clid-artifacts` | [clid-dry-run-smoke](/D:/Code/DiffAudit/Project/experiments/clid-dry-run-smoke/summary.json), [clid-artifact-summary](/D:/Code/DiffAudit/Project/experiments/clid-artifact-summary/summary.json) | 缺真实 text-to-image 资产、缺可重复的目标模型路径与数据集映射 |
-| `recon` | `2025-ndss-black-box-membership-inference-fine-tuned-diffusion-models.pdf` 与 `external/Reconstruction-based-Attack` | `code-ready + evidence-ready` | `plan-recon` / `probe-recon-assets` / `dry-run-recon` / `run-recon-eval-smoke` / `summarize-recon-artifacts` | [recon-eval-smoke](/D:/Code/DiffAudit/Project/experiments/recon-eval-smoke/summary.json), [recon-artifact-summary](/D:/Code/DiffAudit/Project/experiments/recon-artifact-summary/summary.json) | 缺真实 LoRA checkpoint、生成图像目录、embedding 输入和目标/影子分割资产 |
+| `recon` | `2025-ndss-black-box-membership-inference-fine-tuned-diffusion-models.pdf` 与 `external/Reconstruction-based-Attack` | `code-ready + evidence-ready` | `plan-recon` / `probe-recon-assets` / `dry-run-recon` / `run-recon-eval-smoke` / `summarize-recon-artifacts` / `run-recon-upstream-eval-smoke` | [recon-eval-smoke](/D:/Code/DiffAudit/Project/experiments/recon-eval-smoke/summary.json), [recon-artifact-summary](/D:/Code/DiffAudit/Project/experiments/recon-artifact-summary/summary.json), [recon-upstream-eval-smoke](/D:/Code/DiffAudit/Project/experiments/recon-upstream-eval-smoke/summary.json) | 缺真实 LoRA checkpoint、生成图像目录、embedding 输入和目标/影子分割资产 |
 | `variation` | `2024-arxiv-towards-black-box-membership-inference-diffusion-models.pdf` 对应 API-only 路线 | `code-ready + evidence-ready` | `plan-variation` / `probe-variation-assets` / `dry-run-variation` / `run-variation-synth-smoke` | [variation-synth-smoke](/D:/Code/DiffAudit/Project/experiments/variation-synth-smoke/summary.json) | 缺真实 API 凭据、调用预算和真实 query image 集 |
 
 ## 灰盒
@@ -35,8 +35,8 @@
 ## 当前判断
 
 1. 黑盒方向已经不是纯调研状态，至少有三条可执行证据链。
-2. `clid` 的 artifact summary 是当前最接近论文结果复算的黑盒证据。
-3. 纯黑盒主线还没有真实 benchmark-ready 结果，因为 `recon` 和 `variation` 还停在 synthetic smoke、artifact summary 或 dry-run 级别。
+2. `clid` 的 artifact summary 和 `recon` 的 upstream eval smoke 是当前最接近论文执行链的黑盒证据。
+3. 纯黑盒主线还没有真实 benchmark-ready 结果，因为 `recon` 和 `variation` 还停在 synthetic smoke、artifact summary、upstream smoke 或 dry-run 级别。
 4. 下一步优先级建议：
    - 先给 `recon` 接真实生成与 embedding artifact
    - 再决定是推进 `variation` 真实 API 调用，还是补 `clid` 的真实资产驱动执行

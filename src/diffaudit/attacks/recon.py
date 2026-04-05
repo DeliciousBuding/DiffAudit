@@ -3,7 +3,10 @@
 from __future__ import annotations
 
 import json
+import re
 import shutil
+import subprocess
+import sys
 from dataclasses import dataclass
 from pathlib import Path
 
@@ -341,6 +344,23 @@ def run_recon_eval_smoke(workspace: str | Path) -> dict[str, object]:
     return result
 
 
+def _write_synthetic_recon_score_artifacts(target_dir: str | Path) -> dict[str, str]:
+    artifact_root = Path(target_dir)
+    artifact_root.mkdir(parents=True, exist_ok=True)
+    score_payloads = {
+        "target_member": [([0.90], 1), ([0.82], 1), ([0.88], 1), ([0.79], 1)],
+        "target_non_member": [([0.11], 0), ([0.19], 0), ([0.23], 0), ([0.15], 0)],
+        "shadow_member": [([0.86], 1), ([0.80], 1), ([0.84], 1), ([0.78], 1)],
+        "shadow_non_member": [([0.17], 0), ([0.14], 0), ([0.20], 0), ([0.12], 0)],
+    }
+    score_paths: dict[str, str] = {}
+    for name, payload in score_payloads.items():
+        score_path = artifact_root / f"{name}.pt"
+        torch.save(payload, score_path)
+        score_paths[name] = str(score_path.resolve())
+    return score_paths
+
+
 def summarize_recon_artifacts(
     artifact_dir: str | Path,
     workspace: str | Path,
@@ -405,4 +425,85 @@ def summarize_recon_artifacts(
         json.dumps(result, indent=2, ensure_ascii=True),
         encoding="utf-8",
     )
+    return result
+
+
+def _parse_recon_eval_stdout(stdout: str) -> dict[str, float]:
+    accuracy_match = re.search(r"Accuracy(?: with Best Threshold)?:\s*([0-9.]+)", stdout)
+    auc_match = re.search(r"AUC-ROC:\s*([0-9.]+)", stdout)
+    return {
+        "reported_accuracy": float(accuracy_match.group(1)) if accuracy_match else None,
+        "reported_auc": float(auc_match.group(1)) if auc_match else None,
+    }
+
+
+def run_recon_upstream_eval_smoke(
+    workspace: str | Path,
+    repo_root: str | Path = "external/Reconstruction-based-Attack",
+    method: str = "threshold",
+) -> dict[str, object]:
+    workspace_path = Path(workspace)
+    workspace_path.mkdir(parents=True, exist_ok=True)
+    artifact_root = workspace_path / "synthetic-score-artifacts"
+    score_paths = _write_synthetic_recon_score_artifacts(artifact_root)
+    repo_path = Path(repo_root).resolve()
+    script_path = repo_path / "test_accuracy.py"
+    if not script_path.exists():
+        raise FileNotFoundError(f"Reconstruction attack evaluation script not found: {script_path}")
+
+    command = [
+        sys.executable,
+        str(script_path),
+        "--target_member_dir",
+        score_paths["target_member"],
+        "--target_non_member_dir",
+        score_paths["target_non_member"],
+        "--shadow_member_dir",
+        score_paths["shadow_member"],
+        "--shadow_non_member_dir",
+        score_paths["shadow_non_member"],
+        "--method",
+        method,
+    ]
+    completed = subprocess.run(
+        command,
+        cwd=str(repo_path),
+        capture_output=True,
+        text=True,
+        check=False,
+    )
+    parsed = _parse_recon_eval_stdout(completed.stdout)
+    status = "ready" if completed.returncode == 0 else "error"
+    result = {
+        "status": status,
+        "track": "black-box",
+        "method": "recon",
+        "paper": "BlackBox_Reconstruction_ArXiv2023",
+        "mode": "upstream-eval-smoke",
+        "device": "cpu",
+        "workspace": str(workspace_path),
+        "artifact_paths": {
+            "summary": str(workspace_path / "summary.json"),
+        },
+        "checks": {
+            "synthetic_scores_created": True,
+            "upstream_script_found": True,
+            "upstream_script_succeeded": completed.returncode == 0,
+            "synthetic_assets_cleaned": True,
+        },
+        "evaluation_method": method,
+        "metrics": parsed,
+        "notes": [
+            "Smoke executes the upstream reconstruction evaluation script with synthetic score artifacts.",
+            "Current workflow is intended to validate CLI compatibility before real artifacts are available.",
+        ],
+        "stdout_tail": completed.stdout.strip().splitlines()[-5:],
+    }
+    if completed.stderr.strip():
+        result["stderr_tail"] = completed.stderr.strip().splitlines()[-5:]
+    (workspace_path / "summary.json").write_text(
+        json.dumps(result, indent=2, ensure_ascii=True),
+        encoding="utf-8",
+    )
+    shutil.rmtree(artifact_root, ignore_errors=True)
     return result
