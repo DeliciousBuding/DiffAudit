@@ -14,6 +14,7 @@
 - `2025-324-paper.pdf`
 - `Towards Black-Box Membership Inference Attack for Diffusion Model.pdf`
 - `CLiD_NeurIPS2024.pdf`
+- `FaceLDM_VISAPP2025.pdf`
 
 ## 推荐分工
 
@@ -21,6 +22,7 @@
 - 对照参考：`Towards Black-Box Membership Inference Attack for Diffusion Models`
 - 场景补充：`CLiD`
 - 审计扩展：`CDI`
+- 细分场景补充：`Membership Inference Attacks for Face Images Against Fine-tuned Latent Diffusion Models`
 
 ## 一周行动清单
 
