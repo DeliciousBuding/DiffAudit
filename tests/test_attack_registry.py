@@ -21,6 +21,13 @@ class AttackRegistryTests(unittest.TestCase):
 
         self.assertEqual(planner.__name__, "build_pia_plan")
 
+    def test_returns_clid_planner(self) -> None:
+        from diffaudit.attacks.registry import get_attack_planner
+
+        planner = get_attack_planner("clid")
+
+        self.assertEqual(planner.__name__, "build_clid_plan")
+
     def test_rejects_unknown_attack(self) -> None:
         from diffaudit.attacks.registry import get_attack_planner
 
@@ -506,6 +513,156 @@ report:
         self.assertTrue(payload["checks"]["workspace_files"])
         self.assertTrue(payload["checks"]["components_has_pia"])
         self.assertTrue(payload["checks"]["model_has_unet"])
+
+    def test_cli_plans_clid(self) -> None:
+        from diffaudit.cli import main
+
+        config_text = """
+task:
+  name: clid-plan
+  model_family: diffusion
+  access_level: black_box
+assets:
+  dataset_id: coco-split1
+  dataset_train_ref: zsf/COCO_MIA_ori_split1
+  dataset_test_ref: zsf/COCO_MIA_ori_split1
+  model_id: sd15-shadow
+  model_dir: D:/models/clid/sd15
+attack:
+  method: clid
+  num_samples: 8
+  parameters:
+    variant: clid_impt
+    max_n_samples: 3
+report:
+  output_dir: experiments/clid-plan
+"""
+
+        with tempfile.TemporaryDirectory() as tmpdir:
+            config_path = Path(tmpdir) / "audit.yaml"
+            config_path.write_text(config_text, encoding="utf-8")
+
+            stdout = StringIO()
+            with redirect_stdout(stdout):
+                exit_code = main(["plan-clid", "--config", str(config_path)])
+
+        payload = json.loads(stdout.getvalue())
+        self.assertEqual(exit_code, 0)
+        self.assertEqual(payload["entrypoint"], "mia_CLiD_impt.py")
+        self.assertEqual(payload["attack_variant"], "clid_impt")
+        self.assertEqual(payload["max_n_samples"], 3)
+
+    def test_cli_probes_clid_assets(self) -> None:
+        from diffaudit.cli import main
+
+        config_text = """
+task:
+  name: clid-probe
+  model_family: diffusion
+  access_level: black_box
+assets:
+  dataset_id: coco-split1
+  dataset_train_ref: zsf/COCO_MIA_ori_split1
+  dataset_test_ref: zsf/COCO_MIA_ori_split1
+  model_id: sd15-shadow
+  model_dir: PLACEHOLDER_MODEL
+attack:
+  method: clid
+  num_samples: 8
+  parameters:
+    variant: clid_impt
+    max_n_samples: 3
+report:
+  output_dir: experiments/clid-probe
+"""
+
+        with tempfile.TemporaryDirectory() as tmpdir:
+            root = Path(tmpdir)
+            model_dir = root / "model"
+            for subdir in ("vae", "tokenizer", "text_encoder", "unet", "scheduler"):
+                (model_dir / subdir).mkdir(parents=True)
+
+            config_path = root / "audit.yaml"
+            config_path.write_text(
+                config_text.replace("PLACEHOLDER_MODEL", str(model_dir).replace("\\", "/")),
+                encoding="utf-8",
+            )
+
+            stdout = StringIO()
+            with redirect_stdout(stdout):
+                exit_code = main(["probe-clid-assets", "--config", str(config_path)])
+
+        payload = json.loads(stdout.getvalue())
+        self.assertEqual(exit_code, 0)
+        self.assertEqual(payload["status"], "ready")
+        self.assertTrue(payload["checks"]["model_subdirs"])
+        self.assertTrue(payload["checks"]["dataset_train_ref"])
+
+    def test_cli_runs_clid_dry_run(self) -> None:
+        from diffaudit.cli import main
+
+        config_text = """
+task:
+  name: clid-dry-run
+  model_family: diffusion
+  access_level: black_box
+assets:
+  dataset_id: coco-split1
+  dataset_train_ref: zsf/COCO_MIA_ori_split1
+  dataset_test_ref: zsf/COCO_MIA_ori_split1
+  model_id: sd15-shadow
+  model_dir: PLACEHOLDER_MODEL
+attack:
+  method: clid
+  num_samples: 8
+  parameters:
+    variant: clid_impt
+    max_n_samples: 3
+report:
+  output_dir: experiments/clid-dry-run
+"""
+
+        with tempfile.TemporaryDirectory() as tmpdir:
+            root = Path(tmpdir)
+            model_dir = root / "model"
+            for subdir in ("vae", "tokenizer", "text_encoder", "unet", "scheduler"):
+                (model_dir / subdir).mkdir(parents=True)
+
+            repo_root = root / "CLiD"
+            repo_root.mkdir()
+            (repo_root / "mia_CLiD_impt.py").write_text(
+                "from datasets import load_dataset\n"
+                "flags.attack = 'clid_impt'\n"
+                "from diffusers import AutoencoderKL\n",
+                encoding="utf-8",
+            )
+            (repo_root / "cal_clid_th.py").write_text("# cal", encoding="utf-8")
+            (repo_root / "cal_clid_xgb.py").write_text("# cal", encoding="utf-8")
+            (repo_root / "train_text_to_image.py").write_text("# train", encoding="utf-8")
+
+            config_path = root / "audit.yaml"
+            config_path.write_text(
+                config_text.replace("PLACEHOLDER_MODEL", str(model_dir).replace("\\", "/")),
+                encoding="utf-8",
+            )
+
+            stdout = StringIO()
+            with redirect_stdout(stdout):
+                exit_code = main(
+                    [
+                        "dry-run-clid",
+                        "--config",
+                        str(config_path),
+                        "--repo-root",
+                        str(repo_root),
+                    ]
+                )
+
+        payload = json.loads(stdout.getvalue())
+        self.assertEqual(exit_code, 0)
+        self.assertEqual(payload["status"], "ready")
+        self.assertTrue(payload["checks"]["entrypoint_has_attack_flag"])
+        self.assertTrue(payload["checks"]["script_uses_load_dataset"])
 
     def test_parses_secmi_flagfile_without_absl_state(self) -> None:
         from diffaudit.attacks.secmi_adapter import parse_secmi_flagfile

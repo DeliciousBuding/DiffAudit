@@ -29,6 +29,7 @@
 - `experiments/pia-runtime-smoke-gpu/summary.json`
 - `experiments/pia-synth-smoke-cpu/summary.json`
 - `experiments/pia-synth-smoke-gpu/summary.json`
+- `experiments/clid-dry-run-smoke/summary.json`
 
 ## 本地代码上下文
 

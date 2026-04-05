@@ -17,5 +17,7 @@
 ## 当前建议
 
 - `attacks/secmi_plan.yaml`：作为 `SecMI` 真实资产探针与 dry-run 的模板
+- `attacks/pia_plan.yaml`：作为 `PIA` 探针、dry-run 与 smoke 的模板
+- `attacks/clid_plan.yaml`：作为 `CLiD` 条件场景探针与 dry-run 的模板
 - `benchmarks/secmi_smoke.yaml`：作为最小 smoke 配置
 - `assets/example.local.yaml`：作为个人本地资产映射参考

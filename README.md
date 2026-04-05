@@ -112,6 +112,14 @@ workspaces/              多人协作工作区
 6. `run-pia-synth-smoke`
 7. 资产到位后再尝试真实执行
 
+对 `CLiD`，当前推荐命令顺序是：
+
+1. `plan-clid`
+2. `probe-clid-assets`
+3. `dry-run-clid`
+4. `run-clid-dry-run-smoke`
+5. 资产到位后再评估真实 text-to-image 执行链
+
 ## 环境搭建
 
 创建并激活 conda 环境：
@@ -228,6 +236,30 @@ python -m diffaudit run-pia-runtime-smoke --workspace experiments/pia-runtime-sm
 
 ```powershell
 python -m diffaudit run-pia-synth-smoke --workspace experiments/pia-synth-smoke-cpu --repo-root external/PIA --device cpu
+```
+
+生成 `CLiD` 计划：
+
+```powershell
+python -m diffaudit plan-clid --config configs/attacks/clid_plan.yaml
+```
+
+探测 `CLiD` 资产是否齐全：
+
+```powershell
+python -m diffaudit probe-clid-assets --config configs/attacks/clid_plan.yaml
+```
+
+运行 `CLiD` dry-run：
+
+```powershell
+python -m diffaudit dry-run-clid --config configs/attacks/clid_plan.yaml --repo-root external/CLiD
+```
+
+运行 `CLiD` dry-run smoke：
+
+```powershell
+python -m diffaudit run-clid-dry-run-smoke --workspace experiments/clid-dry-run-smoke --repo-root external/CLiD
 ```
 
 ## 参考资料
