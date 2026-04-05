@@ -56,6 +56,21 @@ def _evidence_rank(mode: str) -> int:
     return BLACKBOX_EVIDENCE_RANK.get(mode, 0)
 
 
+def _evidence_sample_count(payload: dict[str, object]) -> int:
+    artifacts = payload.get("artifacts")
+    if not isinstance(artifacts, dict):
+        return 0
+
+    total = 0
+    for artifact_payload in artifacts.values():
+        if not isinstance(artifact_payload, dict):
+            continue
+        sample_count = artifact_payload.get("sample_count")
+        if isinstance(sample_count, int):
+            total += sample_count
+    return total
+
+
 def build_blackbox_status_report(
     experiments_root: str | Path,
     workspace: str | Path,
@@ -93,10 +108,21 @@ def build_blackbox_status_report(
         )
         current_rank = _evidence_rank(str(payload.get("mode", "")))
         best_rank = _evidence_rank(str(entry["best_evidence_mode"]))
-        if current_rank >= best_rank:
+        current_sample_count = _evidence_sample_count(payload)
+        best_sample_count = int(entry.get("best_sample_count", 0))
+        if (
+            current_rank > best_rank
+            or (current_rank == best_rank and current_sample_count >= best_sample_count)
+        ):
             entry["best_evidence_mode"] = payload.get("mode")
             entry["best_evidence_path"] = payload["_summary_path"]
             entry["headline_metrics"] = _extract_headline_metrics(payload)
+            entry["best_sample_count"] = current_sample_count
+        else:
+            entry.setdefault("best_sample_count", best_sample_count)
+
+    for entry in methods.values():
+        entry.pop("best_sample_count", None)
 
     workspace_path = Path(workspace)
     workspace_path.mkdir(parents=True, exist_ok=True)

@@ -290,6 +290,64 @@ class BlackBoxReportTests(unittest.TestCase):
 
         self.assertEqual(report["methods"]["recon"]["best_evidence_mode"], "runtime-mainline")
 
+    def test_larger_runtime_mainline_outranks_smaller_runtime_mainline(self) -> None:
+        from diffaudit.reports.blackbox_status import build_blackbox_status_report
+
+        with tempfile.TemporaryDirectory() as tmpdir:
+            root = Path(tmpdir)
+            experiments_root = root / "experiments"
+            (experiments_root / "recon-runtime-mainline-kandinsky").mkdir(parents=True)
+            (experiments_root / "recon-runtime-mainline-ddim-public-10").mkdir(parents=True)
+
+            (experiments_root / "recon-runtime-mainline-kandinsky" / "summary.json").write_text(
+                json.dumps(
+                    {
+                        "status": "ready",
+                        "track": "black-box",
+                        "method": "recon",
+                        "paper": "BlackBox_Reconstruction_ArXiv2023",
+                        "mode": "runtime-mainline",
+                        "metrics": {"auc": 1.0, "asr": 0.5, "tpr_at_1pct_fpr": 0.0},
+                        "artifacts": {
+                            "target_member": {"sample_count": 1},
+                            "target_non_member": {"sample_count": 1},
+                            "shadow_member": {"sample_count": 1},
+                            "shadow_non_member": {"sample_count": 1},
+                        },
+                    }
+                ),
+                encoding="utf-8",
+            )
+            (experiments_root / "recon-runtime-mainline-ddim-public-10" / "summary.json").write_text(
+                json.dumps(
+                    {
+                        "status": "ready",
+                        "track": "black-box",
+                        "method": "recon",
+                        "paper": "BlackBox_Reconstruction_ArXiv2023",
+                        "mode": "runtime-mainline",
+                        "metrics": {"auc": 0.82, "asr": 0.55, "tpr_at_1pct_fpr": 1.0},
+                        "artifacts": {
+                            "target_member": {"sample_count": 10},
+                            "target_non_member": {"sample_count": 10},
+                            "shadow_member": {"sample_count": 10},
+                            "shadow_non_member": {"sample_count": 10},
+                        },
+                    }
+                ),
+                encoding="utf-8",
+            )
+
+            report = build_blackbox_status_report(
+                experiments_root=experiments_root,
+                workspace=root / "out",
+            )
+
+        self.assertEqual(
+            report["methods"]["recon"]["best_evidence_path"],
+            str(experiments_root / "recon-runtime-mainline-ddim-public-10" / "summary.json"),
+        )
+
 
 if __name__ == "__main__":
     unittest.main()
