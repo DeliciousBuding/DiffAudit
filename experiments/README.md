@@ -17,6 +17,7 @@
 - `recon-artifact-summary/summary.json`：reconstruction score artifact 复算输出
 - `recon-upstream-eval-smoke/summary.json`：reconstruction 上游 `test_accuracy.py` smoke 输出
 - `variation-synth-smoke/summary.json`：API-only 黑盒 variation synthetic smoke 输出
+- `blackbox-status/summary.json`：当前黑盒所有结果的统一汇总
 - `templates/`：统一结果结构模板
 
 ## 原则
