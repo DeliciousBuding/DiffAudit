@@ -165,6 +165,25 @@ def create_recon_dataset_payload(dataset_path: Path, count: int = 3) -> None:
     torch.save(payload, dataset_path)
 
 
+def create_public_recon_bundle(bundle_root: Path, count: int = 3) -> None:
+    import torch
+
+    mapping = {
+        "source-datasets/partial-100-target/member/dataset.pkl": ("member", count),
+        "source-datasets/partial-100-target/non_member/dataset.pkl": ("non_member", count),
+        "source-datasets/100-target/non_member/dataset.pkl": ("shadow_proxy", count),
+        "source-datasets/100-shadow/non_member/dataset.pkl": ("shadow_non_member", count),
+    }
+    for relative_path, (prefix, sample_count) in mapping.items():
+        path = bundle_root / relative_path
+        path.parent.mkdir(parents=True, exist_ok=True)
+        payload = {
+            "text": [f"{prefix}-prompt-{index}" for index in range(sample_count)],
+            "image": [f"{prefix}-image-{index}" for index in range(sample_count)],
+        }
+        torch.save(payload, path)
+
+
 class ReconAttackTests(unittest.TestCase):
     def test_cli_plans_recon(self) -> None:
         from diffaudit.cli import main
@@ -790,6 +809,37 @@ class ReconAttackTests(unittest.TestCase):
         self.assertEqual(result["artifacts"]["target_member"]["status"], "ready")
         self.assertEqual(result["artifacts"]["target_member"]["stage"], "reused")
         self.assertTrue(result["checks"]["all_artifacts_generated"])
+
+    def test_cli_prepares_recon_public_subset(self) -> None:
+        from diffaudit.cli import main
+
+        with tempfile.TemporaryDirectory() as tmpdir:
+            root = Path(tmpdir)
+            bundle_root = root / "bundle"
+            create_public_recon_bundle(bundle_root, count=5)
+
+            stdout = StringIO()
+            with redirect_stdout(stdout):
+                exit_code = main(
+                    [
+                        "prepare-recon-public-subset",
+                        "--bundle-root",
+                        str(bundle_root),
+                        "--output-dir",
+                        str(root / "prepared"),
+                        "--target-count",
+                        "2",
+                        "--shadow-count",
+                        "2",
+                    ]
+                )
+
+        payload = json.loads(stdout.getvalue())
+        self.assertEqual(exit_code, 0)
+        self.assertEqual(payload["status"], "ready")
+        self.assertEqual(payload["counts"]["target_member"], 2)
+        self.assertEqual(payload["counts"]["shadow_member_proxy"], 2)
+        self.assertTrue(payload["paths"]["mapping_note"].endswith("mapping-note.md"))
 
     def test_cli_runs_recon_runtime_mainline_with_kandinsky_backend(self) -> None:
         from diffaudit.cli import main

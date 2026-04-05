@@ -52,7 +52,7 @@
 3. 将 `recon` 从 `1-sample` 极小子集扩到更有意义的公开样本规模，并记录运行成本
 4. 把真实 target/shadow score artifact 的命名和目录约束落实到 `recon` 主线
 5. 维持 `DiT` 官方 `sample.py` 路线可重复执行，并视需要补本地 checkpoint 路径
-6. `kandinsky_v22` 后端接口已接入；下一步是补齐 `decoder/prior` LoRA checkpoint 资产并做真实运行
+6. `kandinsky_v22` 后端接口已接入；已下载一对公开 `decoder/prior` LoRA 权重并启动真实 smoke，当前等待上游 `kandinsky2_2_inference.py` 给出终态
 7. 评估 `variation` 真实 API 调用所需的凭据、预算和 query image 约束
 8. 评估 `CLiD` 的真实 text-to-image 资产是否可在当前机器上最小复现
 9. 维持黑盒状态文档、实验目录和主线命令说明同步

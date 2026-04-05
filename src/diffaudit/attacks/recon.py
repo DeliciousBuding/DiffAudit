@@ -424,6 +424,76 @@ def _count_generated_images(generated_dir: str | Path) -> int:
     return len(list(Path(generated_dir).glob("image_*.jpg")))
 
 
+def prepare_recon_public_subset(
+    bundle_root: str | Path,
+    output_dir: str | Path,
+    target_count: int,
+    shadow_count: int,
+) -> dict[str, object]:
+    bundle_path = Path(bundle_root)
+    output_path = Path(output_dir)
+    output_path.mkdir(parents=True, exist_ok=True)
+    mapping = {
+        "target_member": bundle_path / "source-datasets" / "partial-100-target" / "member" / "dataset.pkl",
+        "target_non_member": bundle_path / "source-datasets" / "partial-100-target" / "non_member" / "dataset.pkl",
+        "shadow_member_proxy": bundle_path / "source-datasets" / "100-target" / "non_member" / "dataset.pkl",
+        "shadow_non_member": bundle_path / "source-datasets" / "100-shadow" / "non_member" / "dataset.pkl",
+    }
+    counts = {
+        "target_member": int(target_count),
+        "target_non_member": int(target_count),
+        "shadow_member_proxy": int(shadow_count),
+        "shadow_non_member": int(shadow_count),
+    }
+    paths: dict[str, str] = {}
+    for name, src in mapping.items():
+        profile = _load_recon_dataset_profile(src)
+        if not profile["exists"] or "error" in profile:
+            raise FileNotFoundError(f"Missing or unreadable public recon dataset: {src}")
+        try:
+            payload = torch.load(src, map_location="cpu", weights_only=False)
+        except TypeError:
+            payload = torch.load(src, map_location="cpu")
+        subset = {
+            "text": list(payload["text"][: counts[name]]),
+            "image": list(payload["image"][: counts[name]]),
+        }
+        dst = output_path / f"{name}.pt"
+        torch.save(subset, dst)
+        paths[name] = str(dst)
+
+    mapping_note = output_path / "mapping-note.md"
+    mapping_note.write_text(
+        "\n".join(
+            [
+                "# Recon Public Subset Mapping",
+                "",
+                "- target_member <- source-datasets/partial-100-target/member/dataset.pkl",
+                "- target_non_member <- source-datasets/partial-100-target/non_member/dataset.pkl",
+                "- shadow_non_member <- source-datasets/100-shadow/non_member/dataset.pkl",
+                "- shadow_member_proxy <- source-datasets/100-target/non_member/dataset.pkl",
+                "",
+                "Note: shadow_member_proxy is an engineering proxy, not a fully validated paper-equivalent shadow-member split.",
+            ]
+        ),
+        encoding="utf-8",
+    )
+    return {
+        "status": "ready",
+        "bundle_root": str(bundle_path),
+        "output_dir": str(output_path),
+        "paths": {
+            **paths,
+            "mapping_note": str(mapping_note),
+        },
+        "counts": counts,
+        "notes": [
+            "This helper materializes a runnable public subset from the current public recon asset bundle.",
+            "shadow_member_proxy remains a proxy semantic mapping until better asset evidence is found.",
+        ],
+    }
+
+
 def _threshold_metrics(member_scores: np.ndarray, nonmember_scores: np.ndarray) -> dict[str, float]:
     min_value = float(min(member_scores.min(), nonmember_scores.min()))
     max_value = float(max(member_scores.max(), nonmember_scores.max()))

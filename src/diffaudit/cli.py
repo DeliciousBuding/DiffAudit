@@ -19,6 +19,7 @@ from diffaudit.attacks.pia import build_pia_plan, explain_pia_assets, probe_pia_
 from diffaudit.attacks.recon import (
     build_recon_plan,
     explain_recon_assets,
+    prepare_recon_public_subset,
     probe_recon_dry_run,
     probe_recon_runtime_assets,
     probe_recon_score_artifacts,
@@ -147,6 +148,15 @@ def build_parser() -> argparse.ArgumentParser:
         default="external/Reconstruction-based-Attack",
         help="path to local reconstruction-based attack repository root",
     )
+
+    recon_public_subset_parser = subparsers.add_parser(
+        "prepare-recon-public-subset",
+        help="materialize a runnable subset from the public recon asset bundle",
+    )
+    recon_public_subset_parser.add_argument("--bundle-root", required=True)
+    recon_public_subset_parser.add_argument("--output-dir", required=True)
+    recon_public_subset_parser.add_argument("--target-count", type=int, default=1)
+    recon_public_subset_parser.add_argument("--shadow-count", type=int, default=1)
 
     dit_asset_probe_parser = subparsers.add_parser(
         "probe-dit-assets",
@@ -709,6 +719,16 @@ def main(argv: list[str] | None = None) -> int:
             shadow_decoder_dir=args.shadow_decoder_dir,
             shadow_prior_dir=args.shadow_prior_dir,
             repo_root=args.repo_root,
+        )
+        print(json.dumps(payload, indent=2, ensure_ascii=True))
+        return 0 if payload["status"] == "ready" else 1
+
+    if args.command == "prepare-recon-public-subset":
+        payload = prepare_recon_public_subset(
+            bundle_root=args.bundle_root,
+            output_dir=args.output_dir,
+            target_count=args.target_count,
+            shadow_count=args.shadow_count,
         )
         print(json.dumps(payload, indent=2, ensure_ascii=True))
         return 0 if payload["status"] == "ready" else 1
