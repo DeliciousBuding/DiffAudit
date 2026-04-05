@@ -803,6 +803,10 @@ def run_recon_runtime_mainline(
                 str(gpu),
                 "--dataset_dir",
                 str(Path(spec["dataset"]).resolve()),
+                "--num_validation_images",
+                str(num_validation_images),
+                "--inference_steps",
+                str(inference_steps),
             ]
         inference_reused = _count_generated_images(generated_dir) >= num_validation_images
         if inference_reused:
