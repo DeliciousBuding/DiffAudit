@@ -178,6 +178,55 @@ class PiaAdapterTests(unittest.TestCase):
         self.assertIn("summary", payload["artifact_paths"])
         self.assertFalse((root / "pia-synth-smoke" / "synthetic-pia-assets").exists())
 
+    def test_run_pia_runtime_smoke_writes_summary(self) -> None:
+        from diffaudit.attacks.pia_adapter import run_pia_runtime_smoke
+
+        with tempfile.TemporaryDirectory() as tmpdir:
+            root = Path(tmpdir)
+            repo_root = root / "PIA"
+            create_minimal_pia_repo(repo_root)
+
+            result = run_pia_runtime_smoke(
+                workspace=root / "pia-runtime-smoke",
+                repo_root=repo_root,
+                device="cpu",
+            )
+
+            self.assertTrue((root / "pia-runtime-smoke" / "summary.json").exists())
+            self.assertFalse((root / "pia-runtime-smoke" / "synthetic-assets").exists())
+
+        self.assertEqual(result["status"], "ready")
+        self.assertEqual(result["mode"], "runtime-smoke")
+        self.assertEqual(result["device"], "cpu")
+
+    def test_cli_runs_pia_runtime_smoke(self) -> None:
+        from diffaudit.cli import main
+
+        with tempfile.TemporaryDirectory() as tmpdir:
+            root = Path(tmpdir)
+            repo_root = root / "PIA"
+            create_minimal_pia_repo(repo_root)
+
+            stdout = StringIO()
+            with redirect_stdout(stdout):
+                exit_code = main(
+                    [
+                        "run-pia-runtime-smoke",
+                        "--workspace",
+                        str(root / "pia-runtime-smoke"),
+                        "--repo-root",
+                        str(repo_root),
+                        "--device",
+                        "cpu",
+                    ]
+                )
+
+        payload = json.loads(stdout.getvalue())
+        self.assertEqual(exit_code, 0)
+        self.assertEqual(payload["status"], "ready")
+        self.assertEqual(payload["mode"], "runtime-smoke")
+        self.assertTrue(payload["checks"]["runtime_probe_ready"])
+
 
 if __name__ == "__main__":
     unittest.main()

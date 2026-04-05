@@ -7,6 +7,10 @@
 - `secmi-smoke/summary.json`：最小 smoke pipeline 输出
 - `secmi-synth-smoke/summary.json`：CPU synthetic smoke 输出
 - `secmi-synth-smoke-gpu/summary.json`：GPU synthetic smoke 输出
+- `pia-runtime-smoke-cpu/summary.json`：CPU PIA runtime smoke 输出
+- `pia-runtime-smoke-gpu/summary.json`：GPU PIA runtime smoke 输出
+- `pia-synth-smoke-cpu/summary.json`：CPU PIA synthetic smoke 输出
+- `pia-synth-smoke-gpu/summary.json`：GPU PIA synthetic smoke 输出
 - `templates/`：统一结果结构模板
 
 ## 原则

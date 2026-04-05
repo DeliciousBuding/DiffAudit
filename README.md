@@ -108,8 +108,9 @@ workspaces/              多人协作工作区
 2. `probe-pia-assets`
 3. `dry-run-pia`
 4. `runtime-probe-pia`
-5. `run-pia-synth-smoke`
-6. 资产到位后再尝试真实执行
+5. `run-pia-runtime-smoke`
+6. `run-pia-synth-smoke`
+7. 资产到位后再尝试真实执行
 
 ## 环境搭建
 
@@ -215,6 +216,12 @@ python -m diffaudit dry-run-pia --config configs/attacks/pia_plan.yaml --repo-ro
 
 ```powershell
 python -m diffaudit runtime-probe-pia --config configs/attacks/pia_plan.yaml --repo-root external/PIA --member-split-root external/PIA/DDPM --device cpu
+```
+
+运行 `PIA` runtime smoke：
+
+```powershell
+python -m diffaudit run-pia-runtime-smoke --workspace experiments/pia-runtime-smoke-cpu --repo-root external/PIA --device cpu
 ```
 
 运行 `PIA` synthetic smoke：

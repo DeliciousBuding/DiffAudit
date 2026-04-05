@@ -18,7 +18,13 @@ from diffaudit.attacks.pia import (
     probe_pia_assets,
     validate_pia_workspace,
 )
-from diffaudit.config import AuditConfig
+from diffaudit.config import (
+    AssetConfig,
+    AttackConfig,
+    AuditConfig,
+    ReportConfig,
+    TaskConfig,
+)
 
 
 @dataclass(frozen=True)
@@ -393,4 +399,99 @@ def run_synthetic_pia_smoke(
         encoding="utf-8",
     )
     shutil.rmtree(workspace_path / "synthetic-pia-assets", ignore_errors=True)
+    return result
+
+
+def run_pia_runtime_smoke(
+    workspace: str | Path,
+    repo_root: str | Path = "external/PIA",
+    device: str = "cpu",
+    attacker_name: str = "PIA",
+    attack_num: int = 3,
+    interval: int = 10,
+) -> dict[str, Any]:
+    workspace_path = Path(workspace)
+    workspace_path.mkdir(parents=True, exist_ok=True)
+    synthetic_root = workspace_path / "synthetic-assets"
+    dataset_root = synthetic_root / "datasets"
+    model_dir = synthetic_root / "model"
+    member_split_root = synthetic_root / "member_splits"
+    (dataset_root / "cifar10").mkdir(parents=True, exist_ok=True)
+    member_split_root.mkdir(parents=True, exist_ok=True)
+    (member_split_root / "CIFAR10_train_ratio0.5.npz").write_bytes(b"split")
+    bootstrap_pia_smoke_assets(model_dir, repo_root)
+
+    config = AuditConfig(
+        task=TaskConfig(
+            name="pia-runtime-smoke",
+            model_family="diffusion",
+            access_level="semi_white_box",
+        ),
+        assets=AssetConfig(
+            dataset_id="synthetic-cifar10-half",
+            model_id="synthetic-pia-ddpm",
+            dataset_name="cifar10",
+            dataset_root=dataset_root.as_posix(),
+            model_dir=model_dir.as_posix(),
+        ),
+        attack=AttackConfig(
+            method="pia",
+            num_samples=8,
+            parameters={
+                "attacker_name": attacker_name,
+                "attack_num": attack_num,
+                "interval": interval,
+            },
+        ),
+        report=ReportConfig(
+            output_dir="experiments/pia-runtime-smoke"
+        ),
+    )
+    exit_code, payload = probe_pia_runtime(
+        config,
+        repo_root=repo_root,
+        member_split_root=member_split_root,
+        device=device,
+    )
+
+    result = {
+        "status": payload["status"],
+        "track": "gray-box",
+        "method": "pia",
+        "paper": "PIA_ICLR2024",
+        "mode": "runtime-smoke",
+        "device": device,
+        "workspace": str(workspace_path),
+        "artifact_paths": {
+            "summary": str(workspace_path / "summary.json"),
+        },
+        "assets": {
+            "repo_root": str(Path(repo_root)),
+            "dataset_name": "cifar10",
+            "attacker_name": attacker_name,
+            "attack_num": attack_num,
+            "interval": interval,
+        },
+        "checks": {
+            **payload.get("checks", {}),
+            "runtime_probe_ready": exit_code == 0 and payload["status"] == "ready",
+            "synthetic_assets_cleaned": True,
+        },
+        "notes": [
+            "Runtime smoke uses synthetic assets to verify config-driven PIA readiness.",
+            "Synthetic assets are removed after the summary is written.",
+        ],
+    }
+    if "preview_score_shape" in payload:
+        result["preview_score_shape"] = payload["preview_score_shape"]
+    if "weights_key" in payload:
+        result["weights_key"] = payload["weights_key"]
+    if exit_code != 0 and "error" in payload:
+        result["error"] = payload["error"]
+
+    (workspace_path / "summary.json").write_text(
+        json.dumps(result, indent=2, ensure_ascii=True),
+        encoding="utf-8",
+    )
+    shutil.rmtree(synthetic_root, ignore_errors=True)
     return result

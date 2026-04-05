@@ -1,0 +1,40 @@
+{
+  "status": "ready",
+  "track": "gray-box",
+  "method": "pia",
+  "paper": "PIA_ICLR2024",
+  "mode": "runtime-smoke",
+  "device": "cuda",
+  "workspace": "experiments\\pia-runtime-smoke-gpu",
+  "artifact_paths": {
+    "summary": "experiments\\pia-runtime-smoke-gpu\\summary.json"
+  },
+  "assets": {
+    "repo_root": "external\\PIA",
+    "dataset_name": "cifar10",
+    "attacker_name": "PIA",
+    "attack_num": 3,
+    "interval": 10
+  },
+  "checks": {
+    "checkpoint": true,
+    "dataset_root": true,
+    "dataset_layout": true,
+    "member_split": true,
+    "components_loaded": true,
+    "model_loaded": true,
+    "attacker_instantiated": true,
+    "preview_forward": true,
+    "runtime_probe_ready": true,
+    "synthetic_assets_cleaned": true
+  },
+  "notes": [
+    "Runtime smoke uses synthetic assets to verify config-driven PIA readiness.",
+    "Synthetic assets are removed after the summary is written."
+  ],
+  "preview_score_shape": [
+    3,
+    1
+  ],
+  "weights_key": "ema_model"
+}

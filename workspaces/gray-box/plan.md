@@ -25,8 +25,15 @@
 
 ## 当前可执行证据
 
+- `experiments/pia-runtime-smoke-cpu/summary.json`
+- `experiments/pia-runtime-smoke-gpu/summary.json`
 - `experiments/pia-synth-smoke-cpu/summary.json`
 - `experiments/pia-synth-smoke-gpu/summary.json`
+
+## 本地代码上下文
+
+- `external/PIA`
+- `external/CLiD`
 
 ## 起步方案
 

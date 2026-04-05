@@ -193,6 +193,26 @@ def build_parser() -> argparse.ArgumentParser:
         default="cpu",
         help="device used for the synthetic smoke run",
     )
+
+    pia_runtime_smoke_parser = subparsers.add_parser(
+        "run-pia-runtime-smoke",
+        help="run a config-driven PIA runtime smoke with synthetic assets",
+    )
+    pia_runtime_smoke_parser.add_argument(
+        "--workspace",
+        required=True,
+        help="workspace directory for runtime smoke artifacts",
+    )
+    pia_runtime_smoke_parser.add_argument(
+        "--repo-root",
+        default="external/PIA",
+        help="path to local PIA repository root",
+    )
+    pia_runtime_smoke_parser.add_argument(
+        "--device",
+        default="cpu",
+        help="device used for the runtime smoke run",
+    )
     return parser
 
 
@@ -308,6 +328,17 @@ def main(argv: list[str] | None = None) -> int:
         )
         print(json.dumps(payload, indent=2, ensure_ascii=True))
         return 0
+
+    if args.command == "run-pia-runtime-smoke":
+        from diffaudit.attacks.pia_adapter import run_pia_runtime_smoke
+
+        payload = run_pia_runtime_smoke(
+            args.workspace,
+            repo_root=args.repo_root,
+            device=args.device,
+        )
+        print(json.dumps(payload, indent=2, ensure_ascii=True))
+        return 0 if payload["status"] == "ready" else 1
 
     parser.error(f"Unsupported command: {args.command}")
     return 2
