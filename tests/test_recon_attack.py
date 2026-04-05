@@ -1,9 +1,16 @@
 import json
+import importlib.util
+import sys
 import tempfile
+import types
 import unittest
+import uuid
 from contextlib import redirect_stdout
 from io import StringIO
 from pathlib import Path
+from unittest.mock import patch
+
+_KANDINSKY_INFERENCE_MODULE_CACHE = None
 
 
 RECON_CONFIG_TEMPLATE = """
@@ -138,6 +145,8 @@ def create_minimal_recon_repo(repo_root: Path) -> None:
         "    parser.add_argument('--save_dir')\n"
         "    parser.add_argument('--gpu', type=int, default=0)\n"
         "    parser.add_argument('--dataset_dir')\n"
+        "    parser.add_argument('--num_validation_images', type=int, default=3)\n"
+        "    parser.add_argument('--inference_steps', type=int, default=30)\n"
         "    return parser.parse_args()\n"
         "\n"
         "def main():\n"
@@ -147,7 +156,9 @@ def create_minimal_recon_repo(repo_root: Path) -> None:
         "    save_dir = Path(args.save_dir)\n"
         "    save_dir.mkdir(parents=True, exist_ok=True)\n"
         "    for i in range(count):\n"
-        "        (save_dir / f'image_{i+1:02}_01.jpg').write_bytes(b'fake-jpg')\n"
+        "        for j in range(args.num_validation_images):\n"
+        "            (save_dir / f'image_{i+1:02}_{j+1:02}.jpg').write_bytes(b'fake-jpg')\n"
+        "    (save_dir / 'inference_steps.txt').write_text(str(args.inference_steps), encoding='utf-8')\n"
         "\n"
         "if __name__ == '__main__':\n"
         "    main()\n",
@@ -184,7 +195,120 @@ def create_public_recon_bundle(bundle_root: Path, count: int = 3) -> None:
         torch.save(payload, path)
 
 
+def load_kandinsky_inference_module(
+    *,
+    added_kv_processor_cls: type,
+    processor_cls: type,
+):
+    global _KANDINSKY_INFERENCE_MODULE_CACHE
+    if _KANDINSKY_INFERENCE_MODULE_CACHE is not None:
+        return _KANDINSKY_INFERENCE_MODULE_CACHE
+
+    script_path = (
+        Path(__file__).resolve().parents[1]
+        / "external"
+        / "Reconstruction-based-Attack"
+        / "kandinsky2_2_inference.py"
+    )
+    module_name = f"tests._kandinsky2_2_inference_stub_{uuid.uuid4().hex}"
+    spec = importlib.util.spec_from_file_location(module_name, script_path)
+    if spec is None or spec.loader is None:
+        raise AssertionError("failed to load kandinsky2_2_inference.py for testing")
+
+    diffusers_module = types.ModuleType("diffusers")
+    diffusers_module.KandinskyV22Pipeline = object
+    diffusers_module.KandinskyV22PriorPipeline = object
+
+    diffusers_models_module = types.ModuleType("diffusers.models")
+    diffusers_models_module.UNet2DConditionModel = object
+
+    attention_module = types.ModuleType("diffusers.models.attention_processor")
+    attention_module.LoRAAttnAddedKVProcessor = added_kv_processor_cls
+    attention_module.LoRAAttnProcessor = processor_cls
+
+    transformers_module = types.ModuleType("transformers")
+    transformers_module.CLIPVisionModelWithProjection = object
+
+    datasets_module = types.ModuleType("datasets")
+    datasets_module.Dataset = object
+
+    safetensors_module = types.ModuleType("safetensors")
+    safetensors_torch_module = types.ModuleType("safetensors.torch")
+    safetensors_torch_module.load_file = lambda path: {}
+
+    stub_modules = {
+        "diffusers": diffusers_module,
+        "diffusers.models": diffusers_models_module,
+        "diffusers.models.attention_processor": attention_module,
+        "transformers": transformers_module,
+        "datasets": datasets_module,
+        "safetensors": safetensors_module,
+        "safetensors.torch": safetensors_torch_module,
+    }
+
+    module = importlib.util.module_from_spec(spec)
+    with patch.dict(sys.modules, stub_modules, clear=False):
+        sys.modules.pop(module_name, None)
+        spec.loader.exec_module(module)
+    _KANDINSKY_INFERENCE_MODULE_CACHE = module
+    return module
+
+
 class ReconAttackTests(unittest.TestCase):
+    def test_kandinsky_lora_helpers_support_zero_arg_processors(self) -> None:
+        class ZeroArgAddedKVProcessor:
+            def __init__(self) -> None:
+                self.kind = "added"
+
+        class ZeroArgProcessor:
+            def __init__(self) -> None:
+                self.kind = "base"
+
+        module = load_kandinsky_inference_module(
+            added_kv_processor_cls=ZeroArgAddedKVProcessor,
+            processor_cls=ZeroArgProcessor,
+        )
+
+        added_processor = module.build_lora_added_kv_processor(
+            hidden_size=320,
+            cross_attention_dim=128,
+            rank=4,
+            device="cuda:0",
+        )
+        processor = module.build_lora_processor(hidden_size=320, device="cuda:0")
+
+        self.assertIsInstance(added_processor, ZeroArgAddedKVProcessor)
+        self.assertIsInstance(processor, ZeroArgProcessor)
+
+    def test_kandinsky_prefers_native_attn_proc_loader_when_available(self) -> None:
+        class ZeroArgAddedKVProcessor:
+            def __init__(self) -> None:
+                self.kind = "added"
+
+        class ZeroArgProcessor:
+            def __init__(self) -> None:
+                self.kind = "base"
+
+        class FakeModel:
+            def __init__(self) -> None:
+                self.loaded = None
+
+            def load_attn_procs(self, state_dict) -> None:
+                self.loaded = state_dict
+
+        module = load_kandinsky_inference_module(
+            added_kv_processor_cls=ZeroArgAddedKVProcessor,
+            processor_cls=ZeroArgProcessor,
+        )
+        model = FakeModel()
+
+        with patch.object(module, "load_weights", return_value={"lora": 1}) as mocked_load:
+            loader_used = module.load_lora_attention_processors(model, "weights.safetensors")
+
+        self.assertEqual(loader_used, "load_attn_procs")
+        self.assertEqual(model.loaded, {"lora": 1})
+        mocked_load.assert_called_once_with("weights.safetensors")
+
     def test_cli_plans_recon(self) -> None:
         from diffaudit.cli import main
 
@@ -907,6 +1031,8 @@ class ReconAttackTests(unittest.TestCase):
         self.assertEqual(payload["runtime"]["backend"], "kandinsky_v22")
         self.assertIn("--decoder_dir", payload["artifacts"]["target_member"]["inference"]["command"])
         self.assertIn("--prior_dir", payload["artifacts"]["target_member"]["inference"]["command"])
+        self.assertIn("--num_validation_images", payload["artifacts"]["target_member"]["inference"]["command"])
+        self.assertIn("--inference_steps", payload["artifacts"]["target_member"]["inference"]["command"])
 
 
 if __name__ == "__main__":

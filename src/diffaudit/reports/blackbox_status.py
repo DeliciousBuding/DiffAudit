@@ -12,8 +12,10 @@ BLACKBOX_EVIDENCE_RANK = {
     "eval-smoke": 3,
     "artifact-summary": 4,
     "upstream-eval-smoke": 5,
+    "sample-smoke": 6,
     "mainline-smoke": 6,
     "artifact-mainline": 7,
+    "runtime-mainline": 8,
 }
 
 
