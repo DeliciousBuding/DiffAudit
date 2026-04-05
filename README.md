@@ -135,10 +135,12 @@ workspaces/              多人协作工作区
 2. `probe-recon-assets`
 3. `dry-run-recon`
 4. `run-recon-mainline-smoke`
-5. 有现成 score artifact 时，先执行 `probe-recon-score-artifacts`
-6. artifact probe 通过后执行 `run-recon-artifact-mainline`
-7. 需要拆阶段排查时，再分别执行 `run-recon-eval-smoke` / `summarize-recon-artifacts` / `run-recon-upstream-eval-smoke`
-8. 真实资产到位后再接生成、embedding 和攻击评估三阶段执行
+5. 若已有真实 dataset payload 与 target/shadow LoRA checkpoint，先执行 `probe-recon-runtime-assets`
+6. runtime asset probe 通过后执行 `run-recon-runtime-mainline`
+7. 有现成 score artifact 时，先执行 `probe-recon-score-artifacts`
+8. artifact probe 通过后执行 `run-recon-artifact-mainline`
+9. 需要拆阶段排查时，再分别执行 `run-recon-eval-smoke` / `summarize-recon-artifacts` / `run-recon-upstream-eval-smoke`
+10. 对仅有图像、缺原始 caption 的场景，再补 BLIP captioning 路线
 
 对 `variation` 这条 API-only 黑盒线，当前推荐命令顺序是：
 
@@ -334,6 +336,18 @@ python -m diffaudit probe-recon-score-artifacts --artifact-dir path/to/recon-sco
 
 ```powershell
 python -m diffaudit run-recon-artifact-mainline --artifact-dir path/to/recon-scores --workspace experiments/recon-artifact-mainline --repo-root external/Reconstruction-based-Attack --method threshold
+```
+
+探测 `recon` 真实 runtime 资产是否齐全：
+
+```powershell
+python -m diffaudit probe-recon-runtime-assets --target-member-dataset path/to/target_member_dataset.pkl --target-nonmember-dataset path/to/target_nonmember_dataset.pkl --shadow-member-dataset path/to/shadow_member_dataset.pkl --shadow-nonmember-dataset path/to/shadow_nonmember_dataset.pkl --target-model-dir path/to/target_lora_checkpoint --shadow-model-dir path/to/shadow_lora_checkpoint --repo-root external/Reconstruction-based-Attack
+```
+
+从真实 dataset payload 与 target/shadow LoRA checkpoint 直接生成 `recon` score artifacts，并串到 artifact mainline：
+
+```powershell
+python -m diffaudit run-recon-runtime-mainline --target-member-dataset path/to/target_member_dataset.pkl --target-nonmember-dataset path/to/target_nonmember_dataset.pkl --shadow-member-dataset path/to/shadow_member_dataset.pkl --shadow-nonmember-dataset path/to/shadow_nonmember_dataset.pkl --target-model-dir path/to/target_lora_checkpoint --shadow-model-dir path/to/shadow_lora_checkpoint --workspace experiments/recon-runtime-mainline --repo-root external/Reconstruction-based-Attack --method threshold
 ```
 
 汇总 `recon` 分数 artifact：
