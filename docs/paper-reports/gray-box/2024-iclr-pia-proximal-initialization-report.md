@@ -1,169 +1,157 @@
-# An Efficient Membership Inference Attack for the Diffusion Model by Proximal Initialization
+# 近邻初始化驱动的扩散模型高效成员推断攻击
+An Efficient Membership Inference Attack for the Diffusion Model by Proximal Initialization
 
-- Title: An Efficient Membership Inference Attack for the Diffusion Model by Proximal Initialization
-- Material Path: `D:/Code/DiffAudit/Project/references/materials/gray-box/2024-iclr-pia-proximal-initialization.pdf`
-- Primary Track: `gray-box`
-- Venue / Year: ICLR 2024
-- Threat Model Category: Gray-box query-based membership inference against diffusion models with intermediate noise-related outputs
-- Core Task: Determine whether a sample belongs to the training set by reusing the model output at `t = 0` to build a low-query attack statistic
-- Open-Source Implementation: <https://github.com/kong13661/PIA>
-- Report Status: Complete
+## 文献信息
 
-## Executive Summary
+- 英文标题：An Efficient Membership Inference Attack for the Diffusion Model by Proximal Initialization
+- 中文标题：近邻初始化驱动的扩散模型高效成员推断攻击
+- 作者：Fei Kong，Jinhao Duan，Ruipeng Ma，Hengtao Shen，Xiaofeng Zhu，Xiaoshuang Shi，Kaidi Xu
+- 发表 venue / year / version：ICLR 2024，OpenReview conference version
+- 论文主问题：在只能访问扩散模型中间噪声相关输出的灰盒场景下，能否把成员推断的查询成本压到常数级，同时保持对成员与非成员的稳定区分
+- 威胁模型类别：灰盒查询式成员推断攻击
+- 本地 PDF 路径：`D:/Code/DiffAudit/Project/references/materials/gray-box/2024-iclr-pia-proximal-initialization.pdf`
+- GitHub PDF 链接：[2024-iclr-pia-proximal-initialization.pdf](https://github.com/DeliciousBuding/DiffAudit/blob/main/references/materials/gray-box/2024-iclr-pia-proximal-initialization.pdf)
+- OCR 精修版链接：[2024-iclr-pia-proximal-initialization-refined.md](../markdown/gray-box/2024-iclr-pia-proximal-initialization/2024-iclr-pia-proximal-initialization-refined.md)
+- 飞书原生 PDF 获取方式：本轮仅处理本地文件，未做飞书同步
+- 开源实现：[kong13661/PIA](https://github.com/kong13661/PIA)
+- 报告状态：本地展示稿初稿
 
-这篇论文研究扩散模型上的灰盒成员推断攻击。作者关注的问题不是如何恢复训练样本，而是在攻击者无法读取模型参数、但能够访问扩散过程中的中间噪声相关输出时，是否可以用更少查询次数稳定地区分成员与非成员。论文的回答是肯定的，并据此提出 `PIA`（Proximal Initialization Attack）及其归一化版本 `PIAN`。
+## 1. 论文定位
 
-方法上的核心变化是：不再像 `SecMI` 那样为得到某个时刻的确定性轨迹而执行较长的迭代逆推，而是直接把模型在 `t = 0` 时对样本给出的噪声预测 `\epsilon_\theta(x_0, 0)` 当作“近邻初始化”，再在选定时刻 `t` 发起第二次查询。攻击分数由“以该初始化构造出的 groundtruth trajectory”与“模型在时刻 `t` 的预测点”之间的 `\ell_p` 距离给出，因此整个攻击在离散时间与连续时间扩散模型中都只需两次查询。
+这篇论文处在 DiffAudit 灰盒路线的主干位置。它延续 `SecMI` 对扩散模型中间时间步信号的利用思路，但不再通过多轮迭代逼近某个确定性中间点，而是直接把模型在 `t=0` 的输出当作 proximal initialization，再在目标时刻 `t` 做第二次查询。论文真正要解决的不是“有没有成员信号”，而是“能否用更低 query budget 抽出同样强甚至更强的成员信号”。
 
-实验覆盖 DDPM、Stable Diffusion 与 Grad-TTS，并把音频扩散模型纳入成员推断讨论。论文报告 `PIA/PIAN` 在 DDPM 与 Grad-TTS 上通常取得与 `SecMI` 相当或更高的 AUC，同时在 `TPR@1%FPR` 上更优，且查询代价显著更低。作者进一步指出，输出为 mel-spectrogram 的 TTS 模型明显更脆弱，而直接输出音频波形的 DiffWave/FastDiff 则接近随机猜测。对 DiffAudit 而言，这篇论文的重要性在于它把灰盒主线从 `SecMI` 推进到一个更低 query budget、工程上更易打通的执行路线。
+从路线角色看，`PIA` 更像 `SecMI` 之后的工程化推进版本：访问假设仍然偏强，但执行链显著更短，因而更适合作为仓库里灰盒默认基线或运行探针的落地点。
 
-## Bibliographic Record
+## 2. 核心问题
 
-- Title: An Efficient Membership Inference Attack for the Diffusion Model by Proximal Initialization
-- Authors: Fei Kong, Jinhao Duan, Ruipeng Ma, Hengtao Shen, Xiaofeng Zhu, Xiaoshuang Shi, Kaidi Xu
-- Venue / year / version: ICLR 2024; OpenReview camera-ready corresponding to 2023 arXiv preprint
-- Local PDF path: `D:/Code/DiffAudit/Project/references/materials/gray-box/2024-iclr-pia-proximal-initialization.pdf`
-- Source URL: <https://openreview.net/forum?id=rpH9FcCEV6>
+论文集中回答三个相互关联的问题。第一，在扩散模型成员推断里，能否把 `SecMI` 那类多次查询、多步回推的方法缩减成两次查询。第二，这种低查询攻击能否同时覆盖离散时间扩散模型和连续时间扩散模型。第三，音频扩散模型是否也暴露类似的成员信号，尤其是 mel-spectrogram 输出和 waveform 输出之间是否存在鲁棒性差异。
 
-## Research Question
+作者给出的回答是肯定的，但带有清晰边界：只要攻击者能读到 `t=0` 与目标时刻 `t` 的中间噪声或 score 相关输出，就可以构造一个低成本、低误报区间表现更强的统计量。
 
-论文试图回答三个彼此关联的问题。第一，针对扩散模型成员推断，是否能保留灰盒信号强度，同时把查询次数从 `SecMI` 一类方法的大量迭代降到常数级。第二，这种攻击是否不仅适用于离散时间的 DDPM/DDIM，也能迁移到连续时间扩散模型。第三，音频生成扩散模型是否也像图像扩散模型一样暴露可观的成员信号。
+## 3. 威胁模型与前提
 
-其威胁模型沿用 `SecMI` 的半白盒设定：攻击者知道待测样本 `x_0`，能够查询目标模型在特定时刻的中间输出，但看不到权重、梯度或完整训练过程。因此它不是纯黑盒 API 攻击，也不是需要白盒参数访问的训练损失重放。
+攻击者持有待测样本 `x_0`，能够查询目标模型在 `t=0` 和某个攻击时刻 `t` 的噪声预测或 score 输出，但拿不到模型权重、梯度和训练过程，因此不是白盒攻击。论文结论依赖三个前提：其一，服务接口必须暴露中间输出；其二，攻击者需要知道扩散调度或连续时间动力学中的必要系数；其三，阈值 `\tau` 的选取通常仍要借助成员 / 留出划分或 surrogate model 做校准。
 
-## Problem Setting and Assumptions
+这也意味着论文结果不能直接外推到只返回最终图像的严格黑盒 API。它证明的是灰盒接口上的可分性，而不是所有扩散服务都天然存在同等强度的成员泄露。
 
-- Access model: 灰盒查询式访问，需要拿到模型在 `t=0` 和某个攻击时刻 `t` 的噪声相关输出。
-- Available inputs: 候选样本 `x_0`、时间步 `t`、范数阶数 `p`、阈值 `\tau`。
-- Available outputs: 离散时间模型中的 `\epsilon_\theta(x_0,0)` 与 `\epsilon_\theta(x_t,t)`；连续时间模型中的 score-related output `s_\theta(x_t,t)`。
-- Required priors or side information: 知道扩散调度 `\bar{\alpha}_t` 或连续时间漂移/扩散系数表达；能够构造 member 与 hold-out 的校准集或 surrogate model 来选阈值。
-- Scope limits: 论文主要证明查询式成员可分性，而非严格最优检验；连续时间推导依赖对高阶无穷小项的忽略；真实可部署性取决于服务端是否暴露中间输出。
+## 4. 方法总览
 
-## Method Overview
+`PIA` 的直觉来自 DDIM 的确定性轨迹。若在 `\sigma_t=0` 的条件下知道原样本 `x_0` 和轨迹上的任一点 `x_k`，就能恢复整条 trajectory。作者因此不再像 `SecMI` 那样费力求 `x_k`，而是直接取最接近原样本的 `k=0`，把模型在 `t=0` 的预测 `\epsilon_\theta(x_0,0)` 当作近邻初始化，先合成时刻 `t` 的点 `x_t`，再做第二次查询比较两次预测的一致性。
 
-方法从 DDIM 的确定性轨迹性质出发。作者先证明：当 `\sigma_t = 0` 时，只要知道 `x_0` 与轨迹中的任一点 `x_k`，就能重建整条轨迹上的任意 `x_t`。随后他们选择最靠近原始样本的 `k = 0`，并用模型在 `t = 0` 的输出 `\epsilon_\theta(x_0, 0)` 近似真实噪声，从而得到一条“groundtruth trajectory”。
+这种改动把攻击从“迭代回推轨迹”改成“用第一次查询构造 groundtruth trajectory，再用第二次查询做对照”，从而把核心成本压缩为两次查询。`PIAN` 只是对第一次得到的 `\epsilon_\theta(x_0,0)` 做归一化，试图让它更接近标准高斯尺度。
 
-攻击执行时，先对样本查询一次 `t = 0`，得到 `\epsilon_\theta(x_0,0)`。接着用该输出与原始样本合成时刻 `t` 的点 `x_t = \sqrt{\bar{\alpha}_t}x_0 + \sqrt{1-\bar{\alpha}_t}\epsilon_\theta(x_0,0)`，然后向目标模型做第二次查询，得到该点的噪声预测或连续时间 score。成员样本若更贴近训练时拟合到的轨迹，则第二次预测会与第一次得到的近邻初始化更一致，因此对应的 `R_{t,p}` 更小。
+![PIA 方法图](../assets/gray-box/2024-iclr-pia-proximal-initialization-key-figure-1-p1.jpeg)
 
-`PIAN` 只是对第一步拿到的 `\epsilon_\theta(x_0,0)` 做一次 `\ell_1` 归一化与高斯尺度匹配，试图把它拉回更接近标准正态的尺度。论文后续实验表明，这个改动在 DDPM 和 Grad-TTS 上有时能提升低 FPR 区域表现，但在 Stable Diffusion 上反而不稳定，因此作者更推荐直接使用 `PIA`。
+这张图最有价值的地方在于，它把论文的核心替换动作直接画清楚了：第一次查询不再只是取 loss，而是生成一个可重复利用的 proximal initialization；第二次查询则在由该初始化构造出的 `x_t` 上验证轨迹一致性。
 
-## Method Flow
+## 5. 方法概览 / 流程
 
 ```mermaid
-flowchart TD
-    A["Candidate sample x0"] --> B["Query target model at t = 0"]
-    B --> C["Obtain epsilon_theta(x0, 0) or score-based analog"]
-    C --> D["Construct xt from x0 and proximal initialization"]
-    D --> E["Query target model again at attack time t"]
-    E --> F["Compute Rt,p from trajectory-consistency error"]
-    F --> G["Compare with threshold tau"]
-    G --> H["Member / non-member decision"]
+flowchart LR
+    A["输入待测样本 x0"] --> B["查询 t=0 输出"]
+    B --> C["得到 epsilon_theta(x0,0)"]
+    C --> D["构造目标时刻 xt"]
+    D --> E["查询时刻 t 的预测输出"]
+    E --> F["计算 Rt,p 轨迹一致性误差"]
+    F --> G["与阈值 tau 比较"]
+    G --> H["输出成员或非成员"]
 ```
 
-## Key Technical Details
+如果只看主线，`PIA` 的流程比 `SecMI` 更接近一个可直接接入工程的双查询统计器。真正需要调的超参数主要只有攻击时间步 `t`、范数阶数 `p` 和阈值 `\tau`。
 
-论文的第一项关键技术点是利用 DDIM 的确定性轨迹关系，把任意已知点 `x_k` 与 `x_0` 映射到任意 `x_t`。这使得 `t = 0` 的模型输出可以直接充当地面真实轨迹的近邻初始化，而不必像 `SecMI` 那样反复迭代求解中间点：
+## 6. 关键技术细节
+
+离散时间部分的技术起点是 DDIM 轨迹可由两点确定。若已知 `x_0` 和任意中间点 `x_k`，则可恢复任意时刻 `x_t`：
 
 $$
-x_t=\sqrt{\bar{\alpha}_t}x_0+\sqrt{1-\bar{\alpha}_t}\cdot \frac{x_k-\sqrt{\bar{\alpha}_k}x_0}{\sqrt{1-\bar{\alpha}_k}}.
+x_t=\sqrt{\bar{\alpha}_t}x_0+\sqrt{1-\bar{\alpha}_t}\cdot\frac{x_k-\sqrt{\bar{\alpha}_k}x_0}{\sqrt{1-\bar{\alpha}_k}}.
 $$
 
-第二项关键技术点是离散时间攻击分数。将 `k=0` 且 `x_k` 由 `\epsilon_\theta(x_0,0)` 给出后，轨迹误差可以化简为两次查询结果的 `\ell_p` 距离：
+论文的关键决策是把 `k` 直接取为 `0`。因为 `\bar{\alpha}_0` 非常接近 `1`，模型在 `t=0` 的输出 `\epsilon_\theta(x_0,0)` 可以被当作一个足够近的噪声近似，从而省掉迭代求解中间点的成本。
+
+在此基础上，离散时间攻击统计量被化简为：
 
 $$
 R_{t,p}=
 \left\|
-\epsilon_\theta(x_0,0)-
-\epsilon_\theta\!\left(
-\sqrt{\bar{\alpha}_t}x_0+\sqrt{1-\bar{\alpha}_t}\epsilon_\theta(x_0,0),\, t
+\epsilon_{\theta}(x_0,0)-
+\epsilon_{\theta}\!\left(
+\sqrt{\bar{\alpha}_t}x_0+\sqrt{1-\bar{\alpha}_t}\epsilon_{\theta}(x_0,0),\, t
 \right)
 \right\|_p.
 $$
 
-第三项关键技术点是连续时间版本。作者从 score-based SDE/ODE 出发，用 `s_\theta(x_t,t)` 近似 `\nabla_{x_t}\log p_t(x_t)`，并在忽略高阶无穷小项后得到：
+这个式子的含义很直接：如果样本是成员，那么模型在 `t=0` 拿到的 proximal initialization 与在 `t` 时刻重新预测出的噪声更一致，故 `R_{t,p}` 更小。`PIAN` 则进一步做
 
 $$
-R_{t,p}=
-\left\|
-f_t(x_t)-\frac{1}{2}g_t^2 s_\theta(x_t,t)
-\right\|_p.
+\hat{\epsilon}_{\theta}(x_0,0)=N\sqrt{\frac{\pi}{2}}\frac{\epsilon_{\theta}(x_0,0)}{\|\epsilon_{\theta}(x_0,0)\|_1},
 $$
 
-这里有两个需要明确记录的推断边界。其一，连续时间推导对 `dt` 与高阶项做了近似处理，因此更像工程上可用的统计量，而非严格等价的最优测试。其二，`PIAN` 仅对 `\epsilon_\theta(x_0,0)` 做基于 `\ell_1` 范数的尺度归一化，论文自己也承认这只是启发式校正，不能保证真正恢复到标准正态。
+用 `\ell_1` 尺度把第一次查询结果拉回近似标准高斯。论文后面也承认，这只是启发式归一化，并不保证总是更优。
 
-## Experimental Setup
+连续时间版本则把 DDPM 的噪声预测换成 score / drift 形式，最终统计量近似为
 
-- Datasets:
-  - DDPM: CIFAR10, CIFAR100, TinyImageNet。
-  - Stable Diffusion: 2500 张 Laion-Aesthetics v2.5+ 训练成员样本与 2500 张 COCO2017-val 留出样本。
-  - TTS: LJSpeech, VCTK, LibriTTS-lean-100。
-- Model families:
-  - Discrete-time: DDPM, Stable Diffusion v1-5。
-  - Continuous-time: Grad-TTS。
-  - Additional robustness comparison: DiffWave, FastDiff。
-- Baselines: Naive Attack、SecMI、PIA、PIAN。
-- Metrics: AUC、`TPR@1%FPR`，正文另提到 `TPR@0.1%FPR` 但主表主要报告前两项。
-- Evaluation conditions:
-  - 默认把数据随机一分为二作为训练集与 hold-out 集。
-  - DDPM 上：Naive Attack 使用 `t=200`，SecMI 用 `t=100`，PIA/PIAN 用 `t=200`，并取 `\ell_4` 范数。
-  - Grad-TTS 上：Naive Attack 用 `t=0.8`，SecMI 用 `t=0.6`，PIA/PIAN 用 `t=0.3`，并取 `\ell_4` 范数。
-  - Stable Diffusion 上：Naive Attack 与 PIA 用 `t=500`，SecMI 用 `t=100`。
+$$
+R_{t,p}\approx \left\|f_t(x_t)-\frac{1}{2}g_t^2 s_{\theta}(x_t,t)\right\|_p.
+$$
 
-## Main Results
+因此 `PIA` 的连续时间扩展本质上仍是在比较“根据第一次查询得到的轨迹信息”和“当前时刻模型输出”之间的一致性，只是变量从离散噪声换成了连续动力学项。
 
-Grad-TTS 上的结果最强。表 1 中，`PIA` 在 LJSpeech/VCTK/LibriTTS 上分别达到 `99.6/87.8/95.4` 的 AUC，`TPR@1%FPR` 分别为 `94.2/20.6/30.0`；`PIAN` 在同三组数据上的低 FPR TPR 分别达到 `95.7/19.6/44.7`。与 `SecMI` 相比，论文报告 `PIA` 平均高出 `5.4` 个点、`PIAN` 平均高出 `10.5` 个点的 `TPR@1%FPR`，但查询数只需 `1+1`，计算消耗约为 `SecMI` 的 `3.2%`。
+## 7. 实验设置
 
-DDPM 上，`PIA` 的 AUC 虽然只比 `SecMI` 略高，但低 FPR 区域提升更明确。以 CIFAR100 为例，`PIA` 的 AUC 为 `89.4`，`TPR@1%FPR` 为 `19.6`，相比 `SecMI` 的 `87.6/11.1` 更优；`PIAN` 在 CIFAR10 和 TinyImageNet 上分别把 `TPR@1%FPR` 提高到 `31.2` 与 `32.8`。论文据此强调，在成员审计更关心的低误报区间，`PIA/PIAN` 比单纯追求 AUC 的结论更有实际意义。
+- 数据集：DDPM 使用 CIFAR10、CIFAR100、TinyImageNet；Stable Diffusion 使用 Laion-Aesthetics v2.5+ 与 COCO2017-val；音频侧使用 LJSpeech、VCTK、LibriTTS-lean-100。
+- 模型：离散时间包含 DDPM 与 Stable Diffusion v1.5；连续时间包含 Grad-TTS；鲁棒性补充实验包含 DiffWave 与 FastDiff。
+- 基线：Naive Attack、SecMI、PIA、PIAN。
+- 指标：AUC、`TPR@1%FPR`，正文还讨论了 `TPR@0.1%FPR`。
+- 典型设置：DDPM 上 `PIA/PIAN` 取 `t=200`、`\ell_4`；Grad-TTS 上 `PIA` 取 `t=0.3`、`\ell_4`；Stable Diffusion 上 `PIA` 取 `t=500`。
 
-Stable Diffusion 上，`PIA` 仍优于 `SecMI`，但 `PIAN` 明显失效。三种文本设定下，`PIA` 的 AUC 为 `70.5/73.9/73.3`，`TPR@1%FPR` 为 `18.1/19.8/20.2`；而 `PIAN` 下降到 `56.7/58.8/55.3` 的 AUC。这说明归一化启发式并不适合 latent diffusion。另一方面，表 5 和附录表 6 显示 DiffWave/FastDiff 的 AUC 大多只在 `50` 到 `57` 左右，接近随机猜测，支持了“输出波形的音频扩散模型更鲁棒”的观察。
+实验的重点不是把所有设定都扫满，而是比较在相近访问条件下，`PIA` 相对 `SecMI` 是否能维持可分性并显著降低查询数。
 
-## Strengths
+## 8. 主要结果
 
-- 把灰盒成员推断的 query budget 从 `SecMI` 的多轮迭代压缩到两次查询，工程代价显著下降。
-- 同时覆盖离散时间与连续时间扩散模型，方法叙事比只适用于 DDPM/DDIM 的工作更完整。
-- 主结果不仅看 AUC，还明确强调 `TPR@1%FPR`，这更符合审计场景对低误报区的关注。
-- 首次系统讨论音频扩散模型成员推断，并区分 mel-spectrogram 输出与 waveform 输出两类鲁棒性差异。
-- 官方代码可获得，且论文附录给出了关键超参数与阈值迁移实验。
+论文最强的结果出现在 Grad-TTS 上。`PIA` 在 LJSpeech、VCTK、LibriTTS 上分别达到 `99.6`、`87.8`、`95.4` 的 AUC，`TPR@1%FPR` 分别为 `94.2`、`20.6`、`30.0`；`PIAN` 在同一设置下还把 LibriTTS 的 `TPR@1%FPR` 提升到 `44.7`。作者据此强调，查询数只有 `1+1` 的前提下，`PIA/PIAN` 在低误报区间往往优于 `SecMI`。
 
-## Limitations and Validity Threats
+DDPM 上的结论更适合作为灰盒主线证据。以 CIFAR100 为例，`PIA` 的 `AUC=89.4`、`TPR@1%FPR=19.6`，相比 `SecMI` 的 `87.6/11.1` 明显更强；`PIAN` 在 CIFAR10 和 TinyImageNet 上也把 `TPR@1%FPR` 提高到 `31.2` 和 `32.8`。Stable Diffusion 上 `PIA` 仍优于 `SecMI`，但 `PIAN` 退化明显，说明归一化启发式并不能直接迁移到 latent diffusion。
 
-- 威胁模型要求访问中间噪声相关输出，因此它不是面向商业生成 API 的纯黑盒路线。
-- 连续时间推导依赖忽略高阶无穷小项，理论上是近似而非严格等式。
-- `PIAN` 的归一化缺乏强理论保证，在 Stable Diffusion 上已被实验反证为不稳。
-- 文中关于“更推荐使用音频输出模型”的结论主要来自成员推断结果，而不是对其内部机制的充分解释。
-- 论文虽然给出 surrogate-model 迁移阈值实验，但仍默认攻击者能够准备若干同分布训练/留出划分，这在真实审计中未必便宜。
+![PIA 结果图](../assets/gray-box/2024-iclr-pia-proximal-initialization-key-figure-2-p13.jpeg)
 
-## Reproducibility Assessment
+这张对数尺度 ROC 图的价值不在于补充更多均值，而在于直接展示 `PIA` 在低 FPR 区域相对 Naive Attack 和 `SecMI` 的优势。对 DiffAudit 来说，这比单纯报一个 AUC 更接近真实审计场景。
 
-忠实复现至少需要以下资产：DDPM 与 Stable Diffusion 权重、TTS 数据与模型实现、成员/留出划分、可访问 `t=0` 与时刻 `t` 中间输出的推理接口，以及用于阈值校准的辅助划分。官方代码仓库降低了复现门槛，附录也给出了 `t`、`\ell_p`、查询次数和数据划分方式，因此这篇论文的“实现入口”明显好于没有代码的同类工作。
+## 9. 优点
 
-从当前 DiffAudit 仓库看，`PIA` 已不是纯文献状态。仓库已经存在 `PIA` 的 planner、资产探测、runtime probe、runtime smoke 与 synthetic smoke 路径，说明灰盒执行链已经部分落地。不过这些资产目前主要围绕 `PIA` 的 DDPM 运行路径与配置化探针，尚未覆盖论文中的 Grad-TTS、DiffWave/FastDiff 和 Stable Diffusion 全套实验矩阵，因此还不能等同于“全文结果已复现”。
+- 只需两次查询就能完成攻击，明显降低了灰盒成员推断的执行成本。
+- 同时覆盖离散时间与连续时间扩散模型，方法叙事完整度高于只适用于 DDPM 的工作。
+- 结果不只看 AUC，而是明确强调 `TPR@1%FPR`，更贴近审计产品对低误报的需求。
+- 把音频扩散模型纳入成员推断讨论，并区分 mel-spectrogram 输出和 waveform 输出的风险差异。
 
-当前最现实的阻塞项有三个。第一，论文对音频模型的结论需要额外的数据管线与声学模型环境，而当前仓库公开信息更偏向图像/DDPM 侧。第二，Stable Diffusion 实验依赖真实 member split 与文本条件处理，数据准备成本不低。第三，若要数值对齐正文与附录表格，还需要把阈值选取、`t` sweep、`\ell_p` sweep 与 surrogate 迁移流程完整脚本化。
+## 10. 局限与有效性威胁
 
-## Relevance to DiffAudit
+- 访问假设偏强，要求暴露 `t=0` 和 `t` 的中间噪声或 score 输出，不能直接套到严格黑盒 API。
+- 连续时间推导含近似项，统计量更像工程可用近似，而非严格最优检验。
+- `PIAN` 的归一化缺乏强理论保证，并已在 Stable Diffusion 上表现出退化。
+- 音频模型“更鲁棒”的结论主要来自成员推断表现，尚未被更深入的机制分析充分支撑。
 
-这篇论文对 DiffAudit 的价值非常直接。它定义了当前灰盒主线里“性能与成本更平衡”的攻击节点：相较 `SecMI`，`PIA` 在保持甚至提升成员区分能力的同时，把查询与运行开销显著压缩，更适合作为默认灰盒 baseline 或产品原型中的首选实现。
+## 11. 对 DiffAudit 的价值
 
-它也为路线比较提供了清晰参照。若以后要把灰盒工作和真正黑盒路线并排展示，`PIA` 可以充当灰盒低成本上界，而 `SecMI` 更像高成本、更强轨迹约束的参照点。与此同时，论文关于 waveform 输出更鲁棒的观察，也可作为未来 DiffAudit 讨论“模型输出形式与隐私暴露关系”时的一个重要证据点。
+这篇论文对 DiffAudit 的价值非常直接。它可以作为当前灰盒路线里成本最低、最容易工程化的主力 baseline，与 `SecMI` 形成一组非常清晰的对照：两者都依赖中间输出，但 `PIA` 在实现链和查询预算上更轻。仓库当前也已经存在对应的 `pia` 计划器与探针代码，这使它不只是文献材料，而是与现有实现状态直接对齐的路线文档。
 
-最后，这篇论文与当前仓库状态是对齐的。仓库已明确把 `PIA` 纳入实现线，因此该报告不只是文献介绍，还能直接为后续 runtime probe、smoke 和真实资产接入提供方法学依据。
+从叙事层面看，`PIA` 还提供了一个很好的“灰盒上界”位置。后续若要把灰盒结果与真正黑盒路线并排解释，`PIA` 可以代表中间输出可见时的低成本强基线。
 
-## Recommended Figure
+## 12. 关键图使用方式
 
-- Figure page: 2
-- Crop box or note: Cropped `Figure 1` with PDF clip box `90 60 520 272`; this isolates the method diagram and its caption without retaining the surrounding正文
-- Why this figure matters: 该图以最紧凑的方式呈现了 `PIA` 的两次查询结构：先在 `t=0` 取近邻初始化，再在目标时刻 `t` 计算轨迹一致性误差，最后经阈值做成员判定。相较结果表，它更适合作为报告中的方法总览图。
-- Local asset path: `../assets/gray-box/2024-iclr-pia-proximal-initialization-key-figure-p2.png`
+- 方法图放在“方法总览”之后，用来解释 `PIA` 与 `SecMI` 的根本区别，即第一次查询产物会被重用为 proximal initialization，而不是仅仅参与一次 loss 计算。
+- 结果图放在“主要结果”之后，用来支撑论文真正重要的结论：`PIA` 的优势集中体现在低误报区间，而不只是平均 AUC。
 
-![Key Figure](../assets/gray-box/2024-iclr-pia-proximal-initialization-key-figure-p2.png)
+## 13. 复现评估
 
-我直接检查了渲染后的 PNG。该裁切保留了完整算法图与图注，没有带入下方正文段落，因此满足“优先裁切图表区域而不是整页正文”的要求；图中也能清楚看出 `Eq.(9)` / `Eq.(14)` 所对应的度量位置。
+忠实复现 `PIA` 需要目标模型权重、成员 / 留出划分、可访问 `t=0` 与目标时刻 `t` 中间输出的推理接口，以及阈值标定流程。对当前仓库而言，`src/diffaudit/attacks/pia.py` 已提供 DDPM 侧的计划与资产探测逻辑，`tests/test_pia_adapter.py` 也覆盖了 runtime probe 与 synthetic smoke，这说明图像 DDPM 的最短链路已经有工程抓手。
 
-## Extracted Summary for `paper-index.md`
+真正的结构性阻塞主要在论文矩阵之外：Grad-TTS、DiffWave、FastDiff 与 Stable Diffusion 的完整实验资产尚未在仓库里呈现；真实 member split、文本条件处理和连续时间接口也还没有被统一进现有实验脚手架。因此，当前更合理的定位是“仓库已具备 PIA 主线入口，但尚未覆盖论文全量复现”。
 
-这篇论文研究扩散模型上的灰盒成员推断，目标是在攻击者看不到模型参数、但能访问 `t=0` 与目标时刻 `t` 的中间噪声相关输出时，判断给定样本是否出现在训练集中。作者特别关注查询代价问题，希望用比 `SecMI` 更少的查询获得稳定成员信号。
+## 14. 写回总索引用摘要
 
-作者提出 `PIA`（以及归一化版本 `PIAN`），核心做法是把模型在 `t=0` 的输出当作 proximal initialization，用它构造 groundtruth trajectory，再与时刻 `t` 的预测结果做 `\ell_p` 距离比较。论文在 DDPM、Stable Diffusion 与 Grad-TTS 上报告，`PIA/PIAN` 往往能达到与 `SecMI` 相当或更高的 AUC，并在 `TPR@1%FPR` 上更优，同时只需两次查询。
+这篇论文研究扩散模型上的灰盒成员推断，核心问题是在攻击者看不到模型参数、但能访问 `t=0` 与目标时刻 `t` 的中间输出时，能否以常数级查询判断样本是否属于训练集。
 
-它对 DiffAudit 的意义在于明确给出了灰盒路线里一个更低成本、可工程化的主力方法。当前仓库已经存在 `PIA` 的 planner、资产探测和 smoke 路径，因此这篇论文不仅是灰盒基线文献，也能直接支撑后续真实资产接入与运行链扩展。
+作者提出 `PIA` 与 `PIAN`。其关键做法是把模型在 `t=0` 的输出当作 proximal initialization，用它构造 groundtruth trajectory，再与时刻 `t` 的预测结果做 `\ell_p` 距离比较。实验表明，该方法在 DDPM、Stable Diffusion 与 Grad-TTS 上通常达到与 `SecMI` 相当或更高的 AUC，并在 `TPR@1%FPR` 上更优，同时只需两次查询。
+
+它对 DiffAudit 的价值在于提供了一条更低成本、更易工程化的灰盒主线。当前仓库已经有 `pia` 的计划器、探针和 smoke 流程，因此这篇论文既是方法学基线，也能直接服务后续实验接入与产品叙事。
