@@ -20,6 +20,7 @@ from diffaudit.attacks.recon import (
     explain_recon_assets,
     probe_recon_dry_run,
     run_recon_eval_smoke,
+    summarize_recon_artifacts,
 )
 from diffaudit.attacks.secmi import build_secmi_plan, explain_secmi_assets
 from diffaudit.attacks.variation import (
@@ -218,6 +219,21 @@ def build_parser() -> argparse.ArgumentParser:
         "--workspace",
         required=True,
         help="workspace directory for reconstruction eval smoke artifacts",
+    )
+
+    recon_artifact_summary_parser = subparsers.add_parser(
+        "summarize-recon-artifacts",
+        help="summarize reconstruction score artifacts into a repository summary",
+    )
+    recon_artifact_summary_parser.add_argument(
+        "--artifact-dir",
+        required=True,
+        help="directory containing target/shadow member and non-member score artifacts",
+    )
+    recon_artifact_summary_parser.add_argument(
+        "--workspace",
+        required=True,
+        help="workspace directory for the reconstruction artifact summary",
     )
 
     variation_synth_smoke_parser = subparsers.add_parser(
@@ -481,6 +497,14 @@ def main(argv: list[str] | None = None) -> int:
 
     if args.command == "run-recon-eval-smoke":
         payload = run_recon_eval_smoke(args.workspace)
+        print(json.dumps(payload, indent=2, ensure_ascii=True))
+        return 0
+
+    if args.command == "summarize-recon-artifacts":
+        payload = summarize_recon_artifacts(
+            artifact_dir=args.artifact_dir,
+            workspace=args.workspace,
+        )
         print(json.dumps(payload, indent=2, ensure_ascii=True))
         return 0
 

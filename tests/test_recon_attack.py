@@ -164,6 +164,72 @@ class ReconAttackTests(unittest.TestCase):
         self.assertIn("auc", payload["metrics"])
         self.assertFalse((root / "recon-eval-smoke" / "synthetic-score-artifacts").exists())
 
+    def test_summarize_recon_artifacts_writes_summary(self) -> None:
+        from diffaudit.attacks.recon import summarize_recon_artifacts
+
+        with tempfile.TemporaryDirectory() as tmpdir:
+            root = Path(tmpdir)
+            artifact_dir = root / "scores"
+            artifact_dir.mkdir()
+            torch_payloads = {
+                "target_member.pt": [([0.91], 1), ([0.88], 1), ([0.86], 1)],
+                "target_non_member.pt": [([0.18], 0), ([0.22], 0), ([0.25], 0)],
+                "shadow_member.pt": [([0.89], 1), ([0.84], 1), ([0.83], 1)],
+                "shadow_non_member.pt": [([0.17], 0), ([0.21], 0), ([0.24], 0)],
+            }
+            for filename, payload in torch_payloads.items():
+                import torch
+
+                torch.save(payload, artifact_dir / filename)
+
+            result = summarize_recon_artifacts(
+                artifact_dir=artifact_dir,
+                workspace=root / "recon-artifact-summary",
+            )
+
+            self.assertTrue((root / "recon-artifact-summary" / "summary.json").exists())
+
+        self.assertEqual(result["status"], "ready")
+        self.assertEqual(result["mode"], "artifact-summary")
+        self.assertIn("shadow_auc", result["metrics"])
+        self.assertIn("target_auc", result["metrics"])
+
+    def test_cli_summarizes_recon_artifacts(self) -> None:
+        from diffaudit.cli import main
+
+        with tempfile.TemporaryDirectory() as tmpdir:
+            root = Path(tmpdir)
+            artifact_dir = root / "scores"
+            artifact_dir.mkdir()
+            torch_payloads = {
+                "target_member.pt": [([0.91], 1), ([0.88], 1), ([0.86], 1)],
+                "target_non_member.pt": [([0.18], 0), ([0.22], 0), ([0.25], 0)],
+                "shadow_member.pt": [([0.89], 1), ([0.84], 1), ([0.83], 1)],
+                "shadow_non_member.pt": [([0.17], 0), ([0.21], 0), ([0.24], 0)],
+            }
+            for filename, payload in torch_payloads.items():
+                import torch
+
+                torch.save(payload, artifact_dir / filename)
+
+            stdout = StringIO()
+            with redirect_stdout(stdout):
+                exit_code = main(
+                    [
+                        "summarize-recon-artifacts",
+                        "--artifact-dir",
+                        str(artifact_dir),
+                        "--workspace",
+                        str(root / "recon-artifact-summary"),
+                    ]
+                )
+
+        payload = json.loads(stdout.getvalue())
+        self.assertEqual(exit_code, 0)
+        self.assertEqual(payload["status"], "ready")
+        self.assertEqual(payload["mode"], "artifact-summary")
+        self.assertIn("target_auc", payload["metrics"])
+
 
 if __name__ == "__main__":
     unittest.main()

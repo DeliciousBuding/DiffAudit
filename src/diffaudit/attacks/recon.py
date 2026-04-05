@@ -339,3 +339,70 @@ def run_recon_eval_smoke(workspace: str | Path) -> dict[str, object]:
     )
     shutil.rmtree(artifact_root, ignore_errors=True)
     return result
+
+
+def summarize_recon_artifacts(
+    artifact_dir: str | Path,
+    workspace: str | Path,
+) -> dict[str, object]:
+    artifact_path = Path(artifact_dir)
+    score_paths = {
+        "target_member": artifact_path / "target_member.pt",
+        "target_non_member": artifact_path / "target_non_member.pt",
+        "shadow_member": artifact_path / "shadow_member.pt",
+        "shadow_non_member": artifact_path / "shadow_non_member.pt",
+    }
+    for name, score_path in score_paths.items():
+        if not score_path.exists():
+            raise FileNotFoundError(f"Missing reconstruction artifact: {name} -> {score_path}")
+
+    shadow_member_scores, _ = _extract_recon_scores(score_paths["shadow_member"])
+    shadow_nonmember_scores, _ = _extract_recon_scores(score_paths["shadow_non_member"])
+    target_member_scores, _ = _extract_recon_scores(score_paths["target_member"])
+    target_nonmember_scores, _ = _extract_recon_scores(score_paths["target_non_member"])
+    shadow_metrics = _threshold_metrics(shadow_member_scores, shadow_nonmember_scores)
+    target_metrics = _threshold_metrics(target_member_scores, target_nonmember_scores)
+
+    workspace_path = Path(workspace)
+    workspace_path.mkdir(parents=True, exist_ok=True)
+    result = {
+        "status": "ready",
+        "track": "black-box",
+        "method": "recon",
+        "paper": "BlackBox_Reconstruction_ArXiv2023",
+        "mode": "artifact-summary",
+        "device": "cpu",
+        "workspace": str(workspace_path),
+        "artifact_paths": {
+            "summary": str(workspace_path / "summary.json"),
+        },
+        "assets": {
+            "artifact_files": sorted(score_paths.keys()),
+        },
+        "checks": {
+            "target_member_loaded": True,
+            "target_non_member_loaded": True,
+            "shadow_member_loaded": True,
+            "shadow_non_member_loaded": True,
+            "threshold_metrics_computed": True,
+        },
+        "metrics": {
+            "shadow_auc": round(float(shadow_metrics["auc"]), 6),
+            "shadow_asr": round(float(shadow_metrics["asr"]), 6),
+            "shadow_threshold": round(float(shadow_metrics["threshold"]), 6),
+            "target_auc": round(float(target_metrics["auc"]), 6),
+            "target_asr": round(float(target_metrics["asr"]), 6),
+            "target_threshold": round(float(target_metrics["threshold"]), 6),
+            "tpr_at_1pct_fpr": round(float(target_metrics["tpr_at_1pct_fpr"]), 6),
+            "auc": round(float(target_metrics["auc"]), 6),
+        },
+        "notes": [
+            "Summary is recomputed from reconstruction score artifacts compatible with the upstream accuracy script.",
+            "Current implementation reproduces the threshold-style path, not the neural classifier training loop.",
+        ],
+    }
+    (workspace_path / "summary.json").write_text(
+        json.dumps(result, indent=2, ensure_ascii=True),
+        encoding="utf-8",
+    )
+    return result

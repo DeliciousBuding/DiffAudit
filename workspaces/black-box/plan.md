@@ -21,6 +21,7 @@
 - `experiments/clid-dry-run-smoke/summary.json`
 - `experiments/clid-artifact-summary/summary.json`
 - `experiments/recon-eval-smoke/summary.json`
+- `experiments/recon-artifact-summary/summary.json`
 - `experiments/variation-synth-smoke/summary.json`
 
 ## 本地代码上下文
