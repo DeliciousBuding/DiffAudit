@@ -388,6 +388,10 @@ def _run_recon_subprocess(
     }
 
 
+def _count_generated_images(generated_dir: str | Path) -> int:
+    return len(list(Path(generated_dir).glob("image_*.jpg")))
+
+
 def _threshold_metrics(member_scores: np.ndarray, nonmember_scores: np.ndarray) -> dict[str, float]:
     min_value = float(min(member_scores.min(), nonmember_scores.min()))
     max_value = float(max(member_scores.max(), nonmember_scores.max()))
@@ -640,6 +644,20 @@ def run_recon_runtime_mainline(
         generated_dir = image_root / artifact_name
         generated_dir.mkdir(parents=True, exist_ok=True)
         score_path = score_root / f"{artifact_name}.pt"
+        if score_path.exists():
+            score_values, score_labels = _extract_recon_scores(score_path)
+            artifacts[artifact_name] = {
+                "status": "ready",
+                "stage": "reused",
+                "dataset_path": str(Path(spec["dataset"]).resolve()),
+                "model_dir": str(Path(spec["model_dir"]).resolve()),
+                "membership": int(spec["membership"]),
+                "generated_dir": str(generated_dir.resolve()),
+                "score_path": str(score_path.resolve()),
+                "sample_count": int(len(score_values)),
+                "label_sum": int(score_labels.sum()),
+            }
+            continue
         inference_command = [
             sys.executable,
             str((repo_path / "inference.py").resolve()),
@@ -658,7 +676,17 @@ def run_recon_runtime_mainline(
         ]
         if backend == "stable_diffusion":
             inference_command.extend(["--scheduler", scheduler])
-        inference_result = _run_recon_subprocess(inference_command, cwd=repo_path)
+        inference_reused = _count_generated_images(generated_dir) >= num_validation_images
+        if inference_reused:
+            inference_result = {
+                "returncode": 0,
+                "stdout_tail": [],
+                "stderr_tail": [],
+                "command": inference_command,
+                "stage": "reused",
+            }
+        else:
+            inference_result = _run_recon_subprocess(inference_command, cwd=repo_path)
         if inference_result["returncode"] != 0:
             all_artifacts_generated = False
             artifacts[artifact_name] = {
@@ -666,7 +694,7 @@ def run_recon_runtime_mainline(
                 "stage": "inference",
                 **inference_result,
             }
-            break
+            continue
 
         embedding_command = [
             sys.executable,
@@ -696,11 +724,12 @@ def run_recon_runtime_mainline(
                 "stage": "embedding",
                 **embedding_result,
             }
-            break
+            continue
 
         score_values, score_labels = _extract_recon_scores(score_path)
         artifacts[artifact_name] = {
             "status": "ready",
+            "stage": "generated",
             "dataset_path": str(Path(spec["dataset"]).resolve()),
             "model_dir": str(Path(spec["model_dir"]).resolve()),
             "membership": int(spec["membership"]),
