@@ -43,6 +43,7 @@ def create_minimal_recon_repo(repo_root: Path) -> None:
         "    parser.add_argument('--pretrained_model_name_or_path')\n"
         "    parser.add_argument('--num_validation_images', type=int, default=3)\n"
         "    parser.add_argument('--inference', type=int, default=30)\n"
+        "    parser.add_argument('--scheduler', default='default')\n"
         "    parser.add_argument('--output_dir')\n"
         "    parser.add_argument('--data_dir')\n"
         "    parser.add_argument('--save_dir')\n"
@@ -54,6 +55,7 @@ def create_minimal_recon_repo(repo_root: Path) -> None:
         "    count = len(payload.get('text', []))\n"
         "    save_dir = Path(args.save_dir)\n"
         "    save_dir.mkdir(parents=True, exist_ok=True)\n"
+        "    (save_dir / 'scheduler.txt').write_text(str(args.scheduler), encoding='utf-8')\n"
         "    for i in range(count):\n"
         "        for j in range(args.num_validation_images):\n"
         "            (save_dir / f'image_{i+1:02}_{j+1:02}.jpg').write_bytes(b'fake-jpg')\n"
@@ -657,6 +659,63 @@ class ReconAttackTests(unittest.TestCase):
         self.assertTrue(payload["checks"]["all_artifacts_generated"])
         self.assertEqual(payload["artifacts"]["target_member"]["sample_count"], 2)
         self.assertEqual(payload["stages"]["artifact_mainline"]["status"], "ready")
+
+    def test_cli_runs_recon_runtime_mainline_with_ddim_scheduler(self) -> None:
+        from diffaudit.cli import main
+
+        with tempfile.TemporaryDirectory() as tmpdir:
+            root = Path(tmpdir)
+            repo_root = root / "recon"
+            create_minimal_recon_repo(repo_root)
+
+            datasets = {}
+            for name in (
+                "target_member",
+                "target_non_member",
+                "shadow_member",
+                "shadow_non_member",
+            ):
+                dataset_path = root / f"{name}.pt"
+                create_recon_dataset_payload(dataset_path, count=1)
+                datasets[name] = dataset_path
+
+            target_model_dir = root / "target-lora"
+            shadow_model_dir = root / "shadow-lora"
+            target_model_dir.mkdir()
+            shadow_model_dir.mkdir()
+
+            stdout = StringIO()
+            with redirect_stdout(stdout):
+                exit_code = main(
+                    [
+                        "run-recon-runtime-mainline",
+                        "--target-member-dataset",
+                        str(datasets["target_member"]),
+                        "--target-nonmember-dataset",
+                        str(datasets["target_non_member"]),
+                        "--shadow-member-dataset",
+                        str(datasets["shadow_member"]),
+                        "--shadow-nonmember-dataset",
+                        str(datasets["shadow_non_member"]),
+                        "--target-model-dir",
+                        str(target_model_dir),
+                        "--shadow-model-dir",
+                        str(shadow_model_dir),
+                        "--workspace",
+                        str(root / "recon-runtime-mainline-ddim"),
+                        "--repo-root",
+                        str(repo_root),
+                        "--scheduler",
+                        "ddim",
+                    ]
+                )
+
+        payload = json.loads(stdout.getvalue())
+        self.assertEqual(exit_code, 0)
+        self.assertEqual(payload["status"], "ready")
+        self.assertEqual(payload["runtime"]["scheduler"], "ddim")
+        self.assertEqual(payload["runtime"]["backend"], "stable_diffusion")
+        self.assertIn("--scheduler", payload["artifacts"]["target_member"]["inference"]["command"])
 
 
 if __name__ == "__main__":

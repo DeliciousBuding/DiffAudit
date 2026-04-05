@@ -14,6 +14,7 @@ from diffaudit.attacks.clid import (
     run_clid_dry_run_smoke,
     summarize_clid_artifacts,
 )
+from diffaudit.attacks.dit import probe_dit_assets, run_dit_sample_smoke
 from diffaudit.attacks.pia import build_pia_plan, explain_pia_assets, probe_pia_dry_run
 from diffaudit.attacks.recon import (
     build_recon_plan,
@@ -140,6 +141,32 @@ def build_parser() -> argparse.ArgumentParser:
         "--repo-root",
         default="external/Reconstruction-based-Attack",
         help="path to local reconstruction-based attack repository root",
+    )
+
+    dit_asset_probe_parser = subparsers.add_parser(
+        "probe-dit-assets",
+        help="inspect official DiT sampling workspace and optional checkpoint readiness",
+    )
+    dit_asset_probe_parser.add_argument(
+        "--repo-root",
+        default="external/DiT",
+        help="path to local official DiT repository root",
+    )
+    dit_asset_probe_parser.add_argument(
+        "--model",
+        default="DiT-XL/2",
+        help="DiT model name passed to the official sample script",
+    )
+    dit_asset_probe_parser.add_argument(
+        "--image-size",
+        type=int,
+        default=256,
+        help="image size passed to the official sample script",
+    )
+    dit_asset_probe_parser.add_argument(
+        "--ckpt",
+        default=None,
+        help="optional local DiT checkpoint path; omitted means the official auto-download path",
     )
 
     variation_asset_probe_parser = subparsers.add_parser(
@@ -378,6 +405,16 @@ def build_parser() -> argparse.ArgumentParser:
         help="GPU index passed to the embedding script",
     )
     recon_runtime_mainline_parser.add_argument(
+        "--backend",
+        default="stable_diffusion",
+        help="runtime backend used to generate reconstruction images",
+    )
+    recon_runtime_mainline_parser.add_argument(
+        "--scheduler",
+        default="default",
+        help="stable diffusion scheduler used by the upstream inference script",
+    )
+    recon_runtime_mainline_parser.add_argument(
         "--method",
         default="threshold",
         help="evaluation method passed to the upstream script",
@@ -391,6 +428,49 @@ def build_parser() -> argparse.ArgumentParser:
         "--image-encoder",
         default="deit",
         help="image encoder passed to cal_embedding.py",
+    )
+
+    dit_sample_smoke_parser = subparsers.add_parser(
+        "run-dit-sample-smoke",
+        help="run the official DiT sample script and capture the generated sample image",
+    )
+    dit_sample_smoke_parser.add_argument(
+        "--workspace",
+        required=True,
+        help="workspace directory for DiT sample smoke artifacts",
+    )
+    dit_sample_smoke_parser.add_argument(
+        "--repo-root",
+        default="external/DiT",
+        help="path to local official DiT repository root",
+    )
+    dit_sample_smoke_parser.add_argument(
+        "--model",
+        default="DiT-XL/2",
+        help="DiT model name passed to the official sample script",
+    )
+    dit_sample_smoke_parser.add_argument(
+        "--image-size",
+        type=int,
+        default=256,
+        help="image size passed to the official sample script",
+    )
+    dit_sample_smoke_parser.add_argument(
+        "--num-sampling-steps",
+        type=int,
+        default=2,
+        help="number of diffusion sampling steps",
+    )
+    dit_sample_smoke_parser.add_argument(
+        "--seed",
+        type=int,
+        default=0,
+        help="random seed passed to the official sample script",
+    )
+    dit_sample_smoke_parser.add_argument(
+        "--ckpt",
+        default=None,
+        help="optional local DiT checkpoint path; omitted means the official auto-download path",
     )
 
     variation_synth_smoke_parser = subparsers.add_parser(
@@ -619,6 +699,16 @@ def main(argv: list[str] | None = None) -> int:
         print(json.dumps(payload, indent=2, ensure_ascii=True))
         return 0 if payload["status"] == "ready" else 1
 
+    if args.command == "probe-dit-assets":
+        payload = probe_dit_assets(
+            repo_root=args.repo_root,
+            ckpt=args.ckpt,
+            model=args.model,
+            image_size=args.image_size,
+        )
+        print(json.dumps(payload, indent=2, ensure_ascii=True))
+        return 0 if payload["status"] == "ready" else 1
+
     if args.command == "probe-variation-assets":
         config = load_audit_config(args.config)
         payload = explain_variation_assets(config)
@@ -740,9 +830,24 @@ def main(argv: list[str] | None = None) -> int:
             num_validation_images=args.num_validation_images,
             inference_steps=args.inference_steps,
             gpu=args.gpu,
+            backend=args.backend,
+            scheduler=args.scheduler,
             method=args.method,
             similarity_method=args.similarity_method,
             image_encoder=args.image_encoder,
+        )
+        print(json.dumps(payload, indent=2, ensure_ascii=True))
+        return 0 if payload["status"] == "ready" else 1
+
+    if args.command == "run-dit-sample-smoke":
+        payload = run_dit_sample_smoke(
+            workspace=args.workspace,
+            repo_root=args.repo_root,
+            model=args.model,
+            image_size=args.image_size,
+            num_sampling_steps=args.num_sampling_steps,
+            seed=args.seed,
+            ckpt=args.ckpt,
         )
         print(json.dumps(payload, indent=2, ensure_ascii=True))
         return 0 if payload["status"] == "ready" else 1

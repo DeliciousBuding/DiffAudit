@@ -142,6 +142,12 @@ workspaces/              多人协作工作区
 9. 需要拆阶段排查时，再分别执行 `run-recon-eval-smoke` / `summarize-recon-artifacts` / `run-recon-upstream-eval-smoke`
 10. 对仅有图像、缺原始 caption 的场景，再补 BLIP captioning 路线
 
+对 `DiT` 这条 transformer 扩散模型运行线，当前推荐命令顺序是：
+
+1. `probe-dit-assets`
+2. `run-dit-sample-smoke`
+3. 若需要自定义 checkpoint，再补 `--ckpt`
+
 对 `variation` 这条 API-only 黑盒线，当前推荐命令顺序是：
 
 1. `plan-variation`
@@ -348,6 +354,24 @@ python -m diffaudit probe-recon-runtime-assets --target-member-dataset path/to/t
 
 ```powershell
 python -m diffaudit run-recon-runtime-mainline --target-member-dataset path/to/target_member_dataset.pkl --target-nonmember-dataset path/to/target_nonmember_dataset.pkl --shadow-member-dataset path/to/shadow_member_dataset.pkl --shadow-nonmember-dataset path/to/shadow_nonmember_dataset.pkl --target-model-dir path/to/target_lora_checkpoint --shadow-model-dir path/to/shadow_lora_checkpoint --workspace experiments/recon-runtime-mainline --repo-root external/Reconstruction-based-Attack --method threshold
+```
+
+若要显式验证 `DDIM` 采样器路径，可追加：
+
+```powershell
+python -m diffaudit run-recon-runtime-mainline --target-member-dataset path/to/target_member_dataset.pkl --target-nonmember-dataset path/to/target_nonmember_dataset.pkl --shadow-member-dataset path/to/shadow_member_dataset.pkl --shadow-nonmember-dataset path/to/shadow_nonmember_dataset.pkl --target-model-dir path/to/target_lora_checkpoint --shadow-model-dir path/to/shadow_lora_checkpoint --workspace experiments/recon-runtime-mainline-ddim --repo-root external/Reconstruction-based-Attack --scheduler ddim --method threshold
+```
+
+探测官方 `DiT` 采样资产：
+
+```powershell
+python -m diffaudit probe-dit-assets --repo-root external/DiT --model "DiT-XL/2" --image-size 256
+```
+
+运行官方 `DiT` 最小采样 smoke：
+
+```powershell
+python -m diffaudit run-dit-sample-smoke --workspace experiments/dit-sample-smoke --repo-root external/DiT --model "DiT-XL/2" --image-size 256 --num-sampling-steps 2 --seed 0
 ```
 
 汇总 `recon` 分数 artifact：
