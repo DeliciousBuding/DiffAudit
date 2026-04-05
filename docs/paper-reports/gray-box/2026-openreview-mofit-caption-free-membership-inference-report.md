@@ -1,135 +1,104 @@
-# No Caption, No Problem: Caption-Free Membership Inference via Model-Fitted Embeddings
+# 无需 Caption 的成员推断：基于模型拟合嵌入的无文本审计
+No Caption, No Problem: Caption-Free Membership Inference via Model-Fitted Embeddings
 
-- Title: No Caption, No Problem: Caption-Free Membership Inference via Model-Fitted Embeddings
-- Material Path: `D:/Code/DiffAudit/Project/references/materials/gray-box/2026-openreview-mofit-caption-free-membership-inference.pdf`
-- Primary Track: `gray-box`
-- Venue / Year: ICLR 2026
-- Threat Model Category: Gray-box text-to-image diffusion membership inference without ground-truth captions
-- Core Task: 在仅有查询图像、缺少真实训练 caption 的情况下，判断该图像是否属于目标 LDM 的训练集
-- Open-Source Implementation: [JoonsungJeon/MoFit](https://github.com/JoonsungJeon/MoFit)
-- Report Status: completed
+- 英文标题：No Caption, No Problem: Caption-Free Membership Inference via Model-Fitted Embeddings
+- 中文标题：无需 Caption 的成员推断：基于模型拟合嵌入的无文本审计
+- 作者：Joonsung Jeon，Woo Jae Kim，Suhyeon Ha，Sooel Son，Sung-Eui Yoon
+- 发表 venue / year / version：ICLR 2026 conference paper
+- 论文主问题：在拿不到训练时真实 caption 的前提下，如何只凭查询图像对文生图 latent diffusion model 做成员推断
+- 威胁模型类别：灰盒，text-to-image diffusion membership inference，caption-free
+- 本地 PDF 路径：`D:\Code\DiffAudit\Project\references\materials\gray-box\2026-openreview-mofit-caption-free-membership-inference.pdf`
+- GitHub PDF 链接：[2026-openreview-mofit-caption-free-membership-inference.pdf](https://github.com/DeliciousBuding/DiffAudit/blob/main/references/materials/gray-box/2026-openreview-mofit-caption-free-membership-inference.pdf)
+- OCR / born-digital 精修版链接：[2026-openreview-mofit-caption-free-membership-inference-refined.md](../markdown/gray-box/2026-openreview-mofit-caption-free-membership-inference/2026-openreview-mofit-caption-free-membership-inference-refined.md)
+- 飞书原生 PDF 获取方式：本任务按用户要求仅处理本地文件，未做飞书同步
+- 开源实现：[JoonsungJeon/MoFit](https://github.com/JoonsungJeon/MoFit)
+- 报告状态：展示稿完成，本地落盘
 
-## Executive Summary
+## 1. 论文定位
 
-这篇论文关注一个比既有扩散模型成员推断更接近实际部署的问题：审计者往往能拿到可疑图像，却拿不到训练时配对的真实文本 caption。作者指出，现有针对 text-to-image latent diffusion model 的方法大多默认可访问 ground-truth caption；一旦改用 VLM 生成的替代 caption，条件去噪损失的分离度明显下降，成员与非成员的分布会重新重叠。
+这篇论文属于 gray-box 路线上的攻击论文，直接针对 text-to-image latent diffusion model 的成员推断，但把既有工作默认拥有 ground-truth caption 的前提去掉了。它在路线上的位置很明确：不是再做一个 caption-dependent 变体，而是把 CLiD 这一类依赖真实文本条件的思路推进到更现实的 caption-free 审计场景。
 
-论文提出 MOFIT，其核心不是“恢复真实 caption”，而是先把查询图像推向目标模型的无条件先验流形，再从这个 surrogate 中提取一个与 surrogate 强耦合、但与原图故意失配的条件嵌入。作者的经验观察是：成员样本对这种失配条件更敏感，`L_cond` 会更明显升高；非成员样本的变化则相对有限。MOFIT 正是把这种不对称敏感性放大为成员推断信号。
+## 2. 核心问题
 
-从论文报告的结果看，MOFIT 在 Pokemon、MS-COCO、Flickr 三个微调 SD v1.4 模型上都显著优于使用 VLM caption 的 Loss、SecMI、PIA、PFAMI 和 CLiD 基线；在 MS-COCO 上甚至超过了使用真实 caption 的 CLiD。对 DiffAudit 而言，这篇工作的重要性不只是“又一个更强攻击”，而是明确把 gray-box 路线从 caption-dependent 推向 caption-free，并给出了可操作的两阶段优化范式。
+论文要回答的技术问题是：如果审计者只有可疑图像，无法拿到训练时配对文本，那么还能否构造出足够强的条件信号，使成员样本与非成员样本在条件去噪损失上重新分离。更具体地说，作者要解决的不是“恢复真实 caption”，而是“在缺文本监督时重建一个比 VLM caption 更有区分度的条件嵌入”。
 
-## Bibliographic Record
+## 3. 威胁模型与前提
 
-- Title: No Caption, No Problem: Caption-Free Membership Inference via Model-Fitted Embeddings
-- Authors: Joonsung Jeon, Woo Jae Kim, Suhyeon Ha, Sooel Son, Sung-Eui Yoon
-- Venue / year / version: Published as a conference paper at ICLR 2026
-- Local PDF path: `D:/Code/DiffAudit/Project/references/materials/gray-box/2026-openreview-mofit-caption-free-membership-inference.pdf`
-- Source URL if known: 本地 PDF 未显式记录 OpenReview 页面 URL；代码仓库为 [https://github.com/JoonsungJeon/MoFit](https://github.com/JoonsungJeon/MoFit)
+攻击者可以访问目标 LDM 的去噪网络，并在固定时间步上读取条件与无条件损失；也可以对输入扰动和条件嵌入做梯度优化。攻击者看不到训练集真实 caption，但允许用 VLM 生成 caption 作为初始化。论文结论适用于可微访问的灰盒设定，不适用于只能拿到最终生成 API 的弱黑盒环境；同时，LoRA 微调场景会显著削弱方法有效性。
 
-## Research Question
+## 4. 方法总览
 
-论文试图回答的问题是：当审计者无法获得训练时的真实 caption，只能访问查询图像本身时，是否仍能对 text-to-image latent diffusion models 执行有效成员推断。其攻击设定不是纯黑盒，因为方法需要反复访问目标去噪模型的条件与无条件损失，并对输入扰动和条件嵌入做优化；但它比既有 caption-dependent 设定更弱，因为真实文本监督被移除了。
+MOFIT 分两步。第一步先把原始查询图像 \(x_0\) 推向目标模型已经学到的无条件先验流形，得到一个 model-fitted surrogate \(x_0^\*\)；第二步再从这个 surrogate 上反向优化出与之高度耦合的条件嵌入 \(\phi^\*\)。推断时作者并不把 \(\phi^\*\) 继续配给 surrogate，而是故意让原图 \(x_0\) 去搭配 \(\phi^\*\)，制造 image-condition mismatch。经验上，成员样本对这种错配更敏感，\(L_{\text{cond}}\) 的上升更明显，而非成员变化较小，于是重新拉开可分性。
 
-## Problem Setting and Assumptions
+## 5. 方法概览 / 流程
 
-- Access model: 攻击者可访问目标 LDM 的去噪过程、条件/无条件噪声预测损失，并能对输入扰动与条件嵌入做梯度优化。
-- Available inputs: 查询图像 `x`，目标模型 `\epsilon_\theta`，噪声日程，固定 timestep `t`，以及采样噪声 `\hat{\epsilon}`。
-- Available outputs: 条件损失、无条件损失，以及据此构造的成员分数。
-- Required priors or side information: 不需要 ground-truth caption；作者允许使用 VLM caption 仅作为嵌入初始化或辅助分数的条件来源。
-- Scope limits: 论文主要评估 text-conditioned latent diffusion models；LoRA 适配场景下性能明显下降，说明方法并非对所有参数化微调方式同样有效。
+从流程上看，MOFIT 先固定同一个时间步 \(t\) 和噪声 \(\hat{\epsilon}\)，在 null condition 下优化扰动 \(\delta\)，让 surrogate 在无条件分支上更贴近目标模型；然后把条件嵌入当成连续变量，继续在 surrogate 上最小化条件损失，得到 model-fitted embedding。最后在原图上计算 \(L_{\text{cond}}-L_{\text{uncond}}\)，并与辅助损失做稳健缩放后联合判定成员身份。
 
-## Method Overview
+![MOFIT 方法图](../assets/gray-box/2026-openreview-mofit-caption-free-membership-inference-key-figure-p5.png)
 
-MOFIT 分两阶段工作。第一阶段是 model-fitted surrogate optimization。给定原始查询图像 `x_0`，作者对扰动 `\delta` 做优化，使加入扰动后的 surrogate `x_0^\*=x_0+\delta^\*` 在无条件分支下更贴合目标模型学到的先验。这里的关键不是生成“视觉上更自然”的图片，而是让 surrogate 在目标模型内部表示空间中更像训练过的样本。
+这张图最关键的价值是把“surrogate 优化、embedding 提取、原图错配推断”三段式链路放在一张图里，便于后续把实现拆成独立模块。
 
-第二阶段是 surrogate-driven embedding extraction。作者把条件嵌入 `\phi` 当作连续变量，在固定 `t` 和 `\hat{\epsilon}` 的条件下，直接最小化 surrogate 的条件去噪损失，得到 `\phi^\*`。这样得到的 `(x_0^\*, \phi^\*)` 是一对对目标模型高度过拟合的 image-condition pair。最终做推断时，并不用 surrogate，而是把 `\phi^\*` 施加到原始图像 `x_0` 上，故意制造 image-condition mismatch。
+## 6. 关键技术细节
 
-论文的核心经验结论是：成员样本在这种失配条件下会出现更显著的 `L_cond` 上升，而非成员样本上升较小；与此同时，成员样本的 `L_uncond` 往往更低。于是 `L_cond-L_uncond` 的差异被重新拉开，形成 caption-free 成员推断信号。
-
-## Method Flow
-
-```mermaid
-flowchart TD
-    A["输入查询图像 x0（无 ground-truth caption）"] --> B["固定 timestep t 与噪声 ê"]
-    B --> C["阶段 1：在 null condition 下优化扰动 δ"]
-    C --> D["得到 surrogate x0* = x0 + δ*"]
-    D --> E["以 VLM 嵌入为初始化，阶段 2：优化条件嵌入 φ"]
-    E --> F["得到 model-fitted embedding φ*"]
-    F --> G["用原图 x0 + 条件 φ* 计算 Lcond"]
-    B --> H["用原图 x0 + null condition 计算 Luncond"]
-    G --> I["构造 LMOFIT = Lcond - Luncond"]
-    H --> I
-    I --> J["与辅助分数联合、robust scaling、阈值判定"]
-    J --> K["输出 member / hold-out"]
-```
-
-## Key Technical Details
-
-论文最重要的技术点不在于语言恢复，而在于通过 surrogate 将查询样本主动推向目标模型流形，再从该点抽取过拟合条件嵌入。第一阶段在无条件分支上最小化损失，使 surrogate 更贴近模型先验；第二阶段在相同 `t` 与 `\hat{\epsilon}` 下优化条件嵌入，使其与 surrogate 紧耦合。最终用原图和 `\phi^\*` 的错配来触发成员样本更强的条件损失响应。
+第一阶段的目标是找到一个更贴近模型无条件先验的 surrogate：
 
 $$
-\delta^\* := \arg\min_{\delta} \; \mathbb{E}_{z'_0,t,\hat{\epsilon}} \left[\left\lVert \hat{\epsilon} - \epsilon_\theta(z'_t, t, \phi_{\text{null}}) \right\rVert^2 \right]
+\delta^\* := \arg\min_{\delta}\; \mathbb{E}_{z'_0,t,\hat{\epsilon}}\left[\left\|\hat{\epsilon}-\epsilon_\theta(z'_t,t,\phi_{\text{null}})\right\|^2\right].
 $$
 
-$$
-\phi^\* := \arg\min_{\phi} \; \mathbb{E}_{z^\*_0,t,\hat{\epsilon}} \left[\left\lVert \hat{\epsilon} - \epsilon_\theta(z^\*_t, t, \phi) \right\rVert^2 \right]
-$$
+这里固定 \(t\) 和 \(\hat{\epsilon}\) 很重要，因为作者要让优化方向稳定下来，把图像沿着“更像模型已学分布”的方向推，而不是做随机噪声平均。
+
+第二阶段直接从 surrogate 提取条件嵌入：
 
 $$
-L_{\text{MOFIT}} = \mathbb{E}_{z_0,t,\hat{\epsilon}} \left[\left\lVert \hat{\epsilon} - \epsilon_\theta(z_t, t, \phi^\*) \right\rVert^2 \right] - \mathbb{E}_{z_0,t,\hat{\epsilon}} \left[\left\lVert \hat{\epsilon} - \epsilon_\theta(z_t, t, \phi_{\text{null}}) \right\rVert^2 \right]
+\phi^\* := \arg\min_{\phi}\; \mathbb{E}_{z_0^\*,t,\hat{\epsilon}}\left[\left\|\hat{\epsilon}-\epsilon_\theta(z_t^\*,t,\phi)\right\|^2\right].
 $$
 
-作者进一步把 `L_MOFIT` 与 `-L_aux` 做 robust scaling 后线性组合，再用阈值判定成员身份。其中 `L_aux` 取 `L_uncond` 或基于 VLM caption 的 `L_VLM`。这说明 MOFIT 不是完全替代既有损失信号，而是在 caption-free 场景下重建一个更可分的主信号，再与已有辅助信号融合。
+这一步不是在语义上恢复文本，而是在模型内部构造一个与 surrogate 过拟合配对的条件变量，因此它对原图来说天然是“错位但模型内高度可信”的条件。
 
-## Experimental Setup
+最终核心分数是
 
-- Datasets: Pokemon、MS-COCO、Flickr；另有预训练 Stable Diffusion v1.5 的补充实验。
-- Model families: 以 Stable Diffusion v1.4 微调模型为主，另评估 SD v1.5、v2.1、v3。
-- Baselines: Loss、SecMI、PIA、PFAMI、CLiD；caption-free 对比中统一使用 VLM 生成 caption。
-- Metrics: ASR、AUC、TPR@1%FPR。
-- Evaluation conditions: `t=140`，两阶段优化固定同一 `t` 与 `\hat{\epsilon}`；扰动沿梯度符号更新，嵌入用 Adam 优化；MS-COCO 与 Flickr 每类 500 张，Pokemon 使用全部样本。
+$$
+\mathcal{L}_{\text{MoFit}}=
+\mathbb{E}_{z_0,t,\hat{\epsilon}}\left[\left\|\hat{\epsilon}-\epsilon_\theta(z_t,t,\phi^\*)\right\|^2\right]
+-
+\mathbb{E}_{z_0,t,\hat{\epsilon}}\left[\left\|\hat{\epsilon}-\epsilon_\theta(z_t,t,\phi_{\text{null}})\right\|^2\right].
+$$
 
-## Main Results
+其作用不是单独替代所有旧信号，而是先重建 caption-free 主信号，再和 \(-L_{\text{aux}}\) 做 robust scaling 组合。论文的关键观察也由此成立：成员样本在错配条件下的 \(L_{\text{cond}}\) 抬升显著强于非成员。
 
-主结果见 Table 2。对 Pokemon，MOFIT 达到 94.48 ASR / 97.30 AUC / 50.48 TPR@1%FPR，显著高于 caption-free 的 CLiD（77.55 / 83.43 / 19.23）与其他基线，但仍低于 GT-captioned CLiD 的极高 TPR。对 MS-COCO，MOFIT 达到 88.00 / 94.17 / 47.00，不仅显著超过 caption-free CLiD 的 80.90 / 86.53 / 50.80，也超过了 GT-captioned CLiD 的 86.50 / 90.27。对 Flickr，MOFIT 达到 86.00 / 91.32 / 53.20，同样全面优于 VLM-captioned 基线。
+## 7. 实验设置
 
-在预训练 SD v1.5 上，MOFIT 的 ASR 为 77.61，几乎与 GT-captioned CLiD 的 77.38 持平，并把 TPR@1%FPR 提升到 41.30，远高于 caption-free 基线。论文还通过输入变体、数据增强、LoRA、不同大模型与医学数据等附录实验说明：MOFIT 的优势并非只存在于单一数据集，但其性能对参数化微调形式和运行预算是敏感的。
+主实验使用 Stable Diffusion v1.4 在 Pokemon、MS-COCO、Flickr 三个数据集上的微调模型；附录补充了 SD v1.5、v2.1、v3 和医学图像模型。基线包括 Loss、SecMI、PIA、PFAMI 与 CLiD；在 caption-free 对比里，这些基线统一改用 VLM caption。优化时固定 \(t=140\)、总扩散步数 \(T=1000\)，surrogate 阶段按梯度符号更新，embedding 阶段用 Adam。评价指标是 ASR、AUC 与 TPR@1%FPR；MS-COCO 与 Flickr 各采样 500/500 member-hold-out 图像，Pokemon 使用全部可用样本。
 
-## Strengths
+## 8. 主要结果
 
-- 威胁模型更现实，直接针对“只有图像、没有真实 caption”的审计条件。
-- 方法设计有明确机制解释，不是单纯经验堆叠；成员对错配条件更敏感这一观察贯穿问题动机、分数设计与结果分析。
-- 结果报告较完整，既有主表，也有 surrogate 有效性、输入变体、防御与跨模型附录。
-- 在 MS-COCO 上超过 GT-captioned CLiD，这一结果对 caption-free 设定具有较强说服力。
+主表结论很强，但需要分指标看。Pokemon 上，MOFIT 达到 94.48 ASR、97.30 AUC、50.48 TPR@1%FPR，远高于使用 VLM caption 的 CLiD 的 77.55、83.43、19.23，但仍明显低于 GT-captioned CLiD 的 90.14 TPR。MS-COCO 上，MOFIT 达到 88.00 ASR 和 94.17 AUC，超过 GT-captioned CLiD 的 86.50 和 90.27，不过在 TPR@1%FPR 上略低于 caption-free CLiD 的 50.80。Flickr 上，MOFIT 也稳定优于所有 VLM-captioned 基线。附录里，SD v1.5 上的 AUC 只有 71.03，但 TPR@1%FPR 仍达到 41.30，说明方法迁移到大模型后仍有可用性，但并不是全指标压倒性领先。
 
-## Limitations and Validity Threats
+## 9. 优点
 
-- 方法计算代价高，作者报告每张图像约 7 至 9 分钟；这会限制大规模审计吞吐。
-- 攻击需要反复访问目标模型内部损失并做优化，现实上更接近 gray-box 甚至接近 white-box 的可微访问，而非公开 API 式黑盒。
-- 论文将 VLM caption 用作嵌入初始化与部分辅助信号来源，因此“caption-free”准确地说是不依赖 ground-truth caption，而不是完全脱离文本侧先验。
-- LoRA 场景下 MOFIT 近乎退化到随机水平，说明结论并不自动外推到所有微调范式。
-- 论文的若干强结论依赖特定微调基座、固定 timestep 与阈值校准流程；跨实现复现时可能较敏感。
+第一，它把 gray-box 成员推断从“默认拿到真实文本”推进到更现实的 caption-free 设定。第二，方法机制是自洽的：作者先观察到成员对错配条件更敏感，再围绕这一点设计 surrogate 与 embedding 的两阶段优化。第三，实验不只报主表，还补了输入变体、LoRA、运行时和 early stopping，便于判断方法边界。
 
-## Reproducibility Assessment
+## 10. 局限与有效性威胁
 
-论文提供了公开代码，这是明显优点；同时正文与附录给出了步长、优化器、迭代次数、timestep、数据划分规模和辅助分数选择。要忠实复现，仍需要目标模型权重、对应成员/非成员划分、VLM caption 生成器、固定噪声与 timestep 设置，以及用于阈值/`γ` 校准的小规模已知成员与非成员样本。就当前 DiffAudit 仓库而言，本次任务未直接核验是否已有 MOFIT 两阶段优化实现；可以确认的是，本仓库已经沿 gray-box/black-box 路线收集了相关扩散模型 MIA 文献资产，因此该论文最适合作为“caption-free gray-box”节点补齐方法谱系。
+最明显的限制是访问假设偏强：攻击要读内部损失并反向优化，严格说更接近可微灰盒。其次，caption-free 并不等于完全摆脱文本先验，因为 \(\phi^\*\) 的初始化仍来自 VLM caption。第三，论文在预训练 SD v1.5 上没有沿用原始 LAION-mi member split，而是替换成 431 个已验证 memorized samples，这会增强信号，也限制了与标准 split 的直接横比。第四，LoRA 微调下 MOFIT 几乎退化到随机水平。最后，作者自己报告默认运行时间约 7 到 9 分钟每张图，吞吐明显受限。
 
-## Relevance to DiffAudit
+## 11. 对 DiffAudit 的价值
 
-这篇论文与 DiffAudit 的相关性很高。它直接覆盖 gray-box 路线中一个此前常被弱化的现实约束，即审计者拿不到训练 caption。相比依赖原始文本监督的 CLiD 类方法，MOFIT 提供了一条更可落地的审计路径：通过模型拟合 surrogate 和错配条件嵌入，把 caption 缺失转化为可利用的条件敏感性差异。对项目叙事而言，它能把“caption-dependent gray-box MIA”与“更现实的无文本审计设定”明确区分开，并提示两个后续方向：一是评估仓库现有路线是否能在无真实 caption 条件下退化使用；二是系统跟踪 LoRA 与训练时增强是否能作为有效防御。
+它可以直接进入 DiffAudit 的 gray-box 主线，而且更适合作为“caption-free gray-box”主论文，而不是普通补充材料。工程上，它提示我们把现有依赖 caption 的路线拆成两层：一层是直接用现成文本条件的攻击，一层是通过 surrogate 与拟合嵌入重建条件信号的攻击。叙事上，它还能和 CLiD 形成很清晰的对照：CLiD 说明文本条件泄露存在，MOFIT 说明即使拿不到真实文本，泄露仍然可被放大。
 
-## Recommended Figure
+## 12. 关键图使用方式
 
-- Figure page: 5
-- Crop box or note: `60 55 555 212`，仅保留 Figure 2 的流程图区域，不包含页正文
-- Why this figure matters: 该图最完整地展示了 MOFIT 的两阶段结构，即 surrogate 优化、embedding 提取以及最终成员判定的因果链条。相比只看结果表，这张图更能解释为什么方法在 caption-free 设定下仍能恢复分离度。
-- Local asset path: `../assets/gray-box/2026-openreview-mofit-caption-free-membership-inference-key-figure-p5.png`
+本报告只保留 1 张方法图，并放在第 5 节流程解释之后。它服务的目的不是展示结果数值，而是帮助读者快速理解实现拆分：先做 surrogate 优化，再做 embedding 提取，最后用原图与拟合嵌入错配打分。对 DiffAudit 来说，这张图最适合映射为后续实验脚本的三段式接口。
 
-![Key Figure](../assets/gray-box/2026-openreview-mofit-caption-free-membership-inference-key-figure-p5.png)
+## 13. 复现评估
 
-## Extracted Summary for `paper-index.md`
+复现需要的核心资产包括目标 LDM 权重、成员与非成员划分、可读取条件/无条件损失并支持反传的推理接口、VLM caption 初始化器，以及用于阈值和 \(\gamma\) 标定的小规模校准集。仓库当前缺的不是论文材料，而是显式的两阶段优化脚手架和运行缓存。结构性阻塞主要有两个：一是运行成本高，单图优化时间长；二是若只有黑盒 API，则 surrogate 与 embedding 两步都无法直接落地。
 
-这篇论文研究 text-to-image latent diffusion models 的成员推断问题，但把攻击条件收紧到更现实的 caption-free 设定：审计者只有查询图像，没有训练时的真实文本标注。作者指出，现有依赖 ground-truth caption 的方法在替换为 VLM 生成 caption 后，成员与非成员的条件损失分布会显著重叠，导致推断性能明显下降。
+## 14. 写回总索引用摘要
 
-论文提出 MOFIT。其做法不是恢复真实 caption，而是先在无条件分支上优化扰动，把查询图像推向目标模型学到的先验流形，得到 model-fitted surrogate；再从该 surrogate 中优化出与之紧耦合的条件嵌入 `\phi^\*`。推断时用原图与 `\phi^\*` 的故意失配来放大成员样本的条件损失响应，并用 `L_{\text{MOFIT}}=L_{cond}-L_{uncond}` 及辅助分数做判定。论文报告该方法在 Pokemon、MS-COCO、Flickr 上都显著优于 VLM-captioned 基线，并在 MS-COCO 上超过了使用真实 caption 的 CLiD。
+这篇论文解决的是文生图 latent diffusion model 在 caption-free 条件下的成员推断问题。与 CLiD 等默认持有真实 caption 的工作不同，它把攻击前提收紧到“只有查询图像，没有训练标注文本”。
 
-对 DiffAudit 来说，这篇工作的重要性在于它把 gray-box 路线推进到“不依赖真实 caption”的实际审计场景，并提供了一个可复用的两阶段优化框架。它也明确暴露了方法边界：需要可微访问目标模型、计算成本较高、且在 LoRA 场景下效果明显退化，因此既适合作为 caption-free gray-box 主线文献，也适合作为后续防御评估的参照点。
+核心方法是先在无条件分支上把查询图像优化成更贴近模型先验的 surrogate，再从 surrogate 中提取一个与之过拟合耦合的条件嵌入，并把该嵌入错配回原图来放大成员样本的条件损失。实验证明，这一机制能显著优于 VLM-captioned 基线，并在部分数据集上超过 GT-captioned CLiD 的 ASR/AUC。
+
+对 DiffAudit 而言，它的价值在于补齐了 gray-box 路线里最现实的一段空白：真实 caption 不可得时如何继续审计。它既适合作为 caption-free gray-box 主论文，也适合作为后续评估 LoRA、防御训练和运行时成本权衡的参照点。
