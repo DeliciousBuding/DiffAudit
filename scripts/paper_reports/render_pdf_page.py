@@ -2,11 +2,18 @@ from __future__ import annotations
 
 import argparse
 from pathlib import Path
+from typing import Sequence
 
 import fitz
 
 
-def render_page(pdf_path: Path, page_number: int, output_path: Path, dpi: int) -> None:
+def render_page(
+    pdf_path: Path,
+    page_number: int,
+    output_path: Path,
+    dpi: int,
+    clip: Sequence[float] | None = None,
+) -> None:
     if page_number < 1:
         raise ValueError("page_number must be >= 1")
 
@@ -14,7 +21,8 @@ def render_page(pdf_path: Path, page_number: int, output_path: Path, dpi: int) -
     try:
         page = document.load_page(page_number - 1)
         matrix = fitz.Matrix(dpi / 72.0, dpi / 72.0)
-        pixmap = page.get_pixmap(matrix=matrix, alpha=False)
+        clip_rect = fitz.Rect(*clip) if clip is not None else None
+        pixmap = page.get_pixmap(matrix=matrix, clip=clip_rect, alpha=False)
         output_path.parent.mkdir(parents=True, exist_ok=True)
         pixmap.save(output_path)
     finally:
@@ -34,9 +42,16 @@ def main() -> None:
         default=180,
         help="Render resolution in DPI (default: 180)",
     )
+    parser.add_argument(
+        "--clip",
+        type=float,
+        nargs=4,
+        metavar=("X0", "Y0", "X1", "Y1"),
+        help="Optional crop box in PDF points",
+    )
     args = parser.parse_args()
 
-    render_page(args.pdf, args.page, args.output, args.dpi)
+    render_page(args.pdf, args.page, args.output, args.dpi, args.clip)
 
 
 if __name__ == "__main__":

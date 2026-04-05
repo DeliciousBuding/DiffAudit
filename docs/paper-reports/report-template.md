@@ -30,6 +30,10 @@ flowchart TD
 
 ## Key Technical Details
 
+$$
+\\text{Insert core equation(s) here when applicable}
+$$
+
 ## Experimental Setup
 
 ## Main Results
@@ -43,6 +47,11 @@ flowchart TD
 ## Relevance to DiffAudit
 
 ## Recommended Figure
+
+- Figure page:
+- Crop box or note:
+- Why this figure matters:
+- Local asset path:
 
 ![Key Figure](../assets/<track>/<pdf-stem>-key-figure-p<page>.png)
 

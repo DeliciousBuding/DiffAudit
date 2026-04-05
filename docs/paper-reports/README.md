@@ -31,6 +31,7 @@ docs/paper-reports/
 - Report location: place reports under the track folder that matches `references/materials/<track>/`.
 - Image assets: store extracted figures under `docs/paper-reports/assets/<track>/`.
 - Key figure image name: `<pdf-stem>-key-figure-p<page>.png`.
+- If the figure is cropped from a page region, keep the same naming rule and record the crop box inside the report.
 
 ## Feishu Rules
 
@@ -38,3 +39,4 @@ docs/paper-reports/
 - Each Feishu doc must be readable by anyone with the link.
 - The master Feishu doc should link to the single-report Feishu docs by title.
 - If a figure asset is available, insert it into the single-report Feishu doc after the `Recommended Figure` section.
+- Prefer a cropped figure or table region over a full-page screenshot whenever the page contains significant surrounding body text.
