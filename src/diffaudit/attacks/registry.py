@@ -7,6 +7,7 @@ from typing import Any
 
 from diffaudit.attacks.clid import build_clid_plan
 from diffaudit.attacks.pia import build_pia_plan
+from diffaudit.attacks.recon import build_recon_plan
 from diffaudit.attacks.secmi import build_secmi_plan
 
 
@@ -20,4 +21,6 @@ def get_attack_planner(method: str) -> Planner:
         return build_pia_plan
     if method == "clid":
         return build_clid_plan
+    if method == "recon":
+        return build_recon_plan
     raise ValueError(f"Unsupported attack method: {method}")

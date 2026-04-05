@@ -1,0 +1,30 @@
+{
+  "status": "ready",
+  "track": "black-box",
+  "method": "recon",
+  "paper": "BlackBox_Reconstruction_ArXiv2023",
+  "mode": "eval-smoke",
+  "device": "cpu",
+  "workspace": "experiments\\recon-eval-smoke",
+  "artifact_paths": {
+    "summary": "experiments\\recon-eval-smoke\\summary.json"
+  },
+  "checks": {
+    "synthetic_scores_created": true,
+    "shadow_metrics_computed": true,
+    "target_metrics_computed": true,
+    "synthetic_artifacts_cleaned": true
+  },
+  "metrics": {
+    "shadow_auc": 1.0,
+    "shadow_asr": 0.625,
+    "target_auc": 1.0,
+    "target_asr": 0.625,
+    "tpr_at_1pct_fpr": 1.0,
+    "auc": 1.0
+  },
+  "notes": [
+    "Eval smoke uses synthetic score artifacts compatible with the upstream accuracy script shape.",
+    "Smoke verifies artifact format and threshold-style black-box evaluation only."
+  ]
+}

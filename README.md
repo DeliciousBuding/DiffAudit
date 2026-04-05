@@ -121,6 +121,14 @@ workspaces/              多人协作工作区
 5. `summarize-clid-artifacts`
 6. 资产到位后再评估真实 text-to-image 执行链
 
+对 `recon` 这条纯黑盒主线，当前推荐命令顺序是：
+
+1. `plan-recon`
+2. `probe-recon-assets`
+3. `dry-run-recon`
+4. `run-recon-eval-smoke`
+5. 真实资产到位后再接生成、embedding 和攻击评估三阶段执行
+
 ## 环境搭建
 
 创建并激活 conda 环境：
@@ -267,6 +275,30 @@ python -m diffaudit run-clid-dry-run-smoke --workspace experiments/clid-dry-run-
 
 ```powershell
 python -m diffaudit summarize-clid-artifacts --artifact-dir external/CLiD/inter_output/CLID --workspace experiments/clid-artifact-summary
+```
+
+生成 `recon` 计划：
+
+```powershell
+python -m diffaudit plan-recon --config configs/attacks/recon_plan.yaml
+```
+
+探测 `recon` 资产是否齐全：
+
+```powershell
+python -m diffaudit probe-recon-assets --config configs/attacks/recon_plan.yaml
+```
+
+运行 `recon` dry-run：
+
+```powershell
+python -m diffaudit dry-run-recon --config configs/attacks/recon_plan.yaml --repo-root external/Reconstruction-based-Attack
+```
+
+运行 `recon` eval smoke：
+
+```powershell
+python -m diffaudit run-recon-eval-smoke --workspace experiments/recon-eval-smoke
 ```
 
 ## 参考资料

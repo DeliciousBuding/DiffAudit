@@ -20,10 +20,12 @@
 
 - `experiments/clid-dry-run-smoke/summary.json`
 - `experiments/clid-artifact-summary/summary.json`
+- `experiments/recon-eval-smoke/summary.json`
 
 ## 本地代码上下文
 
 - `external/CLiD`
+- `external/Reconstruction-based-Attack`
 
 ## 推荐分工
 

@@ -13,6 +13,7 @@
 - `pia-synth-smoke-gpu/summary.json`：GPU PIA synthetic smoke 输出
 - `clid-dry-run-smoke/summary.json`：CLiD dry-run smoke 输出
 - `clid-artifact-summary/summary.json`：CLiD 上游 artifact 复算输出
+- `recon-eval-smoke/summary.json`：纯黑盒 reconstruction 评估 smoke 输出
 - `templates/`：统一结果结构模板
 
 ## 原则
