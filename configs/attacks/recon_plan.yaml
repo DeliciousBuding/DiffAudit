@@ -1,0 +1,19 @@
+task:
+  name: recon-plan
+  model_family: diffusion
+  access_level: black_box
+assets:
+  dataset_id: your-dataset-id
+  dataset_root: REPLACE_WITH_YOUR_QUERY_DATASET_PT
+  model_id: your-model-id
+  model_dir: REPLACE_WITH_YOUR_LORA_CHECKPOINT_DIR
+attack:
+  method: recon
+  num_samples: 8
+  parameters:
+    pretrained_model_name_or_path: runwayml/stable-diffusion-v1-5
+    num_validation_images: 3
+    inference_steps: 30
+    eval_method: threshold
+report:
+  output_dir: experiments/recon-plan

@@ -28,6 +28,13 @@ class AttackRegistryTests(unittest.TestCase):
 
         self.assertEqual(planner.__name__, "build_clid_plan")
 
+    def test_returns_recon_planner(self) -> None:
+        from diffaudit.attacks.registry import get_attack_planner
+
+        planner = get_attack_planner("recon")
+
+        self.assertEqual(planner.__name__, "build_recon_plan")
+
     def test_rejects_unknown_attack(self) -> None:
         from diffaudit.attacks.registry import get_attack_planner
 
