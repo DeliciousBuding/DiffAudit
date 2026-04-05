@@ -13,6 +13,7 @@ materials/
   context/
   manifest.csv
   README.md
+  paper-index.md
 ```
 
 Rules:
@@ -48,7 +49,7 @@ Rules:
 | `gray-box` | `2023-icml-secmi-membership-inference-diffusion-models.pdf`, `2024-iclr-pia-proximal-initialization.pdf`, `2025-arxiv-sima-score-based-membership-inference-diffusion-models.pdf`, `2025-arxiv-small-noise-injection-membership-inference-diffusion-models.pdf` |
 | `white-box` | `2025-popets-white-box-membership-inference-diffusion-models.pdf`, `2024-neurips-finding-nemo-localizing-memorization-neurons-diffusion-models.pdf` |
 | `context` | `diffaudit-team-onboarding.pdf`, `diffaudit-product-requirements.pdf` |
-| `survey` | `tracing-the-roots-local-mirror.pdf`, `archive-item-01.pdf` to `archive-item-07.pdf`, `archive-index.pdf` |
+| `survey` | `2025-tracing-the-roots-leveraging-temporal-dynamics-in-diffusion-trajectories-for-origin-attribution.pdf`, `2025-dp-docldm-differentially-private-document-image-generation-using-latent-diffusion-models.pdf`, `2025-privacy-preserving-low-rank-adaptation-against-membership-inference-attacks-for-latent-diffusion-models.pdf`, `2024-dual-model-defense-safeguarding-diffusion-models-from-membership-inference-attacks-through-disjoint-data-splitting.pdf`, `2025-diffence-fencing-membership-privacy-with-diffusion-models.pdf`, `2025-defending-diffusion-models-against-membership-inference-attacks-via-higher-order-langevin-dynamics.pdf`, `2026-inference-attacks-against-graph-generative-diffusion-models.pdf`, `2025-perturb-a-model-not-an-image-towards-robust-privacy-protection-via-anti-personalized-diffusion-models.pdf`, `legacy-survey-archive-index.pdf` |
 
 ## Source of Truth
 

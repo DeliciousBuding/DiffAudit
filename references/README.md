@@ -18,6 +18,7 @@ The old Chinese folder layout has been removed.
 
 - `materials/manifest.csv`: machine-readable source of truth with path, track, scores, provenance and hashes
 - `materials/README.md`: human-readable layout, naming rules and scoring rubric
+- `materials/paper-index.md`: human-readable paper-by-paper summary index with open-source links when available
 
 ## Maintenance rules
 
