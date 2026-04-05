@@ -5,8 +5,8 @@
 - `owner`: active-thread
 - `scope`: 黑盒成员推断、数据集级审计、black-box leakage 线索整理
 - `status`: 进行中
-- `blocked by`: 真实 checkpoint、与论文一致的数据布局、可直接复用的 black-box 目标/影子 artifact
-- `next command`: `conda run -n diffaudit-research python -m diffaudit probe-recon-score-artifacts --artifact-dir path/to/recon-scores`
+- `blocked by`: `recon` 公开资产包（DOI: `10.5281/zenodo.13371475`）虽然可获取，但 target/shadow/member/non-member 的运行时映射仍需核准
+- `next command`: `conda run -n diffaudit-research python -m diffaudit probe-recon-runtime-assets --target-member-dataset path/to/target_member_dataset.pkl --target-nonmember-dataset path/to/target_nonmember_dataset.pkl --shadow-member-dataset path/to/shadow_member_dataset.pkl --shadow-nonmember-dataset path/to/shadow_nonmember_dataset.pkl --target-model-dir path/to/target_lora_checkpoint --shadow-model-dir path/to/shadow_lora_checkpoint --repo-root external/Reconstruction-based-Attack`
 - `last updated`: 2026-04-05
 
 ## 主论文与场景
@@ -31,6 +31,7 @@
 
 - `external/CLiD`
 - `external/Reconstruction-based-Attack`
+- 公开资产包：`https://doi.org/10.5281/zenodo.13371475`
 
 ## 推荐分工
 
@@ -43,14 +44,15 @@
 ## 一周行动清单
 
 1. 保持 `recon` 统一 mainline smoke 可重复执行，并在拿到 score artifact 后先跑 `probe-recon-score-artifacts` 再转到 `run-recon-artifact-mainline`
-2. 把真实 target/shadow score artifact 的命名和目录约束落实到 `recon` 主线
-3. 明确 `recon` 真实资产最小集合：LoRA checkpoint、生成图像目录、embedding 输入、target/shadow 分割
-4. 评估 `variation` 真实 API 调用所需的凭据、预算和 query image 约束
-5. 评估 `CLiD` 的真实 text-to-image 资产是否可在当前机器上最小复现
-6. 维持黑盒状态文档、实验目录和主线命令说明同步
+2. 用 `probe-recon-runtime-assets` 先核准本机 `recon` 公开 Zenodo 资产的 target/shadow/member/non-member 映射
+3. 若映射成立，直接执行 `run-recon-runtime-mainline` 生成真实 score artifact
+4. 把真实 target/shadow score artifact 的命名和目录约束落实到 `recon` 主线
+5. 评估 `variation` 真实 API 调用所需的凭据、预算和 query image 约束
+6. 评估 `CLiD` 的真实 text-to-image 资产是否可在当前机器上最小复现
+7. 维持黑盒状态文档、实验目录和主线命令说明同步
 
 ## 当前阻塞项
 
-- 缺真实 checkpoint 与 target/shadow score artifact
-- 缺与论文一致的实验数据布局
+- 公开 `recon` checkpoint 与 dataset 已在本机落地，但运行时语义映射尚未核准
+- 仍缺与论文一致的 target/shadow/member/non-member 直接映射说明
 - 黑盒不同论文的攻击假设并不完全相同，需要统一术语
