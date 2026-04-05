@@ -26,6 +26,8 @@ class AssetConfig:
     dataset_name: str | None = None
     dataset_root: str | None = None
     model_dir: str | None = None
+    dataset_train_ref: str | None = None
+    dataset_test_ref: str | None = None
 
 
 @dataclass(frozen=True)

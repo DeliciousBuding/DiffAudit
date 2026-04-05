@@ -1,0 +1,35 @@
+{
+  "status": "ready",
+  "track": "black-box",
+  "method": "clid",
+  "paper": "CLiD_NeurIPS2024",
+  "mode": "dry-run-smoke",
+  "device": "cpu",
+  "workspace": "experiments\\clid-dry-run-smoke",
+  "artifact_paths": {
+    "summary": "experiments\\clid-dry-run-smoke\\summary.json"
+  },
+  "assets": {
+    "repo_root": "external\\CLiD",
+    "attack_variant": "clid_impt",
+    "dataset_train_ref": "synthetic/train-ref",
+    "dataset_test_ref": "synthetic/test-ref"
+  },
+  "checks": {
+    "dataset_train_ref": true,
+    "dataset_test_ref": true,
+    "model_dir": true,
+    "model_subdirs": true,
+    "workspace_files": true,
+    "entrypoint_has_attack_flag": true,
+    "script_uses_load_dataset": true,
+    "script_uses_diffusers": true,
+    "dry_run_ready": true,
+    "synthetic_assets_cleaned": true
+  },
+  "notes": [
+    "Dry-run smoke uses synthetic model folders to verify CLiD config and workspace readiness.",
+    "Synthetic assets are removed after the summary is written."
+  ],
+  "entrypoint": "external\\CLiD\\mia_CLiD_impt.py"
+}

@@ -1,0 +1,21 @@
+task:
+  name: clid-plan
+  model_family: diffusion
+  access_level: black_box
+assets:
+  dataset_id: your-dataset-id
+  dataset_train_ref: REPLACE_WITH_TRAIN_DATASET_REF
+  dataset_test_ref: REPLACE_WITH_TEST_DATASET_REF
+  model_id: your-model-id
+  model_dir: REPLACE_WITH_YOUR_DIFFUSERS_MODEL_DIR
+attack:
+  method: clid
+  num_samples: 8
+  parameters:
+    variant: clid_impt
+    max_n_samples: 3
+    resolution: 512
+    image_column: image
+    caption_column: text
+report:
+  output_dir: experiments/clid-plan
