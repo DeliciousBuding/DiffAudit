@@ -9,8 +9,8 @@
 
 ## 当前推荐主线
 
-- 主论文：`2025-324-paper.pdf`
-- 对照论文：`Towards Black-Box Membership Inference Attack for Diffusion Model.pdf`
+- 主论文：`2025-ndss-black-box-membership-inference-fine-tuned-diffusion-models.pdf`
+- 对照论文：`2024-arxiv-towards-black-box-membership-inference-diffusion-models.pdf`
 
 ## 当前补充文档
 

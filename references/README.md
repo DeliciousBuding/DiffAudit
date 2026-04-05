@@ -1,26 +1,29 @@
-# 参考资料
+# References
 
-这里存放项目层面的参考资料索引和镜像材料说明。
+This directory stores the repository-level reference index and the mirrored PDF materials used during research and reproduction.
 
-## 目录说明
+## What changed
 
-- `materials/`：从本地调研资料目录镜像过来的 PDF 材料
+`references/materials/` is now organized with English-only folders:
 
-## 当前维护方式
+- `black-box/`
+- `gray-box/`
+- `white-box/`
+- `survey/`
+- `context/`
 
-参考资料不再只靠文件名管理。
+The old Chinese folder layout has been removed.
 
-- `materials/README.md`：人工可读索引
-- `materials/manifest.csv`：文件级 manifest，记录来源、哈希与说明
+## Index files
 
-## 使用原则
+- `materials/manifest.csv`: machine-readable source of truth with path, track, scores, provenance and hashes
+- `materials/README.md`: human-readable layout, naming rules and scoring rubric
 
-这些材料用于：
+## Maintenance rules
 
-- 团队调研期共享阅读上下文
-- 复现任务对齐
-- 公开仓库中的研究背景说明
+- Keep PDF file names ASCII-only and kebab-case.
+- Prefer one canonical copy per paper.
+- Record every new PDF in `manifest.csv`.
+- Use `credibility_score` and `reference_value_score` to make triage explicit instead of relying on filename intuition.
 
-不要把“仓库里有 PDF”理解成“这些论文已经全部复现完成”。
-
-具体索引见 [materials/README.md](/D:/Code/DiffAudit/Project/references/materials/README.md)。
+Do not treat the presence of a PDF as proof that the paper has already been reproduced.

@@ -11,13 +11,13 @@
 
 ## 推荐论文
 
-- `SecMI_ICML2023.pdf`
-- `PIA_ICLR2024.pdf`
-- `CLiD_NeurIPS2024.pdf`
-- `StructuralMemorization_arXiv2024.pdf`
-- `11574_No_Caption_No_Problem_Ca.pdf`
-- `SimA_arXiv2025.pdf`
-- `SmallNoiseInjection_arXiv2025.pdf`
+- `2023-icml-secmi-membership-inference-diffusion-models.pdf`
+- `2024-iclr-pia-proximal-initialization.pdf`
+- `2024-neurips-clid-membership-inference-text-to-image-diffusion.pdf`
+- `2024-arxiv-structural-memorization-membership-inference-text-to-image-diffusion.pdf`
+- `2026-openreview-mofit-caption-free-membership-inference.pdf`
+- `2025-arxiv-sima-score-based-membership-inference-diffusion-models.pdf`
+- `2025-arxiv-small-noise-injection-membership-inference-diffusion-models.pdf`
 
 ## 当前定义建议
 

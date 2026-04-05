@@ -1,52 +1,66 @@
-# 镜像材料说明
+# Materials Index
 
-这里镜像了 DiffAudit 团队当前调研阶段使用的 PDF 材料。
+`references/materials/` stores the local PDF mirror used by the DiffAudit research workflow.
 
-## 体量说明
+## Layout
 
-- 当前镜像 PDF 总大小约为 `123.75 MB`
-- 最大单个 PDF 约为 `27 MB`
+```text
+materials/
+  black-box/
+  gray-box/
+  white-box/
+  survey/
+  context/
+  manifest.csv
+  README.md
+```
 
-这低于 GitHub 普通仓库的 `100 MiB` 单文件硬限制。
+Rules:
 
-## 权利说明
+- Use English folder names only.
+- Use ASCII lowercase kebab-case file names.
+- Prefer `year-venue-short-title.pdf`.
+- Keep one canonical copy for the same paper whenever possible.
 
-这些 PDF 仅作为团队调研和公开研究上下文的镜像材料。原始版权仍归对应作者、出版社或上游来源所有。
+## Scoring Rubric
 
-## manifest
+`credibility_score`
 
-除了这份人工可读索引外，还维护：
+- `5`: peer-reviewed flagship venue or official publisher copy
+- `4`: arXiv or OpenReview preprint with clear research relevance
+- `3`: internal context document or local mirror with known provenance
+- `2`: mirrored or partially normalized material with unclear provenance
+- `1`: unclassified legacy archive item
 
-- `manifest.csv`：记录相对路径、来源、访问日期、SHA256 和简要说明
+`reference_value_score`
 
-后续新增 PDF 时，建议同步更新 manifest，而不是只把文件扔进目录。
+- `5`: core paper for the current DiffAudit implementation route
+- `4`: strong secondary reference with direct design value
+- `3`: useful scenario extension or supporting background
+- `2`: weak or indirect reference
+- `1`: not yet normalized enough for active research use
 
-## 索引
+## Canonical Highlights
 
-| 文件 | 主题 | 方向 | 优先级 |
-| --- | --- | --- | --- |
-| `DiffAudit_团队入门扫盲文档.pdf` | 团队入门和项目定位 | survey | 必读 |
-| `产品需求文档 (PRD) -.pdf` | 项目需求与范围背景 | survey | 必读 |
-| `qy_White-box Membership Inference Attacks againstDiffusion Models.pdf` | 扩散模型白盒成员推断 | white-box | 必读 |
-| `Towards Black-Box Membership Inference Attack for Diffusion Model.pdf` | 扩散模型黑盒成员推断 | black-box | 必读 |
-| `参考论文/Towards Black-Box Membership Inference Attack for Diffusion .pdf` | 黑盒成员推断补充材料 | black-box | 可选 |
-| `参考论文/2025-324-paper.pdf` | 微调扩散模型上的黑盒成员推断 | black-box | 必读 |
-| `参考论文/WhiteBox_PoPETs2025.pdf` | 扩散模型白盒成员推断主论文 | white-box | 必读 |
-| `参考论文/SecMI_ICML2023.pdf` | 扩散模型成员推断基础论文 | gray-box | 必读 |
-| `参考论文/PIA_ICLR2024.pdf` | 面向扩散模型的高效成员推断 | gray-box | 必读 |
-| `参考论文/CLiD_NeurIPS2024.pdf` | text-to-image 场景下的成员推断 | black-box | 必读 |
-| `参考论文/CDI_CVPR2025.pdf` | 数据集级版权/训练数据审计 | gray-box | 必读 |
-| `参考论文/FindingNeMo_NeurIPS2024.pdf` | 记忆相关神经元定位 | white-box | 必读 |
-| `参考论文/StructuralMemorization_arXiv2024.pdf` | text-to-image 结构型成员推断 | gray-box | 必读 |
-| `参考论文/NoiseAsAProbe_arXiv2026.pdf` | 初始噪声探针成员推断 | gray-box | 可选 |
-| `参考论文/SIDE_arXiv2024.pdf` | 训练数据提取与理论背景 | gray-box | 可选 |
-| `参考论文/11574_No_Caption_No_Problem_Ca.pdf` | 扩散模型隐私或溯源相关论文 | survey | 可选 |
-| `参考论文/15927_Tracing_the_Roots_Levera.pdf` | 溯源或归因相关论文 | survey | 可选 |
-| `论文/论文1.pdf` | 文献整理归档条目 1 | survey | 可选 |
-| `论文/论文2.pdf` | 文献整理归档条目 2 | survey | 可选 |
-| `论文/论文3.pdf` | 文献整理归档条目 3 | survey | 可选 |
-| `论文/论文4.pdf` | 文献整理归档条目 4 | survey | 可选 |
-| `论文/论文5.pdf` | 文献整理归档条目 5 | survey | 可选 |
-| `论文/论文6.pdf` | 文献整理归档条目 6 | survey | 可选 |
-| `论文/论文7.pdf` | 文献整理归档条目 7 | survey | 可选 |
-| `论文/论文索引.pdf` | 文献索引 | survey | 可选 |
+| Track | Canonical files |
+| --- | --- |
+| `black-box` | `2025-ndss-black-box-membership-inference-fine-tuned-diffusion-models.pdf`, `2024-arxiv-towards-black-box-membership-inference-diffusion-models.pdf`, `2024-neurips-clid-membership-inference-text-to-image-diffusion.pdf` |
+| `gray-box` | `2023-icml-secmi-membership-inference-diffusion-models.pdf`, `2024-iclr-pia-proximal-initialization.pdf`, `2025-arxiv-sima-score-based-membership-inference-diffusion-models.pdf`, `2025-arxiv-small-noise-injection-membership-inference-diffusion-models.pdf` |
+| `white-box` | `2025-popets-white-box-membership-inference-diffusion-models.pdf`, `2024-neurips-finding-nemo-localizing-memorization-neurons-diffusion-models.pdf` |
+| `context` | `diffaudit-team-onboarding.pdf`, `diffaudit-product-requirements.pdf` |
+| `survey` | `tracing-the-roots-local-mirror.pdf`, `archive-item-01.pdf` to `archive-item-07.pdf`, `archive-index.pdf` |
+
+## Source of Truth
+
+`manifest.csv` is the full index.
+
+Columns:
+
+- `relative_path`: canonical path under `references/materials/`
+- `primary_track`: primary physical category
+- `track_tags`: multi-track labels when a paper spans more than one threat model
+- `credibility_score`: source quality score from `1` to `5`
+- `reference_value_score`: project usefulness score from `1` to `5`
+- `source_url`, `accessed_at`, `sha256`, `size_bytes`, `license_note`, `notes`: provenance and maintenance fields
+
+When adding a new PDF, update `manifest.csv` in the same commit.

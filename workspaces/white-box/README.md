@@ -9,7 +9,7 @@
 
 ## 当前建议任务
 
-1. 先围绕 `WhiteBox_PoPETs2025.pdf` 和 `FindingNeMo_NeurIPS2024.pdf` 收束首批目标
+1. 先围绕 `2025-popets-white-box-membership-inference-diffusion-models.pdf` 和 `2024-neurips-finding-nemo-localizing-memorization-neurons-diffusion-models.pdf` 收束首批目标
 2. 明确需要的内部访问权限：loss、gradient、intermediate states、完整 checkpoint 等
 3. 先看 `signal-access-matrix.md`，把可用内部信号写成统一表
 4. 把白盒方向的最小实验假设写清楚，再考虑接代码
