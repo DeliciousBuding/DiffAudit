@@ -7,6 +7,8 @@ import shutil
 from dataclasses import dataclass
 from pathlib import Path
 
+import numpy as np
+
 from diffaudit.config import (
     AssetConfig,
     AttackConfig,
@@ -327,4 +329,220 @@ def run_clid_dry_run_smoke(
         encoding="utf-8",
     )
     shutil.rmtree(synthetic_root, ignore_errors=True)
+    return result
+
+
+def load_clid_score_matrix(score_path: str | Path) -> np.ndarray:
+    rows: list[list[float]] = []
+    with Path(score_path).open("r", encoding="utf-8") as handle:
+        for raw_line in handle:
+            line = raw_line.strip()
+            if not line:
+                continue
+            try:
+                rows.append([float(value) for value in line.split("\t")])
+            except ValueError:
+                continue
+    if not rows:
+        raise ValueError(f"No numeric score rows found in {score_path}")
+    return np.asarray(rows, dtype=float)
+
+
+def _find_single_artifact(artifact_dir: Path, pattern: str) -> Path:
+    matches = sorted(artifact_dir.glob(pattern))
+    if not matches:
+        raise FileNotFoundError(f"No CLiD artifact matched pattern: {pattern}")
+    if len(matches) > 1:
+        raise ValueError(f"Multiple CLiD artifacts matched pattern: {pattern}")
+    return matches[0]
+
+
+def _extract_clid_features(matrix: np.ndarray) -> np.ndarray:
+    if matrix.ndim != 2 or matrix.shape[1] < 2:
+        raise ValueError("CLiD artifact matrix must have at least two columns")
+    clid_avg = -matrix[:, 1:].mean(axis=1)
+    return np.column_stack((matrix[:, 0], clid_avg))
+
+
+def _robust_fit(features: np.ndarray) -> tuple[np.ndarray, np.ndarray]:
+    center = np.median(features, axis=0)
+    q1 = np.percentile(features, 25, axis=0)
+    q3 = np.percentile(features, 75, axis=0)
+    scale = q3 - q1
+    scale[scale == 0] = 1.0
+    return center, scale
+
+
+def _robust_transform(features: np.ndarray, center: np.ndarray, scale: np.ndarray) -> np.ndarray:
+    return (features - center) / scale
+
+
+def _weighted_score(features: np.ndarray, alpha: float) -> np.ndarray:
+    return (1.0 - alpha) * features[:, 0] + alpha * features[:, 1]
+
+
+def _auc_member_low(train_scores: np.ndarray, test_scores: np.ndarray) -> float:
+    wins = (train_scores[:, None] < test_scores[None, :]).astype(float)
+    ties = (train_scores[:, None] == test_scores[None, :]).astype(float) * 0.5
+    return float((wins + ties).mean())
+
+
+def _search_threshold(train_scores: np.ndarray, test_scores: np.ndarray) -> dict[str, float]:
+    min_value = float(min(train_scores.min(), test_scores.min()))
+    max_value = float(max(train_scores.max(), test_scores.max()))
+    if min_value == max_value:
+        threshold = min_value
+        asr = 0.5
+        auc = _auc_member_low(train_scores, test_scores)
+        return {
+            "threshold": threshold,
+            "asr": asr,
+            "auc": auc,
+            "tpr_at_1pct_fpr": 0.0,
+        }
+
+    best_threshold = min_value
+    best_asr = -1.0
+    thresholds = np.linspace(min_value, max_value, num=2000, endpoint=True)
+    tpr_points: list[float] = []
+    fpr_points: list[float] = []
+    for threshold in thresholds:
+        tp = float((train_scores <= threshold).sum())
+        tn = float((test_scores > threshold).sum())
+        fp = float((test_scores <= threshold).sum())
+        fn = float((train_scores > threshold).sum())
+        tpr = tp / (tp + fn) if tp + fn else 0.0
+        fpr = fp / (fp + tn) if fp + tn else 0.0
+        asr = (tp + tn) / (tp + tn + fp + fn)
+        tpr_points.append(tpr)
+        fpr_points.append(fpr)
+        if asr > best_asr:
+            best_asr = asr
+            best_threshold = float(threshold)
+
+    order = np.argsort(fpr_points)
+    sorted_fpr = np.asarray(fpr_points)[order]
+    sorted_tpr = np.asarray(tpr_points)[order]
+    integrate = getattr(np, "trapezoid", None)
+    if integrate is None:
+        integrate = np.trapz
+    auc = float(integrate(sorted_tpr, sorted_fpr))
+    tpr_at_1pct_fpr = 0.0
+    for fpr, tpr in zip(sorted_fpr, sorted_tpr):
+        if fpr >= 0.01:
+            tpr_at_1pct_fpr = float(tpr)
+            break
+
+    return {
+        "threshold": best_threshold,
+        "asr": float(best_asr),
+        "auc": auc,
+        "tpr_at_1pct_fpr": tpr_at_1pct_fpr,
+    }
+
+
+def summarize_clid_artifacts(
+    artifact_dir: str | Path,
+    workspace: str | Path,
+) -> dict[str, object]:
+    artifact_path = Path(artifact_dir)
+    shadow_train_path = _find_single_artifact(artifact_path, "*split1*TRTE_train*.txt")
+    shadow_test_path = _find_single_artifact(artifact_path, "*split1*TRTE_test*.txt")
+    target_train_path = _find_single_artifact(artifact_path, "*ori*TRTE_train*.txt")
+    target_test_path = _find_single_artifact(artifact_path, "*ori*TRTE_test*.txt")
+
+    shadow_train_features = _extract_clid_features(load_clid_score_matrix(shadow_train_path))
+    shadow_test_features = _extract_clid_features(load_clid_score_matrix(shadow_test_path))
+    target_train_features = _extract_clid_features(load_clid_score_matrix(target_train_path))
+    target_test_features = _extract_clid_features(load_clid_score_matrix(target_test_path))
+
+    center, scale = _robust_fit(np.vstack((shadow_train_features, shadow_test_features)))
+    shadow_train_scaled = _robust_transform(shadow_train_features, center, scale)
+    shadow_test_scaled = _robust_transform(shadow_test_features, center, scale)
+    target_train_scaled = _robust_transform(target_train_features, center, scale)
+    target_test_scaled = _robust_transform(target_test_features, center, scale)
+
+    best_alpha = 0.0
+    best_shadow_auc = -1.0
+    best_shadow = None
+    best_target = None
+    for alpha in np.linspace(0.0, 1.0, num=11):
+        shadow_train_scores = _weighted_score(shadow_train_scaled, float(alpha))
+        shadow_test_scores = _weighted_score(shadow_test_scaled, float(alpha))
+        shadow_metrics = _search_threshold(shadow_train_scores, shadow_test_scores)
+
+        target_train_scores = _weighted_score(target_train_scaled, float(alpha))
+        target_test_scores = _weighted_score(target_test_scaled, float(alpha))
+        target_metrics = _search_threshold(target_train_scores, target_test_scores)
+
+        # evaluate target split with the shadow-derived threshold
+        threshold = shadow_metrics["threshold"]
+        tp = float((target_train_scores <= threshold).sum())
+        tn = float((target_test_scores > threshold).sum())
+        fp = float((target_test_scores <= threshold).sum())
+        fn = float((target_train_scores > threshold).sum())
+        target_metrics["asr_via_shadow_threshold"] = (tp + tn) / (tp + tn + fp + fn)
+
+        if shadow_metrics["auc"] > best_shadow_auc:
+            best_shadow_auc = shadow_metrics["auc"]
+            best_alpha = float(alpha)
+            best_shadow = shadow_metrics
+            best_target = target_metrics
+
+    assert best_shadow is not None
+    assert best_target is not None
+
+    workspace_path = Path(workspace)
+    workspace_path.mkdir(parents=True, exist_ok=True)
+    result = {
+        "status": "ready",
+        "track": "black-box",
+        "method": "clid",
+        "paper": "CLiD_NeurIPS2024",
+        "mode": "artifact-summary",
+        "device": "cpu",
+        "workspace": str(workspace_path),
+        "artifact_paths": {
+            "summary": str(workspace_path / "summary.json"),
+            "shadow_train": str(shadow_train_path),
+            "shadow_test": str(shadow_test_path),
+            "target_train": str(target_train_path),
+            "target_test": str(target_test_path),
+        },
+        "assets": {
+            "artifact_dir": str(artifact_path),
+            "shadow_samples": int(shadow_train_features.shape[0] + shadow_test_features.shape[0]),
+            "target_samples": int(target_train_features.shape[0] + target_test_features.shape[0]),
+        },
+        "checks": {
+            "shadow_artifacts_loaded": True,
+            "target_artifacts_loaded": True,
+            "feature_columns_extracted": True,
+            "shadow_threshold_search": True,
+            "target_replay_complete": True,
+        },
+        "metrics": {
+            "shadow": {
+                "best_alpha": round(best_alpha, 3),
+                "auc": round(float(best_shadow["auc"]), 6),
+                "asr": round(float(best_shadow["asr"]), 6),
+                "threshold": round(float(best_shadow["threshold"]), 6),
+            },
+            "target": {
+                "auc": round(float(best_target["auc"]), 6),
+                "best_asr": round(float(best_target["asr"]), 6),
+                "asr_via_shadow_threshold": round(float(best_target["asr_via_shadow_threshold"]), 6),
+                "tpr_at_1pct_fpr": round(float(best_target["tpr_at_1pct_fpr"]), 6),
+                "threshold": round(float(best_target["threshold"]), 6),
+            },
+        },
+        "notes": [
+            "Summary is recomputed from upstream CLiD inter_output artifacts.",
+            "Current implementation reproduces the threshold-based alpha sweep, not the XGBoost path.",
+        ],
+    }
+    (workspace_path / "summary.json").write_text(
+        json.dumps(result, indent=2, ensure_ascii=True),
+        encoding="utf-8",
+    )
     return result
