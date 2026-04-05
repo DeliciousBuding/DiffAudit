@@ -116,6 +116,9 @@ Every report must contain all sections below in this exact order.
 - Identify one figure, table, or page worth surfacing
 - Explain why it is worth surfacing
 - Record page number when possible
+- Render the chosen page or figure area into a PNG asset
+- Inspect the rendered image directly before finalizing the explanation
+- Include the local image path in this section
 
 ### 15. Extracted Summary for `paper-index.md`
 
@@ -135,6 +138,9 @@ This section is the only section allowed to be reused in shortened form inside `
 ## Figure and Diagram Standard
 
 - If a representative figure can be identified, record the page number in `Recommended Figure`.
+- The report author must render at least one key figure page into a PNG asset and inspect that image directly instead of relying on text extraction alone.
+- Use the normalized asset path pattern `docs/paper-reports/assets/<track>/<pdf-stem>-key-figure-p<page>.png`.
+- Insert the image into the local Markdown report immediately after the `Recommended Figure` section using a relative Markdown image link.
 - Every report must include a Mermaid flowchart even if no image is extracted.
 - Figures should be descriptive supplements, not substitutes for analysis.
 

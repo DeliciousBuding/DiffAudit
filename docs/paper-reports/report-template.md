@@ -44,4 +44,6 @@ flowchart TD
 
 ## Recommended Figure
 
+![Key Figure](../assets/<track>/<pdf-stem>-key-figure-p<page>.png)
+
 ## Extracted Summary for `paper-index.md`
