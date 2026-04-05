@@ -1,0 +1,41 @@
+{
+  "status": "ready",
+  "track": "gray-box",
+  "method": "pia",
+  "paper": "PIA_ICLR2024",
+  "mode": "synthetic-smoke",
+  "device": "cuda",
+  "workspace": "experiments\\pia-synth-smoke-gpu",
+  "artifact_paths": {
+    "summary": "experiments\\pia-synth-smoke-gpu\\summary.json"
+  },
+  "assets": {
+    "repo_root": "external\\PIA",
+    "weights_key": "ema_model",
+    "synthetic_checkpoint_path": "experiments\\pia-synth-smoke-gpu\\synthetic-pia-assets\\checkpoint.pt"
+  },
+  "checks": {
+    "components_loaded": true,
+    "model_loaded": true,
+    "attacker_instantiated": true,
+    "member_forward": true,
+    "nonmember_forward": true,
+    "synthetic_assets_cleaned": true
+  },
+  "metrics": {
+    "auc": 0.1875,
+    "asr": 0.25,
+    "member_score_mean": -0.0,
+    "nonmember_score_mean": -0.0
+  },
+  "cost": {
+    "queries_per_sample": 4,
+    "timesteps": 3,
+    "interval": 10,
+    "batch_size": 4
+  },
+  "notes": [
+    "Synthetic smoke only verifies the PIA DDPM runtime path.",
+    "Metrics are not benchmark numbers and should not be compared to paper results."
+  ]
+}

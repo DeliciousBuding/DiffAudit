@@ -50,6 +50,7 @@ DiffAudit 是一个面向扩散模型的隐私风险审计研究仓库。
 - 独立的 GPU 科研环境
 - 配置驱动的 smoke pipeline
 - `SecMI` 的计划层、资产解析、workspace 校验、adapter 准备和 dry-run 校验
+- `PIA` 的计划层、资产解析、dry-run、runtime probe 和 synthetic smoke
 - 最小化 vendored `SecMI` 集成子集
 - 可持续扩展的测试基线
 
@@ -100,6 +101,15 @@ workspaces/              多人协作工作区
 3. `prepare-secmi`
 4. `dry-run-secmi`
 5. 资产到位后再尝试真实执行
+
+对 `PIA`，当前推荐命令顺序是：
+
+1. `plan-pia`
+2. `probe-pia-assets`
+3. `dry-run-pia`
+4. `runtime-probe-pia`
+5. `run-pia-synth-smoke`
+6. 资产到位后再尝试真实执行
 
 ## 环境搭建
 
@@ -181,6 +191,36 @@ python -m diffaudit runtime-probe-secmi --config configs/attacks/secmi_plan.yaml
 
 ```powershell
 python -m diffaudit bootstrap-secmi-smoke-assets --target-dir tmp/secmi-smoke-assets
+```
+
+生成 `PIA` 计划：
+
+```powershell
+python -m diffaudit plan-pia --config configs/attacks/pia_plan.yaml
+```
+
+探测 `PIA` 资产是否齐全：
+
+```powershell
+python -m diffaudit probe-pia-assets --config configs/attacks/pia_plan.yaml --member-split-root external/PIA/DDPM
+```
+
+运行 `PIA` dry-run：
+
+```powershell
+python -m diffaudit dry-run-pia --config configs/attacks/pia_plan.yaml --repo-root external/PIA --member-split-root external/PIA/DDPM
+```
+
+运行 `PIA` runtime probe：
+
+```powershell
+python -m diffaudit runtime-probe-pia --config configs/attacks/pia_plan.yaml --repo-root external/PIA --member-split-root external/PIA/DDPM --device cpu
+```
+
+运行 `PIA` synthetic smoke：
+
+```powershell
+python -m diffaudit run-pia-synth-smoke --workspace experiments/pia-synth-smoke-cpu --repo-root external/PIA --device cpu
 ```
 
 ## 参考资料

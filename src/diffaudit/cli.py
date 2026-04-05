@@ -97,6 +97,27 @@ def build_parser() -> argparse.ArgumentParser:
         help="path to PIA DDPM member split npz files",
     )
 
+    pia_runtime_probe_parser = subparsers.add_parser(
+        "runtime-probe-pia",
+        help="validate PIA runtime readiness by loading modules, checkpoint and attacker",
+    )
+    pia_runtime_probe_parser.add_argument("--config", required=True, help="path to audit yaml")
+    pia_runtime_probe_parser.add_argument(
+        "--repo-root",
+        default="external/PIA",
+        help="path to local PIA repository root",
+    )
+    pia_runtime_probe_parser.add_argument(
+        "--member-split-root",
+        default="external/PIA/DDPM",
+        help="path to PIA DDPM member split npz files",
+    )
+    pia_runtime_probe_parser.add_argument(
+        "--device",
+        default="cpu",
+        help="device used for the runtime probe",
+    )
+
     runtime_probe_parser = subparsers.add_parser(
         "runtime-probe-secmi",
         help="validate SecMI runtime readiness by loading flags and model",
@@ -123,6 +144,21 @@ def build_parser() -> argparse.ArgumentParser:
         help="path to the reference SecMI flagfile template",
     )
 
+    pia_bootstrap_parser = subparsers.add_parser(
+        "bootstrap-pia-smoke-assets",
+        help="create synthetic PIA smoke assets for local runtime probes",
+    )
+    pia_bootstrap_parser.add_argument(
+        "--target-dir",
+        required=True,
+        help="directory where smoke assets should be written",
+    )
+    pia_bootstrap_parser.add_argument(
+        "--repo-root",
+        default="external/PIA",
+        help="path to local PIA repository root",
+    )
+
     synth_smoke_parser = subparsers.add_parser(
         "run-secmi-synth-smoke",
         help="run a synthetic SecMI stat smoke execution",
@@ -133,6 +169,26 @@ def build_parser() -> argparse.ArgumentParser:
         help="workspace directory for synthetic smoke artifacts",
     )
     synth_smoke_parser.add_argument(
+        "--device",
+        default="cpu",
+        help="device used for the synthetic smoke run",
+    )
+
+    pia_synth_smoke_parser = subparsers.add_parser(
+        "run-pia-synth-smoke",
+        help="run a synthetic PIA smoke execution",
+    )
+    pia_synth_smoke_parser.add_argument(
+        "--workspace",
+        required=True,
+        help="workspace directory for synthetic smoke artifacts",
+    )
+    pia_synth_smoke_parser.add_argument(
+        "--repo-root",
+        default="external/PIA",
+        help="path to local PIA repository root",
+    )
+    pia_synth_smoke_parser.add_argument(
         "--device",
         default="cpu",
         help="device used for the synthetic smoke run",
@@ -200,6 +256,19 @@ def main(argv: list[str] | None = None) -> int:
         print(json.dumps(payload, indent=2, ensure_ascii=True))
         return exit_code
 
+    if args.command == "runtime-probe-pia":
+        from diffaudit.attacks.pia_adapter import probe_pia_runtime
+
+        config = load_audit_config(args.config)
+        exit_code, payload = probe_pia_runtime(
+            config,
+            args.repo_root,
+            member_split_root=args.member_split_root,
+            device=args.device,
+        )
+        print(json.dumps(payload, indent=2, ensure_ascii=True))
+        return exit_code
+
     if args.command == "runtime-probe-secmi":
         from diffaudit.attacks.secmi_adapter import probe_secmi_runtime
 
@@ -215,10 +284,28 @@ def main(argv: list[str] | None = None) -> int:
         print(json.dumps(payload, indent=2, ensure_ascii=True))
         return 0
 
+    if args.command == "bootstrap-pia-smoke-assets":
+        from diffaudit.attacks.pia_adapter import bootstrap_pia_smoke_assets
+
+        payload = bootstrap_pia_smoke_assets(args.target_dir, args.repo_root)
+        print(json.dumps(payload, indent=2, ensure_ascii=True))
+        return 0
+
     if args.command == "run-secmi-synth-smoke":
         from diffaudit.attacks.secmi_adapter import run_synthetic_secmi_stat_smoke
 
         payload = run_synthetic_secmi_stat_smoke(args.workspace, device=args.device)
+        print(json.dumps(payload, indent=2, ensure_ascii=True))
+        return 0
+
+    if args.command == "run-pia-synth-smoke":
+        from diffaudit.attacks.pia_adapter import run_synthetic_pia_smoke
+
+        payload = run_synthetic_pia_smoke(
+            args.workspace,
+            repo_root=args.repo_root,
+            device=args.device,
+        )
         print(json.dumps(payload, indent=2, ensure_ascii=True))
         return 0
 
