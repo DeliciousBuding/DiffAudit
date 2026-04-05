@@ -3,7 +3,9 @@ from __future__ import annotations
 import argparse
 import json
 import re
+import shutil
 import subprocess
+import tempfile
 from pathlib import Path
 
 
@@ -16,6 +18,9 @@ PUBLIC_PERMISSION_PAYLOAD = {
     "security_entity": "anyone_can_view",
 }
 
+LARK_CLI = shutil.which("lark-cli") or shutil.which("lark-cli.cmd") or "lark-cli"
+PWSH = shutil.which("pwsh") or shutil.which("powershell") or "powershell"
+
 
 def run_command(args: list[str], cwd: Path) -> dict:
     completed = subprocess.run(
@@ -24,8 +29,79 @@ def run_command(args: list[str], cwd: Path) -> dict:
         check=True,
         capture_output=True,
         text=True,
+        encoding="utf-8",
+        errors="replace",
     )
     return json.loads(completed.stdout)
+
+
+def run_markdown_command(
+    cwd: Path,
+    command: str,
+    title: str,
+    markdown: str,
+    doc: str | None = None,
+) -> dict:
+    with tempfile.NamedTemporaryFile(
+        mode="w",
+        encoding="utf-8",
+        suffix=".md",
+        delete=False,
+    ) as temp_file:
+        temp_file.write(markdown)
+        temp_path = Path(temp_file.name)
+
+    escaped_title = title.replace("'", "''")
+    escaped_doc = doc.replace("'", "''") if doc else ""
+    escaped_lark = str(Path(LARK_CLI)).replace("'", "''")
+    escaped_temp = str(temp_path).replace("'", "''")
+
+    if command == "create":
+        script = (
+            f"$md = Get-Content -Raw -LiteralPath '{escaped_temp}'; "
+            f"& '{escaped_lark}' docs +create --as user --title '{escaped_title}' --markdown $md"
+        )
+    elif command == "update":
+        script = (
+            f"$md = Get-Content -Raw -LiteralPath '{escaped_temp}'; "
+            f"& '{escaped_lark}' docs +update --as user --doc '{escaped_doc}' --mode overwrite --markdown $md"
+        )
+    else:
+        script = (
+            f"$md = Get-Content -Raw -LiteralPath '{escaped_temp}'; "
+            f"& '{escaped_lark}' docs +update --as user --doc '{escaped_doc}' --mode append --markdown $md"
+        )
+
+    try:
+        completed = subprocess.run(
+            [PWSH, "-NoLogo", "-NoProfile", "-Command", script],
+            cwd=str(cwd),
+            check=True,
+            capture_output=True,
+            text=True,
+            encoding="utf-8",
+            errors="replace",
+        )
+        return json.loads(completed.stdout)
+    finally:
+        temp_path.unlink(missing_ok=True)
+
+
+def split_markdown(markdown: str, limit: int = 3000) -> list[str]:
+    chunks: list[str] = []
+    current: list[str] = []
+    current_len = 0
+    for line in markdown.splitlines(keepends=True):
+        if current and current_len + len(line) > limit:
+            chunks.append("".join(current).strip())
+            current = [line]
+            current_len = len(line)
+        else:
+            current.append(line)
+            current_len += len(line)
+    if current:
+        chunks.append("".join(current).strip())
+    return [chunk for chunk in chunks if chunk]
 
 
 def extract_doc_id(payload: dict) -> str:
@@ -58,46 +134,40 @@ def create_or_update_doc(
     markdown: str,
     doc: str | None,
 ) -> str:
-    if doc:
-        payload = run_command(
-            [
-                "lark-cli",
-                "docs",
-                "+update",
-                "--as",
-                "user",
-                "--doc",
-                doc,
-                "--mode",
-                "overwrite",
-                "--markdown",
-                markdown,
-            ],
-            cwd,
-        )
-        return extract_doc_id(payload)
+    chunks = split_markdown(markdown)
+    if not chunks:
+        raise ValueError("markdown is empty")
 
-    payload = run_command(
-        [
-            "lark-cli",
-            "docs",
-            "+create",
-            "--as",
-            "user",
-            "--title",
+    if doc:
+        payload = run_markdown_command(cwd, "update", title, chunks[0], doc)
+        doc_id = extract_doc_id(payload)
+        for chunk in chunks[1:]:
+            run_markdown_command(
+                cwd,
+                "append",
+                title,
+                chunk,
+                f"https://www.feishu.cn/docx/{doc_id}",
+            )
+        return doc_id
+
+    payload = run_markdown_command(cwd, "create", title, chunks[0])
+    doc_id = extract_doc_id(payload)
+    for chunk in chunks[1:]:
+        run_markdown_command(
+            cwd,
+            "append",
             title,
-            "--markdown",
-            markdown,
-        ],
-        cwd,
-    )
-    return extract_doc_id(payload)
+            chunk,
+            f"https://www.feishu.cn/docx/{doc_id}",
+        )
+    return doc_id
 
 
 def set_public_permission(cwd: Path, doc_id: str) -> None:
     run_command(
         [
-            "lark-cli",
+            LARK_CLI,
             "api",
             "PATCH",
             f"/open-apis/drive/v2/permissions/{doc_id}/public",
@@ -115,7 +185,7 @@ def set_public_permission(cwd: Path, doc_id: str) -> None:
 def insert_image(cwd: Path, doc_id: str, image_path: Path, caption: str | None) -> None:
     relative_path = Path(image_path).resolve().relative_to(cwd.resolve())
     args = [
-        "lark-cli",
+        LARK_CLI,
         "docs",
         "+media-insert",
         "--as",
