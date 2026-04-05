@@ -37,12 +37,12 @@
     },
     "recon": {
       "paper": "BlackBox_Reconstruction_ArXiv2023",
-      "best_evidence_mode": "upstream-eval-smoke",
-      "best_evidence_path": "experiments\\recon-upstream-eval-smoke\\summary.json",
+      "best_evidence_mode": "mainline-smoke",
+      "best_evidence_path": "experiments\\recon-mainline-smoke\\summary.json",
       "headline_metrics": {
         "auc": 1.0,
         "asr": 1.0,
-        "tpr_at_1pct_fpr": null
+        "tpr_at_1pct_fpr": 1.0
       },
       "evidence": [
         {
@@ -62,6 +62,16 @@
           "headline_metrics": {
             "auc": 1.0,
             "asr": null,
+            "tpr_at_1pct_fpr": 1.0
+          }
+        },
+        {
+          "mode": "mainline-smoke",
+          "status": "ready",
+          "summary_path": "experiments\\recon-mainline-smoke\\summary.json",
+          "headline_metrics": {
+            "auc": 1.0,
+            "asr": 1.0,
             "tpr_at_1pct_fpr": 1.0
           }
         },

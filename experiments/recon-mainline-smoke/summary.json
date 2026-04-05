@@ -1,0 +1,69 @@
+{
+  "status": "ready",
+  "track": "black-box",
+  "method": "recon",
+  "paper": "BlackBox_Reconstruction_ArXiv2023",
+  "mode": "mainline-smoke",
+  "device": "cpu",
+  "workspace": "experiments\\recon-mainline-smoke",
+  "artifact_paths": {
+    "summary": "experiments\\recon-mainline-smoke\\summary.json",
+    "eval_smoke_summary": "experiments\\recon-mainline-smoke\\eval-smoke\\summary.json",
+    "artifact_summary": "experiments\\recon-mainline-smoke\\artifact-summary\\summary.json",
+    "upstream_eval_smoke_summary": "experiments\\recon-mainline-smoke\\upstream-eval-smoke\\summary.json"
+  },
+  "checks": {
+    "eval_smoke_ready": true,
+    "artifact_summary_ready": true,
+    "upstream_eval_smoke_ready": true,
+    "all_stages_ready": true
+  },
+  "evaluation_method": "threshold",
+  "metrics": {
+    "auc": 1.0,
+    "asr": 1.0,
+    "tpr_at_1pct_fpr": 1.0
+  },
+  "stages": {
+    "eval_smoke": {
+      "status": "ready",
+      "mode": "eval-smoke",
+      "summary_path": "experiments\\recon-mainline-smoke\\eval-smoke\\summary.json",
+      "headline_metrics": {
+        "auc": 1.0,
+        "asr": null,
+        "tpr_at_1pct_fpr": 1.0
+      }
+    },
+    "artifact_summary": {
+      "status": "ready",
+      "mode": "artifact-summary",
+      "summary_path": "experiments\\recon-mainline-smoke\\artifact-summary\\summary.json",
+      "headline_metrics": {
+        "auc": 1.0,
+        "asr": null,
+        "tpr_at_1pct_fpr": 1.0
+      },
+      "artifact_files": [
+        "shadow_member.pt",
+        "shadow_non_member.pt",
+        "target_member.pt",
+        "target_non_member.pt"
+      ]
+    },
+    "upstream_eval_smoke": {
+      "status": "ready",
+      "mode": "upstream-eval-smoke",
+      "summary_path": "experiments\\recon-mainline-smoke\\upstream-eval-smoke\\summary.json",
+      "headline_metrics": {
+        "auc": 1.0,
+        "asr": 1.0,
+        "tpr_at_1pct_fpr": null
+      }
+    }
+  },
+  "notes": [
+    "Mainline smoke orchestrates the reconstruction black-box path into one machine-readable workspace.",
+    "Current mainline remains synthetic and is intended to stabilize the stage contract before real artifacts are attached."
+  ]
+}

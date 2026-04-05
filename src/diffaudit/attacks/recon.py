@@ -437,6 +437,17 @@ def _parse_recon_eval_stdout(stdout: str) -> dict[str, float]:
     }
 
 
+def _headline_metrics(payload: dict[str, object]) -> dict[str, float | None]:
+    metrics = payload.get("metrics", {})
+    if not isinstance(metrics, dict):
+        return {"auc": None, "asr": None, "tpr_at_1pct_fpr": None}
+    return {
+        "auc": metrics.get("reported_auc", metrics.get("auc")),
+        "asr": metrics.get("reported_accuracy", metrics.get("asr")),
+        "tpr_at_1pct_fpr": metrics.get("tpr_at_1pct_fpr"),
+    }
+
+
 def run_recon_upstream_eval_smoke(
     workspace: str | Path,
     repo_root: str | Path = "external/Reconstruction-based-Attack",
@@ -506,4 +517,87 @@ def run_recon_upstream_eval_smoke(
         encoding="utf-8",
     )
     shutil.rmtree(artifact_root, ignore_errors=True)
+    return result
+
+
+def run_recon_mainline_smoke(
+    workspace: str | Path,
+    repo_root: str | Path = "external/Reconstruction-based-Attack",
+    method: str = "threshold",
+) -> dict[str, object]:
+    workspace_path = Path(workspace)
+    workspace_path.mkdir(parents=True, exist_ok=True)
+
+    eval_payload = run_recon_eval_smoke(workspace_path / "eval-smoke")
+    artifact_root = workspace_path / "synthetic-score-artifacts"
+    score_paths = _write_synthetic_recon_score_artifacts(artifact_root)
+    artifact_payload = summarize_recon_artifacts(
+        artifact_dir=artifact_root,
+        workspace=workspace_path / "artifact-summary",
+    )
+    upstream_payload = run_recon_upstream_eval_smoke(
+        workspace=workspace_path / "upstream-eval-smoke",
+        repo_root=repo_root,
+        method=method,
+    )
+    shutil.rmtree(artifact_root, ignore_errors=True)
+
+    stages = {
+        "eval_smoke": {
+            "status": eval_payload["status"],
+            "mode": eval_payload["mode"],
+            "summary_path": eval_payload["artifact_paths"]["summary"],
+            "headline_metrics": _headline_metrics(eval_payload),
+        },
+        "artifact_summary": {
+            "status": artifact_payload["status"],
+            "mode": artifact_payload["mode"],
+            "summary_path": artifact_payload["artifact_paths"]["summary"],
+            "headline_metrics": _headline_metrics(artifact_payload),
+            "artifact_files": sorted(Path(path).name for path in score_paths.values()),
+        },
+        "upstream_eval_smoke": {
+            "status": upstream_payload["status"],
+            "mode": upstream_payload["mode"],
+            "summary_path": upstream_payload["artifact_paths"]["summary"],
+            "headline_metrics": _headline_metrics(upstream_payload),
+        },
+    }
+    checks = {
+        "eval_smoke_ready": eval_payload["status"] == "ready",
+        "artifact_summary_ready": artifact_payload["status"] == "ready",
+        "upstream_eval_smoke_ready": upstream_payload["status"] == "ready",
+        "all_stages_ready": all(stage["status"] == "ready" for stage in stages.values()),
+    }
+    result = {
+        "status": "ready" if checks["all_stages_ready"] else "error",
+        "track": "black-box",
+        "method": "recon",
+        "paper": "BlackBox_Reconstruction_ArXiv2023",
+        "mode": "mainline-smoke",
+        "device": "cpu",
+        "workspace": str(workspace_path),
+        "artifact_paths": {
+            "summary": str(workspace_path / "summary.json"),
+            "eval_smoke_summary": eval_payload["artifact_paths"]["summary"],
+            "artifact_summary": artifact_payload["artifact_paths"]["summary"],
+            "upstream_eval_smoke_summary": upstream_payload["artifact_paths"]["summary"],
+        },
+        "checks": checks,
+        "evaluation_method": method,
+        "metrics": {
+            "auc": _headline_metrics(upstream_payload)["auc"],
+            "asr": _headline_metrics(upstream_payload)["asr"],
+            "tpr_at_1pct_fpr": _headline_metrics(artifact_payload)["tpr_at_1pct_fpr"],
+        },
+        "stages": stages,
+        "notes": [
+            "Mainline smoke orchestrates the reconstruction black-box path into one machine-readable workspace.",
+            "Current mainline remains synthetic and is intended to stabilize the stage contract before real artifacts are attached.",
+        ],
+    }
+    (workspace_path / "summary.json").write_text(
+        json.dumps(result, indent=2, ensure_ascii=True),
+        encoding="utf-8",
+    )
     return result

@@ -2,11 +2,11 @@
 
 ## 状态面板
 
-- `owner`: 待认领
+- `owner`: active-thread
 - `scope`: 黑盒成员推断、数据集级审计、black-box leakage 线索整理
 - `status`: 进行中
-- `blocked by`: 真实 checkpoint、flagfile、与论文一致的数据布局
-- `next command`: `conda run -n diffaudit-research python -m diffaudit probe-secmi-assets --config configs/attacks/secmi_plan.yaml`
+- `blocked by`: 真实 checkpoint、与论文一致的数据布局、可直接复用的 black-box 目标/影子 artifact
+- `next command`: `conda run -n diffaudit-research python -m diffaudit run-recon-mainline-smoke --workspace experiments/recon-mainline-smoke --repo-root external/Reconstruction-based-Attack --method threshold`
 - `last updated`: 2026-04-05
 
 ## 主论文与场景
@@ -21,6 +21,7 @@
 - `experiments/clid-dry-run-smoke/summary.json`
 - `experiments/clid-artifact-summary/summary.json`
 - `experiments/recon-eval-smoke/summary.json`
+- `experiments/recon-mainline-smoke/summary.json`
 - `experiments/recon-artifact-summary/summary.json`
 - `experiments/recon-upstream-eval-smoke/summary.json`
 - `experiments/variation-synth-smoke/summary.json`
@@ -41,19 +42,15 @@
 
 ## 一周行动清单
 
-1. 整理三篇论文的问题定义、攻击假设、输入输出和指标
-2. 对比三篇论文需要的资产：checkpoint、flagfile、dataset_root、prompt 或 text 条件
-3. 跑通仓库现有黑盒基础命令：
-   - `plan-secmi`
-   - `probe-secmi-assets`
-   - `prepare-secmi`
-   - `dry-run-secmi`
-4. 形成一份黑盒方向复现计划和 threat model 对照表
-5. 明确当前缺失的真实资产
-6. 补 `paper-matrix` 与 `experiment-entrypoints` 文档
+1. 保持 `recon` 统一 mainline smoke 可重复执行，并刷新 `experiments/blackbox-status/summary.json`
+2. 把真实 target/shadow score artifact 的命名和目录约束落实到 `recon` 主线
+3. 明确 `recon` 真实资产最小集合：LoRA checkpoint、生成图像目录、embedding 输入、target/shadow 分割
+4. 评估 `variation` 真实 API 调用所需的凭据、预算和 query image 约束
+5. 评估 `CLiD` 的真实 text-to-image 资产是否可在当前机器上最小复现
+6. 维持黑盒状态文档、实验目录和主线命令说明同步
 
 ## 当前阻塞项
 
-- 缺真实 checkpoint 和训练期 flagfile
+- 缺真实 checkpoint 与 target/shadow score artifact
 - 缺与论文一致的实验数据布局
 - 黑盒不同论文的攻击假设并不完全相同，需要统一术语

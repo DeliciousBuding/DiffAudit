@@ -299,6 +299,62 @@ class ReconAttackTests(unittest.TestCase):
         self.assertEqual(payload["mode"], "upstream-eval-smoke")
         self.assertTrue(payload["checks"]["upstream_script_succeeded"])
 
+    def test_run_recon_mainline_smoke_writes_unified_summary(self) -> None:
+        from diffaudit.attacks.recon import run_recon_mainline_smoke
+
+        with tempfile.TemporaryDirectory() as tmpdir:
+            root = Path(tmpdir)
+            repo_root = root / "recon"
+            create_minimal_recon_repo(repo_root)
+
+            result = run_recon_mainline_smoke(
+                workspace=root / "recon-mainline-smoke",
+                repo_root=repo_root,
+                method="threshold",
+            )
+
+            workspace = root / "recon-mainline-smoke"
+            self.assertTrue((workspace / "summary.json").exists())
+            self.assertTrue((workspace / "eval-smoke" / "summary.json").exists())
+            self.assertTrue((workspace / "artifact-summary" / "summary.json").exists())
+            self.assertTrue((workspace / "upstream-eval-smoke" / "summary.json").exists())
+
+        self.assertEqual(result["status"], "ready")
+        self.assertEqual(result["mode"], "mainline-smoke")
+        self.assertTrue(result["checks"]["all_stages_ready"])
+        self.assertEqual(result["stages"]["artifact_summary"]["status"], "ready")
+        self.assertEqual(result["stages"]["upstream_eval_smoke"]["status"], "ready")
+        self.assertEqual(result["metrics"]["auc"], 1.0)
+
+    def test_cli_runs_recon_mainline_smoke(self) -> None:
+        from diffaudit.cli import main
+
+        with tempfile.TemporaryDirectory() as tmpdir:
+            root = Path(tmpdir)
+            repo_root = root / "recon"
+            create_minimal_recon_repo(repo_root)
+
+            stdout = StringIO()
+            with redirect_stdout(stdout):
+                exit_code = main(
+                    [
+                        "run-recon-mainline-smoke",
+                        "--workspace",
+                        str(root / "recon-mainline-smoke"),
+                        "--repo-root",
+                        str(repo_root),
+                        "--method",
+                        "threshold",
+                    ]
+                )
+
+        payload = json.loads(stdout.getvalue())
+        self.assertEqual(exit_code, 0)
+        self.assertEqual(payload["status"], "ready")
+        self.assertEqual(payload["mode"], "mainline-smoke")
+        self.assertTrue(payload["checks"]["all_stages_ready"])
+        self.assertEqual(payload["stages"]["eval_smoke"]["status"], "ready")
+
 
 if __name__ == "__main__":
     unittest.main()

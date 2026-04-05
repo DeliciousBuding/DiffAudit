@@ -20,6 +20,7 @@ from diffaudit.attacks.recon import (
     explain_recon_assets,
     probe_recon_dry_run,
     run_recon_eval_smoke,
+    run_recon_mainline_smoke,
     run_recon_upstream_eval_smoke,
     summarize_recon_artifacts,
 )
@@ -253,6 +254,26 @@ def build_parser() -> argparse.ArgumentParser:
         help="path to local reconstruction-based attack repository root",
     )
     recon_upstream_eval_smoke_parser.add_argument(
+        "--method",
+        default="threshold",
+        help="evaluation method passed to the upstream script",
+    )
+
+    recon_mainline_smoke_parser = subparsers.add_parser(
+        "run-recon-mainline-smoke",
+        help="run the unified reconstruction black-box smoke mainline and emit a single summary",
+    )
+    recon_mainline_smoke_parser.add_argument(
+        "--workspace",
+        required=True,
+        help="workspace directory for reconstruction mainline smoke artifacts",
+    )
+    recon_mainline_smoke_parser.add_argument(
+        "--repo-root",
+        default="external/Reconstruction-based-Attack",
+        help="path to local reconstruction-based attack repository root",
+    )
+    recon_mainline_smoke_parser.add_argument(
         "--method",
         default="threshold",
         help="evaluation method passed to the upstream script",
@@ -547,6 +568,15 @@ def main(argv: list[str] | None = None) -> int:
 
     if args.command == "run-recon-upstream-eval-smoke":
         payload = run_recon_upstream_eval_smoke(
+            args.workspace,
+            repo_root=args.repo_root,
+            method=args.method,
+        )
+        print(json.dumps(payload, indent=2, ensure_ascii=True))
+        return 0 if payload["status"] == "ready" else 1
+
+    if args.command == "run-recon-mainline-smoke":
+        payload = run_recon_mainline_smoke(
             args.workspace,
             repo_root=args.repo_root,
             method=args.method,

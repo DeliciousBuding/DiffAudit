@@ -12,6 +12,7 @@ BLACKBOX_EVIDENCE_RANK = {
     "eval-smoke": 3,
     "artifact-summary": 4,
     "upstream-eval-smoke": 5,
+    "mainline-smoke": 6,
 }
 
 
@@ -66,7 +67,9 @@ def build_blackbox_status_report(
 
     methods: dict[str, dict[str, object]] = {}
     for payload in blackbox_payloads:
-        method = str(payload["method"])
+        method = str(payload.get("method", "")).strip()
+        if not method:
+            continue
         entry = methods.setdefault(
             method,
             {

@@ -15,6 +15,7 @@ class BlackBoxReportTests(unittest.TestCase):
             experiments_root = root / "experiments"
             (experiments_root / "clid-artifact-summary").mkdir(parents=True)
             (experiments_root / "recon-upstream-eval-smoke").mkdir(parents=True)
+            (experiments_root / "recon-mainline-smoke").mkdir(parents=True)
             (experiments_root / "variation-synth-smoke").mkdir(parents=True)
 
             (experiments_root / "clid-artifact-summary" / "summary.json").write_text(
@@ -52,6 +53,23 @@ class BlackBoxReportTests(unittest.TestCase):
                 ),
                 encoding="utf-8",
             )
+            (experiments_root / "recon-mainline-smoke" / "summary.json").write_text(
+                json.dumps(
+                    {
+                        "status": "ready",
+                        "track": "black-box",
+                        "method": "recon",
+                        "paper": "BlackBox_Reconstruction_ArXiv2023",
+                        "mode": "mainline-smoke",
+                        "metrics": {
+                            "auc": 1.0,
+                            "asr": 1.0,
+                            "tpr_at_1pct_fpr": 1.0,
+                        },
+                    }
+                ),
+                encoding="utf-8",
+            )
             (experiments_root / "variation-synth-smoke" / "summary.json").write_text(
                 json.dumps(
                     {
@@ -81,7 +99,7 @@ class BlackBoxReportTests(unittest.TestCase):
         self.assertEqual(report["method_count"], 3)
         self.assertIn("clid", report["methods"])
         self.assertEqual(report["methods"]["clid"]["headline_metrics"]["auc"], 0.96)
-        self.assertEqual(report["methods"]["recon"]["best_evidence_mode"], "upstream-eval-smoke")
+        self.assertEqual(report["methods"]["recon"]["best_evidence_mode"], "mainline-smoke")
 
     def test_cli_summarizes_blackbox_results(self) -> None:
         from diffaudit.cli import main
@@ -124,6 +142,51 @@ class BlackBoxReportTests(unittest.TestCase):
         self.assertEqual(payload["status"], "ready")
         self.assertEqual(payload["method_count"], 1)
         self.assertEqual(payload["methods"]["variation"]["headline_metrics"]["auc"], 1.0)
+
+    def test_ignores_aggregate_summary_without_method(self) -> None:
+        from diffaudit.reports.blackbox_status import build_blackbox_status_report
+
+        with tempfile.TemporaryDirectory() as tmpdir:
+            root = Path(tmpdir)
+            experiments_root = root / "experiments"
+            (experiments_root / "variation-synth-smoke").mkdir(parents=True)
+            (experiments_root / "blackbox-status").mkdir(parents=True)
+
+            (experiments_root / "variation-synth-smoke" / "summary.json").write_text(
+                json.dumps(
+                    {
+                        "status": "ready",
+                        "track": "black-box",
+                        "method": "variation",
+                        "paper": "Towards_Black_Box_Diffusion_2024",
+                        "mode": "synthetic-smoke",
+                        "metrics": {
+                            "auc": 1.0,
+                            "asr": 1.0,
+                        },
+                    }
+                ),
+                encoding="utf-8",
+            )
+            (experiments_root / "blackbox-status" / "summary.json").write_text(
+                json.dumps(
+                    {
+                        "status": "ready",
+                        "track": "black-box",
+                        "method_count": 1,
+                        "methods": {},
+                    }
+                ),
+                encoding="utf-8",
+            )
+
+            report = build_blackbox_status_report(
+                experiments_root=experiments_root,
+                workspace=root / "out",
+            )
+
+        self.assertEqual(report["method_count"], 1)
+        self.assertIn("variation", report["methods"])
 
 
 if __name__ == "__main__":
