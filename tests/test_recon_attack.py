@@ -355,6 +355,86 @@ class ReconAttackTests(unittest.TestCase):
         self.assertTrue(payload["checks"]["all_stages_ready"])
         self.assertEqual(payload["stages"]["eval_smoke"]["status"], "ready")
 
+    def test_run_recon_artifact_mainline_writes_unified_summary(self) -> None:
+        from diffaudit.attacks.recon import run_recon_artifact_mainline
+        import torch
+
+        with tempfile.TemporaryDirectory() as tmpdir:
+            root = Path(tmpdir)
+            repo_root = root / "recon"
+            artifact_dir = root / "scores"
+            create_minimal_recon_repo(repo_root)
+            artifact_dir.mkdir()
+            torch_payloads = {
+                "target_member.pt": [([0.91], 1), ([0.88], 1), ([0.86], 1)],
+                "target_non_member.pt": [([0.18], 0), ([0.22], 0), ([0.25], 0)],
+                "shadow_member.pt": [([0.89], 1), ([0.84], 1), ([0.83], 1)],
+                "shadow_non_member.pt": [([0.17], 0), ([0.21], 0), ([0.24], 0)],
+            }
+            for filename, payload in torch_payloads.items():
+                torch.save(payload, artifact_dir / filename)
+
+            result = run_recon_artifact_mainline(
+                artifact_dir=artifact_dir,
+                workspace=root / "recon-artifact-mainline",
+                repo_root=repo_root,
+                method="threshold",
+            )
+
+            workspace = root / "recon-artifact-mainline"
+            self.assertTrue((workspace / "summary.json").exists())
+            self.assertTrue((workspace / "artifact-summary" / "summary.json").exists())
+            self.assertTrue((workspace / "upstream-eval" / "summary.json").exists())
+
+        self.assertEqual(result["status"], "ready")
+        self.assertEqual(result["mode"], "artifact-mainline")
+        self.assertTrue(result["checks"]["all_stages_ready"])
+        self.assertEqual(result["stages"]["artifact_summary"]["status"], "ready")
+        self.assertEqual(result["stages"]["upstream_eval"]["status"], "ready")
+        self.assertEqual(result["metrics"]["auc"], 1.0)
+
+    def test_cli_runs_recon_artifact_mainline(self) -> None:
+        from diffaudit.cli import main
+        import torch
+
+        with tempfile.TemporaryDirectory() as tmpdir:
+            root = Path(tmpdir)
+            repo_root = root / "recon"
+            artifact_dir = root / "scores"
+            create_minimal_recon_repo(repo_root)
+            artifact_dir.mkdir()
+            torch_payloads = {
+                "target_member.pt": [([0.91], 1), ([0.88], 1), ([0.86], 1)],
+                "target_non_member.pt": [([0.18], 0), ([0.22], 0), ([0.25], 0)],
+                "shadow_member.pt": [([0.89], 1), ([0.84], 1), ([0.83], 1)],
+                "shadow_non_member.pt": [([0.17], 0), ([0.21], 0), ([0.24], 0)],
+            }
+            for filename, payload in torch_payloads.items():
+                torch.save(payload, artifact_dir / filename)
+
+            stdout = StringIO()
+            with redirect_stdout(stdout):
+                exit_code = main(
+                    [
+                        "run-recon-artifact-mainline",
+                        "--artifact-dir",
+                        str(artifact_dir),
+                        "--workspace",
+                        str(root / "recon-artifact-mainline"),
+                        "--repo-root",
+                        str(repo_root),
+                        "--method",
+                        "threshold",
+                    ]
+                )
+
+        payload = json.loads(stdout.getvalue())
+        self.assertEqual(exit_code, 0)
+        self.assertEqual(payload["status"], "ready")
+        self.assertEqual(payload["mode"], "artifact-mainline")
+        self.assertTrue(payload["checks"]["all_stages_ready"])
+        self.assertEqual(payload["stages"]["upstream_eval"]["status"], "ready")
+
 
 if __name__ == "__main__":
     unittest.main()

@@ -19,6 +19,7 @@ from diffaudit.attacks.recon import (
     build_recon_plan,
     explain_recon_assets,
     probe_recon_dry_run,
+    run_recon_artifact_mainline,
     run_recon_eval_smoke,
     run_recon_mainline_smoke,
     run_recon_upstream_eval_smoke,
@@ -274,6 +275,31 @@ def build_parser() -> argparse.ArgumentParser:
         help="path to local reconstruction-based attack repository root",
     )
     recon_mainline_smoke_parser.add_argument(
+        "--method",
+        default="threshold",
+        help="evaluation method passed to the upstream script",
+    )
+
+    recon_artifact_mainline_parser = subparsers.add_parser(
+        "run-recon-artifact-mainline",
+        help="run the reconstruction black-box mainline with provided score artifacts",
+    )
+    recon_artifact_mainline_parser.add_argument(
+        "--artifact-dir",
+        required=True,
+        help="directory containing target/shadow member and non-member score artifacts",
+    )
+    recon_artifact_mainline_parser.add_argument(
+        "--workspace",
+        required=True,
+        help="workspace directory for reconstruction artifact mainline outputs",
+    )
+    recon_artifact_mainline_parser.add_argument(
+        "--repo-root",
+        default="external/Reconstruction-based-Attack",
+        help="path to local reconstruction-based attack repository root",
+    )
+    recon_artifact_mainline_parser.add_argument(
         "--method",
         default="threshold",
         help="evaluation method passed to the upstream script",
@@ -578,6 +604,16 @@ def main(argv: list[str] | None = None) -> int:
     if args.command == "run-recon-mainline-smoke":
         payload = run_recon_mainline_smoke(
             args.workspace,
+            repo_root=args.repo_root,
+            method=args.method,
+        )
+        print(json.dumps(payload, indent=2, ensure_ascii=True))
+        return 0 if payload["status"] == "ready" else 1
+
+    if args.command == "run-recon-artifact-mainline":
+        payload = run_recon_artifact_mainline(
+            artifact_dir=args.artifact_dir,
+            workspace=args.workspace,
             repo_root=args.repo_root,
             method=args.method,
         )

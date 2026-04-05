@@ -52,7 +52,7 @@ DiffAudit 是一个面向扩散模型的隐私风险审计研究仓库。
 - `SecMI` 的计划层、资产解析、workspace 校验、adapter 准备和 dry-run 校验
 - `PIA` 的计划层、资产解析、dry-run、runtime probe 和 synthetic smoke
 - `CLiD` 的计划层、资产解析、dry-run、dry-run smoke 和 artifact summary
-- `recon` 纯黑盒主线的计划层、资产解析、dry-run、分阶段 smoke 和统一 mainline smoke
+- `recon` 纯黑盒主线的计划层、资产解析、dry-run、分阶段 smoke、统一 mainline smoke 和 artifact-driven mainline
 - `variation` API-only 黑盒线的计划层、资产解析、dry-run 和 synthetic smoke
 - 最小化 vendored `SecMI` 集成子集
 - 可持续扩展的测试基线
@@ -135,8 +135,9 @@ workspaces/              多人协作工作区
 2. `probe-recon-assets`
 3. `dry-run-recon`
 4. `run-recon-mainline-smoke`
-5. 需要拆阶段排查时，再分别执行 `run-recon-eval-smoke` / `summarize-recon-artifacts` / `run-recon-upstream-eval-smoke`
-6. 真实资产到位后再接生成、embedding 和攻击评估三阶段执行
+5. 有现成 score artifact 时，执行 `run-recon-artifact-mainline`
+6. 需要拆阶段排查时，再分别执行 `run-recon-eval-smoke` / `summarize-recon-artifacts` / `run-recon-upstream-eval-smoke`
+7. 真实资产到位后再接生成、embedding 和攻击评估三阶段执行
 
 对 `variation` 这条 API-only 黑盒线，当前推荐命令顺序是：
 
@@ -322,6 +323,12 @@ python -m diffaudit run-recon-eval-smoke --workspace experiments/recon-eval-smok
 
 ```powershell
 python -m diffaudit run-recon-mainline-smoke --workspace experiments/recon-mainline-smoke --repo-root external/Reconstruction-based-Attack --method threshold
+```
+
+用现有 `recon` score artifact 运行统一主线：
+
+```powershell
+python -m diffaudit run-recon-artifact-mainline --artifact-dir path/to/recon-scores --workspace experiments/recon-artifact-mainline --repo-root external/Reconstruction-based-Attack --method threshold
 ```
 
 汇总 `recon` 分数 artifact：

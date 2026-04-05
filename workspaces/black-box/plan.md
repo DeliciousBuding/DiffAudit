@@ -6,7 +6,7 @@
 - `scope`: 黑盒成员推断、数据集级审计、black-box leakage 线索整理
 - `status`: 进行中
 - `blocked by`: 真实 checkpoint、与论文一致的数据布局、可直接复用的 black-box 目标/影子 artifact
-- `next command`: `conda run -n diffaudit-research python -m diffaudit run-recon-mainline-smoke --workspace experiments/recon-mainline-smoke --repo-root external/Reconstruction-based-Attack --method threshold`
+- `next command`: `conda run -n diffaudit-research python -m diffaudit run-recon-artifact-mainline --artifact-dir path/to/recon-scores --workspace experiments/recon-artifact-mainline --repo-root external/Reconstruction-based-Attack --method threshold`
 - `last updated`: 2026-04-05
 
 ## 主论文与场景
@@ -42,7 +42,7 @@
 
 ## 一周行动清单
 
-1. 保持 `recon` 统一 mainline smoke 可重复执行，并刷新 `experiments/blackbox-status/summary.json`
+1. 保持 `recon` 统一 mainline smoke 可重复执行，并在拿到 score artifact 后转到 `run-recon-artifact-mainline`
 2. 把真实 target/shadow score artifact 的命名和目录约束落实到 `recon` 主线
 3. 明确 `recon` 真实资产最小集合：LoRA checkpoint、生成图像目录、embedding 输入、target/shadow 分割
 4. 评估 `variation` 真实 API 调用所需的凭据、预算和 query image 约束

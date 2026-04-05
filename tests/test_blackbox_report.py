@@ -188,6 +188,57 @@ class BlackBoxReportTests(unittest.TestCase):
         self.assertEqual(report["method_count"], 1)
         self.assertIn("variation", report["methods"])
 
+    def test_artifact_mainline_outranks_mainline_smoke(self) -> None:
+        from diffaudit.reports.blackbox_status import build_blackbox_status_report
+
+        with tempfile.TemporaryDirectory() as tmpdir:
+            root = Path(tmpdir)
+            experiments_root = root / "experiments"
+            (experiments_root / "recon-mainline-smoke").mkdir(parents=True)
+            (experiments_root / "recon-artifact-mainline").mkdir(parents=True)
+
+            (experiments_root / "recon-mainline-smoke" / "summary.json").write_text(
+                json.dumps(
+                    {
+                        "status": "ready",
+                        "track": "black-box",
+                        "method": "recon",
+                        "paper": "BlackBox_Reconstruction_ArXiv2023",
+                        "mode": "mainline-smoke",
+                        "metrics": {
+                            "auc": 1.0,
+                            "asr": 1.0,
+                            "tpr_at_1pct_fpr": 1.0,
+                        },
+                    }
+                ),
+                encoding="utf-8",
+            )
+            (experiments_root / "recon-artifact-mainline" / "summary.json").write_text(
+                json.dumps(
+                    {
+                        "status": "ready",
+                        "track": "black-box",
+                        "method": "recon",
+                        "paper": "BlackBox_Reconstruction_ArXiv2023",
+                        "mode": "artifact-mainline",
+                        "metrics": {
+                            "auc": 1.0,
+                            "asr": 1.0,
+                            "tpr_at_1pct_fpr": 1.0,
+                        },
+                    }
+                ),
+                encoding="utf-8",
+            )
+
+            report = build_blackbox_status_report(
+                experiments_root=experiments_root,
+                workspace=root / "out",
+            )
+
+        self.assertEqual(report["methods"]["recon"]["best_evidence_mode"], "artifact-mainline")
+
 
 if __name__ == "__main__":
     unittest.main()

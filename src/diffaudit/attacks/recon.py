@@ -448,15 +448,26 @@ def _headline_metrics(payload: dict[str, object]) -> dict[str, float | None]:
     }
 
 
-def run_recon_upstream_eval_smoke(
+def run_recon_upstream_eval(
+    artifact_dir: str | Path,
     workspace: str | Path,
     repo_root: str | Path = "external/Reconstruction-based-Attack",
     method: str = "threshold",
+    mode: str = "upstream-eval",
 ) -> dict[str, object]:
+    artifact_path = Path(artifact_dir)
+    score_paths = {
+        "target_member": artifact_path / "target_member.pt",
+        "target_non_member": artifact_path / "target_non_member.pt",
+        "shadow_member": artifact_path / "shadow_member.pt",
+        "shadow_non_member": artifact_path / "shadow_non_member.pt",
+    }
+    for name, score_path in score_paths.items():
+        if not score_path.exists():
+            raise FileNotFoundError(f"Missing reconstruction artifact: {name} -> {score_path}")
+
     workspace_path = Path(workspace)
     workspace_path.mkdir(parents=True, exist_ok=True)
-    artifact_root = workspace_path / "synthetic-score-artifacts"
-    score_paths = _write_synthetic_recon_score_artifacts(artifact_root)
     repo_path = Path(repo_root).resolve()
     script_path = repo_path / "test_accuracy.py"
     if not script_path.exists():
@@ -466,13 +477,13 @@ def run_recon_upstream_eval_smoke(
         sys.executable,
         str(script_path),
         "--target_member_dir",
-        score_paths["target_member"],
+        str(score_paths["target_member"].resolve()),
         "--target_non_member_dir",
-        score_paths["target_non_member"],
+        str(score_paths["target_non_member"].resolve()),
         "--shadow_member_dir",
-        score_paths["shadow_member"],
+        str(score_paths["shadow_member"].resolve()),
         "--shadow_non_member_dir",
-        score_paths["shadow_non_member"],
+        str(score_paths["shadow_non_member"].resolve()),
         "--method",
         method,
     ]
@@ -490,28 +501,62 @@ def run_recon_upstream_eval_smoke(
         "track": "black-box",
         "method": "recon",
         "paper": "BlackBox_Reconstruction_ArXiv2023",
-        "mode": "upstream-eval-smoke",
+        "mode": mode,
         "device": "cpu",
         "workspace": str(workspace_path),
         "artifact_paths": {
             "summary": str(workspace_path / "summary.json"),
         },
+        "assets": {
+            "artifact_files": sorted(score_paths.keys()),
+        },
         "checks": {
-            "synthetic_scores_created": True,
+            "artifact_files_found": True,
             "upstream_script_found": True,
             "upstream_script_succeeded": completed.returncode == 0,
-            "synthetic_assets_cleaned": True,
         },
         "evaluation_method": method,
         "metrics": parsed,
         "notes": [
-            "Smoke executes the upstream reconstruction evaluation script with synthetic score artifacts.",
-            "Current workflow is intended to validate CLI compatibility before real artifacts are available.",
+            "Evaluation executes the upstream reconstruction accuracy script with provided score artifacts.",
         ],
         "stdout_tail": completed.stdout.strip().splitlines()[-5:],
     }
     if completed.stderr.strip():
         result["stderr_tail"] = completed.stderr.strip().splitlines()[-5:]
+    (workspace_path / "summary.json").write_text(
+        json.dumps(result, indent=2, ensure_ascii=True),
+        encoding="utf-8",
+    )
+    return result
+
+
+def run_recon_upstream_eval_smoke(
+    workspace: str | Path,
+    repo_root: str | Path = "external/Reconstruction-based-Attack",
+    method: str = "threshold",
+) -> dict[str, object]:
+    workspace_path = Path(workspace)
+    workspace_path.mkdir(parents=True, exist_ok=True)
+    artifact_root = workspace_path / "synthetic-score-artifacts"
+    _write_synthetic_recon_score_artifacts(artifact_root)
+    result = run_recon_upstream_eval(
+        artifact_dir=artifact_root,
+        workspace=workspace_path,
+        repo_root=repo_root,
+        method=method,
+        mode="upstream-eval-smoke",
+    )
+    result["checks"] = {
+        "synthetic_scores_created": True,
+        "upstream_script_found": result["checks"]["upstream_script_found"],
+        "upstream_script_succeeded": result["checks"]["upstream_script_succeeded"],
+        "synthetic_assets_cleaned": True,
+    }
+    result["notes"] = [
+        "Smoke executes the upstream reconstruction evaluation script with synthetic score artifacts.",
+        "Current workflow is intended to validate CLI compatibility before real artifacts are available.",
+    ]
     (workspace_path / "summary.json").write_text(
         json.dumps(result, indent=2, ensure_ascii=True),
         encoding="utf-8",
@@ -594,6 +639,79 @@ def run_recon_mainline_smoke(
         "notes": [
             "Mainline smoke orchestrates the reconstruction black-box path into one machine-readable workspace.",
             "Current mainline remains synthetic and is intended to stabilize the stage contract before real artifacts are attached.",
+        ],
+    }
+    (workspace_path / "summary.json").write_text(
+        json.dumps(result, indent=2, ensure_ascii=True),
+        encoding="utf-8",
+    )
+    return result
+
+
+def run_recon_artifact_mainline(
+    artifact_dir: str | Path,
+    workspace: str | Path,
+    repo_root: str | Path = "external/Reconstruction-based-Attack",
+    method: str = "threshold",
+) -> dict[str, object]:
+    workspace_path = Path(workspace)
+    workspace_path.mkdir(parents=True, exist_ok=True)
+
+    artifact_payload = summarize_recon_artifacts(
+        artifact_dir=artifact_dir,
+        workspace=workspace_path / "artifact-summary",
+    )
+    upstream_payload = run_recon_upstream_eval(
+        artifact_dir=artifact_dir,
+        workspace=workspace_path / "upstream-eval",
+        repo_root=repo_root,
+        method=method,
+        mode="upstream-eval",
+    )
+    stages = {
+        "artifact_summary": {
+            "status": artifact_payload["status"],
+            "mode": artifact_payload["mode"],
+            "summary_path": artifact_payload["artifact_paths"]["summary"],
+            "headline_metrics": _headline_metrics(artifact_payload),
+        },
+        "upstream_eval": {
+            "status": upstream_payload["status"],
+            "mode": upstream_payload["mode"],
+            "summary_path": upstream_payload["artifact_paths"]["summary"],
+            "headline_metrics": _headline_metrics(upstream_payload),
+        },
+    }
+    checks = {
+        "artifact_summary_ready": artifact_payload["status"] == "ready",
+        "upstream_eval_ready": upstream_payload["status"] == "ready",
+        "all_stages_ready": all(stage["status"] == "ready" for stage in stages.values()),
+    }
+    result = {
+        "status": "ready" if checks["all_stages_ready"] else "error",
+        "track": "black-box",
+        "method": "recon",
+        "paper": "BlackBox_Reconstruction_ArXiv2023",
+        "mode": "artifact-mainline",
+        "device": "cpu",
+        "workspace": str(workspace_path),
+        "artifact_paths": {
+            "summary": str(workspace_path / "summary.json"),
+            "artifact_summary": artifact_payload["artifact_paths"]["summary"],
+            "upstream_eval_summary": upstream_payload["artifact_paths"]["summary"],
+        },
+        "asset_source_dir": str(Path(artifact_dir)),
+        "checks": checks,
+        "evaluation_method": method,
+        "metrics": {
+            "auc": _headline_metrics(upstream_payload)["auc"],
+            "asr": _headline_metrics(upstream_payload)["asr"],
+            "tpr_at_1pct_fpr": _headline_metrics(artifact_payload)["tpr_at_1pct_fpr"],
+        },
+        "stages": stages,
+        "notes": [
+            "Artifact mainline consumes provided target/shadow reconstruction score artifacts.",
+            "This path is intended as the shortest bridge from repository smoke workflows to real black-box evidence.",
         ],
     }
     (workspace_path / "summary.json").write_text(
