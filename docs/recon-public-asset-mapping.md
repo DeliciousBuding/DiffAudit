@@ -40,7 +40,7 @@
 
 ## 当前结论
 
-- 可以合理声称：公开资产已经足以支撑 `Stable Diffusion + DDIM` 的最小真实 `runtime-mainline`
+- 可以合理声称：公开资产已经足以支撑 `Stable Diffusion + DDIM` 与 `kandinsky_v22` 的最小真实 `runtime-mainline`
 - 不能合理声称：当前公开资产已经严格对齐论文里的完整 target/shadow/member/non-member 语义
 
 ## 推荐执行策略
