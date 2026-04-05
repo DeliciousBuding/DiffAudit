@@ -30,10 +30,11 @@ docs/paper-reports/
 - Report file name: reuse the PDF file stem and append `-report.md`.
 - Report location: place reports under the track folder that matches `references/materials/<track>/`.
 - Image assets: store extracted figures under `docs/paper-reports/assets/<track>/`.
+- Key figure image name: `<pdf-stem>-key-figure-p<page>.png`.
 
 ## Feishu Rules
 
 - One report corresponds to one Feishu doc.
 - Each Feishu doc must be readable by anyone with the link.
 - The master Feishu doc should link to the single-report Feishu docs by title.
-- If a figure asset is available, insert it into the single-report Feishu doc after the main summary section.
+- If a figure asset is available, insert it into the single-report Feishu doc after the `Recommended Figure` section.
