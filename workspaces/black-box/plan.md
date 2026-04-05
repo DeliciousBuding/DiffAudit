@@ -16,6 +16,14 @@
 - `2024-neurips-clid-membership-inference-text-to-image-diffusion.pdf`
 - `2025-visapp-membership-inference-face-fine-tuned-latent-diffusion-models.pdf`
 
+## 当前可执行证据
+
+- `experiments/clid-dry-run-smoke/summary.json`
+
+## 本地代码上下文
+
+- `external/CLiD`
+
 ## 推荐分工
 
 - 主复现：`Black-box Membership Inference Attacks against Fine-tuned Diffusion Models`
