@@ -717,6 +717,53 @@ class ReconAttackTests(unittest.TestCase):
         self.assertEqual(payload["runtime"]["backend"], "stable_diffusion")
         self.assertIn("--scheduler", payload["artifacts"]["target_member"]["inference"]["command"])
 
+    def test_run_recon_runtime_mainline_reuses_existing_score_artifacts(self) -> None:
+        from diffaudit.attacks.recon import run_recon_runtime_mainline
+        import torch
+
+        with tempfile.TemporaryDirectory() as tmpdir:
+            root = Path(tmpdir)
+            repo_root = root / "recon"
+            create_minimal_recon_repo(repo_root)
+
+            datasets = {}
+            for name in (
+                "target_member",
+                "target_non_member",
+                "shadow_member",
+                "shadow_non_member",
+            ):
+                dataset_path = root / f"{name}.pt"
+                create_recon_dataset_payload(dataset_path, count=1)
+                datasets[name] = dataset_path
+
+            target_model_dir = root / "target-lora"
+            shadow_model_dir = root / "shadow-lora"
+            target_model_dir.mkdir()
+            shadow_model_dir.mkdir()
+
+            workspace = root / "recon-runtime-mainline-reuse"
+            score_root = workspace / "score-artifacts"
+            score_root.mkdir(parents=True, exist_ok=True)
+            torch.save([([0.91], 1)], score_root / "target_member.pt")
+
+            result = run_recon_runtime_mainline(
+                target_member_dataset=datasets["target_member"],
+                target_nonmember_dataset=datasets["target_non_member"],
+                shadow_member_dataset=datasets["shadow_member"],
+                shadow_nonmember_dataset=datasets["shadow_non_member"],
+                target_model_dir=target_model_dir,
+                shadow_model_dir=shadow_model_dir,
+                workspace=workspace,
+                repo_root=repo_root,
+                method="threshold",
+            )
+
+        self.assertEqual(result["status"], "ready")
+        self.assertEqual(result["artifacts"]["target_member"]["status"], "ready")
+        self.assertEqual(result["artifacts"]["target_member"]["stage"], "reused")
+        self.assertTrue(result["checks"]["all_artifacts_generated"])
+
 
 if __name__ == "__main__":
     unittest.main()

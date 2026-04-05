@@ -45,7 +45,7 @@
 
 1. 保持 `recon` 统一 mainline smoke 可重复执行，并在拿到 score artifact 后先跑 `probe-recon-score-artifacts` 再转到 `run-recon-artifact-mainline`
 2. 用 `probe-recon-runtime-assets` 先核准本机 `recon` 公开 Zenodo 资产的 target/shadow/member/non-member 映射
-3. 若映射成立，继续把 `run-recon-runtime-mainline` 的自动编排收敛到无需手工补最后一个 score artifact
+3. 若映射成立，继续把 `run-recon-runtime-mainline` 的自动编排收敛到可断点续跑、无需手工补最后一个 score artifact
 4. 把真实 target/shadow score artifact 的命名和目录约束落实到 `recon` 主线
 5. 维持 `DiT` 官方 `sample.py` 路线可重复执行，并视需要补本地 checkpoint 路径
 6. 评估 `variation` 真实 API 调用所需的凭据、预算和 query image 约束

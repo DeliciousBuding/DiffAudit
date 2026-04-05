@@ -356,6 +356,11 @@ python -m diffaudit probe-recon-runtime-assets --target-member-dataset path/to/t
 python -m diffaudit run-recon-runtime-mainline --target-member-dataset path/to/target_member_dataset.pkl --target-nonmember-dataset path/to/target_nonmember_dataset.pkl --shadow-member-dataset path/to/shadow_member_dataset.pkl --shadow-nonmember-dataset path/to/shadow_nonmember_dataset.pkl --target-model-dir path/to/target_lora_checkpoint --shadow-model-dir path/to/shadow_lora_checkpoint --workspace experiments/recon-runtime-mainline --repo-root external/Reconstruction-based-Attack --method threshold
 ```
 
+说明：
+
+- `run-recon-runtime-mainline` 现在会优先复用已有的 `score-artifacts/*.pt`
+- 如果某个 artifact 已经生成，重跑时会跳过该项，适合断点续跑
+
 若要显式验证 `DDIM` 采样器路径，可追加：
 
 ```powershell
