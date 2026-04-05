@@ -66,6 +66,7 @@ DiffAudit 是一个面向扩散模型的隐私风险审计研究仓库。
 - 完整的审计报告输出层
 
 当前方法线的最新状态见 [docs/reproduction-status.md](docs/reproduction-status.md)。
+黑盒结果的统一机读汇总见 `experiments/blackbox-status/summary.json`。
 
 ## 仓库结构
 

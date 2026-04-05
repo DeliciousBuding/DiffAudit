@@ -40,3 +40,7 @@
 4. 下一步优先级建议：
    - 先给 `recon` 接真实生成与 embedding artifact
    - 再决定是推进 `variation` 真实 API 调用，还是补 `clid` 的真实资产驱动执行
+
+## 统一黑盒汇总
+
+- [experiments/blackbox-status/summary.json](/D:/Code/DiffAudit/Project/experiments/blackbox-status/summary.json)

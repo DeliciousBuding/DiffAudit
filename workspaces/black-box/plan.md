@@ -24,6 +24,7 @@
 - `experiments/recon-artifact-summary/summary.json`
 - `experiments/recon-upstream-eval-smoke/summary.json`
 - `experiments/variation-synth-smoke/summary.json`
+- `experiments/blackbox-status/summary.json`
 
 ## 本地代码上下文
 

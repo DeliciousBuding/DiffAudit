@@ -32,6 +32,7 @@ from diffaudit.attacks.variation import (
 )
 from diffaudit.config import load_audit_config
 from diffaudit.pipelines.smoke import run_smoke_pipeline
+from diffaudit.reports.blackbox_status import build_blackbox_status_report
 
 
 def build_parser() -> argparse.ArgumentParser:
@@ -265,6 +266,21 @@ def build_parser() -> argparse.ArgumentParser:
         "--workspace",
         required=True,
         help="workspace directory for variation synthetic smoke artifacts",
+    )
+
+    blackbox_status_parser = subparsers.add_parser(
+        "summarize-blackbox-results",
+        help="aggregate black-box experiment summaries into a single machine-readable report",
+    )
+    blackbox_status_parser.add_argument(
+        "--experiments-root",
+        required=True,
+        help="root directory containing experiment summary subdirectories",
+    )
+    blackbox_status_parser.add_argument(
+        "--workspace",
+        required=True,
+        help="workspace directory for the aggregated black-box status report",
     )
 
     pia_runtime_probe_parser = subparsers.add_parser(
@@ -540,6 +556,14 @@ def main(argv: list[str] | None = None) -> int:
 
     if args.command == "run-variation-synth-smoke":
         payload = run_variation_synthetic_smoke(args.workspace)
+        print(json.dumps(payload, indent=2, ensure_ascii=True))
+        return 0
+
+    if args.command == "summarize-blackbox-results":
+        payload = build_blackbox_status_report(
+            experiments_root=args.experiments_root,
+            workspace=args.workspace,
+        )
         print(json.dumps(payload, indent=2, ensure_ascii=True))
         return 0
 
