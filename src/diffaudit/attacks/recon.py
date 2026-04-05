@@ -23,6 +23,8 @@ RECON_WORKSPACE_FILES = (
     "train_text_to_image_lora.py",
 )
 RECON_RUNTIME_DATASET_KEYS = ("text", "image")
+SUPPORTED_RECON_BACKENDS = {"stable_diffusion"}
+SUPPORTED_RECON_SCHEDULERS = {"default", "ddim", "dpm_solver_multistep"}
 
 
 @dataclass(frozen=True)
@@ -568,10 +570,16 @@ def run_recon_runtime_mainline(
     num_validation_images: int = 3,
     inference_steps: int = 30,
     gpu: int = 0,
+    backend: str = "stable_diffusion",
+    scheduler: str = "default",
     method: str = "threshold",
     similarity_method: str = "cosine",
     image_encoder: str = "deit",
 ) -> dict[str, object]:
+    if backend not in SUPPORTED_RECON_BACKENDS:
+        raise ValueError(f"Unsupported recon backend: {backend}")
+    if scheduler not in SUPPORTED_RECON_SCHEDULERS:
+        raise ValueError(f"Unsupported recon scheduler: {scheduler}")
     runtime_assets = probe_recon_runtime_assets(
         target_member_dataset=target_member_dataset,
         target_nonmember_dataset=target_nonmember_dataset,
@@ -602,6 +610,7 @@ def run_recon_runtime_mainline(
 
     repo_path = Path(repo_root).resolve()
     score_root = workspace_path / "score-artifacts"
+    score_root.mkdir(parents=True, exist_ok=True)
     image_root = workspace_path / "generated-images"
     jobs = {
         "target_member": {
@@ -647,6 +656,8 @@ def run_recon_runtime_mainline(
             "--save_dir",
             str(generated_dir.resolve()),
         ]
+        if backend == "stable_diffusion":
+            inference_command.extend(["--scheduler", scheduler])
         inference_result = _run_recon_subprocess(inference_command, cwd=repo_path)
         if inference_result["returncode"] != 0:
             all_artifacts_generated = False
@@ -746,6 +757,14 @@ def run_recon_runtime_mainline(
             },
         },
         "evaluation_method": method,
+        "runtime": {
+            "backend": backend,
+            "scheduler": scheduler,
+            "pretrained_model_name_or_path": pretrained_model_name_or_path,
+            "num_validation_images": num_validation_images,
+            "inference_steps": inference_steps,
+            "gpu": gpu,
+        },
         "metrics": artifact_mainline.get("metrics", {}),
         "notes": [
             "Runtime mainline bridges caption-known reconstruction datasets to repository artifact and evaluation summaries.",
