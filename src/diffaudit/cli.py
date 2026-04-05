@@ -19,10 +19,12 @@ from diffaudit.attacks.recon import (
     build_recon_plan,
     explain_recon_assets,
     probe_recon_dry_run,
+    probe_recon_runtime_assets,
     probe_recon_score_artifacts,
     run_recon_artifact_mainline,
     run_recon_eval_smoke,
     run_recon_mainline_smoke,
+    run_recon_runtime_mainline,
     run_recon_upstream_eval_smoke,
     summarize_recon_artifacts,
 )
@@ -122,6 +124,22 @@ def build_parser() -> argparse.ArgumentParser:
         "--artifact-dir",
         required=True,
         help="directory containing target/shadow member and non-member score artifacts",
+    )
+
+    recon_runtime_probe_parser = subparsers.add_parser(
+        "probe-recon-runtime-assets",
+        help="inspect reconstruction dataset/model assets for runtime artifact generation",
+    )
+    recon_runtime_probe_parser.add_argument("--target-member-dataset", required=True)
+    recon_runtime_probe_parser.add_argument("--target-nonmember-dataset", required=True)
+    recon_runtime_probe_parser.add_argument("--shadow-member-dataset", required=True)
+    recon_runtime_probe_parser.add_argument("--shadow-nonmember-dataset", required=True)
+    recon_runtime_probe_parser.add_argument("--target-model-dir", required=True)
+    recon_runtime_probe_parser.add_argument("--shadow-model-dir", required=True)
+    recon_runtime_probe_parser.add_argument(
+        "--repo-root",
+        default="external/Reconstruction-based-Attack",
+        help="path to local reconstruction-based attack repository root",
     )
 
     variation_asset_probe_parser = subparsers.add_parser(
@@ -314,6 +332,65 @@ def build_parser() -> argparse.ArgumentParser:
         "--method",
         default="threshold",
         help="evaluation method passed to the upstream script",
+    )
+
+    recon_runtime_mainline_parser = subparsers.add_parser(
+        "run-recon-runtime-mainline",
+        help="generate reconstruction score artifacts from dataset payloads and run the artifact mainline",
+    )
+    recon_runtime_mainline_parser.add_argument("--target-member-dataset", required=True)
+    recon_runtime_mainline_parser.add_argument("--target-nonmember-dataset", required=True)
+    recon_runtime_mainline_parser.add_argument("--shadow-member-dataset", required=True)
+    recon_runtime_mainline_parser.add_argument("--shadow-nonmember-dataset", required=True)
+    recon_runtime_mainline_parser.add_argument("--target-model-dir", required=True)
+    recon_runtime_mainline_parser.add_argument("--shadow-model-dir", required=True)
+    recon_runtime_mainline_parser.add_argument(
+        "--workspace",
+        required=True,
+        help="workspace directory for runtime reconstruction artifacts and summaries",
+    )
+    recon_runtime_mainline_parser.add_argument(
+        "--repo-root",
+        default="external/Reconstruction-based-Attack",
+        help="path to local reconstruction-based attack repository root",
+    )
+    recon_runtime_mainline_parser.add_argument(
+        "--pretrained-model-name-or-path",
+        default="runwayml/stable-diffusion-v1-5",
+        help="base pretrained model identifier used by the upstream inference script",
+    )
+    recon_runtime_mainline_parser.add_argument(
+        "--num-validation-images",
+        type=int,
+        default=3,
+        help="number of images generated per query sample",
+    )
+    recon_runtime_mainline_parser.add_argument(
+        "--inference-steps",
+        type=int,
+        default=30,
+        help="number of diffusion steps used by the upstream inference script",
+    )
+    recon_runtime_mainline_parser.add_argument(
+        "--gpu",
+        type=int,
+        default=0,
+        help="GPU index passed to the embedding script",
+    )
+    recon_runtime_mainline_parser.add_argument(
+        "--method",
+        default="threshold",
+        help="evaluation method passed to the upstream script",
+    )
+    recon_runtime_mainline_parser.add_argument(
+        "--similarity-method",
+        default="cosine",
+        help="similarity method passed to cal_embedding.py",
+    )
+    recon_runtime_mainline_parser.add_argument(
+        "--image-encoder",
+        default="deit",
+        help="image encoder passed to cal_embedding.py",
     )
 
     variation_synth_smoke_parser = subparsers.add_parser(
@@ -529,6 +606,19 @@ def main(argv: list[str] | None = None) -> int:
         print(json.dumps(payload, indent=2, ensure_ascii=True))
         return 0 if payload["status"] == "ready" else 1
 
+    if args.command == "probe-recon-runtime-assets":
+        payload = probe_recon_runtime_assets(
+            target_member_dataset=args.target_member_dataset,
+            target_nonmember_dataset=args.target_nonmember_dataset,
+            shadow_member_dataset=args.shadow_member_dataset,
+            shadow_nonmember_dataset=args.shadow_nonmember_dataset,
+            target_model_dir=args.target_model_dir,
+            shadow_model_dir=args.shadow_model_dir,
+            repo_root=args.repo_root,
+        )
+        print(json.dumps(payload, indent=2, ensure_ascii=True))
+        return 0 if payload["status"] == "ready" else 1
+
     if args.command == "probe-variation-assets":
         config = load_audit_config(args.config)
         payload = explain_variation_assets(config)
@@ -632,6 +722,27 @@ def main(argv: list[str] | None = None) -> int:
             workspace=args.workspace,
             repo_root=args.repo_root,
             method=args.method,
+        )
+        print(json.dumps(payload, indent=2, ensure_ascii=True))
+        return 0 if payload["status"] == "ready" else 1
+
+    if args.command == "run-recon-runtime-mainline":
+        payload = run_recon_runtime_mainline(
+            target_member_dataset=args.target_member_dataset,
+            target_nonmember_dataset=args.target_nonmember_dataset,
+            shadow_member_dataset=args.shadow_member_dataset,
+            shadow_nonmember_dataset=args.shadow_nonmember_dataset,
+            target_model_dir=args.target_model_dir,
+            shadow_model_dir=args.shadow_model_dir,
+            workspace=args.workspace,
+            repo_root=args.repo_root,
+            pretrained_model_name_or_path=args.pretrained_model_name_or_path,
+            num_validation_images=args.num_validation_images,
+            inference_steps=args.inference_steps,
+            gpu=args.gpu,
+            method=args.method,
+            similarity_method=args.similarity_method,
+            image_encoder=args.image_encoder,
         )
         print(json.dumps(payload, indent=2, ensure_ascii=True))
         return 0 if payload["status"] == "ready" else 1

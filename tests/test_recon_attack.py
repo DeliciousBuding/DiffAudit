@@ -32,13 +32,69 @@ report:
 def create_minimal_recon_repo(repo_root: Path) -> None:
     repo_root.mkdir(parents=True, exist_ok=True)
     (repo_root / "inference.py").write_text(
-        "from diffusers import StableDiffusionPipeline\n"
-        "parser = None\n",
+        "import argparse\n"
+        "from pathlib import Path\n"
+        "import torch\n"
+        "\n"
+        "# StableDiffusionPipeline\n"
+        "\n"
+        "def parse_args():\n"
+        "    parser = argparse.ArgumentParser()\n"
+        "    parser.add_argument('--pretrained_model_name_or_path')\n"
+        "    parser.add_argument('--num_validation_images', type=int, default=3)\n"
+        "    parser.add_argument('--inference', type=int, default=30)\n"
+        "    parser.add_argument('--output_dir')\n"
+        "    parser.add_argument('--data_dir')\n"
+        "    parser.add_argument('--save_dir')\n"
+        "    return parser.parse_args()\n"
+        "\n"
+        "def main():\n"
+        "    args = parse_args()\n"
+        "    payload = torch.load(args.data_dir)\n"
+        "    count = len(payload.get('text', []))\n"
+        "    save_dir = Path(args.save_dir)\n"
+        "    save_dir.mkdir(parents=True, exist_ok=True)\n"
+        "    for i in range(count):\n"
+        "        for j in range(args.num_validation_images):\n"
+        "            (save_dir / f'image_{i+1:02}_{j+1:02}.jpg').write_bytes(b'fake-jpg')\n"
+        "\n"
+        "if __name__ == '__main__':\n"
+        "    main()\n",
         encoding="utf-8",
     )
     (repo_root / "cal_embedding.py").write_text(
-        "from transformers import DeiTFeatureExtractor\n"
-        "def compute_scores():\n    return None\n",
+        "import argparse\n"
+        "from pathlib import Path\n"
+        "import torch\n"
+        "\n"
+        "# DeiTFeatureExtractor\n"
+        "\n"
+        "def parse_args():\n"
+        "    parser = argparse.ArgumentParser()\n"
+        "    parser.add_argument('--data_dir')\n"
+        "    parser.add_argument('--sample_file')\n"
+        "    parser.add_argument('--membership', type=int)\n"
+        "    parser.add_argument('--img_num', type=int, default=3)\n"
+        "    parser.add_argument('--gpu', type=int, default=0)\n"
+        "    parser.add_argument('--save_dir')\n"
+        "    parser.add_argument('--method', default='cosine')\n"
+        "    parser.add_argument('--image_encoder', default='deit')\n"
+        "    return parser.parse_args()\n"
+        "\n"
+        "def compute_scores():\n"
+        "    return None\n"
+        "\n"
+        "def main():\n"
+        "    args = parse_args()\n"
+        "    payload = torch.load(args.data_dir)\n"
+        "    count = len(payload.get('text', []))\n"
+        "    score = 0.9 if int(args.membership) == 1 else 0.1\n"
+        "    rows = [[ [score], int(args.membership) ] for _ in range(count)]\n"
+        "    Path(args.save_dir).parent.mkdir(parents=True, exist_ok=True)\n"
+        "    torch.save(rows, args.save_dir)\n"
+        "\n"
+        "if __name__ == '__main__':\n"
+        "    main()\n",
         encoding="utf-8",
     )
     (repo_root / "test_accuracy.py").write_text(
@@ -68,6 +124,16 @@ def create_minimal_recon_repo(repo_root: Path) -> None:
         encoding="utf-8",
     )
     (repo_root / "train_text_to_image_lora.py").write_text("# train", encoding="utf-8")
+
+
+def create_recon_dataset_payload(dataset_path: Path, count: int = 3) -> None:
+    import torch
+
+    payload = {
+        "text": [f"prompt-{index}" for index in range(count)],
+        "image": [f"image-{index}" for index in range(count)],
+    }
+    torch.save(payload, dataset_path)
 
 
 class ReconAttackTests(unittest.TestCase):
@@ -490,6 +556,107 @@ class ReconAttackTests(unittest.TestCase):
         self.assertEqual(payload["mode"], "artifact-mainline")
         self.assertTrue(payload["checks"]["all_stages_ready"])
         self.assertEqual(payload["stages"]["upstream_eval"]["status"], "ready")
+
+    def test_probe_recon_runtime_assets_reports_ready(self) -> None:
+        from diffaudit.attacks.recon import probe_recon_runtime_assets
+
+        with tempfile.TemporaryDirectory() as tmpdir:
+            root = Path(tmpdir)
+            repo_root = root / "recon"
+            create_minimal_recon_repo(repo_root)
+
+            datasets = {}
+            for name in (
+                "target_member",
+                "target_non_member",
+                "shadow_member",
+                "shadow_non_member",
+            ):
+                dataset_path = root / f"{name}.pt"
+                create_recon_dataset_payload(dataset_path, count=2)
+                datasets[name] = dataset_path
+
+            target_model_dir = root / "target-lora"
+            shadow_model_dir = root / "shadow-lora"
+            target_model_dir.mkdir()
+            shadow_model_dir.mkdir()
+
+            result = probe_recon_runtime_assets(
+                target_member_dataset=datasets["target_member"],
+                target_nonmember_dataset=datasets["target_non_member"],
+                shadow_member_dataset=datasets["shadow_member"],
+                shadow_nonmember_dataset=datasets["shadow_non_member"],
+                target_model_dir=target_model_dir,
+                shadow_model_dir=shadow_model_dir,
+                repo_root=repo_root,
+            )
+
+        self.assertEqual(result["status"], "ready")
+        self.assertTrue(result["checks"]["target_member_dataset"])
+        self.assertTrue(result["checks"]["shadow_model_dir"])
+        self.assertEqual(result["dataset_profiles"]["target_member"]["sample_count"], 2)
+        self.assertTrue(result["dataset_profiles"]["target_member"]["has_text"])
+        self.assertTrue(result["dataset_profiles"]["target_member"]["has_image"])
+
+    def test_cli_runs_recon_runtime_mainline(self) -> None:
+        from diffaudit.cli import main
+
+        with tempfile.TemporaryDirectory() as tmpdir:
+            root = Path(tmpdir)
+            repo_root = root / "recon"
+            create_minimal_recon_repo(repo_root)
+
+            datasets = {}
+            for name in (
+                "target_member",
+                "target_non_member",
+                "shadow_member",
+                "shadow_non_member",
+            ):
+                dataset_path = root / f"{name}.pt"
+                create_recon_dataset_payload(dataset_path, count=2)
+                datasets[name] = dataset_path
+
+            target_model_dir = root / "target-lora"
+            shadow_model_dir = root / "shadow-lora"
+            target_model_dir.mkdir()
+            shadow_model_dir.mkdir()
+
+            stdout = StringIO()
+            with redirect_stdout(stdout):
+                exit_code = main(
+                    [
+                        "run-recon-runtime-mainline",
+                        "--target-member-dataset",
+                        str(datasets["target_member"]),
+                        "--target-nonmember-dataset",
+                        str(datasets["target_non_member"]),
+                        "--shadow-member-dataset",
+                        str(datasets["shadow_member"]),
+                        "--shadow-nonmember-dataset",
+                        str(datasets["shadow_non_member"]),
+                        "--target-model-dir",
+                        str(target_model_dir),
+                        "--shadow-model-dir",
+                        str(shadow_model_dir),
+                        "--workspace",
+                        str(root / "recon-runtime-mainline"),
+                        "--repo-root",
+                        str(repo_root),
+                        "--method",
+                        "threshold",
+                    ]
+                )
+
+        payload = json.loads(stdout.getvalue())
+        self.assertEqual(exit_code, 0)
+        self.assertEqual(payload["status"], "ready")
+        self.assertEqual(payload["mode"], "runtime-mainline")
+        self.assertTrue(payload["checks"]["runtime_assets_ready"])
+        self.assertTrue(payload["checks"]["artifact_mainline_ready"])
+        self.assertTrue(payload["checks"]["all_artifacts_generated"])
+        self.assertEqual(payload["artifacts"]["target_member"]["sample_count"], 2)
+        self.assertEqual(payload["stages"]["artifact_mainline"]["status"], "ready")
 
 
 if __name__ == "__main__":

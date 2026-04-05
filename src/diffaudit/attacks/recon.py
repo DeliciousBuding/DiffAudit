@@ -22,6 +22,7 @@ RECON_WORKSPACE_FILES = (
     "test_accuracy.py",
     "train_text_to_image_lora.py",
 )
+RECON_RUNTIME_DATASET_KEYS = ("text", "image")
 
 
 @dataclass(frozen=True)
@@ -145,6 +146,131 @@ def explain_recon_assets(config: AuditConfig) -> dict[str, object]:
     }
 
 
+def _load_recon_dataset_profile(dataset_path: str | Path) -> dict[str, object]:
+    path = Path(dataset_path)
+    profile: dict[str, object] = {
+        "path": str(path),
+        "exists": path.exists(),
+        "keys": [],
+        "sample_count": 0,
+        "has_text": False,
+        "has_image": False,
+        "non_empty": False,
+    }
+    if not path.exists():
+        return profile
+
+    try:
+        try:
+            payload = torch.load(path, map_location="cpu", weights_only=False)
+        except TypeError:
+            payload = torch.load(path, map_location="cpu")
+    except Exception as exc:
+        profile["error"] = str(exc)
+        return profile
+
+    if not isinstance(payload, dict):
+        profile["error"] = "dataset payload must be a dict saved by torch.save"
+        return profile
+
+    keys = sorted(str(key) for key in payload.keys())
+    text_items = payload.get("text")
+    image_items = payload.get("image")
+    has_text = isinstance(text_items, (list, tuple))
+    has_image = isinstance(image_items, (list, tuple))
+    sample_count = min(len(text_items), len(image_items)) if has_text and has_image else 0
+    profile.update(
+        {
+            "keys": keys,
+            "has_text": has_text,
+            "has_image": has_image,
+            "sample_count": int(sample_count),
+            "non_empty": bool(sample_count > 0),
+        }
+    )
+    if has_text and has_image and len(text_items) != len(image_items):
+        profile["error"] = "dataset text/image columns must have the same length"
+    return profile
+
+
+def probe_recon_runtime_assets(
+    target_member_dataset: str | Path,
+    target_nonmember_dataset: str | Path,
+    shadow_member_dataset: str | Path,
+    shadow_nonmember_dataset: str | Path,
+    target_model_dir: str | Path,
+    shadow_model_dir: str | Path,
+    repo_root: str | Path = "external/Reconstruction-based-Attack",
+) -> dict[str, object]:
+    dataset_paths = {
+        "target_member": Path(target_member_dataset),
+        "target_non_member": Path(target_nonmember_dataset),
+        "shadow_member": Path(shadow_member_dataset),
+        "shadow_non_member": Path(shadow_nonmember_dataset),
+    }
+    dataset_profiles = {
+        name: _load_recon_dataset_profile(path) for name, path in dataset_paths.items()
+    }
+    model_paths = {
+        "target_model_dir": Path(target_model_dir),
+        "shadow_model_dir": Path(shadow_model_dir),
+    }
+
+    checks = {
+        "target_member_dataset": dataset_profiles["target_member"]["exists"],
+        "target_non_member_dataset": dataset_profiles["target_non_member"]["exists"],
+        "shadow_member_dataset": dataset_profiles["shadow_member"]["exists"],
+        "shadow_non_member_dataset": dataset_profiles["shadow_non_member"]["exists"],
+        "target_model_dir": model_paths["target_model_dir"].exists(),
+        "shadow_model_dir": model_paths["shadow_model_dir"].exists(),
+    }
+    for name, profile in dataset_profiles.items():
+        checks[f"{name}_has_text"] = bool(profile["has_text"])
+        checks[f"{name}_has_image"] = bool(profile["has_image"])
+        checks[f"{name}_non_empty"] = bool(profile["non_empty"])
+        checks[f"{name}_valid_shape"] = "error" not in profile
+
+    workspace_status = validate_recon_workspace(repo_root)
+    checks["repo_workspace_ready"] = workspace_status["status"] == "ready"
+
+    labels = {
+        "target_member_dataset": "target_member dataset",
+        "target_non_member_dataset": "target_non_member dataset",
+        "shadow_member_dataset": "shadow_member dataset",
+        "shadow_non_member_dataset": "shadow_non_member dataset",
+        "target_model_dir": "target_model_dir",
+        "shadow_model_dir": "shadow_model_dir",
+        "repo_workspace_ready": "recon repo workspace",
+    }
+    for dataset_name in dataset_profiles:
+        labels[f"{dataset_name}_has_text"] = f"{dataset_name} text column"
+        labels[f"{dataset_name}_has_image"] = f"{dataset_name} image column"
+        labels[f"{dataset_name}_non_empty"] = f"{dataset_name} sample count"
+        labels[f"{dataset_name}_valid_shape"] = f"{dataset_name} dataset shape"
+
+    paths = {
+        "target_member_dataset": str(dataset_paths["target_member"]),
+        "target_non_member_dataset": str(dataset_paths["target_non_member"]),
+        "shadow_member_dataset": str(dataset_paths["shadow_member"]),
+        "shadow_non_member_dataset": str(dataset_paths["shadow_non_member"]),
+        "target_model_dir": str(model_paths["target_model_dir"]),
+        "shadow_model_dir": str(model_paths["shadow_model_dir"]),
+        "repo_root": str(Path(repo_root)),
+    }
+    missing_keys = [name for name, is_ready in checks.items() if not is_ready]
+    missing = [paths.get(name, labels[name]) for name in missing_keys]
+    return {
+        "status": "ready" if all(checks.values()) else "blocked",
+        "checks": checks,
+        "paths": paths,
+        "dataset_profiles": dataset_profiles,
+        "missing_keys": missing_keys,
+        "missing": missing,
+        "missing_items": [Path(item).name if Path(item).name else item for item in missing],
+        "missing_description": " / ".join(labels[name] for name in missing_keys),
+    }
+
+
 def probe_recon_dry_run(
     config: AuditConfig,
     repo_root: str | Path,
@@ -239,6 +365,25 @@ def _extract_recon_scores(score_file: str | Path) -> tuple[np.ndarray, np.ndarra
             features.append(float(feature))
         labels.append(label)
     return np.asarray(features, dtype=float), np.asarray(labels, dtype=int)
+
+
+def _run_recon_subprocess(
+    command: list[str],
+    cwd: str | Path,
+) -> dict[str, object]:
+    completed = subprocess.run(
+        command,
+        cwd=str(Path(cwd)),
+        capture_output=True,
+        text=True,
+        check=False,
+    )
+    return {
+        "returncode": completed.returncode,
+        "stdout_tail": completed.stdout.strip().splitlines()[-5:] if completed.stdout.strip() else [],
+        "stderr_tail": completed.stderr.strip().splitlines()[-5:] if completed.stderr.strip() else [],
+        "command": command,
+    }
 
 
 def _threshold_metrics(member_scores: np.ndarray, nonmember_scores: np.ndarray) -> dict[str, float]:
@@ -407,6 +552,210 @@ def probe_recon_score_artifacts(artifact_dir: str | Path) -> dict[str, object]:
     result["sample_counts"] = sample_counts
     result["label_profiles"] = label_profiles
     result["status"] = "ready" if checks["all_non_empty"] and checks["all_binary_labels"] else "blocked"
+    return result
+
+
+def run_recon_runtime_mainline(
+    target_member_dataset: str | Path,
+    target_nonmember_dataset: str | Path,
+    shadow_member_dataset: str | Path,
+    shadow_nonmember_dataset: str | Path,
+    target_model_dir: str | Path,
+    shadow_model_dir: str | Path,
+    workspace: str | Path,
+    repo_root: str | Path = "external/Reconstruction-based-Attack",
+    pretrained_model_name_or_path: str = "runwayml/stable-diffusion-v1-5",
+    num_validation_images: int = 3,
+    inference_steps: int = 30,
+    gpu: int = 0,
+    method: str = "threshold",
+    similarity_method: str = "cosine",
+    image_encoder: str = "deit",
+) -> dict[str, object]:
+    runtime_assets = probe_recon_runtime_assets(
+        target_member_dataset=target_member_dataset,
+        target_nonmember_dataset=target_nonmember_dataset,
+        shadow_member_dataset=shadow_member_dataset,
+        shadow_nonmember_dataset=shadow_nonmember_dataset,
+        target_model_dir=target_model_dir,
+        shadow_model_dir=shadow_model_dir,
+        repo_root=repo_root,
+    )
+    workspace_path = Path(workspace)
+    workspace_path.mkdir(parents=True, exist_ok=True)
+    if runtime_assets["status"] != "ready":
+        return {
+            "status": "blocked",
+            "track": "black-box",
+            "method": "recon",
+            "paper": "BlackBox_Reconstruction_ArXiv2023",
+            "mode": "runtime-mainline",
+            "workspace": str(workspace_path),
+            "checks": {
+                "runtime_assets_ready": False,
+            },
+            "runtime_assets": runtime_assets,
+            "notes": [
+                "Runtime mainline requires caption-known dataset payloads with both text and image columns.",
+            ],
+        }
+
+    repo_path = Path(repo_root).resolve()
+    score_root = workspace_path / "score-artifacts"
+    image_root = workspace_path / "generated-images"
+    jobs = {
+        "target_member": {
+            "dataset": Path(target_member_dataset),
+            "model_dir": Path(target_model_dir),
+            "membership": 1,
+        },
+        "target_non_member": {
+            "dataset": Path(target_nonmember_dataset),
+            "model_dir": Path(target_model_dir),
+            "membership": 0,
+        },
+        "shadow_member": {
+            "dataset": Path(shadow_member_dataset),
+            "model_dir": Path(shadow_model_dir),
+            "membership": 1,
+        },
+        "shadow_non_member": {
+            "dataset": Path(shadow_nonmember_dataset),
+            "model_dir": Path(shadow_model_dir),
+            "membership": 0,
+        },
+    }
+    artifacts: dict[str, object] = {}
+    all_artifacts_generated = True
+    for artifact_name, spec in jobs.items():
+        generated_dir = image_root / artifact_name
+        generated_dir.mkdir(parents=True, exist_ok=True)
+        score_path = score_root / f"{artifact_name}.pt"
+        inference_command = [
+            sys.executable,
+            str((repo_path / "inference.py").resolve()),
+            "--pretrained_model_name_or_path",
+            pretrained_model_name_or_path,
+            "--num_validation_images",
+            str(num_validation_images),
+            "--inference",
+            str(inference_steps),
+            "--output_dir",
+            str(Path(spec["model_dir"]).resolve()),
+            "--data_dir",
+            str(Path(spec["dataset"]).resolve()),
+            "--save_dir",
+            str(generated_dir.resolve()),
+        ]
+        inference_result = _run_recon_subprocess(inference_command, cwd=repo_path)
+        if inference_result["returncode"] != 0:
+            all_artifacts_generated = False
+            artifacts[artifact_name] = {
+                "status": "error",
+                "stage": "inference",
+                **inference_result,
+            }
+            break
+
+        embedding_command = [
+            sys.executable,
+            str((repo_path / "cal_embedding.py").resolve()),
+            "--data_dir",
+            str(Path(spec["dataset"]).resolve()),
+            "--sample_file",
+            str(generated_dir.resolve()),
+            "--membership",
+            str(spec["membership"]),
+            "--img_num",
+            str(num_validation_images),
+            "--gpu",
+            str(gpu),
+            "--save_dir",
+            str(score_path.resolve()),
+            "--method",
+            similarity_method,
+            "--image_encoder",
+            image_encoder,
+        ]
+        embedding_result = _run_recon_subprocess(embedding_command, cwd=repo_path)
+        if embedding_result["returncode"] != 0:
+            all_artifacts_generated = False
+            artifacts[artifact_name] = {
+                "status": "error",
+                "stage": "embedding",
+                **embedding_result,
+            }
+            break
+
+        score_values, score_labels = _extract_recon_scores(score_path)
+        artifacts[artifact_name] = {
+            "status": "ready",
+            "dataset_path": str(Path(spec["dataset"]).resolve()),
+            "model_dir": str(Path(spec["model_dir"]).resolve()),
+            "membership": int(spec["membership"]),
+            "generated_dir": str(generated_dir.resolve()),
+            "score_path": str(score_path.resolve()),
+            "sample_count": int(len(score_values)),
+            "label_sum": int(score_labels.sum()),
+            "inference": inference_result,
+            "embedding": embedding_result,
+        }
+
+    artifact_probe = probe_recon_score_artifacts(score_root)
+    if all_artifacts_generated and artifact_probe["status"] == "ready":
+        artifact_mainline = run_recon_artifact_mainline(
+            artifact_dir=score_root,
+            workspace=workspace_path / "artifact-mainline",
+            repo_root=repo_root,
+            method=method,
+        )
+    else:
+        artifact_mainline = {
+            "status": "blocked",
+            "mode": "artifact-mainline",
+        }
+
+    checks = {
+        "runtime_assets_ready": runtime_assets["status"] == "ready",
+        "all_artifacts_generated": all_artifacts_generated,
+        "artifact_probe_ready": artifact_probe["status"] == "ready",
+        "artifact_mainline_ready": artifact_mainline["status"] == "ready",
+    }
+    result = {
+        "status": "ready" if all(checks.values()) else "error",
+        "track": "black-box",
+        "method": "recon",
+        "paper": "BlackBox_Reconstruction_ArXiv2023",
+        "mode": "runtime-mainline",
+        "device": f"cuda:{gpu}" if torch.cuda.is_available() else "cpu",
+        "workspace": str(workspace_path),
+        "artifact_paths": {
+            "summary": str(workspace_path / "summary.json"),
+            "score_artifact_dir": str(score_root.resolve()),
+            "artifact_mainline_summary": str(workspace_path / "artifact-mainline" / "summary.json"),
+        },
+        "checks": checks,
+        "runtime_assets": runtime_assets,
+        "artifacts": artifacts,
+        "stages": {
+            "artifact_probe": artifact_probe,
+            "artifact_mainline": {
+                "status": artifact_mainline["status"],
+                "mode": artifact_mainline.get("mode", "artifact-mainline"),
+                "summary_path": artifact_mainline.get("artifact_paths", {}).get("summary"),
+            },
+        },
+        "evaluation_method": method,
+        "metrics": artifact_mainline.get("metrics", {}),
+        "notes": [
+            "Runtime mainline bridges caption-known reconstruction datasets to repository artifact and evaluation summaries.",
+            "This path assumes dataset payloads already contain both text and image columns and does not fine-tune BLIP captioning models.",
+        ],
+    }
+    (workspace_path / "summary.json").write_text(
+        json.dumps(result, indent=2, ensure_ascii=True),
+        encoding="utf-8",
+    )
     return result
 
 
