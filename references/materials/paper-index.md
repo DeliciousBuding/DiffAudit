@@ -140,63 +140,63 @@ This file is the human-readable paper-by-paper index used to keep GitHub and the
 
 ### Tracing the Roots: Leveraging Temporal Dynamics in Diffusion Trajectories for Origin Attribution
 
-- File: [2025-tracing-the-roots-leveraging-temporal-dynamics-in-diffusion-trajectories-for-origin-attribution.pdf](survey/2025-tracing-the-roots-leveraging-temporal-dynamics-in-diffusion-trajectories-for-origin-attribution.pdf)
+- File: [2025-neurips-tracing-the-roots-origin-attribution-diffusion-trajectories.pdf](survey/2025-neurips-tracing-the-roots-origin-attribution-diffusion-trajectories.pdf)
 - Main idea: studies diffusion trajectories for origin attribution, unifying membership discrimination, model attribution, and external-source recognition.
 - DiffAudit relevance: useful as a broader provenance-style reference around diffusion trajectory evidence.
 - Open-source: not found
 
 ### DP-DocLDM: Differentially Private Document Image Generation using Latent Diffusion Models
 
-- File: [2025-dp-docldm-differentially-private-document-image-generation-using-latent-diffusion-models.pdf](survey/2025-dp-docldm-differentially-private-document-image-generation-using-latent-diffusion-models.pdf)
+- File: [2025-icdar-dp-docldm-private-document-image-generation-latent-diffusion.pdf](survey/2025-icdar-dp-docldm-private-document-image-generation-latent-diffusion.pdf)
 - Main idea: combines latent diffusion and differential privacy to generate privacy-preserving document images for downstream tasks.
 - DiffAudit relevance: defense-side reference for privacy-preserving diffusion training.
 - Open-source: not found
 
 ### Privacy-Preserving Low-Rank Adaptation against Membership Inference Attacks for Latent Diffusion Models
 
-- File: [2025-privacy-preserving-low-rank-adaptation-against-membership-inference-attacks-for-latent-diffusion-models.pdf](survey/2025-privacy-preserving-low-rank-adaptation-against-membership-inference-attacks-for-latent-diffusion-models.pdf)
+- File: [2025-aaai-privacy-preserving-lora-membership-inference-latent-diffusion-models.pdf](survey/2025-aaai-privacy-preserving-lora-membership-inference-latent-diffusion-models.pdf)
 - Main idea: studies membership-preserving LoRA adaptation for latent diffusion with min-max style defenses.
 - DiffAudit relevance: useful defense comparison point when fine-tuning and low-rank adaptation are in scope.
 - Open-source: not found
 
 ### Dual-Model Defense: Safeguarding Diffusion Models from Membership Inference Attacks through Disjoint Data Splitting
 
-- File: [2024-dual-model-defense-safeguarding-diffusion-models-from-membership-inference-attacks-through-disjoint-data-splitting.pdf](survey/2024-dual-model-defense-safeguarding-diffusion-models-from-membership-inference-attacks-through-disjoint-data-splitting.pdf)
+- File: [2024-arxiv-dual-model-defense-diffusion-membership-inference-disjoint-data-splitting.pdf](survey/2024-arxiv-dual-model-defense-diffusion-membership-inference-disjoint-data-splitting.pdf)
 - Main idea: trains two diffusion models on disjoint subsets and uses private inference or distillation to reduce MIA effectiveness.
 - DiffAudit relevance: important defense-side architecture idea rather than a direct attack baseline.
 - Open-source: not found
 
 ### DIFFENCE: Fencing Membership Privacy With Diffusion Models
 
-- File: [2025-diffence-fencing-membership-privacy-with-diffusion-models.pdf](survey/2025-diffence-fencing-membership-privacy-with-diffusion-models.pdf)
+- File: [2025-ndss-diffence-fencing-membership-privacy-diffusion-models.pdf](survey/2025-ndss-diffence-fencing-membership-privacy-diffusion-models.pdf)
 - Main idea: uses diffusion-based preprocessing to reduce member / non-member distinguishability before downstream inference.
 - DiffAudit relevance: strong NDSS defense-side reference for membership privacy.
 - Open-source: not found
 
 ### Defending Diffusion Models Against Membership Inference Attacks via Higher-Order Langevin Dynamics
 
-- File: [2025-defending-diffusion-models-against-membership-inference-attacks-via-higher-order-langevin-dynamics.pdf](survey/2025-defending-diffusion-models-against-membership-inference-attacks-via-higher-order-langevin-dynamics.pdf)
+- File: [2025-arxiv-defending-diffusion-models-membership-inference-higher-order-langevin-dynamics.pdf](survey/2025-arxiv-defending-diffusion-models-membership-inference-higher-order-langevin-dynamics.pdf)
 - Main idea: mixes stronger stochasticity into the diffusion process through higher-order Langevin dynamics to blunt membership inference.
 - DiffAudit relevance: defense-side technique relevant when comparing perturbation and stochastic defenses.
 - Open-source: not found
 
 ### Inference Attacks Against Graph Generative Diffusion Models
 
-- File: [2026-inference-attacks-against-graph-generative-diffusion-models.pdf](survey/2026-inference-attacks-against-graph-generative-diffusion-models.pdf)
+- File: [2026-arxiv-inference-attacks-graph-generative-diffusion-models.pdf](survey/2026-arxiv-inference-attacks-graph-generative-diffusion-models.pdf)
 - Main idea: extends inference and privacy attacks to graph generative diffusion models instead of image diffusion alone.
 - DiffAudit relevance: cross-domain extension showing where the audit framework may generalize next.
 - Open-source: not found
 
 ### Perturb a Model, Not an Image: Towards Robust Privacy Protection via Anti-Personalized Diffusion Models
 
-- File: [2025-perturb-a-model-not-an-image-towards-robust-privacy-protection-via-anti-personalized-diffusion-models.pdf](survey/2025-perturb-a-model-not-an-image-towards-robust-privacy-protection-via-anti-personalized-diffusion-models.pdf)
+- File: [2025-arxiv-perturb-a-model-not-an-image-anti-personalized-diffusion-models.pdf](survey/2025-arxiv-perturb-a-model-not-an-image-anti-personalized-diffusion-models.pdf)
 - Main idea: protects against subject personalization misuse by changing the model rather than perturbing training images.
 - DiffAudit relevance: useful defense and anti-personalization reference for identity-sensitive deployment settings.
 - Open-source: not found
 
-### Legacy Survey Archive Index
+### Diffusion Privacy Literature Survey Index
 
-- File: [legacy-survey-archive-index.pdf](survey/legacy-survey-archive-index.pdf)
+- File: [survey-index-diffusion-privacy-literature.pdf](survey/survey-index-diffusion-privacy-literature.pdf)
 - Main idea: local index for archive-origin survey materials.
 - DiffAudit relevance: maintenance artifact for the local PDF mirror.
 - Open-source: not applicable
