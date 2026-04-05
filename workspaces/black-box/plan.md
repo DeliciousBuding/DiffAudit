@@ -35,6 +35,7 @@
 - `external/CLiD`
 - `external/Reconstruction-based-Attack`
 - 公开资产包：`https://doi.org/10.5281/zenodo.13371475`
+- 语义映射说明：`docs/recon-public-asset-mapping.md`
 
 ## 推荐分工
 
