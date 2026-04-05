@@ -20,5 +20,6 @@
 - `attacks/pia_plan.yaml`：作为 `PIA` 探针、dry-run 与 smoke 的模板
 - `attacks/clid_plan.yaml`：作为 `CLiD` 条件场景探针与 dry-run 的模板
 - `attacks/recon_plan.yaml`：作为纯黑盒 reconstruction 攻击探针与 smoke 的模板
+- `attacks/variation_plan.yaml`：作为 API-only 黑盒 variation 攻击探针与 smoke 的模板
 - `benchmarks/secmi_smoke.yaml`：作为最小 smoke 配置
 - `assets/example.local.yaml`：作为个人本地资产映射参考

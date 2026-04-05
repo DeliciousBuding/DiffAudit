@@ -22,6 +22,12 @@ from diffaudit.attacks.recon import (
     run_recon_eval_smoke,
 )
 from diffaudit.attacks.secmi import build_secmi_plan, explain_secmi_assets
+from diffaudit.attacks.variation import (
+    build_variation_plan,
+    explain_variation_assets,
+    probe_variation_dry_run,
+    run_variation_synthetic_smoke,
+)
 from diffaudit.config import load_audit_config
 from diffaudit.pipelines.smoke import run_smoke_pipeline
 
@@ -62,6 +68,12 @@ def build_parser() -> argparse.ArgumentParser:
     )
     recon_parser.add_argument("--config", required=True, help="path to audit yaml")
 
+    variation_parser = subparsers.add_parser(
+        "plan-variation",
+        help="build an API-only variation attack plan from audit config",
+    )
+    variation_parser.add_argument("--config", required=True, help="path to audit yaml")
+
     asset_probe_parser = subparsers.add_parser(
         "probe-secmi-assets",
         help="inspect SecMI asset readiness without importing the full runtime",
@@ -95,6 +107,12 @@ def build_parser() -> argparse.ArgumentParser:
         help="inspect reconstruction-based black-box asset readiness without importing the runtime",
     )
     recon_asset_probe_parser.add_argument("--config", required=True, help="path to audit yaml")
+
+    variation_asset_probe_parser = subparsers.add_parser(
+        "probe-variation-assets",
+        help="inspect API-only variation attack readiness without remote calls",
+    )
+    variation_asset_probe_parser.add_argument("--config", required=True, help="path to audit yaml")
 
     prepare_parser = subparsers.add_parser(
         "prepare-secmi",
@@ -156,6 +174,12 @@ def build_parser() -> argparse.ArgumentParser:
         help="path to local reconstruction-based attack repository root",
     )
 
+    variation_dry_run_parser = subparsers.add_parser(
+        "dry-run-variation",
+        help="validate API-only variation attack readiness without remote calls",
+    )
+    variation_dry_run_parser.add_argument("--config", required=True, help="path to audit yaml")
+
     clid_dry_run_smoke_parser = subparsers.add_parser(
         "run-clid-dry-run-smoke",
         help="run a synthetic dry-run smoke for CLiD",
@@ -194,6 +218,16 @@ def build_parser() -> argparse.ArgumentParser:
         "--workspace",
         required=True,
         help="workspace directory for reconstruction eval smoke artifacts",
+    )
+
+    variation_synth_smoke_parser = subparsers.add_parser(
+        "run-variation-synth-smoke",
+        help="run a synthetic smoke for the API-only variation attack line",
+    )
+    variation_synth_smoke_parser.add_argument(
+        "--workspace",
+        required=True,
+        help="workspace directory for variation synthetic smoke artifacts",
     )
 
     pia_runtime_probe_parser = subparsers.add_parser(
@@ -349,6 +383,12 @@ def main(argv: list[str] | None = None) -> int:
         print(json.dumps(asdict(plan), indent=2, ensure_ascii=True))
         return 0
 
+    if args.command == "plan-variation":
+        config = load_audit_config(args.config)
+        plan = build_variation_plan(config)
+        print(json.dumps(asdict(plan), indent=2, ensure_ascii=True))
+        return 0
+
     if args.command == "probe-secmi-assets":
         config = load_audit_config(args.config)
         payload = explain_secmi_assets(config, member_split_root=args.member_split_root)
@@ -370,6 +410,12 @@ def main(argv: list[str] | None = None) -> int:
     if args.command == "probe-recon-assets":
         config = load_audit_config(args.config)
         payload = explain_recon_assets(config)
+        print(json.dumps(payload, indent=2, ensure_ascii=True))
+        return 0 if payload["status"] == "ready" else 1
+
+    if args.command == "probe-variation-assets":
+        config = load_audit_config(args.config)
+        payload = explain_variation_assets(config)
         print(json.dumps(payload, indent=2, ensure_ascii=True))
         return 0 if payload["status"] == "ready" else 1
 
@@ -411,6 +457,12 @@ def main(argv: list[str] | None = None) -> int:
         print(json.dumps(payload, indent=2, ensure_ascii=True))
         return exit_code
 
+    if args.command == "dry-run-variation":
+        config = load_audit_config(args.config)
+        exit_code, payload = probe_variation_dry_run(config)
+        print(json.dumps(payload, indent=2, ensure_ascii=True))
+        return exit_code
+
     if args.command == "run-clid-dry-run-smoke":
         payload = run_clid_dry_run_smoke(
             args.workspace,
@@ -429,6 +481,11 @@ def main(argv: list[str] | None = None) -> int:
 
     if args.command == "run-recon-eval-smoke":
         payload = run_recon_eval_smoke(args.workspace)
+        print(json.dumps(payload, indent=2, ensure_ascii=True))
+        return 0
+
+    if args.command == "run-variation-synth-smoke":
+        payload = run_variation_synthetic_smoke(args.workspace)
         print(json.dumps(payload, indent=2, ensure_ascii=True))
         return 0
 

@@ -1,0 +1,18 @@
+task:
+  name: variation-plan
+  model_family: diffusion
+  access_level: black_box
+assets:
+  dataset_id: your-query-image-set
+  dataset_root: REPLACE_WITH_QUERY_IMAGE_ROOT
+  model_id: your-variation-api
+attack:
+  method: variation
+  num_samples: 8
+  parameters:
+    endpoint: https://example.invalid/variation
+    num_averages: 3
+    distance_metric: l2
+    threshold_strategy: threshold
+report:
+  output_dir: experiments/variation-plan

@@ -129,6 +129,14 @@ workspaces/              多人协作工作区
 4. `run-recon-eval-smoke`
 5. 真实资产到位后再接生成、embedding 和攻击评估三阶段执行
 
+对 `variation` 这条 API-only 黑盒线，当前推荐命令顺序是：
+
+1. `plan-variation`
+2. `probe-variation-assets`
+3. `dry-run-variation`
+4. `run-variation-synth-smoke`
+5. 真实 API 凭据和调用预算到位后再接真实查询执行
+
 ## 环境搭建
 
 创建并激活 conda 环境：
@@ -299,6 +307,30 @@ python -m diffaudit dry-run-recon --config configs/attacks/recon_plan.yaml --rep
 
 ```powershell
 python -m diffaudit run-recon-eval-smoke --workspace experiments/recon-eval-smoke
+```
+
+生成 `variation` 计划：
+
+```powershell
+python -m diffaudit plan-variation --config configs/attacks/variation_plan.yaml
+```
+
+探测 `variation` 资产是否齐全：
+
+```powershell
+python -m diffaudit probe-variation-assets --config configs/attacks/variation_plan.yaml
+```
+
+运行 `variation` dry-run：
+
+```powershell
+python -m diffaudit dry-run-variation --config configs/attacks/variation_plan.yaml
+```
+
+运行 `variation` synthetic smoke：
+
+```powershell
+python -m diffaudit run-variation-synth-smoke --workspace experiments/variation-synth-smoke
 ```
 
 ## 参考资料

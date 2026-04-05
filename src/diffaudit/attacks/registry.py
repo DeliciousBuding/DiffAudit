@@ -9,6 +9,7 @@ from diffaudit.attacks.clid import build_clid_plan
 from diffaudit.attacks.pia import build_pia_plan
 from diffaudit.attacks.recon import build_recon_plan
 from diffaudit.attacks.secmi import build_secmi_plan
+from diffaudit.attacks.variation import build_variation_plan
 
 
 Planner = Callable[[Any], Any]
@@ -23,4 +24,6 @@ def get_attack_planner(method: str) -> Planner:
         return build_clid_plan
     if method == "recon":
         return build_recon_plan
+    if method == "variation":
+        return build_variation_plan
     raise ValueError(f"Unsupported attack method: {method}")
