@@ -11,10 +11,10 @@
 
 ## 主论文与场景
 
-- `2025-324-paper.pdf`
-- `Towards Black-Box Membership Inference Attack for Diffusion Model.pdf`
-- `CLiD_NeurIPS2024.pdf`
-- `FaceLDM_VISAPP2025.pdf`
+- `2025-ndss-black-box-membership-inference-fine-tuned-diffusion-models.pdf`
+- `2024-arxiv-towards-black-box-membership-inference-diffusion-models.pdf`
+- `2024-neurips-clid-membership-inference-text-to-image-diffusion.pdf`
+- `2025-visapp-membership-inference-face-fine-tuned-latent-diffusion-models.pdf`
 
 ## 推荐分工
 

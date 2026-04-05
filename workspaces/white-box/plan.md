@@ -11,16 +11,16 @@
 
 ## 推荐论文
 
-- `WhiteBox_PoPETs2025.pdf`
-- `qy_White-box Membership Inference Attacks againstDiffusion Models.pdf`
-- `SecMI_ICML2023.pdf`
-- `FindingNeMo_NeurIPS2024.pdf`
+- `2025-popets-white-box-membership-inference-diffusion-models.pdf`
+- `2025-local-mirror-white-box-membership-inference-diffusion-models.pdf`
+- `2023-icml-secmi-membership-inference-diffusion-models.pdf`
+- `2024-neurips-finding-nemo-localizing-memorization-neurons-diffusion-models.pdf`
 
 ## 推荐定位
 
-- 主论文：`WhiteBox_PoPETs2025.pdf`
-- 基础参照：`SecMI_ICML2023.pdf`
-- 对照阅读：`2025-324-paper.pdf`
+- 主论文：`2025-popets-white-box-membership-inference-diffusion-models.pdf`
+- 基础参照：`2023-icml-secmi-membership-inference-diffusion-models.pdf`
+- 对照阅读：`2025-ndss-black-box-membership-inference-fine-tuned-diffusion-models.pdf`
 - 记忆定位扩展：`Finding NeMo`
 
 ## 起步建议

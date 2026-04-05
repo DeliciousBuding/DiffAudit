@@ -11,5 +11,5 @@
 
 1. 先界定灰盒到底允许看到哪些中间信息
 2. 先看 `observable-contract.md`，把 gray-box 权限分层写清楚
-3. 优先围绕 `PIA_ICLR2024.pdf`、`CLiD_NeurIPS2024.pdf`、`StructuralMemorization_arXiv2024.pdf`
+3. 优先围绕 `2024-iclr-pia-proximal-initialization.pdf`、`2024-neurips-clid-membership-inference-text-to-image-diffusion.pdf`、`2024-arxiv-structural-memorization-membership-inference-text-to-image-diffusion.pdf`
 4. 先形成实验假设和资产需求，不要直接写执行代码
