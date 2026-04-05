@@ -19,6 +19,7 @@
 ## 当前可执行证据
 
 - `experiments/clid-dry-run-smoke/summary.json`
+- `experiments/clid-artifact-summary/summary.json`
 
 ## 本地代码上下文
 

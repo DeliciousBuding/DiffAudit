@@ -12,6 +12,7 @@ from diffaudit.attacks.clid import (
     explain_clid_assets,
     probe_clid_dry_run,
     run_clid_dry_run_smoke,
+    summarize_clid_artifacts,
 )
 from diffaudit.attacks.pia import build_pia_plan, explain_pia_assets, probe_pia_dry_run
 from diffaudit.attacks.secmi import build_secmi_plan, explain_secmi_assets
@@ -139,6 +140,21 @@ def build_parser() -> argparse.ArgumentParser:
         "--repo-root",
         default="external/CLiD",
         help="path to local CLiD repository root",
+    )
+
+    clid_artifact_summary_parser = subparsers.add_parser(
+        "summarize-clid-artifacts",
+        help="summarize upstream CLiD inter_output artifacts into a repository summary",
+    )
+    clid_artifact_summary_parser.add_argument(
+        "--artifact-dir",
+        required=True,
+        help="directory containing CLiD inter_output artifact txt files",
+    )
+    clid_artifact_summary_parser.add_argument(
+        "--workspace",
+        required=True,
+        help="workspace directory for the CLiD artifact summary",
     )
 
     pia_runtime_probe_parser = subparsers.add_parser(
@@ -345,6 +361,14 @@ def main(argv: list[str] | None = None) -> int:
         )
         print(json.dumps(payload, indent=2, ensure_ascii=True))
         return 0 if payload["status"] == "ready" else 1
+
+    if args.command == "summarize-clid-artifacts":
+        payload = summarize_clid_artifacts(
+            artifact_dir=args.artifact_dir,
+            workspace=args.workspace,
+        )
+        print(json.dumps(payload, indent=2, ensure_ascii=True))
+        return 0
 
     if args.command == "runtime-probe-pia":
         from diffaudit.attacks.pia_adapter import probe_pia_runtime

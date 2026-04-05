@@ -118,7 +118,8 @@ workspaces/              多人协作工作区
 2. `probe-clid-assets`
 3. `dry-run-clid`
 4. `run-clid-dry-run-smoke`
-5. 资产到位后再评估真实 text-to-image 执行链
+5. `summarize-clid-artifacts`
+6. 资产到位后再评估真实 text-to-image 执行链
 
 ## 环境搭建
 
@@ -260,6 +261,12 @@ python -m diffaudit dry-run-clid --config configs/attacks/clid_plan.yaml --repo-
 
 ```powershell
 python -m diffaudit run-clid-dry-run-smoke --workspace experiments/clid-dry-run-smoke --repo-root external/CLiD
+```
+
+汇总 `CLiD` 上游 `inter_output` 结果：
+
+```powershell
+python -m diffaudit summarize-clid-artifacts --artifact-dir external/CLiD/inter_output/CLID --workspace experiments/clid-artifact-summary
 ```
 
 ## 参考资料

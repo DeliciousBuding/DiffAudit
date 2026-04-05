@@ -30,6 +30,7 @@
 - `experiments/pia-synth-smoke-cpu/summary.json`
 - `experiments/pia-synth-smoke-gpu/summary.json`
 - `experiments/clid-dry-run-smoke/summary.json`
+- `experiments/clid-artifact-summary/summary.json`
 
 ## 本地代码上下文
 

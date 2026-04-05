@@ -1,0 +1,47 @@
+{
+  "status": "ready",
+  "track": "black-box",
+  "method": "clid",
+  "paper": "CLiD_NeurIPS2024",
+  "mode": "artifact-summary",
+  "device": "cpu",
+  "workspace": "experiments\\clid-artifact-summary",
+  "artifact_paths": {
+    "summary": "experiments\\clid-artifact-summary\\summary.json",
+    "shadow_train": "external\\CLiD\\inter_output\\CLID\\Atk_Impt_M_coco_real_split1_DATA_val17_split1_TRTE_train_MAXsmp_3_T_0506_145909.txt",
+    "shadow_test": "external\\CLiD\\inter_output\\CLID\\Atk_Impt_M_coco_real_split1_DATA_val17_split1__TRTE_test_MAXsmp_3_T_0506_145909.txt",
+    "target_train": "external\\CLiD\\inter_output\\CLID\\Atk_Impt_M_coco_real_ori_DATA_val17_TRTE_train_MAXsmp_3_T_0506_145842.txt",
+    "target_test": "external\\CLiD\\inter_output\\CLID\\Atk_Impt_M_coco_real_ori_DATA_val17_TRTE_test_MAXsmp_3_T_0506_145842.txt"
+  },
+  "assets": {
+    "artifact_dir": "external\\CLiD\\inter_output\\CLID",
+    "shadow_samples": 5000,
+    "target_samples": 5000
+  },
+  "checks": {
+    "shadow_artifacts_loaded": true,
+    "target_artifacts_loaded": true,
+    "feature_columns_extracted": true,
+    "shadow_threshold_search": true,
+    "target_replay_complete": true
+  },
+  "metrics": {
+    "shadow": {
+      "best_alpha": 0.9,
+      "auc": 0.957501,
+      "asr": 0.8922,
+      "threshold": 0.032516
+    },
+    "target": {
+      "auc": 0.961286,
+      "best_asr": 0.8918,
+      "asr_via_shadow_threshold": 0.8886,
+      "tpr_at_1pct_fpr": 0.4932,
+      "threshold": -0.028391
+    }
+  },
+  "notes": [
+    "Summary is recomputed from upstream CLiD inter_output artifacts.",
+    "Current implementation reproduces the threshold-based alpha sweep, not the XGBoost path."
+  ]
+}
