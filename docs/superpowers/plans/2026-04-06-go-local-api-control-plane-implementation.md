@@ -4,7 +4,7 @@
 
 **Goal:** Replace the Python-resident local API server with a Go control plane that preserves the current HTTP contract while continuing to run research jobs through the Python CLI.
 
-**Architecture:** Add a standalone Go service under `tools/local-api-go/` using the standard `net/http` stack. Keep `experiments/*/summary.json` and `workspaces/local-api/jobs/*.json` as the persisted source of truth, and continue to spawn `python -m diffaudit ...` for `recon` job execution.
+**Architecture:** Add a standalone Go service under `..\Services\Local-API/` using the standard `net/http` stack. Keep `experiments/*/summary.json` and `workspaces/local-api/jobs/*.json` as the persisted source of truth, and continue to spawn `python -m diffaudit ...` for `recon` job execution.
 
 **Tech Stack:** Go 1.26, standard library `net/http`, `encoding/json`, `os/exec`, Python CLI backend, existing JSON artifact schema
 
@@ -13,10 +13,10 @@
 ### Task 1: Scaffold The Go Service And Preserve The HTTP Contract
 
 **Files:**
-- Create: `D:\Code\DiffAudit\Project\tools\local-api-go\go.mod`
-- Create: `D:\Code\DiffAudit\Project\tools\local-api-go\cmd\local-api\main.go`
-- Create: `D:\Code\DiffAudit\Project\tools\local-api-go\internal\api\server.go`
-- Create: `D:\Code\DiffAudit\Project\tools\local-api-go\internal\api\server_test.go`
+- Create: `D:\Code\DiffAudit\Services\Local-API\go.mod`
+- Create: `D:\Code\DiffAudit\Services\Local-API\cmd\local-api\main.go`
+- Create: `D:\Code\DiffAudit\Services\Local-API\internal\api\server.go`
+- Create: `D:\Code\DiffAudit\Services\Local-API\internal\api\server_test.go`
 
 - [ ] **Step 1: Write the failing tests for `GET /health`, `GET /api/v1/models`, `GET /api/v1/experiments/recon/best`, and `GET /api/v1/experiments/{workspace}/summary`**
 
@@ -27,7 +27,7 @@ The tests should use `httptest`, temporary directories, and synthetic `summary.j
 Run:
 
 ```powershell
-cd D:\Code\DiffAudit\Project\tools\local-api-go
+cd D:\Code\DiffAudit\Services\Local-API
 go test ./...
 ```
 
@@ -47,7 +47,7 @@ Implement:
 Run:
 
 ```powershell
-cd D:\Code\DiffAudit\Project\tools\local-api-go
+cd D:\Code\DiffAudit\Services\Local-API
 go test ./...
 ```
 
@@ -56,15 +56,15 @@ Expected: PASS for the endpoint tests created in this task.
 - [ ] **Step 5: Commit**
 
 ```powershell
-git -C D:\Code\DiffAudit\Project add tools/local-api-go
+git -C D:\Code\DiffAudit\Project add ..\Services\Local-API
 git -C D:\Code\DiffAudit\Project commit -m "Scaffold Go local API service"
 ```
 
 ### Task 2: Port Job List/Create/Get Behavior To Go
 
 **Files:**
-- Modify: `D:\Code\DiffAudit\Project\tools\local-api-go\internal\api\server.go`
-- Modify: `D:\Code\DiffAudit\Project\tools\local-api-go\internal\api\server_test.go`
+- Modify: `D:\Code\DiffAudit\Services\Local-API\internal\api\server.go`
+- Modify: `D:\Code\DiffAudit\Services\Local-API\internal\api\server_test.go`
 
 - [ ] **Step 1: Write the failing tests for `GET /api/v1/audit/jobs`, `POST /api/v1/audit/jobs`, and `GET /api/v1/audit/jobs/{job_id}`**
 
@@ -79,7 +79,7 @@ Include tests for:
 Run:
 
 ```powershell
-cd D:\Code\DiffAudit\Project\tools\local-api-go
+cd D:\Code\DiffAudit\Services\Local-API
 go test ./...
 ```
 
@@ -99,7 +99,7 @@ Implement:
 Run:
 
 ```powershell
-cd D:\Code\DiffAudit\Project\tools\local-api-go
+cd D:\Code\DiffAudit\Services\Local-API
 go test ./...
 ```
 
@@ -108,15 +108,15 @@ Expected: PASS for job list/create/get tests.
 - [ ] **Step 5: Commit**
 
 ```powershell
-git -C D:\Code\DiffAudit\Project add tools/local-api-go
+git -C D:\Code\DiffAudit\Project add ..\Services\Local-API
 git -C D:\Code\DiffAudit\Project commit -m "Add Go local API job persistence"
 ```
 
 ### Task 3: Wire Go Job Execution To The Python CLI
 
 **Files:**
-- Modify: `D:\Code\DiffAudit\Project\tools\local-api-go\internal\api\server.go`
-- Modify: `D:\Code\DiffAudit\Project\tools\local-api-go\internal\api\server_test.go`
+- Modify: `D:\Code\DiffAudit\Services\Local-API\internal\api\server.go`
+- Modify: `D:\Code\DiffAudit\Services\Local-API\internal\api\server_test.go`
 
 - [ ] **Step 1: Write the failing tests for background job execution and completion state updates**
 
@@ -131,7 +131,7 @@ Use a stub executable or a controlled `python` command override to verify:
 Run:
 
 ```powershell
-cd D:\Code\DiffAudit\Project\tools\local-api-go
+cd D:\Code\DiffAudit\Services\Local-API
 go test ./...
 ```
 
@@ -149,7 +149,7 @@ Keep the command builders compatible with:
 Run:
 
 ```powershell
-cd D:\Code\DiffAudit\Project\tools\local-api-go
+cd D:\Code\DiffAudit\Services\Local-API
 go test ./...
 ```
 
@@ -158,7 +158,7 @@ Expected: PASS for background execution tests.
 - [ ] **Step 5: Commit**
 
 ```powershell
-git -C D:\Code\DiffAudit\Project add tools/local-api-go
+git -C D:\Code\DiffAudit\Project add ..\Services\Local-API
 git -C D:\Code\DiffAudit\Project commit -m "Wire Go local API jobs to Python CLI"
 ```
 
@@ -190,7 +190,7 @@ Document:
 Run:
 
 ```powershell
-cd D:\Code\DiffAudit\Project\tools\local-api-go
+cd D:\Code\DiffAudit\Services\Local-API
 go run ./cmd/local-api --help
 ```
 
@@ -211,7 +211,7 @@ git -C D:\Code\DiffAudit\Project commit -m "Document Go local API control plane"
 - [ ] **Step 1: Run the full Go test suite**
 
 ```powershell
-cd D:\Code\DiffAudit\Project\tools\local-api-go
+cd D:\Code\DiffAudit\Services\Local-API
 go test ./...
 ```
 
@@ -229,7 +229,7 @@ Expected: PASS or intentionally retired tests updated to reflect the Go primary 
 - [ ] **Step 3: Run a manual local smoke**
 
 ```powershell
-cd D:\Code\DiffAudit\Project\tools\local-api-go
+cd D:\Code\DiffAudit\Services\Local-API
 go run ./cmd/local-api
 ```
 
@@ -246,3 +246,4 @@ curl http://127.0.0.1:8765/api/v1/models
 git -C D:\Code\DiffAudit\Project add .
 git -C D:\Code\DiffAudit\Project commit -m "Finish Go local API control plane migration"
 ```
+

@@ -18,14 +18,14 @@
 当前推荐入口是 Go 控制面：
 
 ```powershell
-cd D:\Code\DiffAudit\Project\tools\local-api-go
+cd D:\Code\DiffAudit\Services\Local-API
 go run ./cmd/local-api --host 127.0.0.1 --port 8765
 ```
 
 覆盖本机目录：
 
 ```powershell
-cd D:\Code\DiffAudit\Project\tools\local-api-go
+cd D:\Code\DiffAudit\Services\Local-API
 go run ./cmd/local-api `
   --host 127.0.0.1 `
   --port 8765 `
@@ -205,3 +205,4 @@ job 元数据会写到：
 - 任意已知 workspace 的 summary 查询
 - `recon_artifact_mainline` / `recon_runtime_mainline` 的受控 job 提交、列表与状态查询
 - 同 workspace 活动任务的冲突保护
+

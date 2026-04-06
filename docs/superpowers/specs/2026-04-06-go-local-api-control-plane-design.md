@@ -22,7 +22,7 @@ The memory-heavy part is the Python execution chain behind each job, not the HTT
 
 ## Chosen Approach
 
-Build a standalone Go service under `tools/local-api-go/` and keep the Python CLI as the worker backend.
+Build a standalone Go service under `..\Services\Local-API/` and keep the Python CLI as the worker backend.
 
 This is the shortest correct path because it:
 
@@ -67,9 +67,9 @@ The Go service becomes the single local API server. Python remains the execution
 
 New code lives in:
 
-- `tools/local-api-go/go.mod`
-- `tools/local-api-go/cmd/local-api/main.go`
-- `tools/local-api-go/internal/...`
+- `..\Services\Local-API/go.mod`
+- `..\Services\Local-API/cmd/local-api/main.go`
+- `..\Services\Local-API/internal/...`
 
 The existing Python local API module remains temporarily for compatibility during migration, but it should stop being the preferred control-plane entry once the Go service is verified.
 
@@ -192,3 +192,4 @@ Worker execution can be tested with stub commands and temporary directories befo
 - job records remain JSON-compatible
 - `recon_artifact_mainline` and `recon_runtime_mainline` still execute through Python CLI
 - platform can talk to the Go service without a second contract redesign
+
