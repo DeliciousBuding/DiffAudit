@@ -1,0 +1,182 @@
+package api
+
+import (
+	"encoding/json"
+	"net/http"
+	"net/http/httptest"
+	"os"
+	"path/filepath"
+	"testing"
+)
+
+func writeJSONFile(t *testing.T, path string, payload any) {
+	t.Helper()
+	if err := os.MkdirAll(filepath.Dir(path), 0o755); err != nil {
+		t.Fatalf("mkdir failed: %v", err)
+	}
+	data, err := json.Marshal(payload)
+	if err != nil {
+		t.Fatalf("marshal failed: %v", err)
+	}
+	if err := os.WriteFile(path, data, 0o644); err != nil {
+		t.Fatalf("write failed: %v", err)
+	}
+}
+
+func decodeJSONResponse(t *testing.T, recorder *httptest.ResponseRecorder) map[string]any {
+	t.Helper()
+	var payload map[string]any
+	if err := json.Unmarshal(recorder.Body.Bytes(), &payload); err != nil {
+		t.Fatalf("decode failed: %v", err)
+	}
+	return payload
+}
+
+func TestHealthEndpoint(t *testing.T) {
+	root := t.TempDir()
+	server := NewServer(Config{
+		ExperimentsRoot: filepath.Join(root, "experiments"),
+		JobsRoot:        filepath.Join(root, "jobs"),
+	})
+
+	request := httptest.NewRequest(http.MethodGet, "/health", nil)
+	recorder := httptest.NewRecorder()
+
+	server.Handler().ServeHTTP(recorder, request)
+
+	if recorder.Code != http.StatusOK {
+		t.Fatalf("expected 200, got %d", recorder.Code)
+	}
+	payload := decodeJSONResponse(t, recorder)
+	if payload["status"] != "ok" {
+		t.Fatalf("expected status ok, got %v", payload["status"])
+	}
+}
+
+func TestModelsEndpoint(t *testing.T) {
+	root := t.TempDir()
+	server := NewServer(Config{
+		ExperimentsRoot: filepath.Join(root, "experiments"),
+		JobsRoot:        filepath.Join(root, "jobs"),
+	})
+
+	request := httptest.NewRequest(http.MethodGet, "/api/v1/models", nil)
+	recorder := httptest.NewRecorder()
+
+	server.Handler().ServeHTTP(recorder, request)
+
+	if recorder.Code != http.StatusOK {
+		t.Fatalf("expected 200, got %d", recorder.Code)
+	}
+
+	var payload []map[string]any
+	if err := json.Unmarshal(recorder.Body.Bytes(), &payload); err != nil {
+		t.Fatalf("decode failed: %v", err)
+	}
+
+	if len(payload) < 3 {
+		t.Fatalf("expected at least 3 models, got %d", len(payload))
+	}
+}
+
+func TestBestReconEndpoint(t *testing.T) {
+	root := t.TempDir()
+	experimentsRoot := filepath.Join(root, "experiments")
+	bestWorkspace := filepath.Join(experimentsRoot, "recon-runtime-mainline-ddim-public-50-step10")
+
+	writeJSONFile(t, filepath.Join(bestWorkspace, "summary.json"), map[string]any{
+		"status":    "ready",
+		"paper":     "BlackBox_Reconstruction_ArXiv2023",
+		"method":    "recon",
+		"mode":      "runtime-mainline",
+		"workspace": bestWorkspace,
+		"runtime": map[string]any{
+			"backend":   "stable_diffusion",
+			"scheduler": "ddim",
+		},
+		"metrics": map[string]any{
+			"auc":             0.866,
+			"asr":             0.51,
+			"tpr_at_1pct_fpr": 1.0,
+		},
+		"artifact_paths": map[string]any{
+			"summary": filepath.Join(bestWorkspace, "summary.json"),
+		},
+	})
+
+	writeJSONFile(t, filepath.Join(experimentsRoot, "blackbox-status", "summary.json"), map[string]any{
+		"status": "ready",
+		"track":  "black-box",
+		"methods": map[string]any{
+			"recon": map[string]any{
+				"best_evidence_path": filepath.Join(bestWorkspace, "summary.json"),
+			},
+		},
+	})
+
+	server := NewServer(Config{
+		ExperimentsRoot: experimentsRoot,
+		JobsRoot:        filepath.Join(root, "jobs"),
+	})
+
+	request := httptest.NewRequest(http.MethodGet, "/api/v1/experiments/recon/best", nil)
+	recorder := httptest.NewRecorder()
+
+	server.Handler().ServeHTTP(recorder, request)
+
+	if recorder.Code != http.StatusOK {
+		t.Fatalf("expected 200, got %d", recorder.Code)
+	}
+	payload := decodeJSONResponse(t, recorder)
+	if payload["workspace"] != bestWorkspace {
+		t.Fatalf("expected workspace %s, got %v", bestWorkspace, payload["workspace"])
+	}
+}
+
+func TestWorkspaceSummaryEndpoint(t *testing.T) {
+	root := t.TempDir()
+	experimentsRoot := filepath.Join(root, "experiments")
+	workspace := filepath.Join(experimentsRoot, "recon-runtime-mainline-ddim-public-50-step10")
+
+	writeJSONFile(t, filepath.Join(workspace, "summary.json"), map[string]any{
+		"status":    "ready",
+		"paper":     "BlackBox_Reconstruction_ArXiv2023",
+		"method":    "recon",
+		"mode":      "runtime-mainline",
+		"workspace": workspace,
+		"metrics": map[string]any{
+			"auc":             0.866,
+			"asr":             0.51,
+			"tpr_at_1pct_fpr": 1.0,
+		},
+		"artifact_paths": map[string]any{
+			"summary": filepath.Join(workspace, "summary.json"),
+		},
+	})
+
+	server := NewServer(Config{
+		ExperimentsRoot: experimentsRoot,
+		JobsRoot:        filepath.Join(root, "jobs"),
+	})
+
+	request := httptest.NewRequest(
+		http.MethodGet,
+		"/api/v1/experiments/recon-runtime-mainline-ddim-public-50-step10/summary",
+		nil,
+	)
+	recorder := httptest.NewRecorder()
+
+	server.Handler().ServeHTTP(recorder, request)
+
+	if recorder.Code != http.StatusOK {
+		t.Fatalf("expected 200, got %d", recorder.Code)
+	}
+	payload := decodeJSONResponse(t, recorder)
+	metrics, ok := payload["metrics"].(map[string]any)
+	if !ok {
+		t.Fatalf("expected metrics object, got %T", payload["metrics"])
+	}
+	if metrics["tpr_at_1pct_fpr"] != 1.0 {
+		t.Fatalf("expected tpr_at_1pct_fpr 1.0, got %v", metrics["tpr_at_1pct_fpr"])
+	}
+}
