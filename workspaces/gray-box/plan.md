@@ -33,6 +33,7 @@
 - `workspaces/gray-box/runs/pia-followup-20260407/probe.json`
 - `workspaces/gray-box/runs/pia-followup-20260407/dry-run.json`
 - `workspaces/gray-box/2026-04-07-pia-real-asset-probe.md`
+- `workspaces/gray-box/pia-intake-gate.md`
 - `workspaces/gray-box/runs/pia-cifar10-graybox-assets-probe-20260407/runtime-preview.json`
 - `experiments/clid-dry-run-smoke/summary.json`
 - `experiments/clid-artifact-summary/summary.json`
@@ -57,4 +58,5 @@
 - 同日更早的 `2026-04-07-pia-followup.md` 仍记录模板 config 的 `blocked` 状态；后续单机资产接线结果需要与这份基线一起阅读
 - `PIA` 的真实数据 preview 已经通过，但当前仓库还没有真实 runtime mainline runner
 - 这批新到位的 DDPM checkpoint 能通过当前 probe/runtime-probe，不等于已经核准为论文口径资产
+- 系统 intake 现在有明确的本地准入条件，但还没有被提升成 paper-aligned gate
 - 当前最短下一步不是 GPU，而是执行封装或 provenance 核准

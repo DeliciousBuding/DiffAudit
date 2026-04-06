@@ -12,4 +12,5 @@
 1. 先围绕 `2025-popets-white-box-membership-inference-diffusion-models.pdf` 和 `2024-neurips-finding-nemo-localizing-memorization-neurons-diffusion-models.pdf` 收束首批目标
 2. 明确需要的内部访问权限：loss、gradient、intermediate states、完整 checkpoint 等
 3. 先看 `signal-access-matrix.md`，把可用内部信号写成统一表
-4. 把白盒方向的最小实验假设写清楚，再考虑接代码
+4. 当前 `GSA` 资产根目录与交接口径统一看 `assets/gsa/README.md` 和 `assets/gsa/HANDOFF.md`
+5. 把白盒方向的最小实验假设写清楚，再考虑接代码
