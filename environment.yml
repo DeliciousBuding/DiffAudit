@@ -17,6 +17,7 @@ dependencies:
       - pyyaml
       - scikit-learn
       - scipy
+      - xgboost==1.7.3
       - seaborn
       - tqdm
       - accelerate

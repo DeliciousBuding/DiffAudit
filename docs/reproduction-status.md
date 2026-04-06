@@ -29,13 +29,13 @@
 | 方法 | 论文 | 当前状态 | 仓库命令 | 当前证据 | 主要阻塞 |
 | --- | --- | --- | --- | --- | --- |
 | `secmi` | `2023-icml-secmi-membership-inference-diffusion-models.pdf` | `code-ready + evidence-ready` | `plan-secmi` / `probe-secmi-assets` / `prepare-secmi` / `dry-run-secmi` / `runtime-probe-secmi` / `run-secmi-synth-smoke` | [secmi-synth-smoke](../experiments/secmi-synth-smoke/summary.json), [secmi-synth-smoke-gpu](../experiments/secmi-synth-smoke-gpu/summary.json) | 缺真实 checkpoint、flagfile 和论文一致资产布局 |
-| `pia` | `2024-iclr-pia-proximal-initialization.pdf` | `code-ready + evidence-ready` | `plan-pia` / `probe-pia-assets` / `dry-run-pia` / `runtime-probe-pia` / `run-pia-runtime-smoke` / `run-pia-synth-smoke` | [pia-runtime-smoke-cpu](../experiments/pia-runtime-smoke-cpu/summary.json), [pia-runtime-smoke-gpu](../experiments/pia-runtime-smoke-gpu/summary.json), [pia-synth-smoke-cpu](../experiments/pia-synth-smoke-cpu/summary.json), [pia-synth-smoke-gpu](../experiments/pia-synth-smoke-gpu/summary.json) | 缺真实 DDPM checkpoint 与数据集根目录 |
+| `pia` | `2024-iclr-pia-proximal-initialization.pdf` | `code-ready + evidence-ready` | `plan-pia` / `probe-pia-assets` / `dry-run-pia` / `runtime-probe-pia` / `run-pia-runtime-smoke` / `run-pia-synth-smoke` | [pia-runtime-smoke-cpu](../experiments/pia-runtime-smoke-cpu/summary.json), [pia-runtime-smoke-gpu](../experiments/pia-runtime-smoke-gpu/summary.json), [pia-synth-smoke-cpu](../experiments/pia-synth-smoke-cpu/summary.json), [pia-synth-smoke-gpu](../experiments/pia-synth-smoke-gpu/summary.json), [pia-template-probe-20260407](../workspaces/gray-box/runs/pia-followup-20260407/probe.json), [pia-template-dry-run-20260407](../workspaces/gray-box/runs/pia-followup-20260407/dry-run.json) | 缺真实 DDPM checkpoint 与数据集根目录；`2026-04-07` 的 template probe 重新确认当前剩余缺口就是 `checkpoint / dataset_root / dataset layout`，不是 repo 布局或 member split |
 
 ## 白盒
 
 | 方法 | 论文 | 当前状态 | 仓库命令 | 当前证据 | 主要阻塞 |
 | --- | --- | --- | --- | --- | --- |
-| `white-box lead` | `2025-popets-white-box-membership-inference-diffusion-models.pdf` | `research-ready` | 暂无 | 暂无 | 缺可访问 checkpoint、训练配置、样本级梯度或激活接口 |
+| `gsa` | `2025-popets-white-box-membership-inference-diffusion-models.pdf` | `code-ready + evidence-ready` | `workspaces/white-box/external/GSA/DDPM/gen_l2_gradients_DDPM.py` / `workspaces/white-box/external/GSA/test_attack_accuracy.py` | [gsa-kickoff](../workspaces/white-box/2026-04-06-gsa-kickoff.md), [gsa-gradient-smoke-artifact](../workspaces/white-box/smoke-ddpm/member-gradients.pt), [gsa-closed-loop-smoke](../workspaces/white-box/runs/gsa-closed-loop-smoke-20260407-cpu/summary.json) | 已完成 toy CPU closed-loop smoke，但仍缺论文对齐的 `target/shadow` checkpoints、`member/non-member` 划分以及统一 adapter / CLI 接入 |
 | `finding-nemo` | `2024-neurips-finding-nemo-localizing-memorization-neurons-diffusion-models.pdf` | `research-ready` | 暂无 | 暂无 | 缺 neuron-level 分析接口和相应模型资产 |
 
 ## 当前判断
@@ -47,14 +47,16 @@
 5. `recon` 当前最佳 AUC 仍来自 [recon-runtime-mainline-ddim-public-50-step10](../experiments/recon-runtime-mainline-ddim-public-50-step10/summary.json) 的 `0.866`。因此，“最大公开子集主证据”与“当前最佳单指标结果”是两个不同结论，不能混写。
 6. `kandinsky_v22` 的最小真实 runtime-mainline 已经有证据，但 `10/10` 与单样本诊断都仍异常慢；在拿到能定位首个阶段耗时的有效日志前，不应默认继续占用 GPU。
 7. `DiT` 官方采样路径已经有 [dit-sample-step10](../experiments/dit-sample-step10/summary.json) 和 [dit-sample-step50](../experiments/dit-sample-step50/summary.json)，说明模型覆盖证据在推进，但它还没有进入成员推断协议，不应被写成黑盒主线已经闭环。
-8. `secmi / pia` 仍在统一规划里，当前状态是“代码与 smoke 证据已具备，但缺真实论文资产”；它们不是被移出路线图，而是暂未进入第一执行层。
-9. 白盒相关论文仍在统一规划里，当前状态是“研究问题与资产条件已整理，但缺真实访问接口”；在这些条件未满足前，不应写成即将复现成功。
+8. `secmi / pia` 仍在统一规划里，当前状态是“代码与 smoke 证据已具备，但缺真实论文资产”；它们不是被移出路线图，而是暂未进入第一执行层。`2026-04-07` 的 [pia-template-probe-20260407](../workspaces/gray-box/runs/pia-followup-20260407/probe.json) 与 [pia-template-dry-run-20260407](../workspaces/gray-box/runs/pia-followup-20260407/dry-run.json) 进一步说明：当前需要补的是真实 `checkpoint / dataset_root / dataset layout`，不是 GPU，也不是上游仓库结构。
+9. `GSA` 当前已经有 [gsa-closed-loop-smoke](../workspaces/white-box/runs/gsa-closed-loop-smoke-20260407-cpu/summary.json)，说明 CPU 上的 `gradient extraction -> xgboost classifier` 管线可以闭环；但这只是 toy synthetic assets 上的 `closed-loop-smoke`，不能写成论文级白盒结果。
+10. 白盒相关论文仍在统一规划里，当前状态是“研究问题与资产条件已整理，且 `GSA` 已经从 `gradient-smoke` 推进到 `closed-loop-smoke`”；在 paper-aligned checkpoints 和划分资产未满足前，不应写成即将复现成功。
 
 ## 下一步
 
 1. 固化 `recon` 公开资产映射与 `public-100 step10` / `step30` 的解释口径，确保 [README.md](../README.md)、[ROADMAP.md](../ROADMAP.md)、[workspaces/black-box/plan.md](../workspaces/black-box/plan.md) 和 [experiments/blackbox-status/summary.json](../experiments/blackbox-status/summary.json) 一致。
 2. 把 `target/shadow/member/non-member` 的当前最可辩护语义继续收口到 [recon-public-asset-mapping.md](recon-public-asset-mapping.md)，在拿到更强证据前不要越权声称论文语义已核准。
 3. 继续暂停 `Kandinsky 10/10`，直到先拿到能定位首个阶段耗时的有效日志；如果只能做一件事，优先做文档固化而不是新 GPU 任务。
-4. 维持灰盒与白盒状态可见性，确保三条线在状态文档里都被持续跟踪，但不把这件事表述成当前执行优先级已经改变。
+4. 用真实配置推进 `PIA` 的 `probe-pia-assets -> runtime-probe-pia --device cpu`，在 `checkpoint / dataset_root / dataset layout` 任一项缺失时保持 `blocked`，不要回退到重复的 GPU smoke。
+5. 把 `GSA` 保持在 `closed-loop-smoke` 阶段，下一步只做 paper-aligned `target/shadow + member/non-member + checkpoint` 资产接入，不把 toy synthetic 闭环误写成 benchmark。
 
-更新时间：`2026-04-06 21:18:00 +08:00`
+更新时间：`2026-04-07 17:55:00 +08:00`
