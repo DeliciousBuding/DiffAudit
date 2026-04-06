@@ -15,19 +15,26 @@
 
 ## 启动方式
 
-优先使用研究仓库自己的 CLI：
+当前推荐入口是 Go 控制面：
 
 ```powershell
-conda run -n diffaudit-research python -m diffaudit serve-local-api --host 127.0.0.1 --port 8765
+cd D:\Code\DiffAudit\Project\tools\local-api-go
+go run ./cmd/local-api --host 127.0.0.1 --port 8765
 ```
 
-等价的 `uvicorn` 启动方式：
+覆盖本机目录：
 
 ```powershell
-conda run -n diffaudit-research uvicorn diffaudit.local_api.app:app --host 127.0.0.1 --port 8765
+cd D:\Code\DiffAudit\Project\tools\local-api-go
+go run ./cmd/local-api `
+  --host 127.0.0.1 `
+  --port 8765 `
+  --experiments-root D:\Code\DiffAudit\Project\experiments `
+  --jobs-root D:\Code\DiffAudit\Project\workspaces\local-api\jobs `
+  --project-root D:\Code\DiffAudit\Project
 ```
 
-可选路径覆盖：
+Python 版 FastAPI 当前只保留为兼容入口，不再是推荐启动方式：
 
 ```powershell
 conda run -n diffaudit-research python -m diffaudit serve-local-api `
@@ -36,6 +43,11 @@ conda run -n diffaudit-research python -m diffaudit serve-local-api `
   --experiments-root D:\Code\DiffAudit\Project\experiments `
   --jobs-root D:\Code\DiffAudit\Project\workspaces\local-api\jobs
 ```
+
+当前职责划分：
+
+- Go：HTTP 控制面、job 持久化、目录扫描、子进程调度
+- Python：继续执行 `recon_artifact_mainline` / `recon_runtime_mainline`
 
 ## 接口
 
@@ -188,7 +200,7 @@ job 元数据会写到：
 
 当前版本已经打通：
 
-- 本地 HTTP 服务入口
+- Go 本地 HTTP 服务入口
 - `recon` 最佳证据查询
 - 任意已知 workspace 的 summary 查询
 - `recon_artifact_mainline` / `recon_runtime_mainline` 的受控 job 提交、列表与状态查询

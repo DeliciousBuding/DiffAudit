@@ -419,11 +419,14 @@ python -m diffaudit dry-run-variation --config configs/attacks/variation_plan.ya
 python -m diffaudit run-variation-synth-smoke --workspace experiments/variation-synth-smoke
 ```
 
-启动本地 API 服务：
+启动本地 API 服务（Go 控制面，推荐）：
 
 ```powershell
-python -m diffaudit serve-local-api --host 127.0.0.1 --port 8765
+cd tools/local-api-go
+go run ./cmd/local-api --host 127.0.0.1 --port 8765
 ```
+
+Python FastAPI 入口当前仅保留为临时兼容层，不再作为默认控制面入口。
 
 ## 参考资料
 

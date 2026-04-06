@@ -41,7 +41,7 @@
 5. 下一步优先级建议：
    - 先核准 `recon` 公开资产的 target/shadow/member/non-member 映射，并解释 `public-50` 与 `public-100` 的指标差异
    - 再把 `DiT` 从 `step10 sample-smoke` 往更强的本地 checkpoint 采样证据推进，或把 `Kandinsky` 扩到不止 `1-sample`
-6. 研究仓库现在已经新增本地 HTTP API 服务，入口见 [local-api.md](/D:/Code/DiffAudit/Project/docs/local-api.md)。当前已打通 `health`、模型目录、`recon` 最佳证据查询、workspace summary 查询，以及 `recon_artifact_mainline` / `recon_runtime_mainline` 的受控 job 提交与状态查询，平台联调应优先对接这条本地服务，而不是继续消费平台仓库内的 stub job 实现。
+6. 研究仓库现在已经新增 Go 版本地 HTTP API 控制面，入口见 [local-api.md](/D:/Code/DiffAudit/Project/docs/local-api.md)。当前已打通 `health`、模型目录、`recon` 最佳证据查询、workspace summary 查询，以及 `recon_artifact_mainline` / `recon_runtime_mainline` 的受控 job 提交、列表与状态查询；真实实验仍继续由 Python CLI 执行，平台联调应优先对接这条 Go 控制面，而不是继续消费平台仓库内的 stub job 实现。
 
 ## 统一黑盒汇总
 
