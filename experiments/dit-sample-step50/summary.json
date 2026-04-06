@@ -1,0 +1,37 @@
+{
+  "status": "ready",
+  "track": "black-box",
+  "method": "dit",
+  "paper": "Scalable_Diffusion_Transformers_2022",
+  "mode": "sample-smoke",
+  "workspace": "D:\\Code\\DiffAudit\\Project\\experiments\\dit-sample-step50",
+  "artifact_paths": {
+    "summary": "D:\\Code\\DiffAudit\\Project\\experiments\\dit-sample-step50\\summary.json",
+    "sample_image": "D:\\Code\\DiffAudit\\Project\\experiments\\dit-sample-step50\\sample.png"
+  },
+  "checks": {
+    "asset_probe_ready": true,
+    "sample_script_succeeded": true,
+    "sample_image_created": true
+  },
+  "runtime": {
+    "repo_root": "D:\\Code\\DiffAudit\\Project\\external\\DiT",
+    "model": "DiT-XL/2",
+    "image_size": 256,
+    "num_sampling_steps": 50,
+    "seed": 0,
+    "ckpt": "D:\\Code\\DiffAudit\\Project\\external\\DiT\\pretrained_models\\DiT-XL-2-256x256.pt"
+  },
+  "stdout_tail": [],
+  "notes": [
+    "DiT sample smoke runs the official facebookresearch/DiT sample script directly.",
+    "This path validates sampling execution; it does not integrate DiT into the text-to-image recon LoRA pipeline."
+  ],
+  "stderr_tail": [
+    " 94%|\u2588\u2588\u2588\u2588\u2588\u2588\u2588\u2588\u2588\u258d| 47/50 [00:15<00:00,  3.11it/s]",
+    " 96%|\u2588\u2588\u2588\u2588\u2588\u2588\u2588\u2588\u2588\u258c| 48/50 [00:15<00:00,  3.14it/s]",
+    " 98%|\u2588\u2588\u2588\u2588\u2588\u2588\u2588\u2588\u2588\u258a| 49/50 [00:16<00:00,  3.15it/s]",
+    "100%|\u2588\u2588\u2588\u2588\u2588\u2588\u2588\u2588\u2588\u2588| 50/50 [00:16<00:00,  3.17it/s]",
+    "100%|\u2588\u2588\u2588\u2588\u2588\u2588\u2588\u2588\u2588\u2588| 50/50 [00:16<00:00,  3.01it/s]"
+  ]
+}
