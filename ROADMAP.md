@@ -31,10 +31,10 @@
 
 当前最大公开子集证据：
 
-- `recon-runtime-mainline-ddim-public-100-step10`
-  - `auc = 0.788`
-  - `asr = 0.63`
-  - `tpr@1%fpr = 0.99`
+- `recon-runtime-mainline-ddim-public-100-step30`
+  - `auc = 0.849`
+  - `asr = 0.51`
+  - `tpr@1%fpr = 1.0`
 
 当前最佳判别指标仍来自：
 
@@ -46,6 +46,8 @@
 当前主阻塞：
 
 - 公开资产的 `target/shadow/member/non-member` 语义映射仍未最终核准
+- `DDIM public-100 step10` 与 `step30` 的指标差异还没有形成统一解释口径
+- `Kandinsky 10/10` 当前本机链路异常慢，且还没有拿到能定位首个阶段耗时的有效日志
 - `variation` 与 `CLiD` 还没有真实资产闭环
 - `DiT` 还只有官方采样证据，没有进入成员推断协议
 - 白盒仍缺 checkpoint / gradient / activation 访问条件
@@ -154,12 +156,12 @@
 
 当前最短路径：
 
-1. 核准公开资产的 `target/shadow/member/non-member` 语义映射，并明确 `public-50` 与 `public-100` 的解释口径
-2. 把 `Kandinsky` 从 `1-sample` 扩到 `10/10`
-3. 把 `DiT` 从 `step50` 继续评估更高步数或更高分辨率
+1. 固化公开资产的 `target/shadow/member/non-member` 语义映射，并明确 `public-100 step10` / `step30` 与 `public-50 step10` 的解释口径
+2. 维持 `docs/reproduction-status.md`、`workspaces/black-box/plan.md` 与 `experiments/blackbox-status/summary.json` 的事实一致
+3. 在拿到有效阶段日志前继续暂停 `Kandinsky`，之后再决定是否恢复 `10/10`
 
 如果必须只做一件事：
 
-- 先做 `Kandinsky 10/10`
+- 先把 `DDIM public-100 step30` 的结果口径和阻塞项写死
 
-因为 `DiT step50` 已经补上，当前模型覆盖里的最短缺口变成了 `Kandinsky 10/10`；并且公开 `recon` 主线也需要回头解释 `public-50` 与 `public-100` 指标差异。
+因为当前最大的缺口不是“缺一次新实验”，而是“已有主证据和状态文档还没完全收口”。`Kandinsky` 继续跑之前，先把 `recon` 公开子集的结论、边界和阻塞写清楚，才能避免后续继续在错误口径上追加证据。

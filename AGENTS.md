@@ -1,3 +1,24 @@
+# Project 仓库协作指南
+
+这是 `D:\Code\DiffAudit\Project` 的仓库级协作文件。
+
+先明确边界：
+
+- `Project` 是纯研究仓库
+- 它承载研究代码、实验、论文索引、研究文档、结果产物
+- 它可以保存作为飞书内容源的 Markdown
+- 它不承载本机飞书运维规则
+- 它不承载服务器部署细节
+
+对应角色：
+
+- 主要负责：本地模型验证实验 Agent
+- 可协同：总管理 Agent
+
+以下原有研究协作规则继续有效。
+
+---
+
 # DiffAudit 仓库协作指南
 
 这是一个研究仓库，不是普通业务系统。
@@ -117,6 +138,7 @@
 所有 Markdown 文件中的链接必须使用**相对路径**，禁止使用绝对路径。
 
 示例：
+
 - 从 `docs/README.md` 引用 `docs/reproduction-status.md` → `[reproduction-status.md](reproduction-status.md)`
 - 从 `docs/repo-map.md` 引用根目录 `README.md` → `[README.md](../README.md)`
 - 从 `src/diffaudit/README.md` 引用根目录 → `[README.md](../../README.md)`
