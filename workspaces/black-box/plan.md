@@ -4,9 +4,9 @@
 
 - `owner`: active-thread
 - `scope`: 黑盒成员推断、数据集级审计、black-box leakage 线索整理
-- `status`: 进行中，`Stable Diffusion + DDIM` 的 `100-sample public runtime-mainline` 已通，`kandinsky_v22` 最小真实 runtime-mainline 已通，`DiT` 官方 `step10 sample-smoke` 已通
+- `status`: 进行中，`Stable Diffusion + DDIM` 的 `100-sample public runtime-mainline` 已通，`kandinsky_v22` 最小真实 runtime-mainline 已通，`DiT` 官方 `step50 sample-smoke` 已通
 - `blocked by`: `recon` 公开资产包（DOI: `10.5281/zenodo.13371475`）的 target/shadow/member/non-member 论文语义仍需核准；当前公开主线已经推进到 `100-sample` 上限，但 `public-50` 与 `public-100` 的指标差异还需要解释
-- `next command`: `conda run -n diffaudit-research python -m diffaudit run-dit-sample-smoke --workspace experiments/dit-sample-step50 --repo-root external/DiT --model "DiT-XL/2" --image-size 256 --num-sampling-steps 50 --seed 0 --ckpt external/DiT/pretrained_models/DiT-XL-2-256x256.pt`
+- `next command`: `conda run -n diffaudit-research python -m diffaudit probe-recon-runtime-assets --target-member-dataset external/recon-assets/ndss-2025-blackbox-membership-inference-fine-tuned-diffusion-models/derived-smoke/target_member.pt --target-nonmember-dataset external/recon-assets/ndss-2025-blackbox-membership-inference-fine-tuned-diffusion-models/derived-smoke/target_non_member.pt --shadow-member-dataset external/recon-assets/ndss-2025-blackbox-membership-inference-fine-tuned-diffusion-models/derived-smoke/shadow_member.pt --shadow-nonmember-dataset external/recon-assets/ndss-2025-blackbox-membership-inference-fine-tuned-diffusion-models/derived-smoke/shadow_non_member.pt --target-model-dir external/recon-assets/public-kandinsky-pokemon/decoder/pytorch_lora_weights.safetensors --shadow-model-dir external/recon-assets/public-kandinsky-pokemon/decoder/pytorch_lora_weights.safetensors --backend kandinsky_v22 --target-decoder-dir external/recon-assets/public-kandinsky-pokemon/decoder/pytorch_lora_weights.safetensors --target-prior-dir external/recon-assets/public-kandinsky-pokemon/prior/pytorch_lora_weights.safetensors --shadow-decoder-dir external/recon-assets/public-kandinsky-pokemon/decoder/pytorch_lora_weights.safetensors --shadow-prior-dir external/recon-assets/public-kandinsky-pokemon/prior/pytorch_lora_weights.safetensors --repo-root external/Reconstruction-based-Attack`
 - `last updated`: 2026-04-06
 
 ## 主论文与场景
@@ -40,6 +40,7 @@
 - `experiments/blackbox-status/summary.json`
 - `experiments/dit-sample-smoke/summary.json`
 - `experiments/dit-sample-step10/summary.json`
+- `experiments/dit-sample-step50/summary.json`
 
 ## 本地代码上下文
 
@@ -62,8 +63,8 @@
 2. 用 `probe-recon-runtime-assets` 先核准本机 `recon` 公开 Zenodo 资产的 target/shadow/member/non-member 映射
 3. 对比 `recon` 的 `public-50` 与 `public-100` 指标差异，并记录运行成本
 4. 把真实 target/shadow score artifact 的命名和目录约束落实到 `recon` 主线
-5. 维持 `DiT` 官方 `sample.py` 路线可重复执行，并把本地 checkpoint 驱动的 `step10` 证据视需要继续往更高步数或更高分辨率推进
-6. `kandinsky_v22` public smoke 已通；`Stable Diffusion + DDIM` 的 `100-sample public` 也已通，下一步是解释 `public-50` 与 `public-100` 的指标变化，并继续补齐 `DiT` / `Kandinsky` 覆盖
+5. 维持 `DiT` 官方 `sample.py` 路线可重复执行，并把本地 checkpoint 驱动的 `step50` 证据视需要继续往更高步数或更高分辨率推进
+6. `kandinsky_v22` public smoke 已通；`Stable Diffusion + DDIM` 的 `100-sample public` 也已通；`DiT step50` 也已补上，下一步是解释 `public-50` 与 `public-100` 的指标变化，并继续补齐 `Kandinsky` 覆盖
 7. 评估 `variation` 真实 API 调用所需的凭据、预算和 query image 约束
 8. 评估 `CLiD` 的真实 text-to-image 资产是否可在当前机器上最小复现
 9. 维持黑盒状态文档、实验目录和主线命令说明同步

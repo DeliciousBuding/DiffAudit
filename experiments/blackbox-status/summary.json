@@ -38,7 +38,7 @@
     "dit": {
       "paper": "Scalable_Diffusion_Transformers_2022",
       "best_evidence_mode": "sample-smoke",
-      "best_evidence_path": "D:\\Code\\DiffAudit\\Project\\experiments\\dit-sample-step10\\summary.json",
+      "best_evidence_path": "D:\\Code\\DiffAudit\\Project\\experiments\\dit-sample-step50\\summary.json",
       "headline_metrics": {
         "auc": null,
         "asr": null,
@@ -59,6 +59,16 @@
           "mode": "sample-smoke",
           "status": "ready",
           "summary_path": "D:\\Code\\DiffAudit\\Project\\experiments\\dit-sample-step10\\summary.json",
+          "headline_metrics": {
+            "auc": null,
+            "asr": null,
+            "tpr_at_1pct_fpr": null
+          }
+        },
+        {
+          "mode": "sample-smoke",
+          "status": "ready",
+          "summary_path": "D:\\Code\\DiffAudit\\Project\\experiments\\dit-sample-step50\\summary.json",
           "headline_metrics": {
             "auc": null,
             "asr": null,
