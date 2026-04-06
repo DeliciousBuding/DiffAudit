@@ -4,6 +4,7 @@ from __future__ import annotations
 
 import argparse
 import json
+import os
 from dataclasses import asdict
 from pathlib import Path
 
@@ -633,6 +634,24 @@ def build_parser() -> argparse.ArgumentParser:
         default="cpu",
         help="device used for the runtime smoke run",
     )
+
+    local_api_parser = subparsers.add_parser(
+        "serve-local-api",
+        help="serve the local DiffAudit API over HTTP",
+    )
+    local_api_parser.add_argument("--host", default="127.0.0.1")
+    local_api_parser.add_argument("--port", type=int, default=8765)
+    local_api_parser.add_argument(
+        "--experiments-root",
+        default="experiments",
+        help="root directory containing experiment workspaces and summaries",
+    )
+    local_api_parser.add_argument(
+        "--jobs-root",
+        default="workspaces/local-api/jobs",
+        help="directory used to persist local API job records",
+    )
+    local_api_parser.add_argument("--log-level", default="info")
     return parser
 
 
@@ -966,6 +985,22 @@ def main(argv: list[str] | None = None) -> int:
         )
         print(json.dumps(payload, indent=2, ensure_ascii=True))
         return 0 if payload["status"] == "ready" else 1
+
+    if args.command == "serve-local-api":
+        import uvicorn
+
+        os.environ["DIFFAUDIT_EXPERIMENTS_ROOT"] = str(Path(args.experiments_root).resolve())
+        os.environ["DIFFAUDIT_JOBS_ROOT"] = str(Path(args.jobs_root).resolve())
+        uvicorn.run(
+            "diffaudit.local_api.app:create_app",
+            host=args.host,
+            port=args.port,
+            factory=True,
+            reload=False,
+            env_file=None,
+            log_level=args.log_level,
+        )
+        return 0
 
     parser.error(f"Unsupported command: {args.command}")
     return 2

@@ -67,6 +67,7 @@ DiffAudit 是一个面向扩散模型的隐私风险审计研究仓库。
 
 当前方法线的最新状态见 [docs/reproduction-status.md](docs/reproduction-status.md)。
 黑盒结果的统一机读汇总见 `experiments/blackbox-status/summary.json`。
+本地 HTTP API 说明见 [docs/local-api.md](docs/local-api.md)。
 
 ## 仓库结构
 
@@ -416,6 +417,12 @@ python -m diffaudit dry-run-variation --config configs/attacks/variation_plan.ya
 
 ```powershell
 python -m diffaudit run-variation-synth-smoke --workspace experiments/variation-synth-smoke
+```
+
+启动本地 API 服务：
+
+```powershell
+python -m diffaudit serve-local-api --host 127.0.0.1 --port 8765
 ```
 
 ## 参考资料

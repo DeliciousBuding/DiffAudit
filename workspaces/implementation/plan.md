@@ -5,6 +5,7 @@
 - `owner`: Codex
 - `scope`: 共享 CLI、配置结构、dry-run、probe、结果 schema、参考资料索引
 - `status`: 进行中，PIA runtime/smoke 已纳入最小复现线
+- `local-api`: 已新增研究仓库内本地 HTTP API，先打通 `recon` 查询与受控 job 提交
 - `blocked by`: 真实资产未到位、白盒/灰盒 threat model 仍在收敛
 - `next command`: `conda run -n diffaudit-research python -m unittest tests.test_attack_registry tests.test_pia_adapter tests.test_smoke_pipeline`
 - `last updated`: 2026-04-05
