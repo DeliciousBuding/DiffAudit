@@ -70,11 +70,11 @@
     "recon": {
       "paper": "BlackBox_Reconstruction_ArXiv2023",
       "best_evidence_mode": "runtime-mainline",
-      "best_evidence_path": "D:\\Code\\DiffAudit\\Project\\experiments\\recon-runtime-mainline-ddim-public-25-step10\\summary.json",
+      "best_evidence_path": "D:\\Code\\DiffAudit\\Project\\experiments\\recon-runtime-mainline-ddim-public-50-step10\\summary.json",
       "headline_metrics": {
-        "auc": 0.768,
-        "asr": 0.52,
-        "tpr_at_1pct_fpr": 0.96
+        "auc": 0.866,
+        "asr": 0.51,
+        "tpr_at_1pct_fpr": 1.0
       },
       "evidence": [
         {
@@ -125,6 +125,16 @@
             "auc": 0.768,
             "asr": 0.52,
             "tpr_at_1pct_fpr": 0.96
+          }
+        },
+        {
+          "mode": "runtime-mainline",
+          "status": "ready",
+          "summary_path": "D:\\Code\\DiffAudit\\Project\\experiments\\recon-runtime-mainline-ddim-public-50-step10\\summary.json",
+          "headline_metrics": {
+            "auc": 0.866,
+            "asr": 0.51,
+            "tpr_at_1pct_fpr": 1.0
           }
         },
         {

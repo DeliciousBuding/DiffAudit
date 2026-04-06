@@ -20,6 +20,7 @@
   - `1-sample runtime-mainline`
   - `10-sample public runtime-mainline`
   - `25-sample public runtime-mainline`
+  - `50-sample public runtime-mainline`
 - `Kandinsky v2.2`
   - `1-sample runtime-mainline`
 - `DiT-XL/2`
@@ -28,10 +29,10 @@
 
 当前最强公开子集证据：
 
-- `recon-runtime-mainline-ddim-public-25-step10`
-  - `auc = 0.768`
-  - `asr = 0.52`
-  - `tpr@1%fpr = 0.96`
+- `recon-runtime-mainline-ddim-public-50-step10`
+  - `auc = 0.866`
+  - `asr = 0.51`
+  - `tpr@1%fpr = 1.0`
 
 当前主阻塞：
 
@@ -144,12 +145,12 @@
 
 当前最短路径：
 
-1. 继续把 `recon` 从 `public-25` 扩到 `public-50`
+1. 继续把 `recon` 从 `public-50` 扩到 `public-100`
 2. 把 `Kandinsky` 从 `1-sample` 扩到 `10/10`
 3. 把 `DiT` 从 `step10` 扩到 `step50`
 
 如果必须只做一件事：
 
-- 先做 `DDIM public-50`
+- 先做 `DDIM public-100`
 
-因为这条线最接近把项目推进到“准 benchmark 级黑盒复现”。
+因为 `public-50` 已经把主线推进到第一档中样本稳定证据，下一步继续扩到 `public-100` 最能检验指标是否稳得住。
