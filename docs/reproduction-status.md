@@ -132,8 +132,8 @@
   - `论文` folder token: `FKbjfHlyMl3rCBdVEc5ciaCSnUA`
 - 当前正式流程统一用：
   - `--as user`
-- 本地飞书同步脚本：
-  - [sync_report_to_feishu.py](/D:/Code/DiffAudit/LocalOps/paper-pipeline/scripts/sync_report_to_feishu.py)
+- 本地飞书统一 CLI：
+  - [feishu_ops.py](/D:/Code/DiffAudit/LocalOps/paper-pipeline/scripts/feishu_ops.py)
 
 #### 2. 已知可直接用的论文目录 token
 
@@ -171,7 +171,7 @@
   - 主线程统一做飞书发布、移动、权限和换链。
 - 飞书正文更新不要直接用超长 PowerShell `$md` 命令串。
   - 超长文档会撞命令行长度限制。
-  - 优先用 [sync_report_to_feishu.py](/D:/Code/DiffAudit/LocalOps/paper-pipeline/scripts/sync_report_to_feishu.py)。
+  - 优先用 [feishu_ops.py](/D:/Code/DiffAudit/LocalOps/paper-pipeline/scripts/feishu_ops.py) 的 `sync-report` 子命令。
 - PDF 链接策略已经改了：
   - 优先飞书 PDF
   - 飞书没有时才用 GitHub PDF
@@ -186,7 +186,7 @@
 创建或覆盖单篇报告：
 
 ```powershell
-py -3 D:\Code\DiffAudit\LocalOps\paper-pipeline\scripts\sync_report_to_feishu.py `
+py -3 D:\Code\DiffAudit\LocalOps\paper-pipeline\scripts\feishu_ops.py sync-report `
   D:\Code\DiffAudit\Project\docs\paper-reports\<track>\<paper>-report.md `
   --doc "<existing-doc-url>" `
   --title "论文报告：<English Title>"
@@ -195,7 +195,7 @@ py -3 D:\Code\DiffAudit\LocalOps\paper-pipeline\scripts\sync_report_to_feishu.py
 创建或覆盖单篇精修原文：
 
 ```powershell
-py -3 D:\Code\DiffAudit\LocalOps\paper-pipeline\scripts\sync_report_to_feishu.py `
+py -3 D:\Code\DiffAudit\LocalOps\paper-pipeline\scripts\feishu_ops.py sync-report `
   D:\Code\DiffAudit\Project\docs\paper-reports\markdown\<track>\<paper>\<paper>-refined.md `
   --doc "<existing-doc-url>" `
   --title "OCR精修版：<English Title>"
