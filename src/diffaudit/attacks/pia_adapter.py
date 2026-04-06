@@ -10,7 +10,11 @@ from pathlib import Path
 from types import ModuleType
 from typing import Any
 
+import numpy as np
 import torch
+from torch.utils.data import DataLoader, Subset
+from torchvision import datasets as tv_datasets
+from torchvision import transforms as tv_transforms
 
 from diffaudit.attacks.pia import (
     PiaPlan,
@@ -298,6 +302,144 @@ def probe_pia_runtime(
         "paths": summary["paths"],
         "weights_key": weights_key,
         "preview_score_shape": list(preview_scores.shape),
+    }
+
+
+def _load_pia_preview_batches(
+    dataset: str,
+    dataset_dir: str | Path,
+    member_split_path: str | Path,
+    preview_batch_size: int,
+    device: str,
+) -> tuple[torch.Tensor, torch.Tensor]:
+    if dataset.upper() != "CIFAR10":
+        raise ValueError(f"PIA runtime preview currently supports CIFAR10 only: {dataset}")
+
+    split_payload = np.load(member_split_path)
+    member_indices = split_payload["mia_train_idxs"].tolist()
+    nonmember_indices = split_payload["mia_eval_idxs"].tolist()
+    if not member_indices or not nonmember_indices:
+        raise ValueError("PIA member split must contain non-empty member and non-member indices")
+
+    transform = tv_transforms.Compose([tv_transforms.ToTensor()])
+    dataset_obj = tv_datasets.CIFAR10(
+        root=str(dataset_dir),
+        train=True,
+        download=False,
+        transform=transform,
+    )
+    member_subset = Subset(dataset_obj, member_indices)
+    nonmember_subset = Subset(dataset_obj, nonmember_indices)
+    member_loader = DataLoader(
+        member_subset,
+        batch_size=min(preview_batch_size, len(member_subset)),
+        shuffle=False,
+    )
+    nonmember_loader = DataLoader(
+        nonmember_subset,
+        batch_size=min(preview_batch_size, len(nonmember_subset)),
+        shuffle=False,
+    )
+    member_batch = next(iter(member_loader))[0].to(device)
+    nonmember_batch = next(iter(nonmember_loader))[0].to(device)
+    return member_batch, nonmember_batch
+
+
+def probe_pia_runtime_preview(
+    config: AuditConfig,
+    repo_root: str | Path,
+    member_split_root: str | Path | None = None,
+    device: str = "cpu",
+    preview_batch_size: int = 2,
+) -> tuple[int, dict[str, Any]]:
+    try:
+        plan = build_pia_plan(config)
+        validate_pia_workspace(repo_root)
+        split_root = Path(member_split_root) if member_split_root else Path(repo_root) / "DDPM"
+        summary = probe_pia_assets(
+            dataset=plan.dataset,
+            dataset_root=plan.data_root,
+            model_dir=plan.model_dir,
+            member_split_root=split_root,
+        )
+        if summary["status"] != "ready":
+            return 1, {
+                "status": "blocked",
+                "repo_root": str(repo_root),
+                "checks": summary["checks"],
+                "paths": summary["paths"],
+                "missing": summary["missing"],
+                "missing_keys": summary["missing_keys"],
+                "missing_items": summary["missing_items"],
+                "missing_description": summary["missing_description"],
+            }
+
+        components_module, model_module = load_pia_ddpm_modules(repo_root)
+        model, weights_key = load_pia_model(summary["paths"]["checkpoint"], model_module, device=device)
+        attacker = _build_pia_attacker(
+            components_module=components_module,
+            model=model,
+            attacker_name=plan.attacker_name,
+            attack_num=plan.attack_num,
+            interval=plan.interval,
+            device=device,
+        )
+        member_batch, nonmember_batch = _load_pia_preview_batches(
+            dataset=plan.dataset,
+            dataset_dir=summary["paths"]["dataset_dir"],
+            member_split_path=summary["paths"]["member_split"],
+            preview_batch_size=preview_batch_size,
+            device=device,
+        )
+        member_scores = attacker(member_batch)
+        nonmember_scores = attacker(nonmember_batch)
+    except (FileNotFoundError, ValueError, KeyError, TypeError, ImportError) as exc:
+        return 1, {
+            "status": "blocked",
+            "error": str(exc),
+            "repo_root": str(repo_root),
+            "device": device,
+        }
+    except Exception as exc:
+        return 2, {
+            "status": "error",
+            "error": f"{type(exc).__name__}: {exc}",
+            "repo_root": str(repo_root),
+            "device": device,
+        }
+
+    return 0, {
+        "status": "ready",
+        "track": "gray-box",
+        "method": "pia",
+        "paper": "PIA_ICLR2024",
+        "mode": "runtime-preview",
+        "device": device,
+        "repo_root": str(Path(repo_root)),
+        "dataset": plan.dataset,
+        "model_dir": plan.model_dir,
+        "attack_num": plan.attack_num,
+        "interval": plan.interval,
+        "attacker_name": plan.attacker_name,
+        "preview_batch_size": preview_batch_size,
+        "checks": {
+            **summary["checks"],
+            "components_loaded": hasattr(components_module, plan.attacker_name),
+            "model_loaded": True,
+            "attacker_instantiated": True,
+            "member_preview_loaded": True,
+            "nonmember_preview_loaded": True,
+            "member_preview_forward": True,
+            "nonmember_preview_forward": True,
+        },
+        "paths": summary["paths"],
+        "weights_key": weights_key,
+        "member_batch_shape": list(member_batch.shape),
+        "nonmember_batch_shape": list(nonmember_batch.shape),
+        "member_score_shape": list(member_scores.shape),
+        "nonmember_score_shape": list(nonmember_scores.shape),
+        "member_score_mean": float(member_scores.mean().item()),
+        "nonmember_score_mean": float(nonmember_scores.mean().item()),
     }
 
 

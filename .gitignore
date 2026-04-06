@@ -42,3 +42,4 @@ tmp/
 .conda/
 condaenv.*.requirements.txt
 external/
+workspaces/gray-box/assets/

@@ -4,6 +4,7 @@ import unittest
 from contextlib import redirect_stdout
 from io import StringIO
 from pathlib import Path
+from unittest.mock import patch
 
 
 PIA_CONFIG_TEMPLATE = """
@@ -145,6 +146,86 @@ class PiaAdapterTests(unittest.TestCase):
         self.assertEqual(payload["status"], "ready")
         self.assertTrue(payload["checks"]["model_loaded"])
         self.assertTrue(payload["checks"]["attacker_instantiated"])
+
+    def test_cli_runtime_preview_pia_reports_ready(self) -> None:
+        from PIL import Image
+        import numpy as np
+
+        from diffaudit.attacks.pia_adapter import bootstrap_pia_smoke_assets
+        from diffaudit.cli import main
+
+        class FakeCIFAR10:
+            def __init__(self, root, train, transform=None, download=False):
+                del root, train, download
+                self.transform = transform
+                self.images = [
+                    np.full((32, 32, 3), fill_value=value, dtype=np.uint8)
+                    for value in (32, 64, 160, 192)
+                ]
+
+            def __len__(self) -> int:
+                return len(self.images)
+
+            def __getitem__(self, index: int):
+                image = Image.fromarray(self.images[index])
+                tensor = self.transform(image) if self.transform is not None else image
+                return tensor, index
+
+        with tempfile.TemporaryDirectory() as tmpdir:
+            root = Path(tmpdir)
+            repo_root = root / "PIA"
+            create_minimal_pia_repo(repo_root)
+
+            dataset_root = root / "datasets"
+            (dataset_root / "cifar10").mkdir(parents=True)
+
+            member_split_root = root / "member_splits"
+            member_split_root.mkdir()
+            np.savez(
+                member_split_root / "CIFAR10_train_ratio0.5.npz",
+                mia_train_idxs=np.array([0, 1]),
+                mia_eval_idxs=np.array([2, 3]),
+            )
+
+            model_dir = root / "model"
+            bootstrap_pia_smoke_assets(target_dir=model_dir, repo_root=repo_root)
+
+            config_path = root / "audit.yaml"
+            config_path.write_text(
+                PIA_CONFIG_TEMPLATE
+                .replace("PLACEHOLDER_DATASET", str(dataset_root).replace("\\", "/"))
+                .replace("PLACEHOLDER_MODEL", str(model_dir).replace("\\", "/")),
+                encoding="utf-8",
+            )
+
+            stdout = StringIO()
+            with patch("torchvision.datasets.CIFAR10", FakeCIFAR10):
+                with redirect_stdout(stdout):
+                    exit_code = main(
+                        [
+                            "runtime-preview-pia",
+                            "--config",
+                            str(config_path),
+                            "--repo-root",
+                            str(repo_root),
+                            "--member-split-root",
+                            str(member_split_root),
+                            "--device",
+                            "cpu",
+                            "--preview-batch-size",
+                            "2",
+                        ]
+                    )
+
+        payload = json.loads(stdout.getvalue())
+        self.assertEqual(exit_code, 0)
+        self.assertEqual(payload["status"], "ready")
+        self.assertEqual(payload["member_batch_shape"], [2, 3, 32, 32])
+        self.assertEqual(payload["nonmember_batch_shape"], [2, 3, 32, 32])
+        self.assertEqual(payload["member_score_shape"], [3, 2])
+        self.assertEqual(payload["nonmember_score_shape"], [3, 2])
+        self.assertTrue(payload["checks"]["member_preview_loaded"])
+        self.assertTrue(payload["checks"]["nonmember_preview_loaded"])
 
     def test_cli_runs_pia_synthetic_smoke(self) -> None:
         from diffaudit.cli import main

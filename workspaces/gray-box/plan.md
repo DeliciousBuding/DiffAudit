@@ -4,9 +4,9 @@
 
 - `owner`: `research_leader`
 - `scope`: 部分中间信息、条件似然、结构特征下的成员推断
-- `status`: `PIA runtime path ready; real-asset probe pending`
-- `blocked by`: 真实 `checkpoint`、真实 `dataset_root`、`dataset_root/cifar10` 目录布局
-- `next command`: `conda run -n diffaudit-research python -m diffaudit probe-pia-assets --config <real-pia-config> --member-split-root external/PIA/DDPM`
+- `status`: `PIA real-asset preview ready`
+- `blocked by`: 真实 `PIA` runtime mainline 仍未接进 `Project`，且当前 DDPM checkpoint 的论文来源尚未核准
+- `next step`: 在不申请 GPU 的前提下，决定是先补 `Project` 侧真实 `PIA` 执行封装，还是先核准这批 DDPM checkpoint 的 provenance
 - `last updated`: 2026-04-07
 
 ## 推荐论文
@@ -32,6 +32,8 @@
 - `workspaces/gray-box/runs/pia-followup-20260407/plan.json`
 - `workspaces/gray-box/runs/pia-followup-20260407/probe.json`
 - `workspaces/gray-box/runs/pia-followup-20260407/dry-run.json`
+- `workspaces/gray-box/2026-04-07-pia-real-asset-probe.md`
+- `workspaces/gray-box/runs/pia-cifar10-graybox-assets-probe-20260407/runtime-preview.json`
 - `experiments/clid-dry-run-smoke/summary.json`
 - `experiments/clid-artifact-summary/summary.json`
 
@@ -43,14 +45,15 @@
 ## 起步方案
 
 1. 先把灰盒边界定义写清楚
-2. 先把 `PIA` 的真实 `checkpoint + dataset_root` 绑定到非占位 config
-3. 先跑 `probe-pia-assets`，确认缺口只剩真实资产，不再重复 GPU synthetic smoke
-4. `probe` 通过后再跑 `runtime-probe-pia --device cpu`
-5. 只有在真实资产探针通过后，才评估是否进入更正式的 gray-box benchmark
-6. `SecMI` 继续作为第二条 baseline，等 `flagfile + checkpoint` 布局就位再接续
+2. 已把 `PIA` 的真实 `checkpoint + dataset_root + member split` 绑定到本地-only config，并确认 `probe/dry-run/runtime-probe/runtime-preview` 都能在 CPU 上走通
+3. 不再重复 GPU synthetic smoke
+4. 下一步只做两件事中的一件：
+   - 补 `Project` 侧真实 `PIA` 执行封装
+   - 先核准当前 DDPM checkpoint 的 paper provenance
+5. `SecMI` 继续作为第二条 baseline，等 `flagfile + checkpoint` 布局就位再接续
 
 ## 当前阻塞项
 
-- 模板 config 仍是占位符，不能直接声称 `PIA` 真实资产已可用
-- `external/PIA/DDPM/CIFAR10_train_ratio0.5.npz` 已在位，但真实 `checkpoint / dataset_root / dataset layout` 还没到位
-- 当前最短下一步是 CPU 上的真实资产探针，不是重复的 GPU smoke
+- `PIA` 的真实数据 preview 已经通过，但当前仓库还没有真实 runtime mainline runner
+- 这批新到位的 DDPM checkpoint 能通过当前 probe/runtime-probe，不等于已经核准为论文口径资产
+- 当前最短下一步不是 GPU，而是执行封装或 provenance 核准

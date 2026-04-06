@@ -539,6 +539,33 @@ def build_parser() -> argparse.ArgumentParser:
         help="device used for the runtime probe",
     )
 
+    pia_runtime_preview_parser = subparsers.add_parser(
+        "runtime-preview-pia",
+        help="run a real-data PIA preview using member/non-member batches from the configured dataset root",
+    )
+    pia_runtime_preview_parser.add_argument("--config", required=True, help="path to audit yaml")
+    pia_runtime_preview_parser.add_argument(
+        "--repo-root",
+        default="external/PIA",
+        help="path to local PIA repository root",
+    )
+    pia_runtime_preview_parser.add_argument(
+        "--member-split-root",
+        default="external/PIA/DDPM",
+        help="path to PIA DDPM member split npz files",
+    )
+    pia_runtime_preview_parser.add_argument(
+        "--device",
+        default="cpu",
+        help="device used for the runtime preview",
+    )
+    pia_runtime_preview_parser.add_argument(
+        "--preview-batch-size",
+        type=int,
+        default=2,
+        help="number of member and non-member samples loaded for the runtime preview",
+    )
+
     runtime_probe_parser = subparsers.add_parser(
         "runtime-probe-secmi",
         help="validate SecMI runtime readiness by loading flags and model",
@@ -931,6 +958,20 @@ def main(argv: list[str] | None = None) -> int:
             args.repo_root,
             member_split_root=args.member_split_root,
             device=args.device,
+        )
+        print(json.dumps(payload, indent=2, ensure_ascii=True))
+        return exit_code
+
+    if args.command == "runtime-preview-pia":
+        from diffaudit.attacks.pia_adapter import probe_pia_runtime_preview
+
+        config = load_audit_config(args.config)
+        exit_code, payload = probe_pia_runtime_preview(
+            config,
+            args.repo_root,
+            member_split_root=args.member_split_root,
+            device=args.device,
+            preview_batch_size=args.preview_batch_size,
         )
         print(json.dumps(payload, indent=2, ensure_ascii=True))
         return exit_code

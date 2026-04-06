@@ -50,7 +50,7 @@ DiffAudit 是一个面向扩散模型的隐私风险审计研究仓库。
 - 独立的 GPU 科研环境
 - 配置驱动的 smoke pipeline
 - `SecMI` 的计划层、资产解析、workspace 校验、adapter 准备和 dry-run 校验
-- `PIA` 的计划层、资产解析、dry-run、runtime probe 和 synthetic smoke
+- `PIA` 的计划层、资产解析、dry-run、runtime probe、runtime preview 和 synthetic smoke
 - `GSA` 白盒主线的 CPU gradient smoke 与最小 closed-loop smoke
 - `CLiD` 的计划层、资产解析、dry-run、dry-run smoke 和 artifact summary
 - `recon` 纯黑盒主线的计划层、资产解析、dry-run、分阶段 smoke、统一 mainline smoke 和 artifact-driven mainline
@@ -118,9 +118,10 @@ workspaces/              多人协作工作区
 2. `probe-pia-assets`
 3. `dry-run-pia`
 4. `runtime-probe-pia`
-5. `run-pia-runtime-smoke`
-6. `run-pia-synth-smoke`
-7. 资产到位后再尝试真实执行
+5. `runtime-preview-pia`
+6. `run-pia-runtime-smoke`
+7. `run-pia-synth-smoke`
+8. 资产到位后再尝试真实执行
 
 对 `CLiD`，当前推荐命令顺序是：
 
@@ -262,6 +263,12 @@ python -m diffaudit dry-run-pia --config configs/attacks/pia_plan.yaml --repo-ro
 
 ```powershell
 python -m diffaudit runtime-probe-pia --config configs/attacks/pia_plan.yaml --repo-root external/PIA --member-split-root external/PIA/DDPM --device cpu
+```
+
+运行 `PIA` runtime preview：
+
+```powershell
+python -m diffaudit runtime-preview-pia --config configs/attacks/pia_plan.yaml --repo-root external/PIA --member-split-root external/PIA/DDPM --device cpu --preview-batch-size 4
 ```
 
 运行 `PIA` runtime smoke：
