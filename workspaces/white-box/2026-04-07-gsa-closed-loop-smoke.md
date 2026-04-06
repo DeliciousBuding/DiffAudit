@@ -67,10 +67,10 @@ This is still a toy synthetic-assets execution smoke.
 - paper-aligned `member/non-member` splits are still missing
 - the current result still sits in workspace scope; there is no shared `diffaudit` white-box adapter / CLI yet
 - the tiny toy split triggers expected small-sample warnings in `sklearn`, so the raw toy numbers must not be read as publishable attack signal
-- the blocking hiccup is asset-format compatibility: the current verified path uses `accelerate` `checkpoint-*` directories with `gen_l2_gradients_DDPM`, and the incoming single-file DDPM checkpoints do not match that layout; on current evidence, the verified next path is to self-train target/shadow checkpoints via `train_unconditional.py` before attempting a paper-aligned run
+- the blocking hiccup is asset-format compatibility: the current verified path uses `accelerate` `checkpoint-*` directories with `gen_l2_gradients_DDPM`, and the incoming single-file DDPM checkpoints do not match that layout; on current evidence, the current verified next path is to self-train target/shadow checkpoints via `train_unconditional.py` before attempting a paper-aligned run
 
 ## F. Shortest Next Step
 
 1. Replace the toy buckets with paper-aligned `target-member`, `target-nonmember`, `shadow-member`, and `shadow-nonmember` assets.
 2. Re-run gradient extraction against real checkpoints with `--resume_from_checkpoint latest`.
-3. Keep the result in “end-to-end executable” language until those real assets exist, meaning the pipeline must run on the self-trained target/shadow `checkpoint-*` directories described above rather than the toy smoke inputs.
+3. Keep the result in “end-to-end executable” language until those real assets exist. On current verified evidence, the next path is to run the pipeline on self-trained target/shadow `checkpoint-*` directories instead of the current toy smoke inputs.
