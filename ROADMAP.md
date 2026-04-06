@@ -26,6 +26,7 @@
   - `1-sample runtime-mainline`
 - `DiT-XL/2`
   - 官方 checkpoint `step10 sample-smoke`
+  - 官方 checkpoint `step50 sample-smoke`
 - 黑盒统一汇总、状态文档、Feishu 在线索引已经打通
 
 当前最大公开子集证据：
@@ -155,10 +156,10 @@
 
 1. 核准公开资产的 `target/shadow/member/non-member` 语义映射，并明确 `public-50` 与 `public-100` 的解释口径
 2. 把 `Kandinsky` 从 `1-sample` 扩到 `10/10`
-3. 把 `DiT` 从 `step10` 扩到 `step50`
+3. 把 `DiT` 从 `step50` 继续评估更高步数或更高分辨率
 
 如果必须只做一件事：
 
-- 先做 `DiT step50` 或 `Kandinsky 10/10`
+- 先做 `Kandinsky 10/10`
 
-因为公开 `recon` 子集已经推进到 `100-sample` 上限，下一步更有价值的是补齐模型覆盖，并回头解释 `public-50` 与 `public-100` 指标差异。
+因为 `DiT step50` 已经补上，当前模型覆盖里的最短缺口变成了 `Kandinsky 10/10`；并且公开 `recon` 主线也需要回头解释 `public-50` 与 `public-100` 指标差异。
