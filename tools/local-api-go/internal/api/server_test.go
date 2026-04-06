@@ -3,11 +3,13 @@ package api
 import (
 	"bytes"
 	"encoding/json"
+	"errors"
 	"net/http"
 	"net/http/httptest"
 	"os"
 	"path/filepath"
 	"testing"
+	"time"
 )
 
 func writeJSONFile(t *testing.T, path string, payload any) {
@@ -313,4 +315,120 @@ func TestRejectsDuplicateActiveWorkspace(t *testing.T) {
 	if secondRecorder.Code != http.StatusConflict {
 		t.Fatalf("expected 409, got %d", secondRecorder.Code)
 	}
+}
+
+func TestBackgroundJobExecutionCompletesAndFillsSummary(t *testing.T) {
+	root := t.TempDir()
+	experimentsRoot := filepath.Join(root, "experiments")
+	server := NewServer(Config{
+		ExperimentsRoot: experimentsRoot,
+		JobsRoot:        filepath.Join(root, "jobs"),
+		AutoStartJobs:   true,
+		Executor: func(payload auditJobCreate, workspacePath string) error {
+			writeJSONFile(t, filepath.Join(workspacePath, "summary.json"), map[string]any{
+				"status":    "ready",
+				"paper":     "BlackBox_Reconstruction_ArXiv2023",
+				"method":    "recon",
+				"mode":      "artifact-mainline",
+				"workspace": workspacePath,
+				"metrics": map[string]any{
+					"auc":             0.866,
+					"asr":             0.51,
+					"tpr_at_1pct_fpr": 1.0,
+				},
+				"artifact_paths": map[string]any{
+					"summary": filepath.Join(workspacePath, "summary.json"),
+				},
+			})
+			return nil
+		},
+	})
+
+	data, err := json.Marshal(map[string]any{
+		"job_type":       "recon_artifact_mainline",
+		"workspace_name": "api-job-complete",
+		"artifact_dir":   "D:/artifacts/recon-scores",
+	})
+	if err != nil {
+		t.Fatalf("marshal failed: %v", err)
+	}
+
+	request := httptest.NewRequest(http.MethodPost, "/api/v1/audit/jobs", bytes.NewReader(data))
+	request.Header.Set("Content-Type", "application/json")
+	recorder := httptest.NewRecorder()
+	server.Handler().ServeHTTP(recorder, request)
+
+	if recorder.Code != http.StatusAccepted {
+		t.Fatalf("expected 202, got %d", recorder.Code)
+	}
+
+	created := decodeJSONResponse(t, recorder)
+	jobID := created["job_id"].(string)
+
+	record := waitForJobStatus(t, server, jobID, "completed")
+	if record["summary_path"] == nil {
+		t.Fatalf("expected summary_path to be filled")
+	}
+	metrics, ok := record["metrics"].(map[string]any)
+	if !ok || metrics["auc"] != 0.866 {
+		t.Fatalf("expected metrics to be filled, got %v", record["metrics"])
+	}
+}
+
+func TestBackgroundJobExecutionFailurePersistsError(t *testing.T) {
+	root := t.TempDir()
+	server := NewServer(Config{
+		ExperimentsRoot: filepath.Join(root, "experiments"),
+		JobsRoot:        filepath.Join(root, "jobs"),
+		AutoStartJobs:   true,
+		Executor: func(payload auditJobCreate, workspacePath string) error {
+			return errors.New("stub execution failed")
+		},
+	})
+
+	data, err := json.Marshal(map[string]any{
+		"job_type":       "recon_artifact_mainline",
+		"workspace_name": "api-job-fail",
+		"artifact_dir":   "D:/artifacts/recon-scores",
+	})
+	if err != nil {
+		t.Fatalf("marshal failed: %v", err)
+	}
+
+	request := httptest.NewRequest(http.MethodPost, "/api/v1/audit/jobs", bytes.NewReader(data))
+	request.Header.Set("Content-Type", "application/json")
+	recorder := httptest.NewRecorder()
+	server.Handler().ServeHTTP(recorder, request)
+
+	if recorder.Code != http.StatusAccepted {
+		t.Fatalf("expected 202, got %d", recorder.Code)
+	}
+
+	created := decodeJSONResponse(t, recorder)
+	jobID := created["job_id"].(string)
+
+	record := waitForJobStatus(t, server, jobID, "failed")
+	if record["error"] == nil {
+		t.Fatalf("expected error to be filled")
+	}
+}
+
+func waitForJobStatus(t *testing.T, server *Server, jobID string, expected string) map[string]any {
+	t.Helper()
+	deadline := time.Now().Add(2 * time.Second)
+	for time.Now().Before(deadline) {
+		request := httptest.NewRequest(http.MethodGet, "/api/v1/audit/jobs/"+jobID, nil)
+		recorder := httptest.NewRecorder()
+		server.Handler().ServeHTTP(recorder, request)
+		if recorder.Code != http.StatusOK {
+			t.Fatalf("expected 200, got %d", recorder.Code)
+		}
+		payload := decodeJSONResponse(t, recorder)
+		if payload["status"] == expected {
+			return payload
+		}
+		time.Sleep(20 * time.Millisecond)
+	}
+	t.Fatalf("job %s did not reach status %s", jobID, expected)
+	return nil
 }

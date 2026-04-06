@@ -5,6 +5,7 @@ import (
 	"errors"
 	"net/http"
 	"os"
+	"os/exec"
 	"path/filepath"
 	"sort"
 	"strings"
@@ -14,6 +15,9 @@ import (
 type Config struct {
 	ExperimentsRoot string
 	JobsRoot        string
+	ProjectRoot     string
+	AutoStartJobs   bool
+	Executor        func(payload auditJobCreate, workspacePath string) error
 }
 
 type Server struct {
@@ -92,6 +96,9 @@ func stringPtr(value string) *string {
 }
 
 func NewServer(config Config) *Server {
+	if config.ProjectRoot == "" {
+		config.ProjectRoot = defaultProjectRoot()
+	}
 	mux := http.NewServeMux()
 	server := &Server{
 		config: config,
@@ -190,6 +197,9 @@ func (s *Server) handleCreateJob(writer http.ResponseWriter, request *http.Reque
 	if err := s.writeJob(record); err != nil {
 		writeError(writer, http.StatusInternalServerError, err.Error())
 		return
+	}
+	if s.config.AutoStartJobs {
+		go s.runJob(record)
 	}
 	writeJSON(writer, http.StatusAccepted, record)
 }
@@ -413,4 +423,129 @@ func writeJSON(writer http.ResponseWriter, statusCode int, payload any) {
 
 func writeError(writer http.ResponseWriter, statusCode int, detail string) {
 	writeJSON(writer, statusCode, map[string]any{"detail": detail})
+}
+
+func defaultProjectRoot() string {
+	current, err := os.Getwd()
+	if err != nil {
+		return ""
+	}
+	return filepath.Clean(filepath.Join(current, "..", ".."))
+}
+
+func (s *Server) runJob(record auditJobRecord) {
+	record.Status = "running"
+	record.UpdatedAt = time.Now().UTC().Format(time.RFC3339Nano)
+	_ = s.writeJob(record)
+
+	workspacePath := filepath.Join(s.config.ExperimentsRoot, record.WorkspaceName)
+	if err := os.MkdirAll(workspacePath, 0o755); err != nil {
+		s.failJob(record, err)
+		return
+	}
+
+	executor := s.config.Executor
+	if executor == nil {
+		executor = s.executePythonJob
+	}
+	if err := executor(record.Payload, workspacePath); err != nil {
+		s.failJob(record, err)
+		return
+	}
+
+	summaryPath := filepath.Join(workspacePath, "summary.json")
+	payload, err := readJSONFile(summaryPath)
+	if err != nil {
+		s.failJob(record, err)
+		return
+	}
+
+	record.Status = "completed"
+	record.UpdatedAt = time.Now().UTC().Format(time.RFC3339Nano)
+	record.SummaryPath = stringPtr(summaryPath)
+	record.Metrics = headlineMetrics(payload)
+	record.Error = nil
+	record.StdoutTail = nil
+	record.StderrTail = nil
+	_ = s.writeJob(record)
+}
+
+func (s *Server) failJob(record auditJobRecord, err error) {
+	message := err.Error()
+	record.Status = "failed"
+	record.UpdatedAt = time.Now().UTC().Format(time.RFC3339Nano)
+	record.Error = &message
+	_ = s.writeJob(record)
+}
+
+func (s *Server) executePythonJob(payload auditJobCreate, workspacePath string) error {
+	command := s.pythonCommand(payload, workspacePath)
+	if len(command) == 0 {
+		return errors.New("empty job command")
+	}
+	cmd := exec.Command(command[0], command[1:]...)
+	cmd.Dir = s.config.ProjectRoot
+	output, err := cmd.CombinedOutput()
+	if err != nil {
+		if len(output) > 0 {
+			return errors.New(strings.TrimSpace(string(output)))
+		}
+		return err
+	}
+	return nil
+}
+
+func (s *Server) pythonCommand(payload auditJobCreate, workspacePath string) []string {
+	method := payload.Method
+	if method == "" {
+		method = "threshold"
+	}
+	repoRoot := payload.RepoRoot
+	if repoRoot == "" {
+		repoRoot = filepath.Join(s.config.ProjectRoot, "external", "Reconstruction-based-Attack")
+	}
+	if payload.JobType == "recon_artifact_mainline" {
+		return []string{
+			"python",
+			"-m",
+			"diffaudit",
+			"run-recon-artifact-mainline",
+			"--artifact-dir",
+			payload.ArtifactDir,
+			"--workspace",
+			workspacePath,
+			"--repo-root",
+			repoRoot,
+			"--method",
+			method,
+		}
+	}
+	return []string{
+		"python",
+		"-m",
+		"diffaudit",
+		"run-recon-runtime-mainline",
+		"--workspace",
+		workspacePath,
+		"--repo-root",
+		repoRoot,
+		"--method",
+		method,
+	}
+}
+
+func headlineMetrics(payload map[string]any) map[string]any {
+	metrics, ok := payload["metrics"].(map[string]any)
+	if !ok {
+		return map[string]any{
+			"auc":             nil,
+			"asr":             nil,
+			"tpr_at_1pct_fpr": nil,
+		}
+	}
+	return map[string]any{
+		"auc":             metrics["auc"],
+		"asr":             metrics["asr"],
+		"tpr_at_1pct_fpr": metrics["tpr_at_1pct_fpr"],
+	}
 }
