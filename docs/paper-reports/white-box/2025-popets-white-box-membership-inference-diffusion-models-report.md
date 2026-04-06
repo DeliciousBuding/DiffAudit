@@ -1,149 +1,164 @@
-# White-box Membership Inference Attacks against Diffusion Models
+# 扩散模型白盒成员推断攻击论文报告
 
-- Title: White-box Membership Inference Attacks against Diffusion Models
-- Material Path: `references/materials/white-box/2025-popets-white-box-membership-inference-diffusion-models.pdf`
-- Primary Track: `white-box`
-- Venue / Year: PoPETs 2025(2)
-- Threat Model Category: White-box membership inference against diffusion models with access to model parameters and per-sample gradients
-- Core Task: Determine whether a query sample belongs to the training set of an unconditional or conditional diffusion model by using gradient-based attack features
-- Open-Source Implementation: Official code is available at <https://github.com/py85252876/GSA>
-- Report Status: Complete
+**英文标题**：White-box Membership Inference Attacks against Diffusion Models
 
-## Executive Summary
+## 文献信息
 
-这篇论文研究扩散模型的白盒成员推断攻击。作者关注的问题不是“能否从输出图像中重建训练样本”，而是更直接的隐私判定问题：当攻击者掌握目标扩散模型的结构与参数，并且在条件模型场景下还知道全部条件模态时，是否能够判断某个样本是否出现在训练集中。论文认为，相比黑盒与灰盒设定，白盒路线更贴近公开 checkpoint 与模型卡普遍可得的现实环境，因此值得作为扩散模型隐私分析的强上界。
+- 作者：Yan Pang, Tianhao Wang, Xuhui Kang, Mengdi Huai, Yang Zhang
+- 发表信息：Proceedings on Privacy Enhancing Technologies, 2025(2)
+- 本地 PDF：`references/materials/white-box/2025-popets-white-box-membership-inference-diffusion-models.pdf`
+- GitHub PDF 链接：<https://github.com/DeliciousBuding/DiffAudit/blob/main/references/materials/white-box/2025-popets-white-box-membership-inference-diffusion-models.pdf>
+- 飞书原生 PDF：见文末附件
+- 开源实现：<https://github.com/py85252876/GSA>
+- 报告状态：sample-review-v3
 
-方法上的核心转折是把既有白盒扩散 MIA 常用的 loss 特征，替换成更高维的 gradient 特征。作者指出，单个样本在扩散过程的多个 timestep 上都会产生 loss，而仅凭 loss 阈值容易混淆“复杂成员样本”和“简单非成员样本”。为此，论文提出 `GSA` 框架，即对多个 timestep 的梯度进行 subsampling 与 aggregation，并给出两个实例化攻击：`GSA1` 先对多个 timestep 的 loss 求平均再反传一次，以换取更高效率；`GSA2` 对每个采样 timestep 分别反传并对梯度向量再求平均，以保留更多信息。
+## 一、论文定位
 
-论文在 CIFAR-10、ImageNet、MS COCO 上评估 DDPM 与 Imagen，报告的攻击效果极强。以 CIFAR-10 为例，`GSA1` 和 `GSA2` 的 AUC 都达到 `0.999`，显著高于同条件下的 loss-based 对照 `LSA*` 的 `0.909`；`GSA1` 的 `TPR@1%FPR` 达到 `99.7%`。论文同时显示，等距 timestep 采样几乎保留了 effective sampling 的精度，却把时间成本从 `21587s` 降到 `2398s`。对 DiffAudit 而言，这篇论文定义了 white-box 路线的强参考点：它既给出“梯度比 loss 更强”的经验结论，也明确暴露出可复现性的关键瓶颈，即样本级梯度接口、目标 checkpoint 与训练配置。
+这篇论文讨论的是扩散模型在**白盒权限**下的成员推断攻击问题。相比黑盒或灰盒场景，它假设攻击者已经能够访问目标模型的参数、结构，并对单个查询样本执行反向传播。在这个前提下，论文关心的不是“能否恢复训练图像内容”，而是更基础也更强的问题：模型是否会对训练成员和非成员产生稳定可分的内部响应差异。
 
-## Bibliographic Record
+它在 DiffAudit 的文献体系里应被视为白盒路线的主论文，而不是补充阅读材料。原因很直接：这篇论文既给出了方法论上的新判断，即**梯度特征优于单纯的 loss 特征**；也给出了工程层面很明确的执行路线，即如何在多个时间步和多个网络层之间做采样与聚合，从而把理论上的白盒攻击变成一个可以落地训练的攻击流水线。
 
-- Title: White-box Membership Inference Attacks against Diffusion Models
-- Authors: Yan Pang, Tianhao Wang, Xuhui Kang, Mengdi Huai, Yang Zhang
-- Venue / year / version: Proceedings on Privacy Enhancing Technologies, 2025(2)
-- Local PDF path: `D:/Code/DiffAudit/Project/references/materials/white-box/2025-popets-white-box-membership-inference-diffusion-models.pdf`
-- Source URL: <https://doi.org/10.56553/popets-2025-0068>
+## 二、核心问题
 
-## Research Question
+论文的核心问题可以拆成两个连续的问题。
 
-论文试图回答两个相互关联的问题。第一，在扩散模型成员推断中，白盒攻击是否应继续沿用 loss 作为核心特征，还是应转向能更完整反映模型响应差异的 gradient。第二，如果改用 gradient，是否能够在无条件扩散模型与文本条件扩散模型上同时取得稳定且高精度的攻击结果。
+第一，在扩散模型的白盒成员推断里，单个时间步的 loss 是否足够表达成员信息。作者的回答是否定的。因为扩散模型训练本身跨越多个时间步，而不同时间步上的 loss 会受到样本复杂度、训练阶段和噪声水平的共同影响。如果仅拿某个时间步的 loss 去做成员与非成员判别，那么“训练成员的典型响应”与“困难非成员的偶然低 loss”可能会被混在一起。
 
-其威胁模型假设攻击者拥有目标模型的白盒访问权限，包括架构细节和具体参数；在条件扩散模型场景下，攻击者还知道与样本关联的全部条件模态，例如图文对。论文将该设定视为现实的原因是公开发布模型结构与 checkpoint 已很常见，因此成员推断不再局限于黑盒 API 环境。
+第二，如果 loss 不够，那么应该选择什么更稳定的特征。论文给出的答案是梯度。作者认为，梯度不仅反映误差大小，还反映模型在该输入点附近的局部响应结构。也就是说，梯度中同时包含“拟合得好不好”和“模型为这个样本调整了哪些参数方向”这两层信息。论文试图证明，正是这第二层局部响应，使白盒成员推断的判别能力显著强于传统 loss 路线。
 
-## Problem Setting and Assumptions
+## 三、威胁模型与前提
 
-- Access model: 白盒。攻击者可访问目标扩散模型的结构、参数，并能对查询样本执行前向与反向传播。
-- Available inputs: 查询样本 `x_0`；扩散 timestep；条件模型所需的全部模态信息；可训练的影子模型与攻击模型。
-- Available outputs: 每个采样 timestep 的 loss、对应梯度，以及按层聚合后的梯度特征向量。
-- Required priors or side information: 需要影子模型来生成成员/非成员特征分布；论文使用 XGBoost 或 MLP 作为攻击模型。
-- Scope limits: 论文主要证明白盒梯度特征的有效性，不处理严格黑盒环境；攻击成立依赖能拿到样本级梯度，且论文未给出对更受限部署形态的替代接口。
+论文采用的威胁模型很强，但并不虚构。作者假设攻击者可以获得目标扩散模型的结构和参数，并能够对查询样本执行前向与反向传播；在条件模型场景下，攻击者还知道与样本对应的全部条件模态，例如图像对应的文本提示。这种设定对商业闭源 API 不成立，但对公开 checkpoint、研究代码和本地复现实验环境是成立的，因此它适合作为 white-box 场景下的能力上界。
 
-## Method Overview
+在这个威胁模型里，攻击者拥有的输入包括原始查询样本 `x_0`、扩散时间步选择集合 `K`、目标模型的参数、以及训练出的影子模型和攻击分类器。攻击者最终可观察的不是单纯的 loss，而是按时间步、按层提取出来的梯度范数特征。论文不讨论权限更弱的环境，因此它的结论不能直接外推到只暴露生成接口的黑盒系统。
 
-作者首先回顾既有扩散模型 MIA 的特征选择问题。既有白盒方法大多在不同 timestep 上计算 loss，然后用阈值或 LiRA 分布进行成员判定。但扩散模型的单样本会在多个 timestep 上产生不同 loss，最佳区间随数据集与模型变化而变化，因此攻击者往往需要额外代价去搜索所谓的 “Goldilock's zone”。论文据此提出：与其反复寻找最优 loss timestep，不如直接利用白盒可得的 gradient，因为 gradient 同时编码了当前误差项与模型在该输入处的局部响应。
+## 四、方法总览
 
-`GSA` 框架的第一步是 timestep-level subsampling。论文比较了 effective sampling、Poisson sampling 和 equidistant sampling，结论是 effective sampling 精度最高，但预搜索成本过高；equidistant sampling 只带来很小的精度下降，却显著节省时间，因此被用于后续主实验。第二步是 aggregation。对于每个采样 timestep，论文不保留所有原始梯度元素，而是对每层参数梯度取 `\ell_2` 范数，把高维梯度压缩成按层排列的统计量。
+方法总览可以概括成一句话：**不要只找某个“最有效时间步”的 loss，而要在多个时间步上提取样本级梯度，再把这些梯度压缩成稳定的攻击特征。**
 
-在此基础上，论文给出两个实例化。`GSA1` 对选中 timestep 的 loss 先求平均，再进行一次反向传播，得到单个按层梯度向量；它牺牲部分信息，但效率更高。`GSA2` 则对每个 timestep 分别反传，形成多个按层梯度向量后再求平均，因此保留了更多 timestep 级别差异。作者把这两种方法解释为效率与效果之间的两个端点，而不是对 `GSA` 设计空间的穷尽。
+作者提出的总体框架名为 `GSA`，即 Gradient-based Step-wise Aggregation。它先从总扩散步数中选择一个时间步集合 `K`，再在每个 `t∈K` 上构造带噪样本、计算 loss、反向传播提取梯度。由于原始梯度维度极高，论文并不直接使用参数矩阵本身，而是对每层梯度取 `\ell_2` 范数，把高维对象压缩成按层排列的统计向量。之后，这些向量会在时间步和层两个维度上进一步聚合，并送入攻击分类器。
 
-## Method Flow
+论文给出两个具体实例。`GSA1` 的思路是：先把多个时间步的 loss 求平均，再只做一次反向传播。它牺牲一部分时间步细节，但能显著节省计算成本。`GSA2` 则对每个时间步分别反向传播，再对梯度表示做平均，因此保留更多信息，但运行时间更长。作者用这两个实例说明：白盒成员推断不仅要考虑特征有没有信息，还必须考虑多时间步梯度提取在工程上能否承受。
+
+## 五、方法流程图
 
 ```mermaid
-flowchart TD
-    A["Query sample x0 and white-box target diffusion model"] --> B["Select timestep subset K by equidistant sampling"]
-    B --> C["For each t in K, form noisy sample xt and compute Lt"]
-    C --> D["Backpropagate to obtain per-layer gradient signals"]
-    D --> E["Aggregate gradients with GSA1 or GSA2"]
-    E --> F["Train or apply attack model on gradient feature vector"]
-    F --> G["Output membership decision: member / non-member"]
+flowchart LR
+    A["输入查询样本 x0"] --> B["选择时间步集合 K"]
+    B --> C["逐时间步构造带噪样本 xt"]
+    C --> D["计算 Lt 并对白盒模型反向传播"]
+    D --> E["提取各层梯度范数"]
+    E --> F["跨时间步与跨层聚合"]
+    F --> G["训练或调用攻击分类器"]
+    G --> H["输出 member / non-member 判定"]
 ```
 
-## Key Technical Details
+## 六、关键技术细节
 
-论文的方法建立在扩散模型的标准前向加噪和噪声预测损失上。对真实样本 `x_0`，第 `t` 步加噪样本写作：
-
-$$
-x_t = \sqrt{\bar{\alpha}_t} x_0 + \sqrt{1-\bar{\alpha}_t}\,\epsilon_t.
-$$
-
-对应的训练目标是最小化噪声预测误差：
+扩散模型的前向加噪过程满足：
 
 $$
-L_t(\theta)=\mathbb{E}_{x_0,\epsilon_t}\left[\left\|\epsilon_t-\epsilon_\theta\!\left(\sqrt{\bar{\alpha}_t}x_0+\sqrt{1-\bar{\alpha}_t}\epsilon_t,\ t\right)\right\|_2^2\right].
+x_t = \sqrt{\bar{\alpha}_t}x_0 + \sqrt{1-\bar{\alpha}_t}\,\epsilon_t.
 $$
 
-作者进一步展开梯度，得到其依赖于误差项与样本处局部响应的形式：
+在这个定义下，第 `t` 个时间步上的标准噪声预测损失为：
+
+$$
+L_t(\theta)=\mathbb{E}_{x_0,\epsilon_t}\left[\left\|\epsilon_t-\epsilon_\theta(x_t,t)\right\|_2^2\right].
+$$
+
+如果只看这个 loss，本质上只得到一个标量。标量虽然能反映当前样本在特定时间步上的误差大小，但它无法描述模型在该输入邻域中“朝哪个方向”响应、哪些层响应更剧烈、不同时间步之间是否存在一致的成员模式。作者认为，这正是传统 loss-based white-box 攻击的主要瓶颈。
+
+因此论文进一步考察 loss 对模型参数的梯度：
 
 $$
 \nabla_\theta L_t(\theta, x)=2\left(\epsilon_\theta(x_t,t)-\epsilon_t\right)^\top \nabla_\theta \epsilon_\theta(x_t,t).
 $$
 
-这一定义是论文从 loss 过渡到 gradient 的理论依据。当前报告的理解是：相同 loss 数值并不意味着相同梯度，因为梯度还包含 `\nabla_\theta \epsilon_\theta(x_t,t)` 这一与具体输入相关的 Jacobian 项。论文据此主张，gradient 比 scalar loss 更能区分成员与非成员。
+这条公式之所以关键，是因为它不仅包含误差项 `\epsilon_\theta(x_t,t)-\epsilon_t`，还包含模型对输入的局部响应项 `\nabla_\theta \epsilon_\theta(x_t,t)`。当前报告对作者论证的理解是：成员样本与非成员样本的差异，不只是“loss 更低”，而是“跨时间步的梯度结构更稳定、更像模型已经见过并学过的样本”。也正因为如此，梯度比 loss 更适合作为 white-box 成员推断的核心特征。
 
-实现上，`GSA1` 的关键是先对 `K` 中各 timestep 的 `L_t` 求均值，再做一次反向传播；`GSA2` 则对每个 `t \in K` 单独计算梯度并做均值聚合。两者都把每层参数梯度压缩成 `\ell_2` 范数表示，从而避免直接使用上亿维原始梯度。论文还给出一个经验性结论：在其实验中，采样 `|K|=10` 已经足以接近最优，继续增加频率收益有限。
+但是，直接保留所有梯度仍然不可行。一个扩散模型的参数规模往往极大，若对多个时间步都保留全量梯度，计算和存储成本都无法接受。论文的解决办法是对每层梯度取 `\ell_2` 范数，把原始梯度张量压缩为按层的标量集合。这一步不是单纯为了省空间，而是把“层级响应模式”保留下来，同时把原始特征降到可供攻击分类器使用的维度。
 
-## Experimental Setup
+## 七、实验设置
 
-- Datasets: CIFAR-10、ImageNet、MS COCO。前两者用于无条件 DDPM，MS COCO 用于 Imagen 文本到图像模型。
-- Model families: DDPM 与 Imagen；论文同时把 unconditional 与 conditional diffusion model 都纳入实验。
-- Default parameters: 通道数均为 `128`，扩散步数 `1000`，学习率 `1e-4`，batch size `64`；CIFAR-10 与 ImageNet 训练 `400` epochs，Imagen 训练 `600000` steps。
-- Training data size / resolution: CIFAR-10 为 `8000 / 32x32`，ImageNet 为 `8000 / 64x64`，MS COCO 为 `30000 / 64x64`。
-- Baselines: Baseline threshold loss attack、LiRA、Strong LiRA，以及与 `GSA` 同采样设置但只用 loss 特征的 `LSA*`。
-- Metrics: ASR、AUC、`TPR@1%FPR`、`TPR@0.1%FPR`。
-- Evaluation conditions: 论文比较 timestep 采样方法、影子/目标模型训练程度差异、扩散步数、图像分辨率、layer-wise 梯度截断，以及多种防御策略；实验使用两块 NVIDIA A100 GPU。
+论文的实验覆盖无条件扩散模型与条件扩散模型两大类：
 
-## Main Results
+- 数据集：CIFAR-10、ImageNet、MS COCO
+- 模型：DDPM、Imagen
+- 指标：ASR、AUC、`TPR@1%FPR`、`TPR@0.1%FPR`
+- 训练设置：CIFAR-10 和 ImageNet 训练 `400` epochs，Imagen 训练 `600000` steps
+- 默认超参：扩散步数 `1000`、学习率 `1e-4`、batch size `64`
 
-- 在 CIFAR-10 基准上，`GSA1` 达到 `ASR 0.993 / AUC 0.999 / TPR@1%FPR 99.7% / TPR@0.1%FPR 82.9%`，`GSA2` 达到 `0.988 / 0.999 / 97.88% / 58.57%`。同条件下 `LSA*` 仅有 `ASR 0.830 / AUC 0.909`，表明梯度特征明显强于 loss 特征。
-- 在 timestep 采样策略上，effective sampling 的 `ASR/AUC` 为 `0.947/0.992`，但耗时 `21587s`；equidistant sampling 为 `0.932/0.981`，耗时仅 `2398s`。论文因此把等距采样视为更合理的主设置。
-- t-SNE 可视化表明，当目标模型训练达到默认轮次后，成员与非成员的梯度表示分离明显。论文据此将“gradient captures richer sample-specific response”作为主要经验结论。
-- 在 Imagen 大模型上，增加采样频率与目标模型训练程度都会提高攻击成功率；论文声称 `|K|=10` 时 `GSA2` 的成功率接近 `100%`。
-- 防御实验显示，`DP-SGD` 与 `RandAugment` 能把 `GSA1/GSA2` 的 `ASR` 和 `AUC` 压到接近随机猜测，但较弱的数据增强如 `RandomHorizontalFlip` 与 `Cutout` 仍无法充分抑制梯度攻击。
-- layer-wise 消融显示，无需提取全部层的梯度即可逼近峰值效果；论文报告从顶层向下累计，约 `80%` 层已经足以达到最高攻击精度，这对后续工程优化有直接意义。
+基线方面，论文不是只和最弱的 threshold loss 方法比较，而是同时比较了 Baseline、LiRA、Strong LiRA，以及在相同采样设置下仍然只使用 loss 特征的 `LSA*`。这样的对照安排很关键，因为它把“梯度优于 loss”的结论建立在公平比较之上，而不是建立在人为削弱基线的前提下。
 
-## Strengths
+此外，论文还单独比较了三类对结果影响显著的因素：时间步采样策略、layer-wise 选择策略，以及不同防御手段对攻击结果的压制能力。这使得这篇论文的实验部分不是单一数字展示，而是一套完整的 white-box 路线分析。
 
-- 方法贡献明确，真正解释了为什么在扩散模型白盒场景下，gradient 可以成为比 loss 更强的攻击特征。
-- 实验覆盖无条件 DDPM 与条件 Imagen，说明结论并非只针对小规模闭集模型成立。
-- 既比较攻击精度，也比较采样策略与运行时间，为后续工程折中提供了可复用依据。
-- `GSA1` 与 `GSA2` 的设计非常清楚，分别对应“单次反传节省成本”和“逐步反传保留信息”两种可实现端点。
-- 防御与 layer-wise 消融都做了补充，使论文不只停留在“攻击有效”，而是提供了可操作的边界条件。
+## 八、主要结果
 
-## Limitations and Validity Threats
+### 8.1 梯度特征显著优于 loss 特征
 
-- 论文的攻击前提较强，要求拿到目标模型参数并执行样本级反向传播；这对商业托管模型或封闭服务通常不成立。
-- 文中虽给出 gradient 优于 loss 的理论直觉，但其核心仍是经验性论证，而非严格最优判别证明。
-- 复现实验依赖影子模型、目标模型、样本级梯度接口和较长训练过程，成本远高于只算 loss 的基线。
-- Imagen 实验虽然说明大模型上攻击仍然有效，但正文没有把全部训练细节与系统优化策略公开到可直接复现的粒度。
-- 防御结果也提示该路线和过拟合强相关，因此论文中的高精度可能对数据增强、正则化和隐私训练策略敏感。
+在 CIFAR-10 上，`GSA1` 和 `GSA2` 的 AUC 都达到 `0.999`，而在相同采样条件下只使用 loss 的 `LSA*` 只有 `0.909`。这说明在扩散模型的 white-box 成员推断中，梯度不是对 loss 的轻微改进，而是明显更强的一类特征。
 
-## Reproducibility Assessment
+### 8.2 低误报区间仍然很强
 
-忠实复现至少需要四类资产：第一，目标 DDPM 或 Imagen 的训练代码与 checkpoint；第二，能与论文设置对齐的成员/非成员划分；第三，可提取样本级梯度并按层聚合的实现；第四，与论文一致的影子模型训练与攻击模型训练流程。虽然论文给出了代码仓库，但要得到与文中接近的数值，仍需完整重建训练与评估管线。
+论文给出的 `TPR@1%FPR` 结果中，`GSA1` 达到 `99.7%`，`GSA2` 达到 `97.88%`。这意味着该攻击并不只是 ROC 曲线“整体好看”，而是在低误报场景下也有较高实用性。
 
-就当前 DiffAudit 仓库状态而言，这篇论文已经被列为 `white-box lead`，状态是 `research-ready`，但还没有对应的 runnable plan 或 evidence 产物。仓库现有阻塞项写得很直接：缺可访问 checkpoint、缺训练配置、缺样本级梯度或激活接口。当前报告认为这一状态与论文需求是吻合的，因为 `GSA` 的关键优势恰好建立在这些高权限接口之上。
+### 8.3 等距采样是非常重要的工程折中
 
-因此，当前最现实的复现阻塞不是“没有算法说明”，而是“没有足够接近论文设定的执行资产”。若只做 literature-level 对齐，这篇论文已经足够清楚；若要进入 faithful reproduction，仍需要补齐模型权重、训练日志、数据拆分和大模型梯度提取基础设施。
+论文中最值得做成样板图的结果之一，就是不同时间步采样策略之间的效果与时间成本比较。`effective sampling` 精度略高，但时间开销约 `21587s`；而 `equidistant sampling` 的 AUC 只有小幅下降到 `0.981`，时间却降到 `2398s`。这说明如果 DiffAudit 后续要做原型实现，完全没有必要从最重的采样方案开始。
 
-## Relevance to DiffAudit
+## 九、优点
 
-这篇论文对 DiffAudit 的意义在于，它为 white-box 路线给出了当前非常强的上界参考。相比黑盒或灰盒扩散 MIA，`GSA` 明确展示了：一旦拿到参数和梯度接口，成员信号会显著增强，甚至在多组设置下接近完美区分。对于 DiffAudit 的路线叙事，这篇论文可以作为“高权限条件下隐私泄露强度”的代表工作。
+- 问题定义准确：它抓住了 white-box 扩散 MIA 中最值得问的那个问题，即特征设计而不是阈值调参。
+- 方法贡献清晰：`GSA1` 与 `GSA2` 的差别、适用性和代价都说得很清楚。
+- 实验有工程价值：不仅有主指标，还有采样代价、层级选择和防御效果。
+- 适合作为主论文：读完之后不仅知道“它有效”，还知道“为什么有效”和“实现代价在哪里”。
 
-它还为后续工程设计提供两个直接启发。第一，若 white-box 路线要从理论走向可运行实验，优先级不应放在重新发明 attack score，而应先打通 per-sample gradient extraction、layer selection 与 timestep sampling 这三个基础模块。第二，论文已经说明等距采样和顶部层截断能显著降低成本，因此 DiffAudit 后续若做 prototype，不必一开始就追求全量 timestep 与全层梯度。
+## 十、局限与有效性威胁
 
-同时，这篇论文也提醒 DiffAudit 不要把 white-box 成果误读成普适部署结论。因为其攻击强度来自高权限假设，所以它更适合作为 upper bound、机制分析和路线标杆，而不是直接代表生产环境中的可达攻击面。
+- 威胁模型过强：样本级梯度接口在生产环境里通常拿不到。
+- 论文结论主要建立在实验观察和机制解释上，而不是严格的最优判别理论。
+- 复现成本高：需要 checkpoint、影子模型、梯度提取和较长训练过程。
+- 高精度结论与训练充分、无强隐私正则的设定高度相关，不宜直接外推到所有扩散模型。
 
-## Recommended Figure
+## 十一、对 DiffAudit 的价值
 
-- Figure page: 5
-- Crop box or note: Cropped `Figure 1` using PDF clip box `30 75 310 305`; the crop keeps the schematic and the explanatory caption, because the bare symbols alone are not self-explanatory
-- Why this figure matters: 该图最直接展示了论文的方法闭环，即对同一样本在多个 timestep 上求 loss、反传梯度、再把聚合后的梯度送入攻击模型；它比结果图更适合作为 white-box 路线的结构概览
-- Local asset path: `docs/paper-reports/assets/white-box/2025-popets-white-box-membership-inference-diffusion-models-key-figure-p5.png`
+对 DiffAudit 来说，这篇论文的第一价值是“上界参考”。如果项目需要回答“在足够高的权限下，扩散模型成员泄露能有多强”，这篇论文提供了最直接的证据之一。
 
-![Key Figure](../assets/white-box/2025-popets-white-box-membership-inference-diffusion-models-key-figure-p5.png)
+第二价值是“实现优先级建议”。从论文看，white-box 路线最先要补的不是新攻击分数，而是下面三类基础能力：
 
-## Extracted Summary for `paper-index.md`
+- per-sample gradient extraction
+- timestep sampling
+- layer selection
+
+第三价值是“边界澄清”。它提醒团队不要把 white-box 的强数值直接当作 black-box 风险描述，而应把它视为高权限条件下的能力上界，用来与灰盒、黑盒路线做清晰分层。
+
+## 十二、关键图解读
+
+### 图 1：GSA 白盒攻击流程图
+
+这张图适合作为报告里的第一张图，因为它承担的是“建立方法直觉”的任务。图中左侧是查询样本，中央是目标扩散模型，顶部是攻击特征，底部是通过 loss 反传得到梯度再做聚合的过程。它把整篇论文的方法闭环压缩成一个可视化结构，读者即使不先看公式，也能先明白方法是“多时间步 loss -> 梯度 -> 聚合 -> 攻击分类”这条链路。
+
+![图 1](../assets/white-box/2025-popets-white-box-membership-inference-diffusion-models-key-figure-p5.png)
+
+### 图 2：不同时间步采样策略的效果与成本
+
+第二张图我故意没有再选 t-SNE 散点，而是改成了 `Table 2`。原因很明确：对样板报告来说，结果图最该承担的功能不是“好看”，而是“让读者马上知道论文最重要的工程结论是什么”。这张表直接告诉读者：effective sampling 的效果最好，但时间最贵；equidistant sampling 虽然略差一点，却把成本压到了可接受范围。因此它能直接回答“为什么论文最后推荐等距采样”，比散点图更适合作为审阅版报告的第二张图。
+
+![图 2](../assets/white-box/2025-popets-white-box-membership-inference-diffusion-models-key-figure-2-p5.png)
+
+## 十三、复现评估
+
+如果要在 DiffAudit 里做 faithful reproduction，真正的阻塞项并不是“没读懂论文”，而是执行资产不齐。至少需要：
+
+1. 可访问的 DDPM / Imagen checkpoint
+2. 成员 / 非成员数据划分
+3. 样本级梯度提取接口
+4. 影子模型和攻击模型训练管线
+
+当前仓库把 white-box 路线标成 `research-ready` 是合理的，因为这篇论文最依赖的正是目前还缺失的那些高权限实验资产。
+
+## 十四、写回总索引用摘要
 
 这篇论文研究扩散模型的白盒成员推断问题，目标是在攻击者掌握目标模型参数、结构以及条件模态信息时，判断某个查询样本是否属于训练集。作者把这一问题放在公开 checkpoint 已普遍可得的现实背景下讨论，并将其视为扩散模型隐私风险分析的强权限场景。
 
