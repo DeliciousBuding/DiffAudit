@@ -2,12 +2,12 @@
 
 ## 状态面板
 
-- `owner`: 待认领
+- `owner`: `codex white-box worker`
 - `scope`: 白盒成员推断、记忆定位、梯度与激活级审计
-- `status`: 调研中
-- `blocked by`: 可访问的 checkpoint、训练配置、每样本梯度或中间激活接口
-- `next command`: `Get-Content workspaces/white-box/plan.md`
-- `last updated`: 2026-04-05
+- `status`: `repo-ready + gradient-smoke`
+- `blocked by`: 论文对齐的 target/shadow checkpoint、member/non-member 划分、分类器依赖与统一 adapter 接口
+- `next command`: `Get-Content workspaces/white-box/2026-04-06-gsa-kickoff.md`
+- `last updated`: 2026-04-06
 
 ## 推荐论文
 
@@ -30,6 +30,13 @@
 3. 补白盒信号访问矩阵：`loss / gradient / activations / cross-attention / score direction`
 4. 先写实验假设和指标，再决定执行顺序
 5. 先从最小可验证路径开始，不要一上来追完整论文指标
+
+## 当前启动进展
+
+- 已选主线：`2025 PoPETS White-box Membership Inference Attacks against Diffusion Models`
+- 已下载官方代码：`workspaces/white-box/external/GSA`
+- 已完成最小白盒梯度 smoke：`workspaces/white-box/smoke-ddpm/member-gradients.pt`
+- 详细记录：`workspaces/white-box/2026-04-06-gsa-kickoff.md`
 
 ## 当前难点
 
