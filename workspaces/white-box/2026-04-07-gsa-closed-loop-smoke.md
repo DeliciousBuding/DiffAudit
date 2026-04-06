@@ -1,13 +1,13 @@
-# 2026-04-07 White-Box Follow-Up: GSA Closed-Loop Smoke
+# 2026-04-07 White-Box Follow-Up: GSA End-to-End Execution Smoke
 
 ## Status Panel
 
 - `owner`: `research_leader`
 - `updated_at`: `2026-04-07 17:55:00 +08:00`
 - `selected_mainline`: `2025 PoPETS White-box Membership Inference Attacks against Diffusion Models (GSA)`
-- `current_state`: `closed-loop-smoke on CPU`
+- `current_state`: `end-to-end executable on CPU`
 - `gpu_usage`: `not requested`
-- `evidence_level`: `closed-loop-smoke`
+- `evidence_level`: `execution-smoke`
 
 ## A. What Changed Before Running
 
@@ -34,20 +34,16 @@ Primary artifacts:
 
 ## C. Result
 
-Target-side closed-loop metrics from [attack-output.txt](runs/gsa-closed-loop-smoke-20260407-cpu/attack-output.txt):
+The result to foreground is execution, not toy attack strength.
 
-- `accuracy = 0.75`
-- `roc_auc = 0.75`
-- `tpr@1%fpr = 0.0`
-- `tpr@0.1%fpr = 0.0`
+Confirmed facts:
 
-Gradient artifact summary from [summary.json](runs/gsa-closed-loop-smoke-20260407-cpu/summary.json):
-
+- four gradient artifacts were produced
 - each split produced a `6 x 450` gradient tensor
-- `target_member` mean/std: `0.0592 / 0.2229`
-- `target_non_member` mean/std: `0.0648 / 0.2492`
-- `shadow_member` mean/std: `0.0577 / 0.2180`
-- `shadow_non_member` mean/std: `0.0630 / 0.2438`
+- upstream `test_attack_accuracy.py` completed and wrote a target-side attack report
+- raw toy metrics remain available in [attack-output.txt](runs/gsa-closed-loop-smoke-20260407-cpu/attack-output.txt)
+
+Those raw numbers are intentionally not foregrounded here because this run still uses toy synthetic assets and should be read only as an execution proof.
 
 ## D. Interpretation
 
@@ -55,7 +51,7 @@ What this run proves:
 
 - the upstream `GSA` DDPM gradient extractor works on this machine in CPU mode
 - the upstream `xgboost` classifier stage also works on this machine
-- the white-box line is no longer only `gradient-smoke`; it now has a minimal `closed-loop-smoke`
+- the white-box line is no longer only `gradient-smoke`; it now has a minimal end-to-end executable path
 
 What this run does **not** prove:
 
@@ -63,17 +59,17 @@ What this run does **not** prove:
 - meaningful benchmark strength
 - anything about real target/shadow checkpoints
 
-This is still a toy synthetic-assets closed loop.
+This is still a toy synthetic-assets execution smoke.
 
 ## E. Remaining Blockers
 
 - paper-aligned `target/shadow` checkpoints are still missing
 - paper-aligned `member/non-member` splits are still missing
 - the current result still sits in workspace scope; there is no shared `diffaudit` white-box adapter / CLI yet
-- the tiny toy split triggers expected small-sample warnings in `sklearn`, so these numbers are not publishable evidence
+- the tiny toy split triggers expected small-sample warnings in `sklearn`, so the raw toy numbers must not be read as publishable attack signal
 
 ## F. Shortest Next Step
 
 1. Replace the toy buckets with paper-aligned `target-member`, `target-nonmember`, `shadow-member`, and `shadow-nonmember` assets.
 2. Re-run gradient extraction against real checkpoints with `--resume_from_checkpoint latest`.
-3. Keep the result in `closed-loop-smoke` language until those real assets exist.
+3. Keep the result in “end-to-end executable” language until those real assets exist.

@@ -29,13 +29,13 @@
 | 方法 | 论文 | 当前状态 | 仓库命令 | 当前证据 | 主要阻塞 |
 | --- | --- | --- | --- | --- | --- |
 | `secmi` | `2023-icml-secmi-membership-inference-diffusion-models.pdf` | `code-ready + evidence-ready` | `plan-secmi` / `probe-secmi-assets` / `prepare-secmi` / `dry-run-secmi` / `runtime-probe-secmi` / `run-secmi-synth-smoke` | [secmi-synth-smoke](../experiments/secmi-synth-smoke/summary.json), [secmi-synth-smoke-gpu](../experiments/secmi-synth-smoke-gpu/summary.json) | 缺真实 checkpoint、flagfile 和论文一致资产布局 |
-| `pia` | `2024-iclr-pia-proximal-initialization.pdf` | `code-ready + evidence-ready` | `plan-pia` / `probe-pia-assets` / `dry-run-pia` / `runtime-probe-pia` / `runtime-preview-pia` / `run-pia-runtime-smoke` / `run-pia-synth-smoke` | [pia-runtime-smoke-cpu](../experiments/pia-runtime-smoke-cpu/summary.json), [pia-runtime-smoke-gpu](../experiments/pia-runtime-smoke-gpu/summary.json), [pia-synth-smoke-cpu](../experiments/pia-synth-smoke-cpu/summary.json), [pia-synth-smoke-gpu](../experiments/pia-synth-smoke-gpu/summary.json), [pia-template-followup](../workspaces/gray-box/2026-04-07-pia-followup.md), [pia-real-asset-probe](../workspaces/gray-box/2026-04-07-pia-real-asset-probe.md) | `2026-04-07` 已把真实 `cifar10` 数据根、真实 DDPM checkpoint 和 member split 接到 `probe/dry-run/runtime-probe/runtime-preview`；当前下一缺口不再是资产探针，而是 Project 侧仍没有真实 `PIA` runtime mainline 执行封装，且 checkpoint provenance 还没核准到论文口径 |
+| `pia` | `2024-iclr-pia-proximal-initialization.pdf` | `code-ready + evidence-ready` | `plan-pia` / `probe-pia-assets` / `dry-run-pia` / `runtime-probe-pia` / `runtime-preview-pia` / `run-pia-runtime-smoke` / `run-pia-synth-smoke` | [pia-runtime-smoke-cpu](../experiments/pia-runtime-smoke-cpu/summary.json), [pia-runtime-smoke-gpu](../experiments/pia-runtime-smoke-gpu/summary.json), [pia-synth-smoke-cpu](../experiments/pia-synth-smoke-cpu/summary.json), [pia-synth-smoke-gpu](../experiments/pia-synth-smoke-gpu/summary.json), [pia-template-followup](../workspaces/gray-box/2026-04-07-pia-followup.md), [pia-real-asset-probe](../workspaces/gray-box/2026-04-07-pia-real-asset-probe.md) | 同日时间线已拆开：先有 template config 的 `blocked` 记录，后有基于 `workspaces/gray-box/assets/pia/**` 的单机资产探针与 runtime preview 就绪；当前最强说法应收敛为“单机资产探针/preview 已通”，而不是团队范围内资产条件已闭环 |
 
 ## 白盒
 
 | 方法 | 论文 | 当前状态 | 仓库命令 | 当前证据 | 主要阻塞 |
 | --- | --- | --- | --- | --- | --- |
-| `gsa` | `2025-popets-white-box-membership-inference-diffusion-models.pdf` | `code-ready + evidence-ready` | `workspaces/white-box/external/GSA/DDPM/gen_l2_gradients_DDPM.py` / `workspaces/white-box/external/GSA/test_attack_accuracy.py` | [gsa-kickoff](../workspaces/white-box/2026-04-06-gsa-kickoff.md), [gsa-closed-loop-smoke](../workspaces/white-box/2026-04-07-gsa-closed-loop-smoke.md), [gsa-asset-intake](../workspaces/white-box/2026-04-07-gsa-asset-intake.md) | 新到位的 `CIFAR-10` 归档只对白盒数据桶有帮助；`ckpt_cifar10.pt` / `ckpt_tini.pt` 是单文件 DDPM checkpoint，更接近 `PIA` 资产，不是 `GSA` 直接可恢复的 `checkpoint-*` accelerate state；`gradtts/*.pt` 对当前图像 GSA 线没有直接价值 |
+| `gsa` | `2025-popets-white-box-membership-inference-diffusion-models.pdf` | `code-ready + evidence-ready` | `workspaces/white-box/external/GSA/DDPM/gen_l2_gradients_DDPM.py` / `workspaces/white-box/external/GSA/test_attack_accuracy.py` | [gsa-kickoff](../workspaces/white-box/2026-04-06-gsa-kickoff.md), [gsa-closed-loop-smoke](../workspaces/white-box/2026-04-07-gsa-closed-loop-smoke.md), [gsa-asset-intake](../workspaces/white-box/2026-04-07-gsa-asset-intake.md) | 当前最强说法收敛为“CPU 上 toy synthetic assets 的梯度提取与分类器链路端到端可执行”；新到位的 `CIFAR-10` 归档只对白盒数据桶有帮助，`ckpt_cifar10.pt` / `ckpt_tini.pt` 仍不是 `GSA` 直接可恢复的 `checkpoint-*` accelerate state |
 | `finding-nemo` | `2024-neurips-finding-nemo-localizing-memorization-neurons-diffusion-models.pdf` | `research-ready` | 暂无 | 暂无 | 缺 neuron-level 分析接口和相应模型资产 |
 
 ## 当前判断
@@ -47,17 +47,17 @@
 5. `recon` 当前最佳 AUC 仍来自 [recon-runtime-mainline-ddim-public-50-step10](../experiments/recon-runtime-mainline-ddim-public-50-step10/summary.json) 的 `0.866`。因此，“最大公开子集主证据”与“当前最佳单指标结果”是两个不同结论，不能混写。
 6. `kandinsky_v22` 的最小真实 runtime-mainline 已经有证据，但 `10/10` 与单样本诊断都仍异常慢；在拿到能定位首个阶段耗时的有效日志前，不应默认继续占用 GPU。
 7. `DiT` 官方采样路径已经有 [dit-sample-step10](../experiments/dit-sample-step10/summary.json) 和 [dit-sample-step50](../experiments/dit-sample-step50/summary.json)，说明模型覆盖证据在推进，但它还没有进入成员推断协议，不应被写成黑盒主线已经闭环。
-8. `PIA` 当前已经跨过“模板探针”阶段：[pia-real-asset-probe](../workspaces/gray-box/2026-04-07-pia-real-asset-probe.md) 证明真实 `cifar10` 数据根、真实 DDPM checkpoint 和 member split 都能在 CPU 上通过 `probe/dry-run/runtime-probe`，并且 `runtime-preview-pia` 已经实际消费一批真实 member/non-member CIFAR10 样本完成前向打分。因此，这条线的下一缺口不再是资产探针，而是要不要在 `Project` 里补一个真实 `PIA` 执行封装，并确认 checkpoint 是否真是论文对齐资产。
-9. `GSA` 当前已经有 [gsa-closed-loop-smoke](../workspaces/white-box/2026-04-07-gsa-closed-loop-smoke.md)，说明 CPU 上的 `gradient extraction -> xgboost classifier` 管线可以闭环；但这只是 toy synthetic assets 上的 `closed-loop-smoke`，不能写成论文级白盒结果。
+8. `PIA` 的同日时间线必须分开读：[pia-template-followup](../workspaces/gray-box/2026-04-07-pia-followup.md) 记录的是模板 config 仍然 `blocked` 的时点；之后的 [pia-real-asset-probe](../workspaces/gray-box/2026-04-07-pia-real-asset-probe.md) 才记录了基于 `workspaces/gray-box/assets/pia/**` 的单机资产探针与 runtime preview。当前最稳妥的口径应是“单机资产探针/preview 已通”，不是团队范围内资产条件已经充分闭环。
+9. `GSA` 当前最强说法应收敛为 [gsa-closed-loop-smoke](../workspaces/white-box/2026-04-07-gsa-closed-loop-smoke.md) 所代表的“CPU 上端到端可执行”。raw toy 指标保留在 artifact 中，但这里不把它们当作有效攻击信号解释。
 10. 新资源对白盒的帮助已经被 [gsa-asset-intake](../workspaces/white-box/2026-04-07-gsa-asset-intake.md) 收口：`CIFAR-10` 归档能补数据侧，但 `ckpt_cifar10.pt` / `ckpt_tini.pt` 不是 `GSA` 直接可吃的 accelerate checkpoint 目录，`gradtts/*.pt` 也不属于当前图像白盒主线。
-11. 白盒相关论文仍在统一规划里，当前状态是“研究问题与资产条件已整理，且 `GSA` 已经从 `gradient-smoke` 推进到 `closed-loop-smoke`”；在 paper-aligned checkpoints 和划分资产未满足前，不应写成即将复现成功。
+11. 白盒相关论文仍在统一规划里，当前状态是“研究问题与资产条件已整理，且 `GSA` 已经从 `gradient-smoke` 推进到端到端可执行”；在 paper-aligned checkpoints 和划分资产未满足前，不应写成即将复现成功。
 
 ## 下一步
 
 1. 固化 `recon` 公开资产映射与 `public-100 step10` / `step30` 的解释口径，确保 [README.md](../README.md)、[ROADMAP.md](../ROADMAP.md)、[workspaces/black-box/plan.md](../workspaces/black-box/plan.md) 和 [experiments/blackbox-status/summary.json](../experiments/blackbox-status/summary.json) 一致。
 2. 把 `target/shadow/member/non-member` 的当前最可辩护语义继续收口到 [recon-public-asset-mapping.md](recon-public-asset-mapping.md)，在拿到更强证据前不要越权声称论文语义已核准。
 3. 继续暂停 `Kandinsky 10/10`，直到先拿到能定位首个阶段耗时的有效日志；如果只能做一件事，优先做文档固化而不是新 GPU 任务。
-4. `PIA` 已完成真实资产的 `probe-pia-assets -> runtime-probe-pia --device cpu -> runtime-preview-pia --device cpu`。下一步要么补一个 Project 侧真实 runtime runner，要么先核准这批 DDPM checkpoint 的来源与口径，在这之前不要误写成 benchmark-ready。
-5. `GSA` 保持在 `closed-loop-smoke` 阶段，下一步只把 `CIFAR-10` 归档转成更真实的 `imagefolder` 数据桶；`ckpt_cifar10.pt` / `ckpt_tini.pt` 不应直接当作白盒 checkpoint 投喂给 upstream `GSA`。
+4. `PIA` 的单机真实资产已经完成 `probe-pia-assets -> runtime-probe-pia --device cpu -> runtime-preview-pia --device cpu`。下一步要么补一个 Project 侧真实 runtime runner，要么先核准这批 DDPM checkpoint 的来源与口径，在这之前不要误写成 benchmark-ready。
+5. `GSA` 保持在“端到端可执行”阶段，下一步只把 `CIFAR-10` 归档转成更真实的 `imagefolder` 数据桶；`ckpt_cifar10.pt` / `ckpt_tini.pt` 不应直接当作白盒 checkpoint 投喂给 upstream `GSA`。
 
-更新时间：`2026-04-07 17:55:00 +08:00`
+更新时间：`2026-04-07 19:05:00 +08:00`
