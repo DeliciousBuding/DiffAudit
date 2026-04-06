@@ -1,141 +1,116 @@
-# Noise as a Probe: Membership Inference Attacks on Diffusion Models Leveraging Initial Noise
+# 初始噪声作为探针：利用起始噪声对扩散模型做成员推断
+Noise as a Probe: Membership Inference Attacks on Diffusion Models Leveraging Initial Noise
 
-- Title: Noise as a Probe: Membership Inference Attacks on Diffusion Models Leveraging Initial Noise
-- Material Path: `D:/Code/DiffAudit/Project/references/materials/gray-box/2026-arxiv-noise-as-a-probe-membership-inference-diffusion-models.pdf`
-- Primary Track: `gray-box`
-- Venue / Year: `arXiv / 2026`
-- Threat Model Category: `gray-box membership inference with end-to-end generation access, controllable initial noise, and access to the pre-trained base model`
-- Core Task: `利用语义化初始噪声对微调扩散模型执行成员推断`
-- Open-Source Implementation: `未在 PDF 中给出仓库链接；仓库侧索引当前记为“暂未找到”`
-- Report Status: `complete`
+- 英文标题：Noise as a Probe: Membership Inference Attacks on Diffusion Models Leveraging Initial Noise
+- 中文标题：初始噪声作为探针：利用起始噪声对扩散模型做成员推断
+- 作者：Puwei Lian，Yujun Cai，Songze Li，Bingkun Bao
+- 发表 venue / year / version：arXiv 预印本，2026，`arXiv:2601.21628v1`
+- 论文主问题：当攻击者只能控制初始噪声和 prompt、只能观察最终生成图像时，能否仍对微调扩散模型执行有效成员推断
+- 威胁模型类别：gray-box，text-to-image diffusion membership inference with controllable initial noise
+- 本地 PDF 路径：`D:\Code\DiffAudit\Project\references\materials\gray-box\2026-arxiv-noise-as-a-probe-membership-inference-diffusion-models.pdf`
+- GitHub PDF 链接：[2026-arxiv-noise-as-a-probe-membership-inference-diffusion-models.pdf](https://github.com/DeliciousBuding/DiffAudit/blob/main/references/materials/gray-box/2026-arxiv-noise-as-a-probe-membership-inference-diffusion-models.pdf)
+- OCR / born-digital 精修版链接：[OCR精修版：Noise as a Probe: Membership Inference Attacks on Diffusion Models Leveraging Initial Noise](https://www.feishu.cn/docx/PiYudfHppo0h5wxigvncTsK3ncf)
+- 飞书原生 PDF：[2026-arxiv-noise-as-a-probe-membership-inference-diffusion-models.pdf](https://ncn24qi9j5mt.feishu.cn/file/KxRYbKM5rooeg0xU43VcLCZEnBe)
+- 开源实现：论文正文表示将公开实现，但 PDF 未给出仓库链接，当前记为暂未找到
+- 报告状态：已完成
 
-## Executive Summary
+## 1. 论文定位
 
-这篇论文研究的是一个比传统灰盒更贴近部署接口、但仍明显强于纯黑盒的成员推断设定：攻击者不能读取去噪网络的中间输出，也不训练 shadow model，而是只能控制初始噪声、输入文本提示词，并观察最终生成图像。作者的核心问题是，扩散模型在最大噪声步是否真的完全丢失了原图语义；如果没有，残留语义能否被转化为可操作的成员推断信号。
+这篇论文属于 gray-box 路线上的攻击论文，研究对象是微调后的文生图扩散模型。它与 `SecMI`、`PIA` 这类典型灰盒工作的分界点很明确：作者不再要求读取中间去噪结果，也不训练 shadow model，而是把攻击入口前移到采样起点，只利用“可控初始噪声 + 最终生成图像”来恢复成员信号。
 
-论文的关键洞见有三层。第一，常用噪声日程在最终步的信噪比并不为零，因此“初始噪声”并非严格纯高斯噪声。第二，微调后的扩散模型会学习利用这些残留语义，使得含有成员语义的初始噪声更容易重建出接近原图的结果。第三，尽管攻击者无法访问目标模型参数做 self-inversion，但预训练底座与微调模型之间保留了足够相近的语义空间，因此可以先用公开的预训练模型做 DDIM inversion，再把得到的语义噪声送入目标模型。
+从 DiffAudit 的路线划分看，它不是纯黑盒论文，因为攻击者仍需知道对应的预训练底座，并且接口必须允许直接传入初始噪声；但它也明显弱于传统可读中间轨迹的灰盒设定。因此，这篇工作最适合被视为 gray-box 向更受限部署接口过渡时的桥接主论文。
 
-实验上，作者在 Pokemon、T-to-I、MS-COCO、Flickr 四个数据集上评估该方法。其平均 AUC 为 84.59，平均 T@F=1% 为 18.35；在 MS-COCO 上达到 90.46/21.80。更重要的是，这个结果是在“不访问中间去噪结果、不训练 shadow model 或分类器”的条件下获得的，因此论文证明了一条不同于 SecMI/PIA 的信号路径：泄露不一定必须从轨迹或分数空间读取，初始噪声接口本身也可能是审计入口。
+## 2. 核心问题
 
-## Bibliographic Record
+论文要回答两个连在一起的问题。第一，扩散模型在最大噪声步是否真的把图像语义完全擦除；如果没有，残留语义是否会在微调后被模型继续利用。第二，如果攻击者不能访问中间去噪网络，只能控制 prompt 和初始噪声，能否把这种残留语义转换成稳定的成员推断信号。
 
-- Title: Noise as a Probe: Membership Inference Attacks on Diffusion Models Leveraging Initial Noise
-- Authors: Puwei Lian, Yujun Cai, Songze Li, Bingkun Bao
-- Venue / year / version: arXiv preprint, January 30, 2026, `arXiv:2601.21628v1`
-- Local PDF path: `D:/Code/DiffAudit/Project/references/materials/gray-box/2026-arxiv-noise-as-a-probe-membership-inference-diffusion-models.pdf`
-- Source URL: `https://arxiv.org/abs/2601.21628`
+作者的答案是肯定的。论文认为“初始噪声”在常见日程下并不是严格纯高斯，而是仍带有与原图相关的微弱语义；一旦模型在微调集中见过相同样本，这些语义更容易被重新放大到最终生成结果中。
 
-## Research Question
+## 3. 威胁模型与前提
 
-论文试图回答两个紧密关联的问题。其一，在文本到图像扩散模型的微调场景中，最大噪声步是否仍保留足以区分成员与非成员的残留语义。其二，在攻击者只能进行端到端生成、但可控制初始噪声和提示词、且知道对应预训练底座的前提下，是否能够仅通过最终生成结果构造有效的成员推断攻击。
+攻击者持有候选图像与对应 caption，能调用目标微调模型的端到端生成接口，并显式设定初始噪声。攻击者看不到目标模型参数，也不能读取任何中间去噪步的输入输出。论文进一步假设攻击者知道目标模型是从哪个预训练模型微调而来，或者至少能找到足够接近的预训练底座，用它来做 DDIM inversion。
 
-其 threat model 不是经典黑盒。攻击者拥有候选数据集及其提示词，能够调用目标微调模型的生成接口并直接设定初始噪声，同时还拥有目标模型对应的预训练版本用于 inversion。论文因此更适合归入 DiffAudit 的 `gray-box` 轨道，而不是无辅助信息的纯黑盒路线。
+这个前提集合决定了论文结论的边界。只要系统不暴露自定义初始噪声接口，或者攻击者无法获得可用的预训练底座，方法就很难按论文原样落地。相反，在本地 diffusers 管线、图像编辑接口、latent/noise engineering 场景中，这个威胁模型就具有现实性。
 
-## Problem Setting and Assumptions
+## 4. 方法总览
 
-- Access model: 只能做端到端生成，不能访问目标模型参数，不能读取中间去噪网络输入输出。
-- Available inputs: 候选图像 `x_0`、对应 caption `c`、可注入的初始噪声、预训练底座模型。
-- Available outputs: 目标模型最终生成图像 `\tilde{x}_0`。
-- Required priors or side information: 知道目标模型由哪个预训练模型微调而来；拥有一批非成员样本用于设阈值；默认能获得真实 caption，附录才讨论 caption 缺失情形。
-- Scope limits: 论文聚焦微调后的 Stable Diffusion v1-4 体系；主要评估“成员与非成员来自同分布”的严格设定；攻击依赖接口允许显式控制初始噪声，这并非所有线上服务都会暴露。
+方法分成两步。第一步，作者不直接反演目标微调模型，而是先用公开预训练模型对候选样本做 DDIM inversion，得到带有样本语义的“语义化初始噪声”。第二步，把同一 prompt 和该噪声一并送入目标微调模型，观察生成图像与原图的距离。如果样本是成员，模型更可能沿着噪声中的残留语义重建出接近原图的结果；若样本不是成员，生成结果通常偏离更大。
 
-## Method Overview
+与已有方法相比，这篇论文真正换掉的是信号位置。它不再从中间分数、轨迹误差或去噪网络输出中读泄露，而是把“模型是否会响应带成员语义的起始噪声”当成隐式成员证据。
 
-方法由两步组成。第一步不是直接攻击目标模型，而是利用其公开预训练底座对目标样本执行 DDIM inversion，得到带有原图语义的“语义化初始噪声”。作者认为这是可行的，因为微调不会完全破坏预训练模型的语义空间，预训练 inversion 得到的噪声仍能被目标微调模型识别。
+## 5. 方法概览 / 流程
 
-第二步将该语义噪声和同一提示词送入目标模型进行生成。如果目标样本属于训练成员，目标模型更可能利用噪声中残留的语义结构，生成与原图更接近的结果；若样本是非成员，则生成结果偏离更大。攻击者再用距离度量比较原图与生成图，基于阈值输出成员或非成员判断。
+这条攻击链路可以概括为：候选图像 \(x_0\) 与文本条件 \(c\) 先进入预训练模型的 inversion 过程，得到语义噪声 \(\tilde{x}_t\)；随后目标模型从 \(\tilde{x}_t\) 出发完成生成，输出 \(\tilde{x}_0\)；最后攻击者计算 \(D(x_0,\tilde{x}_0)\) 并与阈值比较，给出成员判定。这里最关键的不是 inversion 本身，而是作者证明了“预训练 inversion 得到的语义噪声仍能被微调模型识别”，这使攻击者无需访问目标模型的中间结构。
 
-该方法利用的不是显式置信度、分数函数或中间轨迹，而是“模型是否会响应被注入到初始噪声中的样本语义”这一隐式行为差异。论文因此把初始噪声从采样随机源重新解释为可审计探针。
+## 6. 关键技术细节
 
-## Method Flow
-
-```mermaid
-flowchart TD
-    A["候选样本 x0 与提示词 c"] --> B["公开预训练模型执行 DDIM inversion"]
-    B --> C["得到语义化初始噪声 x~t"]
-    C --> D["将 x~t 与 c 输入目标微调模型"]
-    D --> E["生成候选结果 x~0"]
-    E --> F["计算 D(x0, x~0)"]
-    F --> G["与阈值 tau 比较"]
-    G --> H["输出 member / non-member"]
-```
-
-## Key Technical Details
-
-论文首先沿用标准成员推断形式化，将攻击目标写为：
+论文先回到前向扩散过程：
 
 $$
-A(x_i, \theta)=\mathbf{1}\!\left[P(m_i=1 \mid \theta, x_i)\ge \tau\right].
+x_t=\sqrt{\bar{\alpha}_t}x_0+\sqrt{1-\bar{\alpha}_t}\,\epsilon.
 $$
 
-作者随后强调，噪声日程在最终步的残留信号可由信噪比描述：
+如果最终时间步真的完全无语义，那么 \(\bar{\alpha}_T\) 应非常接近零。作者改用信噪比
 
 $$
-\mathrm{SNR}(t):=\frac{\bar{\alpha}_t}{1-\bar{\alpha}_t}.
+\mathrm{SNR}(t)=\frac{\bar{\alpha}_t}{1-\bar{\alpha}_t}
 $$
 
-真正的攻击定义则是把预训练模型 inversion 与目标模型生成串起来：
+来刻画这个问题，并指出常见噪声日程在 \(T\) 处的 \(\mathrm{SNR}(T)\) 并不为零，尤其 Stable Diffusion 日程残留更明显，因此最大噪声步仍保留了原图信号的痕迹。
+
+在攻击构造上，作者把 inversion 与生成串成两段：
 
 $$
-\tilde{x}_t=\mathrm{Inv}_{\theta_{\mathrm{pre}}}^{t}(x_0 \mid c,\gamma_2), \qquad
-A(x_i,\theta)=\mathbf{1}\!\left[D\!\left(x_0, G_\theta(\tilde{x}_t \mid c,\gamma_1)\right)\le \tau\right].
+\tilde{x}_t=Inv_{\theta_{\mathrm{pre}}}^{t}(x_0 \mid c,\gamma_2), \qquad
+\mathcal{A}(x_i,\theta)=\mathbf{1}\!\left[D\!\left(x_0,G_\theta(\tilde{x}_t \mid c,\gamma_1)\right)\le \tau\right].
 $$
 
-从实现上看，论文默认使用 `\ell_2` 距离作为成员分数，`γ_2=1.0`、inversion 步数 `100`，生成阶段 `γ_1=3.5`、采样步数 `50`。值得注意的是，正文公式 (8) 与文字描述都表明“距离越小越像成员”，但附录 Algorithm 1 第 6 至 9 行却写成 `Score > τ` 时判为成员，这里存在符号方向不一致，复现时必须自行核对。
+其中 \(\gamma_2\) 是 inversion guidance scale，\(\gamma_1\) 是生成 guidance scale，默认距离 \(D\) 取 \(\ell_2\)。这组公式的含义很直接：成员样本在语义噪声驱动下会生成更接近原图的结果，所以距离越小越像成员。
 
-## Experimental Setup
+实现层面有一个必须记录的歧义。正文公式和方法描述都说明“距离小于阈值时判成员”，但附录 Algorithm 1 却把 `Score > τ` 写成成员，这与主文符号方向相反。后续若进入复现，实现时必须优先核对作者代码或自行验证阈值方向。
 
-作者在四个数据集上评估方法：Pokemon 使用 `416/417` 个 member/non-member，T-to-I 使用 `500/500`，MS-COCO 使用 `2500/2500`，Flickr 使用 `1000/1000`。模型为 `Stable Diffusion v1-4`，使用 Hugging Face Diffusers 官方 fine-tuning 脚本训练。所有图像分辨率为 `512`。
+## 7. 实验设置
 
-对比基线包括灰盒 intermediate-result 攻击 `SecMI`、`PIA`，以及端到端攻击 `NA-P`、`GD`、`Feature-T`、`Feature-C`、`Feature-D`。评估指标为 `AUC` 与 `TPR@1%FPR`。硬件条件为单张 `RTX 4090 24GB`。论文还进一步分析了超参数、不同 scheduler、未知架构版本、caption 缺失和防御条件下的效果。
+论文在 Pokemon、T-to-I、MS-COCO、Flickr 四个数据集上评估方法，均使用 `Stable Diffusion v1-4` 微调模型，图像分辨率统一为 `512`。数据规模分别约为 `416/417`、`500/500`、`2500/2500` 和 `1000/1000` 的 member / non-member 划分。基线覆盖两类：一类是 `SecMI`、`PIA` 等可读中间结果的灰盒攻击，另一类是 `NA-P`、`GD`、`Feature-T/C/D` 等只看端到端输出的方法。
 
-## Main Results
+默认超参数为 inversion 步数 `100`、\(\gamma_2=1.0\)，生成步数 `50`、\(\gamma_1=3.5\)，硬件为单张 `RTX 4090 24GB`。阈值部分不训练 shadow model，而是用一批先验非成员样本做分位数校准，附录给出的默认设置是取非成员分数的第 `15` 百分位。
 
-主结果见 Table 5。论文报告该方法在四个数据集上的平均 `AUC=84.59`、平均 `T@F=1%=18.35`，在所有端到端方法中最佳；其中 `MS-COCO` 上达到 `90.46/21.80`，不仅显著优于 `Feature-C` 等端到端基线，也接近甚至超过部分 intermediate-result 方法。这个结果支撑了论文最重要的论断：只要初始噪声可控，最终生成结果本身就足以承载成员信号。
+## 8. 主要结果
 
-附加实验进一步强化了这一结论。表 7 表明，相比直接从随机噪声生成图像的 naive 方案，语义噪声注入使四个数据集的 AUC 平均提升 `21.57%`。表 6 说明方法对 inversion 步数和 guidance scale 并不敏感。表 8 和表 9 则显示，即便存在 SSei 防御、数据增强，或预训练架构版本未知，攻击仍保持明显有效。
+主表结论很清楚：该方法在四个数据集上的平均 `AUC=84.59`、平均 `TPR@1%FPR=18.35`，在所有端到端方法中最好；其中 `MS-COCO` 上达到 `90.46 / 21.80`，不仅明显优于 `Feature-C` 等端到端基线，也在部分场景接近甚至超过 `SecMI`、`PIA` 这类中间结果攻击。论文因此证明，仅靠最终生成结果也能承载很强的成员性信号，前提是初始噪声里注入了正确语义。
 
-但这些结果也依赖较强前提。论文一直采用成员与非成员同分布的严格划分，并默认接口允许直接传入初始噪声；因此实验结论更适用于“能力受限但仍掌握较多先验”的审计者，而不能直接外推到一般公开 API。
+![主结果表](../assets/gray-box/2026-arxiv-noise-as-a-probe-membership-inference-diffusion-models-key-figure-p6.png)
 
-## Strengths
+这张结果表最值得保留，因为它把论文的核心主张压缩得最完整：方法不需要 shadow model，不需要中间去噪访问，但在 end-to-end 组内稳定最优。附加实验也支持主结论。与 naive 随机噪声方案相比，语义化初始噪声让平均 AUC 再提高 `21.57%`；即使在未知架构、缺少原始 caption、存在 `SSei` 与数据增强防御时，攻击性能仍然没有塌到接近随机。
 
-- 明确提出了区别于轨迹误差和分数空间的新信号来源，即初始噪声中的残留语义。
-- 在不访问中间去噪结果、也不训练 shadow model 的条件下取得了很强的端到端攻击性能。
-- 通过 SNR、重建距离、cross-attention 热图和防御实验构成了较完整的论证链，而非只给最终 AUC。
-- 讨论了未知架构、caption 缺失、不同 scheduler 与 defense，实验覆盖面比只报主表更扎实。
+## 9. 优点
 
-## Limitations and Validity Threats
+这篇工作的优点主要在方法视角与论证结构。它没有沿着既有灰盒论文继续追求“如何更好利用中间轨迹”，而是重新定位了一个此前被忽略的泄露面，即初始噪声接口本身。其次，作者把这一点串成了相对完整的证据链：先用 \(\mathrm{SNR}(T)\) 解释噪声不纯，再用 inversion 重建和 cross-attention 相似性说明微调模型确实会利用这些残留语义，最后才落到主表结果。实验覆盖也比较完整，除了主表还有超参数、未知架构、防御和 caption 缺失分析。
 
-- 攻击前提并不弱：需要候选数据、caption、预训练底座，以及“可直接控制初始噪声”的接口，这使其与普通黑盒服务存在明显距离。
-- 论文没有在 PDF 中提供开源仓库链接，关键工程细节如 cross-attention 抽取位置、阈值实现流程主要散落在附录，复现成本仍不低。
-- Algorithm 1 与公式 (8) 的阈值不等号方向矛盾，这是一个需要人工判定的实现歧义。
-- 主实验集中在 SD-v1-4 微调场景，尚不足以证明该结论能稳定泛化到更封闭的商业模型或完全不同的扩散体系。
+## 10. 局限与有效性威胁
 
-## Reproducibility Assessment
+局限同样明显。第一，接口假设并不弱，论文依赖“攻击者可直接设定初始噪声”，这在很多商用 API 上并不成立。第二，方法默认拥有候选样本 caption，并且知道或能近似猜到对应预训练底座。第三，正文未给出公开仓库，很多工程细节只能靠论文文字和附录拼接。第四，主实验集中在 `SD-v1-4` 微调场景，尚不足以说明它对更封闭的商业系统或完全不同的扩散架构是否仍然稳定成立。
 
-忠实复现至少需要以下资产：可微调或已微调的 `SD-v1-4` 模型、对应预训练底座、四个带 caption 的数据集划分、支持自定义初始噪声的生成接口、DDIM inversion 实现，以及一批非成员样本用于阈值选择。若要复现论文中的解释性证据，还需要能抓取 cross-attention heatmap 的实现。
+## 11. 对 DiffAudit 的价值
 
-就公开材料而言，PDF 已给出充足的实验超参数、数据规模和主要公式，但尚未给出代码仓库链接。当前 DiffAudit 仓库已经把该论文登记到 `manifest.csv`、`paper-index.md` 和报告 `manifest.csv` 中，同时灰盒路线也已有 `SecMI`、`PIA` 等相邻论文作为参照；但尚未看到这篇论文的专门实现或实验记录，因此今天仍然存在工程落地空缺。
+对 DiffAudit 来说，这篇论文最直接的价值是把 gray-box 路线的观测点从“中间去噪结果”扩展到了“采样起点是否可控”。它不必替代 `SecMI`、`PIA`，但非常适合作为同一条路线里的并行主论文：前者代表轨迹访问型灰盒，后者代表起始噪声访问型灰盒。这样在后续产品叙事里，DiffAudit 可以更明确地区分不同泄露接口，而不是把所有非白盒攻击都混成一类。
 
-## Relevance to DiffAudit
+从工程角度，这篇论文也给出了一条很具体的实现启发：只要系统允许用户控制 latent、seed 或更底层的噪声张量，审计逻辑就不必绑定中间层输出，而可以退化为“预训练 inversion + 最终图像距离”的两阶段流程。这对受限部署环境尤其重要。
 
-这篇论文对 DiffAudit 的价值不在于提供一个可以直接替代 `SecMI` 或 `PIA` 的实现，而在于明确提出另一类审计接口：当系统不暴露中间去噪轨迹时，攻击者仍可能通过“可控初始噪声 + 最终生成图像”构造成员信号。它因此是灰盒路线向受限黑盒路线延伸时的重要桥接材料。
+## 12. 关键图使用方式
 
-与现有路线相比，`Noise as a Probe` 把审计关注点前移到了采样入口。对 DiffAudit 而言，这意味着后续实验设计不能只关注 loss、score、posterior 或中间层误差，也要关注部署接口是否允许用户通过 seed、latent 或 noise engineering 形式操控采样起点。若允许，这种接口本身就可能成为隐私风险面。
+本稿当前只保留 1 张主结果表，放在“主要结果”之后，不额外插入第二张方法图。这样做的目的很直接：先让展示稿把核心贡献和结果站稳，再在后续细修时决定是否补进 Figure 3 作为流程图。现阶段这张表已经足够支撑“它在 end-to-end 组内最强、且接近灰盒基线”的结论。
 
-## Recommended Figure
+## 13. 复现评估
 
-- Figure page: `6`
-- Crop box or note: `40 40 570 272` in PDF points, cropped to isolate `Table 5`
-- Why this figure matters: 这张表最集中地展示了论文的中心结论，即该方法在无需中间结果访问、无需 shadow model 的前提下，仍能在四个数据集上取得所有端到端方法中的最佳结果，并在部分场景接近甚至超过经典灰盒基线。
-- Local asset path: `../assets/gray-box/2026-arxiv-noise-as-a-probe-membership-inference-diffusion-models-key-figure-p6.png`
+要忠实复现这篇论文，至少需要四类资产：可微调或已微调的 `SD-v1-4` 模型、对应预训练底座、带 caption 的 member / non-member 划分，以及支持自定义初始噪声的生成接口。若要完整复现附录分析，还需要 cross-attention 可视化、架构替换实验和防御训练版本。仓库当前最缺的不是阅读材料，而是把 DDIM inversion、噪声注入生成、阈值标定和距离评估串成统一流水线的实现骨架。
 
-![Key Figure](../assets/gray-box/2026-arxiv-noise-as-a-probe-membership-inference-diffusion-models-key-figure-p6.png)
+结构性阻塞主要有两个。其一，很多真实目标系统不会暴露初始噪声接口，因此论文方法未必能迁移到线上闭源服务。其二，阈值方向在主文与附录间存在冲突，若后续没有作者代码或额外验证，复现实现需要先做一次最小正确性校准。
 
-## Extracted Summary for `paper-index.md`
+## 14. 写回总索引用摘要
 
-这篇论文研究微调扩散模型中的成员推断问题，关注点不是中间去噪轨迹，而是初始噪声本身是否残留了足够的语义信息。作者指出，常见噪声日程在最大噪声步仍保留非零信号，因此“初始噪声”并非完全无语义，这为成员推断提供了新的攻击入口。
+这篇论文研究的是微调扩散模型中的成员推断问题，但它不再依赖中间去噪结果，而是把攻击入口转移到初始噪声。作者指出，常见噪声日程在最大噪声步仍保留非零语义信号，因此“初始噪声”本身可以成为成员推断探针。
 
-论文提出的核心方法是先用公开预训练底座对目标样本执行 DDIM inversion，得到带有样本语义的初始噪声，再将该噪声送入目标微调模型并比较生成结果与原图的距离。实验结果表明，这种语义化初始噪声能够明显放大成员与非成员之间的差异，使方法在多个数据集上取得优于既有端到端攻击的 AUC 和低 FPR 指标。
+论文提出的核心方法是：先用公开预训练模型对候选样本做 DDIM inversion，得到带有样本语义的初始噪声，再把该噪声送入目标微调模型，比较生成结果与原图的距离。实验表明，这一做法在多个数据集上都显著优于既有端到端攻击，并在部分场景接近或超过传统灰盒基线。
 
-对 DiffAudit 来说，这篇论文的重要性在于它把“可控初始噪声”明确识别为一种可审计接口，说明即便系统不暴露中间结果，仍可能从采样入口和最终生成图像中提取成员信号。它因此是灰盒路线向受限黑盒路线延伸时的关键桥接材料，也提醒后续评估必须关注 seed、latent 或 noise engineering 接口的隐私风险。
+对 DiffAudit 而言，这篇工作的重要性在于明确提出了另一类 gray-box 接口，即“可控起始噪声”。它既是现有轨迹访问型灰盒工作的补充，也为后续面向受限部署环境的审计实现提供了更短路径的攻击框架。

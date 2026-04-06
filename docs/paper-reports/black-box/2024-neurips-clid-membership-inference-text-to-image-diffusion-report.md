@@ -1,173 +1,148 @@
-# Membership Inference on Text-to-image Diffusion Models via Conditional Likelihood Discrepancy
+# 基于条件似然差异的文生图扩散模型成员推断
+Membership Inference on Text-to-image Diffusion Models via Conditional Likelihood Discrepancy
 
-- Title: Membership Inference on Text-to-image Diffusion Models via Conditional Likelihood Discrepancy
-- Material Path: `D:/Code/DiffAudit/Project/references/materials/black-box/2024-neurips-clid-membership-inference-text-to-image-diffusion.pdf`
-- Primary Track: `black-box`
-- Venue / Year: NeurIPS 2024
-- Threat Model Category: 灰盒查询式成员推断；与黑盒数据使用审计路线相邻，但不是严格 API-only 黑盒
-- Core Task: 利用图文条件信息对文本到图像扩散模型执行成员推断，以支持未授权训练数据使用审计
-- Open-Source Implementation: 论文正文未给出作者实现链接；实验依赖公开的 Stable Diffusion 与公开基线实现
-- Report Status: complete
+## 文献信息
 
-## Executive Summary
+- 英文标题：Membership Inference on Text-to-image Diffusion Models via Conditional Likelihood Discrepancy
+- 中文标题：基于条件似然差异的文生图扩散模型成员推断
+- 作者：Shengfang Zhai，Huanran Chen，Yinpeng Dong，Jiajun Li，Qingni Shen，Yansong Gao，Hang Su，Yang Liu
+- 发表信息：NeurIPS 2024，arXiv:2405.14800v3
+- 论文主问题：在文本到图像扩散模型中，如何利用图文条件关系而非单纯图像误差，稳定判断一条图文样本是否属于训练集
+- 威胁模型类别：灰盒查询式成员推断，与黑盒数据使用审计路线相邻，但不是严格的 output-only 黑盒
+- 本地 PDF 路径：`D:\Code\DiffAudit\Project\references\materials\black-box\2024-neurips-clid-membership-inference-text-to-image-diffusion.pdf`
+- GitHub PDF：[2024-neurips-clid-membership-inference-text-to-image-diffusion.pdf](https://github.com/DeliciousBuding/DiffAudit/blob/main/references/materials/black-box/2024-neurips-clid-membership-inference-text-to-image-diffusion.pdf)
+- OCR/Markdown 精修版链接：[OCR精修版：Membership Inference on Text-to-image Diffusion Models via Conditional Likelihood Discrepancy](https://www.feishu.cn/docx/TEmRdXDD2oYJ5Cxn1uFcznIxnZc)
+- 飞书原生 PDF：[2024-neurips-clid-membership-inference-text-to-image-diffusion.pdf](https://ncn24qi9j5mt.feishu.cn/file/Df7bbbOCZo3fflxq9PNcI0Fsn3b)
+- 开源实现链接：[zhaisf/CLiD](https://github.com/zhaisf/CLiD)
+- 报告状态：本地重写稿
 
-这篇论文研究文本到图像扩散模型中的成员推断问题，目标是判断一条图文样本 `(x, c)` 是否出现在目标模型的训练集中。作者指出，现有扩散模型成员推断方法要么依赖代价高昂的 shadow models，要么只利用图像侧的过拟合信号，因此在文本到图像模型上会被更强的泛化能力和扩散训练损失的随机性削弱。
+## 1. 论文定位
 
-论文的核心观察是“条件过拟合”现象：文本到图像扩散模型对条件分布 `p(x|c)` 的过拟合，比对图像边缘分布 `p(x)` 的过拟合更明显。作者据此提出 Conditional Likelihood Discrepancy, CLiD，将同一样本在完整文本条件与削弱文本条件下的似然差异作为成员性信号，并给出阈值版 `CLiDth` 与特征向量版 `CLiDvec` 两种攻击实现。
+这篇论文研究的是文生图扩散模型的成员推断问题，目标不是恢复训练样本，而是为数据版权所有者提供“某条图文样本是否被用于训练”的审计证据。就 DiffAudit 的文献分层而言，它属于黑盒路线的近邻论文：攻击者不读取模型参数，但需要访问扩散过程中的中间噪声预测，并能对同一图像在不同文本条件下重复查询，因此更准确地说是灰盒查询式攻击。
 
-实验覆盖 Pokemon、MS-COCO、Flickr 的微调场景，以及基于处理后 LAION 子集的预训练场景。论文报告，在更接近真实训练步数且包含默认数据增强的设定下，基线方法的 AUC 大多接近随机，而 CLiDth/CLiDvec 仍能在 MS-COCO 与 Flickr 上达到约 `0.95` 左右的 AUC。对 DiffAudit 而言，这篇论文的重要性不在于它已经解决严格黑盒问题，而在于它清晰证明了图文条件本身就是比纯图像误差更强的审计信号。
+论文的贡献点不在接口设定本身，而在信号设计。作者指出，对文本到图像模型来说，单看图像侧的误差或似然很难稳定暴露成员性，真正更强的泄露信号来自图文条件关系是否被模型过度记忆。这一点直接把问题从“图像是否被记住”改写为“文本条件是否为该图像提供了异常强的解释力”。
 
-## Bibliographic Record
+## 2. 核心问题
 
-- Title: Membership Inference on Text-to-image Diffusion Models via Conditional Likelihood Discrepancy
-- Authors: Shengfang Zhai, Huanran Chen, Yinpeng Dong, Jiajun Li, Qingni Shen, Yansong Gao, Hang Su, Yang Liu
-- Venue / year / version: NeurIPS 2024, arXiv:2405.14800v3
-- Local PDF path: `D:/Code/DiffAudit/Project/references/materials/black-box/2024-neurips-clid-membership-inference-text-to-image-diffusion.pdf`
-- Source URL: `https://arxiv.org/abs/2405.14800`
+论文试图回答两个相互关联的技术问题。第一，为什么已有扩散模型成员推断方法迁移到文生图模型后会明显失效，尤其是在较真实的训练步数和默认图像增强下，基线方法常常只能得到接近随机的区分能力。第二，如果文本条件本身携带更强的成员信号，能否在不依赖大量 shadow models 的前提下，把这种信号转化为低查询成本、可校准的成员指标。
 
-## Research Question
+作者的回答是肯定的。其核心判断是：文本到图像扩散模型更容易过拟合条件分布 `p(x|c)`，而不是单纯过拟合图像边缘分布 `p(x)`；因此成员推断应当比较“完整文本条件”和“削弱文本条件”之间的似然差异，而不是只比较单一条件下的误差高低。
 
-论文试图回答两个紧密相关的问题。第一，面向文本到图像扩散模型时，是否存在比“图像重构误差更低”更稳定的成员信号。第二，如果确实存在这种信号，是否可以在不训练大量 shadow models 的前提下，以可扩展的查询式方式完成成员推断，并在更接近真实训练步数和默认数据增强的条件下仍优于既有方法。
+## 3. 威胁模型与前提
 
-论文采用的部署设定并不是严格黑盒。攻击者需要访问模型在扩散过程中的中间噪声预测输出，并能以完整文本、空文本和削弱文本条件重复查询同一样本。因此它更准确地属于灰盒查询式成员推断；论文将其定位为数据集版权所有者执行未授权使用审计的技术基础。
+论文采用标准安全游戏定义成员推断。攻击者拿到待审计图文样本 `(x, c)`，并可多次查询目标模型在扩散过程中的中间输出；查询时既可以输入原始文本 `c`，也可以输入空文本 `c_null` 或若干削弱文本 `c_i^*`。攻击者不知道真实的 member/hold-out 划分，但拥有同分布辅助数据，可训练 shadow model 来校准阈值、融合权重和 `CLiDvec` 的分类器。
 
-## Problem Setting and Assumptions
+这一设定的边界也很明确。论文并不适用于只暴露最终生成图像的纯 API 黑盒接口，因为核心指标依赖噪声预测误差。文中还给出一个更弱设定：若拿不到原始文本，可先用 BLIP 生成 pseudo-text 再做推断，但此时效果会明显下降。换言之，论文结论主要适用于具备中间查询能力、且能获得图文配对样本的审计场景。
 
-攻击对象是文本到图像扩散模型，具体包括 Stable Diffusion v1-4 微调模型和 Stable Diffusion v1-5 预训练模型。输入样本是图像与对应文本条件 `(x, c)`，输出不是最终生成图像，而是扩散过程中的噪声预测误差或由其构成的 ELBO 近似量。
+## 4. 方法总览
 
-攻击者的可用输入包括目标样本、其匹配文本、同分布辅助数据集，以及对目标模型和 shadow model 的多次查询能力。论文强调，攻击者只知道整体数据分布，不知道真实的 member/hold-out 划分；因此阈值、组合权重 `α` 与 `CLiDvec` 的分类器都在辅助数据上得到，而不是直接窥视目标数据划分。
+作者从“条件过拟合”现象出发构造攻击。直觉上，如果某个图文样本参与过训练，那么正确文本条件通常会显著降低该样本在扩散过程中的噪声预测误差；一旦把文本削弱、截断或置空，这种优势会下降得更明显。相反，非成员样本对文本条件的依赖更接近模型的普通泛化行为，因此完整条件和削弱条件之间的差距不会那么大。
 
-论文还考虑两个扩展条件。其一是训练端防御，包括默认图像增强与自适应文本扰动。其二是更弱假设，即攻击者拿不到原始文本，只能先用 BLIP 为图像生成 pseudo-text 再执行推断。范围限制也很明确：正文主要验证微调场景；预训练部分只有一个处理后的 LAION 设定，证据强度弱于微调结论。
+基于这一观察，论文提出条件似然差异 `CLiD`。它不直接估计样本是否“高似然”，而是估计完整条件相对削弱条件为该样本带来的额外解释力。与已有 query-based 方法相比，`CLiD` 的实质变化是把成员信号从图像侧误差转移到图文条件带来的相对增益上，再用 ELBO 差值降低扩散训练噪声带来的随机性。
 
-## Method Overview
+## 5. 方法概览 / 流程
 
-方法从经验现象出发，而不是先给出攻击器。作者先在 MS-COCO 上比较 member 与 hold-out 样本在不同文本条件下生成图像与真实分布之间的 FID 差异，观察到当文本条件完整时，member/hold-out 的分布差距更大；当文本被截断甚至置空时，这种差距变弱。作者将其解释为模型更容易记住“文本到图像”的对应关系，而不是无条件图像分布本身。
+具体流程可以概括为四步。首先，对原始文本构造削弱条件集合 `C={c_1^*,...,c_k^*}`，其中既包含空文本，也包含若干有控制地删减语义的信息版本。其次，在若干固定扩散时间步上，对完整条件 `c` 与每个削弱条件 `c_i^*` 分别查询目标模型，估计噪声预测误差。然后，计算多个条件似然差 `D_{x,c,c_i^*}` 以及条件似然近似 `L_{x,c}`。最后，将这些量做鲁棒缩放和融合，得到阈值版攻击 `CLiDth`；或者把它们拼接为低维特征向量，再交给 `XGBoost` 得到 `CLiDvec`。
 
-基于这一点，CLiD 不直接问“样本在模型下是否高似然”，而是问“完整条件相对削弱条件，给这个样本带来了多大额外解释力”。如果一个样本来自训练集，那么正确文本通常能更明显地降低噪声预测误差；如果样本不在训练集，这个优势会更小。论文把这种条件与非条件之间的似然落差定义为成员性指标。
+实现上，作者把时间步固定在 `440、450、460`，令 `M=N=3`、`k=4`，因此单样本查询数为 `15`。这一配置的目标不是追求最小查询，而是在随机性、成本和稳定性之间取一个工程上可用的折中。
 
-在实现上，作者用 ELBO 近似对数似然，用 Monte Carlo 在若干时间步上估计差值。为了进一步降低随机性，他们不只使用空文本 `c_null`，还构造多个“削弱条件” `c_i^*`，包括简单截断、高斯噪声和基于词重要性的 clipping，最后发现 importance clipping 最稳定。最终输出既可以是均值加条件似然组合后的单一分数，也可以是由多个差值和条件似然拼接成的向量，再交给 XGBoost 判别。
+## 6. 关键技术细节
 
-## Method Flow
-
-```mermaid
-flowchart TD
-    A["输入图文样本 (x, c) 与同分布辅助数据"] --> B["构造削弱条件集 C = {c1*, ..., ck*, c_null}"]
-    B --> C["对目标模型重复查询\n估计完整条件与削弱条件下的噪声预测误差"]
-    C --> D["计算条件似然差值 D_{x,c,c_i*}\n及条件似然近似 L_{x,c}"]
-    D --> E["在 shadow model 上校准 alpha、tau\n或训练 XGBoost 分类器"]
-    E --> F["输出 CLiDth 分数或 CLiDvec 预测"]
-    F --> G["给出 member / hold-out 判定"]
-```
-
-## Key Technical Details
-
-论文首先把“条件过拟合强于边缘过拟合”写成可比较的不等式。这里 `q_mem` 与 `q_out` 分别表示 member 与 hold-out 分布，`p` 是目标模型分布，`D` 是距离度量。该式不是最终攻击器，而是后续推导的出发点：
+论文先把“条件过拟合强于边缘过拟合”写成可检验的不等式。设 `q_mem` 与 `q_out` 分别表示成员集和留出集分布，`p` 表示目标模型分布，则作者假设
 
 $$
-\mathbb{E}_c\!\left[D\!\left(q_{out}(x|c), p(x|c)\right) - D\!\left(q_{mem}(x|c), p(x|c)\right)\right]
+\mathbb{E}_{\mathbf{c}}\!\left[D\!\left(q_{out}(\mathbf{x}|\mathbf{c}),p(\mathbf{x}|\mathbf{c})\right)-D\!\left(q_{mem}(\mathbf{x}|\mathbf{c}),p(\mathbf{x}|\mathbf{c})\right)\right]
 \ge
-D\!\left(q_{out}(x), p(x)\right) - D\!\left(q_{mem}(x), p(x)\right).
+D\!\left(q_{out}(\mathbf{x}),p(\mathbf{x})\right)-D\!\left(q_{mem}(\mathbf{x}),p(\mathbf{x})\right).
 $$
 
-当距离度量取 KL 散度后，作者得到单样本指标
+这一步的作用是把经验观察固定为方法前提：成员与非成员之间更大的差异，出现在“文本是否正确匹配图像”这一层，而不是无条件图像分布这一层。论文用 MS-COCO 上的 FID 结果验证了这一点，并显示一旦逐步截断文本，member 与 hold-out 之间的差距会明显缩小。
+
+![条件过拟合关键图](../assets/black-box/2024-neurips-clid-membership-inference-text-to-image-diffusion-key-figure-1-p4.jpeg)
+
+上图对应论文的经验起点。左侧显示在完整文本条件下，member 样本的 FID 明显优于 hold-out；随着文本被截断到 `2/3`、`1/3` 乃至空文本，这种优势持续减弱。右侧进一步显示，member 的 `ΔFID` 下降幅度始终更大，说明模型更依赖它记住的图文绑定关系，而不是只记住图像本身。
+
+在把距离度量取为 KL 散度后，作者得到单样本指标
 
 $$
-I(x, c) = \log p(x|c) - \log p(x),
+\mathbb{I}(\mathbf{x},\mathbf{c})=\log p(\mathbf{x}|\mathbf{c})-\log p(\mathbf{x}),
 $$
 
-并用扩散模型 ELBO 的 Monte Carlo 近似将其实现为
+并用条件 ELBO 与空文本 ELBO 的差值来近似它：
 
 $$
-I(x, c)
-=
-\mathbb{E}_{t,\epsilon}
-\left[
-\|\epsilon_\theta(x_t, t, c_{null}) - \epsilon\|_2^2
+\mathbb{I}(\mathbf{x},\mathbf{c})
+\approx
+\mathbb{E}_{t,\epsilon}\!\left[
+\left\|\epsilon_{\theta}(\mathbf{x}_t,t,\mathbf{c}_{null})-\epsilon\right\|_2^2
 -
-\|\epsilon_\theta(x_t, t, c) - \epsilon\|_2^2
+\left\|\epsilon_{\theta}(\mathbf{x}_t,t,\mathbf{c})-\epsilon\right\|_2^2
 \right].
 $$
 
-这一定义很关键，因为它把两次独立似然估计改写为一次“误差差值”估计，直接降低了查询成本。进一步地，阈值版攻击将多个削弱条件下的差值均值与条件似然 `L_{x,c}` 融合：
+这里的关键不是“完整条件误差小”这一件事，而是“完整条件相对削弱条件的误差差值”本身。这样做有两个直接收益：一是把扩散训练本来就很随机的单次 loss 估计改写成相对差值，随机性更低；二是避免分别独立估计两次似然，从而减少查询开销。
+
+在最终攻击器上，`CLiDth` 将多个削弱条件下的差值均值与条件似然 `L_{x,c}` 做鲁棒缩放后融合：
 
 $$
-M_{CLiDth}(x,c)
+\mathcal{M}_{\text{CLiD}_{th}}(\mathbf{x},\mathbf{c})
 =
-\mathbf{1}
-\left[
-\alpha \cdot S\!\left(\frac{1}{k}\sum_{i=1}^{k} D_{x,c,c_i^*}\right)
+\mathbf{1}\!\left[
+\alpha \cdot \mathcal{S}\!\left(\frac{1}{k}\sum_{i=1}^{k}\mathcal{D}_{\mathbf{x},\mathbf{c},\mathbf{c}_i^*}\right)
 +
-(1-\alpha)\cdot S(L_{x,c})
+(1-\alpha)\cdot \mathcal{S}\!\left(\mathcal{L}_{\mathbf{x},\mathbf{c}}\right)
 >
 \tau
 \right].
 $$
 
-论文的工程要点主要有三点。第一，时间步选择集中在 `440, 450, 460`，作者认为这是高分辨率扩散模型上更稳定的估计区间。第二，默认使用 `k=4` 的削弱条件集，其中 importance clipping 比简单截断和高斯噪声更稳。第三，`CLiDvec` 没有使用神经网络，而是用 XGBoost 避免在低维特征上过拟合。
+`CLiDvec` 则把这些差值和 `L_{x,c}` 拼成低维向量，用 `XGBoost` 输出置信分数。实践上，作者比较了简单截断、高斯噪声和 importance clipping 三种条件削弱方式，最终选择 importance clipping，因为它在附录实验里给出了最稳定的 `AUC` 与 `TPR@1%FPR`。
 
-## Experimental Setup
+## 7. 实验设置
 
-微调实验使用三个数据集：Pokemon `416/417` 个 member/hold-out 样本，MS-COCO `2500/2500`，Flickr `10000/10000`。目标模型为 Stable Diffusion v1-4。预训练实验则使用 Stable Diffusion v1-5，并从处理后的 LAION 数据中构造成员与留出集合，以减少分布偏移。
+微调实验覆盖 `Pokemon`、`MS-COCO` 和 `Flickr` 三个数据集，member/hold-out 划分分别为 `416/417`、`2500/2500` 和 `10000/10000`，目标模型为 `Stable Diffusion v1-4`。预训练实验使用 `Stable Diffusion v1-5` 与处理后的 `LAION` 子集。基线包括 `Loss`、`PIA`、`SecMI`、`PFAMI`，以及直接对条件似然做 Monte Carlo 估计的方法。
 
-训练条件分为两类。其一是沿用既有工作的 over-training 设定，例如 Pokemon 上 `15000` steps、MS-COCO 与 Flickr 上 `150000` steps。其二是作者认为更接近真实使用的设定，按官方脚本的 step/image ratio 约为 `20` 重新设定训练步数，并启用默认图像增强 Random-Crop 与 Random-Flip。
+论文刻意区分两种训练设定。其一是沿用既有工作的 over-training 设定，例如 `MS-COCO` 和 `Flickr` 都训练到 `150000` steps；其二是更接近真实训练脚本的 real-world training 设定，按官方脚本的 step/image ratio 近似为 `20` 重新设置训练步数，并启用默认图像增强 `Random-Crop` 与 `Random-Flip`。评估指标使用 `ASR`、`AUC` 与 `TPR@1%FPR`。所有阈值和分类器都先在 shadow model 上校准，再迁移到目标模型，避免直接窥视目标划分。
 
-基线包括 Loss-based inference、SecMI、PIA、PFAMI，以及直接对条件似然做 Monte Carlo 估计的方法。评估指标为 ASR、AUC 和 `TPR@1%FPR`。需要注意的是，作者刻意避免一种更乐观但不现实的实现假设：直接知道目标模型的 member/hold-out 子集以便设阈值或训练分类器，而是先训练 shadow model 再迁移到目标模型。
+## 8. 主要结果
 
-## Main Results
+论文首先明确指出，over-training 设定会制造“虚高成功”。在这种设定下，几乎所有方法都能得到很高分数，因而不能说明谁真正更适合真实审计。真正有信息量的是 real-world training 结果：在 `MS-COCO` 上，基线 `AUC` 大多只有 `0.55` 到 `0.65`，而 `CLiDth` 与 `CLiDvec` 分别达到 `0.9613` 与 `0.9630`；在 `Flickr` 上分别达到 `0.9474` 与 `0.9533`；在 `Pokemon` 上也分别达到 `0.9328` 与 `0.9261`。同样重要的是低误报区间，`MS-COCO` 上两种方法的 `TPR@1%FPR` 仍有 `67.52%` 与 `66.36%`，远高于基线的个位数表现。
 
-在 over-training 设定下，几乎所有方法都因为目标模型严重过拟合而得到较高分数，CLiD 也接近完美。例如在 MS-COCO 上，`CLiDth` 报告 `99.08` ASR、`99.94` AUC 与 `99.12` 的 `TPR@1%FPR`。论文认为这一设定会夸大基线效果，因此不应作为成员推断优劣的主要证据。
+论文进一步用训练步数轨迹说明，`CLiD` 不是只在严重过拟合时才有效。作者在 `MS-COCO` 的 real-world training 设定下比较不同训练步数，发现 `CLiDth` 在约 `25000` steps 时就已经显著暴露成员信号，而多种基线要到接近 `150000` steps 才达到相近水平。这意味着 `CLiD` 抓住的是更早出现的条件记忆，而不是后期极端过拟合的副产物。
 
-在更接近真实训练且带默认数据增强的设定下，差异才真正拉开。表 2 中，MS-COCO 上的基线 AUC 基本落在 `0.55` 到 `0.65`，而 `CLiDth` 与 `CLiDvec` 分别达到 `0.9613` 与 `0.9630`；Flickr 上两者也分别达到 `0.9474` 与 `0.9533`。这说明“利用文本条件造成的额外解释力”比“只看图像误差”稳定得多。
+![训练步数轨迹图](../assets/black-box/2024-neurips-clid-membership-inference-text-to-image-diffusion-key-figure-2-p8.jpeg)
 
-论文还给出三类补充证据。第一，训练步数轨迹图表明 CLiD 在更早阶段就能暴露成员性，而基线往往要到极高训练步数后才显著上升。第二，数据增强会削弱所有方法，但 CLiD 的跌幅最小。第三，在拿不到原始文本、只能用 BLIP 生成 pseudo-text 时，CLiD 仍明显优于基线，不过幅度小于完整文本场景。
+这张轨迹图对理解论文主结果很关键。它把“真实训练条件下仍然有效”从表格结论改写成动态过程：成员信号随着训练推进逐步增强，但 `CLiDth` 的上升更早、更陡，说明它检测到的是图文条件绑定的早期记忆。
 
-## Strengths
+补充结果同样值得注意。预训练场景下，`CLiDth` 在处理后的 `LAION` 设定上取得 `64.53` 的 `AUC`，仍优于 `PFAMI` 的 `59.08`，但绝对优势显著小于微调场景。拿不到原始文本时，利用 `BLIP` 生成 pseudo-text 后，real-world training 下 `CLiDth` 与 `CLiDvec` 仍有 `83.27` 与 `84.48` 的 `AUC`，说明方法对文本缺失具备一定韧性，但已经明显弱于真实文本条件。
 
-论文最强的部分是把“条件过拟合”从经验直觉推进到了可推导的指标设计。它没有停留在“文本有帮助”这一口头结论，而是先做 Fig. 1 的分布级验证，再用 KL 推导把现象转成单样本打分。
+## 9. 优点
 
-实验设计也比一些早期成员推断论文更严格。作者明确批评 over-training 带来的“幻觉成功”，并专门给出更接近官方脚本的训练步数与默认图像增强设置。对于 DiffAudit，这种反对虚高实验设定的态度比单纯刷新数值更有价值。
+这篇论文的技术优点主要有三点。第一，它把文生图模型的成员信号从“图像是否被记住”推进到“图文绑定是否被过度记住”，问题刻画更贴近文本到图像模型的训练目标。第二，作者没有停留在经验直觉上，而是先用条件过拟合现象做分布级验证，再把它推导为单样本指标，方法链路完整。第三，实验对真实训练条件更谨慎，明确揭示了 over-training 会夸大已有方法效果，这一点对审计路线判断尤为重要。
 
-工程实现兼顾了效率与稳定性。通过直接估计差值、复用条件似然结果以及选用简单分类器，作者把查询数控制在可接受范围，同时在附录中分析了时间步与 reduction 方法的影响，而不是把这些选择留成黑箱。
+## 10. 局限与有效性威胁
 
-## Limitations and Validity Threats
+最核心的局限是接口假设偏强。方法要求访问扩散过程中的中间噪声预测，并允许对不同文本条件重复查询，因此不能直接外推到只返回最终生成图像的严格黑盒接口。其次，方法仍依赖同分布辅助数据、shadow model 和文本削弱机制，这些条件在真实平台审计中未必总能满足。再次，预训练实验只有一个处理后的 `LAION` 设定，证据强度弱于微调结论。最后，论文未公开作者实现，某些工程细节只能依靠正文与附录还原。
 
-最重要的限制是威胁模型并不严格黑盒。方法需要访问扩散过程中的中间噪声预测，并能在完整文本、空文本和多种削弱文本之间切换查询；如果目标系统只暴露最终生成 API，这套方法无法直接落地。
+## 11. 对 DiffAudit 的价值
 
-预训练结论的证据强度不足。正文只给出一个处理后的 LAION 设定，`CLiDth` 在该设定下虽然仍优于基线，但绝对优势远小于微调场景。作者在结论中也承认，对预训练模型的验证不充分。
+对 DiffAudit 而言，这篇论文最重要的价值不是直接拿来做黑盒主线，而是提供了一个更强的信号设计原理：如果模型能访问条件文本，那么“条件扰动前后响应差异”往往比单纯图像误差更接近真正的成员信号。它适合进入黑盒路线的邻近支撑材料，用来论证为什么未来的审计接口设计应优先考虑条件对照实验。
 
-另外，部分实现假设仍偏向学术环境。攻击者需要同分布辅助数据、shadow model、文本重要性估计，以及较为稳定的多次查询预算。对于真实平台审计，这些条件可能不总是满足。伪文本实验虽然缓解了文本缺失问题，但仍需要额外的图像描述模型。
+在工程层面，这篇论文提示我们：若后续有能力拿到中间 denoiser 响应，最值得优先实现的不是更多图像侧分数函数，而是条件裁剪、差值估计与多时间步聚合。在叙事层面，它也有价值，因为它把成员推断与未授权数据使用审计直接联系起来，较容易衔接版权审计场景。
 
-## Reproducibility Assessment
+## 12. 关键图使用方式
 
-忠实复现实验至少需要公开的 Stable Diffusion 权重、Pokemon/MS-COCO/Flickr 与处理后的 LAION 子集、默认训练脚本、shadow model 训练流程、importance clipping 的具体实现，以及多种基线代码。论文正文给出了主要超参数、时间步选择、查询数和 reduction 方法，但没有在正文中给出作者仓库链接，因此实现细节仍有缺口。
+- 图 1 用于解释“条件过拟合”这一方法前提。它说明为什么完整文本与削弱文本之间的差异能成为成员信号。
+- 图 2 用于解释主结果不只是静态表格领先，而是在训练早期就更快暴露成员性，这直接影响对真实训练场景的判断。
 
-对当前 DiffAudit 仓库而言，论文中的核心思想可以被吸收，但不能直接视为现成复现实验模块。尤其是 `CLiD` 依赖扩散过程误差访问和条件裁剪机制，这些都需要与现有审计路线对齐后重新实现。真正的阻塞点是：当前报告所对应的路线是 black-box，而论文本身要求的是灰盒查询接口。
+## 13. 复现评估
 
-如果只做“方法理解级复现”，论文已经足够；如果要做“数字对齐级复现”，还缺公开代码、预处理细节以及处理后 LAION 划分方式的完整说明。
+若要做忠实复现，至少需要 `Stable Diffusion` 微调与查询管线、图文配对数据集、可访问的中间噪声预测接口、shadow model 训练流程、importance clipping 的词重要性计算、以及文本缺失时的 `BLIP` 伪文本生成模块。当前 DiffAudit 仓库真正缺少的是灰盒查询接口，而不是对论文思路的理解；只要接口仍停留在严格 black-box，这篇论文就无法被原样复用。另一个结构性阻塞是作者未公开官方实现，预处理细节与某些默认参数需要从正文和附录自行补齐。
 
-## Relevance to DiffAudit
+## 14. 写回总索引用摘要
 
-这篇论文与 DiffAudit 的关系是“方法信号高度相关，接口假设不完全对齐”。它最值得吸收的不是具体的 `CLiDth` 阈值器，而是一个更本质的判断：在文本到图像模型里，条件文本会把成员信息放大，而这种放大在真实训练步数下仍然存在。
+这篇论文解决的是文生图扩散模型中的成员推断问题，目标是在给定图文样本 `(x, c)` 的情况下判断其是否参与过模型训练，并将这一能力用于未授权数据使用审计。
 
-对于 black-box 路线，这一结果意味着未来若只能观察最终生成或有限辅助输出，仍应优先设计“条件扰动前后响应差异”类审计信号，而不是退回纯图像重构误差。论文本身没有解决 API-only black-box，但它为 black-box 信号设计提供了明确方向。
+论文的核心方法是利用“条件过拟合”现象，比较完整文本条件与削弱文本条件之间的条件似然差异，构造 `CLiDth` 和 `CLiDvec` 两类攻击器；在更接近真实训练步数且启用默认图像增强的设定下，方法仍显著优于图像侧误差基线。
 
-同时，报告也应明确标注边界：如果 DiffAudit 需要严格黑盒证据，这篇论文更适合作为邻近路线参考，而不是黑盒主线方法本身。
-
-## Recommended Figure
-
-- Figure page: `4`
-- Crop box or note: `295 282 590 452`（PDF points），裁切了右栏 Figure 1 及其图注；之所以不保留整页，是为了去掉大量正文并突出“条件过拟合”证据
-- Why this figure matters: 该图直接展示了 member 与 hold-out 在完整文本、截断文本和空文本下的 FID 与 FID 差值变化，是整篇论文提出 CLiD 的经验起点；相比仅展示最终表格，它更能解释为什么“条件似然差”应当成为成员信号
-- Local asset path: `../assets/black-box/2024-neurips-clid-membership-inference-text-to-image-diffusion-key-figure-p4.png`
-
-![Key Figure](../assets/black-box/2024-neurips-clid-membership-inference-text-to-image-diffusion-key-figure-p4.png)
-
-我直接查看了渲染后的 PNG。图中左侧子图显示，在完整文本条件下，member 与 hold-out 的 FID 差距明显大于文本逐步截断后的情况；右侧子图则把这种差距写成更直观的 `ΔFID` 柱状对比。这个视觉证据与正文中的 Assumption 3.1 完全对应，因此比单独截表 2 或表 4 更适合作为报告主图。
-
-## Extracted Summary for `paper-index.md`
-
-这篇论文讨论文本到图像扩散模型的成员推断，核心问题是判断一条图文样本是否参与过模型训练。作者指出，已有扩散模型成员推断方法主要依赖图像侧误差或高成本 shadow models，在文本到图像模型上会受到更强泛化能力和扩散训练随机性的影响，因此在更真实的训练步数与默认数据增强条件下效果明显下降。
-
-论文提出 Conditional Likelihood Discrepancy（CLiD），其出发点是文本到图像模型对条件分布 `p(x|c)` 的过拟合强于对边缘分布 `p(x)` 的过拟合。作者用完整文本、空文本和多种削弱文本条件之间的 ELBO 近似差值构造成员性指标，并实现了阈值版 `CLiDth` 与向量版 `CLiDvec`。在 Pokemon、MS-COCO、Flickr 微调场景以及一个处理后的 LAION 预训练场景中，CLiD 在 AUC、ASR 和 `TPR@1%FPR` 上普遍优于 Loss、SecMI、PIA 和 PFAMI 等基线，且对默认数据增强更稳健。
-
-对 DiffAudit 而言，这篇论文最重要的价值是证明“条件扰动前后的响应差异”是比纯图像误差更强的审计信号。不过论文本身采用的是灰盒查询设定，需要访问扩散过程中的中间噪声预测，因此不能直接当作严格 black-box 方法复用。它更适合作为 black-box 路线的邻近理论支点和信号设计参考。
+它对 DiffAudit 的价值在于提供了一条清晰的信号设计方向：若未来审计能力允许访问条件响应或中间查询结果，应优先考虑条件扰动前后的响应差异；但由于接口假设属于灰盒，这篇论文更适合作为黑盒路线的近邻参考，而不是直接主方法。

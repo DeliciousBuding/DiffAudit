@@ -45,3 +45,196 @@
 ## 统一黑盒汇总
 
 - [experiments/blackbox-status/summary.json](/D:/Code/DiffAudit/Project/experiments/blackbox-status/summary.json)
+
+## 文档归档与飞书同步进度
+
+更新时间：`2026-04-06 14:48:23 +08:00`
+同步基线提交：`06c083d`
+
+当前这部分状态描述的不是算法复现，而是论文整理、born-digital Markdown 精修、飞书三件套归档和总索引同步进度。
+
+### 已完成批次
+
+- 黑盒 `4 / 4` 已按新规范完成：
+  - 报告
+  - 精修原文
+  - PDF
+  - 链接可读权限
+  - 总索引换链
+- 灰盒首批 `4 / 4` 已按新规范完成：
+  - `SecMI`
+  - `Structural Memorization`
+  - `CDI`
+  - `MoFit`
+- 灰盒第二批中，以下条目已完成飞书目录级归档：
+  - `PIA`
+  - `SiMA`
+  - `Noise as a Probe`
+  - `SIDE` 已完成报告、稳定版精修原文与 PDF，并已补回总索引展示字段
+  - `small-noise-injection` 已完成报告、稳定版精修原文与 PDF，并已补回总索引展示字段
+
+### 已确认可用的飞书三件套
+
+- 黑盒：
+  - `Towards Black-Box Membership Inference Attack for Diffusion Models`
+  - `CLiD`
+  - `Black-box Membership Inference Attacks against Fine-tuned Diffusion Models`
+  - `Membership Inference Attacks for Face Images Against Fine-Tuned Latent Diffusion Models`
+- 灰盒：
+  - `SecMI`
+  - `Structural Memorization`
+  - `CDI`
+  - `MoFit`
+  - `PIA`
+  - `SiMA`
+  - `Noise as a Probe`
+  - `SIDE`
+  - `small-noise-injection`
+
+### 当前规范状态
+
+- 飞书总索引已改成团队展示口径：
+  - 已刷新条目优先给出 `飞书 PDF`
+  - 同时补 `GitHub PDF`
+  - 补 `数据集与模型`
+  - 补 `开源仓库`
+  - 补 `阅读报告`
+- PDF 链接策略已改为：
+  - 优先引用飞书 PDF
+  - 仅在飞书未上传或上传受限时退回 GitHub PDF
+- 子代理职责已固定：
+  - 只产出本地中文报告和精修原文
+  - 不直接做飞书终态
+  - 由主线程统一发布到飞书并换链
+
+### 当前已知问题
+
+- 一部分旧批次“精修原文”仍是偏短的笔记式版本，不是完整 born-digital 原文，需要继续逐篇替换。
+- 某些精修原文在飞书同步时会因图片路径、caption 编码或长文分块方式触发告警；当前主线程已改为：
+  - 先发稳定正文
+  - 再补关键图
+  - 必要时移除不稳定的 born-digital 内联碎图
+- `SIDE` 精修原文已按上述策略重发完成，当前这类问题主要还会出现在其余旧批次条目上。
+- 本地 `validate_report.py` 仍按旧模板校验，会对新规范文稿误报缺字段，尚未适配。
+
+### 下一个 Agent 接手上下文
+
+以下内容不是建议，而是当前机器上的真实接手上下文。后续 agent 应直接基于这里继续，不要重新摸索流程。
+
+#### 1. 当前文档与归档主线
+
+- 总索引飞书文档：
+  - `https://www.feishu.cn/docx/ITzEdcyWSoXRqKxuLe3cx4yInEe`
+- 飞书根目录：
+  - `DiffAudit` folder token: `EpmAfeYfYlNNMgd9zwKc0xBCnZd`
+- 论文总目录：
+  - `论文` folder token: `FKbjfHlyMl3rCBdVEc5ciaCSnUA`
+- 当前正式流程统一用：
+  - `--as user`
+- 本地飞书同步脚本：
+  - [sync_report_to_feishu.py](/D:/Code/DiffAudit/LocalOps/paper-pipeline/scripts/sync_report_to_feishu.py)
+
+#### 2. 已知可直接用的论文目录 token
+
+- 黑盒：
+  - `Towards...` -> `L9lCfhhaTlFbiOduIBecfmLcnFb`
+  - `CLiD` -> `PRDxf5KxQlaYlWd9Fzmca5ivnkf`
+  - `NDSS black-box` -> `PqxffChZYl46ePdH9KMc4JTGnFf`
+  - `VISAPP face` -> `GUl6fMTjMl9GxrdLemGcmkNVn0e`
+- 灰盒：
+  - `SecMI` -> `JEIofxdpklZoUHdxzGrcVi60n7g`
+  - `SIDE` -> `A5HofCRBglXSMxdfiE9cAH8qnnh`
+  - `Structural Memorization` -> `Y7ahfitvilSnBDdLNqUcNcHCnJb`
+  - `PIA` -> `SkDMfYmH4lU8MAd1B5EcMa6mnDb`
+  - `SiMA` -> `Rd7KfrUh9lVlFhdbEH8cZn53nEf`
+  - `small-noise-injection` -> `Dhj2fm9zrloPoXdKLxUcTN3dnmf`
+  - `CDI` -> `EecnfkAhbln1yidSyXOcl6mznic`
+  - `Noise as a Probe` -> `AGcTfITlRlZj7zdpkIocM0bqn6f`
+  - `MoFit` -> `ZjnkfJf1RlYIV6daD8Xc1GMrnAg`
+
+#### 3. 当前最值得继续做的事
+
+接手优先级按下面顺序：
+
+1. 继续核对并把 `PIA / SiMA / Noise / SIDE / small-noise-injection` 的最终新链接与 PDF 链接完整回写到：
+   - [references/materials/paper-index.md](/D:/Code/DiffAudit/Project/references/materials/paper-index.md)
+   - [manifest.csv](/D:/Code/DiffAudit/Project/docs/paper-reports/manifest.csv)
+   - [master-feishu-index.md](/D:/Code/DiffAudit/Project/docs/paper-reports/master-feishu-index.md)
+2. 继续刷新尚未按新规范重发的其余灰盒文档。
+3. 继续替换那些“只有短摘要”的旧精修原文。
+
+#### 4. 当前需要避免重复踩的坑
+
+- 不要让子代理直接做飞书终态。
+  - 子代理只负责本地报告和精修原文。
+  - 主线程统一做飞书发布、移动、权限和换链。
+- 飞书正文更新不要直接用超长 PowerShell `$md` 命令串。
+  - 超长文档会撞命令行长度限制。
+  - 优先用 [sync_report_to_feishu.py](/D:/Code/DiffAudit/LocalOps/paper-pipeline/scripts/sync_report_to_feishu.py)。
+- PDF 链接策略已经改了：
+  - 优先飞书 PDF
+  - 飞书没有时才用 GitHub PDF
+- 精修原文不要接受“只有一段摘要”的版本。
+  - 若同步时图片不断报错，先发稳定正文，再补图。
+- 两类常见飞书失败根因：
+  - 中文标题通过 PowerShell 直接创建 doc 时的编码问题
+  - 图片 caption 或 born-digital 相对路径导致 `media-insert` 失败
+
+#### 5. 可直接复用的命令
+
+创建或覆盖单篇报告：
+
+```powershell
+py -3 D:\Code\DiffAudit\LocalOps\paper-pipeline\scripts\sync_report_to_feishu.py `
+  D:\Code\DiffAudit\Project\docs\paper-reports\<track>\<paper>-report.md `
+  --doc "<existing-doc-url>" `
+  --title "论文报告：<English Title>"
+```
+
+创建或覆盖单篇精修原文：
+
+```powershell
+py -3 D:\Code\DiffAudit\LocalOps\paper-pipeline\scripts\sync_report_to_feishu.py `
+  D:\Code\DiffAudit\Project\docs\paper-reports\markdown\<track>\<paper>\<paper>-refined.md `
+  --doc "<existing-doc-url>" `
+  --title "OCR精修版：<English Title>"
+```
+
+上传 PDF：
+
+```powershell
+lark-cli drive +upload --as user `
+  --file ".\references\materials\<track>\<paper>.pdf" `
+  --name "<paper>.pdf" `
+  --folder-token "<folder-token>"
+```
+
+移动 docx 到论文目录：
+
+```powershell
+lark-cli drive +move --as user `
+  --file-token "<doc-token>" `
+  --type docx `
+  --folder-token "<folder-token>"
+```
+
+#### 6. 当前实际判断
+
+- 文档线已经不是“从零搭流程”的阶段，而是“逐篇把旧批次替换成可展示、可交接、可复核版本”的阶段。
+- 接手 agent 不应再重新设计模板或权限策略。
+- 最短路径就是：
+  - 选一篇旧条目
+  - 检查本地 report/refined 是否已可用
+  - 用现有脚本发布飞书三件套
+  - 改 `paper-index.md / manifest.csv / master-feishu-index.md`
+  - 再更新本文件的进度与剩余事项
+
+### 下一步
+
+1. 继续核对 `PIA / SiMA / Noise / SIDE / small-noise-injection` 在仓库侧索引文件中的最终链接回写是否全部一致。
+2. 继续刷新尚未按新规范重发的其余灰盒文稿。
+3. 逐篇替换仍然偏短的旧精修原文。
+4. 继续把新飞书链接回写到：
+   - `references/materials/paper-index.md`
+   - `docs/paper-reports/manifest.csv`
+   - `docs/paper-reports/master-feishu-index.md`

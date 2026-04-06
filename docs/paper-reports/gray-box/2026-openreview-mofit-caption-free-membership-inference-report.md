@@ -9,10 +9,10 @@ No Caption, No Problem: Caption-Free Membership Inference via Model-Fitted Embed
 - 威胁模型类别：灰盒，text-to-image diffusion membership inference，caption-free
 - 本地 PDF 路径：`D:\Code\DiffAudit\Project\references\materials\gray-box\2026-openreview-mofit-caption-free-membership-inference.pdf`
 - GitHub PDF 链接：[2026-openreview-mofit-caption-free-membership-inference.pdf](https://github.com/DeliciousBuding/DiffAudit/blob/main/references/materials/gray-box/2026-openreview-mofit-caption-free-membership-inference.pdf)
-- OCR / born-digital 精修版链接：[2026-openreview-mofit-caption-free-membership-inference-refined.md](../markdown/gray-box/2026-openreview-mofit-caption-free-membership-inference/2026-openreview-mofit-caption-free-membership-inference-refined.md)
-- 飞书原生 PDF 获取方式：本任务按用户要求仅处理本地文件，未做飞书同步
+- OCR / born-digital 精修版链接：[OCR精修版：No Caption, No Problem: Caption-Free Membership Inference via Model-Fitted Embeddings](https://www.feishu.cn/docx/EpTOdMzKposoRVxRP0KcKSDdnwe)
+- 飞书原生 PDF：[2026-openreview-mofit-caption-free-membership-inference.pdf](https://ncn24qi9j5mt.feishu.cn/file/RgGObebMJo6O3txk2K9c2y08nxf)
 - 开源实现：[JoonsungJeon/MoFit](https://github.com/JoonsungJeon/MoFit)
-- 报告状态：展示稿完成，本地落盘
+- 报告状态：已完成
 
 ## 1. 论文定位
 

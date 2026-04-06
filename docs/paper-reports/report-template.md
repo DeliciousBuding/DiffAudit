@@ -1,58 +1,99 @@
-# <Paper Title>
+# <中文论文标题>
 
-- Title:
-- Material Path:
-- Primary Track:
-- Venue / Year:
-- Threat Model Category:
-- Core Task:
-- Open-Source Implementation:
-- Report Status:
+<English Paper Title>
 
-## Executive Summary
+## 文献信息
 
-## Bibliographic Record
+- 英文标题：
+- 中文标题：
+- 作者：
+- 发表 venue / year / version：
+- 论文主问题：
+- 威胁模型类别：
+- 本地 PDF 路径：
+- GitHub PDF 链接：
+- OCR 精修版链接：
+- 飞书原生 PDF 获取方式：
+- 开源实现：
+- 报告状态：
 
-## Research Question
+## 1. 论文定位
 
-## Problem Setting and Assumptions
+用一到两段说明这篇论文属于哪条路线、解决什么问题，以及它在 DiffAudit 中是主论文、对照论文、边界材料还是综述补充。
 
-## Method Overview
+## 2. 核心问题
 
-## Method Flow
+明确写出论文想回答的技术问题。不要泛泛写成“研究成员推断”，而要指出成员信号究竟来自哪里、攻击者到底要判别什么。
+
+## 3. 威胁模型与前提
+
+写清攻击者能访问什么、拿不到什么、需要什么先验，以及论文结论适用的边界。
+
+## 4. 方法总览
+
+先讲方法直觉，再讲执行步骤，最后讲它相对已有方法真正替换了什么。
+
+![方法图标题](../assets/<track>/<pdf-stem>-key-figure-1-p<page>.png)
+
+紧接着解释这张图服务于哪部分理解，不要写编辑过程和裁切过程。
+
+## 5. 方法概览 / 流程
+
+只有在流程图确实有帮助时才补 Mermaid。若不用流程图，本节继续用完整段落解释方法主线。
 
 ```mermaid
-flowchart TD
-    A["Input assumptions"] --> B["Core method"]
-    B --> C["Scoring or decision"]
-    C --> D["Membership or leakage conclusion"]
+flowchart LR
+    A["输入样本"] --> B["核心估计阶段"]
+    B --> C["特征聚合或分数计算"]
+    C --> D["成员判定"]
 ```
 
-## Key Technical Details
+## 6. 关键技术细节
+
+至少写两到四段完整解释，并给出一到三个必要公式。
 
 $$
-\\text{Insert core equation(s) here when applicable}
+<在这里写核心公式 1>
 $$
 
-## Experimental Setup
+$$
+<在这里写核心公式 2，可选>
+$$
 
-## Main Results
+公式后必须解释变量含义，以及它在方法中的作用。
 
-## Strengths
+## 7. 实验设置
 
-## Limitations and Validity Threats
+写清数据集、模型、基线、指标、训练条件和查询条件。
 
-## Reproducibility Assessment
+## 8. 主要结果
 
-## Relevance to DiffAudit
+先给主结论，再给关键数值，再说明这些结论依赖的具体设定。
 
-## Recommended Figure
+![关键结果图或表](../assets/<track>/<pdf-stem>-key-figure-2-p<page>.png)
 
-- Figure page:
-- Crop box or note:
-- Why this figure matters:
-- Local asset path:
+图表说明要紧贴结论，不要单独做图片区。
 
-![Key Figure](../assets/<track>/<pdf-stem>-key-figure-p<page>.png)
+## 9. 优点
 
-## Extracted Summary for `paper-index.md`
+只写技术优点或实验设计优点。
+
+## 10. 局限与有效性威胁
+
+必须覆盖假设强度、实验边界、复现难点和可能的过度结论。
+
+## 11. 对 DiffAudit 的价值
+
+写清它能进入哪条路线，是主论文、对照论文还是边界材料，以及对工程实现、实验分层和项目叙事分别有什么价值。
+
+## 12. 复现评估
+
+说明需要什么资产、接口、脚本和数据，仓库当前缺什么，哪些阻塞是结构性的。
+
+## 13. 写回总索引用摘要
+
+第一段：这篇论文解决什么问题。
+
+第二段：它的核心方法或结论是什么。
+
+第三段：它为什么对 DiffAudit 有价值。

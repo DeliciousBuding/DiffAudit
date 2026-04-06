@@ -1,157 +1,241 @@
-# Paper Reading Report Specification
+# 论文阅读报告统一规范
 
-## Purpose
+## 目标
 
-This specification defines the required structure, style, and evidence standard for all paper reading reports generated for DiffAudit.
+这份规范用于约束 DiffAudit 全部论文阅读报告的写法、结构、公式表达、图片处理和飞书排版方式。
 
-The reports are intended for internal technical review, future onboarding, and direct reuse in Feishu-facing project updates. They must therefore read like scientific technical notes rather than casual summaries.
+目标不是生成“像总结的东西”，而是生成**可复核、可引用、可继续扩展**的学术技术文档。报告必须体现以下特征：
 
-## Writing Style
+- 中文技术文风
+- 结构稳定
+- 术语准确
+- 论证克制
+- 可以直接用于团队内部研究归档和对外展示前的审阅
 
-- Use scientific, explicit, non-metaphorical language.
-- Avoid colloquialisms, hype, vague praise, and conversational filler.
-- Distinguish clearly between claims made by the paper and inferences made by the report author.
-- When a paper leaves ambiguity, say so explicitly rather than smoothing it over.
-- Use complete sentences and precise terminology.
-- Prefer evidence-backed wording such as `the paper reports`, `the authors assume`, `the evaluation shows`, `the current report infers`.
-- When the paper relies on equations, quote the essential equations using LaTeX math blocks or inline LaTeX rather than replacing them with vague prose.
+## 文风要求
 
-## Required Metadata Block
+- 全文使用中文撰写。
+- 避免口语、夸张、空泛评价和“AI 味”表达。
+- 不写“这篇论文很有启发”“效果很好”这类无证据判断。
+- 必须区分：
+  - 论文明确给出的结论
+  - 当前报告作者的合理推断
+- 不能把论文没有说清楚的地方硬写成确定结论。
+- 段落要完整，不要写成碎片化拼接句。
 
-Every report must begin with the following metadata bullets:
+## 标题与开头格式
 
-- `Title`
-- `Material Path`
-- `Primary Track`
-- `Venue / Year`
-- `Threat Model Category`
-- `Core Task`
-- `Open-Source Implementation`
-- `Report Status`
+每份飞书文档的标题统一使用：
 
-## Required Sections
+`论文报告：<英文原论文标题>`
 
-Every report must contain all sections below in this exact order.
+每份 Markdown 报告正文的开头必须是：
 
-### 1. Executive Summary
+1. 第一行：中文标题，作为整篇报告标题
+2. 第二行：英文原论文标题
+3. 接着给出文献信息区
 
-- 2 to 4 paragraphs
-- State the problem, the main method, the main result, and why the paper matters to DiffAudit
+## 文献信息区必含字段
 
-### 2. Bibliographic Record
+文献信息区必须显式列出：
 
-- Title
-- Authors if available
-- Venue / year / version
-- Local PDF path
-- Source URL if known
+- 英文标题
+- 中文标题
+- 作者
+- 发表 venue / year / version
+- 论文主问题
+- 威胁模型类别
+- 本地 PDF 路径
+- GitHub PDF 链接
+- 飞书原生 PDF 获取方式
+  说明：如果没有独立 PDF 链接，至少写“见文末飞书附件”
+- 开源实现
+- 报告状态
 
-### 3. Research Question
+## 固定结构
 
-- What exact question is the paper trying to answer
-- What threat model or deployment setting it assumes
+所有报告必须严格使用以下一级标题顺序：
 
-### 4. Problem Setting and Assumptions
+## 1. 论文定位
 
-- Access model
-- Available inputs
-- Available outputs
-- Required priors or side information
-- Scope limits
+说明这篇论文在该方向里到底解决什么问题，它属于攻击、 defense、survey、background 还是工程文档。
 
-### 5. Method Overview
+## 2. 核心问题
 
-- Plain-language walkthrough of the method
-- What signal the method exploits
-- What must happen step by step
+明确写出论文试图回答的技术问题，不要泛写成“研究成员推断”。
 
-### 6. Method Flow
+## 3. 威胁模型与前提
 
-- One Mermaid flowchart in fenced code block
-- Show the method pipeline from input assumptions to output decision
+必须明确写清：
 
-### 7. Key Technical Details
+- 攻击者能访问什么
+- 看不到什么
+- 需要哪些先验信息
+- 论文的结论适用于什么边界
 
-- Important equations, losses, features, or statistics in words
-- Any notable optimization or scoring detail
-- Any distinctive implementation requirement
-- Include 1 to 3 core formulas in LaTeX form when the paper has explicit mathematical definitions worth preserving
+## 4. 方法总览
 
-### 8. Experimental Setup
+用完整段落解释论文方法，不要只写名词列表。
 
-- Datasets
-- Model families
-- Baselines
-- Metrics
-- Evaluation conditions
+要求：
 
-### 9. Main Results
+- 先说方法的直觉
+- 再说具体执行步骤
+- 最后说它与已有方法相比到底换了什么
 
-- What the paper reports as its main findings
-- Which claims appear strongest
-- Which results depend heavily on the setting
+## 5. 方法概览 / 流程
 
-### 10. Strengths
+这一节可以采用二选一：
 
-- Concrete technical or experimental strengths only
+- `方法概览`：用完整段落解释方法主线
+- `方法概览 + 方法流程图`：当流程图确实能帮助理解时，再补 Mermaid
 
-### 11. Limitations and Validity Threats
+要求：
 
-- Missing ablations
-- Unclear assumptions
-- Reproducibility concerns
-- Possible over-claiming
+- 优先保证文字解释清楚
+- 不为了凑格式强行加 Mermaid
+- 如果使用 Mermaid，标签必须为中文且可读
 
-### 12. Reproducibility Assessment
+## 6. 关键技术细节
 
-- What assets are needed
-- Whether code exists
-- Whether the current DiffAudit repository already covers part of the route
-- What blocks faithful reproduction today
+这是报告最重要的技术部分。
 
-### 13. Relevance to DiffAudit
+要求：
 
-- How this paper maps to current routes, assets, product direction, or report narrative
+- 至少写 2 到 4 段完整解释
+- 公式必须用 LaTeX
+- 不能只抄公式，必须解释每个公式在方法中的作用
+- 如果论文里存在多个关键公式，选最必要的 1 到 3 个
 
-### 14. Recommended Figure
+## 7. 实验设置
 
-- Identify one figure, table, or page worth surfacing
-- Explain why it is worth surfacing
-- Record page number when possible
-- Render the chosen figure or table region into a PNG asset
-- Inspect the rendered image directly before finalizing the explanation
-- Include the local image path in this section
-- Prefer a cropped figure region over a full-page screenshot if the page contains substantial surrounding body text
-- If a full-page fallback is unavoidable, say why a clean region crop was not feasible
+要写清：
 
-### 15. Extracted Summary for `paper-index.md`
+- 数据集
+- 模型
+- 基线
+- 指标
+- 训练 / 测试或查询条件
 
-- Write exactly three paragraphs:
-- Paragraph 1: what problem the paper addresses
-- Paragraph 2: what method or core conclusion it contributes
-- Paragraph 3: why it matters to DiffAudit specifically
+## 8. 主要结果
 
-This section is the only section allowed to be reused in shortened form inside `references/materials/paper-index.md`.
+要求：
 
-## Minimum Depth Standard
+- 先写论文主结论
+- 再写最能说明问题的关键数值
+- 再说明哪些结论依赖特定设定
 
-- Target 1200 to 2200 Chinese characters per report body, excluding metadata.
-- Reports for foundational or mainline papers may be longer.
-- The report must be based on actual reading of the PDF, not title inference alone.
+## 9. 优点
 
-## Figure and Diagram Standard
+只允许写技术优点或实验设计优点。
 
-- If a representative figure can be identified, record the page number in `Recommended Figure`.
-- The report author must render at least one key figure or table region into a PNG asset and inspect that image directly instead of relying on text extraction alone.
-- Use the normalized asset path pattern `docs/paper-reports/assets/<track>/<pdf-stem>-key-figure-p<page>.png`.
-- Insert the image into the local Markdown report immediately after the `Recommended Figure` section using a relative Markdown image link.
-- Prefer cropped regions that isolate the actual chart, figure, or table rather than full-page screenshots with large text blocks.
-- Every report must include a Mermaid flowchart even if no image is extracted.
-- Figures should be descriptive supplements, not substitutes for analysis.
+## 10. 局限与有效性威胁
 
-## Prohibited Shortcuts
+必须写，不允许省略。
 
-- Do not summarize from title alone.
-- Do not use generic phrases such as `很有启发`, `值得关注`, `效果很好` unless followed by precise evidence.
-- Do not collapse limitations into praise.
-- Do not copy the abstract as the report.
+至少覆盖：
+
+- 设定过强
+- 实验边界
+- 复现难点
+- 可能的过度结论
+
+## 11. 对 DiffAudit 的价值
+
+这一节必须具体，不允许泛写“值得参考”。
+
+要写清：
+
+- 它能进入哪条路线
+- 是主论文、对照论文，还是边界材料
+- 它对工程实现、实验分层、产品叙事分别有什么价值
+
+## 12. 关键图使用方式
+
+默认使用 1 到 2 张图；只有在论文确有必要时才扩展到 3 张。
+
+当前可接受的样例规范是：
+
+- 图直接插入相关正文段落之后
+- 方法图插入“方法概览”之后
+- 结果表或关键图插入“实验设置与主要结果”相关段落之后
+- 不再把图统一堆到文末形成独立图片区块
+
+图的文字说明要求：
+
+- 站在读者视角解释图表达了什么
+- 说明图对理解论文或实现决策有什么作用
+- 不写编辑过程话术，例如：
+  - “这张图来自第 X 页”
+  - “采用 PDF 原生裁切”
+  - “我选择这张图的原因是”
+
+每张图都必须服务于一个明确目的：
+
+- 方法理解
+- 主结果展示
+- 边界条件或消融说明
+
+## 13. 复现评估
+
+要求写清：
+
+- 需要什么资产
+- 需要什么接口
+- 仓库当前缺什么
+- 哪些阻塞是结构性阻塞
+
+## 14. 写回总索引用摘要
+
+这一节固定写 3 段：
+
+1. 论文解决什么问题
+2. 核心方法 / 结论是什么
+3. 为什么对 DiffAudit 有价值
+
+## 长度要求
+
+- 单篇报告默认控制在“清楚但不过长”的范围内
+- 推荐长度以可展示、可快速审阅为准
+- 当前样例的目标量级约为 1500 到 2200 中文字
+- 只有在论文本身特别复杂时，才扩展到更长版本
+- 单个重要一级标题下，不要只有一两句
+
+## 图片规范
+
+- 优先使用 PDF 原生区域裁切
+- 如果不能直接区域裁切，才允许高 DPI 渲染后再精准裁切
+- 不允许把整页导出后再随意截图
+- 图片必须满足：
+  - 不碰边
+  - 不截断标题、箭头或坐标轴
+  - 不混入大块无关正文
+  - 留白适中
+  - 清晰度足够
+- 最终图片文件名统一为：
+  `docs/paper-reports/assets/<track>/<pdf-stem>-key-figure-p<page>.png`
+- 如果一篇报告有多张图，文件名依次使用：
+  - `...-key-figure-1-p<page>.png`
+  - `...-key-figure-2-p<page>.png`
+  - `...-key-figure-3-p<page>.png`
+
+## Markdown / 飞书排版要求
+
+- 一级标题和二级标题必须清晰分层
+- 表格只在确实适合时使用
+- 长段落之间必须留空行
+- 关键小节可使用短列表，但不能全篇堆项目符号
+- 开头文献信息区必须直接给出：
+  - GitHub PDF 链接
+  - OCR 精修版链接
+  - 开源实现链接
+- 飞书单篇文档中，关键图必须插在对应正文段落附近
+- 文末附原始 PDF 文件附件，便于直接查看原文
+
+## 禁止事项
+
+- 不允许只看标题和摘要就写报告
+- 不允许把英文原文机械直译成中文拼接句
+- 不允许把 Mermaid 图写成变量堆砌图
+- 不允许使用模糊过渡句掩盖自己没理解的部分
+- 不允许为了“简洁”把关键论证删成一句话
