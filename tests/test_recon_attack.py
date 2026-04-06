@@ -934,6 +934,87 @@ class ReconAttackTests(unittest.TestCase):
         self.assertEqual(result["artifacts"]["target_member"]["stage"], "reused")
         self.assertTrue(result["checks"]["all_artifacts_generated"])
 
+    def test_run_recon_runtime_mainline_regenerates_when_generated_images_incomplete(self) -> None:
+        from diffaudit.attacks.recon import run_recon_runtime_mainline
+
+        with tempfile.TemporaryDirectory() as tmpdir:
+            root = Path(tmpdir)
+            repo_root = root / "recon"
+            create_minimal_recon_repo(repo_root)
+            (repo_root / "cal_embedding.py").write_text(
+                "import argparse\n"
+                "from pathlib import Path\n"
+                "import torch\n"
+                "\n"
+                "def parse_args():\n"
+                "    parser = argparse.ArgumentParser()\n"
+                "    parser.add_argument('--data_dir')\n"
+                "    parser.add_argument('--sample_file')\n"
+                "    parser.add_argument('--membership', type=int)\n"
+                "    parser.add_argument('--img_num', type=int, default=1)\n"
+                "    parser.add_argument('--gpu', type=int, default=0)\n"
+                "    parser.add_argument('--save_dir')\n"
+                "    parser.add_argument('--method', default='cosine')\n"
+                "    parser.add_argument('--image_encoder', default='deit')\n"
+                "    return parser.parse_args()\n"
+                "\n"
+                "def main():\n"
+                "    args = parse_args()\n"
+                "    payload = torch.load(args.data_dir)\n"
+                "    count = len(payload.get('text', []))\n"
+                "    sample_dir = Path(args.sample_file)\n"
+                "    for i in range(count):\n"
+                "        expected = sample_dir / f'image_{i+1:02}_01.jpg'\n"
+                "        if not expected.exists():\n"
+                "            raise FileNotFoundError(expected)\n"
+                "    score = 0.9 if int(args.membership) == 1 else 0.1\n"
+                "    rows = [[[score], int(args.membership)] for _ in range(count)]\n"
+                "    Path(args.save_dir).parent.mkdir(parents=True, exist_ok=True)\n"
+                "    torch.save(rows, args.save_dir)\n"
+                "\n"
+                "if __name__ == '__main__':\n"
+                "    main()\n",
+                encoding="utf-8",
+            )
+
+            datasets = {}
+            for name in (
+                "target_member",
+                "target_non_member",
+                "shadow_member",
+                "shadow_non_member",
+            ):
+                dataset_path = root / f"{name}.pt"
+                create_recon_dataset_payload(dataset_path, count=2)
+                datasets[name] = dataset_path
+
+            target_model_dir = root / "target-lora"
+            shadow_model_dir = root / "shadow-lora"
+            target_model_dir.mkdir()
+            shadow_model_dir.mkdir()
+
+            workspace = root / "recon-runtime-mainline-incomplete-generated"
+            generated_dir = workspace / "generated-images" / "shadow_non_member"
+            generated_dir.mkdir(parents=True, exist_ok=True)
+            (generated_dir / "image_01_01.jpg").write_bytes(b"fake-jpg")
+
+            result = run_recon_runtime_mainline(
+                target_member_dataset=datasets["target_member"],
+                target_nonmember_dataset=datasets["target_non_member"],
+                shadow_member_dataset=datasets["shadow_member"],
+                shadow_nonmember_dataset=datasets["shadow_non_member"],
+                target_model_dir=target_model_dir,
+                shadow_model_dir=shadow_model_dir,
+                workspace=workspace,
+                repo_root=repo_root,
+                method="threshold",
+                num_validation_images=1,
+            )
+
+        self.assertEqual(result["status"], "ready")
+        self.assertEqual(result["artifacts"]["shadow_non_member"]["status"], "ready")
+        self.assertEqual(result["artifacts"]["shadow_non_member"]["sample_count"], 2)
+
     def test_cli_prepares_recon_public_subset(self) -> None:
         from diffaudit.cli import main
 
