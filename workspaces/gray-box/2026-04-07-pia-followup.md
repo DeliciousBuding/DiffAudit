@@ -1,4 +1,4 @@
-# 2026-04-07 Gray-Box Follow-Up: PIA Real-Asset Probe
+# 2026-04-07 Gray-Box Follow-Up: PIA Template Probe Before Asset Staging
 
 ## Status Panel
 
@@ -8,6 +8,17 @@
 - `current_state`: `template-plan ready + real-asset probe blocked`
 - `gpu_usage`: `not requested`
 - `evidence_level`: `template-probe`
+
+## Timeline Note
+
+This note intentionally captures the earlier same-day state before the gray-box workspace assets were staged.
+
+Read it as:
+
+- `template config still blocked at this time`
+- not as the final same-day status of the `PIA` line
+
+The stronger later single-machine result is recorded separately in [2026-04-07-pia-real-asset-probe.md](2026-04-07-pia-real-asset-probe.md).
 
 ## A. What Was Run
 
