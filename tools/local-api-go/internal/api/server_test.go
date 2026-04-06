@@ -1,6 +1,7 @@
 package api
 
 import (
+	"bytes"
 	"encoding/json"
 	"net/http"
 	"net/http/httptest"
@@ -178,5 +179,138 @@ func TestWorkspaceSummaryEndpoint(t *testing.T) {
 	}
 	if metrics["tpr_at_1pct_fpr"] != 1.0 {
 		t.Fatalf("expected tpr_at_1pct_fpr 1.0, got %v", metrics["tpr_at_1pct_fpr"])
+	}
+}
+
+func TestCreateAndGetJobEndpoints(t *testing.T) {
+	root := t.TempDir()
+	server := NewServer(Config{
+		ExperimentsRoot: filepath.Join(root, "experiments"),
+		JobsRoot:        filepath.Join(root, "jobs"),
+	})
+
+	requestBody := map[string]any{
+		"job_type":       "recon_artifact_mainline",
+		"workspace_name": "api-job-001",
+		"artifact_dir":   "D:/artifacts/recon-scores",
+		"repo_root":      "D:/Code/DiffAudit/Project/external/Reconstruction-based-Attack",
+	}
+	data, err := json.Marshal(requestBody)
+	if err != nil {
+		t.Fatalf("marshal failed: %v", err)
+	}
+
+	createRequest := httptest.NewRequest(http.MethodPost, "/api/v1/audit/jobs", bytes.NewReader(data))
+	createRequest.Header.Set("Content-Type", "application/json")
+	createRecorder := httptest.NewRecorder()
+	server.Handler().ServeHTTP(createRecorder, createRequest)
+
+	if createRecorder.Code != http.StatusAccepted {
+		t.Fatalf("expected 202, got %d", createRecorder.Code)
+	}
+
+	created := decodeJSONResponse(t, createRecorder)
+	jobID, ok := created["job_id"].(string)
+	if !ok || jobID == "" {
+		t.Fatalf("expected job_id, got %v", created["job_id"])
+	}
+
+	jobRequest := httptest.NewRequest(http.MethodGet, "/api/v1/audit/jobs/"+jobID, nil)
+	jobRecorder := httptest.NewRecorder()
+	server.Handler().ServeHTTP(jobRecorder, jobRequest)
+
+	if jobRecorder.Code != http.StatusOK {
+		t.Fatalf("expected 200, got %d", jobRecorder.Code)
+	}
+	jobPayload := decodeJSONResponse(t, jobRecorder)
+	if jobPayload["workspace_name"] != "api-job-001" {
+		t.Fatalf("expected workspace api-job-001, got %v", jobPayload["workspace_name"])
+	}
+}
+
+func TestListJobsReturnsLatestFirst(t *testing.T) {
+	root := t.TempDir()
+	server := NewServer(Config{
+		ExperimentsRoot: filepath.Join(root, "experiments"),
+		JobsRoot:        filepath.Join(root, "jobs"),
+	})
+
+	createJob := func(workspaceName string, artifactDir string) {
+		t.Helper()
+		data, err := json.Marshal(map[string]any{
+			"job_type":       "recon_artifact_mainline",
+			"workspace_name": workspaceName,
+			"artifact_dir":   artifactDir,
+		})
+		if err != nil {
+			t.Fatalf("marshal failed: %v", err)
+		}
+		request := httptest.NewRequest(http.MethodPost, "/api/v1/audit/jobs", bytes.NewReader(data))
+		request.Header.Set("Content-Type", "application/json")
+		recorder := httptest.NewRecorder()
+		server.Handler().ServeHTTP(recorder, request)
+		if recorder.Code != http.StatusAccepted {
+			t.Fatalf("expected 202, got %d", recorder.Code)
+		}
+	}
+
+	createJob("api-job-001", "D:/artifacts/one")
+	createJob("api-job-002", "D:/artifacts/two")
+
+	request := httptest.NewRequest(http.MethodGet, "/api/v1/audit/jobs", nil)
+	recorder := httptest.NewRecorder()
+	server.Handler().ServeHTTP(recorder, request)
+
+	if recorder.Code != http.StatusOK {
+		t.Fatalf("expected 200, got %d", recorder.Code)
+	}
+
+	var payload []map[string]any
+	if err := json.Unmarshal(recorder.Body.Bytes(), &payload); err != nil {
+		t.Fatalf("decode failed: %v", err)
+	}
+	if len(payload) != 2 {
+		t.Fatalf("expected 2 jobs, got %d", len(payload))
+	}
+	if payload[0]["workspace_name"] != "api-job-002" {
+		t.Fatalf("expected latest job first, got %v", payload[0]["workspace_name"])
+	}
+}
+
+func TestRejectsDuplicateActiveWorkspace(t *testing.T) {
+	root := t.TempDir()
+	server := NewServer(Config{
+		ExperimentsRoot: filepath.Join(root, "experiments"),
+		JobsRoot:        filepath.Join(root, "jobs"),
+	})
+
+	body := func(artifactDir string) *bytes.Reader {
+		t.Helper()
+		data, err := json.Marshal(map[string]any{
+			"job_type":       "recon_artifact_mainline",
+			"workspace_name": "shared-workspace",
+			"artifact_dir":   artifactDir,
+		})
+		if err != nil {
+			t.Fatalf("marshal failed: %v", err)
+		}
+		return bytes.NewReader(data)
+	}
+
+	firstRequest := httptest.NewRequest(http.MethodPost, "/api/v1/audit/jobs", body("D:/artifacts/one"))
+	firstRequest.Header.Set("Content-Type", "application/json")
+	firstRecorder := httptest.NewRecorder()
+	server.Handler().ServeHTTP(firstRecorder, firstRequest)
+	if firstRecorder.Code != http.StatusAccepted {
+		t.Fatalf("expected 202, got %d", firstRecorder.Code)
+	}
+
+	secondRequest := httptest.NewRequest(http.MethodPost, "/api/v1/audit/jobs", body("D:/artifacts/two"))
+	secondRequest.Header.Set("Content-Type", "application/json")
+	secondRecorder := httptest.NewRecorder()
+	server.Handler().ServeHTTP(secondRecorder, secondRequest)
+
+	if secondRecorder.Code != http.StatusConflict {
+		t.Fatalf("expected 409, got %d", secondRecorder.Code)
 	}
 }
