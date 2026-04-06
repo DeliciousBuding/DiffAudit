@@ -12,8 +12,8 @@ SIDE: Surrogate Conditional Data Extraction from Diffusion Models
 - 威胁模型类别：主体是白盒训练数据提取；附录补充了黑盒查询式扩展与投毒微调后的后门提取扩展
 - 本地 PDF 路径：`D:\Code\DiffAudit\Project\references\materials\gray-box\2024-arxiv-side-extracting-training-data-unconditional-diffusion-models.pdf`
 - GitHub PDF 链接：[2024-arxiv-side-extracting-training-data-unconditional-diffusion-models.pdf](https://github.com/DeliciousBuding/DiffAudit/blob/main/references/materials/gray-box/2024-arxiv-side-extracting-training-data-unconditional-diffusion-models.pdf)
-- OCR 精修版链接：[本地 born-digital 精修版](../markdown/gray-box/2024-arxiv-side-extracting-training-data-unconditional-diffusion-models/2024-arxiv-side-extracting-training-data-unconditional-diffusion-models-refined.md)
-- 飞书原生 PDF 获取方式：本轮未做飞书操作，线上 PDF 与附件链路沿用既有文档
+- OCR 精修版链接：[OCR精修版：SIDE: Surrogate Conditional Data Extraction from Diffusion Models](https://www.feishu.cn/docx/RfqVdBxQfokTDzxjKsxcj9wWnJe)
+- 飞书原生 PDF：[2024-arxiv-side-extracting-training-data-unconditional-diffusion-models.pdf](https://ncn24qi9j5mt.feishu.cn/file/C1L2bJ2T9oOr6Kx1fQ7cvzlBnYx)
 - 开源实现：暂未找到官方代码
 - 报告状态：已完成
 

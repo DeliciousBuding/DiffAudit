@@ -1,0 +1,4969 @@
+{
+  "prunedResult": {
+    "page_count": 5,
+    "width": 1224,
+    "height": 1584,
+    "model_settings": {
+      "use_doc_preprocessor": true,
+      "use_layout_detection": true,
+      "use_chart_recognition": false,
+      "use_seal_recognition": false,
+      "use_ocr_for_image_block": false,
+      "format_block_content": false,
+      "merge_layout_blocks": true,
+      "markdown_ignore_labels": [
+        "number",
+        "footnote",
+        "header",
+        "header_image",
+        "footer",
+        "footer_image",
+        "aside_text"
+      ],
+      "return_layout_polygon_points": true
+    },
+    "parsing_res_list": [
+      {
+        "block_label": "header",
+        "block_content": "White-box Membership Inference Attacks against Diffusion Models",
+        "block_bbox": [
+          80,
+          70,
+          494,
+          93
+        ],
+        "block_id": 0,
+        "block_order": null,
+        "group_id": 0,
+        "global_block_id": 250,
+        "global_group_id": 250,
+        "block_polygon_points": [
+          [
+            80.0,
+            70.0
+          ],
+          [
+            494.0,
+            70.0
+          ],
+          [
+            494.0,
+            93.0
+          ],
+          [
+            80.0,
+            93.0
+          ]
+        ]
+      },
+      {
+        "block_label": "header",
+        "block_content": "Proceedings on Privacy Enhancing Technologies 2025(2)",
+        "block_bbox": [
+          810,
+          54,
+          1171,
+          88
+        ],
+        "block_id": 1,
+        "block_order": null,
+        "group_id": 1,
+        "global_block_id": 251,
+        "global_group_id": 251,
+        "block_polygon_points": [
+          [
+            809.01025390625,
+            64.12457275390625
+          ],
+          [
+            1169.7626953125,
+            48.51508331298828
+          ],
+          [
+            1171.0029296875,
+            77.17776489257812
+          ],
+          [
+            810.25048828125,
+            92.7872543334961
+          ]
+        ]
+      },
+      {
+        "block_label": "paragraph_title",
+        "block_content": "Acknowledgment",
+        "block_bbox": [
+          82,
+          119,
+          273,
+          150
+        ],
+        "block_id": 2,
+        "block_order": 1,
+        "group_id": 2,
+        "global_block_id": 252,
+        "global_group_id": 252,
+        "block_polygon_points": [
+          [
+            82.0,
+            119.0
+          ],
+          [
+            273.0,
+            119.0
+          ],
+          [
+            273.0,
+            150.0
+          ],
+          [
+            82.0,
+            150.0
+          ]
+        ]
+      },
+      {
+        "block_label": "text",
+        "block_content": "We thank the reviewers for their valuable comments and suggestions. This work is partially supported by NSF CNS-2350332, CNS-2350333, and CNS-2220433.",
+        "block_bbox": [
+          78,
+          151,
+          596,
+          226
+        ],
+        "block_id": 3,
+        "block_order": 2,
+        "group_id": 3,
+        "global_block_id": 253,
+        "global_group_id": 253,
+        "block_polygon_points": [
+          [
+            78.03570556640625,
+            149.1295623779297
+          ],
+          [
+            596.1260986328125,
+            159.02149963378906
+          ],
+          [
+            594.7254028320312,
+            232.38380432128906
+          ],
+          [
+            76.635009765625,
+            222.4918670654297
+          ]
+        ]
+      },
+      {
+        "block_label": "paragraph_title",
+        "block_content": "References",
+        "block_bbox": [
+          80,
+          252,
+          204,
+          278
+        ],
+        "block_id": 4,
+        "block_order": 3,
+        "group_id": 4,
+        "global_block_id": 254,
+        "global_group_id": 254,
+        "block_polygon_points": [
+          [
+            80.0,
+            252.0
+          ],
+          [
+            204.0,
+            252.0
+          ],
+          [
+            204.0,
+            278.0
+          ],
+          [
+            80.0,
+            278.0
+          ]
+        ]
+      },
+      {
+        "block_label": "reference_content",
+        "block_content": "[1] ABADI, M., CHU, A., GOODFELLOW, L., McMAHAN, H. B., MIRONOV, I., TALWAR, K., AND ZHANG, L. Deep learning with differential privacy. In Proceedings of the 2016 ACM SIGSAC conference on computer and communications security (2016), pp. 308–318.",
+        "block_bbox": [
+          88,
+          282,
+          595,
+          353
+        ],
+        "block_id": 5,
+        "block_order": 4,
+        "group_id": 5,
+        "global_block_id": 255,
+        "global_group_id": 255,
+        "block_polygon_points": [
+          [
+            88,
+            282
+          ],
+          [
+            88,
+            321
+          ],
+          [
+            88,
+            345
+          ],
+          [
+            119,
+            352
+          ],
+          [
+            136,
+            352
+          ],
+          [
+            174,
+            352
+          ],
+          [
+            594,
+            345
+          ],
+          [
+            594,
+            282
+          ]
+        ]
+      },
+      {
+        "block_label": "reference_content",
+        "block_content": "[2] BAO, F., NIE, S., XUE, K., CAO, Y., LI, C., SU, H., AND ZHU, J. All are worth words: A vit backbone for diffusion models, 2023.",
+        "block_bbox": [
+          90,
+          352,
+          595,
+          387
+        ],
+        "block_id": 6,
+        "block_order": 5,
+        "group_id": 6,
+        "global_block_id": 256,
+        "global_group_id": 256,
+        "block_polygon_points": [
+          [
+            90.0,
+            352.0
+          ],
+          [
+            595.0,
+            352.0
+          ],
+          [
+            595.0,
+            387.0
+          ],
+          [
+            90.0,
+            387.0
+          ]
+        ]
+      },
+      {
+        "block_label": "reference_content",
+        "block_content": "[3] CARLINI, N., CHIEN, S., NASR, M., SONG, S., TERZIS, A., AND TRAMER, F. Membership inference attacks from first principles. In 2022 IEEE Symposium on Security and Privacy (SP) (2022), IEEE, pp. 1897–1914.",
+        "block_bbox": [
+          89,
+          386,
+          596,
+          438
+        ],
+        "block_id": 7,
+        "block_order": 6,
+        "group_id": 7,
+        "global_block_id": 257,
+        "global_group_id": 257,
+        "block_polygon_points": [
+          [
+            89,
+            386
+          ],
+          [
+            89,
+            437
+          ],
+          [
+            595,
+            437
+          ],
+          [
+            595,
+            386
+          ]
+        ]
+      },
+      {
+        "block_label": "reference_content",
+        "block_content": "[4] CARLINI, N., HAYES, J., NASR, M., JAGIELSKI, M., SEHWAG, V., TRAMER, F., BALLE, B., IPPOLITO, D., AND WALLACE, E. Extracting training data from diffusion models. arXiv preprint arXiv:2301.13188 (2023).",
+        "block_bbox": [
+          89,
+          437,
+          596,
+          492
+        ],
+        "block_id": 8,
+        "block_order": 7,
+        "group_id": 8,
+        "global_block_id": 258,
+        "global_group_id": 258,
+        "block_polygon_points": [
+          [
+            89.0,
+            437.0
+          ],
+          [
+            596.0,
+            437.0
+          ],
+          [
+            596.0,
+            492.0
+          ],
+          [
+            89.0,
+            492.0
+          ]
+        ]
+      },
+      {
+        "block_label": "reference_content",
+        "block_content": "[5] CHEN, D., YU, N., ZHANG, Y., AND FRITZ, M. Gan-leaks: A taxonomy of membership inference attacks against generative models. In Proceedings of the 2020 ACM SIGSAC conference on computer and communications security (2020). pp. 343–362.",
+        "block_bbox": [
+          90,
+          490,
+          595,
+          544
+        ],
+        "block_id": 9,
+        "block_order": 8,
+        "group_id": 9,
+        "global_block_id": 259,
+        "global_group_id": 259,
+        "block_polygon_points": [
+          [
+            90,
+            490
+          ],
+          [
+            90,
+            536
+          ],
+          [
+            115,
+            543
+          ],
+          [
+            594,
+            536
+          ],
+          [
+            594,
+            490
+          ]
+        ]
+      },
+      {
+        "block_label": "reference_content",
+        "block_content": "[6] CHOQUETTE-CHOO, C. A., TRAMER, F., CARLINI, N., AND PAPERNOT, N. Label-only membership inference attacks. In International conference on machine learning (2021), PMLR, pp. 1964–1974.",
+        "block_bbox": [
+          91,
+          540,
+          594,
+          596
+        ],
+        "block_id": 10,
+        "block_order": 9,
+        "group_id": 10,
+        "global_block_id": 260,
+        "global_group_id": 260,
+        "block_polygon_points": [
+          [
+            91,
+            548
+          ],
+          [
+            91,
+            595
+          ],
+          [
+            593,
+            595
+          ],
+          [
+            593,
+            540
+          ],
+          [
+            496,
+            540
+          ],
+          [
+            471,
+            540
+          ],
+          [
+            355,
+            540
+          ],
+          [
+            342,
+            540
+          ],
+          [
+            331,
+            540
+          ]
+        ]
+      },
+      {
+        "block_label": "reference_content",
+        "block_content": "[7] CRESWELL, A., WHITE, T., DUMOULIN, V., ARULKUMARAN, K., SENGUPTA, B., AND BHARATH, A. A. Generative adversarial networks: An overview. IEEE signal processing magazine 35, 1 (2018), 53–65.",
+        "block_bbox": [
+          91,
+          595,
+          595,
+          649
+        ],
+        "block_id": 11,
+        "block_order": 10,
+        "group_id": 11,
+        "global_block_id": 261,
+        "global_group_id": 261,
+        "block_polygon_points": [
+          [
+            91.0,
+            595.0
+          ],
+          [
+            595.0,
+            595.0
+          ],
+          [
+            595.0,
+            649.0
+          ],
+          [
+            91.0,
+            649.0
+          ]
+        ]
+      },
+      {
+        "block_label": "reference_content",
+        "block_content": "[8] CUBUK, E. D., ZOPH, B., SHLENS, J., AND LE, Q. V. Randaugment: Practical automated data augmentation with a reduced search space. In Proceedings of the IEEE/CVF conference on computer vision and pattern recognition workshops (2020), pp. 702–703.",
+        "block_bbox": [
+          92,
+          646,
+          595,
+          718
+        ],
+        "block_id": 12,
+        "block_order": 11,
+        "group_id": 12,
+        "global_block_id": 262,
+        "global_group_id": 262,
+        "block_polygon_points": [
+          [
+            92,
+            646
+          ],
+          [
+            92,
+            717
+          ],
+          [
+            196,
+            717
+          ],
+          [
+            197,
+            709
+          ],
+          [
+            594,
+            709
+          ],
+          [
+            594,
+            646
+          ]
+        ]
+      },
+      {
+        "block_label": "reference_content",
+        "block_content": "[9] DEVRIES, T., AND TAYLOR, G. W. Improved regularization of convolutional neural networks with cutout. arXiv preprint arXiv:1708.04552 (2017).",
+        "block_bbox": [
+          91,
+          715,
+          594,
+          753
+        ],
+        "block_id": 13,
+        "block_order": 12,
+        "group_id": 13,
+        "global_block_id": 263,
+        "global_group_id": 263,
+        "block_polygon_points": [
+          [
+            91,
+            723
+          ],
+          [
+            91,
+            752
+          ],
+          [
+            593,
+            752
+          ],
+          [
+            593,
+            715
+          ],
+          [
+            269,
+            715
+          ]
+        ]
+      },
+      {
+        "block_label": "reference_content",
+        "block_content": "[10] DHARIWAL, P., AND NICHOL, A. Diffusion models beat gans on image synthesis. Advances in Neural Information Processing Systems 34 (2021), 8780–8794.",
+        "block_bbox": [
+          87,
+          751,
+          595,
+          791
+        ],
+        "block_id": 14,
+        "block_order": 13,
+        "group_id": 14,
+        "global_block_id": 264,
+        "global_group_id": 264,
+        "block_polygon_points": [
+          [
+            87,
+            751
+          ],
+          [
+            87,
+            782
+          ],
+          [
+            94,
+            790
+          ],
+          [
+            209,
+            790
+          ],
+          [
+            228,
+            790
+          ],
+          [
+            234,
+            782
+          ],
+          [
+            594,
+            782
+          ],
+          [
+            594,
+            751
+          ]
+        ]
+      },
+      {
+        "block_label": "reference_content",
+        "block_content": "[11] DING, M., YANG, Z., HONG, W., ZHENG, W., ZHOU, C., YIN, D., LIN, J., ZOU, X., SHAO, Z., YANG, H., ET AL. Cogview: Mastering text-to-image generation via transformers. Advances in Neural Information Processing Systems 34 (2021), 19822–19835.",
+        "block_bbox": [
+          88,
+          785,
+          594,
+          857
+        ],
+        "block_id": 15,
+        "block_order": 14,
+        "group_id": 15,
+        "global_block_id": 265,
+        "global_group_id": 265,
+        "block_polygon_points": [
+          [
+            88,
+            793
+          ],
+          [
+            88,
+            832
+          ],
+          [
+            88,
+            856
+          ],
+          [
+            593,
+            856
+          ],
+          [
+            593,
+            785
+          ],
+          [
+            223,
+            785
+          ]
+        ]
+      },
+      {
+        "block_label": "reference_content",
+        "block_content": "[12] DUAN, J., KONG, F., WANG, S., SHI, X., AND XU, K. Are diffusion models vulnerable to membership inference attacks?. 2023.",
+        "block_bbox": [
+          88,
+          855,
+          594,
+          892
+        ],
+        "block_id": 16,
+        "block_order": 15,
+        "group_id": 16,
+        "global_block_id": 266,
+        "global_group_id": 266,
+        "block_polygon_points": [
+          [
+            88,
+            863
+          ],
+          [
+            95,
+            870
+          ],
+          [
+            88,
+            878
+          ],
+          [
+            95,
+            891
+          ],
+          [
+            216,
+            891
+          ],
+          [
+            217,
+            884
+          ],
+          [
+            593,
+            884
+          ],
+          [
+            593,
+            855
+          ],
+          [
+            95,
+            855
+          ]
+        ]
+      },
+      {
+        "block_label": "reference_content",
+        "block_content": "[13] DWORK, C. Differential privacy: A survey of results. In International conference on theory and applications of models of computation (2008), Springer, pp. 1–19.",
+        "block_bbox": [
+          89,
+          890,
+          595,
+          929
+        ],
+        "block_id": 17,
+        "block_order": 16,
+        "group_id": 17,
+        "global_block_id": 267,
+        "global_group_id": 267,
+        "block_polygon_points": [
+          [
+            89.0,
+            890.0
+          ],
+          [
+            595.0,
+            890.0
+          ],
+          [
+            595.0,
+            929.0
+          ],
+          [
+            89.0,
+            929.0
+          ]
+        ]
+      },
+      {
+        "block_label": "reference_content",
+        "block_content": "[14] FERNANDEZ, V., SANCHEZ, P., PINAYA, W. H. L., JACENKÓW, G., TSAFTARIS, S. A., AND CARDOSO, J. Privacy distillation: Reducing re-identification risk of multimodal diffusion models, 2023.",
+        "block_bbox": [
+          89,
+          925,
+          595,
+          978
+        ],
+        "block_id": 18,
+        "block_order": 17,
+        "group_id": 18,
+        "global_block_id": 268,
+        "global_group_id": 268,
+        "block_polygon_points": [
+          [
+            89,
+            925
+          ],
+          [
+            89,
+            977
+          ],
+          [
+            594,
+            977
+          ],
+          [
+            594,
+            925
+          ]
+        ]
+      },
+      {
+        "block_label": "reference_content",
+        "block_content": "[15] GANJU, K., WANG, Q., YANG, W., GUNTER, C. A., AND BORISOV, N. Property inference attacks on fully connected neural networks using permutation invariant representations. In Proceedings of the 2018 ACM SIGSAC conference on computer and communications security (2018), pp. 619–633.",
+        "block_bbox": [
+          87,
+          975,
+          594,
+          1049
+        ],
+        "block_id": 19,
+        "block_order": 18,
+        "group_id": 19,
+        "global_block_id": 269,
+        "global_group_id": 269,
+        "block_polygon_points": [
+          [
+            87,
+            984
+          ],
+          [
+            87,
+            999
+          ],
+          [
+            87,
+            1048
+          ],
+          [
+            593,
+            1048
+          ],
+          [
+            593,
+            975
+          ],
+          [
+            167,
+            975
+          ]
+        ]
+      },
+      {
+        "block_label": "reference_content",
+        "block_content": "[16] GRATHWOHL, W., CHEN, R. T., BETTENCOURT, J., SUTSKEVER, L., AND DUVENAUD, D. Ffjord: Free-form continuous dynamics for scalable reversible generative models. arXiv preprint arXiv:1810.01367 (2018).",
+        "block_bbox": [
+          87,
+          1045,
+          594,
+          1099
+        ],
+        "block_id": 20,
+        "block_order": 19,
+        "group_id": 20,
+        "global_block_id": 270,
+        "global_group_id": 270,
+        "block_polygon_points": [
+          [
+            87,
+            1045
+          ],
+          [
+            87,
+            1091
+          ],
+          [
+            94,
+            1098
+          ],
+          [
+            349,
+            1098
+          ],
+          [
+            375,
+            1098
+          ],
+          [
+            381,
+            1091
+          ],
+          [
+            411,
+            1098
+          ],
+          [
+            593,
+            1098
+          ],
+          [
+            593,
+            1045
+          ]
+        ]
+      },
+      {
+        "block_label": "reference_content",
+        "block_content": "[17] GU, J., GAO, Q., ZHAI, S., CHEN, B., LIU, L., AND SUSSKIND, J. Learning controllable 3d diffusion models from single-view images. arXiv preprint arXiv:2304.06700 (2023).",
+        "block_bbox": [
+          88,
+          1098,
+          594,
+          1150
+        ],
+        "block_id": 21,
+        "block_order": 20,
+        "group_id": 21,
+        "global_block_id": 271,
+        "global_group_id": 271,
+        "block_polygon_points": [
+          [
+            88.0,
+            1098.0
+          ],
+          [
+            594.0,
+            1098.0
+          ],
+          [
+            594.0,
+            1150.0
+          ],
+          [
+            88.0,
+            1150.0
+          ]
+        ]
+      },
+      {
+        "block_label": "reference_content",
+        "block_content": "[18] GU, S., CHEN, D., BAO, J., WEN, F., ZHANG, B., CHEN, D., YUAN, L., AND GUO, B. Vector quantized diffusion model for text-to-image synthesis. In Proceedings of the IEEE/CVF Conference on Computer Vision and Pattern Recognition (2022), pp. 10696–10706.",
+        "block_bbox": [
+          87,
+          1149,
+          594,
+          1221
+        ],
+        "block_id": 22,
+        "block_order": 21,
+        "group_id": 22,
+        "global_block_id": 272,
+        "global_group_id": 272,
+        "block_polygon_points": [
+          [
+            87,
+            1149
+          ],
+          [
+            87,
+            1220
+          ],
+          [
+            593,
+            1220
+          ],
+          [
+            593,
+            1149
+          ]
+        ]
+      },
+      {
+        "block_label": "reference_content",
+        "block_content": "[19] HAYES, J., MELIS, L., DANEZIS, G., AND DE CRISTOFARO, E. Logan: Membership inference attacks against generative models. arXiv preprint arXiv:1705.07663 (2017).",
+        "block_bbox": [
+          86,
+          1219,
+          593,
+          1271
+        ],
+        "block_id": 23,
+        "block_order": 22,
+        "group_id": 23,
+        "global_block_id": 273,
+        "global_group_id": 273,
+        "block_polygon_points": [
+          [
+            86,
+            1219
+          ],
+          [
+            86,
+            1270
+          ],
+          [
+            592,
+            1270
+          ],
+          [
+            592,
+            1219
+          ]
+        ]
+      },
+      {
+        "block_label": "reference_content",
+        "block_content": "[20] Hilprecht, B., Härterich, M., and Bernau, D. Monte Carlo and reconstruction membership inference attacks against generative models. Proc. Adv. Adv. Eng. Tech. 2019, 4 (2019), 232–249.",
+        "block_bbox": [
+          84,
+          1271,
+          593,
+          1323
+        ],
+        "block_id": 24,
+        "block_order": 23,
+        "group_id": 24,
+        "global_block_id": 274,
+        "global_group_id": 274,
+        "block_polygon_points": [
+          [
+            84.0,
+            1271.0
+          ],
+          [
+            593.0,
+            1271.0
+          ],
+          [
+            593.0,
+            1323.0
+          ],
+          [
+            84.0,
+            1323.0
+          ]
+        ]
+      },
+      {
+        "block_label": "reference_content",
+        "block_content": "[21] Ho, J., JAIN, A., AND ABBEEL, P. Denoising diffusion probabilistic models. Advances in Neural Information Processing Systems 33 (2020), 6840–6851.",
+        "block_bbox": [
+          83,
+          1323,
+          594,
+          1359
+        ],
+        "block_id": 25,
+        "block_order": 24,
+        "group_id": 25,
+        "global_block_id": 275,
+        "global_group_id": 275,
+        "block_polygon_points": [
+          [
+            83.0,
+            1323.0
+          ],
+          [
+            594.0,
+            1323.0
+          ],
+          [
+            594.0,
+            1359.0
+          ],
+          [
+            83.0,
+            1359.0
+          ]
+        ]
+      },
+      {
+        "block_label": "reference_content",
+        "block_content": "[22] Ho, J., SAHARIA, C., CHAN, W., FLEET, D. J., NOROUZI, M., AND SALIMANS, T. Cascaded diffusion models for high fidelity image generation. The Journal of Machine Learning Research 23, 1 (2022), 2249–2281.",
+        "block_bbox": [
+          81,
+          1358,
+          595,
+          1411
+        ],
+        "block_id": 26,
+        "block_order": 25,
+        "group_id": 26,
+        "global_block_id": 276,
+        "global_group_id": 276,
+        "block_polygon_points": [
+          [
+            81,
+            1366
+          ],
+          [
+            81,
+            1403
+          ],
+          [
+            94,
+            1410
+          ],
+          [
+            594,
+            1410
+          ],
+          [
+            594,
+            1358
+          ],
+          [
+            577,
+            1358
+          ],
+          [
+            331,
+            1358
+          ],
+          [
+            314,
+            1358
+          ],
+          [
+            246,
+            1358
+          ],
+          [
+            234,
+            1358
+          ],
+          [
+            227,
+            1358
+          ],
+          [
+            221,
+            1366
+          ],
+          [
+            172,
+            1358
+          ],
+          [
+            88,
+            1358
+          ]
+        ]
+      },
+      {
+        "block_label": "reference_content",
+        "block_content": "[23] Ho, J., and Salimans, T. Classifier-free diffusion guidance, 2022.",
+        "block_bbox": [
+          80,
+          1409,
+          508,
+          1429
+        ],
+        "block_id": 27,
+        "block_order": 26,
+        "group_id": 27,
+        "global_block_id": 277,
+        "global_group_id": 277,
+        "block_polygon_points": [
+          [
+            80,
+            1409
+          ],
+          [
+            80,
+            1428
+          ],
+          [
+            507,
+            1428
+          ],
+          [
+            507,
+            1409
+          ]
+        ]
+      },
+      {
+        "block_label": "reference_content",
+        "block_content": "[24] Ho, J., SALIMANS, T., GRITSENKO, A., CHAN, W., NOROUZI, M., AND FLEET, D. J. Video diffusion models. arXiv preprint arXiv:2204.03458 (2022).",
+        "block_bbox": [
+          81,
+          1429,
+          593,
+          1463
+        ],
+        "block_id": 28,
+        "block_order": 27,
+        "group_id": 28,
+        "global_block_id": 278,
+        "global_group_id": 278,
+        "block_polygon_points": [
+          [
+            81.0,
+            1429.0
+          ],
+          [
+            593.0,
+            1429.0
+          ],
+          [
+            593.0,
+            1463.0
+          ],
+          [
+            81.0,
+            1463.0
+          ]
+        ]
+      },
+      {
+        "block_label": "reference_content",
+        "block_content": "[25] HOMER, N., SZELINGER, S., REDMAN, M., DUGGAN, D., TEMBE, W., MUEHLING,",
+        "block_bbox": [
+          80,
+          1463,
+          593,
+          1480
+        ],
+        "block_id": 29,
+        "block_order": 28,
+        "group_id": 29,
+        "global_block_id": 279,
+        "global_group_id": 279,
+        "block_polygon_points": [
+          [
+            80.0,
+            1463.0
+          ],
+          [
+            592.0,
+            1463.0
+          ],
+          [
+            592.0,
+            1479.0
+          ],
+          [
+            80.0,
+            1479.0
+          ]
+        ]
+      },
+      {
+        "block_label": "reference_content",
+        "block_content": "J., PEARSON, J. V., STEPHAN, D. A., NELSON, S. F., AND CRAIG, D. W. Resolving individuals contributing trace amounts of dna to highly complex mixtures using high-density snp genotyping microarrays. PLoS genetics 4, 8 (2008), e1000167.",
+        "block_bbox": [
+          667,
+          113,
+          1169,
+          179
+        ],
+        "block_id": 30,
+        "block_order": 29,
+        "group_id": 30,
+        "global_block_id": 280,
+        "global_group_id": 280,
+        "block_polygon_points": [
+          [
+            665.498291015625,
+            128.05255126953125
+          ],
+          [
+            1167.9122314453125,
+            110.48556518554688
+          ],
+          [
+            1169.9144287109375,
+            167.751220703125
+          ],
+          [
+            667.50048828125,
+            185.31820678710938
+          ]
+        ]
+      },
+      {
+        "block_label": "reference_content",
+        "block_content": "[26] HU, H., AND PANG, J. Membership inference attacks against gans by leveraging over-representation regions. In Proceedings of the 2021 ACM SIGSAC Conference on Computer and Communications Security (2021), pp. 2387–2389.",
+        "block_bbox": [
+          638,
+          168,
+          1170,
+          229
+        ],
+        "block_id": 31,
+        "block_order": 30,
+        "group_id": 31,
+        "global_block_id": 281,
+        "global_group_id": 281,
+        "block_polygon_points": [
+          [
+            1169,
+            168
+          ],
+          [
+            1122,
+            168
+          ],
+          [
+            1121,
+            176
+          ],
+          [
+            694,
+            176
+          ],
+          [
+            680,
+            176
+          ],
+          [
+            645,
+            176
+          ],
+          [
+            638,
+            184
+          ],
+          [
+            638,
+            221
+          ],
+          [
+            645,
+            228
+          ],
+          [
+            1004,
+            228
+          ],
+          [
+            1169,
+            221
+          ]
+        ]
+      },
+      {
+        "block_label": "reference_content",
+        "block_content": "[27] Hu, H., and Pang, J. Membership inference of diffusion models. arXiv preprint arXiv:2301.09956 (2023).",
+        "block_bbox": [
+          639,
+          221,
+          1168,
+          265
+        ],
+        "block_id": 32,
+        "block_order": 31,
+        "group_id": 32,
+        "global_block_id": 282,
+        "global_group_id": 282,
+        "block_polygon_points": [
+          [
+            1167,
+            221
+          ],
+          [
+            1029,
+            221
+          ],
+          [
+            1028,
+            230
+          ],
+          [
+            639,
+            230
+          ],
+          [
+            639,
+            256
+          ],
+          [
+            646,
+            264
+          ],
+          [
+            1149,
+            264
+          ],
+          [
+            1161,
+            256
+          ],
+          [
+            1167,
+            264
+          ]
+        ]
+      },
+      {
+        "block_label": "reference_content",
+        "block_content": "[28] HUI, B., YANG, Y., YUAN, H., BURLINA, P., GONG, N. Z., AND CAO, Y. Practical blind membership inference attack via differential comparisons. arXiv preprint arXiv:2101.01341 (2021).",
+        "block_bbox": [
+          640,
+          259,
+          1167,
+          317
+        ],
+        "block_id": 33,
+        "block_order": 32,
+        "group_id": 33,
+        "global_block_id": 283,
+        "global_group_id": 283,
+        "block_polygon_points": [
+          [
+            640,
+            259
+          ],
+          [
+            640,
+            316
+          ],
+          [
+            1142,
+            316
+          ],
+          [
+            1160,
+            316
+          ],
+          [
+            1166,
+            308
+          ],
+          [
+            1166,
+            259
+          ]
+        ]
+      },
+      {
+        "block_label": "reference_content",
+        "block_content": "[29] KIM, G., KWON, T., AND YE, J. C. Diffusionclip: text-guided diffusion models for robust image manipulation. In Proceedings of the IEEE/CVF Conference on Computer Vision and Pattern Recognition (2022), pp. 2426–2435.",
+        "block_bbox": [
+          640,
+          311,
+          1166,
+          367
+        ],
+        "block_id": 34,
+        "block_order": 33,
+        "group_id": 34,
+        "global_block_id": 284,
+        "global_group_id": 284,
+        "block_polygon_points": [
+          [
+            1165,
+            311
+          ],
+          [
+            1038,
+            311
+          ],
+          [
+            1037,
+            319
+          ],
+          [
+            640,
+            319
+          ],
+          [
+            640,
+            366
+          ],
+          [
+            1165,
+            366
+          ]
+        ]
+      },
+      {
+        "block_label": "reference_content",
+        "block_content": "[30] KONG, F., DUAN, J., MA, R., SHEN, H., ZHU, X., SHI, X., AND XU, K. An efficient membership inference attack for the diffusion model by proximal initialization. arXiv preprint arXiv:2305.18355 (2023).",
+        "block_bbox": [
+          640,
+          364,
+          1166,
+          419
+        ],
+        "block_id": 35,
+        "block_order": 34,
+        "group_id": 35,
+        "global_block_id": 285,
+        "global_group_id": 285,
+        "block_polygon_points": [
+          [
+            640,
+            364
+          ],
+          [
+            640,
+            418
+          ],
+          [
+            1165,
+            418
+          ],
+          [
+            1165,
+            364
+          ]
+        ]
+      },
+      {
+        "block_label": "reference_content",
+        "block_content": "[31] LI, J., LI, N., AND RIBEIRO, B. Membership inference attacks and defenses in classification models. In Proceedings of the Eleventh ACM Conference on Data and Application Security and Privacy (2021), pp. 5–16.",
+        "block_bbox": [
+          640,
+          417,
+          1167,
+          474
+        ],
+        "block_id": 36,
+        "block_order": 35,
+        "group_id": 36,
+        "global_block_id": 286,
+        "global_group_id": 286,
+        "block_polygon_points": [
+          [
+            640,
+            417
+          ],
+          [
+            640,
+            473
+          ],
+          [
+            983,
+            473
+          ],
+          [
+            990,
+            473
+          ],
+          [
+            1001,
+            473
+          ],
+          [
+            1014,
+            473
+          ],
+          [
+            1062,
+            473
+          ],
+          [
+            1166,
+            465
+          ],
+          [
+            1166,
+            417
+          ]
+        ]
+      },
+      {
+        "block_label": "reference_content",
+        "block_content": "[32] LIANG, D., KRISHNAN, R. G., HOFFMAN, M. D., AND JEBARA, T. Variational autoencoders for collaborative filtering. In Proceedings of the 2018 world wide web conference (2018), pp. 689–698.",
+        "block_bbox": [
+          640,
+          470,
+          1168,
+          525
+        ],
+        "block_id": 37,
+        "block_order": 36,
+        "group_id": 37,
+        "global_block_id": 287,
+        "global_group_id": 287,
+        "block_polygon_points": [
+          [
+            1167,
+            478
+          ],
+          [
+            1149,
+            470
+          ],
+          [
+            1046,
+            470
+          ],
+          [
+            1014,
+            470
+          ],
+          [
+            997,
+            470
+          ],
+          [
+            996,
+            478
+          ],
+          [
+            640,
+            478
+          ],
+          [
+            640,
+            524
+          ],
+          [
+            1167,
+            524
+          ]
+        ]
+      },
+      {
+        "block_label": "reference_content",
+        "block_content": "33] LIU, Y., ZHAO, Z., BACKES, M., AND ZHANG, Y. Membership inference attacks by exploiting loss trajectory. In Proceedings of the 2022 ACM SIGSAC Conference on Computer and Communications Security (2022), pp. 2085–2098.",
+        "block_bbox": [
+          639,
+          522,
+          1167,
+          577
+        ],
+        "block_id": 38,
+        "block_order": 37,
+        "group_id": 38,
+        "global_block_id": 288,
+        "global_group_id": 288,
+        "block_polygon_points": [
+          [
+            646,
+            522
+          ],
+          [
+            646,
+            569
+          ],
+          [
+            658,
+            576
+          ],
+          [
+            1166,
+            576
+          ],
+          [
+            1166,
+            522
+          ]
+        ]
+      },
+      {
+        "block_label": "reference_content",
+        "block_content": "[34] LUGMAYR, A., DANELLJAN, M., ROMERO, A., YU, F., TIMOFTE, R., AND VAN GOOL, L. Repaint: Inpainting using denoising diffusion probabilistic models. In Proceedings of the IEEE/CVF Conference on Computer Vision and Pattern Recognition (2022), pp. 11461–11471.",
+        "block_bbox": [
+          639,
+          576,
+          1167,
+          647
+        ],
+        "block_id": 39,
+        "block_order": 38,
+        "group_id": 39,
+        "global_block_id": 289,
+        "global_group_id": 289,
+        "block_polygon_points": [
+          [
+            639.0,
+            576.0
+          ],
+          [
+            1167.0,
+            576.0
+          ],
+          [
+            1167.0,
+            647.0
+          ],
+          [
+            639.0,
+            647.0
+          ]
+        ]
+      },
+      {
+        "block_label": "reference_content",
+        "block_content": "[35] MATSUMOTO, I., MIURA, I., AND YANAI, N. Membership inference attacks against diffusion models, 2023.",
+        "block_bbox": [
+          639,
+          645,
+          1165,
+          681
+        ],
+        "block_id": 40,
+        "block_order": 39,
+        "group_id": 40,
+        "global_block_id": 290,
+        "global_group_id": 290,
+        "block_polygon_points": [
+          [
+            1164,
+            653
+          ],
+          [
+            1018,
+            645
+          ],
+          [
+            1006,
+            645
+          ],
+          [
+            1005,
+            653
+          ],
+          [
+            639,
+            653
+          ],
+          [
+            639,
+            673
+          ],
+          [
+            646,
+            680
+          ],
+          [
+            1164,
+            680
+          ]
+        ]
+      },
+      {
+        "block_label": "reference_content",
+        "block_content": "[36] MENG, C., HE, Y., SONG, Y., SONG, J., WU, J., ZHU, J.-Y., AND ERMON, S. Sdedit: Guided image synthesis and editing with stochastic differential equations. In International Conference on Learning Representations (2021).",
+        "block_bbox": [
+          639,
+          679,
+          1166,
+          734
+        ],
+        "block_id": 41,
+        "block_order": 40,
+        "group_id": 41,
+        "global_block_id": 291,
+        "global_group_id": 291,
+        "block_polygon_points": [
+          [
+            639,
+            679
+          ],
+          [
+            639,
+            726
+          ],
+          [
+            767,
+            733
+          ],
+          [
+            779,
+            733
+          ],
+          [
+            790,
+            733
+          ],
+          [
+            815,
+            733
+          ],
+          [
+            1112,
+            733
+          ],
+          [
+            1123,
+            733
+          ],
+          [
+            1130,
+            733
+          ],
+          [
+            1159,
+            733
+          ],
+          [
+            1165,
+            718
+          ],
+          [
+            1165,
+            703
+          ],
+          [
+            1165,
+            679
+          ]
+        ]
+      },
+      {
+        "block_label": "reference_content",
+        "block_content": "[37] MUKHERJEE, S., XU, Y., TRIVEDI, A., PATOWARY, N., AND FERRES, J. L. privgan: Protecting gans from membership inference attacks at low cost to utility. Proc. Priv. Enhancing Technol. 2021, 3 (2021), 142–163.",
+        "block_bbox": [
+          639,
+          732,
+          1166,
+          786
+        ],
+        "block_id": 42,
+        "block_order": 41,
+        "group_id": 42,
+        "global_block_id": 292,
+        "global_group_id": 292,
+        "block_polygon_points": [
+          [
+            639,
+            763
+          ],
+          [
+            646,
+            785
+          ],
+          [
+            1165,
+            785
+          ],
+          [
+            1165,
+            740
+          ],
+          [
+            1111,
+            732
+          ],
+          [
+            1051,
+            732
+          ],
+          [
+            1044,
+            732
+          ],
+          [
+            1009,
+            732
+          ],
+          [
+            996,
+            732
+          ],
+          [
+            985,
+            732
+          ],
+          [
+            978,
+            732
+          ],
+          [
+            961,
+            732
+          ],
+          [
+            784,
+            732
+          ],
+          [
+            755,
+            732
+          ],
+          [
+            670,
+            740
+          ],
+          [
+            664,
+            732
+          ],
+          [
+            657,
+            732
+          ],
+          [
+            646,
+            732
+          ]
+        ]
+      },
+      {
+        "block_label": "reference_content",
+        "block_content": "[38] NASR, M., SHOKRI, R., AND HOUMANSADR, A. Comprehensive privacy analysis of deep learning: Passive and active white-box inference attacks against centralized and federated learning. In 2019 IEEE symposium on security and privacy (SP) (2019), IEEE, pp. 739–753.",
+        "block_bbox": [
+          640,
+          785,
+          1168,
+          859
+        ],
+        "block_id": 43,
+        "block_order": 42,
+        "group_id": 43,
+        "global_block_id": 293,
+        "global_group_id": 293,
+        "block_polygon_points": [
+          [
+            640.0,
+            785.0
+          ],
+          [
+            1168.0,
+            785.0
+          ],
+          [
+            1168.0,
+            859.0
+          ],
+          [
+            640.0,
+            859.0
+          ]
+        ]
+      },
+      {
+        "block_label": "reference_content",
+        "block_content": "[39] Nichol, A., Dhariwal, P., Ramesh, A., Shyam, P., Mishkin, P., McGrew, B., Sutskever, I., and Chen, M. Glide: Towards photorealistic image generation and editing with text-guided diffusion models. arXiv preprint arXiv:2112.10741 (2021).",
+        "block_bbox": [
+          640,
+          857,
+          1166,
+          928
+        ],
+        "block_id": 44,
+        "block_order": 43,
+        "group_id": 44,
+        "global_block_id": 294,
+        "global_group_id": 294,
+        "block_polygon_points": [
+          [
+            640,
+            857
+          ],
+          [
+            640,
+            927
+          ],
+          [
+            1165,
+            927
+          ],
+          [
+            1165,
+            913
+          ],
+          [
+            1165,
+            904
+          ],
+          [
+            1165,
+            865
+          ],
+          [
+            1068,
+            857
+          ]
+        ]
+      },
+      {
+        "block_label": "reference_content",
+        "block_content": "40] PENG, S., CHEN, Y., WANG, C., AND JIA, X. Protecting the intellectual property of diffusion models by the watermark diffusion process. 2023.",
+        "block_bbox": [
+          639,
+          926,
+          1165,
+          964
+        ],
+        "block_id": 45,
+        "block_order": 44,
+        "group_id": 45,
+        "global_block_id": 295,
+        "global_group_id": 295,
+        "block_polygon_points": [
+          [
+            646,
+            926
+          ],
+          [
+            646,
+            956
+          ],
+          [
+            1054,
+            956
+          ],
+          [
+            1055,
+            963
+          ],
+          [
+            1164,
+            963
+          ],
+          [
+            1164,
+            926
+          ]
+        ]
+      },
+      {
+        "block_label": "reference_content",
+        "block_content": "[41] RAFFEL, C., SHAZEER, N., ROBERTS, A., LEE, K., NARANG, S., MATENA, M., ZHOU, Y., LI, W., AND LIU, P. J. Exploring the limits of transfer learning with a unified text-to-text transformer. The Journal of Machine Learning Research 21, 1 (2020), 5485–5551.",
+        "block_bbox": [
+          639,
+          960,
+          1165,
+          1032
+        ],
+        "block_id": 46,
+        "block_order": 45,
+        "group_id": 46,
+        "global_block_id": 296,
+        "global_group_id": 296,
+        "block_polygon_points": [
+          [
+            646,
+            960
+          ],
+          [
+            646,
+            1023
+          ],
+          [
+            658,
+            1031
+          ],
+          [
+            1164,
+            1031
+          ],
+          [
+            1164,
+            968
+          ],
+          [
+            1030,
+            960
+          ]
+        ]
+      },
+      {
+        "block_label": "reference_content",
+        "block_content": "[42] RAMESH, A., DHARIWAL, P., NICHOL, A., CHU, C., AND CHEN, M. Hierarchical text-conditional image generation with clip latents, 2022.",
+        "block_bbox": [
+          640,
+          1030,
+          1163,
+          1069
+        ],
+        "block_id": 47,
+        "block_order": 46,
+        "group_id": 47,
+        "global_block_id": 297,
+        "global_group_id": 297,
+        "block_polygon_points": [
+          [
+            640.0,
+            1030.0
+          ],
+          [
+            649.1651715654484,
+            1045.8733185052183
+          ],
+          [
+            647.0,
+            1061.0
+          ],
+          [
+            800.0,
+            1068.0
+          ],
+          [
+            836.0,
+            1068.0
+          ],
+          [
+            868.0,
+            1068.0
+          ],
+          [
+            1162.0,
+            1068.0
+          ],
+          [
+            1162.0,
+            1038.0
+          ],
+          [
+            1076.0,
+            1030.0
+          ]
+        ]
+      },
+      {
+        "block_label": "reference_content",
+        "block_content": "43] RAMESH, A., PAVLOV, M., GOH, G., GRAY, S., VOSS, C., RADFORD, A., CHEN, M., AND SUTSKEVER, I. Zero-shot text-to-image generation. In International Conference on Machine Learning (2021), PMLR, pp. 8821–8831.",
+        "block_bbox": [
+          640,
+          1065,
+          1164,
+          1121
+        ],
+        "block_id": 48,
+        "block_order": 47,
+        "group_id": 48,
+        "global_block_id": 298,
+        "global_group_id": 298,
+        "block_polygon_points": [
+          [
+            651.0785887272739,
+            1091.7460791573383
+          ],
+          [
+            640.0,
+            1113.0
+          ],
+          [
+            1077.0,
+            1113.0
+          ],
+          [
+            1078.0,
+            1120.0
+          ],
+          [
+            1163.0,
+            1120.0
+          ],
+          [
+            1163.0,
+            1072.0
+          ],
+          [
+            880.0,
+            1065.0
+          ],
+          [
+            714.0,
+            1065.0
+          ],
+          [
+            671.0,
+            1065.0
+          ],
+          [
+            647.0,
+            1072.0
+          ]
+        ]
+      },
+      {
+        "block_label": "reference_content",
+        "block_content": "[44] REZAEI, S., AND LIU, X. Towards the infeasibility of membership inference on deep models. arXiv preprint arXiv:2005.13702 (2020).",
+        "block_bbox": [
+          640,
+          1116,
+          1163,
+          1156
+        ],
+        "block_id": 49,
+        "block_order": 48,
+        "group_id": 49,
+        "global_block_id": 299,
+        "global_group_id": 299,
+        "block_polygon_points": [
+          [
+            640,
+            1116
+          ],
+          [
+            640,
+            1147
+          ],
+          [
+            751,
+            1155
+          ],
+          [
+            763,
+            1155
+          ],
+          [
+            770,
+            1155
+          ],
+          [
+            806,
+            1155
+          ],
+          [
+            856,
+            1155
+          ],
+          [
+            923,
+            1155
+          ],
+          [
+            936,
+            1155
+          ],
+          [
+            1162,
+            1155
+          ],
+          [
+            1162,
+            1124
+          ],
+          [
+            1083,
+            1116
+          ]
+        ]
+      },
+      {
+        "block_label": "reference_content",
+        "block_content": "45] ROMBACH, R., BLATTMANN, A., LORENZ, D., ESSER, P., AND OMMER, B. High-resolution image synthesis with latent diffusion models, 2022.",
+        "block_bbox": [
+          639,
+          1151,
+          1163,
+          1191
+        ],
+        "block_id": 50,
+        "block_order": 49,
+        "group_id": 50,
+        "global_block_id": 300,
+        "global_group_id": 300,
+        "block_polygon_points": [
+          [
+            646,
+            1151
+          ],
+          [
+            646,
+            1190
+          ],
+          [
+            1162,
+            1190
+          ],
+          [
+            1162,
+            1159
+          ],
+          [
+            937,
+            1151
+          ],
+          [
+            926,
+            1151
+          ],
+          [
+            900,
+            1151
+          ]
+        ]
+      },
+      {
+        "block_label": "reference_content",
+        "block_content": "[46] SABLAYROLLES, A., DOUZE, M., SCHMID, C., OLLIVIER, Y., AND JÉGOU, H. White-box vs black-box: Bayes optimal strategies for membership inference. In International Conference on Machine Learning (2019), PMLR, pp. 5558–5567.",
+        "block_bbox": [
+          639,
+          1186,
+          1163,
+          1242
+        ],
+        "block_id": 51,
+        "block_order": 50,
+        "group_id": 51,
+        "global_block_id": 301,
+        "global_group_id": 301,
+        "block_polygon_points": [
+          [
+            639,
+            1186
+          ],
+          [
+            646,
+            1194
+          ],
+          [
+            639,
+            1218
+          ],
+          [
+            646,
+            1233
+          ],
+          [
+            956,
+            1241
+          ],
+          [
+            980,
+            1241
+          ],
+          [
+            987,
+            1241
+          ],
+          [
+            1162,
+            1241
+          ],
+          [
+            1162,
+            1194
+          ],
+          [
+            1132,
+            1186
+          ]
+        ]
+      },
+      {
+        "block_label": "reference_content",
+        "block_content": "[47] SAHARIA, C., CHAN, W., CHANG, H., LEE, C., HO, J., SALIMANS, T., FLEET, D., AND NOROUZI, M. Palette: Image-to-image diffusion models. In ACM SIGGRAPH 2022 Conference Proceedings (2022), pp. 1–10.",
+        "block_bbox": [
+          639,
+          1236,
+          1163,
+          1293
+        ],
+        "block_id": 52,
+        "block_order": 51,
+        "group_id": 52,
+        "global_block_id": 302,
+        "global_group_id": 302,
+        "block_polygon_points": [
+          [
+            639,
+            1236
+          ],
+          [
+            639,
+            1284
+          ],
+          [
+            646,
+            1292
+          ],
+          [
+            658,
+            1292
+          ],
+          [
+            669,
+            1292
+          ],
+          [
+            676,
+            1292
+          ],
+          [
+            1162,
+            1292
+          ],
+          [
+            1162,
+            1245
+          ],
+          [
+            974,
+            1236
+          ],
+          [
+            968,
+            1245
+          ],
+          [
+            955,
+            1236
+          ]
+        ]
+      },
+      {
+        "block_label": "reference_content",
+        "block_content": "[48] SAHARIA, C., CHAN, W., SAXENA, S., LI, L., WHANG, J., DENTON, E. L., GHASEMIPOUR, K., GONTIJO LOPES, R., KARAGOL AYAN, B., SALIMANS, T., ET AL. Photorealistic text-to-image diffusion models with deep language understanding. Advances in Neural Information Processing Systems 35 (2022). 36479–36494",
+        "block_bbox": [
+          638,
+          1288,
+          1163,
+          1367
+        ],
+        "block_id": 53,
+        "block_order": 52,
+        "group_id": 53,
+        "global_block_id": 303,
+        "global_group_id": 303,
+        "block_polygon_points": [
+          [
+            638,
+            1288
+          ],
+          [
+            638,
+            1304
+          ],
+          [
+            638,
+            1351
+          ],
+          [
+            681,
+            1359
+          ],
+          [
+            1138,
+            1359
+          ],
+          [
+            1139,
+            1366
+          ],
+          [
+            1162,
+            1366
+          ],
+          [
+            1162,
+            1288
+          ],
+          [
+            1156,
+            1296
+          ],
+          [
+            1144,
+            1288
+          ]
+        ]
+      },
+      {
+        "block_label": "reference_content",
+        "block_content": "[49] SAHARIA, C., HO, J., CHAN, W., SALIMANS, T., FLEET, D. J., AND NOROUZI, M. Image super-resolution via iterative refinement. IEEE Transactions on Pattern Analysis and Machine Intelligence 45, 4 (2022), 4713–4726.",
+        "block_bbox": [
+          638,
+          1360,
+          1162,
+          1418
+        ],
+        "block_id": 54,
+        "block_order": 53,
+        "group_id": 54,
+        "global_block_id": 304,
+        "global_group_id": 304,
+        "block_polygon_points": [
+          [
+            638.1153564453125,
+            1352.460693359375
+          ],
+          [
+            1161.8646240234375,
+            1360.47216796875
+          ],
+          [
+            1161.0,
+            1417.0
+          ],
+          [
+            637.250732421875,
+            1408.988525390625
+          ]
+        ]
+      },
+      {
+        "block_label": "reference_content",
+        "block_content": "[50] SALEM, A., ZHANG, I., HUMBERT, M., BERRANG, P., FRITZ, M., AND BACKES, M. Mleaks: Model and data independent membership inference attacks and defenses on machine learning models. arXiv preprint arXiv:1806.01246 (2018).",
+        "block_bbox": [
+          638,
+          1413,
+          1165,
+          1471
+        ],
+        "block_id": 55,
+        "block_order": 54,
+        "group_id": 55,
+        "global_block_id": 305,
+        "global_group_id": 305,
+        "block_polygon_points": [
+          [
+            638,
+            1428
+          ],
+          [
+            638,
+            1442
+          ],
+          [
+            645,
+            1463
+          ],
+          [
+            1036,
+            1463
+          ],
+          [
+            1037,
+            1470
+          ],
+          [
+            1164,
+            1470
+          ],
+          [
+            1164,
+            1421
+          ],
+          [
+            681,
+            1421
+          ],
+          [
+            680,
+            1413
+          ],
+          [
+            668,
+            1413
+          ],
+          [
+            645,
+            1413
+          ]
+        ]
+      },
+      {
+        "block_label": "reference_content",
+        "block_content": "[51] SHAN, S., CRYAN, J., WENGER, E., ZHENG, H., HANOCKA, R., AND ZHAO, B. Y. Glaze:",
+        "block_bbox": [
+          638,
+          1466,
+          1165,
+          1488
+        ],
+        "block_id": 56,
+        "block_order": 55,
+        "group_id": 56,
+        "global_block_id": 306,
+        "global_group_id": 306,
+        "block_polygon_points": [
+          [
+            638,
+            1466
+          ],
+          [
+            638,
+            1480
+          ],
+          [
+            1164,
+            1487
+          ],
+          [
+            1164,
+            1474
+          ],
+          [
+            975,
+            1466
+          ]
+        ]
+      },
+      {
+        "block_label": "number",
+        "block_content": "411",
+        "block_bbox": [
+          602,
+          1491,
+          627,
+          1506
+        ],
+        "block_id": 57,
+        "block_order": null,
+        "group_id": 57,
+        "global_block_id": 307,
+        "global_group_id": 307,
+        "block_polygon_points": [
+          [
+            602.0,
+            1491.0
+          ],
+          [
+            626.0,
+            1491.0
+          ],
+          [
+            626.0,
+            1505.0
+          ],
+          [
+            602.0,
+            1505.0
+          ]
+        ]
+      }
+    ],
+    "doc_preprocessor_res": {
+      "model_settings": {
+        "use_doc_orientation_classify": true,
+        "use_doc_unwarping": true
+      },
+      "angle": 0
+    },
+    "layout_det_res": {
+      "boxes": [
+        {
+          "cls_id": 12,
+          "label": "header",
+          "score": 0.8802178502082825,
+          "coordinate": [
+            80,
+            70,
+            494,
+            93
+          ],
+          "order": null,
+          "polygon_points": [
+            [
+              80.0,
+              70.0
+            ],
+            [
+              494.0,
+              70.0
+            ],
+            [
+              494.0,
+              93.0
+            ],
+            [
+              80.0,
+              93.0
+            ]
+          ]
+        },
+        {
+          "cls_id": 12,
+          "label": "header",
+          "score": 0.9080744385719299,
+          "coordinate": [
+            810,
+            54,
+            1171,
+            88
+          ],
+          "order": null,
+          "polygon_points": [
+            [
+              809.01025390625,
+              64.12457275390625
+            ],
+            [
+              1169.7626953125,
+              48.51508331298828
+            ],
+            [
+              1171.0029296875,
+              77.17776489257812
+            ],
+            [
+              810.25048828125,
+              92.7872543334961
+            ]
+          ]
+        },
+        {
+          "cls_id": 17,
+          "label": "paragraph_title",
+          "score": 0.8420765399932861,
+          "coordinate": [
+            82,
+            119,
+            273,
+            150
+          ],
+          "order": 1,
+          "polygon_points": [
+            [
+              82.0,
+              119.0
+            ],
+            [
+              273.0,
+              119.0
+            ],
+            [
+              273.0,
+              150.0
+            ],
+            [
+              82.0,
+              150.0
+            ]
+          ]
+        },
+        {
+          "cls_id": 22,
+          "label": "text",
+          "score": 0.9171109199523926,
+          "coordinate": [
+            78,
+            151,
+            596,
+            226
+          ],
+          "order": 2,
+          "polygon_points": [
+            [
+              78.03570556640625,
+              149.1295623779297
+            ],
+            [
+              596.1260986328125,
+              159.02149963378906
+            ],
+            [
+              594.7254028320312,
+              232.38380432128906
+            ],
+            [
+              76.635009765625,
+              222.4918670654297
+            ]
+          ]
+        },
+        {
+          "cls_id": 17,
+          "label": "paragraph_title",
+          "score": 0.8424108624458313,
+          "coordinate": [
+            80,
+            252,
+            204,
+            278
+          ],
+          "order": 3,
+          "polygon_points": [
+            [
+              80.0,
+              252.0
+            ],
+            [
+              204.0,
+              252.0
+            ],
+            [
+              204.0,
+              278.0
+            ],
+            [
+              80.0,
+              278.0
+            ]
+          ]
+        },
+        {
+          "cls_id": 18,
+          "label": "reference",
+          "score": 0.9425559043884277,
+          "coordinate": [
+            83,
+            278,
+            598,
+            1480
+          ],
+          "order": 4,
+          "polygon_points": [
+            [
+              83.0,
+              278.0
+            ],
+            [
+              598.0,
+              278.0
+            ],
+            [
+              598.0,
+              1480.0
+            ],
+            [
+              83.0,
+              1480.0
+            ]
+          ]
+        },
+        {
+          "cls_id": 19,
+          "label": "reference_content",
+          "score": 0.9466428160667419,
+          "coordinate": [
+            88,
+            282,
+            595,
+            353
+          ],
+          "order": 5,
+          "polygon_points": [
+            [
+              88,
+              282
+            ],
+            [
+              88,
+              321
+            ],
+            [
+              88,
+              345
+            ],
+            [
+              119,
+              352
+            ],
+            [
+              136,
+              352
+            ],
+            [
+              174,
+              352
+            ],
+            [
+              594,
+              345
+            ],
+            [
+              594,
+              282
+            ]
+          ]
+        },
+        {
+          "cls_id": 19,
+          "label": "reference_content",
+          "score": 0.9173883199691772,
+          "coordinate": [
+            90,
+            352,
+            595,
+            387
+          ],
+          "order": 6,
+          "polygon_points": [
+            [
+              90.0,
+              352.0
+            ],
+            [
+              595.0,
+              352.0
+            ],
+            [
+              595.0,
+              387.0
+            ],
+            [
+              90.0,
+              387.0
+            ]
+          ]
+        },
+        {
+          "cls_id": 19,
+          "label": "reference_content",
+          "score": 0.9404982924461365,
+          "coordinate": [
+            89,
+            386,
+            596,
+            438
+          ],
+          "order": 7,
+          "polygon_points": [
+            [
+              89,
+              386
+            ],
+            [
+              89,
+              437
+            ],
+            [
+              595,
+              437
+            ],
+            [
+              595,
+              386
+            ]
+          ]
+        },
+        {
+          "cls_id": 19,
+          "label": "reference_content",
+          "score": 0.9272659420967102,
+          "coordinate": [
+            89,
+            437,
+            596,
+            492
+          ],
+          "order": 8,
+          "polygon_points": [
+            [
+              89.0,
+              437.0
+            ],
+            [
+              596.0,
+              437.0
+            ],
+            [
+              596.0,
+              492.0
+            ],
+            [
+              89.0,
+              492.0
+            ]
+          ]
+        },
+        {
+          "cls_id": 19,
+          "label": "reference_content",
+          "score": 0.9317461252212524,
+          "coordinate": [
+            90,
+            490,
+            595,
+            544
+          ],
+          "order": 9,
+          "polygon_points": [
+            [
+              90,
+              490
+            ],
+            [
+              90,
+              536
+            ],
+            [
+              115,
+              543
+            ],
+            [
+              594,
+              536
+            ],
+            [
+              594,
+              490
+            ]
+          ]
+        },
+        {
+          "cls_id": 19,
+          "label": "reference_content",
+          "score": 0.9458006620407104,
+          "coordinate": [
+            91,
+            540,
+            594,
+            596
+          ],
+          "order": 10,
+          "polygon_points": [
+            [
+              91,
+              548
+            ],
+            [
+              91,
+              595
+            ],
+            [
+              593,
+              595
+            ],
+            [
+              593,
+              540
+            ],
+            [
+              496,
+              540
+            ],
+            [
+              471,
+              540
+            ],
+            [
+              355,
+              540
+            ],
+            [
+              342,
+              540
+            ],
+            [
+              331,
+              540
+            ]
+          ]
+        },
+        {
+          "cls_id": 19,
+          "label": "reference_content",
+          "score": 0.9386823177337646,
+          "coordinate": [
+            91,
+            595,
+            595,
+            649
+          ],
+          "order": 11,
+          "polygon_points": [
+            [
+              91.0,
+              595.0
+            ],
+            [
+              595.0,
+              595.0
+            ],
+            [
+              595.0,
+              649.0
+            ],
+            [
+              91.0,
+              649.0
+            ]
+          ]
+        },
+        {
+          "cls_id": 19,
+          "label": "reference_content",
+          "score": 0.9523124694824219,
+          "coordinate": [
+            92,
+            646,
+            595,
+            718
+          ],
+          "order": 12,
+          "polygon_points": [
+            [
+              92,
+              646
+            ],
+            [
+              92,
+              717
+            ],
+            [
+              196,
+              717
+            ],
+            [
+              197,
+              709
+            ],
+            [
+              594,
+              709
+            ],
+            [
+              594,
+              646
+            ]
+          ]
+        },
+        {
+          "cls_id": 19,
+          "label": "reference_content",
+          "score": 0.9304355978965759,
+          "coordinate": [
+            91,
+            715,
+            594,
+            753
+          ],
+          "order": 13,
+          "polygon_points": [
+            [
+              91,
+              723
+            ],
+            [
+              91,
+              752
+            ],
+            [
+              593,
+              752
+            ],
+            [
+              593,
+              715
+            ],
+            [
+              269,
+              715
+            ]
+          ]
+        },
+        {
+          "cls_id": 19,
+          "label": "reference_content",
+          "score": 0.9246752858161926,
+          "coordinate": [
+            87,
+            751,
+            595,
+            791
+          ],
+          "order": 14,
+          "polygon_points": [
+            [
+              87,
+              751
+            ],
+            [
+              87,
+              782
+            ],
+            [
+              94,
+              790
+            ],
+            [
+              209,
+              790
+            ],
+            [
+              228,
+              790
+            ],
+            [
+              234,
+              782
+            ],
+            [
+              594,
+              782
+            ],
+            [
+              594,
+              751
+            ]
+          ]
+        },
+        {
+          "cls_id": 19,
+          "label": "reference_content",
+          "score": 0.9532817006111145,
+          "coordinate": [
+            88,
+            785,
+            594,
+            857
+          ],
+          "order": 15,
+          "polygon_points": [
+            [
+              88,
+              793
+            ],
+            [
+              88,
+              832
+            ],
+            [
+              88,
+              856
+            ],
+            [
+              593,
+              856
+            ],
+            [
+              593,
+              785
+            ],
+            [
+              223,
+              785
+            ]
+          ]
+        },
+        {
+          "cls_id": 19,
+          "label": "reference_content",
+          "score": 0.928149402141571,
+          "coordinate": [
+            88,
+            855,
+            594,
+            892
+          ],
+          "order": 16,
+          "polygon_points": [
+            [
+              88,
+              863
+            ],
+            [
+              95,
+              870
+            ],
+            [
+              88,
+              878
+            ],
+            [
+              95,
+              891
+            ],
+            [
+              216,
+              891
+            ],
+            [
+              217,
+              884
+            ],
+            [
+              593,
+              884
+            ],
+            [
+              593,
+              855
+            ],
+            [
+              95,
+              855
+            ]
+          ]
+        },
+        {
+          "cls_id": 19,
+          "label": "reference_content",
+          "score": 0.9251694083213806,
+          "coordinate": [
+            89,
+            890,
+            595,
+            929
+          ],
+          "order": 17,
+          "polygon_points": [
+            [
+              89.0,
+              890.0
+            ],
+            [
+              595.0,
+              890.0
+            ],
+            [
+              595.0,
+              929.0
+            ],
+            [
+              89.0,
+              929.0
+            ]
+          ]
+        },
+        {
+          "cls_id": 19,
+          "label": "reference_content",
+          "score": 0.9290685057640076,
+          "coordinate": [
+            89,
+            925,
+            595,
+            978
+          ],
+          "order": 18,
+          "polygon_points": [
+            [
+              89,
+              925
+            ],
+            [
+              89,
+              977
+            ],
+            [
+              594,
+              977
+            ],
+            [
+              594,
+              925
+            ]
+          ]
+        },
+        {
+          "cls_id": 19,
+          "label": "reference_content",
+          "score": 0.9453043341636658,
+          "coordinate": [
+            87,
+            975,
+            594,
+            1049
+          ],
+          "order": 19,
+          "polygon_points": [
+            [
+              87,
+              984
+            ],
+            [
+              87,
+              999
+            ],
+            [
+              87,
+              1048
+            ],
+            [
+              593,
+              1048
+            ],
+            [
+              593,
+              975
+            ],
+            [
+              167,
+              975
+            ]
+          ]
+        },
+        {
+          "cls_id": 19,
+          "label": "reference_content",
+          "score": 0.9392251968383789,
+          "coordinate": [
+            87,
+            1045,
+            594,
+            1099
+          ],
+          "order": 20,
+          "polygon_points": [
+            [
+              87,
+              1045
+            ],
+            [
+              87,
+              1091
+            ],
+            [
+              94,
+              1098
+            ],
+            [
+              349,
+              1098
+            ],
+            [
+              375,
+              1098
+            ],
+            [
+              381,
+              1091
+            ],
+            [
+              411,
+              1098
+            ],
+            [
+              593,
+              1098
+            ],
+            [
+              593,
+              1045
+            ]
+          ]
+        },
+        {
+          "cls_id": 19,
+          "label": "reference_content",
+          "score": 0.9398474097251892,
+          "coordinate": [
+            88,
+            1098,
+            594,
+            1150
+          ],
+          "order": 21,
+          "polygon_points": [
+            [
+              88.0,
+              1098.0
+            ],
+            [
+              594.0,
+              1098.0
+            ],
+            [
+              594.0,
+              1150.0
+            ],
+            [
+              88.0,
+              1150.0
+            ]
+          ]
+        },
+        {
+          "cls_id": 19,
+          "label": "reference_content",
+          "score": 0.9411718249320984,
+          "coordinate": [
+            87,
+            1149,
+            594,
+            1221
+          ],
+          "order": 22,
+          "polygon_points": [
+            [
+              87,
+              1149
+            ],
+            [
+              87,
+              1220
+            ],
+            [
+              593,
+              1220
+            ],
+            [
+              593,
+              1149
+            ]
+          ]
+        },
+        {
+          "cls_id": 19,
+          "label": "reference_content",
+          "score": 0.9263079762458801,
+          "coordinate": [
+            86,
+            1219,
+            593,
+            1271
+          ],
+          "order": 23,
+          "polygon_points": [
+            [
+              86,
+              1219
+            ],
+            [
+              86,
+              1270
+            ],
+            [
+              592,
+              1270
+            ],
+            [
+              592,
+              1219
+            ]
+          ]
+        },
+        {
+          "cls_id": 19,
+          "label": "reference_content",
+          "score": 0.9332147836685181,
+          "coordinate": [
+            84,
+            1271,
+            593,
+            1323
+          ],
+          "order": 24,
+          "polygon_points": [
+            [
+              84.0,
+              1271.0
+            ],
+            [
+              593.0,
+              1271.0
+            ],
+            [
+              593.0,
+              1323.0
+            ],
+            [
+              84.0,
+              1323.0
+            ]
+          ]
+        },
+        {
+          "cls_id": 19,
+          "label": "reference_content",
+          "score": 0.9324674010276794,
+          "coordinate": [
+            83,
+            1323,
+            594,
+            1359
+          ],
+          "order": 25,
+          "polygon_points": [
+            [
+              83.0,
+              1323.0
+            ],
+            [
+              594.0,
+              1323.0
+            ],
+            [
+              594.0,
+              1359.0
+            ],
+            [
+              83.0,
+              1359.0
+            ]
+          ]
+        },
+        {
+          "cls_id": 19,
+          "label": "reference_content",
+          "score": 0.9279336333274841,
+          "coordinate": [
+            81,
+            1358,
+            595,
+            1411
+          ],
+          "order": 26,
+          "polygon_points": [
+            [
+              81,
+              1366
+            ],
+            [
+              81,
+              1403
+            ],
+            [
+              94,
+              1410
+            ],
+            [
+              594,
+              1410
+            ],
+            [
+              594,
+              1358
+            ],
+            [
+              577,
+              1358
+            ],
+            [
+              331,
+              1358
+            ],
+            [
+              314,
+              1358
+            ],
+            [
+              246,
+              1358
+            ],
+            [
+              234,
+              1358
+            ],
+            [
+              227,
+              1358
+            ],
+            [
+              221,
+              1366
+            ],
+            [
+              172,
+              1358
+            ],
+            [
+              88,
+              1358
+            ]
+          ]
+        },
+        {
+          "cls_id": 19,
+          "label": "reference_content",
+          "score": 0.8742176294326782,
+          "coordinate": [
+            80,
+            1409,
+            508,
+            1429
+          ],
+          "order": 27,
+          "polygon_points": [
+            [
+              80,
+              1409
+            ],
+            [
+              80,
+              1428
+            ],
+            [
+              507,
+              1428
+            ],
+            [
+              507,
+              1409
+            ]
+          ]
+        },
+        {
+          "cls_id": 19,
+          "label": "reference_content",
+          "score": 0.9203582406044006,
+          "coordinate": [
+            81,
+            1429,
+            593,
+            1463
+          ],
+          "order": 28,
+          "polygon_points": [
+            [
+              81.0,
+              1429.0
+            ],
+            [
+              593.0,
+              1429.0
+            ],
+            [
+              593.0,
+              1463.0
+            ],
+            [
+              81.0,
+              1463.0
+            ]
+          ]
+        },
+        {
+          "cls_id": 18,
+          "label": "reference",
+          "score": 0.9615135788917542,
+          "coordinate": [
+            636,
+            112,
+            1167,
+            1487
+          ],
+          "order": 29,
+          "polygon_points": [
+            [
+              636.0,
+              112.0
+            ],
+            [
+              1167.0,
+              112.0
+            ],
+            [
+              1167.0,
+              1487.0
+            ],
+            [
+              636.0,
+              1487.0
+            ]
+          ]
+        },
+        {
+          "cls_id": 19,
+          "label": "reference_content",
+          "score": 0.8846977949142456,
+          "coordinate": [
+            80,
+            1463,
+            593,
+            1480
+          ],
+          "order": 30,
+          "polygon_points": [
+            [
+              80.0,
+              1463.0
+            ],
+            [
+              592.0,
+              1463.0
+            ],
+            [
+              592.0,
+              1479.0
+            ],
+            [
+              80.0,
+              1479.0
+            ]
+          ]
+        },
+        {
+          "cls_id": 19,
+          "label": "reference_content",
+          "score": 0.9547387957572937,
+          "coordinate": [
+            667,
+            113,
+            1169,
+            179
+          ],
+          "order": 31,
+          "polygon_points": [
+            [
+              665.498291015625,
+              128.05255126953125
+            ],
+            [
+              1167.9122314453125,
+              110.48556518554688
+            ],
+            [
+              1169.9144287109375,
+              167.751220703125
+            ],
+            [
+              667.50048828125,
+              185.31820678710938
+            ]
+          ]
+        },
+        {
+          "cls_id": 19,
+          "label": "reference_content",
+          "score": 0.9422075748443604,
+          "coordinate": [
+            638,
+            168,
+            1170,
+            229
+          ],
+          "order": 32,
+          "polygon_points": [
+            [
+              1169,
+              168
+            ],
+            [
+              1122,
+              168
+            ],
+            [
+              1121,
+              176
+            ],
+            [
+              694,
+              176
+            ],
+            [
+              680,
+              176
+            ],
+            [
+              645,
+              176
+            ],
+            [
+              638,
+              184
+            ],
+            [
+              638,
+              221
+            ],
+            [
+              645,
+              228
+            ],
+            [
+              1004,
+              228
+            ],
+            [
+              1169,
+              221
+            ]
+          ]
+        },
+        {
+          "cls_id": 19,
+          "label": "reference_content",
+          "score": 0.9317062497138977,
+          "coordinate": [
+            639,
+            221,
+            1168,
+            265
+          ],
+          "order": 33,
+          "polygon_points": [
+            [
+              1167,
+              221
+            ],
+            [
+              1029,
+              221
+            ],
+            [
+              1028,
+              230
+            ],
+            [
+              639,
+              230
+            ],
+            [
+              639,
+              256
+            ],
+            [
+              646,
+              264
+            ],
+            [
+              1149,
+              264
+            ],
+            [
+              1161,
+              256
+            ],
+            [
+              1167,
+              264
+            ]
+          ]
+        },
+        {
+          "cls_id": 19,
+          "label": "reference_content",
+          "score": 0.9353694915771484,
+          "coordinate": [
+            640,
+            259,
+            1167,
+            317
+          ],
+          "order": 34,
+          "polygon_points": [
+            [
+              640,
+              259
+            ],
+            [
+              640,
+              316
+            ],
+            [
+              1142,
+              316
+            ],
+            [
+              1160,
+              316
+            ],
+            [
+              1166,
+              308
+            ],
+            [
+              1166,
+              259
+            ]
+          ]
+        },
+        {
+          "cls_id": 19,
+          "label": "reference_content",
+          "score": 0.916440486907959,
+          "coordinate": [
+            640,
+            311,
+            1166,
+            367
+          ],
+          "order": 35,
+          "polygon_points": [
+            [
+              1165,
+              311
+            ],
+            [
+              1038,
+              311
+            ],
+            [
+              1037,
+              319
+            ],
+            [
+              640,
+              319
+            ],
+            [
+              640,
+              366
+            ],
+            [
+              1165,
+              366
+            ]
+          ]
+        },
+        {
+          "cls_id": 19,
+          "label": "reference_content",
+          "score": 0.9232044816017151,
+          "coordinate": [
+            640,
+            364,
+            1166,
+            419
+          ],
+          "order": 36,
+          "polygon_points": [
+            [
+              640,
+              364
+            ],
+            [
+              640,
+              418
+            ],
+            [
+              1165,
+              418
+            ],
+            [
+              1165,
+              364
+            ]
+          ]
+        },
+        {
+          "cls_id": 19,
+          "label": "reference_content",
+          "score": 0.9164417386054993,
+          "coordinate": [
+            640,
+            417,
+            1167,
+            474
+          ],
+          "order": 37,
+          "polygon_points": [
+            [
+              640,
+              417
+            ],
+            [
+              640,
+              473
+            ],
+            [
+              983,
+              473
+            ],
+            [
+              990,
+              473
+            ],
+            [
+              1001,
+              473
+            ],
+            [
+              1014,
+              473
+            ],
+            [
+              1062,
+              473
+            ],
+            [
+              1166,
+              465
+            ],
+            [
+              1166,
+              417
+            ]
+          ]
+        },
+        {
+          "cls_id": 19,
+          "label": "reference_content",
+          "score": 0.9117122888565063,
+          "coordinate": [
+            640,
+            470,
+            1168,
+            525
+          ],
+          "order": 38,
+          "polygon_points": [
+            [
+              1167,
+              478
+            ],
+            [
+              1149,
+              470
+            ],
+            [
+              1046,
+              470
+            ],
+            [
+              1014,
+              470
+            ],
+            [
+              997,
+              470
+            ],
+            [
+              996,
+              478
+            ],
+            [
+              640,
+              478
+            ],
+            [
+              640,
+              524
+            ],
+            [
+              1167,
+              524
+            ]
+          ]
+        },
+        {
+          "cls_id": 19,
+          "label": "reference_content",
+          "score": 0.9160047173500061,
+          "coordinate": [
+            639,
+            522,
+            1167,
+            577
+          ],
+          "order": 39,
+          "polygon_points": [
+            [
+              646,
+              522
+            ],
+            [
+              646,
+              569
+            ],
+            [
+              658,
+              576
+            ],
+            [
+              1166,
+              576
+            ],
+            [
+              1166,
+              522
+            ]
+          ]
+        },
+        {
+          "cls_id": 19,
+          "label": "reference_content",
+          "score": 0.9384897351264954,
+          "coordinate": [
+            639,
+            576,
+            1167,
+            647
+          ],
+          "order": 40,
+          "polygon_points": [
+            [
+              639.0,
+              576.0
+            ],
+            [
+              1167.0,
+              576.0
+            ],
+            [
+              1167.0,
+              647.0
+            ],
+            [
+              639.0,
+              647.0
+            ]
+          ]
+        },
+        {
+          "cls_id": 19,
+          "label": "reference_content",
+          "score": 0.914979100227356,
+          "coordinate": [
+            639,
+            645,
+            1165,
+            681
+          ],
+          "order": 41,
+          "polygon_points": [
+            [
+              1164,
+              653
+            ],
+            [
+              1018,
+              645
+            ],
+            [
+              1006,
+              645
+            ],
+            [
+              1005,
+              653
+            ],
+            [
+              639,
+              653
+            ],
+            [
+              639,
+              673
+            ],
+            [
+              646,
+              680
+            ],
+            [
+              1164,
+              680
+            ]
+          ]
+        },
+        {
+          "cls_id": 19,
+          "label": "reference_content",
+          "score": 0.9438494443893433,
+          "coordinate": [
+            639,
+            679,
+            1166,
+            734
+          ],
+          "order": 42,
+          "polygon_points": [
+            [
+              639,
+              679
+            ],
+            [
+              639,
+              726
+            ],
+            [
+              767,
+              733
+            ],
+            [
+              779,
+              733
+            ],
+            [
+              790,
+              733
+            ],
+            [
+              815,
+              733
+            ],
+            [
+              1112,
+              733
+            ],
+            [
+              1123,
+              733
+            ],
+            [
+              1130,
+              733
+            ],
+            [
+              1159,
+              733
+            ],
+            [
+              1165,
+              718
+            ],
+            [
+              1165,
+              703
+            ],
+            [
+              1165,
+              679
+            ]
+          ]
+        },
+        {
+          "cls_id": 19,
+          "label": "reference_content",
+          "score": 0.9522202610969543,
+          "coordinate": [
+            639,
+            732,
+            1166,
+            786
+          ],
+          "order": 43,
+          "polygon_points": [
+            [
+              639,
+              763
+            ],
+            [
+              646,
+              785
+            ],
+            [
+              1165,
+              785
+            ],
+            [
+              1165,
+              740
+            ],
+            [
+              1111,
+              732
+            ],
+            [
+              1051,
+              732
+            ],
+            [
+              1044,
+              732
+            ],
+            [
+              1009,
+              732
+            ],
+            [
+              996,
+              732
+            ],
+            [
+              985,
+              732
+            ],
+            [
+              978,
+              732
+            ],
+            [
+              961,
+              732
+            ],
+            [
+              784,
+              732
+            ],
+            [
+              755,
+              732
+            ],
+            [
+              670,
+              740
+            ],
+            [
+              664,
+              732
+            ],
+            [
+              657,
+              732
+            ],
+            [
+              646,
+              732
+            ]
+          ]
+        },
+        {
+          "cls_id": 19,
+          "label": "reference_content",
+          "score": 0.9546255469322205,
+          "coordinate": [
+            640,
+            785,
+            1168,
+            859
+          ],
+          "order": 44,
+          "polygon_points": [
+            [
+              640.0,
+              785.0
+            ],
+            [
+              1168.0,
+              785.0
+            ],
+            [
+              1168.0,
+              859.0
+            ],
+            [
+              640.0,
+              859.0
+            ]
+          ]
+        },
+        {
+          "cls_id": 19,
+          "label": "reference_content",
+          "score": 0.9576193690299988,
+          "coordinate": [
+            640,
+            857,
+            1166,
+            928
+          ],
+          "order": 45,
+          "polygon_points": [
+            [
+              640,
+              857
+            ],
+            [
+              640,
+              927
+            ],
+            [
+              1165,
+              927
+            ],
+            [
+              1165,
+              913
+            ],
+            [
+              1165,
+              904
+            ],
+            [
+              1165,
+              865
+            ],
+            [
+              1068,
+              857
+            ]
+          ]
+        },
+        {
+          "cls_id": 19,
+          "label": "reference_content",
+          "score": 0.9224273562431335,
+          "coordinate": [
+            639,
+            926,
+            1165,
+            964
+          ],
+          "order": 46,
+          "polygon_points": [
+            [
+              646,
+              926
+            ],
+            [
+              646,
+              956
+            ],
+            [
+              1054,
+              956
+            ],
+            [
+              1055,
+              963
+            ],
+            [
+              1164,
+              963
+            ],
+            [
+              1164,
+              926
+            ]
+          ]
+        },
+        {
+          "cls_id": 19,
+          "label": "reference_content",
+          "score": 0.9416967034339905,
+          "coordinate": [
+            639,
+            960,
+            1165,
+            1032
+          ],
+          "order": 47,
+          "polygon_points": [
+            [
+              646,
+              960
+            ],
+            [
+              646,
+              1023
+            ],
+            [
+              658,
+              1031
+            ],
+            [
+              1164,
+              1031
+            ],
+            [
+              1164,
+              968
+            ],
+            [
+              1030,
+              960
+            ]
+          ]
+        },
+        {
+          "cls_id": 19,
+          "label": "reference_content",
+          "score": 0.9062492251396179,
+          "coordinate": [
+            640,
+            1030,
+            1163,
+            1069
+          ],
+          "order": 48,
+          "polygon_points": [
+            [
+              640.0,
+              1030.0
+            ],
+            [
+              649.1651715654484,
+              1045.8733185052183
+            ],
+            [
+              647.0,
+              1061.0
+            ],
+            [
+              800.0,
+              1068.0
+            ],
+            [
+              836.0,
+              1068.0
+            ],
+            [
+              868.0,
+              1068.0
+            ],
+            [
+              1162.0,
+              1068.0
+            ],
+            [
+              1162.0,
+              1038.0
+            ],
+            [
+              1076.0,
+              1030.0
+            ]
+          ]
+        },
+        {
+          "cls_id": 19,
+          "label": "reference_content",
+          "score": 0.9129078388214111,
+          "coordinate": [
+            640,
+            1065,
+            1164,
+            1121
+          ],
+          "order": 49,
+          "polygon_points": [
+            [
+              651.0785887272739,
+              1091.7460791573383
+            ],
+            [
+              640.0,
+              1113.0
+            ],
+            [
+              1077.0,
+              1113.0
+            ],
+            [
+              1078.0,
+              1120.0
+            ],
+            [
+              1163.0,
+              1120.0
+            ],
+            [
+              1163.0,
+              1072.0
+            ],
+            [
+              880.0,
+              1065.0
+            ],
+            [
+              714.0,
+              1065.0
+            ],
+            [
+              671.0,
+              1065.0
+            ],
+            [
+              647.0,
+              1072.0
+            ]
+          ]
+        },
+        {
+          "cls_id": 19,
+          "label": "reference_content",
+          "score": 0.8812514543533325,
+          "coordinate": [
+            640,
+            1116,
+            1163,
+            1156
+          ],
+          "order": 50,
+          "polygon_points": [
+            [
+              640,
+              1116
+            ],
+            [
+              640,
+              1147
+            ],
+            [
+              751,
+              1155
+            ],
+            [
+              763,
+              1155
+            ],
+            [
+              770,
+              1155
+            ],
+            [
+              806,
+              1155
+            ],
+            [
+              856,
+              1155
+            ],
+            [
+              923,
+              1155
+            ],
+            [
+              936,
+              1155
+            ],
+            [
+              1162,
+              1155
+            ],
+            [
+              1162,
+              1124
+            ],
+            [
+              1083,
+              1116
+            ]
+          ]
+        },
+        {
+          "cls_id": 19,
+          "label": "reference_content",
+          "score": 0.8834457397460938,
+          "coordinate": [
+            639,
+            1151,
+            1163,
+            1191
+          ],
+          "order": 51,
+          "polygon_points": [
+            [
+              646,
+              1151
+            ],
+            [
+              646,
+              1190
+            ],
+            [
+              1162,
+              1190
+            ],
+            [
+              1162,
+              1159
+            ],
+            [
+              937,
+              1151
+            ],
+            [
+              926,
+              1151
+            ],
+            [
+              900,
+              1151
+            ]
+          ]
+        },
+        {
+          "cls_id": 19,
+          "label": "reference_content",
+          "score": 0.9131191372871399,
+          "coordinate": [
+            639,
+            1186,
+            1163,
+            1242
+          ],
+          "order": 52,
+          "polygon_points": [
+            [
+              639,
+              1186
+            ],
+            [
+              646,
+              1194
+            ],
+            [
+              639,
+              1218
+            ],
+            [
+              646,
+              1233
+            ],
+            [
+              956,
+              1241
+            ],
+            [
+              980,
+              1241
+            ],
+            [
+              987,
+              1241
+            ],
+            [
+              1162,
+              1241
+            ],
+            [
+              1162,
+              1194
+            ],
+            [
+              1132,
+              1186
+            ]
+          ]
+        },
+        {
+          "cls_id": 19,
+          "label": "reference_content",
+          "score": 0.9172942042350769,
+          "coordinate": [
+            639,
+            1236,
+            1163,
+            1293
+          ],
+          "order": 53,
+          "polygon_points": [
+            [
+              639,
+              1236
+            ],
+            [
+              639,
+              1284
+            ],
+            [
+              646,
+              1292
+            ],
+            [
+              658,
+              1292
+            ],
+            [
+              669,
+              1292
+            ],
+            [
+              676,
+              1292
+            ],
+            [
+              1162,
+              1292
+            ],
+            [
+              1162,
+              1245
+            ],
+            [
+              974,
+              1236
+            ],
+            [
+              968,
+              1245
+            ],
+            [
+              955,
+              1236
+            ]
+          ]
+        },
+        {
+          "cls_id": 19,
+          "label": "reference_content",
+          "score": 0.9481145143508911,
+          "coordinate": [
+            638,
+            1288,
+            1163,
+            1367
+          ],
+          "order": 54,
+          "polygon_points": [
+            [
+              638,
+              1288
+            ],
+            [
+              638,
+              1304
+            ],
+            [
+              638,
+              1351
+            ],
+            [
+              681,
+              1359
+            ],
+            [
+              1138,
+              1359
+            ],
+            [
+              1139,
+              1366
+            ],
+            [
+              1162,
+              1366
+            ],
+            [
+              1162,
+              1288
+            ],
+            [
+              1156,
+              1296
+            ],
+            [
+              1144,
+              1288
+            ]
+          ]
+        },
+        {
+          "cls_id": 19,
+          "label": "reference_content",
+          "score": 0.9353391528129578,
+          "coordinate": [
+            638,
+            1360,
+            1162,
+            1418
+          ],
+          "order": 55,
+          "polygon_points": [
+            [
+              638.1153564453125,
+              1352.460693359375
+            ],
+            [
+              1161.8646240234375,
+              1360.47216796875
+            ],
+            [
+              1161.0,
+              1417.0
+            ],
+            [
+              637.250732421875,
+              1408.988525390625
+            ]
+          ]
+        },
+        {
+          "cls_id": 19,
+          "label": "reference_content",
+          "score": 0.9326017498970032,
+          "coordinate": [
+            638,
+            1413,
+            1165,
+            1471
+          ],
+          "order": 56,
+          "polygon_points": [
+            [
+              638,
+              1428
+            ],
+            [
+              638,
+              1442
+            ],
+            [
+              645,
+              1463
+            ],
+            [
+              1036,
+              1463
+            ],
+            [
+              1037,
+              1470
+            ],
+            [
+              1164,
+              1470
+            ],
+            [
+              1164,
+              1421
+            ],
+            [
+              681,
+              1421
+            ],
+            [
+              680,
+              1413
+            ],
+            [
+              668,
+              1413
+            ],
+            [
+              645,
+              1413
+            ]
+          ]
+        },
+        {
+          "cls_id": 19,
+          "label": "reference_content",
+          "score": 0.8709898591041565,
+          "coordinate": [
+            638,
+            1466,
+            1165,
+            1488
+          ],
+          "order": 57,
+          "polygon_points": [
+            [
+              638,
+              1466
+            ],
+            [
+              638,
+              1480
+            ],
+            [
+              1164,
+              1487
+            ],
+            [
+              1164,
+              1474
+            ],
+            [
+              975,
+              1466
+            ]
+          ]
+        },
+        {
+          "cls_id": 16,
+          "label": "number",
+          "score": 0.7083173990249634,
+          "coordinate": [
+            602,
+            1491,
+            627,
+            1506
+          ],
+          "order": 58,
+          "polygon_points": [
+            [
+              602.0,
+              1491.0
+            ],
+            [
+              626.0,
+              1491.0
+            ],
+            [
+              626.0,
+              1505.0
+            ],
+            [
+              602.0,
+              1505.0
+            ]
+          ]
+        }
+      ]
+    }
+  },
+  "markdown": {
+    "text": "### Acknowledgment\n\nWe thank the reviewers for their valuable comments and suggestions. This work is partially supported by NSF CNS-2350332, CNS-2350333, and CNS-2220433.\n\n## References\n\n[1] ABADI, M., CHU, A., GOODFELLOW, L., McMAHAN, H. B., MIRONOV, I., TALWAR, K., AND ZHANG, L. Deep learning with differential privacy. In Proceedings of the 2016 ACM SIGSAC conference on computer and communications security (2016), pp. 308–318.\n\n[2] BAO, F., NIE, S., XUE, K., CAO, Y., LI, C., SU, H., AND ZHU, J. All are worth words: A vit backbone for diffusion models, 2023.\n\n[3] CARLINI, N., CHIEN, S., NASR, M., SONG, S., TERZIS, A., AND TRAMER, F. Membership inference attacks from first principles. In 2022 IEEE Symposium on Security and Privacy (SP) (2022), IEEE, pp. 1897–1914.\n\n[4] CARLINI, N., HAYES, J., NASR, M., JAGIELSKI, M., SEHWAG, V., TRAMER, F., BALLE, B., IPPOLITO, D., AND WALLACE, E. Extracting training data from diffusion models. arXiv preprint arXiv:2301.13188 (2023).\n\n[5] CHEN, D., YU, N., ZHANG, Y., AND FRITZ, M. Gan-leaks: A taxonomy of membership inference attacks against generative models. In Proceedings of the 2020 ACM SIGSAC conference on computer and communications security (2020). pp. 343–362.\n\n[6] CHOQUETTE-CHOO, C. A., TRAMER, F., CARLINI, N., AND PAPERNOT, N. Label-only membership inference attacks. In International conference on machine learning (2021), PMLR, pp. 1964–1974.\n\n[7] CRESWELL, A., WHITE, T., DUMOULIN, V., ARULKUMARAN, K., SENGUPTA, B., AND BHARATH, A. A. Generative adversarial networks: An overview. IEEE signal processing magazine 35, 1 (2018), 53–65.\n\n[8] CUBUK, E. D., ZOPH, B., SHLENS, J., AND LE, Q. V. Randaugment: Practical automated data augmentation with a reduced search space. In Proceedings of the IEEE/CVF conference on computer vision and pattern recognition workshops (2020), pp. 702–703.\n\n[9] DEVRIES, T., AND TAYLOR, G. W. Improved regularization of convolutional neural networks with cutout. arXiv preprint arXiv:1708.04552 (2017).\n\n[10] DHARIWAL, P., AND NICHOL, A. Diffusion models beat gans on image synthesis. Advances in Neural Information Processing Systems 34 (2021), 8780–8794.\n\n[11] DING, M., YANG, Z., HONG, W., ZHENG, W., ZHOU, C., YIN, D., LIN, J., ZOU, X., SHAO, Z., YANG, H., ET AL. Cogview: Mastering text-to-image generation via transformers. Advances in Neural Information Processing Systems 34 (2021), 19822–19835.\n\n[12] DUAN, J., KONG, F., WANG, S., SHI, X., AND XU, K. Are diffusion models vulnerable to membership inference attacks?. 2023.\n\n[13] DWORK, C. Differential privacy: A survey of results. In International conference on theory and applications of models of computation (2008), Springer, pp. 1–19.\n\n[14] FERNANDEZ, V., SANCHEZ, P., PINAYA, W. H. L., JACENKÓW, G., TSAFTARIS, S. A., AND CARDOSO, J. Privacy distillation: Reducing re-identification risk of multimodal diffusion models, 2023.\n\n[15] GANJU, K., WANG, Q., YANG, W., GUNTER, C. A., AND BORISOV, N. Property inference attacks on fully connected neural networks using permutation invariant representations. In Proceedings of the 2018 ACM SIGSAC conference on computer and communications security (2018), pp. 619–633.\n\n[16] GRATHWOHL, W., CHEN, R. T., BETTENCOURT, J., SUTSKEVER, L., AND DUVENAUD, D. Ffjord: Free-form continuous dynamics for scalable reversible generative models. arXiv preprint arXiv:1810.01367 (2018).\n\n[17] GU, J., GAO, Q., ZHAI, S., CHEN, B., LIU, L., AND SUSSKIND, J. Learning controllable 3d diffusion models from single-view images. arXiv preprint arXiv:2304.06700 (2023).\n\n[18] GU, S., CHEN, D., BAO, J., WEN, F., ZHANG, B., CHEN, D., YUAN, L., AND GUO, B. Vector quantized diffusion model for text-to-image synthesis. In Proceedings of the IEEE/CVF Conference on Computer Vision and Pattern Recognition (2022), pp. 10696–10706.\n\n[19] HAYES, J., MELIS, L., DANEZIS, G., AND DE CRISTOFARO, E. Logan: Membership inference attacks against generative models. arXiv preprint arXiv:1705.07663 (2017).\n\n[20] Hilprecht, B., Härterich, M., and Bernau, D. Monte Carlo and reconstruction membership inference attacks against generative models. Proc. Adv. Adv. Eng. Tech. 2019, 4 (2019), 232–249.\n\n[21] Ho, J., JAIN, A., AND ABBEEL, P. Denoising diffusion probabilistic models. Advances in Neural Information Processing Systems 33 (2020), 6840–6851.\n\n[22] Ho, J., SAHARIA, C., CHAN, W., FLEET, D. J., NOROUZI, M., AND SALIMANS, T. Cascaded diffusion models for high fidelity image generation. The Journal of Machine Learning Research 23, 1 (2022), 2249–2281.\n\n[23] Ho, J., and Salimans, T. Classifier-free diffusion guidance, 2022.\n\n[24] Ho, J., SALIMANS, T., GRITSENKO, A., CHAN, W., NOROUZI, M., AND FLEET, D. J. Video diffusion models. arXiv preprint arXiv:2204.03458 (2022).\n\n[25] HOMER, N., SZELINGER, S., REDMAN, M., DUGGAN, D., TEMBE, W., MUEHLING,\n\nJ., PEARSON, J. V., STEPHAN, D. A., NELSON, S. F., AND CRAIG, D. W. Resolving individuals contributing trace amounts of dna to highly complex mixtures using high-density snp genotyping microarrays. PLoS genetics 4, 8 (2008), e1000167.\n\n[26] HU, H., AND PANG, J. Membership inference attacks against gans by leveraging over-representation regions. In Proceedings of the 2021 ACM SIGSAC Conference on Computer and Communications Security (2021), pp. 2387–2389.\n\n[27] Hu, H., and Pang, J. Membership inference of diffusion models. arXiv preprint arXiv:2301.09956 (2023).\n\n[28] HUI, B., YANG, Y., YUAN, H., BURLINA, P., GONG, N. Z., AND CAO, Y. Practical blind membership inference attack via differential comparisons. arXiv preprint arXiv:2101.01341 (2021).\n\n[29] KIM, G., KWON, T., AND YE, J. C. Diffusionclip: text-guided diffusion models for robust image manipulation. In Proceedings of the IEEE/CVF Conference on Computer Vision and Pattern Recognition (2022), pp. 2426–2435.\n\n[30] KONG, F., DUAN, J., MA, R., SHEN, H., ZHU, X., SHI, X., AND XU, K. An efficient membership inference attack for the diffusion model by proximal initialization. arXiv preprint arXiv:2305.18355 (2023).\n\n[31] LI, J., LI, N., AND RIBEIRO, B. Membership inference attacks and defenses in classification models. In Proceedings of the Eleventh ACM Conference on Data and Application Security and Privacy (2021), pp. 5–16.\n\n[32] LIANG, D., KRISHNAN, R. G., HOFFMAN, M. D., AND JEBARA, T. Variational autoencoders for collaborative filtering. In Proceedings of the 2018 world wide web conference (2018), pp. 689–698.\n\n33] LIU, Y., ZHAO, Z., BACKES, M., AND ZHANG, Y. Membership inference attacks by exploiting loss trajectory. In Proceedings of the 2022 ACM SIGSAC Conference on Computer and Communications Security (2022), pp. 2085–2098.\n\n[34] LUGMAYR, A., DANELLJAN, M., ROMERO, A., YU, F., TIMOFTE, R., AND VAN GOOL, L. Repaint: Inpainting using denoising diffusion probabilistic models. In Proceedings of the IEEE/CVF Conference on Computer Vision and Pattern Recognition (2022), pp. 11461–11471.\n\n[35] MATSUMOTO, I., MIURA, I., AND YANAI, N. Membership inference attacks against diffusion models, 2023.\n\n[36] MENG, C., HE, Y., SONG, Y., SONG, J., WU, J., ZHU, J.-Y., AND ERMON, S. Sdedit: Guided image synthesis and editing with stochastic differential equations. In International Conference on Learning Representations (2021).\n\n[37] MUKHERJEE, S., XU, Y., TRIVEDI, A., PATOWARY, N., AND FERRES, J. L. privgan: Protecting gans from membership inference attacks at low cost to utility. Proc. Priv. Enhancing Technol. 2021, 3 (2021), 142–163.\n\n[38] NASR, M., SHOKRI, R., AND HOUMANSADR, A. Comprehensive privacy analysis of deep learning: Passive and active white-box inference attacks against centralized and federated learning. In 2019 IEEE symposium on security and privacy (SP) (2019), IEEE, pp. 739–753.\n\n[39] Nichol, A., Dhariwal, P., Ramesh, A., Shyam, P., Mishkin, P., McGrew, B., Sutskever, I., and Chen, M. Glide: Towards photorealistic image generation and editing with text-guided diffusion models. arXiv preprint arXiv:2112.10741 (2021).\n\n40] PENG, S., CHEN, Y., WANG, C., AND JIA, X. Protecting the intellectual property of diffusion models by the watermark diffusion process. 2023.\n\n[41] RAFFEL, C., SHAZEER, N., ROBERTS, A., LEE, K., NARANG, S., MATENA, M., ZHOU, Y., LI, W., AND LIU, P. J. Exploring the limits of transfer learning with a unified text-to-text transformer. The Journal of Machine Learning Research 21, 1 (2020), 5485–5551.\n\n[42] RAMESH, A., DHARIWAL, P., NICHOL, A., CHU, C., AND CHEN, M. Hierarchical text-conditional image generation with clip latents, 2022.\n\n43] RAMESH, A., PAVLOV, M., GOH, G., GRAY, S., VOSS, C., RADFORD, A., CHEN, M., AND SUTSKEVER, I. Zero-shot text-to-image generation. In International Conference on Machine Learning (2021), PMLR, pp. 8821–8831.\n\n[44] REZAEI, S., AND LIU, X. Towards the infeasibility of membership inference on deep models. arXiv preprint arXiv:2005.13702 (2020).\n\n45] ROMBACH, R., BLATTMANN, A., LORENZ, D., ESSER, P., AND OMMER, B. High-resolution image synthesis with latent diffusion models, 2022.\n\n[46] SABLAYROLLES, A., DOUZE, M., SCHMID, C., OLLIVIER, Y., AND JÉGOU, H. White-box vs black-box: Bayes optimal strategies for membership inference. In International Conference on Machine Learning (2019), PMLR, pp. 5558–5567.\n\n[47] SAHARIA, C., CHAN, W., CHANG, H., LEE, C., HO, J., SALIMANS, T., FLEET, D., AND NOROUZI, M. Palette: Image-to-image diffusion models. In ACM SIGGRAPH 2022 Conference Proceedings (2022), pp. 1–10.\n\n[48] SAHARIA, C., CHAN, W., SAXENA, S., LI, L., WHANG, J., DENTON, E. L., GHASEMIPOUR, K., GONTIJO LOPES, R., KARAGOL AYAN, B., SALIMANS, T., ET AL. Photorealistic text-to-image diffusion models with deep language understanding. Advances in Neural Information Processing Systems 35 (2022). 36479–36494\n\n[49] SAHARIA, C., HO, J., CHAN, W., SALIMANS, T., FLEET, D. J., AND NOROUZI, M. Image super-resolution via iterative refinement. IEEE Transactions on Pattern Analysis and Machine Intelligence 45, 4 (2022), 4713–4726.\n\n[50] SALEM, A., ZHANG, I., HUMBERT, M., BERRANG, P., FRITZ, M., AND BACKES, M. Mleaks: Model and data independent membership inference attacks and defenses on machine learning models. arXiv preprint arXiv:1806.01246 (2018).\n\n[51] SHAN, S., CRYAN, J., WENGER, E., ZHENG, H., HANOCKA, R., AND ZHAO, B. Y. Glaze:",
+    "images": {}
+  },
+  "outputImages": {
+    "layout_det_res": "https://pplines-online.bj.bcebos.com/deploy/official/paddleocr/pp-ocr-vl-15//53709ce1-e233-4d48-96df-051d5fb45d24/layout_det_res_3.jpg?authorization=bce-auth-v1%2FALTAKzReLNvew3ySINYJ0fuAMN%2F2026-04-05T12%3A41%3A17Z%2F-1%2F%2F3546c765fb940b8d73806fd1b37828cb5f042c731ec464e72c85d54f51989558"
+  },
+  "inputImage": "https://pplines-online.bj.bcebos.com/deploy/official/paddleocr/pp-ocr-vl-15//53709ce1-e233-4d48-96df-051d5fb45d24/input_img_3.jpg?authorization=bce-auth-v1%2FALTAKzReLNvew3ySINYJ0fuAMN%2F2026-04-05T12%3A41%3A17Z%2F-1%2F%2F050db26c72e66bb8c17104396bca586665661cc7f5859355e0b7d7f22de7b97c"
+}

@@ -1,0 +1,1550 @@
+{
+  "prunedResult": {
+    "page_count": 5,
+    "width": 1224,
+    "height": 1584,
+    "model_settings": {
+      "use_doc_preprocessor": true,
+      "use_layout_detection": true,
+      "use_chart_recognition": false,
+      "use_seal_recognition": false,
+      "use_ocr_for_image_block": false,
+      "format_block_content": false,
+      "merge_layout_blocks": true,
+      "markdown_ignore_labels": [
+        "number",
+        "footnote",
+        "header",
+        "header_image",
+        "footer",
+        "footer_image",
+        "aside_text"
+      ],
+      "return_layout_polygon_points": true
+    },
+    "parsing_res_list": [
+      {
+        "block_label": "header",
+        "block_content": "White-box Membership Inference Attacks against Diffusion Models",
+        "block_bbox": [
+          83,
+          67,
+          500,
+          96
+        ],
+        "block_id": 0,
+        "block_order": null,
+        "group_id": 0,
+        "global_block_id": 183,
+        "global_group_id": 183,
+        "block_polygon_points": [
+          [
+            83,
+            67
+          ],
+          [
+            83,
+            88
+          ],
+          [
+            163,
+            95
+          ],
+          [
+            499,
+            95
+          ],
+          [
+            499,
+            75
+          ],
+          [
+            96,
+            75
+          ],
+          [
+            95,
+            67
+          ]
+        ]
+      },
+      {
+        "block_label": "header",
+        "block_content": "Proceedings on Privacy Enhancing Technologies 2025(2)",
+        "block_bbox": [
+          818,
+          78,
+          1169,
+          100
+        ],
+        "block_id": 1,
+        "block_order": null,
+        "group_id": 1,
+        "global_block_id": 184,
+        "global_group_id": 184,
+        "block_polygon_points": [
+          [
+            818.0,
+            78.0
+          ],
+          [
+            1169.0,
+            78.0
+          ],
+          [
+            1169.0,
+            100.0
+          ],
+          [
+            818.0,
+            100.0
+          ]
+        ]
+      },
+      {
+        "block_label": "text",
+        "block_content": "differentiate between member and non-member samples, would lead to improved attack accuracy.",
+        "block_bbox": [
+          83,
+          123,
+          599,
+          180
+        ],
+        "block_id": 2,
+        "block_order": 1,
+        "group_id": 2,
+        "global_block_id": 185,
+        "global_group_id": 185,
+        "block_polygon_points": [
+          [
+            83.0,
+            123.0
+          ],
+          [
+            599.0,
+            123.0
+          ],
+          [
+            599.0,
+            180.0
+          ],
+          [
+            83.0,
+            180.0
+          ]
+        ]
+      },
+      {
+        "block_label": "text",
+        "block_content": "Figure 4b confirms our initial hypothesis that collecting more gradient information from a single sample enhances the attack's success rate. In all attacks, we maintained a constant setting of 1000 diffusion steps and conducted equidistant sampling across these steps. Our focus was on understanding how varying the sampling frequencies during the evaluation process of a single sample affects the attack's accuracy.",
+        "block_bbox": [
+          83,
+          175,
+          600,
+          347
+        ],
+        "block_id": 3,
+        "block_order": 2,
+        "group_id": 3,
+        "global_block_id": 186,
+        "global_group_id": 186,
+        "block_polygon_points": [
+          [
+            83,
+            175
+          ],
+          [
+            83,
+            339
+          ],
+          [
+            145,
+            346
+          ],
+          [
+            427,
+            346
+          ],
+          [
+            538,
+            346
+          ],
+          [
+            582,
+            346
+          ],
+          [
+            599,
+            346
+          ],
+          [
+            599,
+            183
+          ],
+          [
+            507,
+            175
+          ],
+          [
+            287,
+            175
+          ],
+          [
+            267,
+            175
+          ]
+        ]
+      },
+      {
+        "block_label": "text",
+        "block_content": "From our experimental data, we observed that the attack's success rate was lowest when gradient information was collected only once per sample. This limited data collection blurred the distinction between member and non-member set samples. Notably, the precision saw a significant boost when the collection frequency increased. However, after reaching a threshold of ten collections per sample, further increases in frequency showed diminishing returns in precision. Thus, we inferred that, for both attack strategies across these two datasets, collecting gradient information ten times from each sample is optimal for distinguishing between member and non-member sets. In other experiments, to strike a balance between efficiency and precision, we will adopt this ten-times-per-sample information collection formula as the default setting.",
+        "block_bbox": [
+          81,
+          343,
+          600,
+          653
+        ],
+        "block_id": 4,
+        "block_order": 3,
+        "group_id": 4,
+        "global_block_id": 187,
+        "global_group_id": 187,
+        "block_polygon_points": [
+          [
+            88,
+            343
+          ],
+          [
+            81,
+            652
+          ],
+          [
+            599,
+            652
+          ],
+          [
+            599,
+            351
+          ],
+          [
+            538,
+            343
+          ],
+          [
+            509,
+            343
+          ],
+          [
+            398,
+            343
+          ],
+          [
+            392,
+            351
+          ],
+          [
+            129,
+            343
+          ]
+        ]
+      },
+      {
+        "block_label": "text",
+        "block_content": "Different Diffusion Steps and Training Image Resolution. In the context of diffusion models, increasing the number of diffusion steps can potentially enhance image quality. This improvement stems from the model's refined capability to capture detailed image nuances by reducing noise over more steps. However, as we add more diffusion steps, the optimization challenge might become more complex. This complexity can slow down the convergence speed and require more detailed hyperparameter adjustments to find the optimal model setup.",
+        "block_bbox": [
+          79,
+          660,
+          597,
+          875
+        ],
+        "block_id": 5,
+        "block_order": 4,
+        "group_id": 5,
+        "global_block_id": 188,
+        "global_group_id": 188,
+        "block_polygon_points": [
+          [
+            79.0,
+            660.0
+          ],
+          [
+            597.0,
+            660.0
+          ],
+          [
+            597.0,
+            875.0
+          ],
+          [
+            79.0,
+            875.0
+          ]
+        ]
+      },
+      {
+        "block_label": "text",
+        "block_content": "When contemplating membership inference attacks, their genesis primarily stems from overfitting during the training phase, leading to discrepancies between the member and non-member samples. We theorize that if adding diffusion steps slows model convergence, it might reduce the overfitting phenomenon, affecting the attack's success. We set the total diffusion steps from 500 to 2000, kept other parameters unchanged, and retrained the model on both ImageNet and CIFAR-10 datasets.",
+        "block_bbox": [
+          79,
+          874,
+          598,
+          1062
+        ],
+        "block_id": 6,
+        "block_order": 5,
+        "group_id": 6,
+        "global_block_id": 189,
+        "global_group_id": 189,
+        "block_polygon_points": [
+          [
+            79.0,
+            874.0
+          ],
+          [
+            598.0,
+            874.0
+          ],
+          [
+            598.0,
+            1062.0
+          ],
+          [
+            79.0,
+            1062.0
+          ]
+        ]
+      },
+      {
+        "block_label": "text",
+        "block_content": "In Figure 5a, we observe that increasing the number of diffusion steps significantly influences our attack success rate, which aligns with our hypothesis. For models trained on CIFAR-10, both  $ GSA_{1} $ and  $ GSA_{2} $ achieve an attack accuracy close to 1.00 after training with 300 epochs. However, as the number of denoising steps increases, the attack accuracy decreases by nearly 10% when the denoising step is set to 2000. The increase in denoising steps leads to a decrease in attack accuracy. This pattern is also observed for models trained on ImageNet when attacked with  $ GSA_{1} $ and  $ GSA_{2} $. We think this is because MIA relies on exploiting the model's overfitting. However, increasing the denoising steps slows down the model's convergence, thereby impairing the effectiveness of the attack.",
+        "block_bbox": [
+          78,
+          1062,
+          599,
+          1363
+        ],
+        "block_id": 7,
+        "block_order": 6,
+        "group_id": 7,
+        "global_block_id": 190,
+        "global_group_id": 190,
+        "block_polygon_points": [
+          [
+            78.0,
+            1062.0
+          ],
+          [
+            599.0,
+            1062.0
+          ],
+          [
+            599.0,
+            1363.0
+          ],
+          [
+            78.0,
+            1363.0
+          ]
+        ]
+      },
+      {
+        "block_label": "text",
+        "block_content": "Moreover, input data resolution also plays an important role in determining attack success rates. High-resolution images help in distinguishing between member and non-member samples due to their intricate details, but they also require more computational resources and longer training times. Such images may also decelerate the convergence rate of the model, potentially mitigating the extent of overfitting and necessitating additional epochs to achieve equivalent attack outcomes as before. To investigate the impact of high-resolution images on attack performance, we conducted the experiments using both GSA $ _{1} $ and GSA $ _{2} $ on images with resolutions ranging from 64 to 256 pixels.",
+        "block_bbox": [
+          79,
+          1363,
+          597,
+          1461
+        ],
+        "block_id": 8,
+        "block_order": 7,
+        "group_id": 8,
+        "global_block_id": 191,
+        "global_group_id": 191,
+        "block_polygon_points": [
+          [
+            79.0,
+            1363.0
+          ],
+          [
+            597.0,
+            1363.0
+          ],
+          [
+            597.0,
+            1461.0
+          ],
+          [
+            79.0,
+            1461.0
+          ]
+        ]
+      },
+      {
+        "block_label": "text",
+        "block_content": "",
+        "block_bbox": [
+          639,
+          132,
+          1170,
+          299
+        ],
+        "block_id": 9,
+        "block_order": 8,
+        "group_id": 8,
+        "global_block_id": 192,
+        "global_group_id": 192,
+        "block_polygon_points": [
+          [
+            639.0,
+            132.0
+          ],
+          [
+            1170.0,
+            132.0
+          ],
+          [
+            1170.0,
+            299.0
+          ],
+          [
+            639.0,
+            299.0
+          ]
+        ]
+      },
+      {
+        "block_label": "text",
+        "block_content": "In Figure 6, we observed that the highest attack accuracy was achieved with GSA₁ and GSA₂ when the image resolution was set to 128 × 128. The results indicate that lower-resolution samples do not necessarily lead to better attack performance. Increasing the resolution from 64 to 128 allows the model to capture more granular details, improving the distinction between member and non-member samples. However, when the resolution is further increased to 256, a noticeable decline in success rate occurs. We believe this is because higher-resolution images require more training steps for the model to converge. Therefore, when the training time is fixed but the resolution increases, the overfitting phenomenon to the training data diminishes. This reduction in overfitting causes the attack to become less effective. Additionally, both excessively high and low resolutions can negatively impact the final attack performance. An optimal resolution exists where the model can capture sufficient details without requiring extensive training, achieving a balanced fit.",
+        "block_bbox": [
+          637,
+          298,
+          1172,
+          699
+        ],
+        "block_id": 10,
+        "block_order": 9,
+        "group_id": 10,
+        "global_block_id": 193,
+        "global_group_id": 193,
+        "block_polygon_points": [
+          [
+            637.0,
+            298.0
+          ],
+          [
+            1172.0,
+            298.0
+          ],
+          [
+            1172.0,
+            699.0
+          ],
+          [
+            637.0,
+            699.0
+          ]
+        ]
+      },
+      {
+        "block_label": "text",
+        "block_content": "Takeaways: In settings where unconditional diffusion models serve as the target model, overfitting is considered foundational for MIAs. Moreover, distinctions between member and non-member samples can vary at different timesteps. Given these factors, we have investigated several elements that could influence the attack's success rate. These factors encompass the number of training epochs, number of sampling timesteps from a single instance (represented as  $ |K| $), the total diffusion steps, and the resolution of the images. Results from these explorations are presented in the aforementioned figures, with ASR adopted as the evaluation metric.",
+        "block_bbox": [
+          665,
+          725,
+          1159,
+          1014
+        ],
+        "block_id": 11,
+        "block_order": 10,
+        "group_id": 11,
+        "global_block_id": 194,
+        "global_group_id": 194,
+        "block_polygon_points": [
+          [
+            665.0,
+            725.0
+          ],
+          [
+            1159.0,
+            725.0
+          ],
+          [
+            1159.0,
+            1014.0
+          ],
+          [
+            665.0,
+            1014.0
+          ]
+        ]
+      },
+      {
+        "block_label": "paragraph_title",
+        "block_content": "5.3 Attacking Conditional Diffusion Model",
+        "block_bbox": [
+          638,
+          1044,
+          1127,
+          1071
+        ],
+        "block_id": 12,
+        "block_order": 11,
+        "group_id": 12,
+        "global_block_id": 195,
+        "global_group_id": 195,
+        "block_polygon_points": [
+          [
+            638.0,
+            1044.0
+          ],
+          [
+            1127.0,
+            1044.0
+          ],
+          [
+            1127.0,
+            1071.0
+          ],
+          [
+            638.0,
+            1071.0
+          ]
+        ]
+      },
+      {
+        "block_label": "text",
+        "block_content": "In this section, we design experiments with Imagen, a state-of-the-art generation model in the text-to-image field. We train two shadow models from scratch, using the MS COCO dataset in this part for training purposes.",
+        "block_bbox": [
+          636,
+          1084,
+          1178,
+          1180
+        ],
+        "block_id": 13,
+        "block_order": 12,
+        "group_id": 13,
+        "global_block_id": 196,
+        "global_group_id": 196,
+        "block_polygon_points": [
+          [
+            636.0,
+            1084.0
+          ],
+          [
+            1178.0,
+            1084.0
+          ],
+          [
+            1178.0,
+            1180.0
+          ],
+          [
+            636.0,
+            1180.0
+          ]
+        ]
+      },
+      {
+        "block_label": "text",
+        "block_content": "Training on Different Epochs. In Figure 5b, consistent with the two attack scenarios posited in Section 5.2, we analyze the effect of training steps on the attack success rate for Imagen models. Our categorization is premised on the attacker's knowledge of the target model's training steps. Notably, when the attacker is uncertain about the number of training steps of the target model, we set the training steps of the target model to a fixed value (in this instance, 400,000 steps). This experimental setup aligns with that of Section 5.2.",
+        "block_bbox": [
+          635,
+          1189,
+          1172,
+          1399
+        ],
+        "block_id": 14,
+        "block_order": 13,
+        "group_id": 14,
+        "global_block_id": 197,
+        "global_group_id": 197,
+        "block_polygon_points": [
+          [
+            635.0,
+            1189.0
+          ],
+          [
+            1172.0,
+            1189.0
+          ],
+          [
+            1172.0,
+            1399.0
+          ],
+          [
+            635.0,
+            1399.0
+          ]
+        ]
+      },
+      {
+        "block_label": "text",
+        "block_content": "Consistent with previous experiments using the unconditional diffusion models, a large proportion of the attack success rate for the Imagen model is influenced by the training steps of the target",
+        "block_bbox": [
+          635,
+          1397,
+          1167,
+          1472
+        ],
+        "block_id": 15,
+        "block_order": 14,
+        "group_id": 15,
+        "global_block_id": 198,
+        "global_group_id": 198,
+        "block_polygon_points": [
+          [
+            635,
+            1397
+          ],
+          [
+            635,
+            1464
+          ],
+          [
+            1166,
+            1471
+          ],
+          [
+            1166,
+            1405
+          ]
+        ]
+      },
+      {
+        "block_label": "number",
+        "block_content": "407",
+        "block_bbox": [
+          603,
+          1473,
+          628,
+          1488
+        ],
+        "block_id": 16,
+        "block_order": null,
+        "group_id": 16,
+        "global_block_id": 199,
+        "global_group_id": 199,
+        "block_polygon_points": [
+          [
+            603.0,
+            1473.0
+          ],
+          [
+            627.0,
+            1473.0
+          ],
+          [
+            627.0,
+            1487.0
+          ],
+          [
+            603.0,
+            1487.0
+          ]
+        ]
+      }
+    ],
+    "doc_preprocessor_res": {
+      "model_settings": {
+        "use_doc_orientation_classify": true,
+        "use_doc_unwarping": true
+      },
+      "angle": 0
+    },
+    "layout_det_res": {
+      "boxes": [
+        {
+          "cls_id": 12,
+          "label": "header",
+          "score": 0.8853654861450195,
+          "coordinate": [
+            83,
+            67,
+            500,
+            96
+          ],
+          "order": null,
+          "polygon_points": [
+            [
+              83,
+              67
+            ],
+            [
+              83,
+              88
+            ],
+            [
+              163,
+              95
+            ],
+            [
+              499,
+              95
+            ],
+            [
+              499,
+              75
+            ],
+            [
+              96,
+              75
+            ],
+            [
+              95,
+              67
+            ]
+          ]
+        },
+        {
+          "cls_id": 12,
+          "label": "header",
+          "score": 0.8619521260261536,
+          "coordinate": [
+            818,
+            78,
+            1169,
+            100
+          ],
+          "order": null,
+          "polygon_points": [
+            [
+              818.0,
+              78.0
+            ],
+            [
+              1169.0,
+              78.0
+            ],
+            [
+              1169.0,
+              100.0
+            ],
+            [
+              818.0,
+              100.0
+            ]
+          ]
+        },
+        {
+          "cls_id": 22,
+          "label": "text",
+          "score": 0.9063595533370972,
+          "coordinate": [
+            83,
+            123,
+            599,
+            180
+          ],
+          "order": 1,
+          "polygon_points": [
+            [
+              83.0,
+              123.0
+            ],
+            [
+              599.0,
+              123.0
+            ],
+            [
+              599.0,
+              180.0
+            ],
+            [
+              83.0,
+              180.0
+            ]
+          ]
+        },
+        {
+          "cls_id": 22,
+          "label": "text",
+          "score": 0.9569934010505676,
+          "coordinate": [
+            83,
+            175,
+            600,
+            347
+          ],
+          "order": 2,
+          "polygon_points": [
+            [
+              83,
+              175
+            ],
+            [
+              83,
+              339
+            ],
+            [
+              145,
+              346
+            ],
+            [
+              427,
+              346
+            ],
+            [
+              538,
+              346
+            ],
+            [
+              582,
+              346
+            ],
+            [
+              599,
+              346
+            ],
+            [
+              599,
+              183
+            ],
+            [
+              507,
+              175
+            ],
+            [
+              287,
+              175
+            ],
+            [
+              267,
+              175
+            ]
+          ]
+        },
+        {
+          "cls_id": 22,
+          "label": "text",
+          "score": 0.9632828235626221,
+          "coordinate": [
+            81,
+            343,
+            600,
+            653
+          ],
+          "order": 3,
+          "polygon_points": [
+            [
+              88,
+              343
+            ],
+            [
+              81,
+              652
+            ],
+            [
+              599,
+              652
+            ],
+            [
+              599,
+              351
+            ],
+            [
+              538,
+              343
+            ],
+            [
+              509,
+              343
+            ],
+            [
+              398,
+              343
+            ],
+            [
+              392,
+              351
+            ],
+            [
+              129,
+              343
+            ]
+          ]
+        },
+        {
+          "cls_id": 22,
+          "label": "text",
+          "score": 0.9625675678253174,
+          "coordinate": [
+            79,
+            660,
+            597,
+            875
+          ],
+          "order": 4,
+          "polygon_points": [
+            [
+              79.0,
+              660.0
+            ],
+            [
+              597.0,
+              660.0
+            ],
+            [
+              597.0,
+              875.0
+            ],
+            [
+              79.0,
+              875.0
+            ]
+          ]
+        },
+        {
+          "cls_id": 22,
+          "label": "text",
+          "score": 0.9569054245948792,
+          "coordinate": [
+            79,
+            874,
+            598,
+            1062
+          ],
+          "order": 5,
+          "polygon_points": [
+            [
+              79.0,
+              874.0
+            ],
+            [
+              598.0,
+              874.0
+            ],
+            [
+              598.0,
+              1062.0
+            ],
+            [
+              79.0,
+              1062.0
+            ]
+          ]
+        },
+        {
+          "cls_id": 22,
+          "label": "text",
+          "score": 0.9666260480880737,
+          "coordinate": [
+            78,
+            1062,
+            599,
+            1363
+          ],
+          "order": 6,
+          "polygon_points": [
+            [
+              78.0,
+              1062.0
+            ],
+            [
+              599.0,
+              1062.0
+            ],
+            [
+              599.0,
+              1363.0
+            ],
+            [
+              78.0,
+              1363.0
+            ]
+          ]
+        },
+        {
+          "cls_id": 15,
+          "label": "inline_formula",
+          "score": 0.6034401059150696,
+          "coordinate": [
+            85,
+            1134,
+            131,
+            1156
+          ],
+          "order": 7,
+          "polygon_points": [
+            [
+              85,
+              1134
+            ],
+            [
+              85,
+              1155
+            ],
+            [
+              130,
+              1155
+            ],
+            [
+              130,
+              1134
+            ]
+          ]
+        },
+        {
+          "cls_id": 15,
+          "label": "inline_formula",
+          "score": 0.4655841886997223,
+          "coordinate": [
+            165,
+            1135,
+            209,
+            1156
+          ],
+          "order": 8,
+          "polygon_points": [
+            [
+              165.0,
+              1135.0
+            ],
+            [
+              208.0,
+              1135.0
+            ],
+            [
+              208.0,
+              1155.0
+            ],
+            [
+              165.0,
+              1155.0
+            ]
+          ]
+        },
+        {
+          "cls_id": 15,
+          "label": "inline_formula",
+          "score": 0.4809892177581787,
+          "coordinate": [
+            468,
+            1249,
+            512,
+            1270
+          ],
+          "order": 9,
+          "polygon_points": [
+            [
+              468.0,
+              1249.0
+            ],
+            [
+              511.0,
+              1249.0
+            ],
+            [
+              511.0,
+              1269.0
+            ],
+            [
+              468.0,
+              1269.0
+            ]
+          ]
+        },
+        {
+          "cls_id": 15,
+          "label": "inline_formula",
+          "score": 0.5756195783615112,
+          "coordinate": [
+            549,
+            1249,
+            594,
+            1270
+          ],
+          "order": 10,
+          "polygon_points": [
+            [
+              549.0,
+              1249.0
+            ],
+            [
+              593.0,
+              1249.0
+            ],
+            [
+              593.0,
+              1269.0
+            ],
+            [
+              549.0,
+              1269.0
+            ]
+          ]
+        },
+        {
+          "cls_id": 22,
+          "label": "text",
+          "score": 0.9446554183959961,
+          "coordinate": [
+            79,
+            1363,
+            597,
+            1461
+          ],
+          "order": 11,
+          "polygon_points": [
+            [
+              79.0,
+              1363.0
+            ],
+            [
+              597.0,
+              1363.0
+            ],
+            [
+              597.0,
+              1461.0
+            ],
+            [
+              79.0,
+              1461.0
+            ]
+          ]
+        },
+        {
+          "cls_id": 22,
+          "label": "text",
+          "score": 0.9568641781806946,
+          "coordinate": [
+            639,
+            132,
+            1170,
+            299
+          ],
+          "order": 12,
+          "polygon_points": [
+            [
+              639.0,
+              132.0
+            ],
+            [
+              1170.0,
+              132.0
+            ],
+            [
+              1170.0,
+              299.0
+            ],
+            [
+              639.0,
+              299.0
+            ]
+          ]
+        },
+        {
+          "cls_id": 15,
+          "label": "inline_formula",
+          "score": 0.540337324142456,
+          "coordinate": [
+            828,
+            252,
+            870,
+            274
+          ],
+          "order": 13,
+          "polygon_points": [
+            [
+              828,
+              252
+            ],
+            [
+              828,
+              266
+            ],
+            [
+              833,
+              266
+            ],
+            [
+              834,
+              267
+            ],
+            [
+              834,
+              273
+            ],
+            [
+              869,
+              273
+            ],
+            [
+              869,
+              252
+            ]
+          ]
+        },
+        {
+          "cls_id": 15,
+          "label": "inline_formula",
+          "score": 0.6299325823783875,
+          "coordinate": [
+            904,
+            252,
+            950,
+            274
+          ],
+          "order": 14,
+          "polygon_points": [
+            [
+              904.0,
+              252.0
+            ],
+            [
+              949.0,
+              252.0
+            ],
+            [
+              949.0,
+              273.0
+            ],
+            [
+              904.0,
+              273.0
+            ]
+          ]
+        },
+        {
+          "cls_id": 22,
+          "label": "text",
+          "score": 0.9681859612464905,
+          "coordinate": [
+            637,
+            298,
+            1172,
+            699
+          ],
+          "order": 15,
+          "polygon_points": [
+            [
+              637.0,
+              298.0
+            ],
+            [
+              1172.0,
+              298.0
+            ],
+            [
+              1172.0,
+              699.0
+            ],
+            [
+              637.0,
+              699.0
+            ]
+          ]
+        },
+        {
+          "cls_id": 15,
+          "label": "inline_formula",
+          "score": 0.42436784505844116,
+          "coordinate": [
+            741,
+            302,
+            758,
+            321
+          ],
+          "order": 16,
+          "polygon_points": [
+            [
+              741,
+              302
+            ],
+            [
+              741,
+              320
+            ],
+            [
+              757,
+              320
+            ],
+            [
+              757,
+              302
+            ]
+          ]
+        },
+        {
+          "cls_id": 15,
+          "label": "inline_formula",
+          "score": 0.4990330636501312,
+          "coordinate": [
+            758,
+            323,
+            802,
+            343
+          ],
+          "order": 17,
+          "polygon_points": [
+            [
+              758.0,
+              323.0
+            ],
+            [
+              801.0,
+              323.0
+            ],
+            [
+              801.0,
+              342.0
+            ],
+            [
+              758.0,
+              342.0
+            ]
+          ]
+        },
+        {
+          "cls_id": 15,
+          "label": "inline_formula",
+          "score": 0.5233997702598572,
+          "coordinate": [
+            837,
+            323,
+            882,
+            343
+          ],
+          "order": 18,
+          "polygon_points": [
+            [
+              837.0,
+              323.0
+            ],
+            [
+              881.0,
+              323.0
+            ],
+            [
+              881.0,
+              342.0
+            ],
+            [
+              837.0,
+              342.0
+            ]
+          ]
+        },
+        {
+          "cls_id": 15,
+          "label": "inline_formula",
+          "score": 0.41973865032196045,
+          "coordinate": [
+            667,
+            345,
+            745,
+            366
+          ],
+          "order": 19,
+          "polygon_points": [
+            [
+              667.0,
+              345.0
+            ],
+            [
+              744.0,
+              345.0
+            ],
+            [
+              744.0,
+              365.0
+            ],
+            [
+              667.0,
+              365.0
+            ]
+          ]
+        },
+        {
+          "cls_id": 22,
+          "label": "text",
+          "score": 0.9581519365310669,
+          "coordinate": [
+            665,
+            725,
+            1159,
+            1014
+          ],
+          "order": 20,
+          "polygon_points": [
+            [
+              665.0,
+              725.0
+            ],
+            [
+              1159.0,
+              725.0
+            ],
+            [
+              1159.0,
+              1014.0
+            ],
+            [
+              665.0,
+              1014.0
+            ]
+          ]
+        },
+        {
+          "cls_id": 17,
+          "label": "paragraph_title",
+          "score": 0.8398545980453491,
+          "coordinate": [
+            638,
+            1044,
+            1127,
+            1071
+          ],
+          "order": 21,
+          "polygon_points": [
+            [
+              638.0,
+              1044.0
+            ],
+            [
+              1127.0,
+              1044.0
+            ],
+            [
+              1127.0,
+              1071.0
+            ],
+            [
+              638.0,
+              1071.0
+            ]
+          ]
+        },
+        {
+          "cls_id": 22,
+          "label": "text",
+          "score": 0.9301860928535461,
+          "coordinate": [
+            636,
+            1084,
+            1178,
+            1180
+          ],
+          "order": 22,
+          "polygon_points": [
+            [
+              636.0,
+              1084.0
+            ],
+            [
+              1178.0,
+              1084.0
+            ],
+            [
+              1178.0,
+              1180.0
+            ],
+            [
+              636.0,
+              1180.0
+            ]
+          ]
+        },
+        {
+          "cls_id": 22,
+          "label": "text",
+          "score": 0.9565681219100952,
+          "coordinate": [
+            635,
+            1189,
+            1172,
+            1399
+          ],
+          "order": 23,
+          "polygon_points": [
+            [
+              635.0,
+              1189.0
+            ],
+            [
+              1172.0,
+              1189.0
+            ],
+            [
+              1172.0,
+              1399.0
+            ],
+            [
+              635.0,
+              1399.0
+            ]
+          ]
+        },
+        {
+          "cls_id": 22,
+          "label": "text",
+          "score": 0.9269338846206665,
+          "coordinate": [
+            635,
+            1397,
+            1167,
+            1472
+          ],
+          "order": 24,
+          "polygon_points": [
+            [
+              635,
+              1397
+            ],
+            [
+              635,
+              1464
+            ],
+            [
+              1166,
+              1471
+            ],
+            [
+              1166,
+              1405
+            ]
+          ]
+        },
+        {
+          "cls_id": 16,
+          "label": "number",
+          "score": 0.6998484134674072,
+          "coordinate": [
+            603,
+            1473,
+            628,
+            1488
+          ],
+          "order": 25,
+          "polygon_points": [
+            [
+              603.0,
+              1473.0
+            ],
+            [
+              627.0,
+              1473.0
+            ],
+            [
+              627.0,
+              1487.0
+            ],
+            [
+              603.0,
+              1487.0
+            ]
+          ]
+        }
+      ]
+    }
+  },
+  "markdown": {
+    "text": "differentiate between member and non-member samples, would lead to improved attack accuracy.\n\nFigure 4b confirms our initial hypothesis that collecting more gradient information from a single sample enhances the attack's success rate. In all attacks, we maintained a constant setting of 1000 diffusion steps and conducted equidistant sampling across these steps. Our focus was on understanding how varying the sampling frequencies during the evaluation process of a single sample affects the attack's accuracy.\n\nFrom our experimental data, we observed that the attack's success rate was lowest when gradient information was collected only once per sample. This limited data collection blurred the distinction between member and non-member set samples. Notably, the precision saw a significant boost when the collection frequency increased. However, after reaching a threshold of ten collections per sample, further increases in frequency showed diminishing returns in precision. Thus, we inferred that, for both attack strategies across these two datasets, collecting gradient information ten times from each sample is optimal for distinguishing between member and non-member sets. In other experiments, to strike a balance between efficiency and precision, we will adopt this ten-times-per-sample information collection formula as the default setting.\n\nDifferent Diffusion Steps and Training Image Resolution. In the context of diffusion models, increasing the number of diffusion steps can potentially enhance image quality. This improvement stems from the model's refined capability to capture detailed image nuances by reducing noise over more steps. However, as we add more diffusion steps, the optimization challenge might become more complex. This complexity can slow down the convergence speed and require more detailed hyperparameter adjustments to find the optimal model setup.\n\nWhen contemplating membership inference attacks, their genesis primarily stems from overfitting during the training phase, leading to discrepancies between the member and non-member samples. We theorize that if adding diffusion steps slows model convergence, it might reduce the overfitting phenomenon, affecting the attack's success. We set the total diffusion steps from 500 to 2000, kept other parameters unchanged, and retrained the model on both ImageNet and CIFAR-10 datasets.\n\nIn Figure 5a, we observe that increasing the number of diffusion steps significantly influences our attack success rate, which aligns with our hypothesis. For models trained on CIFAR-10, both  $ GSA_{1} $ and  $ GSA_{2} $ achieve an attack accuracy close to 1.00 after training with 300 epochs. However, as the number of denoising steps increases, the attack accuracy decreases by nearly 10% when the denoising step is set to 2000. The increase in denoising steps leads to a decrease in attack accuracy. This pattern is also observed for models trained on ImageNet when attacked with  $ GSA_{1} $ and  $ GSA_{2} $. We think this is because MIA relies on exploiting the model's overfitting. However, increasing the denoising steps slows down the model's convergence, thereby impairing the effectiveness of the attack.\n\nMoreover, input data resolution also plays an important role in determining attack success rates. High-resolution images help in distinguishing between member and non-member samples due to their intricate details, but they also require more computational resources and longer training times. Such images may also decelerate the convergence rate of the model, potentially mitigating the extent of overfitting and necessitating additional epochs to achieve equivalent attack outcomes as before. To investigate the impact of high-resolution images on attack performance, we conducted the experiments using both GSA $ _{1} $ and GSA $ _{2} $ on images with resolutions ranging from 64 to 256 pixels.\n\n\n\nIn Figure 6, we observed that the highest attack accuracy was achieved with GSA₁ and GSA₂ when the image resolution was set to 128 × 128. The results indicate that lower-resolution samples do not necessarily lead to better attack performance. Increasing the resolution from 64 to 128 allows the model to capture more granular details, improving the distinction between member and non-member samples. However, when the resolution is further increased to 256, a noticeable decline in success rate occurs. We believe this is because higher-resolution images require more training steps for the model to converge. Therefore, when the training time is fixed but the resolution increases, the overfitting phenomenon to the training data diminishes. This reduction in overfitting causes the attack to become less effective. Additionally, both excessively high and low resolutions can negatively impact the final attack performance. An optimal resolution exists where the model can capture sufficient details without requiring extensive training, achieving a balanced fit.\n\nTakeaways: In settings where unconditional diffusion models serve as the target model, overfitting is considered foundational for MIAs. Moreover, distinctions between member and non-member samples can vary at different timesteps. Given these factors, we have investigated several elements that could influence the attack's success rate. These factors encompass the number of training epochs, number of sampling timesteps from a single instance (represented as  $ |K| $), the total diffusion steps, and the resolution of the images. Results from these explorations are presented in the aforementioned figures, with ASR adopted as the evaluation metric.\n\n### 5.3 Attacking Conditional Diffusion Model\n\nIn this section, we design experiments with Imagen, a state-of-the-art generation model in the text-to-image field. We train two shadow models from scratch, using the MS COCO dataset in this part for training purposes.\n\nTraining on Different Epochs. In Figure 5b, consistent with the two attack scenarios posited in Section 5.2, we analyze the effect of training steps on the attack success rate for Imagen models. Our categorization is premised on the attacker's knowledge of the target model's training steps. Notably, when the attacker is uncertain about the number of training steps of the target model, we set the training steps of the target model to a fixed value (in this instance, 400,000 steps). This experimental setup aligns with that of Section 5.2.\n\nConsistent with previous experiments using the unconditional diffusion models, a large proportion of the attack success rate for the Imagen model is influenced by the training steps of the target",
+    "images": {}
+  },
+  "outputImages": {
+    "layout_det_res": "https://pplines-online.bj.bcebos.com/deploy/official/paddleocr/pp-ocr-vl-15//be89aefa-2ad6-4789-859d-51acf964ae99/layout_det_res_4.jpg?authorization=bce-auth-v1%2FALTAKzReLNvew3ySINYJ0fuAMN%2F2026-04-05T12%3A41%3A17Z%2F-1%2F%2F1b397b551308b20f27e052931b103c098f493d2bb9e55f285e8dec83aeaff552"
+  },
+  "inputImage": "https://pplines-online.bj.bcebos.com/deploy/official/paddleocr/pp-ocr-vl-15//be89aefa-2ad6-4789-859d-51acf964ae99/input_img_4.jpg?authorization=bce-auth-v1%2FALTAKzReLNvew3ySINYJ0fuAMN%2F2026-04-05T12%3A41%3A17Z%2F-1%2F%2F19585972d0b22f892888515493dabfb9415cec418f4f9f2878dbcc717e8b5d9a"
+}

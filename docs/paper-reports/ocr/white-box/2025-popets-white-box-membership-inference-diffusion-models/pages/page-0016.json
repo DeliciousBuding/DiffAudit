@@ -1,0 +1,2143 @@
+{
+  "prunedResult": {
+    "page_count": 3,
+    "width": 1224,
+    "height": 1584,
+    "model_settings": {
+      "use_doc_preprocessor": true,
+      "use_layout_detection": true,
+      "use_chart_recognition": false,
+      "use_seal_recognition": false,
+      "use_ocr_for_image_block": false,
+      "format_block_content": false,
+      "merge_layout_blocks": true,
+      "markdown_ignore_labels": [
+        "number",
+        "footnote",
+        "header",
+        "header_image",
+        "footer",
+        "footer_image",
+        "aside_text"
+      ],
+      "return_layout_polygon_points": true
+    },
+    "parsing_res_list": [
+      {
+        "block_label": "header",
+        "block_content": "White-box Membership Inference Attacks against Diffusion Models",
+        "block_bbox": [
+          53,
+          44,
+          495,
+          83
+        ],
+        "block_id": 0,
+        "block_order": null,
+        "group_id": 0,
+        "global_block_id": 355,
+        "global_group_id": 355,
+        "block_polygon_points": [
+          [
+            53,
+            44
+          ],
+          [
+            53,
+            63
+          ],
+          [
+            78,
+            73
+          ],
+          [
+            195,
+            82
+          ],
+          [
+            494,
+            82
+          ],
+          [
+            494,
+            64
+          ],
+          [
+            341,
+            54
+          ],
+          [
+            336,
+            54
+          ],
+          [
+            316,
+            54
+          ],
+          [
+            181,
+            44
+          ]
+        ]
+      },
+      {
+        "block_label": "header",
+        "block_content": "Proceedings on Privacy Enhancing Technologies 2025(2)",
+        "block_bbox": [
+          824,
+          62,
+          1183,
+          85
+        ],
+        "block_id": 1,
+        "block_order": null,
+        "group_id": 1,
+        "global_block_id": 356,
+        "global_group_id": 356,
+        "block_polygon_points": [
+          [
+            824.0,
+            62.0
+          ],
+          [
+            1183.0,
+            62.0
+          ],
+          [
+            1183.0,
+            85.0
+          ],
+          [
+            824.0,
+            85.0
+          ]
+        ]
+      },
+      {
+        "block_label": "image",
+        "block_content": "",
+        "block_bbox": [
+          129,
+          109,
+          1113,
+          363
+        ],
+        "block_id": 2,
+        "block_order": null,
+        "group_id": 2,
+        "global_block_id": 357,
+        "global_group_id": 357,
+        "block_polygon_points": [
+          [
+            129.0,
+            109.0
+          ],
+          [
+            1113.0,
+            109.0
+          ],
+          [
+            1113.0,
+            363.0
+          ],
+          [
+            129.0,
+            363.0
+          ]
+        ]
+      },
+      {
+        "block_label": "figure_title",
+        "block_content": "Figure 8: Use t-SNE to represent the member and non-member data pair with the same loss value (rounded to  $ 1e^{-7} $) across five loss intervals. The input to t-SNE is the output of each sample from the last layer of the attack model.",
+        "block_bbox": [
+          80,
+          388,
+          1164,
+          443
+        ],
+        "block_id": 3,
+        "block_order": null,
+        "group_id": 3,
+        "global_block_id": 358,
+        "global_group_id": 358,
+        "block_polygon_points": [
+          [
+            80.0,
+            388.0
+          ],
+          [
+            1164.0,
+            388.0
+          ],
+          [
+            1164.0,
+            443.0
+          ],
+          [
+            80.0,
+            443.0
+          ]
+        ]
+      },
+      {
+        "block_label": "paragraph_title",
+        "block_content": "B Additional Likelihood Ratio Attack Details",
+        "block_bbox": [
+          82,
+          472,
+          575,
+          499
+        ],
+        "block_id": 4,
+        "block_order": 1,
+        "group_id": 4,
+        "global_block_id": 359,
+        "global_group_id": 359,
+        "block_polygon_points": [
+          [
+            82.0,
+            472.0
+          ],
+          [
+            575.0,
+            472.0
+          ],
+          [
+            575.0,
+            499.0
+          ],
+          [
+            82.0,
+            499.0
+          ]
+        ]
+      },
+      {
+        "block_label": "text",
+        "block_content": "Carlini et al. [3] contend that it is erroneous to consider the ramifications of misclassifying a sample as a member of the set as identical to those of incorrect non-member set designation. As a result, they proposed a new evaluation metric and introduced their improved method, LiRA, which proved to be far more effective than previous MIA attack methods in experiments, with up to ten times more efficacy under low False Positive Rates (FPRs). The shadow training technique is also needed here, but it involves creating  $ D_{in} $ and  $ D_{out} $ based on each shadow model's response to the same sample depending on whether the sample was used in the model's training or not. This attack method is white-box as it requires access to the model's output loss and some prior knowledge of the target member's dataset, necessitating the use of target points in the shadow model's training.",
+        "block_bbox": [
+          81,
+          503,
+          598,
+          840
+        ],
+        "block_id": 5,
+        "block_order": 2,
+        "group_id": 5,
+        "global_block_id": 360,
+        "global_group_id": 360,
+        "block_polygon_points": [
+          [
+            81.0,
+            503.0
+          ],
+          [
+            598.0,
+            503.0
+          ],
+          [
+            598.0,
+            840.0
+          ],
+          [
+            81.0,
+            840.0
+          ]
+        ]
+      },
+      {
+        "block_label": "display_formula",
+        "block_content": " $$ \\Lambda=\\frac{p(\\mathrm{conf_{obs}}\\mid\\mathbb{D}_{\\mathrm{in}}(x,y))}{p(\\mathrm{conf_{obs}}\\mid\\mathbb{D}_{\\mathrm{out}}(x,y))} $$ ",
+        "block_bbox": [
+          227,
+          859,
+          449,
+          910
+        ],
+        "block_id": 6,
+        "block_order": 3,
+        "group_id": 6,
+        "global_block_id": 361,
+        "global_group_id": 361,
+        "block_polygon_points": [
+          [
+            227.0,
+            859.0
+          ],
+          [
+            449.0,
+            859.0
+          ],
+          [
+            449.0,
+            910.0
+          ],
+          [
+            227.0,
+            910.0
+          ]
+        ]
+      },
+      {
+        "block_label": "text",
+        "block_content": "The term 'confobs' refers to the value generated by applying negative exponentiation and logit scaling to the loss produced by the target model for an observed image. 'D_{in}' represents the distribution derived from the processed loss for the member set, while 'D_{out}' stands for the distribution established based on the loss generated for the non-member set samples.",
+        "block_bbox": [
+          83,
+          917,
+          593,
+          1059
+        ],
+        "block_id": 7,
+        "block_order": 4,
+        "group_id": 7,
+        "global_block_id": 362,
+        "global_group_id": 362,
+        "block_polygon_points": [
+          [
+            83.0,
+            917.0
+          ],
+          [
+            593.0,
+            917.0
+          ],
+          [
+            593.0,
+            1059.0
+          ],
+          [
+            83.0,
+            1059.0
+          ]
+        ]
+      },
+      {
+        "block_label": "text",
+        "block_content": "Evidently, the form of LiRA's online attack necessitates retraining the shadow model each time a target point  $ (x, y) $ is obtained. This approach represents a substantial and arguably uneconomical consumption of resources.",
+        "block_bbox": [
+          84,
+          1055,
+          593,
+          1150
+        ],
+        "block_id": 8,
+        "block_order": 5,
+        "group_id": 8,
+        "global_block_id": 363,
+        "global_group_id": 363,
+        "block_polygon_points": [
+          [
+            84.0,
+            1055.0
+          ],
+          [
+            593.0,
+            1055.0
+          ],
+          [
+            593.0,
+            1150.0
+          ],
+          [
+            84.0,
+            1150.0
+          ]
+        ]
+      },
+      {
+        "block_label": "text",
+        "block_content": "Hence, after proposing this online attack form with many constraints, Carlini et al [3]. suggested an improved offline attack form that does not require target points in shadow models' training and modifies the attack form to:",
+        "block_bbox": [
+          83,
+          1148,
+          593,
+          1242
+        ],
+        "block_id": 9,
+        "block_order": 6,
+        "group_id": 9,
+        "global_block_id": 364,
+        "global_group_id": 364,
+        "block_polygon_points": [
+          [
+            83,
+            1148
+          ],
+          [
+            83,
+            1241
+          ],
+          [
+            592,
+            1241
+          ],
+          [
+            592,
+            1148
+          ]
+        ]
+      },
+      {
+        "block_label": "display_formula",
+        "block_content": " $$ \\Lambda=1-\\operatorname{P r}[Z>\\operatorname{c o n f}_{\\mathrm{o b s}}],\\mathrm{w h e r e}Z\\sim\\mathbb{D}_{\\mathrm{o u t}}(x,y)). $$ ",
+        "block_bbox": [
+          150,
+          1256,
+          524,
+          1281
+        ],
+        "block_id": 10,
+        "block_order": 7,
+        "group_id": 10,
+        "global_block_id": 365,
+        "global_group_id": 365,
+        "block_polygon_points": [
+          [
+            150.0,
+            1256.0
+          ],
+          [
+            524.0,
+            1256.0
+          ],
+          [
+            524.0,
+            1281.0
+          ],
+          [
+            150.0,
+            1281.0
+          ]
+        ]
+      },
+      {
+        "block_label": "text",
+        "block_content": "However, the success rate of offline attacks is considerably lower compared to online attacks.",
+        "block_bbox": [
+          83,
+          1296,
+          590,
+          1345
+        ],
+        "block_id": 11,
+        "block_order": 8,
+        "group_id": 11,
+        "global_block_id": 366,
+        "global_group_id": 366,
+        "block_polygon_points": [
+          [
+            83.0,
+            1296.0
+          ],
+          [
+            590.0,
+            1296.0
+          ],
+          [
+            590.0,
+            1345.0
+          ],
+          [
+            83.0,
+            1345.0
+          ]
+        ]
+      },
+      {
+        "block_label": "paragraph_title",
+        "block_content": "C Additional Information for Methodology",
+        "block_bbox": [
+          82,
+          1365,
+          548,
+          1391
+        ],
+        "block_id": 12,
+        "block_order": 9,
+        "group_id": 12,
+        "global_block_id": 367,
+        "global_group_id": 367,
+        "block_polygon_points": [
+          [
+            82.0,
+            1365.0
+          ],
+          [
+            548.0,
+            1365.0
+          ],
+          [
+            548.0,
+            1391.0
+          ],
+          [
+            82.0,
+            1391.0
+          ]
+        ]
+      },
+      {
+        "block_label": "text",
+        "block_content": "In Section 3, we establish the theoretical foundation for GSA₁ and GSA₂. Specifically, we emphasize that the loss-based attack faces a challenge: when member and non-member samples have the same loss value, the attack loses effectiveness. We demonstrate that, in this situation, the gradient data differ between the two samples.",
+        "block_bbox": [
+          81,
+          1395,
+          590,
+          1470
+        ],
+        "block_id": 13,
+        "block_order": 10,
+        "group_id": 13,
+        "global_block_id": 368,
+        "global_group_id": 368,
+        "block_polygon_points": [
+          [
+            81.0,
+            1395.0
+          ],
+          [
+            590.0,
+            1395.0
+          ],
+          [
+            590.0,
+            1470.0
+          ],
+          [
+            81.0,
+            1470.0
+          ]
+        ]
+      },
+      {
+        "block_label": "text",
+        "block_content": "",
+        "block_bbox": [
+          635,
+          475,
+          1162,
+          525
+        ],
+        "block_id": 14,
+        "block_order": 11,
+        "group_id": 13,
+        "global_block_id": 369,
+        "global_group_id": 369,
+        "block_polygon_points": [
+          [
+            635.0,
+            475.0
+          ],
+          [
+            1162.0,
+            475.0
+          ],
+          [
+            1162.0,
+            525.0
+          ],
+          [
+            635.0,
+            525.0
+          ]
+        ]
+      },
+      {
+        "block_label": "text",
+        "block_content": "Therefore, we aim to provide experimental evidence to support this claim in this section. Following the attack pipeline, we continue to use gradient data from the shadow model to train an attack model. Then, we compare the loss values of member and non-member samples in the target model. When the loss values of member and non-member samples are the same, we collect them as a data pair. After collecting all data pairs in the target model member/non-member set, we feed all data pairs into the attack model and extract embeddings from the last layer as inputs to do the t-SNE visualization. In Figure 8, we divide the range of loss values into five intervals and present the data pairs in each interval. It is clear that members and non-members can have different gradients in each data pair. Moreover, the member and non-member samples can form distinct clusters. These results indicate that the challenge posed by identical loss values can be overcome by using gradient data, and that gradient data can serve as better features for the attack.",
+        "block_bbox": [
+          631,
+          522,
+          1164,
+          926
+        ],
+        "block_id": 15,
+        "block_order": 12,
+        "group_id": 15,
+        "global_block_id": 370,
+        "global_group_id": 370,
+        "block_polygon_points": [
+          [
+            638,
+            522
+          ],
+          [
+            638,
+            925
+          ],
+          [
+            1157,
+            925
+          ],
+          [
+            1157,
+            522
+          ],
+          [
+            1108,
+            522
+          ],
+          [
+            1096,
+            530
+          ]
+        ]
+      },
+      {
+        "block_label": "paragraph_title",
+        "block_content": "D A $ ^{n} $ - - - -",
+        "block_bbox": [
+          631,
+          937,
+          1126,
+          999
+        ],
+        "block_id": 16,
+        "block_order": 13,
+        "group_id": 16,
+        "global_block_id": 371,
+        "global_group_id": 371,
+        "block_polygon_points": [
+          [
+            631.0,
+            945.0
+          ],
+          [
+            631.0,
+            967.0
+          ],
+          [
+            631.0,
+            976.0
+          ],
+          [
+            863.7712149073552,
+            901.5830058553112
+          ],
+          [
+            1125.0,
+            998.0
+          ],
+          [
+            1125.0,
+            945.0
+          ]
+        ]
+      },
+      {
+        "block_label": "text",
+        "block_content": "Drawing from the deterministic reversing and sampling techniques in diffusion models as presented by Song et al. [57] and Kim et al. [29], Duan et al. [12] proposed a query-based method that leverages the sampling process and reverse sampling process error at timestep t as the attack feature. The approximated posterior estimation error can be expressed as:",
+        "block_bbox": [
+          631,
+          1005,
+          1156,
+          1145
+        ],
+        "block_id": 17,
+        "block_order": 14,
+        "group_id": 17,
+        "global_block_id": 372,
+        "global_group_id": 372,
+        "block_polygon_points": [
+          [
+            631.0,
+            1005.0
+          ],
+          [
+            1156.0,
+            1005.0
+          ],
+          [
+            1156.0,
+            1145.0
+          ],
+          [
+            631.0,
+            1145.0
+          ]
+        ]
+      },
+      {
+        "block_label": "display_formula",
+        "block_content": " $$ \\tilde{\\ell}_{t,x_{0}}=\\|\\psi_{\\theta}(\\phi_{\\theta}(\\tilde{x}_{t},t),t)-\\tilde{x}_{t}\\|^{2} $$ ",
+        "block_bbox": [
+          773,
+          1148,
+          1012,
+          1177
+        ],
+        "block_id": 18,
+        "block_order": 15,
+        "group_id": 18,
+        "global_block_id": 373,
+        "global_group_id": 373,
+        "block_polygon_points": [
+          [
+            773.0,
+            1148.0
+          ],
+          [
+            1012.0,
+            1148.0
+          ],
+          [
+            1012.0,
+            1177.0
+          ],
+          [
+            773.0,
+            1177.0
+          ]
+        ]
+      },
+      {
+        "block_label": "text",
+        "block_content": "where",
+        "block_bbox": [
+          632,
+          1182,
+          691,
+          1204
+        ],
+        "block_id": 19,
+        "block_order": 16,
+        "group_id": 19,
+        "global_block_id": 374,
+        "global_group_id": 374,
+        "block_polygon_points": [
+          [
+            632.0,
+            1182.0
+          ],
+          [
+            690.0,
+            1182.0
+          ],
+          [
+            690.0,
+            1203.0
+          ],
+          [
+            632.0,
+            1203.0
+          ]
+        ]
+      },
+      {
+        "block_label": "display_formula",
+        "block_content": " $$ \\psi_{\\theta}(x_{t},t)=\\sqrt{\\bar{\\alpha}_{t-1}}f_{\\theta}(x_{t},t)+\\sqrt{1-\\bar{\\alpha}_{t-1}}\\epsilon_{\\theta}(x_{t},t) $$ ",
+        "block_bbox": [
+          711,
+          1211,
+          1073,
+          1240
+        ],
+        "block_id": 20,
+        "block_order": 17,
+        "group_id": 20,
+        "global_block_id": 375,
+        "global_group_id": 375,
+        "block_polygon_points": [
+          [
+            711.0,
+            1211.0
+          ],
+          [
+            1073.0,
+            1211.0
+          ],
+          [
+            1073.0,
+            1240.0
+          ],
+          [
+            711.0,
+            1240.0
+          ]
+        ]
+      },
+      {
+        "block_label": "text",
+        "block_content": "represents the deterministic denoising step, and",
+        "block_bbox": [
+          631,
+          1244,
+          1016,
+          1270
+        ],
+        "block_id": 21,
+        "block_order": 18,
+        "group_id": 21,
+        "global_block_id": 376,
+        "global_group_id": 376,
+        "block_polygon_points": [
+          [
+            631.0,
+            1244.0
+          ],
+          [
+            1016.0,
+            1244.0
+          ],
+          [
+            1016.0,
+            1270.0
+          ],
+          [
+            631.0,
+            1270.0
+          ]
+        ]
+      },
+      {
+        "block_label": "display_formula",
+        "block_content": " $$ \\phi_{\\theta}(x_{t},t)=\\sqrt{\\bar{\\alpha}_{t+1}}f_{\\theta}(x_{t},t)+\\sqrt{1-\\bar{\\alpha}_{t+1}}\\epsilon_{\\theta}(x_{t},t) $$ ",
+        "block_bbox": [
+          711,
+          1274,
+          1070,
+          1303
+        ],
+        "block_id": 22,
+        "block_order": 19,
+        "group_id": 22,
+        "global_block_id": 377,
+        "global_group_id": 377,
+        "block_polygon_points": [
+          [
+            711.0,
+            1274.0
+          ],
+          [
+            1070.0,
+            1274.0
+          ],
+          [
+            1070.0,
+            1303.0
+          ],
+          [
+            711.0,
+            1303.0
+          ]
+        ]
+      },
+      {
+        "block_label": "text",
+        "block_content": "signifies the deterministic reverse step(also called DDIM deterministic forward process [29]) at time t, as defined in the original work [29, 54, 57].  $ \\tilde{x}_t $ is obtained from the recursive application of  $ \\phi_\\theta $, given by  $ \\phi_\\theta(\\ldots \\phi_\\theta(\\phi_\\theta(x_0,0),1),t-1) $.",
+        "block_bbox": [
+          630,
+          1305,
+          1149,
+          1403
+        ],
+        "block_id": 23,
+        "block_order": 20,
+        "group_id": 23,
+        "global_block_id": 378,
+        "global_group_id": 378,
+        "block_polygon_points": [
+          [
+            630.0,
+            1305.0
+          ],
+          [
+            1149.0,
+            1305.0
+          ],
+          [
+            1149.0,
+            1403.0
+          ],
+          [
+            630.0,
+            1403.0
+          ]
+        ]
+      },
+      {
+        "block_label": "text",
+        "block_content": "Based on  $ \\tilde{\\ell}_{t,x_0} $, the authors proposed SecMI $ _{stat} $ and SecMI $ _{NNs} $, which employs the threshold-based attack approach [64] and neural network-based attack method [52], respectively.",
+        "block_bbox": [
+          629,
+          1399,
+          1148,
+          1473
+        ],
+        "block_id": 24,
+        "block_order": 21,
+        "group_id": 24,
+        "global_block_id": 379,
+        "global_group_id": 379,
+        "block_polygon_points": [
+          [
+            629,
+            1399
+          ],
+          [
+            629,
+            1464
+          ],
+          [
+            739,
+            1472
+          ],
+          [
+            1147,
+            1472
+          ],
+          [
+            1147,
+            1449
+          ],
+          [
+            1147,
+            1399
+          ]
+        ]
+      },
+      {
+        "block_label": "number",
+        "block_content": "413",
+        "block_bbox": [
+          596,
+          1474,
+          622,
+          1490
+        ],
+        "block_id": 25,
+        "block_order": null,
+        "group_id": 25,
+        "global_block_id": 380,
+        "global_group_id": 380,
+        "block_polygon_points": [
+          [
+            596.0,
+            1474.0
+          ],
+          [
+            621.0,
+            1474.0
+          ],
+          [
+            621.0,
+            1489.0
+          ],
+          [
+            596.0,
+            1489.0
+          ]
+        ]
+      }
+    ],
+    "doc_preprocessor_res": {
+      "model_settings": {
+        "use_doc_orientation_classify": true,
+        "use_doc_unwarping": true
+      },
+      "angle": 0
+    },
+    "layout_det_res": {
+      "boxes": [
+        {
+          "cls_id": 12,
+          "label": "header",
+          "score": 0.8963603377342224,
+          "coordinate": [
+            53,
+            44,
+            495,
+            83
+          ],
+          "order": null,
+          "polygon_points": [
+            [
+              53,
+              44
+            ],
+            [
+              53,
+              63
+            ],
+            [
+              78,
+              73
+            ],
+            [
+              195,
+              82
+            ],
+            [
+              494,
+              82
+            ],
+            [
+              494,
+              64
+            ],
+            [
+              341,
+              54
+            ],
+            [
+              336,
+              54
+            ],
+            [
+              316,
+              54
+            ],
+            [
+              181,
+              44
+            ]
+          ]
+        },
+        {
+          "cls_id": 12,
+          "label": "header",
+          "score": 0.8745224475860596,
+          "coordinate": [
+            824,
+            62,
+            1183,
+            85
+          ],
+          "order": null,
+          "polygon_points": [
+            [
+              824.0,
+              62.0
+            ],
+            [
+              1183.0,
+              62.0
+            ],
+            [
+              1183.0,
+              85.0
+            ],
+            [
+              824.0,
+              85.0
+            ]
+          ]
+        },
+        {
+          "cls_id": 14,
+          "label": "image",
+          "score": 0.9031133651733398,
+          "coordinate": [
+            129,
+            109,
+            1113,
+            363
+          ],
+          "order": null,
+          "polygon_points": [
+            [
+              129.0,
+              109.0
+            ],
+            [
+              1113.0,
+              109.0
+            ],
+            [
+              1113.0,
+              363.0
+            ],
+            [
+              129.0,
+              363.0
+            ]
+          ]
+        },
+        {
+          "cls_id": 7,
+          "label": "figure_title",
+          "score": 0.8989145755767822,
+          "coordinate": [
+            80,
+            388,
+            1164,
+            443
+          ],
+          "order": null,
+          "polygon_points": [
+            [
+              80.0,
+              388.0
+            ],
+            [
+              1164.0,
+              388.0
+            ],
+            [
+              1164.0,
+              443.0
+            ],
+            [
+              80.0,
+              443.0
+            ]
+          ]
+        },
+        {
+          "cls_id": 17,
+          "label": "paragraph_title",
+          "score": 0.8606286644935608,
+          "coordinate": [
+            82,
+            472,
+            575,
+            499
+          ],
+          "order": 1,
+          "polygon_points": [
+            [
+              82.0,
+              472.0
+            ],
+            [
+              575.0,
+              472.0
+            ],
+            [
+              575.0,
+              499.0
+            ],
+            [
+              82.0,
+              499.0
+            ]
+          ]
+        },
+        {
+          "cls_id": 22,
+          "label": "text",
+          "score": 0.9622665643692017,
+          "coordinate": [
+            81,
+            503,
+            598,
+            840
+          ],
+          "order": 2,
+          "polygon_points": [
+            [
+              81.0,
+              503.0
+            ],
+            [
+              598.0,
+              503.0
+            ],
+            [
+              598.0,
+              840.0
+            ],
+            [
+              81.0,
+              840.0
+            ]
+          ]
+        },
+        {
+          "cls_id": 15,
+          "label": "inline_formula",
+          "score": 0.689566969871521,
+          "coordinate": [
+            530,
+            672,
+            558,
+            694
+          ],
+          "order": 3,
+          "polygon_points": [
+            [
+              530,
+              672
+            ],
+            [
+              530,
+              693
+            ],
+            [
+              557,
+              693
+            ],
+            [
+              557,
+              672
+            ]
+          ]
+        },
+        {
+          "cls_id": 15,
+          "label": "inline_formula",
+          "score": 0.6535935401916504,
+          "coordinate": [
+            86,
+            696,
+            124,
+            719
+          ],
+          "order": 4,
+          "polygon_points": [
+            [
+              86.0,
+              696.0
+            ],
+            [
+              123.0,
+              696.0
+            ],
+            [
+              123.0,
+              718.0
+            ],
+            [
+              86.0,
+              718.0
+            ]
+          ]
+        },
+        {
+          "cls_id": 5,
+          "label": "display_formula",
+          "score": 0.7655731439590454,
+          "coordinate": [
+            227,
+            859,
+            449,
+            910
+          ],
+          "order": 5,
+          "polygon_points": [
+            [
+              227.0,
+              859.0
+            ],
+            [
+              449.0,
+              859.0
+            ],
+            [
+              449.0,
+              910.0
+            ],
+            [
+              227.0,
+              910.0
+            ]
+          ]
+        },
+        {
+          "cls_id": 22,
+          "label": "text",
+          "score": 0.9406294822692871,
+          "coordinate": [
+            83,
+            917,
+            593,
+            1059
+          ],
+          "order": 6,
+          "polygon_points": [
+            [
+              83.0,
+              917.0
+            ],
+            [
+              593.0,
+              917.0
+            ],
+            [
+              593.0,
+              1059.0
+            ],
+            [
+              83.0,
+              1059.0
+            ]
+          ]
+        },
+        {
+          "cls_id": 15,
+          "label": "inline_formula",
+          "score": 0.38514596223831177,
+          "coordinate": [
+            190,
+            919,
+            255,
+            940
+          ],
+          "order": 7,
+          "polygon_points": [
+            [
+              190,
+              919
+            ],
+            [
+              190,
+              939
+            ],
+            [
+              254,
+              939
+            ],
+            [
+              254,
+              919
+            ]
+          ]
+        },
+        {
+          "cls_id": 15,
+          "label": "inline_formula",
+          "score": 0.514862596988678,
+          "coordinate": [
+            436,
+            965,
+            471,
+            987
+          ],
+          "order": 8,
+          "polygon_points": [
+            [
+              436.0,
+              965.0
+            ],
+            [
+              470.0,
+              965.0
+            ],
+            [
+              470.0,
+              986.0
+            ],
+            [
+              436.0,
+              986.0
+            ]
+          ]
+        },
+        {
+          "cls_id": 15,
+          "label": "inline_formula",
+          "score": 0.6732376217842102,
+          "coordinate": [
+            134,
+            1009,
+            179,
+            1031
+          ],
+          "order": 9,
+          "polygon_points": [
+            [
+              134.0,
+              1009.0
+            ],
+            [
+              178.0,
+              1009.0
+            ],
+            [
+              178.0,
+              1030.0
+            ],
+            [
+              134.0,
+              1030.0
+            ]
+          ]
+        },
+        {
+          "cls_id": 22,
+          "label": "text",
+          "score": 0.9351761937141418,
+          "coordinate": [
+            84,
+            1055,
+            593,
+            1150
+          ],
+          "order": 10,
+          "polygon_points": [
+            [
+              84.0,
+              1055.0
+            ],
+            [
+              593.0,
+              1055.0
+            ],
+            [
+              593.0,
+              1150.0
+            ],
+            [
+              84.0,
+              1150.0
+            ]
+          ]
+        },
+        {
+          "cls_id": 22,
+          "label": "text",
+          "score": 0.9319726824760437,
+          "coordinate": [
+            83,
+            1148,
+            593,
+            1242
+          ],
+          "order": 11,
+          "polygon_points": [
+            [
+              83,
+              1148
+            ],
+            [
+              83,
+              1241
+            ],
+            [
+              592,
+              1241
+            ],
+            [
+              592,
+              1148
+            ]
+          ]
+        },
+        {
+          "cls_id": 5,
+          "label": "display_formula",
+          "score": 0.8536238074302673,
+          "coordinate": [
+            150,
+            1256,
+            524,
+            1281
+          ],
+          "order": 12,
+          "polygon_points": [
+            [
+              150.0,
+              1256.0
+            ],
+            [
+              524.0,
+              1256.0
+            ],
+            [
+              524.0,
+              1281.0
+            ],
+            [
+              150.0,
+              1281.0
+            ]
+          ]
+        },
+        {
+          "cls_id": 22,
+          "label": "text",
+          "score": 0.8684414625167847,
+          "coordinate": [
+            83,
+            1296,
+            590,
+            1345
+          ],
+          "order": 13,
+          "polygon_points": [
+            [
+              83.0,
+              1296.0
+            ],
+            [
+              590.0,
+              1296.0
+            ],
+            [
+              590.0,
+              1345.0
+            ],
+            [
+              83.0,
+              1345.0
+            ]
+          ]
+        },
+        {
+          "cls_id": 17,
+          "label": "paragraph_title",
+          "score": 0.830384373664856,
+          "coordinate": [
+            82,
+            1365,
+            548,
+            1391
+          ],
+          "order": 14,
+          "polygon_points": [
+            [
+              82.0,
+              1365.0
+            ],
+            [
+              548.0,
+              1365.0
+            ],
+            [
+              548.0,
+              1391.0
+            ],
+            [
+              82.0,
+              1391.0
+            ]
+          ]
+        },
+        {
+          "cls_id": 22,
+          "label": "text",
+          "score": 0.9127300381660461,
+          "coordinate": [
+            81,
+            1395,
+            590,
+            1470
+          ],
+          "order": 15,
+          "polygon_points": [
+            [
+              81.0,
+              1395.0
+            ],
+            [
+              590.0,
+              1395.0
+            ],
+            [
+              590.0,
+              1470.0
+            ],
+            [
+              81.0,
+              1470.0
+            ]
+          ]
+        },
+        {
+          "cls_id": 15,
+          "label": "inline_formula",
+          "score": 0.5577241778373718,
+          "coordinate": [
+            510,
+            1399,
+            551,
+            1419
+          ],
+          "order": 16,
+          "polygon_points": [
+            [
+              510,
+              1399
+            ],
+            [
+              510,
+              1418
+            ],
+            [
+              550,
+              1418
+            ],
+            [
+              550,
+              1399
+            ]
+          ]
+        },
+        {
+          "cls_id": 15,
+          "label": "inline_formula",
+          "score": 0.4557383358478546,
+          "coordinate": [
+            86,
+            1421,
+            134,
+            1442
+          ],
+          "order": 17,
+          "polygon_points": [
+            [
+              85.99998474121094,
+              1420.9998779296875
+            ],
+            [
+              132.99998474121094,
+              1420.9998779296875
+            ],
+            [
+              132.99998474121094,
+              1440.9998779296875
+            ],
+            [
+              85.99998474121094,
+              1440.9998779296875
+            ]
+          ]
+        },
+        {
+          "cls_id": 22,
+          "label": "text",
+          "score": 0.9200788140296936,
+          "coordinate": [
+            635,
+            475,
+            1162,
+            525
+          ],
+          "order": 18,
+          "polygon_points": [
+            [
+              635.0,
+              475.0
+            ],
+            [
+              1162.0,
+              475.0
+            ],
+            [
+              1162.0,
+              525.0
+            ],
+            [
+              635.0,
+              525.0
+            ]
+          ]
+        },
+        {
+          "cls_id": 22,
+          "label": "text",
+          "score": 0.9675348997116089,
+          "coordinate": [
+            631,
+            522,
+            1164,
+            926
+          ],
+          "order": 19,
+          "polygon_points": [
+            [
+              638,
+              522
+            ],
+            [
+              638,
+              925
+            ],
+            [
+              1157,
+              925
+            ],
+            [
+              1157,
+              522
+            ],
+            [
+              1108,
+              522
+            ],
+            [
+              1096,
+              530
+            ]
+          ]
+        },
+        {
+          "cls_id": 17,
+          "label": "paragraph_title",
+          "score": 0.325668603181839,
+          "coordinate": [
+            631,
+            937,
+            1126,
+            999
+          ],
+          "order": 20,
+          "polygon_points": [
+            [
+              631.0,
+              945.0
+            ],
+            [
+              631.0,
+              967.0
+            ],
+            [
+              631.0,
+              976.0
+            ],
+            [
+              863.7712149073552,
+              901.5830058553112
+            ],
+            [
+              1125.0,
+              998.0
+            ],
+            [
+              1125.0,
+              945.0
+            ]
+          ]
+        },
+        {
+          "cls_id": 22,
+          "label": "text",
+          "score": 0.9410812258720398,
+          "coordinate": [
+            631,
+            1005,
+            1156,
+            1145
+          ],
+          "order": 21,
+          "polygon_points": [
+            [
+              631.0,
+              1005.0
+            ],
+            [
+              1156.0,
+              1005.0
+            ],
+            [
+              1156.0,
+              1145.0
+            ],
+            [
+              631.0,
+              1145.0
+            ]
+          ]
+        },
+        {
+          "cls_id": 5,
+          "label": "display_formula",
+          "score": 0.8407711982727051,
+          "coordinate": [
+            773,
+            1148,
+            1012,
+            1177
+          ],
+          "order": 22,
+          "polygon_points": [
+            [
+              773.0,
+              1148.0
+            ],
+            [
+              1012.0,
+              1148.0
+            ],
+            [
+              1012.0,
+              1177.0
+            ],
+            [
+              773.0,
+              1177.0
+            ]
+          ]
+        },
+        {
+          "cls_id": 22,
+          "label": "text",
+          "score": 0.7334876656532288,
+          "coordinate": [
+            632,
+            1182,
+            691,
+            1204
+          ],
+          "order": 23,
+          "polygon_points": [
+            [
+              632.0,
+              1182.0
+            ],
+            [
+              690.0,
+              1182.0
+            ],
+            [
+              690.0,
+              1203.0
+            ],
+            [
+              632.0,
+              1203.0
+            ]
+          ]
+        },
+        {
+          "cls_id": 5,
+          "label": "display_formula",
+          "score": 0.8095322847366333,
+          "coordinate": [
+            711,
+            1211,
+            1073,
+            1240
+          ],
+          "order": 24,
+          "polygon_points": [
+            [
+              711.0,
+              1211.0
+            ],
+            [
+              1073.0,
+              1211.0
+            ],
+            [
+              1073.0,
+              1240.0
+            ],
+            [
+              711.0,
+              1240.0
+            ]
+          ]
+        },
+        {
+          "cls_id": 22,
+          "label": "text",
+          "score": 0.7898381352424622,
+          "coordinate": [
+            631,
+            1244,
+            1016,
+            1270
+          ],
+          "order": 25,
+          "polygon_points": [
+            [
+              631.0,
+              1244.0
+            ],
+            [
+              1016.0,
+              1244.0
+            ],
+            [
+              1016.0,
+              1270.0
+            ],
+            [
+              631.0,
+              1270.0
+            ]
+          ]
+        },
+        {
+          "cls_id": 5,
+          "label": "display_formula",
+          "score": 0.8266869187355042,
+          "coordinate": [
+            711,
+            1274,
+            1070,
+            1303
+          ],
+          "order": 26,
+          "polygon_points": [
+            [
+              711.0,
+              1274.0
+            ],
+            [
+              1070.0,
+              1274.0
+            ],
+            [
+              1070.0,
+              1303.0
+            ],
+            [
+              711.0,
+              1303.0
+            ]
+          ]
+        },
+        {
+          "cls_id": 22,
+          "label": "text",
+          "score": 0.9193137288093567,
+          "coordinate": [
+            630,
+            1305,
+            1149,
+            1403
+          ],
+          "order": 27,
+          "polygon_points": [
+            [
+              630.0,
+              1305.0
+            ],
+            [
+              1149.0,
+              1305.0
+            ],
+            [
+              1149.0,
+              1403.0
+            ],
+            [
+              630.0,
+              1403.0
+            ]
+          ]
+        },
+        {
+          "cls_id": 15,
+          "label": "inline_formula",
+          "score": 0.516228437423706,
+          "coordinate": [
+            772,
+            1356,
+            792,
+            1375
+          ],
+          "order": 28,
+          "polygon_points": [
+            [
+              772,
+              1356
+            ],
+            [
+              772,
+              1374
+            ],
+            [
+              791,
+              1374
+            ],
+            [
+              791,
+              1356
+            ]
+          ]
+        },
+        {
+          "cls_id": 15,
+          "label": "inline_formula",
+          "score": 0.7749817371368408,
+          "coordinate": [
+            733,
+            1378,
+            950,
+            1401
+          ],
+          "order": 29,
+          "polygon_points": [
+            [
+              733.0,
+              1378.0
+            ],
+            [
+              950.0,
+              1378.0
+            ],
+            [
+              950.0,
+              1401.0
+            ],
+            [
+              733.0,
+              1401.0
+            ]
+          ]
+        },
+        {
+          "cls_id": 22,
+          "label": "text",
+          "score": 0.9040431976318359,
+          "coordinate": [
+            629,
+            1399,
+            1148,
+            1473
+          ],
+          "order": 30,
+          "polygon_points": [
+            [
+              629,
+              1399
+            ],
+            [
+              629,
+              1464
+            ],
+            [
+              739,
+              1472
+            ],
+            [
+              1147,
+              1472
+            ],
+            [
+              1147,
+              1449
+            ],
+            [
+              1147,
+              1399
+            ]
+          ]
+        },
+        {
+          "cls_id": 15,
+          "label": "inline_formula",
+          "score": 0.6985364556312561,
+          "coordinate": [
+            731,
+            1400,
+            765,
+            1422
+          ],
+          "order": 31,
+          "polygon_points": [
+            [
+              731,
+              1400
+            ],
+            [
+              731,
+              1421
+            ],
+            [
+              764,
+              1421
+            ],
+            [
+              764,
+              1400
+            ]
+          ]
+        },
+        {
+          "cls_id": 15,
+          "label": "inline_formula",
+          "score": 0.5111306309700012,
+          "coordinate": [
+            942,
+            1405,
+            1021,
+            1427
+          ],
+          "order": 32,
+          "polygon_points": [
+            [
+              942.0,
+              1405.0
+            ],
+            [
+              1020.0,
+              1405.0
+            ],
+            [
+              1020.0,
+              1426.0
+            ],
+            [
+              942.0,
+              1426.0
+            ]
+          ]
+        },
+        {
+          "cls_id": 15,
+          "label": "inline_formula",
+          "score": 0.6181741952896118,
+          "coordinate": [
+            1059,
+            1404,
+            1145,
+            1427
+          ],
+          "order": 33,
+          "polygon_points": [
+            [
+              1059.0,
+              1404.0
+            ],
+            [
+              1144.0,
+              1404.0
+            ],
+            [
+              1144.0,
+              1426.0
+            ],
+            [
+              1059.0,
+              1426.0
+            ]
+          ]
+        },
+        {
+          "cls_id": 16,
+          "label": "number",
+          "score": 0.7032082080841064,
+          "coordinate": [
+            596,
+            1474,
+            622,
+            1490
+          ],
+          "order": 34,
+          "polygon_points": [
+            [
+              596.0,
+              1474.0
+            ],
+            [
+              621.0,
+              1474.0
+            ],
+            [
+              621.0,
+              1489.0
+            ],
+            [
+              596.0,
+              1489.0
+            ]
+          ]
+        }
+      ]
+    }
+  },
+  "markdown": {
+    "text": "<div style=\"text-align: center;\"><img src=\"imgs/img_in_image_box_129_109_1113_363.jpg\" alt=\"Image\" width=\"80%\" /></div>\n\n\n<div style=\"text-align: center;\">Figure 8: Use t-SNE to represent the member and non-member data pair with the same loss value (rounded to  $ 1e^{-7} $) across five loss intervals. The input to t-SNE is the output of each sample from the last layer of the attack model.</div>\n\n\n### B Additional Likelihood Ratio Attack Details\n\nCarlini et al. [3] contend that it is erroneous to consider the ramifications of misclassifying a sample as a member of the set as identical to those of incorrect non-member set designation. As a result, they proposed a new evaluation metric and introduced their improved method, LiRA, which proved to be far more effective than previous MIA attack methods in experiments, with up to ten times more efficacy under low False Positive Rates (FPRs). The shadow training technique is also needed here, but it involves creating  $ D_{in} $ and  $ D_{out} $ based on each shadow model's response to the same sample depending on whether the sample was used in the model's training or not. This attack method is white-box as it requires access to the model's output loss and some prior knowledge of the target member's dataset, necessitating the use of target points in the shadow model's training.\n\n $$ \\Lambda=\\frac{p(\\mathrm{conf_{obs}}\\mid\\mathbb{D}_{\\mathrm{in}}(x,y))}{p(\\mathrm{conf_{obs}}\\mid\\mathbb{D}_{\\mathrm{out}}(x,y))} $$ \n\nThe term 'confobs' refers to the value generated by applying negative exponentiation and logit scaling to the loss produced by the target model for an observed image. 'D_{in}' represents the distribution derived from the processed loss for the member set, while 'D_{out}' stands for the distribution established based on the loss generated for the non-member set samples.\n\nEvidently, the form of LiRA's online attack necessitates retraining the shadow model each time a target point  $ (x, y) $ is obtained. This approach represents a substantial and arguably uneconomical consumption of resources.\n\nHence, after proposing this online attack form with many constraints, Carlini et al [3]. suggested an improved offline attack form that does not require target points in shadow models' training and modifies the attack form to:\n\n $$ \\Lambda=1-\\operatorname{P r}[Z>\\operatorname{c o n f}_{\\mathrm{o b s}}],\\mathrm{w h e r e}Z\\sim\\mathbb{D}_{\\mathrm{o u t}}(x,y)). $$ \n\nHowever, the success rate of offline attacks is considerably lower compared to online attacks.\n\n### C Additional Information for Methodology\n\nIn Section 3, we establish the theoretical foundation for GSA₁ and GSA₂. Specifically, we emphasize that the loss-based attack faces a challenge: when member and non-member samples have the same loss value, the attack loses effectiveness. We demonstrate that, in this situation, the gradient data differ between the two samples.\n\n\n\nTherefore, we aim to provide experimental evidence to support this claim in this section. Following the attack pipeline, we continue to use gradient data from the shadow model to train an attack model. Then, we compare the loss values of member and non-member samples in the target model. When the loss values of member and non-member samples are the same, we collect them as a data pair. After collecting all data pairs in the target model member/non-member set, we feed all data pairs into the attack model and extract embeddings from the last layer as inputs to do the t-SNE visualization. In Figure 8, we divide the range of loss values into five intervals and present the data pairs in each interval. It is clear that members and non-members can have different gradients in each data pair. Moreover, the member and non-member samples can form distinct clusters. These results indicate that the challenge posed by identical loss values can be overcome by using gradient data, and that gradient data can serve as better features for the attack.\n\n### D A $ ^{n} $ - - - -\n\nDrawing from the deterministic reversing and sampling techniques in diffusion models as presented by Song et al. [57] and Kim et al. [29], Duan et al. [12] proposed a query-based method that leverages the sampling process and reverse sampling process error at timestep t as the attack feature. The approximated posterior estimation error can be expressed as:\n\n $$ \\tilde{\\ell}_{t,x_{0}}=\\|\\psi_{\\theta}(\\phi_{\\theta}(\\tilde{x}_{t},t),t)-\\tilde{x}_{t}\\|^{2} $$ \n\nwhere\n\n $$ \\psi_{\\theta}(x_{t},t)=\\sqrt{\\bar{\\alpha}_{t-1}}f_{\\theta}(x_{t},t)+\\sqrt{1-\\bar{\\alpha}_{t-1}}\\epsilon_{\\theta}(x_{t},t) $$ \n\nrepresents the deterministic denoising step, and\n\n $$ \\phi_{\\theta}(x_{t},t)=\\sqrt{\\bar{\\alpha}_{t+1}}f_{\\theta}(x_{t},t)+\\sqrt{1-\\bar{\\alpha}_{t+1}}\\epsilon_{\\theta}(x_{t},t) $$ \n\nsignifies the deterministic reverse step(also called DDIM deterministic forward process [29]) at time t, as defined in the original work [29, 54, 57].  $ \\tilde{x}_t $ is obtained from the recursive application of  $ \\phi_\\theta $, given by  $ \\phi_\\theta(\\ldots \\phi_\\theta(\\phi_\\theta(x_0,0),1),t-1) $.\n\nBased on  $ \\tilde{\\ell}_{t,x_0} $, the authors proposed SecMI $ _{stat} $ and SecMI $ _{NNs} $, which employs the threshold-based attack approach [64] and neural network-based attack method [52], respectively.",
+    "images": {
+      "imgs/img_in_image_box_129_109_1113_363.jpg": "https://pplines-online.bj.bcebos.com/deploy/official/paddleocr/pp-ocr-vl-15//d4ed2188-add5-4796-bd7d-c5fa104a8bf2/markdown_0/imgs/img_in_image_box_129_109_1113_363.jpg?authorization=bce-auth-v1%2FALTAKzReLNvew3ySINYJ0fuAMN%2F2026-04-05T12%3A41%3A21Z%2F-1%2F%2F43878a0f0d584d0de8150a5862b7d60f67d473619f7eebcb0306298210530350"
+    }
+  },
+  "outputImages": {
+    "layout_det_res": "https://pplines-online.bj.bcebos.com/deploy/official/paddleocr/pp-ocr-vl-15//d4ed2188-add5-4796-bd7d-c5fa104a8bf2/layout_det_res_0.jpg?authorization=bce-auth-v1%2FALTAKzReLNvew3ySINYJ0fuAMN%2F2026-04-05T12%3A41%3A22Z%2F-1%2F%2F6db44eaeb138f66c2b8dad1a15a99952d23037b020c425a10bfb129861186306"
+  },
+  "inputImage": "https://pplines-online.bj.bcebos.com/deploy/official/paddleocr/pp-ocr-vl-15//d4ed2188-add5-4796-bd7d-c5fa104a8bf2/input_img_0.jpg?authorization=bce-auth-v1%2FALTAKzReLNvew3ySINYJ0fuAMN%2F2026-04-05T12%3A41%3A22Z%2F-1%2F%2F4bb3256b2da289298e109551d6189b215a46b616ec08b2945136443222c5db00"
+}

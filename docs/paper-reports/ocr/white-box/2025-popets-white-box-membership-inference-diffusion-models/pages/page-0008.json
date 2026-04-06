@@ -1,0 +1,1438 @@
+{
+  "prunedResult": {
+    "page_count": 5,
+    "width": 1224,
+    "height": 1584,
+    "model_settings": {
+      "use_doc_preprocessor": true,
+      "use_layout_detection": true,
+      "use_chart_recognition": false,
+      "use_seal_recognition": false,
+      "use_ocr_for_image_block": false,
+      "format_block_content": false,
+      "merge_layout_blocks": true,
+      "markdown_ignore_labels": [
+        "number",
+        "footnote",
+        "header",
+        "header_image",
+        "footer",
+        "footer_image",
+        "aside_text"
+      ],
+      "return_layout_polygon_points": true
+    },
+    "parsing_res_list": [
+      {
+        "block_label": "header",
+        "block_content": "White-box Membership Inference Attacks against Diffusion Models",
+        "block_bbox": [
+          50,
+          42,
+          490,
+          82
+        ],
+        "block_id": 0,
+        "block_order": null,
+        "group_id": 0,
+        "global_block_id": 152,
+        "global_group_id": 152,
+        "block_polygon_points": [
+          [
+            50.079681396484375,
+            40.17241668701172
+          ],
+          [
+            489.9438781738281,
+            59.34905242919922
+          ],
+          [
+            488.5731506347656,
+            90.79065704345703
+          ],
+          [
+            48.708953857421875,
+            71.61402130126953
+          ]
+        ]
+      },
+      {
+        "block_label": "header",
+        "block_content": "Proceedings on Privacy Enhancing Technologies 2025(2)",
+        "block_bbox": [
+          812,
+          71,
+          1157,
+          93
+        ],
+        "block_id": 1,
+        "block_order": null,
+        "group_id": 1,
+        "global_block_id": 153,
+        "global_group_id": 153,
+        "block_polygon_points": [
+          [
+            812.0,
+            71.0
+          ],
+          [
+            1157.0,
+            71.0
+          ],
+          [
+            1157.0,
+            93.0
+          ],
+          [
+            812.0,
+            93.0
+          ]
+        ]
+      },
+      {
+        "block_label": "image",
+        "block_content": "",
+        "block_bbox": [
+          104,
+          112,
+          1127,
+          741
+        ],
+        "block_id": 2,
+        "block_order": null,
+        "group_id": 2,
+        "global_block_id": 154,
+        "global_group_id": 154,
+        "block_polygon_points": [
+          [
+            104.0,
+            112.0
+          ],
+          [
+            1127.0,
+            112.0
+          ],
+          [
+            1127.0,
+            741.0
+          ],
+          [
+            104.0,
+            741.0
+          ]
+        ]
+      },
+      {
+        "block_label": "figure_title",
+        "block_content": "Figure 3: The left and right columns display the visualization of high-dimensional gradient information using t-SNE after GSA₁ and GSA₂ have respectively executed attacks on the three datasets (using the output from the last layer of our attack model). For all six attacks, it is observed that member and non-member samples are distinctly differentiated when reaching the training steps defined by the default settings (as referenced in Table 3).",
+        "block_bbox": [
+          76,
+          758,
+          1171,
+          864
+        ],
+        "block_id": 3,
+        "block_order": null,
+        "group_id": 3,
+        "global_block_id": 155,
+        "global_group_id": 155,
+        "block_polygon_points": [
+          [
+            76.0,
+            758.0
+          ],
+          [
+            1171.0,
+            758.0
+          ],
+          [
+            1171.0,
+            864.0
+          ],
+          [
+            76.0,
+            864.0
+          ]
+        ]
+      },
+      {
+        "block_label": "text",
+        "block_content": "We benchmark GSA₁ and GSA₂ against existing methodologies, maintaining all other model parameters consistent. Contrasting traditional loss-based white-box attacks such as LiRA [4] and others techniques [27, 35], we provide a thorough evaluation highlighting the superior efficacy of GSA₁ and GSA₂. The baseline approach [27, 35, 64] depicted in Table 4 is the most intuitive, which predicts the sample as a non-member if the loss exceeds a certain value and vice versa [35]. This also represents the most traditional judgment method in MIA, utilized here as the baseline.",
+        "block_bbox": [
+          78,
+          892,
+          598,
+          1111
+        ],
+        "block_id": 4,
+        "block_order": 1,
+        "group_id": 4,
+        "global_block_id": 156,
+        "global_group_id": 156,
+        "block_polygon_points": [
+          [
+            78.0,
+            892.0
+          ],
+          [
+            598.0,
+            892.0
+          ],
+          [
+            598.0,
+            1111.0
+          ],
+          [
+            78.0,
+            1111.0
+          ]
+        ]
+      },
+      {
+        "block_label": "text",
+        "block_content": "5.1.1 Feature Informative. LSA $ ^{*} $ refers to the results of training the attack model using the loss under the same training conditions and sampling frequency as GSA $ _{1} $ and GSA $ _{2} $. The sole distinction between LSA $ ^{*} $ and GSA lies in their features: while LSA $ ^{*} $ utilizes loss as its attack feature, GSA employs the gradient. Comparative results between them substantiate that the gradient information of the diffusion model is more aptly suited as attack features.",
+        "block_bbox": [
+          79,
+          1116,
+          597,
+          1283
+        ],
+        "block_id": 5,
+        "block_order": 2,
+        "group_id": 5,
+        "global_block_id": 157,
+        "global_group_id": 157,
+        "block_polygon_points": [
+          [
+            79.0,
+            1116.0
+          ],
+          [
+            597.0,
+            1116.0
+          ],
+          [
+            597.0,
+            1283.0
+          ],
+          [
+            79.0,
+            1283.0
+          ]
+        ]
+      },
+      {
+        "block_label": "text",
+        "block_content": "It is apparent from Table 4 that both GSA₁ and GSA₂ exceed other techniques in terms of all evaluation metrics. Under the AUC criterion, LiRA [4] also attains a high attack accuracy, attributed to excessive training steps and many shadow models. However, when ensuring an equivalent quantity of shadow models and training epochs for the LiRA based on the LiRA framework, its ASR, TPR, and AUC scores are significantly lower compared to GSA₁ and GSA₂. In the original paper, the LiRA framework achieves TPRs of 5% after training for 200 epochs, with the FPRs fixed at 1%. Remarkably, after training for 4080 epochs, the TPR increases to 99%. In contrast, for GSA₁ and GSA₂, TPRs of 99.7% and 78.75% are respectively achieved after only 400 epochs, underscoring a more efficient attack strategy. This essentially corroborates our core proposition that gradient information of the model exhibits a more pronounced response to member set samples than loss.",
+        "block_bbox": [
+          79,
+          1279,
+          596,
+          1470
+        ],
+        "block_id": 6,
+        "block_order": 3,
+        "group_id": 6,
+        "global_block_id": 158,
+        "global_group_id": 158,
+        "block_polygon_points": [
+          [
+            79.0,
+            1279.0
+          ],
+          [
+            596.0,
+            1279.0
+          ],
+          [
+            596.0,
+            1470.0
+          ],
+          [
+            79.0,
+            1470.0
+          ]
+        ]
+      },
+      {
+        "block_label": "text",
+        "block_content": "",
+        "block_bbox": [
+          634,
+          890,
+          1172,
+          1061
+        ],
+        "block_id": 7,
+        "block_order": 4,
+        "group_id": 6,
+        "global_block_id": 159,
+        "global_group_id": 159,
+        "block_polygon_points": [
+          [
+            634.0,
+            898.0
+          ],
+          [
+            1171.0,
+            898.0
+          ],
+          [
+            1171.0,
+            1060.0
+          ],
+          [
+            634.0,
+            1060.0
+          ]
+        ]
+      },
+      {
+        "block_label": "text",
+        "block_content": "5.1.2 Timestep Selection. Moreover, the ‘time zone’ demonstrating discernible differences in the loss distribution between members and non-members vary across different models and datasets [4, 12, 27, 35]. Consequently, to achieve a more potent attack, it becomes imperative to extract the loss and establish thresholds or distributions for each timestep using shadow models, aiming to pinpoint the most efficacious ‘time zone’. In contrast, both GSA₁ and GSA₂ execute attacks by solely harnessing the gradient information derived from equidistant sampling timesteps across the T diffusion steps, achieving similar attack accuracy in just one-thirtieth of the time. Given a consistent dataset size and model architecture, extracting loss across T steps takes 36 hours. In contrast, GSA₁ and GSA₂ achieve the same accuracy level in less than 1 hour by extracting gradients from 10 equidistant sampling timesteps.",
+        "block_bbox": [
+          635,
+          1068,
+          1174,
+          1402
+        ],
+        "block_id": 8,
+        "block_order": 5,
+        "group_id": 8,
+        "global_block_id": 160,
+        "global_group_id": 160,
+        "block_polygon_points": [
+          [
+            635.0,
+            1068.0
+          ],
+          [
+            1174.0,
+            1068.0
+          ],
+          [
+            1174.0,
+            1402.0
+          ],
+          [
+            635.0,
+            1402.0
+          ]
+        ]
+      },
+      {
+        "block_label": "text",
+        "block_content": "To further demonstrate that the optimal timestep for distinguishing between member and non-member samples using loss varies across different datasets and models. We plot the loss distribution",
+        "block_bbox": [
+          634,
+          1397,
+          1172,
+          1474
+        ],
+        "block_id": 9,
+        "block_order": 6,
+        "group_id": 9,
+        "global_block_id": 161,
+        "global_group_id": 161,
+        "block_polygon_points": [
+          [
+            634.0,
+            1397.0
+          ],
+          [
+            1172.0,
+            1397.0
+          ],
+          [
+            1172.0,
+            1474.0
+          ],
+          [
+            634.0,
+            1474.0
+          ]
+        ]
+      },
+      {
+        "block_label": "number",
+        "block_content": "405",
+        "block_bbox": [
+          602,
+          1473,
+          627,
+          1489
+        ],
+        "block_id": 10,
+        "block_order": null,
+        "group_id": 10,
+        "global_block_id": 162,
+        "global_group_id": 162,
+        "block_polygon_points": [
+          [
+            602.0,
+            1473.0
+          ],
+          [
+            626.0,
+            1473.0
+          ],
+          [
+            626.0,
+            1488.0
+          ],
+          [
+            602.0,
+            1488.0
+          ]
+        ]
+      }
+    ],
+    "doc_preprocessor_res": {
+      "model_settings": {
+        "use_doc_orientation_classify": true,
+        "use_doc_unwarping": true
+      },
+      "angle": 0
+    },
+    "layout_det_res": {
+      "boxes": [
+        {
+          "cls_id": 12,
+          "label": "header",
+          "score": 0.879218339920044,
+          "coordinate": [
+            50,
+            42,
+            490,
+            82
+          ],
+          "order": null,
+          "polygon_points": [
+            [
+              50.079681396484375,
+              40.17241668701172
+            ],
+            [
+              489.9438781738281,
+              59.34905242919922
+            ],
+            [
+              488.5731506347656,
+              90.79065704345703
+            ],
+            [
+              48.708953857421875,
+              71.61402130126953
+            ]
+          ]
+        },
+        {
+          "cls_id": 12,
+          "label": "header",
+          "score": 0.815791666507721,
+          "coordinate": [
+            812,
+            71,
+            1157,
+            93
+          ],
+          "order": null,
+          "polygon_points": [
+            [
+              812.0,
+              71.0
+            ],
+            [
+              1157.0,
+              71.0
+            ],
+            [
+              1157.0,
+              93.0
+            ],
+            [
+              812.0,
+              93.0
+            ]
+          ]
+        },
+        {
+          "cls_id": 14,
+          "label": "image",
+          "score": 0.9457172751426697,
+          "coordinate": [
+            104,
+            112,
+            1127,
+            741
+          ],
+          "order": null,
+          "polygon_points": [
+            [
+              104.0,
+              112.0
+            ],
+            [
+              1127.0,
+              112.0
+            ],
+            [
+              1127.0,
+              741.0
+            ],
+            [
+              104.0,
+              741.0
+            ]
+          ]
+        },
+        {
+          "cls_id": 7,
+          "label": "figure_title",
+          "score": 0.9235231280326843,
+          "coordinate": [
+            76,
+            758,
+            1171,
+            864
+          ],
+          "order": null,
+          "polygon_points": [
+            [
+              76.0,
+              758.0
+            ],
+            [
+              1171.0,
+              758.0
+            ],
+            [
+              1171.0,
+              864.0
+            ],
+            [
+              76.0,
+              864.0
+            ]
+          ]
+        },
+        {
+          "cls_id": 15,
+          "label": "inline_formula",
+          "score": 0.5664493441581726,
+          "coordinate": [
+            83,
+            790,
+            128,
+            812
+          ],
+          "order": 1,
+          "polygon_points": [
+            [
+              83,
+              790
+            ],
+            [
+              83,
+              811
+            ],
+            [
+              115,
+              811
+            ],
+            [
+              115,
+              805
+            ],
+            [
+              116,
+              804
+            ],
+            [
+              121,
+              804
+            ],
+            [
+              122,
+              805
+            ],
+            [
+              122,
+              811
+            ],
+            [
+              127,
+              811
+            ],
+            [
+              127,
+              790
+            ]
+          ]
+        },
+        {
+          "cls_id": 15,
+          "label": "inline_formula",
+          "score": 0.471930593252182,
+          "coordinate": [
+            170,
+            790,
+            213,
+            812
+          ],
+          "order": 2,
+          "polygon_points": [
+            [
+              170.0,
+              790.0
+            ],
+            [
+              212.0,
+              790.0
+            ],
+            [
+              212.0,
+              811.0
+            ],
+            [
+              170.0,
+              811.0
+            ]
+          ]
+        },
+        {
+          "cls_id": 22,
+          "label": "text",
+          "score": 0.9471644163131714,
+          "coordinate": [
+            78,
+            892,
+            598,
+            1111
+          ],
+          "order": 3,
+          "polygon_points": [
+            [
+              78.0,
+              892.0
+            ],
+            [
+              598.0,
+              892.0
+            ],
+            [
+              598.0,
+              1111.0
+            ],
+            [
+              78.0,
+              1111.0
+            ]
+          ]
+        },
+        {
+          "cls_id": 15,
+          "label": "inline_formula",
+          "score": 0.687849223613739,
+          "coordinate": [
+            225,
+            896,
+            269,
+            917
+          ],
+          "order": 4,
+          "polygon_points": [
+            [
+              225,
+              896
+            ],
+            [
+              225,
+              916
+            ],
+            [
+              268,
+              916
+            ],
+            [
+              268,
+              896
+            ]
+          ]
+        },
+        {
+          "cls_id": 15,
+          "label": "inline_formula",
+          "score": 0.6588987708091736,
+          "coordinate": [
+            304,
+            895,
+            348,
+            916
+          ],
+          "order": 5,
+          "polygon_points": [
+            [
+              304.0,
+              895.0
+            ],
+            [
+              347.0,
+              895.0
+            ],
+            [
+              347.0,
+              915.0
+            ],
+            [
+              304.0,
+              915.0
+            ]
+          ]
+        },
+        {
+          "cls_id": 15,
+          "label": "inline_formula",
+          "score": 0.569668173789978,
+          "coordinate": [
+            261,
+            989,
+            305,
+            1011
+          ],
+          "order": 6,
+          "polygon_points": [
+            [
+              261.0,
+              989.0
+            ],
+            [
+              304.0,
+              989.0
+            ],
+            [
+              304.0,
+              1010.0
+            ],
+            [
+              261.0,
+              1010.0
+            ]
+          ]
+        },
+        {
+          "cls_id": 15,
+          "label": "inline_formula",
+          "score": 0.4669288396835327,
+          "coordinate": [
+            340,
+            988,
+            384,
+            1010
+          ],
+          "order": 7,
+          "polygon_points": [
+            [
+              340.0,
+              988.0
+            ],
+            [
+              383.0,
+              988.0
+            ],
+            [
+              383.0,
+              1009.0
+            ],
+            [
+              340.0,
+              1009.0
+            ]
+          ]
+        },
+        {
+          "cls_id": 22,
+          "label": "text",
+          "score": 0.9378617405891418,
+          "coordinate": [
+            79,
+            1116,
+            597,
+            1283
+          ],
+          "order": 8,
+          "polygon_points": [
+            [
+              79.0,
+              1116.0
+            ],
+            [
+              597.0,
+              1116.0
+            ],
+            [
+              597.0,
+              1283.0
+            ],
+            [
+              79.0,
+              1283.0
+            ]
+          ]
+        },
+        {
+          "cls_id": 15,
+          "label": "inline_formula",
+          "score": 0.57090824842453,
+          "coordinate": [
+            298,
+            1116,
+            342,
+            1139
+          ],
+          "order": 9,
+          "polygon_points": [
+            [
+              298,
+              1116
+            ],
+            [
+              298,
+              1138
+            ],
+            [
+              341,
+              1138
+            ],
+            [
+              341,
+              1116
+            ]
+          ]
+        },
+        {
+          "cls_id": 15,
+          "label": "inline_formula",
+          "score": 0.5700616240501404,
+          "coordinate": [
+            302,
+            1167,
+            347,
+            1188
+          ],
+          "order": 10,
+          "polygon_points": [
+            [
+              302.0,
+              1167.0
+            ],
+            [
+              346.0,
+              1167.0
+            ],
+            [
+              346.0,
+              1187.0
+            ],
+            [
+              302.0,
+              1187.0
+            ]
+          ]
+        },
+        {
+          "cls_id": 15,
+          "label": "inline_formula",
+          "score": 0.5375576615333557,
+          "coordinate": [
+            384,
+            1165,
+            429,
+            1187
+          ],
+          "order": 11,
+          "polygon_points": [
+            [
+              384.0,
+              1165.0
+            ],
+            [
+              428.0,
+              1165.0
+            ],
+            [
+              428.0,
+              1186.0
+            ],
+            [
+              384.0,
+              1186.0
+            ]
+          ]
+        },
+        {
+          "cls_id": 15,
+          "label": "inline_formula",
+          "score": 0.3802179992198944,
+          "coordinate": [
+            158,
+            1189,
+            198,
+            1210
+          ],
+          "order": 12,
+          "polygon_points": [
+            [
+              158.0,
+              1189.0
+            ],
+            [
+              197.0,
+              1189.0
+            ],
+            [
+              197.0,
+              1209.0
+            ],
+            [
+              158.0,
+              1209.0
+            ]
+          ]
+        },
+        {
+          "cls_id": 15,
+          "label": "inline_formula",
+          "score": 0.39185574650764465,
+          "coordinate": [
+            492,
+            1186,
+            531,
+            1208
+          ],
+          "order": 13,
+          "polygon_points": [
+            [
+              492.0,
+              1186.0
+            ],
+            [
+              530.0,
+              1186.0
+            ],
+            [
+              530.0,
+              1207.0
+            ],
+            [
+              492.0,
+              1207.0
+            ]
+          ]
+        },
+        {
+          "cls_id": 22,
+          "label": "text",
+          "score": 0.9391958713531494,
+          "coordinate": [
+            79,
+            1279,
+            596,
+            1470
+          ],
+          "order": 14,
+          "polygon_points": [
+            [
+              79.0,
+              1279.0
+            ],
+            [
+              596.0,
+              1279.0
+            ],
+            [
+              596.0,
+              1470.0
+            ],
+            [
+              79.0,
+              1470.0
+            ]
+          ]
+        },
+        {
+          "cls_id": 15,
+          "label": "inline_formula",
+          "score": 0.5604512691497803,
+          "coordinate": [
+            407,
+            1283,
+            449,
+            1303
+          ],
+          "order": 15,
+          "polygon_points": [
+            [
+              407,
+              1283
+            ],
+            [
+              407,
+              1302
+            ],
+            [
+              427,
+              1302
+            ],
+            [
+              427,
+              1297
+            ],
+            [
+              428,
+              1296
+            ],
+            [
+              448,
+              1296
+            ],
+            [
+              448,
+              1283
+            ]
+          ]
+        },
+        {
+          "cls_id": 15,
+          "label": "inline_formula",
+          "score": 0.5522792339324951,
+          "coordinate": [
+            490,
+            1282,
+            532,
+            1302
+          ],
+          "order": 16,
+          "polygon_points": [
+            [
+              490.0,
+              1281.9998779296875
+            ],
+            [
+              531.0,
+              1281.9998779296875
+            ],
+            [
+              531.0,
+              1300.9998779296875
+            ],
+            [
+              490.0,
+              1300.9998779296875
+            ]
+          ]
+        },
+        {
+          "cls_id": 15,
+          "label": "inline_formula",
+          "score": 0.5068924427032471,
+          "coordinate": [
+            204,
+            1397,
+            249,
+            1418
+          ],
+          "order": 17,
+          "polygon_points": [
+            [
+              204.0,
+              1397.0
+            ],
+            [
+              248.0,
+              1397.0
+            ],
+            [
+              248.0,
+              1417.0
+            ],
+            [
+              204.0,
+              1417.0
+            ]
+          ]
+        },
+        {
+          "cls_id": 15,
+          "label": "inline_formula",
+          "score": 0.640681266784668,
+          "coordinate": [
+            85,
+            1446,
+            133,
+            1466
+          ],
+          "order": 18,
+          "polygon_points": [
+            [
+              84.99998474121094,
+              1445.9998779296875
+            ],
+            [
+              131.99998474121094,
+              1445.9998779296875
+            ],
+            [
+              131.99998474121094,
+              1464.9998779296875
+            ],
+            [
+              84.99998474121094,
+              1464.9998779296875
+            ]
+          ]
+        },
+        {
+          "cls_id": 15,
+          "label": "inline_formula",
+          "score": 0.6391814351081848,
+          "coordinate": [
+            513,
+            1422,
+            555,
+            1443
+          ],
+          "order": 19,
+          "polygon_points": [
+            [
+              512.9999389648438,
+              1421.9998779296875
+            ],
+            [
+              553.9999389648438,
+              1421.9998779296875
+            ],
+            [
+              553.9999389648438,
+              1441.9998779296875
+            ],
+            [
+              512.9999389648438,
+              1441.9998779296875
+            ]
+          ]
+        },
+        {
+          "cls_id": 22,
+          "label": "text",
+          "score": 0.9480416178703308,
+          "coordinate": [
+            634,
+            890,
+            1172,
+            1061
+          ],
+          "order": 20,
+          "polygon_points": [
+            [
+              634.0,
+              898.0
+            ],
+            [
+              1171.0,
+              898.0
+            ],
+            [
+              1171.0,
+              1060.0
+            ],
+            [
+              634.0,
+              1060.0
+            ]
+          ]
+        },
+        {
+          "cls_id": 15,
+          "label": "inline_formula",
+          "score": 0.6155927777290344,
+          "coordinate": [
+            808,
+            940,
+            852,
+            961
+          ],
+          "order": 21,
+          "polygon_points": [
+            [
+              808,
+              940
+            ],
+            [
+              808,
+              960
+            ],
+            [
+              851,
+              960
+            ],
+            [
+              851,
+              940
+            ]
+          ]
+        },
+        {
+          "cls_id": 15,
+          "label": "inline_formula",
+          "score": 0.5078901052474976,
+          "coordinate": [
+            891,
+            940,
+            938,
+            961
+          ],
+          "order": 22,
+          "polygon_points": [
+            [
+              891.0,
+              940.0
+            ],
+            [
+              937.0,
+              940.0
+            ],
+            [
+              937.0,
+              960.0
+            ],
+            [
+              891.0,
+              960.0
+            ]
+          ]
+        },
+        {
+          "cls_id": 22,
+          "label": "text",
+          "score": 0.9545256495475769,
+          "coordinate": [
+            635,
+            1068,
+            1174,
+            1402
+          ],
+          "order": 23,
+          "polygon_points": [
+            [
+              635.0,
+              1068.0
+            ],
+            [
+              1174.0,
+              1068.0
+            ],
+            [
+              1174.0,
+              1402.0
+            ],
+            [
+              635.0,
+              1402.0
+            ]
+          ]
+        },
+        {
+          "cls_id": 15,
+          "label": "inline_formula",
+          "score": 0.4792962372303009,
+          "coordinate": [
+            1035,
+            1212,
+            1081,
+            1235
+          ],
+          "order": 24,
+          "polygon_points": [
+            [
+              1035,
+              1212
+            ],
+            [
+              1035,
+              1234
+            ],
+            [
+              1080,
+              1234
+            ],
+            [
+              1080,
+              1212
+            ]
+          ]
+        },
+        {
+          "cls_id": 15,
+          "label": "inline_formula",
+          "score": 0.4704102575778961,
+          "coordinate": [
+            1119,
+            1214,
+            1166,
+            1236
+          ],
+          "order": 25,
+          "polygon_points": [
+            [
+              1119.0,
+              1214.0
+            ],
+            [
+              1165.0,
+              1214.0
+            ],
+            [
+              1165.0,
+              1235.0
+            ],
+            [
+              1119.0,
+              1235.0
+            ]
+          ]
+        },
+        {
+          "cls_id": 15,
+          "label": "inline_formula",
+          "score": 0.6726033091545105,
+          "coordinate": [
+            672,
+            1350,
+            719,
+            1373
+          ],
+          "order": 26,
+          "polygon_points": [
+            [
+              672.0,
+              1350.0
+            ],
+            [
+              718.0,
+              1350.0
+            ],
+            [
+              718.0,
+              1372.0
+            ],
+            [
+              672.0,
+              1372.0
+            ]
+          ]
+        },
+        {
+          "cls_id": 15,
+          "label": "inline_formula",
+          "score": 0.47989901900291443,
+          "coordinate": [
+            1118,
+            1332,
+            1165,
+            1354
+          ],
+          "order": 27,
+          "polygon_points": [
+            [
+              1118.0,
+              1332.0
+            ],
+            [
+              1164.0,
+              1332.0
+            ],
+            [
+              1164.0,
+              1353.0
+            ],
+            [
+              1118.0,
+              1353.0
+            ]
+          ]
+        },
+        {
+          "cls_id": 22,
+          "label": "text",
+          "score": 0.91922926902771,
+          "coordinate": [
+            634,
+            1397,
+            1172,
+            1474
+          ],
+          "order": 28,
+          "polygon_points": [
+            [
+              634.0,
+              1397.0
+            ],
+            [
+              1172.0,
+              1397.0
+            ],
+            [
+              1172.0,
+              1474.0
+            ],
+            [
+              634.0,
+              1474.0
+            ]
+          ]
+        },
+        {
+          "cls_id": 16,
+          "label": "number",
+          "score": 0.6760782599449158,
+          "coordinate": [
+            602,
+            1473,
+            627,
+            1489
+          ],
+          "order": 29,
+          "polygon_points": [
+            [
+              602.0,
+              1473.0
+            ],
+            [
+              626.0,
+              1473.0
+            ],
+            [
+              626.0,
+              1488.0
+            ],
+            [
+              602.0,
+              1488.0
+            ]
+          ]
+        }
+      ]
+    }
+  },
+  "markdown": {
+    "text": "<div style=\"text-align: center;\"><img src=\"imgs/img_in_image_box_104_112_1127_741.jpg\" alt=\"Image\" width=\"83%\" /></div>\n\n\n<div style=\"text-align: center;\">Figure 3: The left and right columns display the visualization of high-dimensional gradient information using t-SNE after GSA₁ and GSA₂ have respectively executed attacks on the three datasets (using the output from the last layer of our attack model). For all six attacks, it is observed that member and non-member samples are distinctly differentiated when reaching the training steps defined by the default settings (as referenced in Table 3).</div>\n\n\nWe benchmark GSA₁ and GSA₂ against existing methodologies, maintaining all other model parameters consistent. Contrasting traditional loss-based white-box attacks such as LiRA [4] and others techniques [27, 35], we provide a thorough evaluation highlighting the superior efficacy of GSA₁ and GSA₂. The baseline approach [27, 35, 64] depicted in Table 4 is the most intuitive, which predicts the sample as a non-member if the loss exceeds a certain value and vice versa [35]. This also represents the most traditional judgment method in MIA, utilized here as the baseline.\n\n5.1.1 Feature Informative. LSA $ ^{*} $ refers to the results of training the attack model using the loss under the same training conditions and sampling frequency as GSA $ _{1} $ and GSA $ _{2} $. The sole distinction between LSA $ ^{*} $ and GSA lies in their features: while LSA $ ^{*} $ utilizes loss as its attack feature, GSA employs the gradient. Comparative results between them substantiate that the gradient information of the diffusion model is more aptly suited as attack features.\n\nIt is apparent from Table 4 that both GSA₁ and GSA₂ exceed other techniques in terms of all evaluation metrics. Under the AUC criterion, LiRA [4] also attains a high attack accuracy, attributed to excessive training steps and many shadow models. However, when ensuring an equivalent quantity of shadow models and training epochs for the LiRA based on the LiRA framework, its ASR, TPR, and AUC scores are significantly lower compared to GSA₁ and GSA₂. In the original paper, the LiRA framework achieves TPRs of 5% after training for 200 epochs, with the FPRs fixed at 1%. Remarkably, after training for 4080 epochs, the TPR increases to 99%. In contrast, for GSA₁ and GSA₂, TPRs of 99.7% and 78.75% are respectively achieved after only 400 epochs, underscoring a more efficient attack strategy. This essentially corroborates our core proposition that gradient information of the model exhibits a more pronounced response to member set samples than loss.\n\n\n\n5.1.2 Timestep Selection. Moreover, the ‘time zone’ demonstrating discernible differences in the loss distribution between members and non-members vary across different models and datasets [4, 12, 27, 35]. Consequently, to achieve a more potent attack, it becomes imperative to extract the loss and establish thresholds or distributions for each timestep using shadow models, aiming to pinpoint the most efficacious ‘time zone’. In contrast, both GSA₁ and GSA₂ execute attacks by solely harnessing the gradient information derived from equidistant sampling timesteps across the T diffusion steps, achieving similar attack accuracy in just one-thirtieth of the time. Given a consistent dataset size and model architecture, extracting loss across T steps takes 36 hours. In contrast, GSA₁ and GSA₂ achieve the same accuracy level in less than 1 hour by extracting gradients from 10 equidistant sampling timesteps.\n\nTo further demonstrate that the optimal timestep for distinguishing between member and non-member samples using loss varies across different datasets and models. We plot the loss distribution",
+    "images": {
+      "imgs/img_in_image_box_104_112_1127_741.jpg": "https://pplines-online.bj.bcebos.com/deploy/official/paddleocr/pp-ocr-vl-15//be89aefa-2ad6-4789-859d-51acf964ae99/markdown_2/imgs/img_in_image_box_104_112_1127_741.jpg?authorization=bce-auth-v1%2FALTAKzReLNvew3ySINYJ0fuAMN%2F2026-04-05T12%3A41%3A14Z%2F-1%2F%2Fd89e36026b87c7bec5d5f4dbf7add3edf14156a001d0c169ae2c4ab96293dea8"
+    }
+  },
+  "outputImages": {
+    "layout_det_res": "https://pplines-online.bj.bcebos.com/deploy/official/paddleocr/pp-ocr-vl-15//be89aefa-2ad6-4789-859d-51acf964ae99/layout_det_res_2.jpg?authorization=bce-auth-v1%2FALTAKzReLNvew3ySINYJ0fuAMN%2F2026-04-05T12%3A41%3A15Z%2F-1%2F%2F385a4c00758e58a61a961252ffeec7063249481a733114ff095c32f3d91692e6"
+  },
+  "inputImage": "https://pplines-online.bj.bcebos.com/deploy/official/paddleocr/pp-ocr-vl-15//be89aefa-2ad6-4789-859d-51acf964ae99/input_img_2.jpg?authorization=bce-auth-v1%2FALTAKzReLNvew3ySINYJ0fuAMN%2F2026-04-05T12%3A41%3A15Z%2F-1%2F%2F109565908b864408a21352dd618daef0a23eda2a34f9055b4a8242b254af4e93"
+}

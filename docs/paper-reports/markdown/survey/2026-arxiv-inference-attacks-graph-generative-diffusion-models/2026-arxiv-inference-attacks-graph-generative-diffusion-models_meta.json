@@ -1,0 +1,2013 @@
+{
+  "table_of_contents": [
+    {
+      "title": "Inference Attacks Against Graph Generative Diffusion Models",
+      "heading_level": null,
+      "page_id": 0,
+      "polygon": [
+        [
+          114.61000061035156,
+          100.488037109375
+        ],
+        [
+          497.3952941894531,
+          100.488037109375
+        ],
+        [
+          497.3952941894531,
+          114.834228515625
+        ],
+        [
+          113.853515625,
+          114.834228515625
+        ]
+      ]
+    },
+    {
+      "title": "Abstract",
+      "heading_level": null,
+      "page_id": 0,
+      "polygon": [
+        [
+          150.908203125,
+          251.75390625
+        ],
+        [
+          196.3032684326172,
+          251.75390625
+        ],
+        [
+          196.3032684326172,
+          264.74237060546875
+        ],
+        [
+          150.908203125,
+          264.74237060546875
+        ]
+      ]
+    },
+    {
+      "title": "1 Introduction",
+      "heading_level": null,
+      "page_id": 0,
+      "polygon": [
+        [
+          54.0,
+          543.6421813964844
+        ],
+        [
+          136.8136749267578,
+          542.56640625
+        ],
+        [
+          136.8136749267578,
+          555.5973815917969
+        ],
+        [
+          54.0,
+          555.5973815917969
+        ]
+      ]
+    },
+    {
+      "title": "2 Related Work",
+      "heading_level": null,
+      "page_id": 1,
+      "polygon": [
+        [
+          316.458984375,
+          607.921875
+        ],
+        [
+          406.97015380859375,
+          607.921875
+        ],
+        [
+          406.97015380859375,
+          620.4273681640625
+        ],
+        [
+          316.458984375,
+          620.4273681640625
+        ]
+      ]
+    },
+    {
+      "title": "3 Generative Diffusion Models on Graphs",
+      "heading_level": null,
+      "page_id": 2,
+      "polygon": [
+        [
+          317.654296875,
+          158.39813232421875
+        ],
+        [
+          539.4815673828125,
+          157.0078125
+        ],
+        [
+          539.4815673828125,
+          170.35333251953125
+        ],
+        [
+          316.458984375,
+          170.35333251953125
+        ]
+      ]
+    },
+    {
+      "title": "4 Motivation and Threat Model",
+      "heading_level": null,
+      "page_id": 3,
+      "polygon": [
+        [
+          315.861328125,
+          262.0821533203125
+        ],
+        [
+          487.78729248046875,
+          260.6484375
+        ],
+        [
+          487.78729248046875,
+          274.037353515625
+        ],
+        [
+          314.666015625,
+          274.037353515625
+        ]
+      ]
+    },
+    {
+      "title": "4.1 Motivations",
+      "heading_level": null,
+      "page_id": 3,
+      "polygon": [
+        [
+          315.263671875,
+          330.2578125
+        ],
+        [
+          405.6430969238281,
+          328.7109375
+        ],
+        [
+          405.6430969238281,
+          342.3553466796875
+        ],
+        [
+          315.263671875,
+          342.3553466796875
+        ]
+      ]
+    },
+    {
+      "title": "4.2 Threat Model",
+      "heading_level": null,
+      "page_id": 3,
+      "polygon": [
+        [
+          316.458984375,
+          549.52734375
+        ],
+        [
+          415.29095458984375,
+          549.52734375
+        ],
+        [
+          415.29095458984375,
+          562.5043792724609
+        ],
+        [
+          316.458984375,
+          562.5043792724609
+        ]
+      ]
+    },
+    {
+      "title": "5 Inference Attacks",
+      "heading_level": null,
+      "page_id": 4,
+      "polygon": [
+        [
+          52.59375,
+          539.3951721191406
+        ],
+        [
+          162.34996032714844,
+          538.69921875
+        ],
+        [
+          162.34996032714844,
+          551.3503723144531
+        ],
+        [
+          51.3984375,
+          551.3503723144531
+        ]
+      ]
+    },
+    {
+      "title": "5.1 Graph Reconstruction Attacks",
+      "heading_level": null,
+      "page_id": 4,
+      "polygon": [
+        [
+          53.19140625,
+          589.0841522216797
+        ],
+        [
+          237.63186645507812,
+          589.0841522216797
+        ],
+        [
+          237.63186645507812,
+          601.0393524169922
+        ],
+        [
+          53.19140625,
+          601.0393524169922
+        ]
+      ]
+    },
+    {
+      "title": "5.1.1 Attack Overview",
+      "heading_level": null,
+      "page_id": 4,
+      "polygon": [
+        [
+          53.19140625,
+          607.921875
+        ],
+        [
+          155.8974609375,
+          607.921875
+        ],
+        [
+          155.8974609375,
+          619.6031036376953
+        ],
+        [
+          53.19140625,
+          619.6031036376953
+        ]
+      ]
+    },
+    {
+      "title": "5.1.2 Attack Model",
+      "heading_level": null,
+      "page_id": 4,
+      "polygon": [
+        [
+          317.654296875,
+          145.40625
+        ],
+        [
+          406.14862060546875,
+          143.859375
+        ],
+        [
+          406.14862060546875,
+          156.01104736328125
+        ],
+        [
+          316.458984375,
+          156.01104736328125
+        ]
+      ]
+    },
+    {
+      "title": "5.2 Property Inference Attacks",
+      "heading_level": null,
+      "page_id": 5,
+      "polygon": [
+        [
+          53.19140625,
+          329.4911193847656
+        ],
+        [
+          219.9022979736328,
+          328.7109375
+        ],
+        [
+          219.9022979736328,
+          341.4463195800781
+        ],
+        [
+          53.19140625,
+          341.4463195800781
+        ]
+      ]
+    },
+    {
+      "title": "5.2.1 Attack Overview",
+      "heading_level": null,
+      "page_id": 5,
+      "polygon": [
+        [
+          53.19140625,
+          349.59375
+        ],
+        [
+          155.8974609375,
+          348.046875
+        ],
+        [
+          155.8974609375,
+          359.6630859375
+        ],
+        [
+          51.99609375,
+          359.6630859375
+        ]
+      ]
+    },
+    {
+      "title": "5.2.2 Attack Model",
+      "heading_level": null,
+      "page_id": 5,
+      "polygon": [
+        [
+          53.7890625,
+          591.29296875
+        ],
+        [
+          142.26864624023438,
+          591.29296875
+        ],
+        [
+          142.26864624023438,
+          602.3591156005859
+        ],
+        [
+          52.59375,
+          602.3591156005859
+        ]
+      ]
+    },
+    {
+      "title": "5.3 Membership Inference Attacks",
+      "heading_level": null,
+      "page_id": 5,
+      "polygon": [
+        [
+          317.654296875,
+          203.80078125
+        ],
+        [
+          503.525390625,
+          202.25390625
+        ],
+        [
+          503.269287109375,
+          216.01031494140625
+        ],
+        [
+          316.458984375,
+          216.01031494140625
+        ]
+      ]
+    },
+    {
+      "title": "5.3.1 Attack Overview",
+      "heading_level": null,
+      "page_id": 5,
+      "polygon": [
+        [
+          317.35546875,
+          224.26446533203125
+        ],
+        [
+          419.7774658203125,
+          222.75
+        ],
+        [
+          419.7774658203125,
+          234.22705078125
+        ],
+        [
+          317.35546875,
+          234.22705078125
+        ]
+      ]
+    },
+    {
+      "title": "5.3.2 Attack Model",
+      "heading_level": null,
+      "page_id": 5,
+      "polygon": [
+        [
+          317.654296875,
+          549.52734375
+        ],
+        [
+          406.14862060546875,
+          549.52734375
+        ],
+        [
+          406.14862060546875,
+          560.1741180419922
+        ],
+        [
+          317.654296875,
+          560.1741180419922
+        ]
+      ]
+    },
+    {
+      "title": "6 Evaluation",
+      "heading_level": null,
+      "page_id": 6,
+      "polygon": [
+        [
+          316.458984375,
+          473.73046875
+        ],
+        [
+          391.5001220703125,
+          473.73046875
+        ],
+        [
+          391.5001220703125,
+          486.09033203125
+        ],
+        [
+          316.458984375,
+          486.09033203125
+        ]
+      ]
+    },
+    {
+      "title": "6.1 Experimental Setup",
+      "heading_level": null,
+      "page_id": 6,
+      "polygon": [
+        [
+          316.458984375,
+          515.3341369628906
+        ],
+        [
+          446.7331237792969,
+          514.3359375
+        ],
+        [
+          446.7331237792969,
+          527.2893371582031
+        ],
+        [
+          316.458984375,
+          527.2893371582031
+        ]
+      ]
+    },
+    {
+      "title": "6.2 Graph Reconstruction Performance",
+      "heading_level": null,
+      "page_id": 7,
+      "polygon": [
+        [
+          53.490234375,
+          521.4691467285156
+        ],
+        [
+          264.30389404296875,
+          520.91015625
+        ],
+        [
+          264.30389404296875,
+          533.4243469238281
+        ],
+        [
+          53.490234375,
+          533.4243469238281
+        ]
+      ]
+    },
+    {
+      "title": "6.3 Property Inference Performance",
+      "heading_level": null,
+      "page_id": 8,
+      "polygon": [
+        [
+          53.490234375,
+          479.4051513671875
+        ],
+        [
+          246.5743408203125,
+          478.7578125
+        ],
+        [
+          246.5743408203125,
+          491.3603515625
+        ],
+        [
+          53.490234375,
+          491.3603515625
+        ]
+      ]
+    },
+    {
+      "title": "6.4 Membership Inference Performance",
+      "heading_level": null,
+      "page_id": 8,
+      "polygon": [
+        [
+          316.7578125,
+          623.4071502685547
+        ],
+        [
+          529.9412841796875,
+          622.6171875
+        ],
+        [
+          529.9412841796875,
+          635.3623504638672
+        ],
+        [
+          316.7578125,
+          635.3623504638672
+        ]
+      ]
+    },
+    {
+      "title": "7 Two Possible Defenses",
+      "heading_level": null,
+      "page_id": 10,
+      "polygon": [
+        [
+          52.59375,
+          564.2191467285156
+        ],
+        [
+          184.92138671875,
+          563.44921875
+        ],
+        [
+          184.92138671875,
+          576.1743469238281
+        ],
+        [
+          52.59375,
+          576.1743469238281
+        ]
+      ]
+    },
+    {
+      "title": "7.1 Saliency Map-based Importance Measure-\nment",
+      "heading_level": null,
+      "page_id": 10,
+      "polygon": [
+        [
+          317.056640625,
+          346.5
+        ],
+        [
+          559.9857788085938,
+          344.953125
+        ],
+        [
+          559.9857788085938,
+          372.92938232421875
+        ],
+        [
+          317.056640625,
+          372.92938232421875
+        ]
+      ]
+    },
+    {
+      "title": "7.2 Details of the Defenses",
+      "heading_level": null,
+      "page_id": 11,
+      "polygon": [
+        [
+          54.0,
+          671.8342132568359
+        ],
+        [
+          195.44195556640625,
+          670.95703125
+        ],
+        [
+          195.44195556640625,
+          683.7894134521484
+        ],
+        [
+          52.892578125,
+          683.7894134521484
+        ]
+      ]
+    },
+    {
+      "title": "Defense-1: Noisy training graphs (pre-processing).",
+      "heading_level": null,
+      "page_id": 11,
+      "polygon": [
+        [
+          326.91796875,
+          369.31640625
+        ],
+        [
+          541.3814086914062,
+          367.76953125
+        ],
+        [
+          541.3814086914062,
+          380.6981506347656
+        ],
+        [
+          325.72265625,
+          380.6981506347656
+        ]
+      ]
+    },
+    {
+      "title": "Defense-2: Noisy generated graphs (post-processing).",
+      "heading_level": null,
+      "page_id": 11,
+      "polygon": [
+        [
+          325.125,
+          546.5445709228516
+        ],
+        [
+          552.6192016601562,
+          545.2734375
+        ],
+        [
+          552.6192016601562,
+          556.5981292724609
+        ],
+        [
+          325.125,
+          556.5981292724609
+        ]
+      ]
+    },
+    {
+      "title": "7.3 Performance of Defense",
+      "heading_level": null,
+      "page_id": 11,
+      "polygon": [
+        [
+          315.861328125,
+          670.5703125
+        ],
+        [
+          466.3994140625,
+          670.5703125
+        ],
+        [
+          466.3994140625,
+          683.7894134521484
+        ],
+        [
+          315.861328125,
+          683.7894134521484
+        ]
+      ]
+    },
+    {
+      "title": "8 Conclusion",
+      "heading_level": null,
+      "page_id": 12,
+      "polygon": [
+        [
+          316.16015625,
+          340.3125
+        ],
+        [
+          392.9466857910156,
+          340.3125
+        ],
+        [
+          392.9466857910156,
+          352.7254333496094
+        ],
+        [
+          316.16015625,
+          352.7254333496094
+        ]
+      ]
+    },
+    {
+      "title": "9 Acknowledgments",
+      "heading_level": null,
+      "page_id": 12,
+      "polygon": [
+        [
+          316.16015625,
+          609.022216796875
+        ],
+        [
+          429.33831787109375,
+          608.30859375
+        ],
+        [
+          429.33831787109375,
+          620.9774169921875
+        ],
+        [
+          316.16015625,
+          620.9774169921875
+        ]
+      ]
+    },
+    {
+      "title": "10 Ethical Considerations",
+      "heading_level": null,
+      "page_id": 13,
+      "polygon": [
+        [
+          54.0,
+          72.787109375
+        ],
+        [
+          194.48556518554688,
+          71.54296875
+        ],
+        [
+          194.48556518554688,
+          84.7423095703125
+        ],
+        [
+          53.490234375,
+          84.7423095703125
+        ]
+      ]
+    },
+    {
+      "title": "11 Open Science",
+      "heading_level": null,
+      "page_id": 13,
+      "polygon": [
+        [
+          53.7890625,
+          595.0571594238281
+        ],
+        [
+          146.65280151367188,
+          593.61328125
+        ],
+        [
+          146.65280151367188,
+          607.0123596191406
+        ],
+        [
+          53.7890625,
+          607.0123596191406
+        ]
+      ]
+    },
+    {
+      "title": "References",
+      "heading_level": null,
+      "page_id": 13,
+      "polygon": [
+        [
+          317.35546875,
+          72.787109375
+        ],
+        [
+          373.53515625,
+          71.54296875
+        ],
+        [
+          373.423828125,
+          84.7423095703125
+        ],
+        [
+          316.16015625,
+          84.7423095703125
+        ]
+      ]
+    },
+    {
+      "title": "Algorithm 1: Graph reconstruction attack",
+      "heading_level": null,
+      "page_id": 17,
+      "polygon": [
+        [
+          57.97265625,
+          76.5703125
+        ],
+        [
+          226.8414764404297,
+          76.5703125
+        ],
+        [
+          226.8414764404297,
+          87.050048828125
+        ],
+        [
+          56.77734375,
+          87.050048828125
+        ]
+      ]
+    },
+    {
+      "title": "Algorithm 2: Property inference attack",
+      "heading_level": null,
+      "page_id": 17,
+      "polygon": [
+        [
+          57.375,
+          413.015625
+        ],
+        [
+          216.3515625,
+          411.46875
+        ],
+        [
+          216.3515625,
+          423.966064453125
+        ],
+        [
+          57.375,
+          423.966064453125
+        ]
+      ]
+    },
+    {
+      "title": "Appendix",
+      "heading_level": null,
+      "page_id": 17,
+      "polygon": [
+        [
+          316.16015625,
+          475.02813720703125
+        ],
+        [
+          367.4103698730469,
+          475.02813720703125
+        ],
+        [
+          367.4103698730469,
+          486.98333740234375
+        ],
+        [
+          316.16015625,
+          486.98333740234375
+        ]
+      ]
+    },
+    {
+      "title": "A Pseudo code of our attacks",
+      "heading_level": null,
+      "page_id": 17,
+      "polygon": [
+        [
+          317.056640625,
+          498.8671875
+        ],
+        [
+          474.6126403808594,
+          497.3203125
+        ],
+        [
+          474.6126403808594,
+          511.2423400878906
+        ],
+        [
+          317.056640625,
+          511.2423400878906
+        ]
+      ]
+    },
+    {
+      "title": "B Details of Datasets",
+      "heading_level": null,
+      "page_id": 17,
+      "polygon": [
+        [
+          316.16015625,
+          571.5031585693359
+        ],
+        [
+          432.0999450683594,
+          570.0234375
+        ],
+        [
+          432.0999450683594,
+          583.4583587646484
+        ],
+        [
+          316.16015625,
+          583.4583587646484
+        ]
+      ]
+    },
+    {
+      "title": "C More results on property inference attack",
+      "heading_level": null,
+      "page_id": 18,
+      "polygon": [
+        [
+          53.7890625,
+          676.7031555175781
+        ],
+        [
+          287.2100830078125,
+          676.7031555175781
+        ],
+        [
+          287.2100830078125,
+          688.6583557128906
+        ],
+        [
+          52.59375,
+          688.6583557128906
+        ]
+      ]
+    },
+    {
+      "title": "Algorithm 4: Graph perturbation in the defense",
+      "heading_level": null,
+      "page_id": 18,
+      "polygon": [
+        [
+          320.642578125,
+          208.44140625
+        ],
+        [
+          501.732421875,
+          206.89453125
+        ],
+        [
+          500.5762939453125,
+          218.630126953125
+        ],
+        [
+          319.447265625,
+          218.630126953125
+        ]
+      ]
+    },
+    {
+      "title": "D Pseudo code of our defense mechanism",
+      "heading_level": null,
+      "page_id": 19,
+      "polygon": [
+        [
+          317.35546875,
+          524.00390625
+        ],
+        [
+          536.7079467773438,
+          522.45703125
+        ],
+        [
+          536.7079467773438,
+          536.359375
+        ],
+        [
+          317.35546875,
+          536.359375
+        ]
+      ]
+    }
+  ],
+  "page_stats": [
+    {
+      "page_id": 0,
+      "text_extraction_method": "pdftext",
+      "block_counts": [
+        [
+          "Span",
+          256
+        ],
+        [
+          "Line",
+          92
+        ],
+        [
+          "Text",
+          10
+        ],
+        [
+          "SectionHeader",
+          3
+        ],
+        [
+          "PageHeader",
+          1
+        ],
+        [
+          "Footnote",
+          1
+        ],
+        [
+          "PageFooter",
+          1
+        ]
+      ],
+      "block_metadata": {
+        "llm_request_count": 0,
+        "llm_error_count": 0,
+        "llm_tokens_used": 0,
+        "previous_text": "",
+        "previous_type": "",
+        "previous_order": 0
+      }
+    },
+    {
+      "page_id": 1,
+      "text_extraction_method": "pdftext",
+      "block_counts": [
+        [
+          "Span",
+          306
+        ],
+        [
+          "Line",
+          108
+        ],
+        [
+          "TableCell",
+          55
+        ],
+        [
+          "Text",
+          7
+        ],
+        [
+          "ListItem",
+          3
+        ],
+        [
+          "Table",
+          1
+        ],
+        [
+          "Caption",
+          1
+        ],
+        [
+          "SectionHeader",
+          1
+        ],
+        [
+          "PageFooter",
+          1
+        ],
+        [
+          "TableGroup",
+          1
+        ],
+        [
+          "ListGroup",
+          1
+        ],
+        [
+          "Reference",
+          1
+        ]
+      ],
+      "block_metadata": {
+        "llm_request_count": 0,
+        "llm_error_count": 0,
+        "llm_tokens_used": 0,
+        "previous_text": "",
+        "previous_type": "",
+        "previous_order": 0
+      }
+    },
+    {
+      "page_id": 2,
+      "text_extraction_method": "pdftext",
+      "block_counts": [
+        [
+          "Span",
+          577
+        ],
+        [
+          "Line",
+          117
+        ],
+        [
+          "Text",
+          9
+        ],
+        [
+          "SectionHeader",
+          1
+        ],
+        [
+          "Equation",
+          1
+        ],
+        [
+          "PageFooter",
+          1
+        ],
+        [
+          "Reference",
+          1
+        ]
+      ],
+      "block_metadata": {
+        "llm_request_count": 0,
+        "llm_error_count": 0,
+        "llm_tokens_used": 0,
+        "previous_text": "",
+        "previous_type": "",
+        "previous_order": 0
+      }
+    },
+    {
+      "page_id": 3,
+      "text_extraction_method": "pdftext",
+      "block_counts": [
+        [
+          "Span",
+          540
+        ],
+        [
+          "Line",
+          117
+        ],
+        [
+          "TableCell",
+          12
+        ],
+        [
+          "Text",
+          11
+        ],
+        [
+          "SectionHeader",
+          3
+        ],
+        [
+          "Caption",
+          2
+        ],
+        [
+          "Equation",
+          2
+        ],
+        [
+          "Reference",
+          2
+        ],
+        [
+          "Figure",
+          1
+        ],
+        [
+          "Table",
+          1
+        ],
+        [
+          "PageFooter",
+          1
+        ],
+        [
+          "FigureGroup",
+          1
+        ],
+        [
+          "TableGroup",
+          1
+        ]
+      ],
+      "block_metadata": {
+        "llm_request_count": 0,
+        "llm_error_count": 0,
+        "llm_tokens_used": 0,
+        "previous_text": "",
+        "previous_type": "",
+        "previous_order": 0
+      }
+    },
+    {
+      "page_id": 4,
+      "text_extraction_method": "pdftext",
+      "block_counts": [
+        [
+          "Span",
+          649
+        ],
+        [
+          "Line",
+          135
+        ],
+        [
+          "Text",
+          13
+        ],
+        [
+          "ListItem",
+          5
+        ],
+        [
+          "SectionHeader",
+          4
+        ],
+        [
+          "Equation",
+          3
+        ],
+        [
+          "Reference",
+          3
+        ],
+        [
+          "ListGroup",
+          2
+        ],
+        [
+          "Figure",
+          1
+        ],
+        [
+          "Caption",
+          1
+        ],
+        [
+          "PageFooter",
+          1
+        ],
+        [
+          "FigureGroup",
+          1
+        ]
+      ],
+      "block_metadata": {
+        "llm_request_count": 0,
+        "llm_error_count": 0,
+        "llm_tokens_used": 0,
+        "previous_text": "",
+        "previous_type": "",
+        "previous_order": 0
+      }
+    },
+    {
+      "page_id": 5,
+      "text_extraction_method": "pdftext",
+      "block_counts": [
+        [
+          "Span",
+          605
+        ],
+        [
+          "Line",
+          163
+        ],
+        [
+          "Text",
+          11
+        ],
+        [
+          "SectionHeader",
+          6
+        ],
+        [
+          "Equation",
+          4
+        ],
+        [
+          "Reference",
+          4
+        ],
+        [
+          "Figure",
+          2
+        ],
+        [
+          "Caption",
+          2
+        ],
+        [
+          "FigureGroup",
+          2
+        ],
+        [
+          "PageFooter",
+          1
+        ]
+      ],
+      "block_metadata": {
+        "llm_request_count": 0,
+        "llm_error_count": 0,
+        "llm_tokens_used": 0,
+        "previous_text": "",
+        "previous_type": "",
+        "previous_order": 0
+      }
+    },
+    {
+      "page_id": 6,
+      "text_extraction_method": "pdftext",
+      "block_counts": [
+        [
+          "Span",
+          1172
+        ],
+        [
+          "Line",
+          338
+        ],
+        [
+          "Text",
+          15
+        ],
+        [
+          "Reference",
+          3
+        ],
+        [
+          "Equation",
+          2
+        ],
+        [
+          "SectionHeader",
+          2
+        ],
+        [
+          "PageFooter",
+          1
+        ]
+      ],
+      "block_metadata": {
+        "llm_request_count": 0,
+        "llm_error_count": 0,
+        "llm_tokens_used": 0,
+        "previous_text": "",
+        "previous_type": "",
+        "previous_order": 0
+      }
+    },
+    {
+      "page_id": 7,
+      "text_extraction_method": "pdftext",
+      "block_counts": [
+        [
+          "Span",
+          974
+        ],
+        [
+          "TableCell",
+          331
+        ],
+        [
+          "Line",
+          119
+        ],
+        [
+          "Text",
+          6
+        ],
+        [
+          "ListItem",
+          4
+        ],
+        [
+          "ListGroup",
+          2
+        ],
+        [
+          "Table",
+          1
+        ],
+        [
+          "Caption",
+          1
+        ],
+        [
+          "SectionHeader",
+          1
+        ],
+        [
+          "PageFooter",
+          1
+        ],
+        [
+          "TableGroup",
+          1
+        ],
+        [
+          "Reference",
+          1
+        ]
+      ],
+      "block_metadata": {
+        "llm_request_count": 0,
+        "llm_error_count": 0,
+        "llm_tokens_used": 0,
+        "previous_text": "",
+        "previous_type": "",
+        "previous_order": 0
+      }
+    },
+    {
+      "page_id": 8,
+      "text_extraction_method": "pdftext",
+      "block_counts": [
+        [
+          "Span",
+          404
+        ],
+        [
+          "Line",
+          79
+        ],
+        [
+          "TableCell",
+          70
+        ],
+        [
+          "Text",
+          8
+        ],
+        [
+          "Caption",
+          2
+        ],
+        [
+          "SectionHeader",
+          2
+        ],
+        [
+          "Reference",
+          2
+        ],
+        [
+          "Table",
+          1
+        ],
+        [
+          "Figure",
+          1
+        ],
+        [
+          "PageFooter",
+          1
+        ],
+        [
+          "TableGroup",
+          1
+        ],
+        [
+          "FigureGroup",
+          1
+        ]
+      ],
+      "block_metadata": {
+        "llm_request_count": 0,
+        "llm_error_count": 0,
+        "llm_tokens_used": 0,
+        "previous_text": "",
+        "previous_type": "",
+        "previous_order": 0
+      }
+    },
+    {
+      "page_id": 9,
+      "text_extraction_method": "pdftext",
+      "block_counts": [
+        [
+          "Span",
+          721
+        ],
+        [
+          "TableCell",
+          284
+        ],
+        [
+          "Line",
+          95
+        ],
+        [
+          "Text",
+          4
+        ],
+        [
+          "ListItem",
+          4
+        ],
+        [
+          "ListGroup",
+          2
+        ],
+        [
+          "Table",
+          1
+        ],
+        [
+          "Caption",
+          1
+        ],
+        [
+          "PageFooter",
+          1
+        ],
+        [
+          "TableGroup",
+          1
+        ],
+        [
+          "Reference",
+          1
+        ]
+      ],
+      "block_metadata": {
+        "llm_request_count": 0,
+        "llm_error_count": 0,
+        "llm_tokens_used": 0,
+        "previous_text": "",
+        "previous_type": "",
+        "previous_order": 0
+      }
+    },
+    {
+      "page_id": 10,
+      "text_extraction_method": "pdftext",
+      "block_counts": [
+        [
+          "Span",
+          657
+        ],
+        [
+          "Line",
+          177
+        ],
+        [
+          "Text",
+          8
+        ],
+        [
+          "SectionHeader",
+          2
+        ],
+        [
+          "Reference",
+          2
+        ],
+        [
+          "Figure",
+          1
+        ],
+        [
+          "Caption",
+          1
+        ],
+        [
+          "Equation",
+          1
+        ],
+        [
+          "PageFooter",
+          1
+        ],
+        [
+          "FigureGroup",
+          1
+        ]
+      ],
+      "block_metadata": {
+        "llm_request_count": 0,
+        "llm_error_count": 0,
+        "llm_tokens_used": 0,
+        "previous_text": "",
+        "previous_type": "",
+        "previous_order": 0
+      }
+    },
+    {
+      "page_id": 11,
+      "text_extraction_method": "pdftext",
+      "block_counts": [
+        [
+          "Span",
+          629
+        ],
+        [
+          "Line",
+          165
+        ],
+        [
+          "Text",
+          10
+        ],
+        [
+          "ListItem",
+          5
+        ],
+        [
+          "Reference",
+          5
+        ],
+        [
+          "SectionHeader",
+          4
+        ],
+        [
+          "Equation",
+          2
+        ],
+        [
+          "ListGroup",
+          2
+        ],
+        [
+          "Figure",
+          1
+        ],
+        [
+          "Caption",
+          1
+        ],
+        [
+          "PageFooter",
+          1
+        ],
+        [
+          "FigureGroup",
+          1
+        ]
+      ],
+      "block_metadata": {
+        "llm_request_count": 0,
+        "llm_error_count": 0,
+        "llm_tokens_used": 0,
+        "previous_text": "",
+        "previous_type": "",
+        "previous_order": 0
+      }
+    },
+    {
+      "page_id": 12,
+      "text_extraction_method": "pdftext",
+      "block_counts": [
+        [
+          "Span",
+          423
+        ],
+        [
+          "Line",
+          113
+        ],
+        [
+          "Text",
+          8
+        ],
+        [
+          "ListItem",
+          2
+        ],
+        [
+          "SectionHeader",
+          2
+        ],
+        [
+          "Figure",
+          1
+        ],
+        [
+          "Caption",
+          1
+        ],
+        [
+          "PageFooter",
+          1
+        ],
+        [
+          "FigureGroup",
+          1
+        ],
+        [
+          "ListGroup",
+          1
+        ],
+        [
+          "Reference",
+          1
+        ]
+      ],
+      "block_metadata": {
+        "llm_request_count": 0,
+        "llm_error_count": 0,
+        "llm_tokens_used": 0,
+        "previous_text": "",
+        "previous_type": "",
+        "previous_order": 0
+      }
+    },
+    {
+      "page_id": 13,
+      "text_extraction_method": "pdftext",
+      "block_counts": [
+        [
+          "Span",
+          213
+        ],
+        [
+          "Line",
+          95
+        ],
+        [
+          "ListItem",
+          12
+        ],
+        [
+          "Reference",
+          12
+        ],
+        [
+          "Text",
+          5
+        ],
+        [
+          "SectionHeader",
+          3
+        ],
+        [
+          "PageFooter",
+          1
+        ],
+        [
+          "ListGroup",
+          1
+        ]
+      ],
+      "block_metadata": {
+        "llm_request_count": 0,
+        "llm_error_count": 0,
+        "llm_tokens_used": 0,
+        "previous_text": "",
+        "previous_type": "",
+        "previous_order": 0
+      }
+    },
+    {
+      "page_id": 14,
+      "text_extraction_method": "pdftext",
+      "block_counts": [
+        [
+          "Span",
+          290
+        ],
+        [
+          "Line",
+          93
+        ],
+        [
+          "ListItem",
+          23
+        ],
+        [
+          "Reference",
+          23
+        ],
+        [
+          "ListGroup",
+          2
+        ],
+        [
+          "PageFooter",
+          1
+        ]
+      ],
+      "block_metadata": {
+        "llm_request_count": 0,
+        "llm_error_count": 0,
+        "llm_tokens_used": 0,
+        "previous_text": "",
+        "previous_type": "",
+        "previous_order": 0
+      }
+    },
+    {
+      "page_id": 15,
+      "text_extraction_method": "pdftext",
+      "block_counts": [
+        [
+          "Span",
+          281
+        ],
+        [
+          "Line",
+          95
+        ],
+        [
+          "ListItem",
+          23
+        ],
+        [
+          "Reference",
+          23
+        ],
+        [
+          "ListGroup",
+          2
+        ],
+        [
+          "PageFooter",
+          1
+        ]
+      ],
+      "block_metadata": {
+        "llm_request_count": 0,
+        "llm_error_count": 0,
+        "llm_tokens_used": 0,
+        "previous_text": "",
+        "previous_type": "",
+        "previous_order": 0
+      }
+    },
+    {
+      "page_id": 16,
+      "text_extraction_method": "pdftext",
+      "block_counts": [
+        [
+          "Span",
+          290
+        ],
+        [
+          "Line",
+          92
+        ],
+        [
+          "ListItem",
+          22
+        ],
+        [
+          "Reference",
+          22
+        ],
+        [
+          "ListGroup",
+          2
+        ],
+        [
+          "PageFooter",
+          1
+        ]
+      ],
+      "block_metadata": {
+        "llm_request_count": 0,
+        "llm_error_count": 0,
+        "llm_tokens_used": 0,
+        "previous_text": "",
+        "previous_type": "",
+        "previous_order": 0
+      }
+    },
+    {
+      "page_id": 17,
+      "text_extraction_method": "pdftext",
+      "block_counts": [
+        [
+          "Span",
+          537
+        ],
+        [
+          "Line",
+          120
+        ],
+        [
+          "ListItem",
+          15
+        ],
+        [
+          "Reference",
+          12
+        ],
+        [
+          "Text",
+          8
+        ],
+        [
+          "SectionHeader",
+          5
+        ],
+        [
+          "Code",
+          3
+        ],
+        [
+          "ListGroup",
+          3
+        ],
+        [
+          "PageFooter",
+          1
+        ]
+      ],
+      "block_metadata": {
+        "llm_request_count": 0,
+        "llm_error_count": 0,
+        "llm_tokens_used": 0,
+        "previous_text": "",
+        "previous_type": "",
+        "previous_order": 0
+      }
+    },
+    {
+      "page_id": 18,
+      "text_extraction_method": "pdftext",
+      "block_counts": [
+        [
+          "Span",
+          1021
+        ],
+        [
+          "Line",
+          205
+        ],
+        [
+          "Text",
+          4
+        ],
+        [
+          "Code",
+          3
+        ],
+        [
+          "Reference",
+          3
+        ],
+        [
+          "SectionHeader",
+          2
+        ],
+        [
+          "PageFooter",
+          1
+        ]
+      ],
+      "block_metadata": {
+        "llm_request_count": 0,
+        "llm_error_count": 0,
+        "llm_tokens_used": 0,
+        "previous_text": "",
+        "previous_type": "",
+        "previous_order": 0
+      }
+    },
+    {
+      "page_id": 19,
+      "text_extraction_method": "pdftext",
+      "block_counts": [
+        [
+          "Span",
+          806
+        ],
+        [
+          "Line",
+          162
+        ],
+        [
+          "TableCell",
+          123
+        ],
+        [
+          "Reference",
+          4
+        ],
+        [
+          "Caption",
+          3
+        ],
+        [
+          "Table",
+          2
+        ],
+        [
+          "Text",
+          2
+        ],
+        [
+          "TableGroup",
+          2
+        ],
+        [
+          "Figure",
+          1
+        ],
+        [
+          "SectionHeader",
+          1
+        ],
+        [
+          "PageFooter",
+          1
+        ],
+        [
+          "FigureGroup",
+          1
+        ]
+      ],
+      "block_metadata": {
+        "llm_request_count": 0,
+        "llm_error_count": 0,
+        "llm_tokens_used": 0,
+        "previous_text": "",
+        "previous_type": "",
+        "previous_order": 0
+      }
+    }
+  ],
+  "debug_data_path": "debug_data\\2026-arxiv-inference-attacks-graph-generative-diffusion-models"
+}

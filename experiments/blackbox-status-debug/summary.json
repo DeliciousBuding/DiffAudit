@@ -1,0 +1,192 @@
+{
+  "status": "ready",
+  "track": "black-box",
+  "method_count": 4,
+  "methods": {
+    "clid": {
+      "paper": "CLiD_NeurIPS2024",
+      "best_evidence_mode": "artifact-summary",
+      "best_evidence_path": "D:\\Code\\DiffAudit\\Project\\experiments\\clid-artifact-summary\\summary.json",
+      "headline_metrics": {
+        "auc": 0.961286,
+        "asr": 0.8918,
+        "tpr_at_1pct_fpr": 0.4932
+      },
+      "evidence": [
+        {
+          "mode": "artifact-summary",
+          "status": "ready",
+          "summary_path": "D:\\Code\\DiffAudit\\Project\\experiments\\clid-artifact-summary\\summary.json",
+          "headline_metrics": {
+            "auc": 0.961286,
+            "asr": 0.8918,
+            "tpr_at_1pct_fpr": 0.4932
+          }
+        },
+        {
+          "mode": "dry-run-smoke",
+          "status": "ready",
+          "summary_path": "D:\\Code\\DiffAudit\\Project\\experiments\\clid-dry-run-smoke\\summary.json",
+          "headline_metrics": {
+            "auc": null,
+            "asr": null,
+            "tpr_at_1pct_fpr": null
+          }
+        }
+      ]
+    },
+    "dit": {
+      "paper": "Scalable_Diffusion_Transformers_2022",
+      "best_evidence_mode": "sample-smoke",
+      "best_evidence_path": "D:\\Code\\DiffAudit\\Project\\experiments\\dit-sample-step10\\summary.json",
+      "headline_metrics": {
+        "auc": null,
+        "asr": null,
+        "tpr_at_1pct_fpr": null
+      },
+      "evidence": [
+        {
+          "mode": "sample-smoke",
+          "status": "ready",
+          "summary_path": "D:\\Code\\DiffAudit\\Project\\experiments\\dit-sample-smoke\\summary.json",
+          "headline_metrics": {
+            "auc": null,
+            "asr": null,
+            "tpr_at_1pct_fpr": null
+          }
+        },
+        {
+          "mode": "sample-smoke",
+          "status": "ready",
+          "summary_path": "D:\\Code\\DiffAudit\\Project\\experiments\\dit-sample-step10\\summary.json",
+          "headline_metrics": {
+            "auc": null,
+            "asr": null,
+            "tpr_at_1pct_fpr": null
+          }
+        }
+      ]
+    },
+    "recon": {
+      "paper": "BlackBox_Reconstruction_ArXiv2023",
+      "best_evidence_mode": "runtime-mainline",
+      "best_evidence_path": "D:\\Code\\DiffAudit\\Project\\experiments\\recon-runtime-mainline-ddim-public-25-step10\\summary.json",
+      "headline_metrics": {
+        "auc": 0.768,
+        "asr": 0.52,
+        "tpr_at_1pct_fpr": 0.96
+      },
+      "evidence": [
+        {
+          "mode": "artifact-summary",
+          "status": "ready",
+          "summary_path": "D:\\Code\\DiffAudit\\Project\\experiments\\recon-artifact-summary\\summary.json",
+          "headline_metrics": {
+            "auc": 1.0,
+            "asr": null,
+            "tpr_at_1pct_fpr": 1.0
+          }
+        },
+        {
+          "mode": "eval-smoke",
+          "status": "ready",
+          "summary_path": "D:\\Code\\DiffAudit\\Project\\experiments\\recon-eval-smoke\\summary.json",
+          "headline_metrics": {
+            "auc": 1.0,
+            "asr": null,
+            "tpr_at_1pct_fpr": 1.0
+          }
+        },
+        {
+          "mode": "mainline-smoke",
+          "status": "ready",
+          "summary_path": "D:\\Code\\DiffAudit\\Project\\experiments\\recon-mainline-smoke\\summary.json",
+          "headline_metrics": {
+            "auc": 1.0,
+            "asr": 1.0,
+            "tpr_at_1pct_fpr": 1.0
+          }
+        },
+        {
+          "mode": "runtime-mainline",
+          "status": "ready",
+          "summary_path": "D:\\Code\\DiffAudit\\Project\\experiments\\recon-runtime-mainline-ddim-public-10-step10\\summary.json",
+          "headline_metrics": {
+            "auc": 0.82,
+            "asr": 0.55,
+            "tpr_at_1pct_fpr": 1.0
+          }
+        },
+        {
+          "mode": "runtime-mainline",
+          "status": "ready",
+          "summary_path": "D:\\Code\\DiffAudit\\Project\\experiments\\recon-runtime-mainline-ddim-public-25-step10\\summary.json",
+          "headline_metrics": {
+            "auc": 0.768,
+            "asr": 0.52,
+            "tpr_at_1pct_fpr": 0.96
+          }
+        },
+        {
+          "mode": "runtime-mainline",
+          "status": "ready",
+          "summary_path": "D:\\Code\\DiffAudit\\Project\\experiments\\recon-runtime-mainline-ddim-smoke\\summary.json",
+          "headline_metrics": {
+            "auc": 0.0,
+            "asr": 0.5,
+            "tpr_at_1pct_fpr": 0.0
+          }
+        },
+        {
+          "mode": "runtime-mainline",
+          "status": "ready",
+          "summary_path": "D:\\Code\\DiffAudit\\Project\\experiments\\recon-runtime-mainline-kandinsky-public-smoke\\summary.json",
+          "headline_metrics": {
+            "auc": 1.0,
+            "asr": 0.5,
+            "tpr_at_1pct_fpr": 0.0
+          }
+        },
+        {
+          "mode": "upstream-eval-smoke",
+          "status": "ready",
+          "summary_path": "D:\\Code\\DiffAudit\\Project\\experiments\\recon-upstream-eval-smoke\\summary.json",
+          "headline_metrics": {
+            "auc": 1.0,
+            "asr": 1.0,
+            "tpr_at_1pct_fpr": null
+          }
+        }
+      ]
+    },
+    "variation": {
+      "paper": "Towards_Black_Box_Diffusion_2024",
+      "best_evidence_mode": "synthetic-smoke",
+      "best_evidence_path": "D:\\Code\\DiffAudit\\Project\\experiments\\variation-synth-smoke\\summary.json",
+      "headline_metrics": {
+        "auc": 1.0,
+        "asr": 1.0,
+        "tpr_at_1pct_fpr": null
+      },
+      "evidence": [
+        {
+          "mode": "synthetic-smoke",
+          "status": "ready",
+          "summary_path": "D:\\Code\\DiffAudit\\Project\\experiments\\variation-synth-smoke\\summary.json",
+          "headline_metrics": {
+            "auc": 1.0,
+            "asr": 1.0,
+            "tpr_at_1pct_fpr": null
+          }
+        }
+      ]
+    }
+  },
+  "artifact_paths": {
+    "summary": "D:\\Code\\DiffAudit\\Project\\experiments\\blackbox-status-debug\\summary.json"
+  },
+  "notes": [
+    "This report aggregates all black-box experiment summaries found under the experiments root.",
+    "best_evidence_mode is ranked by execution depth, not by metric magnitude."
+  ]
+}

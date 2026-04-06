@@ -5,7 +5,7 @@ SIDE: Surrogate Conditional Data Extraction from Diffusion Models
 ## 文档说明
 
 - GitHub PDF：[2024-arxiv-side-extracting-training-data-unconditional-diffusion-models.pdf](https://github.com/DeliciousBuding/DiffAudit/blob/main/references/materials/gray-box/2024-arxiv-side-extracting-training-data-unconditional-diffusion-models.pdf)
-- 对应展示稿：[SIDE：利用代理条件从扩散模型提取训练数据](../../../gray-box/2024-arxiv-side-extracting-training-data-unconditional-diffusion-models-report.md)
+- 对应展示稿：[论文报告：SIDE: Surrogate Conditional Data Extraction from Diffusion Models](https://www.feishu.cn/docx/UzXzdZMx6oeAx8xfmbrcsW1znjg)
 - 开源实现：暂未找到官方代码
 - 整理说明：本稿基于同目录 born-digital Markdown 精修，保留方法逻辑、关键公式、主实验数字和附录黑盒结论，便于后续继续压缩或写回索引
 
@@ -26,8 +26,6 @@ SIDE: Surrogate Conditional Data Extraction from Diffusion Models
 SIDE 的第一阶段是构造代理条件。攻击者先从目标模型采样合成图像，送入预训练特征提取器，再用 K-means 聚类，并用 cosine similarity 过滤掉 cohesion 过低的簇。剩余簇的中心就是 surrogate condition，它们本质上是模型内部隐式标签的外显化。
 
 第二阶段是利用代理条件执行提取。小模型使用时间相关分类器做 guidance，大模型使用 LoRA 条件化。两条路径的共同目标都是在每个反向步把采样轨迹往目标簇对应的高密度区域拉近，而不是像无条件采样那样在整个数据空间中漫游。
-
-![SIDE 方法直觉图](../../../assets/gray-box/2024-arxiv-side-extracting-training-data-unconditional-diffusion-models-key-figure-1-p2.png)
 
 这张图把论文的核心机制讲得很清楚。普通条件模型虽然有文本或类标签，但语义区域太宽；SIDE 则先识别“高密度记忆簇”，再把簇 ID 当条件，条件更窄，因此更容易逼近重复样本。
 
@@ -50,15 +48,10 @@ $$
 
 用来说明“条件越能隔离某个高密度子分布，记忆越容易被放大”。在此基础上，作者把 class label、caption、random label 和 cluster information 统一到 informative label 框架下，并给出理论结论：若条件模型更好地拟合某个子分布，则它相对该子分布的 memorization divergence 不会高于无条件模型。
 
-最后，论文提出 AMS 和 UMS 来刻画命中率与 unique extraction：
+最后，论文提出 AMS 和 UMS 来刻画命中率与 unique extraction。可以把它们直接理解成两种归一化命中率：
 
-$$
-\mathrm{AMS}(\mathcal{D}_1,\mathcal{D}_2,\alpha,\beta)=
-\frac{\sum_{x_i\in\mathcal{D}_1}\mathcal{F}(x_i,\mathcal{D}_2,\alpha,\beta)}{N_G},
-\qquad
-\mathrm{UMS}(\mathcal{D}_1,\mathcal{D}_2,\alpha,\beta)=
-\frac{\left|\bigcup_{x_i\in\mathcal{D}_1}\phi(x_i,\mathcal{D}_2,\alpha,\beta)\right|}{N_G}.
-$$
+- `AMS(D1, D2, α, β)`：在全部生成样本里，有多少比例能和训练集样本形成满足阈值的匹配。
+- `UMS(D1, D2, α, β)`：在全部生成样本里，最终命中了多少个“不同的”训练样本。
 
 AMS 更像“撞到多少次”，UMS 更像“撞到多少个不同训练样本”。这两个指标比单独报告 `95th percentile SSCD` 更适合解释训练数据提取的真实强度。
 
@@ -74,8 +67,6 @@ AMS 更像“撞到多少次”，UMS 更像“撞到多少个不同训练样本
 | CelebA-HQ-FI | mid-similarity AMS / UMS 从 `1.310% / 0.554%` 提升到 `2.227% / 0.842%` |
 | ImageNet | low-similarity AMS 从 `0.152%` 提升到 `0.443%` |
 | LAION-5B | `95th percentile SSCD` 从 `0.253` 提升到 `0.394` |
-
-![SIDE 抽取样例图](../../../assets/gray-box/2024-arxiv-side-extracting-training-data-unconditional-diffusion-models-key-figure-2-p5.png)
 
 样例图的作用是把 low、mid、high 三档相似度可视化。它不能替代表 1 的定量证据，但能直观看到作者如何把“语义相似”与“更高保真度的近复制”区分开来。
 

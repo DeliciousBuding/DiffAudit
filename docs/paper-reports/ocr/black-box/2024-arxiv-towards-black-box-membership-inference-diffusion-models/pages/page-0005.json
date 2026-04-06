@@ -1,0 +1,2033 @@
+{
+  "prunedResult": {
+    "page_count": 5,
+    "width": 1224,
+    "height": 1584,
+    "model_settings": {
+      "use_doc_preprocessor": true,
+      "use_layout_detection": true,
+      "use_chart_recognition": false,
+      "use_seal_recognition": false,
+      "use_ocr_for_image_block": false,
+      "format_block_content": false,
+      "merge_layout_blocks": true,
+      "markdown_ignore_labels": [
+        "number",
+        "footnote",
+        "header",
+        "header_image",
+        "footer",
+        "footer_image",
+        "aside_text"
+      ],
+      "return_layout_polygon_points": true
+    },
+    "parsing_res_list": [
+      {
+        "block_label": "header",
+        "block_content": "Towards Black-Box Membership Inference Attack for Diffusion Models",
+        "block_bbox": [
+          308,
+          0,
+          918,
+          29
+        ],
+        "block_id": 0,
+        "block_order": null,
+        "group_id": 0,
+        "global_block_id": 69,
+        "global_group_id": 69,
+        "block_polygon_points": [
+          [
+            308.0,
+            0.0
+          ],
+          [
+            918.0,
+            0.0
+          ],
+          [
+            918.0,
+            29.0
+          ],
+          [
+            308.0,
+            29.0
+          ]
+        ]
+      },
+      {
+        "block_label": "figure_title",
+        "block_content": "Table 1: Comparison of different methods on four datasets for the DDIM model. Previous methods require access to the U-Net, whereas our methods do not. We use AUC, ASR, and TP as the metrics, TP refers to the True Positive Rate when the False Positive Rate is 1%.",
+        "block_bbox": [
+          73,
+          37,
+          1151,
+          124
+        ],
+        "block_id": 1,
+        "block_order": null,
+        "group_id": 1,
+        "global_block_id": 70,
+        "global_group_id": 70,
+        "block_polygon_points": [
+          [
+            73.0,
+            37.0
+          ],
+          [
+            1150.5133056640625,
+            44.003334045410156
+          ],
+          [
+            1149.9998779296875,
+            123.0
+          ],
+          [
+            72.486572265625,
+            115.99666595458984
+          ]
+        ]
+      },
+      {
+        "block_label": "table",
+        "block_content": "<table><tr><td colspan=\"2\">Method</td><td colspan=\"3\">CIFAR10</td><td colspan=\"3\">CIFAR100</td><td colspan=\"3\">STL10</td></tr><tr><td>Algorithm</td><td>U-Net</td><td>AUC</td><td>ASR</td><td>TP</td><td>AUC</td><td>ASR</td><td>TP</td><td>AUC</td><td>ASR</td><td>TP</td></tr><tr><td>Loss (Matsumoto et al., 2023)</td><td>☐</td><td>0.88</td><td>0.82</td><td>14.2</td><td>0.92</td><td>0.84</td><td>20.9</td><td>0.89</td><td>0.82</td><td>15.6</td></tr><tr><td>SecMI (Duan et al., 2023)</td><td>☐</td><td>0.95</td><td>0.90</td><td>40.7</td><td>0.96</td><td>0.90</td><td>44.9</td><td>0.94</td><td>0.88</td><td>26.9</td></tr><tr><td>PIA (Kong et al., 2023)</td><td>☐</td><td>0.95</td><td>0.89</td><td>48.7</td><td>0.96</td><td>0.90</td><td>47.0</td><td>0.94</td><td>0.87</td><td>29.8</td></tr><tr><td>PIAN (Kong et al., 2023)</td><td>☐</td><td>0.95</td><td>0.89</td><td>50.4</td><td>0.91</td><td>0.85</td><td>39.2</td><td>0.92</td><td>0.86</td><td>28.5</td></tr><tr><td>REDIFFUSE</td><td>☑</td><td>0.96</td><td>0.91</td><td>40.7</td><td>0.98</td><td>0.93</td><td>48.2</td><td>0.96</td><td>0.90</td><td>31.9</td></tr></table>",
+        "block_bbox": [
+          165,
+          131,
+          1061,
+          392
+        ],
+        "block_id": 2,
+        "block_order": null,
+        "group_id": 2,
+        "global_block_id": 71,
+        "global_group_id": 71,
+        "block_polygon_points": [
+          [
+            165.0,
+            131.0
+          ],
+          [
+            1061.0,
+            131.0
+          ],
+          [
+            1061.0,
+            392.0
+          ],
+          [
+            165.0,
+            392.0
+          ]
+        ]
+      },
+      {
+        "block_label": "vision_footnote",
+        "block_content": "□: Require the access of U-Net. ■: Do not require the access of U-Net.",
+        "block_bbox": [
+          281,
+          399,
+          937,
+          428
+        ],
+        "block_id": 3,
+        "block_order": null,
+        "group_id": 3,
+        "global_block_id": 72,
+        "global_group_id": 72,
+        "block_polygon_points": [
+          [
+            281.0,
+            399.0
+          ],
+          [
+            937.0,
+            399.0
+          ],
+          [
+            937.0,
+            428.0
+          ],
+          [
+            281.0,
+            428.0
+          ]
+        ]
+      },
+      {
+        "block_label": "algorithm",
+        "block_content": "Algorithm 1 MIA through REDIFFUSE\n\nInput: Target image x, diffusion step t, average number n, threshold τ, the variation API of the target model V₀, distance function D.\n\nfor k = 1, ..., n do\n    Use the variation API V₀ to generate the variation image  $ \\hat{x}_k = V_\\theta(x, t) $ according to Definition 4.1.\nend for\n\nAverage the reconstructed images from each iteration  $ \\hat{x} = \\frac{1}{n}(\\hat{x}_1 + \\hat{x}_2 + \\ldots + \\hat{x}_n) $.\n\nreturn \"YES\" if the distance between the two images  $ D(x, \\hat{x}) $ is less than τ, otherwise \"NO\".",
+        "block_bbox": [
+          82,
+          464,
+          594,
+          794
+        ],
+        "block_id": 4,
+        "block_order": 1,
+        "group_id": 4,
+        "global_block_id": 73,
+        "global_group_id": 73,
+        "block_polygon_points": [
+          [
+            82.0,
+            464.0
+          ],
+          [
+            594.0,
+            464.0
+          ],
+          [
+            594.0,
+            794.0
+          ],
+          [
+            82.0,
+            794.0
+          ]
+        ]
+      },
+      {
+        "block_label": "text",
+        "block_content": "dom variable  $ X = (X_1, X_2, \\ldots, X_d) $ with zero expectation and finite cumulant-generating function for each coordinate (Durret, 2010). Suppose the sampling interval k is equal to the variation API diffusion step t. Let  $ \\hat{x} $ be the average of n output images of x using the variation API. Then we have",
+        "block_bbox": [
+          85,
+          856,
+          595,
+          1010
+        ],
+        "block_id": 5,
+        "block_order": 2,
+        "group_id": 5,
+        "global_block_id": 74,
+        "global_group_id": 74,
+        "block_polygon_points": [
+          [
+            85.0,
+            856.0
+          ],
+          [
+            595.0,
+            856.0
+          ],
+          [
+            595.0,
+            1010.0
+          ],
+          [
+            85.0,
+            1010.0
+          ]
+        ]
+      },
+      {
+        "block_label": "display_formula",
+        "block_content": " $$ \\mathbb{P}(\\|\\hat{x}-x\\|\\geq\\beta)\\leq d\\exp\\left(-n\\min_{i}\\Psi_{X_{i}}^{*}\\left(\\frac{\\beta\\sqrt{\\bar{\\alpha}_{t}}}{\\sqrt{d(1-\\bar{\\alpha}_{t})}}\\right)\\right) $$ ",
+        "block_bbox": [
+          86,
+          1035,
+          603,
+          1109
+        ],
+        "block_id": 6,
+        "block_order": 3,
+        "group_id": 6,
+        "global_block_id": 75,
+        "global_group_id": 75,
+        "block_polygon_points": [
+          [
+            86.0,
+            1035.0
+          ],
+          [
+            603.0,
+            1035.0
+          ],
+          [
+            603.0,
+            1109.0
+          ],
+          [
+            86.0,
+            1109.0
+          ]
+        ]
+      },
+      {
+        "block_label": "text",
+        "block_content": "where  $ \\beta > 0 $ and  $ \\Psi_{X_i}^* $ is the Fenchel-Legendre dual of the cumulant-generating function  $ \\Psi_{X_i} $.",
+        "block_bbox": [
+          85,
+          1133,
+          591,
+          1187
+        ],
+        "block_id": 7,
+        "block_order": 4,
+        "group_id": 7,
+        "global_block_id": 76,
+        "global_group_id": 76,
+        "block_polygon_points": [
+          [
+            85.0,
+            1133.0
+          ],
+          [
+            591.0,
+            1133.0
+          ],
+          [
+            591.0,
+            1187.0
+          ],
+          [
+            85.0,
+            1187.0
+          ]
+        ]
+      },
+      {
+        "block_label": "text",
+        "block_content": "The theorem suggests that averaging the random variational data from a training set will result in a lower relative error with high probability when we use a large n. We defer the proof of this theorem to Appendix C.",
+        "block_bbox": [
+          85,
+          1210,
+          592,
+          1315
+        ],
+        "block_id": 8,
+        "block_order": 5,
+        "group_id": 8,
+        "global_block_id": 77,
+        "global_group_id": 77,
+        "block_polygon_points": [
+          [
+            85.0,
+            1210.0
+          ],
+          [
+            592.0,
+            1210.0
+          ],
+          [
+            592.0,
+            1315.0
+          ],
+          [
+            85.0,
+            1315.0
+          ]
+        ]
+      },
+      {
+        "block_label": "paragraph_title",
+        "block_content": "4.3. MIA on Other Diffusion Models",
+        "block_bbox": [
+          85,
+          1333,
+          423,
+          1358
+        ],
+        "block_id": 9,
+        "block_order": 6,
+        "group_id": 9,
+        "global_block_id": 78,
+        "global_group_id": 78,
+        "block_polygon_points": [
+          [
+            85.0,
+            1333.0
+          ],
+          [
+            423.0,
+            1333.0
+          ],
+          [
+            423.0,
+            1358.0
+          ],
+          [
+            85.0,
+            1358.0
+          ]
+        ]
+      },
+      {
+        "block_label": "text",
+        "block_content": "In this section, we discuss how we can generalize our algorithm to other diffusion models. We note that the variation API for stable diffusion is different from DDIM, as it includes the encoder-decoder process. Again we denote  $ \\hat{x} = V_{\\theta}(x, t) $, and the details are as follows:",
+        "block_bbox": [
+          83,
+          1363,
+          593,
+          1468
+        ],
+        "block_id": 10,
+        "block_order": 7,
+        "group_id": 10,
+        "global_block_id": 79,
+        "global_group_id": 79,
+        "block_polygon_points": [
+          [
+            83.0,
+            1363.0
+          ],
+          [
+            593.0,
+            1363.0
+          ],
+          [
+            593.0,
+            1468.0
+          ],
+          [
+            83.0,
+            1468.0
+          ]
+        ]
+      },
+      {
+        "block_label": "text",
+        "block_content": "",
+        "block_bbox": [
+          620,
+          466,
+          1012,
+          496
+        ],
+        "block_id": 11,
+        "block_order": 8,
+        "group_id": 10,
+        "global_block_id": 80,
+        "global_group_id": 80,
+        "block_polygon_points": [
+          [
+            620.0,
+            466.0
+          ],
+          [
+            1012.0,
+            466.0
+          ],
+          [
+            1012.0,
+            496.0
+          ],
+          [
+            620.0,
+            496.0
+          ]
+        ]
+      },
+      {
+        "block_label": "display_formula",
+        "block_content": " $$ z=\\mathrm{E n c o d e r}(x),\\quad z_{t}=\\sqrt{\\bar{\\alpha}_{t}}z+\\sqrt{1-\\bar{\\alpha}_{t}}\\epsilon, $$ ",
+        "block_bbox": [
+          678,
+          511,
+          1083,
+          541
+        ],
+        "block_id": 12,
+        "block_order": 9,
+        "group_id": 12,
+        "global_block_id": 81,
+        "global_group_id": 81,
+        "block_polygon_points": [
+          [
+            678.0,
+            511.0
+          ],
+          [
+            1083.0,
+            511.0
+          ],
+          [
+            1083.0,
+            541.0
+          ],
+          [
+            678.0,
+            541.0
+          ]
+        ]
+      },
+      {
+        "block_label": "display_formula",
+        "block_content": " $$ \\hat{z}=\\Phi_{\\theta}(z_{t},0),\\quad\\hat{x}=\\mathrm{D e c o d e r}(\\hat{z}). $$ ",
+        "block_bbox": [
+          678,
+          544,
+          997,
+          575
+        ],
+        "block_id": 13,
+        "block_order": 10,
+        "group_id": 13,
+        "global_block_id": 82,
+        "global_group_id": 82,
+        "block_polygon_points": [
+          [
+            678.0,
+            544.0
+          ],
+          [
+            997.0,
+            544.0
+          ],
+          [
+            997.0,
+            575.0
+          ],
+          [
+            678.0,
+            575.0
+          ]
+        ]
+      },
+      {
+        "block_label": "text",
+        "block_content": "This definition aligns with the image generation process of the stable diffusion model.",
+        "block_bbox": [
+          619,
+          590,
+          1142,
+          646
+        ],
+        "block_id": 14,
+        "block_order": 11,
+        "group_id": 14,
+        "global_block_id": 83,
+        "global_group_id": 83,
+        "block_polygon_points": [
+          [
+            619.017578125,
+            588.8803100585938
+          ],
+          [
+            1141.31103515625,
+            597.0048217773438
+          ],
+          [
+            1140.4766845703125,
+            650.6384887695312
+          ],
+          [
+            618.1832275390625,
+            642.5139770507812
+          ]
+        ]
+      },
+      {
+        "block_label": "text",
+        "block_content": "For the Diffusion Transformer, we define the variation API as  $ V_{\\tilde{\\theta}}(x,t) $, where  $ \\tilde{\\theta} $ corresponds to the Vision Transformer architecture instead of the U-net. We repeatedly call the variation API and calculate the difference between the original image and the reconstructed image, as done in DDIM.",
+        "block_bbox": [
+          620,
+          659,
+          1142,
+          790
+        ],
+        "block_id": 15,
+        "block_order": 12,
+        "group_id": 15,
+        "global_block_id": 84,
+        "global_group_id": 84,
+        "block_polygon_points": [
+          [
+            620.0,
+            659.0
+          ],
+          [
+            1142.0,
+            659.0
+          ],
+          [
+            1142.0,
+            790.0
+          ],
+          [
+            620.0,
+            790.0
+          ]
+        ]
+      },
+      {
+        "block_label": "paragraph_title",
+        "block_content": "5. Experiments",
+        "block_bbox": [
+          622,
+          813,
+          798,
+          842
+        ],
+        "block_id": 16,
+        "block_order": 13,
+        "group_id": 16,
+        "global_block_id": 85,
+        "global_group_id": 85,
+        "block_polygon_points": [
+          [
+            622.0,
+            813.0
+          ],
+          [
+            798.0,
+            813.0
+          ],
+          [
+            798.0,
+            842.0
+          ],
+          [
+            622.0,
+            842.0
+          ]
+        ]
+      },
+      {
+        "block_label": "text",
+        "block_content": "In this section, we evaluate the performance of our methods across various datasets and settings. We follow the same experiment setup in previous papers (Duan et al., 2023; Kong et al., 2023). The detailed experimental settings, including datasets, models, and hyper-parameter settings can be found in Appendix A $ ^{1} $.",
+        "block_bbox": [
+          619,
+          849,
+          1141,
+          1008
+        ],
+        "block_id": 17,
+        "block_order": 14,
+        "group_id": 17,
+        "global_block_id": 86,
+        "global_group_id": 86,
+        "block_polygon_points": [
+          [
+            619.0,
+            849.0
+          ],
+          [
+            1141.0,
+            849.0
+          ],
+          [
+            1141.0,
+            1008.0
+          ],
+          [
+            619.0,
+            1008.0
+          ]
+        ]
+      },
+      {
+        "block_label": "paragraph_title",
+        "block_content": "5.1. Evaluation Metrics",
+        "block_bbox": [
+          622,
+          1026,
+          844,
+          1051
+        ],
+        "block_id": 18,
+        "block_order": 15,
+        "group_id": 18,
+        "global_block_id": 87,
+        "global_group_id": 87,
+        "block_polygon_points": [
+          [
+            622.0,
+            1026.0
+          ],
+          [
+            844.0,
+            1026.0
+          ],
+          [
+            844.0,
+            1051.0
+          ],
+          [
+            622.0,
+            1051.0
+          ]
+        ]
+      },
+      {
+        "block_label": "text",
+        "block_content": "We follow the metrics used in previous papers (Duan et al., 2023; Kong et al., 2023), including Area Under Receiver Operating Characteristic (AUC), Attack Success Rate (ASR), the True Positive Rate (TP) when the False Positive Rate is 1%. We also plot the ROC curves.",
+        "block_bbox": [
+          617,
+          1055,
+          1138,
+          1184
+        ],
+        "block_id": 19,
+        "block_order": 16,
+        "group_id": 19,
+        "global_block_id": 88,
+        "global_group_id": 88,
+        "block_polygon_points": [
+          [
+            617.0,
+            1055.0
+          ],
+          [
+            1138.0,
+            1055.0
+          ],
+          [
+            1138.0,
+            1184.0
+          ],
+          [
+            617.0,
+            1184.0
+          ]
+        ]
+      },
+      {
+        "block_label": "paragraph_title",
+        "block_content": "5.2. MIA with DDIM Models",
+        "block_bbox": [
+          620,
+          1203,
+          892,
+          1228
+        ],
+        "block_id": 20,
+        "block_order": 17,
+        "group_id": 20,
+        "global_block_id": 89,
+        "global_group_id": 89,
+        "block_polygon_points": [
+          [
+            620.0,
+            1203.0
+          ],
+          [
+            892.0,
+            1203.0
+          ],
+          [
+            892.0,
+            1228.0
+          ],
+          [
+            620.0,
+            1228.0
+          ]
+        ]
+      },
+      {
+        "block_label": "text",
+        "block_content": "We follow the experimental setup of (Duan et al., 2023; Kong et al., 2023). We train a DDIM model on the CIFAR-10/100 (Krizhevsky et al., 2009) and STL10-Unlabeled datasets (Coates et al., 2011), using the image generation step T = 1000 and sampling interval k = 100. For all the datasets, we randomly select 50% of the training samples to train the model and denote them as members. The remain-",
+        "block_bbox": [
+          617,
+          1234,
+          1133,
+          1419
+        ],
+        "block_id": 21,
+        "block_order": 18,
+        "group_id": 21,
+        "global_block_id": 90,
+        "global_group_id": 90,
+        "block_polygon_points": [
+          [
+            617.0,
+            1234.0
+          ],
+          [
+            1133.0,
+            1234.0
+          ],
+          [
+            1133.0,
+            1419.0
+          ],
+          [
+            617.0,
+            1419.0
+          ]
+        ]
+      },
+      {
+        "block_label": "footnote",
+        "block_content": "Code is available at https://github.com/lijingwei0502/diffusion_mia.",
+        "block_bbox": [
+          616,
+          1422,
+          1130,
+          1474
+        ],
+        "block_id": 22,
+        "block_order": null,
+        "group_id": 22,
+        "global_block_id": 91,
+        "global_group_id": 91,
+        "block_polygon_points": [
+          [
+            616.0,
+            1422.0
+          ],
+          [
+            1130.0,
+            1422.0
+          ],
+          [
+            1130.0,
+            1474.0
+          ],
+          [
+            616.0,
+            1474.0
+          ]
+        ]
+      },
+      {
+        "block_label": "number",
+        "block_content": "5",
+        "block_bbox": [
+          594,
+          1496,
+          611,
+          1518
+        ],
+        "block_id": 23,
+        "block_order": null,
+        "group_id": 23,
+        "global_block_id": 92,
+        "global_group_id": 92,
+        "block_polygon_points": [
+          [
+            594.0,
+            1496.0
+          ],
+          [
+            610.0,
+            1496.0
+          ],
+          [
+            610.0,
+            1517.0
+          ],
+          [
+            594.0,
+            1517.0
+          ]
+        ]
+      }
+    ],
+    "doc_preprocessor_res": {
+      "model_settings": {
+        "use_doc_orientation_classify": true,
+        "use_doc_unwarping": true
+      },
+      "angle": 0
+    },
+    "layout_det_res": {
+      "boxes": [
+        {
+          "cls_id": 12,
+          "label": "header",
+          "score": 0.8146452903747559,
+          "coordinate": [
+            308,
+            0,
+            918,
+            29
+          ],
+          "order": null,
+          "polygon_points": [
+            [
+              308.0,
+              0.0
+            ],
+            [
+              918.0,
+              0.0
+            ],
+            [
+              918.0,
+              29.0
+            ],
+            [
+              308.0,
+              29.0
+            ]
+          ]
+        },
+        {
+          "cls_id": 7,
+          "label": "figure_title",
+          "score": 0.8935596942901611,
+          "coordinate": [
+            73,
+            37,
+            1151,
+            124
+          ],
+          "order": null,
+          "polygon_points": [
+            [
+              73.0,
+              37.0
+            ],
+            [
+              1150.5133056640625,
+              44.003334045410156
+            ],
+            [
+              1149.9998779296875,
+              123.0
+            ],
+            [
+              72.486572265625,
+              115.99666595458984
+            ]
+          ]
+        },
+        {
+          "cls_id": 21,
+          "label": "table",
+          "score": 0.9614474773406982,
+          "coordinate": [
+            165,
+            131,
+            1061,
+            392
+          ],
+          "order": null,
+          "polygon_points": [
+            [
+              165.0,
+              131.0
+            ],
+            [
+              1061.0,
+              131.0
+            ],
+            [
+              1061.0,
+              392.0
+            ],
+            [
+              165.0,
+              392.0
+            ]
+          ]
+        },
+        {
+          "cls_id": 24,
+          "label": "vision_footnote",
+          "score": 0.6613897085189819,
+          "coordinate": [
+            281,
+            399,
+            937,
+            428
+          ],
+          "order": null,
+          "polygon_points": [
+            [
+              281.0,
+              399.0
+            ],
+            [
+              937.0,
+              399.0
+            ],
+            [
+              937.0,
+              428.0
+            ],
+            [
+              281.0,
+              428.0
+            ]
+          ]
+        },
+        {
+          "cls_id": 1,
+          "label": "algorithm",
+          "score": 0.8929531574249268,
+          "coordinate": [
+            82,
+            464,
+            594,
+            794
+          ],
+          "order": 1,
+          "polygon_points": [
+            [
+              82.0,
+              464.0
+            ],
+            [
+              594.0,
+              464.0
+            ],
+            [
+              594.0,
+              794.0
+            ],
+            [
+              82.0,
+              794.0
+            ]
+          ]
+        },
+        {
+          "cls_id": 15,
+          "label": "inline_formula",
+          "score": 0.6211885809898376,
+          "coordinate": [
+            561,
+            527,
+            588,
+            552
+          ],
+          "order": 2,
+          "polygon_points": [
+            [
+              561,
+              527
+            ],
+            [
+              561,
+              551
+            ],
+            [
+              587,
+              551
+            ],
+            [
+              587,
+              527
+            ]
+          ]
+        },
+        {
+          "cls_id": 15,
+          "label": "inline_formula",
+          "score": 0.35566550493240356,
+          "coordinate": [
+            258,
+            553,
+            280,
+            576
+          ],
+          "order": 3,
+          "polygon_points": [
+            [
+              258.0,
+              553.0
+            ],
+            [
+              279.0,
+              553.0
+            ],
+            [
+              279.0,
+              575.0
+            ],
+            [
+              258.0,
+              575.0
+            ]
+          ]
+        },
+        {
+          "cls_id": 15,
+          "label": "inline_formula",
+          "score": 0.40412062406539917,
+          "coordinate": [
+            138,
+            579,
+            251,
+            603
+          ],
+          "order": 4,
+          "polygon_points": [
+            [
+              138.0,
+              579.0
+            ],
+            [
+              250.0,
+              579.0
+            ],
+            [
+              250.0,
+              602.0
+            ],
+            [
+              138.0,
+              602.0
+            ]
+          ]
+        },
+        {
+          "cls_id": 15,
+          "label": "inline_formula",
+          "score": 0.424934059381485,
+          "coordinate": [
+            318,
+            606,
+            344,
+            631
+          ],
+          "order": 5,
+          "polygon_points": [
+            [
+              318.0,
+              606.0
+            ],
+            [
+              343.0,
+              606.0
+            ],
+            [
+              343.0,
+              630.0
+            ],
+            [
+              318.0,
+              630.0
+            ]
+          ]
+        },
+        {
+          "cls_id": 15,
+          "label": "inline_formula",
+          "score": 0.6569220423698425,
+          "coordinate": [
+            162,
+            631,
+            282,
+            657
+          ],
+          "order": 6,
+          "polygon_points": [
+            [
+              162.0,
+              631.0
+            ],
+            [
+              282.0,
+              631.0
+            ],
+            [
+              282.0,
+              657.0
+            ],
+            [
+              162.0,
+              657.0
+            ]
+          ]
+        },
+        {
+          "cls_id": 15,
+          "label": "inline_formula",
+          "score": 0.7743547558784485,
+          "coordinate": [
+            107,
+            708,
+            351,
+            738
+          ],
+          "order": 7,
+          "polygon_points": [
+            [
+              107.0,
+              708.0
+            ],
+            [
+              351.0,
+              708.0
+            ],
+            [
+              351.0,
+              738.0
+            ],
+            [
+              107.0,
+              738.0
+            ]
+          ]
+        },
+        {
+          "cls_id": 15,
+          "label": "inline_formula",
+          "score": 0.35219883918762207,
+          "coordinate": [
+            175,
+            738,
+            240,
+            760
+          ],
+          "order": 8,
+          "polygon_points": [
+            [
+              175.0,
+              738.0
+            ],
+            [
+              239.0,
+              738.0
+            ],
+            [
+              239.0,
+              759.0
+            ],
+            [
+              175.0,
+              759.0
+            ]
+          ]
+        },
+        {
+          "cls_id": 15,
+          "label": "inline_formula",
+          "score": 0.6085920929908752,
+          "coordinate": [
+            110,
+            762,
+            180,
+            790
+          ],
+          "order": 9,
+          "polygon_points": [
+            [
+              110.0,
+              762.0
+            ],
+            [
+              180.0,
+              762.0
+            ],
+            [
+              180.0,
+              790.0
+            ],
+            [
+              110.0,
+              790.0
+            ]
+          ]
+        },
+        {
+          "cls_id": 22,
+          "label": "text",
+          "score": 0.9330991506576538,
+          "coordinate": [
+            85,
+            856,
+            595,
+            1010
+          ],
+          "order": 10,
+          "polygon_points": [
+            [
+              85.0,
+              856.0
+            ],
+            [
+              595.0,
+              856.0
+            ],
+            [
+              595.0,
+              1010.0
+            ],
+            [
+              85.0,
+              1010.0
+            ]
+          ]
+        },
+        {
+          "cls_id": 15,
+          "label": "inline_formula",
+          "score": 0.8225035071372986,
+          "coordinate": [
+            206,
+            858,
+            406,
+            883
+          ],
+          "order": 11,
+          "polygon_points": [
+            [
+              206,
+              858
+            ],
+            [
+              206,
+              882
+            ],
+            [
+              405,
+              882
+            ],
+            [
+              405,
+              858
+            ]
+          ]
+        },
+        {
+          "cls_id": 5,
+          "label": "display_formula",
+          "score": 0.881729245185852,
+          "coordinate": [
+            86,
+            1035,
+            603,
+            1109
+          ],
+          "order": 12,
+          "polygon_points": [
+            [
+              86.0,
+              1035.0
+            ],
+            [
+              603.0,
+              1035.0
+            ],
+            [
+              603.0,
+              1109.0
+            ],
+            [
+              86.0,
+              1109.0
+            ]
+          ]
+        },
+        {
+          "cls_id": 22,
+          "label": "text",
+          "score": 0.8691755533218384,
+          "coordinate": [
+            85,
+            1133,
+            591,
+            1187
+          ],
+          "order": 13,
+          "polygon_points": [
+            [
+              85.0,
+              1133.0
+            ],
+            [
+              591.0,
+              1133.0
+            ],
+            [
+              591.0,
+              1187.0
+            ],
+            [
+              85.0,
+              1187.0
+            ]
+          ]
+        },
+        {
+          "cls_id": 15,
+          "label": "inline_formula",
+          "score": 0.6539182066917419,
+          "coordinate": [
+            148,
+            1134,
+            203,
+            1157
+          ],
+          "order": 14,
+          "polygon_points": [
+            [
+              148,
+              1134
+            ],
+            [
+              148,
+              1156
+            ],
+            [
+              202,
+              1156
+            ],
+            [
+              202,
+              1134
+            ]
+          ]
+        },
+        {
+          "cls_id": 15,
+          "label": "inline_formula",
+          "score": 0.6528709530830383,
+          "coordinate": [
+            243,
+            1136,
+            279,
+            1162
+          ],
+          "order": 15,
+          "polygon_points": [
+            [
+              243.0,
+              1136.0
+            ],
+            [
+              278.0,
+              1136.0
+            ],
+            [
+              278.0,
+              1161.0
+            ],
+            [
+              243.0,
+              1161.0
+            ]
+          ]
+        },
+        {
+          "cls_id": 15,
+          "label": "inline_formula",
+          "score": 0.364117830991745,
+          "coordinate": [
+            353,
+            1163,
+            387,
+            1187
+          ],
+          "order": 16,
+          "polygon_points": [
+            [
+              353.0,
+              1163.0
+            ],
+            [
+              386.0,
+              1163.0
+            ],
+            [
+              386.0,
+              1186.0
+            ],
+            [
+              353.0,
+              1186.0
+            ]
+          ]
+        },
+        {
+          "cls_id": 22,
+          "label": "text",
+          "score": 0.9198158979415894,
+          "coordinate": [
+            85,
+            1210,
+            592,
+            1315
+          ],
+          "order": 17,
+          "polygon_points": [
+            [
+              85.0,
+              1210.0
+            ],
+            [
+              592.0,
+              1210.0
+            ],
+            [
+              592.0,
+              1315.0
+            ],
+            [
+              85.0,
+              1315.0
+            ]
+          ]
+        },
+        {
+          "cls_id": 17,
+          "label": "paragraph_title",
+          "score": 0.8310909271240234,
+          "coordinate": [
+            85,
+            1333,
+            423,
+            1358
+          ],
+          "order": 18,
+          "polygon_points": [
+            [
+              85.0,
+              1333.0
+            ],
+            [
+              423.0,
+              1333.0
+            ],
+            [
+              423.0,
+              1358.0
+            ],
+            [
+              85.0,
+              1358.0
+            ]
+          ]
+        },
+        {
+          "cls_id": 22,
+          "label": "text",
+          "score": 0.936381995677948,
+          "coordinate": [
+            83,
+            1363,
+            593,
+            1468
+          ],
+          "order": 19,
+          "polygon_points": [
+            [
+              83.0,
+              1363.0
+            ],
+            [
+              593.0,
+              1363.0
+            ],
+            [
+              593.0,
+              1468.0
+            ],
+            [
+              83.0,
+              1468.0
+            ]
+          ]
+        },
+        {
+          "cls_id": 22,
+          "label": "text",
+          "score": 0.7980030179023743,
+          "coordinate": [
+            620,
+            466,
+            1012,
+            496
+          ],
+          "order": 20,
+          "polygon_points": [
+            [
+              620.0,
+              466.0
+            ],
+            [
+              1012.0,
+              466.0
+            ],
+            [
+              1012.0,
+              496.0
+            ],
+            [
+              620.0,
+              496.0
+            ]
+          ]
+        },
+        {
+          "cls_id": 15,
+          "label": "inline_formula",
+          "score": 0.6162571310997009,
+          "coordinate": [
+            623,
+            466,
+            737,
+            492
+          ],
+          "order": 21,
+          "polygon_points": [
+            [
+              623,
+              466
+            ],
+            [
+              623,
+              491
+            ],
+            [
+              736,
+              491
+            ],
+            [
+              736,
+              466
+            ]
+          ]
+        },
+        {
+          "cls_id": 5,
+          "label": "display_formula",
+          "score": 0.44344213604927063,
+          "coordinate": [
+            678,
+            511,
+            1083,
+            541
+          ],
+          "order": 22,
+          "polygon_points": [
+            [
+              678.0,
+              511.0
+            ],
+            [
+              1083.0,
+              511.0
+            ],
+            [
+              1083.0,
+              541.0
+            ],
+            [
+              678.0,
+              541.0
+            ]
+          ]
+        },
+        {
+          "cls_id": 5,
+          "label": "display_formula",
+          "score": 0.447353720664978,
+          "coordinate": [
+            678,
+            544,
+            997,
+            575
+          ],
+          "order": 23,
+          "polygon_points": [
+            [
+              678.0,
+              544.0
+            ],
+            [
+              997.0,
+              544.0
+            ],
+            [
+              997.0,
+              575.0
+            ],
+            [
+              678.0,
+              575.0
+            ]
+          ]
+        },
+        {
+          "cls_id": 22,
+          "label": "text",
+          "score": 0.8908737301826477,
+          "coordinate": [
+            619,
+            590,
+            1142,
+            646
+          ],
+          "order": 24,
+          "polygon_points": [
+            [
+              619.017578125,
+              588.8803100585938
+            ],
+            [
+              1141.31103515625,
+              597.0048217773438
+            ],
+            [
+              1140.4766845703125,
+              650.6384887695312
+            ],
+            [
+              618.1832275390625,
+              642.5139770507812
+            ]
+          ]
+        },
+        {
+          "cls_id": 22,
+          "label": "text",
+          "score": 0.9371885657310486,
+          "coordinate": [
+            620,
+            659,
+            1142,
+            790
+          ],
+          "order": 25,
+          "polygon_points": [
+            [
+              620.0,
+              659.0
+            ],
+            [
+              1142.0,
+              659.0
+            ],
+            [
+              1142.0,
+              790.0
+            ],
+            [
+              620.0,
+              790.0
+            ]
+          ]
+        },
+        {
+          "cls_id": 15,
+          "label": "inline_formula",
+          "score": 0.6616035103797913,
+          "coordinate": [
+            649,
+            682,
+            717,
+            709
+          ],
+          "order": 26,
+          "polygon_points": [
+            [
+              649,
+              682
+            ],
+            [
+              649,
+              708
+            ],
+            [
+              679,
+              708
+            ],
+            [
+              679,
+              703
+            ],
+            [
+              680,
+              702
+            ],
+            [
+              692,
+              702
+            ],
+            [
+              693,
+              703
+            ],
+            [
+              693,
+              708
+            ],
+            [
+              716,
+              708
+            ],
+            [
+              716,
+              682
+            ]
+          ]
+        },
+        {
+          "cls_id": 15,
+          "label": "inline_formula",
+          "score": 0.3019152879714966,
+          "coordinate": [
+            783,
+            683,
+            803,
+            706
+          ],
+          "order": 27,
+          "polygon_points": [
+            [
+              783.0,
+              683.0
+            ],
+            [
+              802.0,
+              683.0
+            ],
+            [
+              802.0,
+              705.0
+            ],
+            [
+              783.0,
+              705.0
+            ]
+          ]
+        },
+        {
+          "cls_id": 17,
+          "label": "paragraph_title",
+          "score": 0.8284893035888672,
+          "coordinate": [
+            622,
+            813,
+            798,
+            842
+          ],
+          "order": 28,
+          "polygon_points": [
+            [
+              622.0,
+              813.0
+            ],
+            [
+              798.0,
+              813.0
+            ],
+            [
+              798.0,
+              842.0
+            ],
+            [
+              622.0,
+              842.0
+            ]
+          ]
+        },
+        {
+          "cls_id": 22,
+          "label": "text",
+          "score": 0.9444893598556519,
+          "coordinate": [
+            619,
+            849,
+            1141,
+            1008
+          ],
+          "order": 29,
+          "polygon_points": [
+            [
+              619.0,
+              849.0
+            ],
+            [
+              1141.0,
+              849.0
+            ],
+            [
+              1141.0,
+              1008.0
+            ],
+            [
+              619.0,
+              1008.0
+            ]
+          ]
+        },
+        {
+          "cls_id": 17,
+          "label": "paragraph_title",
+          "score": 0.8031168580055237,
+          "coordinate": [
+            622,
+            1026,
+            844,
+            1051
+          ],
+          "order": 30,
+          "polygon_points": [
+            [
+              622.0,
+              1026.0
+            ],
+            [
+              844.0,
+              1026.0
+            ],
+            [
+              844.0,
+              1051.0
+            ],
+            [
+              622.0,
+              1051.0
+            ]
+          ]
+        },
+        {
+          "cls_id": 22,
+          "label": "text",
+          "score": 0.9269019365310669,
+          "coordinate": [
+            617,
+            1055,
+            1138,
+            1184
+          ],
+          "order": 31,
+          "polygon_points": [
+            [
+              617.0,
+              1055.0
+            ],
+            [
+              1138.0,
+              1055.0
+            ],
+            [
+              1138.0,
+              1184.0
+            ],
+            [
+              617.0,
+              1184.0
+            ]
+          ]
+        },
+        {
+          "cls_id": 17,
+          "label": "paragraph_title",
+          "score": 0.8203127384185791,
+          "coordinate": [
+            620,
+            1203,
+            892,
+            1228
+          ],
+          "order": 32,
+          "polygon_points": [
+            [
+              620.0,
+              1203.0
+            ],
+            [
+              892.0,
+              1203.0
+            ],
+            [
+              892.0,
+              1228.0
+            ],
+            [
+              620.0,
+              1228.0
+            ]
+          ]
+        },
+        {
+          "cls_id": 22,
+          "label": "text",
+          "score": 0.94386887550354,
+          "coordinate": [
+            617,
+            1234,
+            1133,
+            1419
+          ],
+          "order": 33,
+          "polygon_points": [
+            [
+              617.0,
+              1234.0
+            ],
+            [
+              1133.0,
+              1234.0
+            ],
+            [
+              1133.0,
+              1419.0
+            ],
+            [
+              617.0,
+              1419.0
+            ]
+          ]
+        },
+        {
+          "cls_id": 10,
+          "label": "footnote",
+          "score": 0.9358791708946228,
+          "coordinate": [
+            616,
+            1422,
+            1130,
+            1474
+          ],
+          "order": null,
+          "polygon_points": [
+            [
+              616.0,
+              1422.0
+            ],
+            [
+              1130.0,
+              1422.0
+            ],
+            [
+              1130.0,
+              1474.0
+            ],
+            [
+              616.0,
+              1474.0
+            ]
+          ]
+        },
+        {
+          "cls_id": 16,
+          "label": "number",
+          "score": 0.695498526096344,
+          "coordinate": [
+            594,
+            1496,
+            611,
+            1518
+          ],
+          "order": 34,
+          "polygon_points": [
+            [
+              594.0,
+              1496.0
+            ],
+            [
+              610.0,
+              1496.0
+            ],
+            [
+              610.0,
+              1517.0
+            ],
+            [
+              594.0,
+              1517.0
+            ]
+          ]
+        }
+      ]
+    }
+  },
+  "markdown": {
+    "text": "<div style=\"text-align: center;\">Table 1: Comparison of different methods on four datasets for the DDIM model. Previous methods require access to the U-Net, whereas our methods do not. We use AUC, ASR, and TP as the metrics, TP refers to the True Positive Rate when the False Positive Rate is 1%.</div>\n\n\n\n<table border=1 style='margin: auto; word-wrap: break-word;'><tr><td colspan=\"2\">Method</td><td colspan=\"3\">CIFAR10</td><td colspan=\"3\">CIFAR100</td><td colspan=\"3\">STL10</td></tr><tr><td style='text-align: center; word-wrap: break-word;'>Algorithm</td><td style='text-align: center; word-wrap: break-word;'>U-Net</td><td style='text-align: center; word-wrap: break-word;'>AUC</td><td style='text-align: center; word-wrap: break-word;'>ASR</td><td style='text-align: center; word-wrap: break-word;'>TP</td><td style='text-align: center; word-wrap: break-word;'>AUC</td><td style='text-align: center; word-wrap: break-word;'>ASR</td><td style='text-align: center; word-wrap: break-word;'>TP</td><td style='text-align: center; word-wrap: break-word;'>AUC</td><td style='text-align: center; word-wrap: break-word;'>ASR</td><td style='text-align: center; word-wrap: break-word;'>TP</td></tr><tr><td style='text-align: center; word-wrap: break-word;'>Loss (Matsumoto et al., 2023)</td><td style='text-align: center; word-wrap: break-word;'>☐</td><td style='text-align: center; word-wrap: break-word;'>0.88</td><td style='text-align: center; word-wrap: break-word;'>0.82</td><td style='text-align: center; word-wrap: break-word;'>14.2</td><td style='text-align: center; word-wrap: break-word;'>0.92</td><td style='text-align: center; word-wrap: break-word;'>0.84</td><td style='text-align: center; word-wrap: break-word;'>20.9</td><td style='text-align: center; word-wrap: break-word;'>0.89</td><td style='text-align: center; word-wrap: break-word;'>0.82</td><td style='text-align: center; word-wrap: break-word;'>15.6</td></tr><tr><td style='text-align: center; word-wrap: break-word;'>SecMI (Duan et al., 2023)</td><td style='text-align: center; word-wrap: break-word;'>☐</td><td style='text-align: center; word-wrap: break-word;'>0.95</td><td style='text-align: center; word-wrap: break-word;'>0.90</td><td style='text-align: center; word-wrap: break-word;'>40.7</td><td style='text-align: center; word-wrap: break-word;'>0.96</td><td style='text-align: center; word-wrap: break-word;'>0.90</td><td style='text-align: center; word-wrap: break-word;'>44.9</td><td style='text-align: center; word-wrap: break-word;'>0.94</td><td style='text-align: center; word-wrap: break-word;'>0.88</td><td style='text-align: center; word-wrap: break-word;'>26.9</td></tr><tr><td style='text-align: center; word-wrap: break-word;'>PIA (Kong et al., 2023)</td><td style='text-align: center; word-wrap: break-word;'>☐</td><td style='text-align: center; word-wrap: break-word;'>0.95</td><td style='text-align: center; word-wrap: break-word;'>0.89</td><td style='text-align: center; word-wrap: break-word;'>48.7</td><td style='text-align: center; word-wrap: break-word;'>0.96</td><td style='text-align: center; word-wrap: break-word;'>0.90</td><td style='text-align: center; word-wrap: break-word;'>47.0</td><td style='text-align: center; word-wrap: break-word;'>0.94</td><td style='text-align: center; word-wrap: break-word;'>0.87</td><td style='text-align: center; word-wrap: break-word;'>29.8</td></tr><tr><td style='text-align: center; word-wrap: break-word;'>PIAN (Kong et al., 2023)</td><td style='text-align: center; word-wrap: break-word;'>☐</td><td style='text-align: center; word-wrap: break-word;'>0.95</td><td style='text-align: center; word-wrap: break-word;'>0.89</td><td style='text-align: center; word-wrap: break-word;'>50.4</td><td style='text-align: center; word-wrap: break-word;'>0.91</td><td style='text-align: center; word-wrap: break-word;'>0.85</td><td style='text-align: center; word-wrap: break-word;'>39.2</td><td style='text-align: center; word-wrap: break-word;'>0.92</td><td style='text-align: center; word-wrap: break-word;'>0.86</td><td style='text-align: center; word-wrap: break-word;'>28.5</td></tr><tr><td style='text-align: center; word-wrap: break-word;'>REDIFFUSE</td><td style='text-align: center; word-wrap: break-word;'>☑</td><td style='text-align: center; word-wrap: break-word;'>0.96</td><td style='text-align: center; word-wrap: break-word;'>0.91</td><td style='text-align: center; word-wrap: break-word;'>40.7</td><td style='text-align: center; word-wrap: break-word;'>0.98</td><td style='text-align: center; word-wrap: break-word;'>0.93</td><td style='text-align: center; word-wrap: break-word;'>48.2</td><td style='text-align: center; word-wrap: break-word;'>0.96</td><td style='text-align: center; word-wrap: break-word;'>0.90</td><td style='text-align: center; word-wrap: break-word;'>31.9</td></tr></table>\n\n□: Require the access of U-Net. ■: Do not require the access of U-Net.\n\nAlgorithm 1 MIA through REDIFFUSE\n\nInput: Target image x, diffusion step t, average number n, threshold τ, the variation API of the target model V₀, distance function D.\n\nfor k = 1, ..., n do\n    Use the variation API V₀ to generate the variation image  $ \\hat{x}_k = V_\\theta(x, t) $ according to Definition 4.1.\nend for\n\nAverage the reconstructed images from each iteration  $ \\hat{x} = \\frac{1}{n}(\\hat{x}_1 + \\hat{x}_2 + \\ldots + \\hat{x}_n) $.\n\nreturn \"YES\" if the distance between the two images  $ D(x, \\hat{x}) $ is less than τ, otherwise \"NO\".\n\ndom variable  $ X = (X_1, X_2, \\ldots, X_d) $ with zero expectation and finite cumulant-generating function for each coordinate (Durret, 2010). Suppose the sampling interval k is equal to the variation API diffusion step t. Let  $ \\hat{x} $ be the average of n output images of x using the variation API. Then we have\n\n $$ \\mathbb{P}(\\|\\hat{x}-x\\|\\geq\\beta)\\leq d\\exp\\left(-n\\min_{i}\\Psi_{X_{i}}^{*}\\left(\\frac{\\beta\\sqrt{\\bar{\\alpha}_{t}}}{\\sqrt{d(1-\\bar{\\alpha}_{t})}}\\right)\\right) $$ \n\nwhere  $ \\beta > 0 $ and  $ \\Psi_{X_i}^* $ is the Fenchel-Legendre dual of the cumulant-generating function  $ \\Psi_{X_i} $.\n\nThe theorem suggests that averaging the random variational data from a training set will result in a lower relative error with high probability when we use a large n. We defer the proof of this theorem to Appendix C.\n\n### 4.3. MIA on Other Diffusion Models\n\nIn this section, we discuss how we can generalize our algorithm to other diffusion models. We note that the variation API for stable diffusion is different from DDIM, as it includes the encoder-decoder process. Again we denote  $ \\hat{x} = V_{\\theta}(x, t) $, and the details are as follows:\n\n\n\n $$ z=\\mathrm{E n c o d e r}(x),\\quad z_{t}=\\sqrt{\\bar{\\alpha}_{t}}z+\\sqrt{1-\\bar{\\alpha}_{t}}\\epsilon, $$ \n\n $$ \\hat{z}=\\Phi_{\\theta}(z_{t},0),\\quad\\hat{x}=\\mathrm{D e c o d e r}(\\hat{z}). $$ \n\nThis definition aligns with the image generation process of the stable diffusion model.\n\nFor the Diffusion Transformer, we define the variation API as  $ V_{\\tilde{\\theta}}(x,t) $, where  $ \\tilde{\\theta} $ corresponds to the Vision Transformer architecture instead of the U-net. We repeatedly call the variation API and calculate the difference between the original image and the reconstructed image, as done in DDIM.\n\n## 5. Experiments\n\nIn this section, we evaluate the performance of our methods across various datasets and settings. We follow the same experiment setup in previous papers (Duan et al., 2023; Kong et al., 2023). The detailed experimental settings, including datasets, models, and hyper-parameter settings can be found in Appendix A $ ^{1} $.\n\n### 5.1. Evaluation Metrics\n\nWe follow the metrics used in previous papers (Duan et al., 2023; Kong et al., 2023), including Area Under Receiver Operating Characteristic (AUC), Attack Success Rate (ASR), the True Positive Rate (TP) when the False Positive Rate is 1%. We also plot the ROC curves.\n\n### 5.2. MIA with DDIM Models\n\nWe follow the experimental setup of (Duan et al., 2023; Kong et al., 2023). We train a DDIM model on the CIFAR-10/100 (Krizhevsky et al., 2009) and STL10-Unlabeled datasets (Coates et al., 2011), using the image generation step T = 1000 and sampling interval k = 100. For all the datasets, we randomly select 50% of the training samples to train the model and denote them as members. The remain-",
+    "images": {}
+  },
+  "outputImages": {
+    "layout_det_res": "https://pplines-online.bj.bcebos.com/deploy/official/paddleocr/pp-ocr-vl-15//b4807864-7379-4b74-9091-e7245ed13668/layout_det_res_4.jpg?authorization=bce-auth-v1%2FALTAKzReLNvew3ySINYJ0fuAMN%2F2026-04-05T13%3A44%3A19Z%2F-1%2F%2F5e3f8c1a450ea17146d3a3c599621a40d2a838b5df5d5a6c7615e54479d74b22"
+  },
+  "inputImage": "https://pplines-online.bj.bcebos.com/deploy/official/paddleocr/pp-ocr-vl-15//b4807864-7379-4b74-9091-e7245ed13668/input_img_4.jpg?authorization=bce-auth-v1%2FALTAKzReLNvew3ySINYJ0fuAMN%2F2026-04-05T13%3A44%3A19Z%2F-1%2F%2F70391ce48c5e5ceb7fa6fbfb40f237a65492588c32c8f17b783be9608cfb8d46"
+}

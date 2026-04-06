@@ -1,154 +1,136 @@
-# SCORE-BASED MEMBERSHIP INFERENCE ON DIFFUSION MODELS
+# 扩散模型的基于 score 的成员推断
+SCORE-BASED MEMBERSHIP INFERENCE ON DIFFUSION MODELS
 
-- Title: SCORE-BASED MEMBERSHIP INFERENCE ON DIFFUSION MODELS
-- Material Path: D:/Code/DiffAudit/Project/references/materials/gray-box/2025-arxiv-sima-score-based-membership-inference-diffusion-models.pdf
-- Primary Track: gray-box
-- Venue / Year: arXiv preprint, 2025; examined PDF version is arXiv:2509.25003v1
-- Threat Model Category: gray-box membership inference attack on diffusion models with model access and controlled queries
-- Core Task: infer whether a query image was in diffusion model training data by scoring the norm of predicted noise across timesteps
-- Open-Source Implementation: official code/data release is stated in the PDF and points to https://github.com/mx-ethan-rao/SimA
-- Report Status: done
+## 文献信息
 
-## Executive Summary
+- 英文标题：SCORE-BASED MEMBERSHIP INFERENCE ON DIFFUSION MODELS
+- 中文标题：扩散模型的基于 score 的成员推断
+- 作者：Mingxing Rao, Bowen Qu, Daniel Moyer
+- 发表 venue / year / version：arXiv preprint，2025，本文核对版本为 arXiv:2509.25003v1
+- 论文主问题：在 gray-box 条件下，攻击者是否只靠单次读取 denoiser 的预测噪声，就能判断一张图像是否属于扩散模型训练集
+- 威胁模型类别：gray-box，score-based membership inference，single-query attack
+- 本地 PDF 路径：`D:\Code\DiffAudit\Project\references\materials\gray-box\2025-arxiv-sima-score-based-membership-inference-diffusion-models.pdf`
+- GitHub PDF 链接：[2025-arxiv-sima-score-based-membership-inference-diffusion-models.pdf](https://github.com/DeliciousBuding/DiffAudit/blob/main/references/materials/gray-box/2025-arxiv-sima-score-based-membership-inference-diffusion-models.pdf)
+- 飞书原生 PDF：[2025-arxiv-sima-score-based-membership-inference-diffusion-models.pdf](https://ncn24qi9j5mt.feishu.cn/file/DxgtbkEpmo6nkkxRH94cQcEsn8d)
+- OCR 精修版链接：[OCR精修版：SCORE-BASED MEMBERSHIP INFERENCE ON DIFFUSION MODELS](https://www.feishu.cn/docx/LH2Md0AYIox0p1xHGRhc9Gn6nmz)
+- 开源实现：[mx-ethan-rao/SimA](https://github.com/mx-ethan-rao/SimA)
+- 报告状态：已完成
 
-这篇论文研究扩散模型成员推断攻击中的一个更基础问题：预测噪声向量本身是否已经足以泄露训练成员身份。作者把注意力集中到扩散模型输出的 score 或 denoiser 上，主张当查询样本靠近训练样本时，模型预测噪声的范数会更小；当样本只是同分布但未进训练集时，这个范数通常会更大。论文据此提出单次查询攻击 SimA，用一个简单的标量统计量代替既有方法中多次采样、多步比较或更复杂的组合打分。
+## 1. 论文定位
 
-方法贡献主要有两层。第一层是理论层：作者把高斯平滑后的数据分布、score 函数、以及有限训练集上的局部核均值联系起来，说明成员样本在小到中等扩散步上会让局部均值塌缩回自身，从而使预测噪声范数趋近于零。第二层是经验层：作者将这一观点落实为 $A(x,t)=\lVert \hat{\epsilon}_\theta(x,t)\rVert_p$，并在 DDPM、Guided Diffusion、LDM 和 Stable Diffusion 上与 PIA、PFAMI、SecMI、Loss 等基线比较。
+这是一篇典型的 gray-box 扩散模型成员推断攻击论文，同时又兼具一部分机制解释工作。它不是去设计更复杂的多轮查询流程，而是反过来论证：对扩散模型而言，很多已有成员推断方法其实都在间接测量同一件事，即查询点处的 denoiser 或 score 是否更像训练样本邻域中的局部极值。作者据此提出 SimA，把攻击压缩成单时间步、单次查询、单个范数统计量。
 
-论文的主结论对 DiffAudit 有直接价值。一方面，SimA 说明 gray-box 条件下不一定需要复杂攻击流程，单查询 score 范数就能构成强基线，尤其适合整理 route 时作为“最短路径”方法。另一方面，作者同时发现 LDM 相比像素空间 DDPM 明显更难被这一类攻击击穿，并把差异归因到潜变量 VAE 的信息瓶颈，而不是扩散过程本身。这使该文不仅是一个攻击方法论文，也是解释不同扩散架构泄露差异的重要证据。
+因此，这篇论文在 DiffAudit 里的位置不只是“又一个 gray-box 方法”，而是 gray-box 主线里的极简基线论文。它一方面提供最短路径实现，另一方面还给出一个非常重要的分叉结论：像素空间 DDPM / Guided Diffusion 与潜空间 LDM / Stable Diffusion 在成员泄露上表现出明显不同的脆弱性。
 
-## Bibliographic Record
+## 2. 核心问题
 
-- Title: SCORE-BASED MEMBERSHIP INFERENCE ON DIFFUSION MODELS
-- Authors: Mingxing Rao, Bowen Qu, Daniel Moyer
-- Venue / year / version: arXiv preprint, 2025, examined version arXiv:2509.25003v1
-- Local PDF path: D:/Code/DiffAudit/Project/references/materials/gray-box/2025-arxiv-sima-score-based-membership-inference-diffusion-models.pdf
-- Source URL: https://arxiv.org/abs/2509.25003
+论文试图回答两个紧密相关的问题。第一，若攻击者能够对目标扩散模型在指定时间步查询预测噪声 $\hat{\epsilon}_{\theta}(x,t)$，那么预测噪声的范数本身是否已经足够构成有效的成员分数。第二，如果这个分数确实有效，那么它捕获的到底是训练记忆带来的局部几何偏置，还是只是在某些模型和数据集上的经验巧合。
 
-## Research Question
+作者的回答是偏肯定的，但边界也说得比较清楚：在像素空间扩散模型上，这个单查询分数已经能达到很强效果；而在 latent diffusion 上，同类分数整体退化，说明泄露机制并不只由 diffusion process 单独决定。
 
-论文试图回答两个相互关联的问题。第一，在扩散模型的 gray-box 成员推断场景下，攻击者是否可以仅依赖模型输出的预测噪声或 score 统计量，稳定地区分训练成员与非成员。第二，如果该统计量有效，它所利用的究竟是“训练记忆导致局部 denoising 更精确”这一几何现象，还是某种特定模型架构或特定基线技巧带来的偶然优势。论文默认的部署设定是攻击者能够访问目标模型并对指定样本在指定扩散步上做前向查询，但不需要重新训练辅助分类器，也不需要生成大量 Monte Carlo 样本。
+## 3. 威胁模型与前提
 
-## Problem Setting and Assumptions
+论文设定的是 gray-box 攻击。攻击者能访问目标模型的 denoiser 接口，输入查询图像 $x$ 和时间步 $t$，读取对应的预测噪声向量 $\hat{\epsilon}_{\theta}(x,t)$。攻击者看不到训练集本身，也不要求重新训练影子模型，但需要知道扩散时间步接口、噪声日程，并拥有一组成员 / 非成员验证样本来标定阈值。
 
-- Access model: gray-box; attacker can access the target diffusion model and evaluate $\hat{\epsilon}_\theta(x,t)$ on chosen queries and timesteps.
-- Available inputs: query image $x$, diffusion timestep $t$, target model weights or equivalent internal query access, and a calibration split for threshold selection.
-- Available outputs: predicted noise vectors, derived norm scores, and a binary membership decision after thresholding.
-- Required priors or side information: balanced member and held-out validation data for threshold calibration; knowledge of the model's diffusion-time interface.
-- Scope limits: the main theory is derived for in-distribution points and finite-sample empirical distributions; OOD regions and extremely early or late timesteps are explicitly treated as unstable.
+这篇论文的结论不适用于只有最终采样 API 的弱黑盒服务，也不打算覆盖明显离群的 OOD 查询。作者明确指出，极早时间步会遇到低密度区域的 score 外推问题，极晚时间步又会被高斯平滑抹掉成员差异，因此方法有效性依赖于中早期时间步的可查询性和数据分布支持。
 
-## Method Overview
+## 4. 方法总览
 
-作者把攻击量设计得非常直接。给定样本 $x$ 和扩散步 $t$，先查询模型得到预测噪声 $\hat{\epsilon}_\theta(x,t)$，再计算其范数作为攻击分数。直觉是，成员样本在训练集中真实出现过，因此其局部核均值会在小尺度平滑下更接近自身；模型在这类点上的 denoising 目标接近零，故分数更小。非成员即便来自同一分布，也通常位于某个训练样本之间的局部空洞里，局部均值不再等于自身，于是分数更大。
+SimA 的直觉非常直接：如果一张图像真的是训练成员，那么在中早期扩散时间步上，它更像是训练样本邻域中的局部中心点，模型预测出的去噪方向更短，因而预测噪声范数更小；如果它只是同分布但未出现在训练集中的 held-out 图像，那么局部核均值一般不会与该点完全重合，预测噪声范数就会更大。
 
-具体决策流程是，先在验证集上为某个时间步 $t$ 选择阈值 $\tau$，再对测试样本计算 $A(x,t)$ 并比较是否低于阈值。论文并不要求跨多个时间步聚合，尽管作者也分析了时间步选择对效果的影响。实验上，他们发现过早时间步会因低密度区域的 score 外推而不稳定，过晚时间步则因高斯平滑过强而让成员与非成员一起向全局均值塌缩，因此最佳区间通常落在中早期步长，例如文中反复提到的 $t \in [10,300]$。
+作者把这一观察写成单个统计量 $A(x,t)=\|\hat{\epsilon}_{\theta}(x,t)\|_p$。攻击时只需挑一个时间步 $t$，对样本做一次前向查询，计算范数，再与阈值比较即可。与 PIA、PFAMI、SecMI、Loss 等方法相比，SimA 的贡献不在于引入一个全新信号，而在于指出这些方法大多是在不同采样设定下间接测量同一类 score-based 泄露，而 SimA 取的是其中最直接、查询成本最低的版本。
 
-与既有方法相比，SimA 的差异不在于用了全新信号，而在于把多种已有攻击统一解释成“对 denoiser 行为的不同近似测量”。Matsumoto 等人的 Loss、Fu 等人的 PFAMI、Duan 等人的 SecMI、以及 Kong 等人的 PIA 都可以被视为在不同噪声采样或时间扰动下间接估计同一泄露机制；SimA 则退回到最直接的 $\epsilon=0$ 情形，用最少查询数抽取同类信号。
+## 5. 方法概览 / 流程
 
-## Method Flow
+实际流程可以压缩成三步。第一步，在验证集上扫描时间步并确定阈值，论文对需要时间步的攻击统一扫描了 $t=0:300$。第二步，对待测图像查询一次 denoiser，得到 $\hat{\epsilon}_{\theta}(x,t)$ 并计算范数。第三步，将该分数与阈值比较，较小者判为成员。
 
-```mermaid
-flowchart TD
-    A["选择查询样本 x 与候选时间步 t"] --> B["查询目标扩散模型得到预测噪声 ε̂θ(x,t)"]
-    B --> C["计算攻击统计量 A(x,t)=||ε̂θ(x,t)||p"]
-    C --> D["在验证集上标定阈值 τ"]
-    D --> E["比较 A(x,t) 与 τ"]
-    E --> F["若 A(x,t) ≤ τ 则判为 member"]
-    E --> G["若 A(x,t) > τ 则判为 non-member"]
-```
+对实现最有帮助的不是公式本身，而是时间步选择规律。论文指出，最早几个时间步处在低密度外推区，score 场会不稳定；太晚时又会因为平滑过强而向全局均值塌缩。作者给出的经验结论是，真正有区分度的往往是中早期时间步，而不是直觉上的 $t=0$。
 
-## Key Technical Details
+![SimA 关键图](../assets/gray-box/2025-arxiv-sima-score-based-membership-inference-diffusion-models-key-figure-p18.png)
 
-论文的核心定义就是单点单步攻击统计量：
+上图展示了作者对时间步选择的解释：过早时 score 在模式间隙中会出现外推误差，过晚时数据分布接近各向同性高斯，成员信号被抹平；只有中早期时间步既保留局部结构，又有足够平滑的 score 场，才最适合做成员推断。这张图对 DiffAudit 的直接价值，是告诉我们实现时应把“时间步扫描”视为核心配置，而不是附属调参。
+
+## 6. 关键技术细节
+
+论文把攻击统计量定义为
 
 $$
-A(x,t)=\left\|\hat{\epsilon}_\theta(x,t)\right\|_p.
+A(x,t)=\left\|\hat{\epsilon}_{\theta}(x,t)\right\|_p.
 $$
 
-作者先从 VP forward process 出发，将带噪分布写成对原始数据分布的高斯卷积：
+这里的关键不是范数本身，而是 $\hat{\epsilon}_{\theta}(x,t)$ 与局部 denoising mean 的关系。在 VP forward process 下，
 
 $$
-x_t=\sqrt{\bar{\alpha}_t}\,x_0+\sigma_t\epsilon,\quad \epsilon\sim\mathcal{N}(0,I),
+x_t=\sqrt{\bar{\alpha}_t}x_0+\sigma_t\epsilon,\qquad \epsilon\sim\mathcal{N}(0,I),
 $$
 
-$$
-p_t(x)=\int p_{\mathrm{data}}(x_0)\,\mathcal{N}\!\left(x\,\middle|\,\sqrt{\bar{\alpha}_t}x_0,\sigma_t^2 I\right)\,dx_0.
-$$
-
-在此基础上，score 与 denoising mean 的关系被写成
+而模型预测噪声可近似写成
 
 $$
-s_t(x)=\nabla_x\log p_t(x)=-\frac{x-\sqrt{\bar{\alpha}_t}\,\mu_t(x)}{\sigma_t^2},
-\qquad
-\hat{\epsilon}_\theta(x,t)\approx \frac{x-\sqrt{\bar{\alpha}_t}\,\mu_t(x)}{\sigma_t}
-=-\sigma_t\nabla_x\log p_t(x).
+\hat{\epsilon}_{\theta}(x,t)\approx
+\frac{x-\sqrt{\bar{\alpha}_t}\mu_t(x)}{\sigma_t}
+=-\sigma_t \nabla_x \log p_t(x).
 $$
 
-有限训练集情形下，$\mu_t(x)$ 被近似为训练样本的核加权均值：
+因此，预测噪声实际上是在衡量“查询点 $x$ 离局部核均值 $\mu_t(x)$ 有多远”。有限训练集情况下，这个局部均值又可写为训练样本的核加权平均：
 
 $$
-\mu_t^{\mathrm{finite}}(x)=\sum_{i=1}^{N} w_i(x,t)x_0^{(i)},\qquad
-w_i(x,t)=\operatorname{softmax}_i\!\left(-\frac{\|x-\sqrt{\bar{\alpha}_t}x_0^{(i)}\|_2^2}{2\sigma_t^2}\right).
+\mu_t^{\mathrm{finite}}(x)=\sum_{i=1}^{N}w_i(x,t)x^{(i)},\qquad
+w_i(x,t)\propto \exp\!\left(-\frac{\|x-\sqrt{\bar{\alpha}_t}x^{(i)}\|_2^2}{2\sigma_t^2}\right).
 $$
 
-这一步是整个理论链条的关键。若 $x=x^{(k)}$ 本身就是训练成员，则当 $t\to 0$ 时，对应权重会塌缩到第 $k$ 个训练样本，进而使 $\mu_t^{\mathrm{finite}}(x^{(k)})\to x^{(k)}$，$\hat{\epsilon}_\theta(x^{(k)},t)\to 0$。若 $x^\dagger$ 只是同流形上的 held-out 点，局部核均值通常不再等于该点本身，作者借助 local moment matching 给出 $m_r(x^\dagger)-x^\dagger$ 与 $\hat{\epsilon}_\theta(x^\dagger,t)$ 近似成比例的关系，从而解释非成员分数为何保持非零。文中还指出 $\ell_p$ 范数中除 $p=2$ 外的其他选项有时会略好，但主结论不依赖这一技巧。
+若 $x=x^{(k)}$ 本身就是训练成员，那么当 $t\to 0$ 时，权重会塌缩到第 $k$ 个训练样本，因而 $\mu_t^{\mathrm{finite}}(x^{(k)})\to x^{(k)}$，进而得到 $\|\hat{\epsilon}_{\theta}(x^{(k)},t)\|\to 0$。若 $x^{\dagger}$ 只是同分布 held-out 点，则局部核均值通常不等于该点本身，范数会保持非零。作者实验上最终多用 $\ell_4$ 范数，但理论主线并不依赖必须取哪一个 $p$。
 
-## Experimental Setup
+## 7. 实验设置
 
-- Datasets: CIFAR-10, CIFAR-100, STL10-U, CelebA, ImageNet-1K vs ImageNetV2, plus Stable Diffusion experiments on Pokemon, COCO2017-Val, Flickr30k, LAION-Aesthetics v2 5+ and LAION-2B-MultiTranslated.
-- Model families: vanilla DDPM trained from scratch on small datasets; publicly released Guided Diffusion on ImageNet-1K; LDM on ImageNet; Stable Diffusion v1-4 and v1-5 in appendix experiments.
-- Baselines: PIA, PFAMIMet, SecMIstat, Loss; the authors intentionally evaluate statistic-based variants rather than auxiliary neural classifiers.
-- Metrics: ASR, AUC, TPR@1%FPR, and number of queries.
-- Evaluation conditions: 15 member-held-out experiments across 11 datasets; ImageNet experiments use 3,000 member and 3,000 held-out samples; Stable Diffusion experiments include both fine-tuning and pre-training settings with conditional and unconditional variants where applicable.
+主实验覆盖四类像素空间 DDPM 数据集：CIFAR-10、CIFAR-100、STL10-U、CelebA；成员 / 非成员划分分别为 25k/25k、25k/25k、50k/50k、30k/30k，分辨率统一为 $32\times 32$。进一步，作者在公开 Guided Diffusion 的 ImageNet-1K 检查点上，以 ImageNetV2 作为 held-out，对 3k / 3k 样本进行比较。
 
-## Main Results
+基线包括 PIA、PFAMIMet、SecMIstat 和 Loss。评估指标为 ASR、AUC、TPR@1%FPR 与查询次数。对需要时间步的攻击，作者统一扫描 $t=0:300$ 并报告最优结果；PFAMIMet 因为与时间步无关，不需要额外扫描。
 
-论文报告 SimA 在像素空间扩散模型上总体达到或逼近最优结果。对 DDPM，SimA 在 CIFAR-10、CIFAR-100、STL10-U、CelebA 上分别取得 90.45、89.85、96.34、82.85 的 AUC；其中 STL10-U 上与 PIA 的 AUC 同为 96.34，但 SimA 的 TPR@1%FPR 更高，为 72.75。对 Guided Diffusion 的 ImageNet-1K 实验，SimA 的 AUC 为 89.77，明显高于 PIA 的 66.44、PFAMIMet 的 72.22、SecMIstat 的 82.55 和 Loss 的 60.38，同时查询数仅为 1。
+附录还把同类攻击迁移到 LDM 和 Stable Diffusion，覆盖 ImageNet-1K 条件 LDM、Pokemon / COCO / Flickr30k 微调的 Stable Diffusion，以及 LAION-Aesthetics v2 5+ 预训练模型。这里的目的不是宣称全面胜出，而是验证同一类 score-based MIA 在 latent diffusion 上是否仍然成立。
 
-更值得注意的是负结果。对 ImageNet 上的 LDM，同样的攻击族整体失效，SimA AUC 仅为 56.14，其他方法也大多接近随机水平。作者进一步通过控制 CIFAR-10 上 VAE 的 $\beta$-VAE 正则化强度，显示 MIA 性能会随信息瓶颈增大而下降，而 FID 在较长区间内并未同步显著恶化。当前报告据此推断，该文最重要的经验发现并不只是“SimA 强”，而是“latent bottleneck 可能系统性削弱这类 score-based MIA”。
+## 8. 主要结果
 
-关于时间步，作者给出的附录分析也值得保留。极早时间步因低密度区 score 外推不稳，会削弱非成员分数；极晚时间步因平滑过强，成员与非成员同时向各向同性高斯塌缩，成员信号消失。因此最佳攻击区间是数据依赖的，文中经验上集中在中早期步。这一结论意味着复现时若只测单个任意时间步，可能会低估或高估方法本身。
+在像素空间 DDPM 上，SimA 基本可以视为当前论文里的强基线。作者报告的 AUC 分别为 CIFAR-10 `90.45`、CIFAR-100 `89.85`、STL10-U `96.34`、CelebA `82.85`；对应的 TPR@1%FPR 为 `35.86`、`38.84`、`72.75`、`20.86`。这些结果的共同特点是：SimA 只需 `1` 次查询，却能在大多数指标上达到最佳或并列最佳。
 
-## Strengths
+在 Guided Diffusion 的 ImageNet-1K 实验上，SimA 的优势更清楚，ASR 为 `85.73`、AUC 为 `89.77`，显著高于 PIA、PFAMIMet、Loss，也高于 SecMI 的 AUC；但在 TPR@1%FPR 上，SecMI 仍略高。这说明 SimA 的主要长处是整体排序质量和查询效率，而不是在所有 operating point 上都绝对碾压。
 
-- 理论与经验闭环较完整，把 score、局部核均值、成员推断分数统一到同一推导链条中。
-- 攻击定义极简，单查询即可得到强结果，便于作为 gray-box 审计基线。
-- 实验覆盖 DDPM、Guided Diffusion、LDM 与 Stable Diffusion，既有正结果也有重要负结果。
-- 对 LDM 脆弱性下降给出机制性假设，并通过调节 VAE 正则化进行受控验证，而不是只停留在现象描述。
+这篇论文最值得记住的结果其实是负结果。对同样 ImageNet 分布下的 LDM，SimA 的 ASR / AUC / TPR@1%FPR 只有 `55.78 / 56.14 / 1.97`，其他方法也大都接近随机。作者进一步通过调节 CIFAR-10 上 $\beta$-VAE 的 KL 权重发现，随着信息瓶颈增强，MIA AUC 会下降，但 FID 在一段区间内并未同步恶化。这个结果表明：Diffusion process 本身并不是全部问题，latent auto-encoder 才可能是决定泄露强弱的关键环节。
 
-## Limitations and Validity Threats
+## 9. 优点
 
-- 论文虽然归入 gray-box 路线，但仍假定可直接访问模型内部 denoiser 接口；对仅有最终采样 API 的更弱黑盒环境并不适用。
-- 阈值选择依赖带标签的验证划分，真实攻击部署中这一校准先验未必总能稳定获得。
-- 对时间步最优区间的选择具有显著数据依赖性，若换用不同噪声日程、分辨率或架构，最佳设置可能迁移失败。
-- LDM 鲁棒性的解释目前仍是经验性推断。论文认为问题更可能出在 VAE 信息瓶颈，但未给出严格因果隔离，也未解决“如何对潜空间逆向恢复成员信息”这一更深层问题。
-- 表中部分最优项与次优项差距并不大，例如 DDPM 某些数据集上 SimA 与已有方法接近，因此不应把该文解读为在所有设定下压倒性领先。
+这篇论文最强的优点是把一个看似复杂的攻击族压缩成了可解释、可扫描、可单查询的统一形式。对于需要构建基线的研究或工程项目，这比再增加一个复杂多步攻击更有价值。
 
-## Reproducibility Assessment
+第二个优点是理论和实验闭环完整。作者没有只给出经验曲线，而是把 score、局部核均值、训练成员的局部极值性质串成一条可核查的推导链，并且用 DDPM、Guided Diffusion、LDM、Stable Diffusion 多种模型验证哪一部分结论能迁移、哪一部分不能。
 
-忠实复现 SimA 所需资产并不复杂：目标扩散模型、成员与 held-out 划分、对任意时间步查询 $\hat{\epsilon}_\theta(x,t)$ 的接口、以及阈值校准和 ROC 评测代码。论文还公开声明提供数据划分、模型检查点、训练和测试脚本，并给出了 GitHub 仓库，因此从“最短路径复现”角度看，它比很多需要辅助分类器或多查询采样的 MIA 更友好。
+## 10. 局限与有效性威胁
 
-但阻塞点依然存在。首先，最佳时间步与范数选择具有显著经验性，需要逐模型重做扫描。其次，LDM 和 Stable Diffusion 路线不仅受扩散模型影响，还受潜变量编码器与预训练数据分布影响，复现实验必须同时固定 VAE、采样分辨率和 member-held-out 方案。就当前 DiffAudit 仓库而言，已经有 gray-box 报告模板与相邻论文资产，但尚未看到专门针对 SimA 的实验脚手架或结果缓存；因此它适合作为理论与基线文献优先补档，而不是立刻假设仓库已具备一键复现条件。
+这篇论文的首要局限是访问假设偏强。只要目标系统不暴露任意时间步的 denoiser 输出，SimA 就无法直接落地。其次，阈值标定仍依赖成员 / 非成员验证集，这意味着它更像研究型审计，而不是完全零先验的实战攻击。
 
-## Relevance to DiffAudit
+另一个需要克制解读的点是，作者虽然把 LDM 的弱脆弱性归因于潜空间信息瓶颈，但这个结论目前还是机制性假说，不是完全隔离变量后的因果证明。尤其在 Stable Diffusion 上，SimA 在 Pokemon 微调集上还能有 `93.0` 的 AUC，但在 COCO 预训练设定上只剩 `53.7`，说明 latent diffusion 的成员泄露机制仍然高度依赖数据和训练方式。
 
-这篇论文对 DiffAudit 的价值主要在于基线收敛。若需要为 gray-box 路线建立一条最容易落地、又能与既有方法公平比较的成员推断主线，SimA 提供了非常强的候选方案，因为它把攻击核心压缩成可解释、可扫描、可单查询评估的 score 范数统计量。对后续路线图而言，这有助于区分“方法复杂”与“信号本身有效”两个层次。
+## 11. 对 DiffAudit 的价值
 
-更进一步，这篇论文提供了一个重要分叉点。它表明像素空间扩散模型与潜空间扩散模型在成员泄露上的机制可能不同，后续 DiffAudit 若继续扩展到 Stable Diffusion 或其他 latent 模型，不能默认 DDPM 结论自动迁移。换言之，该文既是 gray-box 成员推断的简洁基线，也是后续将 gray-box 路线拆分为 pixel-space 与 latent-space 两类审计叙事的重要依据。
+对 DiffAudit 来说，这篇论文最直接的价值是提供 gray-box 路线的最短路径基线。若仓库需要先搭一条可运行、可解释、查询成本最低的扩散模型成员推断主线，SimA 几乎就是最合适的起点，因为它只需要读取 $\hat{\epsilon}_{\theta}(x,t)$、做时间步扫描、再算一个范数。
 
-## Recommended Figure
+更重要的是，它给路线分层提供了证据。当前 gray-box 叙事不应再把 DDPM 与 LDM 简单并列，而应至少拆成 pixel-space 与 latent-space 两条支线。SimA 在前者上说明“score norm 已足够强”，在后者上则说明“真正的阻塞可能在 VAE 编码器，而不在 diffusion sampler”。
 
-- Figure page: 9
-- Crop box or note: cropped Figure 3 region with `--clip 55 45 505 216`; a clean figure-only crop was feasible, so no full-page fallback was needed
-- Why this figure matters: Figure 3 simultaneously shows the paper's two most decision-relevant findings, namely that score-based MIA performs much better on DDPM than on LDM under matched ImageNet splits, and that increasing the VAE bottleneck can suppress MIA AUC without immediately destroying FID
-- Local asset path: ../assets/gray-box/2025-arxiv-sima-score-based-membership-inference-diffusion-models-key-figure-p9.png
+## 12. 关键图使用方式
 
-![Key Figure](../assets/gray-box/2025-arxiv-sima-score-based-membership-inference-diffusion-models-key-figure-p9.png)
+本报告只保留 1 张图，且把它放在方法流程部分，而不是堆到文末。原因是这张图既解释了为什么不能盲目取最小时间步，也直接服务于实现决策：任何复现实验都应把时间步扫描当成主配置项，并优先检查中早期区间的分离效果。
 
-## Extracted Summary for `paper-index.md`
+如果后续还需要再加一张图，最合适的候选不是更多流程示意，而是论文 Figure 3 中关于 DDPM vs LDM 与 $\beta$-VAE 信息瓶颈的对照图，因为那张图决定了 gray-box 路线是否要拆分成 pixel-space / latent-space 两类。
 
-这篇论文研究扩散模型的成员推断攻击，核心问题是攻击者能否仅通过模型对查询样本输出的预测噪声来判断该样本是否属于训练集。作者将目标限定在 gray-box 场景，即攻击者可以访问模型并在给定时间步上读取 denoiser 输出，但不依赖复杂辅助分类器或大量重复查询。
+## 13. 复现评估
 
-论文提出 SimA，将攻击统计量定义为预测噪声范数 $A(x,t)=\lVert \hat{\epsilon}_\theta(x,t)\rVert_p$，并用高斯卷积后的数据分布、score 函数与有限训练集局部核均值之间的关系解释其有效性。实验表明，SimA 在 DDPM 和 Guided Diffusion 上通常达到或超过既有基线，同时只需单次查询；但在 LDM 与部分 Stable Diffusion 设定上，该类方法整体退化到接近随机，说明潜变量瓶颈显著改变了泄露机制。
+从工程角度看，SimA 的复现门槛不高。最少需要的资产是：目标扩散模型权重、对任意时间步查询 denoiser 的接口、成员 / 非成员划分、ROC 与阈值评估代码，以及时间步扫描脚本。由于作者已公开数据划分、检查点和测试代码，这篇论文比很多依赖辅助分类器或 Monte Carlo 重采样的方法更容易走通。
 
-对 DiffAudit 而言，这篇论文一方面提供了一个可解释、低查询成本、适合做 gray-box 基线的成员推断方法，另一方面也明确提示 pixel-space 与 latent-space 扩散模型不应被放在同一泄露假设下分析。它既能支撑当前 gray-box 主线的最短路径实现，也能为后续将审计路线拆分到 LDM/Stable Diffusion 提供机制证据。
+真正的结构性阻塞有两个。第一，仓库当前若只具备最终采样接口，而没有中间 denoiser 查询接口，SimA 就无法直接接入。第二，latent diffusion 路线即便复现了论文数字，也不意味着已经解释了漏洞来源；若要继续往 Stable Diffusion 深挖，必须把 VAE 编码器、潜空间重构误差和 diffusion attack 分开审计。
+
+## 14. 写回总索引用摘要
+
+这篇论文解决的是扩散模型的 gray-box 成员推断问题，核心问题是攻击者能否只靠单次读取预测噪声，就判断一张图像是否属于训练集。
+
+论文提出 SimA，把成员分数定义为预测噪声范数 $A(x,t)=\|\hat{\epsilon}_{\theta}(x,t)\|_p$，并用局部核均值与 score 函数之间的关系解释其有效性。实验表明，SimA 在 DDPM 与 Guided Diffusion 上以单次查询取得很强结果，但在 LDM 与部分 Stable Diffusion 设定上明显退化。
+
+对 DiffAudit 而言，这篇论文既是 gray-box 路线里最适合先实现的极简基线，也是把扩散模型审计拆分为 pixel-space 与 latent-space 两条支线的重要证据。它的价值不只是“方法强”，更是“告诉我们哪里还能直接打，哪里已经不能沿用同一泄露假设”。

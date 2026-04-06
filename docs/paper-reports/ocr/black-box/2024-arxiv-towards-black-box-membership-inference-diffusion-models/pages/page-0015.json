@@ -1,0 +1,921 @@
+{
+  "prunedResult": {
+    "page_count": 5,
+    "width": 1224,
+    "height": 1584,
+    "model_settings": {
+      "use_doc_preprocessor": true,
+      "use_layout_detection": true,
+      "use_chart_recognition": false,
+      "use_seal_recognition": false,
+      "use_ocr_for_image_block": false,
+      "format_block_content": false,
+      "merge_layout_blocks": true,
+      "markdown_ignore_labels": [
+        "number",
+        "footnote",
+        "header",
+        "header_image",
+        "footer",
+        "footer_image",
+        "aside_text"
+      ],
+      "return_layout_polygon_points": true
+    },
+    "parsing_res_list": [
+      {
+        "block_label": "header",
+        "block_content": "Towards Black-Box Membership Inference Attack for Diffusion Models",
+        "block_bbox": [
+          314,
+          18,
+          919,
+          47
+        ],
+        "block_id": 0,
+        "block_order": null,
+        "group_id": 0,
+        "global_block_id": 240,
+        "global_group_id": 240,
+        "block_polygon_points": [
+          [
+            314.0,
+            18.0
+          ],
+          [
+            919.0,
+            18.0
+          ],
+          [
+            919.0,
+            47.0
+          ],
+          [
+            314.0,
+            47.0
+          ]
+        ]
+      },
+      {
+        "block_label": "text",
+        "block_content": "The Impact of Sampling Intervals We change the sampling intervals to see if there is any influence on the results. In addition to the AUC figures in the main paper, the ASR figures of DDIM and Diffusion Transformer are also plotted in Figure 13. We also plot the AUC and ASR for Stable Diffusion in Figure 14. From the results, we observe that our algorithm consistently performs well across different sampling intervals.",
+        "block_bbox": [
+          82,
+          74,
+          1143,
+          191
+        ],
+        "block_id": 1,
+        "block_order": 1,
+        "group_id": 1,
+        "global_block_id": 241,
+        "global_group_id": 241,
+        "block_polygon_points": [
+          [
+            82.0,
+            74.0
+          ],
+          [
+            1143.0,
+            74.0
+          ],
+          [
+            1143.0,
+            191.0
+          ],
+          [
+            82.0,
+            191.0
+          ]
+        ]
+      },
+      {
+        "block_label": "chart",
+        "block_content": "",
+        "block_bbox": [
+          285,
+          228,
+          595,
+          477
+        ],
+        "block_id": 2,
+        "block_order": null,
+        "group_id": 2,
+        "global_block_id": 242,
+        "global_group_id": 242,
+        "block_polygon_points": [
+          [
+            285.0,
+            228.0
+          ],
+          [
+            595.0,
+            228.0
+          ],
+          [
+            595.0,
+            477.0
+          ],
+          [
+            285.0,
+            477.0
+          ]
+        ]
+      },
+      {
+        "block_label": "chart",
+        "block_content": "",
+        "block_bbox": [
+          609,
+          236,
+          909,
+          474
+        ],
+        "block_id": 3,
+        "block_order": null,
+        "group_id": 3,
+        "global_block_id": 243,
+        "global_group_id": 243,
+        "block_polygon_points": [
+          [
+            609.0,
+            236.0
+          ],
+          [
+            909.0,
+            236.0
+          ],
+          [
+            909.0,
+            474.0
+          ],
+          [
+            609.0,
+            474.0
+          ]
+        ]
+      },
+      {
+        "block_label": "figure_title",
+        "block_content": "Figure 13: The impact of sampling intervals. Left: DDIM model on CIFAR-10. Right: Diffusion Transformer on Imagenet. We find that adjusting the sampling interval does not significantly affect the accuracy.",
+        "block_bbox": [
+          92,
+          498,
+          1137,
+          554
+        ],
+        "block_id": 4,
+        "block_order": null,
+        "group_id": 4,
+        "global_block_id": 244,
+        "global_group_id": 244,
+        "block_polygon_points": [
+          [
+            92.0,
+            498.0
+          ],
+          [
+            1137.0,
+            498.0
+          ],
+          [
+            1137.0,
+            554.0
+          ],
+          [
+            92.0,
+            554.0
+          ]
+        ]
+      },
+      {
+        "block_label": "chart",
+        "block_content": "",
+        "block_bbox": [
+          285,
+          608,
+          591,
+          863
+        ],
+        "block_id": 5,
+        "block_order": null,
+        "group_id": 5,
+        "global_block_id": 245,
+        "global_group_id": 245,
+        "block_polygon_points": [
+          [
+            285.0,
+            608.0
+          ],
+          [
+            591.0,
+            608.0
+          ],
+          [
+            591.0,
+            863.0
+          ],
+          [
+            285.0,
+            863.0
+          ]
+        ]
+      },
+      {
+        "block_label": "chart",
+        "block_content": "",
+        "block_bbox": [
+          618,
+          612,
+          922,
+          860
+        ],
+        "block_id": 6,
+        "block_order": null,
+        "group_id": 6,
+        "global_block_id": 246,
+        "global_group_id": 246,
+        "block_polygon_points": [
+          [
+            618.0,
+            612.0
+          ],
+          [
+            922.0,
+            612.0
+          ],
+          [
+            922.0,
+            860.0
+          ],
+          [
+            618.0,
+            860.0
+          ]
+        ]
+      },
+      {
+        "block_label": "figure_title",
+        "block_content": "Figure 14: The impact of sampling intervals on Stable Diffusion. We plot the AUC and ASR metrics, observe that different sampling intervals have minimal impact on it.",
+        "block_bbox": [
+          92,
+          884,
+          1136,
+          940
+        ],
+        "block_id": 7,
+        "block_order": null,
+        "group_id": 7,
+        "global_block_id": 247,
+        "global_group_id": 247,
+        "block_polygon_points": [
+          [
+            92.0,
+            884.0
+          ],
+          [
+            1136.0,
+            884.0
+          ],
+          [
+            1136.0,
+            940.0
+          ],
+          [
+            92.0,
+            940.0
+          ]
+        ]
+      },
+      {
+        "block_label": "text",
+        "block_content": "The ROC curves We plot ROC curves for the DDIM train on CIFAR-10 and Diffusion Transformer train on ImageNet  $ 256 \\times 256 $ in Figure 15. The curves further demonstrate the effectiveness of our method.",
+        "block_bbox": [
+          91,
+          980,
+          1137,
+          1036
+        ],
+        "block_id": 8,
+        "block_order": 2,
+        "group_id": 8,
+        "global_block_id": 248,
+        "global_group_id": 248,
+        "block_polygon_points": [
+          [
+            91.0,
+            980.0
+          ],
+          [
+            1137.0,
+            980.0
+          ],
+          [
+            1137.0,
+            1036.0
+          ],
+          [
+            91.0,
+            1036.0
+          ]
+        ]
+      },
+      {
+        "block_label": "chart",
+        "block_content": "",
+        "block_bbox": [
+          304,
+          1065,
+          589,
+          1313
+        ],
+        "block_id": 9,
+        "block_order": null,
+        "group_id": 9,
+        "global_block_id": 249,
+        "global_group_id": 249,
+        "block_polygon_points": [
+          [
+            304.0,
+            1065.0
+          ],
+          [
+            589.0,
+            1065.0
+          ],
+          [
+            589.0,
+            1313.0
+          ],
+          [
+            304.0,
+            1313.0
+          ]
+        ]
+      },
+      {
+        "block_label": "chart",
+        "block_content": "",
+        "block_bbox": [
+          626,
+          1062,
+          912,
+          1307
+        ],
+        "block_id": 10,
+        "block_order": null,
+        "group_id": 10,
+        "global_block_id": 250,
+        "global_group_id": 250,
+        "block_polygon_points": [
+          [
+            626.0,
+            1062.0
+          ],
+          [
+            912.0,
+            1062.0
+          ],
+          [
+            912.0,
+            1307.0
+          ],
+          [
+            626.0,
+            1307.0
+          ]
+        ]
+      },
+      {
+        "block_label": "figure_title",
+        "block_content": "Figure 15: The ROC curves of various setups. Left: DDIM model on CIFAR-10. Right: Diffusion Transformer on ImageNet  $ 256 \\times 256 $. The curves show that our algorithm outperforms the baseline algorithms.",
+        "block_bbox": [
+          86,
+          1326,
+          1137,
+          1383
+        ],
+        "block_id": 11,
+        "block_order": null,
+        "group_id": 11,
+        "global_block_id": 251,
+        "global_group_id": 251,
+        "block_polygon_points": [
+          [
+            86.0,
+            1326.0
+          ],
+          [
+            1137.0,
+            1326.0
+          ],
+          [
+            1137.0,
+            1383.0
+          ],
+          [
+            86.0,
+            1383.0
+          ]
+        ]
+      },
+      {
+        "block_label": "number",
+        "block_content": "15",
+        "block_bbox": [
+          601,
+          1557,
+          628,
+          1581
+        ],
+        "block_id": 12,
+        "block_order": null,
+        "group_id": 12,
+        "global_block_id": 252,
+        "global_group_id": 252,
+        "block_polygon_points": [
+          [
+            601,
+            1557
+          ],
+          [
+            601,
+            1580
+          ],
+          [
+            606,
+            1580
+          ],
+          [
+            606,
+            1573
+          ],
+          [
+            607,
+            1572
+          ],
+          [
+            622,
+            1572
+          ],
+          [
+            623,
+            1573
+          ],
+          [
+            623,
+            1580
+          ],
+          [
+            627,
+            1580
+          ],
+          [
+            627,
+            1557
+          ]
+        ]
+      }
+    ],
+    "doc_preprocessor_res": {
+      "model_settings": {
+        "use_doc_orientation_classify": true,
+        "use_doc_unwarping": true
+      },
+      "angle": 0
+    },
+    "layout_det_res": {
+      "boxes": [
+        {
+          "cls_id": 12,
+          "label": "header",
+          "score": 0.8904930353164673,
+          "coordinate": [
+            314,
+            18,
+            919,
+            47
+          ],
+          "order": null,
+          "polygon_points": [
+            [
+              314.0,
+              18.0
+            ],
+            [
+              919.0,
+              18.0
+            ],
+            [
+              919.0,
+              47.0
+            ],
+            [
+              314.0,
+              47.0
+            ]
+          ]
+        },
+        {
+          "cls_id": 22,
+          "label": "text",
+          "score": 0.9423986673355103,
+          "coordinate": [
+            82,
+            74,
+            1143,
+            191
+          ],
+          "order": 1,
+          "polygon_points": [
+            [
+              82.0,
+              74.0
+            ],
+            [
+              1143.0,
+              74.0
+            ],
+            [
+              1143.0,
+              191.0
+            ],
+            [
+              82.0,
+              191.0
+            ]
+          ]
+        },
+        {
+          "cls_id": 3,
+          "label": "chart",
+          "score": 0.8839762806892395,
+          "coordinate": [
+            285,
+            228,
+            595,
+            477
+          ],
+          "order": null,
+          "polygon_points": [
+            [
+              285.0,
+              228.0
+            ],
+            [
+              595.0,
+              228.0
+            ],
+            [
+              595.0,
+              477.0
+            ],
+            [
+              285.0,
+              477.0
+            ]
+          ]
+        },
+        {
+          "cls_id": 3,
+          "label": "chart",
+          "score": 0.8854005336761475,
+          "coordinate": [
+            609,
+            236,
+            909,
+            474
+          ],
+          "order": null,
+          "polygon_points": [
+            [
+              609.0,
+              236.0
+            ],
+            [
+              909.0,
+              236.0
+            ],
+            [
+              909.0,
+              474.0
+            ],
+            [
+              609.0,
+              474.0
+            ]
+          ]
+        },
+        {
+          "cls_id": 7,
+          "label": "figure_title",
+          "score": 0.9110153913497925,
+          "coordinate": [
+            92,
+            498,
+            1137,
+            554
+          ],
+          "order": null,
+          "polygon_points": [
+            [
+              92.0,
+              498.0
+            ],
+            [
+              1137.0,
+              498.0
+            ],
+            [
+              1137.0,
+              554.0
+            ],
+            [
+              92.0,
+              554.0
+            ]
+          ]
+        },
+        {
+          "cls_id": 3,
+          "label": "chart",
+          "score": 0.8854330778121948,
+          "coordinate": [
+            285,
+            608,
+            591,
+            863
+          ],
+          "order": null,
+          "polygon_points": [
+            [
+              285.0,
+              608.0
+            ],
+            [
+              591.0,
+              608.0
+            ],
+            [
+              591.0,
+              863.0
+            ],
+            [
+              285.0,
+              863.0
+            ]
+          ]
+        },
+        {
+          "cls_id": 3,
+          "label": "chart",
+          "score": 0.8921090960502625,
+          "coordinate": [
+            618,
+            612,
+            922,
+            860
+          ],
+          "order": null,
+          "polygon_points": [
+            [
+              618.0,
+              612.0
+            ],
+            [
+              922.0,
+              612.0
+            ],
+            [
+              922.0,
+              860.0
+            ],
+            [
+              618.0,
+              860.0
+            ]
+          ]
+        },
+        {
+          "cls_id": 7,
+          "label": "figure_title",
+          "score": 0.9076125621795654,
+          "coordinate": [
+            92,
+            884,
+            1136,
+            940
+          ],
+          "order": null,
+          "polygon_points": [
+            [
+              92.0,
+              884.0
+            ],
+            [
+              1136.0,
+              884.0
+            ],
+            [
+              1136.0,
+              940.0
+            ],
+            [
+              92.0,
+              940.0
+            ]
+          ]
+        },
+        {
+          "cls_id": 22,
+          "label": "text",
+          "score": 0.8906804323196411,
+          "coordinate": [
+            91,
+            980,
+            1137,
+            1036
+          ],
+          "order": 2,
+          "polygon_points": [
+            [
+              91.0,
+              980.0
+            ],
+            [
+              1137.0,
+              980.0
+            ],
+            [
+              1137.0,
+              1036.0
+            ],
+            [
+              91.0,
+              1036.0
+            ]
+          ]
+        },
+        {
+          "cls_id": 3,
+          "label": "chart",
+          "score": 0.9042332172393799,
+          "coordinate": [
+            304,
+            1065,
+            589,
+            1313
+          ],
+          "order": null,
+          "polygon_points": [
+            [
+              304.0,
+              1065.0
+            ],
+            [
+              589.0,
+              1065.0
+            ],
+            [
+              589.0,
+              1313.0
+            ],
+            [
+              304.0,
+              1313.0
+            ]
+          ]
+        },
+        {
+          "cls_id": 3,
+          "label": "chart",
+          "score": 0.8972485065460205,
+          "coordinate": [
+            626,
+            1062,
+            912,
+            1307
+          ],
+          "order": null,
+          "polygon_points": [
+            [
+              626.0,
+              1062.0
+            ],
+            [
+              912.0,
+              1062.0
+            ],
+            [
+              912.0,
+              1307.0
+            ],
+            [
+              626.0,
+              1307.0
+            ]
+          ]
+        },
+        {
+          "cls_id": 7,
+          "label": "figure_title",
+          "score": 0.9141082763671875,
+          "coordinate": [
+            86,
+            1326,
+            1137,
+            1383
+          ],
+          "order": null,
+          "polygon_points": [
+            [
+              86.0,
+              1326.0
+            ],
+            [
+              1137.0,
+              1326.0
+            ],
+            [
+              1137.0,
+              1383.0
+            ],
+            [
+              86.0,
+              1383.0
+            ]
+          ]
+        },
+        {
+          "cls_id": 16,
+          "label": "number",
+          "score": 0.7531344890594482,
+          "coordinate": [
+            601,
+            1557,
+            628,
+            1581
+          ],
+          "order": 3,
+          "polygon_points": [
+            [
+              601,
+              1557
+            ],
+            [
+              601,
+              1580
+            ],
+            [
+              606,
+              1580
+            ],
+            [
+              606,
+              1573
+            ],
+            [
+              607,
+              1572
+            ],
+            [
+              622,
+              1572
+            ],
+            [
+              623,
+              1573
+            ],
+            [
+              623,
+              1580
+            ],
+            [
+              627,
+              1580
+            ],
+            [
+              627,
+              1557
+            ]
+          ]
+        }
+      ]
+    }
+  },
+  "markdown": {
+    "text": "The Impact of Sampling Intervals We change the sampling intervals to see if there is any influence on the results. In addition to the AUC figures in the main paper, the ASR figures of DDIM and Diffusion Transformer are also plotted in Figure 13. We also plot the AUC and ASR for Stable Diffusion in Figure 14. From the results, we observe that our algorithm consistently performs well across different sampling intervals.\n\n<div style=\"text-align: center;\"><img src=\"imgs/img_in_chart_box_285_228_595_477.jpg\" alt=\"Image\" width=\"25%\" /></div>\n\n\n<div style=\"text-align: center;\"><img src=\"imgs/img_in_chart_box_609_236_909_474.jpg\" alt=\"Image\" width=\"24%\" /></div>\n\n\n<div style=\"text-align: center;\">Figure 13: The impact of sampling intervals. Left: DDIM model on CIFAR-10. Right: Diffusion Transformer on Imagenet. We find that adjusting the sampling interval does not significantly affect the accuracy.</div>\n\n\n<div style=\"text-align: center;\"><img src=\"imgs/img_in_chart_box_285_608_591_863.jpg\" alt=\"Image\" width=\"25%\" /></div>\n\n\n<div style=\"text-align: center;\"><img src=\"imgs/img_in_chart_box_618_612_922_860.jpg\" alt=\"Image\" width=\"24%\" /></div>\n\n\n<div style=\"text-align: center;\">Figure 14: The impact of sampling intervals on Stable Diffusion. We plot the AUC and ASR metrics, observe that different sampling intervals have minimal impact on it.</div>\n\n\nThe ROC curves We plot ROC curves for the DDIM train on CIFAR-10 and Diffusion Transformer train on ImageNet  $ 256 \\times 256 $ in Figure 15. The curves further demonstrate the effectiveness of our method.\n\n<div style=\"text-align: center;\"><img src=\"imgs/img_in_chart_box_304_1065_589_1313.jpg\" alt=\"Image\" width=\"23%\" /></div>\n\n\n<div style=\"text-align: center;\"><img src=\"imgs/img_in_chart_box_626_1062_912_1307.jpg\" alt=\"Image\" width=\"23%\" /></div>\n\n\n<div style=\"text-align: center;\">Figure 15: The ROC curves of various setups. Left: DDIM model on CIFAR-10. Right: Diffusion Transformer on ImageNet  $ 256 \\times 256 $. The curves show that our algorithm outperforms the baseline algorithms.</div>\n",
+    "images": {
+      "imgs/img_in_chart_box_285_228_595_477.jpg": "https://pplines-online.bj.bcebos.com/deploy/official/paddleocr/pp-ocr-vl-15//33d0f8f8-555e-40f7-93af-e94464bc5996/markdown_4/imgs/img_in_chart_box_285_228_595_477.jpg?authorization=bce-auth-v1%2FALTAKzReLNvew3ySINYJ0fuAMN%2F2026-04-05T13%3A44%3A17Z%2F-1%2F%2Fbda8951c49a6361551c1dbd751b5222fc4d325cebc579bc1ca03176bc14106df",
+      "imgs/img_in_chart_box_609_236_909_474.jpg": "https://pplines-online.bj.bcebos.com/deploy/official/paddleocr/pp-ocr-vl-15//33d0f8f8-555e-40f7-93af-e94464bc5996/markdown_4/imgs/img_in_chart_box_609_236_909_474.jpg?authorization=bce-auth-v1%2FALTAKzReLNvew3ySINYJ0fuAMN%2F2026-04-05T13%3A44%3A17Z%2F-1%2F%2F47fa2406bfcf5ce9f35548f48d41d729782886a19ce468fc471cd11e24c43d31",
+      "imgs/img_in_chart_box_285_608_591_863.jpg": "https://pplines-online.bj.bcebos.com/deploy/official/paddleocr/pp-ocr-vl-15//33d0f8f8-555e-40f7-93af-e94464bc5996/markdown_4/imgs/img_in_chart_box_285_608_591_863.jpg?authorization=bce-auth-v1%2FALTAKzReLNvew3ySINYJ0fuAMN%2F2026-04-05T13%3A44%3A17Z%2F-1%2F%2F8c5fe7dfd03ca6018993faf41a53b2d6d0b0575a011a58751fcf133c94007339",
+      "imgs/img_in_chart_box_618_612_922_860.jpg": "https://pplines-online.bj.bcebos.com/deploy/official/paddleocr/pp-ocr-vl-15//33d0f8f8-555e-40f7-93af-e94464bc5996/markdown_4/imgs/img_in_chart_box_618_612_922_860.jpg?authorization=bce-auth-v1%2FALTAKzReLNvew3ySINYJ0fuAMN%2F2026-04-05T13%3A44%3A17Z%2F-1%2F%2Fb3811929ca01358b4bbf7a02f500a2fadce5278badec1291881ad30b8a5393c6",
+      "imgs/img_in_chart_box_304_1065_589_1313.jpg": "https://pplines-online.bj.bcebos.com/deploy/official/paddleocr/pp-ocr-vl-15//33d0f8f8-555e-40f7-93af-e94464bc5996/markdown_4/imgs/img_in_chart_box_304_1065_589_1313.jpg?authorization=bce-auth-v1%2FALTAKzReLNvew3ySINYJ0fuAMN%2F2026-04-05T13%3A44%3A17Z%2F-1%2F%2Ffb86cf3701a3458f93482521cf97b52f87e23cfcc3b14a7983ad44024a001669",
+      "imgs/img_in_chart_box_626_1062_912_1307.jpg": "https://pplines-online.bj.bcebos.com/deploy/official/paddleocr/pp-ocr-vl-15//33d0f8f8-555e-40f7-93af-e94464bc5996/markdown_4/imgs/img_in_chart_box_626_1062_912_1307.jpg?authorization=bce-auth-v1%2FALTAKzReLNvew3ySINYJ0fuAMN%2F2026-04-05T13%3A44%3A17Z%2F-1%2F%2F7635ab8813358282fab466a4f09da2e382b6506065500d3e1773acac15f9be4a"
+    }
+  },
+  "outputImages": {
+    "layout_det_res": "https://pplines-online.bj.bcebos.com/deploy/official/paddleocr/pp-ocr-vl-15//33d0f8f8-555e-40f7-93af-e94464bc5996/layout_det_res_4.jpg?authorization=bce-auth-v1%2FALTAKzReLNvew3ySINYJ0fuAMN%2F2026-04-05T13%3A44%3A18Z%2F-1%2F%2Feb66c469c7040de61bd62d071e81e7793f4f6f038a3dca609cf2e5c152a6a546"
+  },
+  "inputImage": "https://pplines-online.bj.bcebos.com/deploy/official/paddleocr/pp-ocr-vl-15//33d0f8f8-555e-40f7-93af-e94464bc5996/input_img_4.jpg?authorization=bce-auth-v1%2FALTAKzReLNvew3ySINYJ0fuAMN%2F2026-04-05T13%3A44%3A18Z%2F-1%2F%2F7f7ebac1ceba8ddf90212e7104a32a27040da8143be90414ad5f234d08b84f7b"
+}

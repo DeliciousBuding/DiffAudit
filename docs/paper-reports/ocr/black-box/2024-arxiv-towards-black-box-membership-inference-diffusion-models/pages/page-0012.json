@@ -1,0 +1,677 @@
+{
+  "prunedResult": {
+    "page_count": 5,
+    "width": 1224,
+    "height": 1584,
+    "model_settings": {
+      "use_doc_preprocessor": true,
+      "use_layout_detection": true,
+      "use_chart_recognition": false,
+      "use_seal_recognition": false,
+      "use_ocr_for_image_block": false,
+      "format_block_content": false,
+      "merge_layout_blocks": true,
+      "markdown_ignore_labels": [
+        "number",
+        "footnote",
+        "header",
+        "header_image",
+        "footer",
+        "footer_image",
+        "aside_text"
+      ],
+      "return_layout_polygon_points": true
+    },
+    "parsing_res_list": [
+      {
+        "block_label": "header",
+        "block_content": "Towards Black-Box Membership Inference Attack for Diffusion Models",
+        "block_bbox": [
+          310,
+          1,
+          912,
+          31
+        ],
+        "block_id": 0,
+        "block_order": null,
+        "group_id": 0,
+        "global_block_id": 208,
+        "global_group_id": 208,
+        "block_polygon_points": [
+          [
+            310.0,
+            1.0
+          ],
+          [
+            912.0,
+            1.0
+          ],
+          [
+            912.0,
+            31.0
+          ],
+          [
+            310.0,
+            31.0
+          ]
+        ]
+      },
+      {
+        "block_label": "paragraph_title",
+        "block_content": "A. Datasets, Models and Hyperparameters",
+        "block_bbox": [
+          83,
+          54,
+          561,
+          93
+        ],
+        "block_id": 1,
+        "block_order": 1,
+        "group_id": 1,
+        "global_block_id": 209,
+        "global_group_id": 209,
+        "block_polygon_points": [
+          [
+            82.4833755493164,
+            56.79584503173828
+          ],
+          [
+            559.938232421875,
+            49.789161682128906
+          ],
+          [
+            560.454833984375,
+            84.99332427978516
+          ],
+          [
+            83.0,
+            92.00000762939453
+          ]
+        ]
+      },
+      {
+        "block_label": "text",
+        "block_content": "We use NVIDIA RTX 6000 graphics cards for all our experiments.",
+        "block_bbox": [
+          84,
+          103,
+          665,
+          138
+        ],
+        "block_id": 2,
+        "block_order": 2,
+        "group_id": 2,
+        "global_block_id": 210,
+        "global_group_id": 210,
+        "block_polygon_points": [
+          [
+            84.0,
+            103.0
+          ],
+          [
+            665.0,
+            103.0
+          ],
+          [
+            665.0,
+            138.0
+          ],
+          [
+            84.0,
+            138.0
+          ]
+        ]
+      },
+      {
+        "block_label": "text",
+        "block_content": "For DDIM, we follow the training hyperparameters of (Duan et al., 2023) to train a DDIM model on the CIFAR-10/100 (Krizhevsky et al., 2009) and STL10-Unlabeled (Coates et al., 2011) datasets, using 1000 image generation steps ( $ T = 1000 $) and a sampling interval of  $ k = 100 $. The training iterations are set to 800,000. For all the datasets, we randomly select 50% of the training samples to train the model and designate them as members. The remaining 50% of the training samples are used as nonmembers.",
+        "block_bbox": [
+          84,
+          148,
+          1135,
+          295
+        ],
+        "block_id": 3,
+        "block_order": 3,
+        "group_id": 3,
+        "global_block_id": 211,
+        "global_group_id": 211,
+        "block_polygon_points": [
+          [
+            84.0,
+            148.0
+          ],
+          [
+            1135.0,
+            148.0
+          ],
+          [
+            1135.0,
+            295.0
+          ],
+          [
+            84.0,
+            295.0
+          ]
+        ]
+      },
+      {
+        "block_label": "text",
+        "block_content": "We use (Matsumoto et al., 2023; Duan et al., 2023; Kong et al., 2023) as our baseline methods. We use their official code repositories and apply the optimal hyperparameters from their papers. For our algorithm, we fix the diffusion step at t = 200 and independently call the variation API 10 times to average the output images as  $ \\hat{x} $.",
+        "block_bbox": [
+          84,
+          297,
+          1131,
+          390
+        ],
+        "block_id": 4,
+        "block_order": 4,
+        "group_id": 4,
+        "global_block_id": 212,
+        "global_group_id": 212,
+        "block_polygon_points": [
+          [
+            83.35745239257812,
+            305.00482177734375
+          ],
+          [
+            1130.0001220703125,
+            297.0
+          ],
+          [
+            1130.6424560546875,
+            380.9951171875
+          ],
+          [
+            83.999755859375,
+            388.99993896484375
+          ]
+        ]
+      },
+      {
+        "block_label": "text",
+        "block_content": "For the Diffusion Transformers, we train the model on the ImageNet (Deng et al., 2009) dataset, using 1000 image generation steps (T = 1000), while for other training hyperparameters, we follow the setup of (Peebles & Xie, 2023). We randomly select 100,000 images from the ImageNet training set to train the model at resolutions of either 128 × 128 or 256 × 256. For the 128 × 128 image size, we use 200,000 training iterations. For the 256 × 256 image size, we use 300,000 training iterations. These numbers of training iterations are chosen to ensure the generation of high-quality images.",
+        "block_bbox": [
+          85,
+          392,
+          1131,
+          539
+        ],
+        "block_id": 5,
+        "block_order": 5,
+        "group_id": 5,
+        "global_block_id": 213,
+        "global_group_id": 213,
+        "block_polygon_points": [
+          [
+            84.12255096435547,
+            407.005859375
+          ],
+          [
+            1130.0,
+            400.00006103515625
+          ],
+          [
+            1130.87744140625,
+            530.9942016601562
+          ],
+          [
+            85.0,
+            538.0
+          ]
+        ]
+      },
+      {
+        "block_label": "text",
+        "block_content": "For the membership inference attack setup, 1000 images are randomly selected from our training set as the member set, and another 1000 images are randomly chosen from the ImageNet validation set as the non-member set. We fix the diffusion step at t = 100 and the DDIM step at k = 50, and independently call the variation API 10 times to average the output images as  $ \\hat{x} $.",
+        "block_bbox": [
+          84,
+          539,
+          1131,
+          662
+        ],
+        "block_id": 6,
+        "block_order": 6,
+        "group_id": 6,
+        "global_block_id": 214,
+        "global_group_id": 214,
+        "block_polygon_points": [
+          [
+            82.46578979492188,
+            554.0220947265625
+          ],
+          [
+            1130.0,
+            538.9998779296875
+          ],
+          [
+            1131.5340576171875,
+            645.9779052734375
+          ],
+          [
+            83.9998779296875,
+            661.0001220703125
+          ]
+        ]
+      },
+      {
+        "block_label": "text",
+        "block_content": "We also use (Matsumoto et al., 2023; Duan et al., 2023; Kong et al., 2023) as our baseline methods. Since these papers do not study Diffusion Transformers, we adapt their algorithms to the DiT framework for evaluation. We fix the DDIM step at  $ k = 50 $ and choose diffusion steps  $ t \\in [50, 100, 150, 200, 250, 300] $, recording their optimal solutions under these different hyperparameter settings.",
+        "block_bbox": [
+          85,
+          658,
+          1137,
+          787
+        ],
+        "block_id": 7,
+        "block_order": 7,
+        "group_id": 7,
+        "global_block_id": 215,
+        "global_group_id": 215,
+        "block_polygon_points": [
+          [
+            83.29370880126953,
+            673.9346923828125
+          ],
+          [
+            1134.2938232421875,
+            657.9345703125
+          ],
+          [
+            1135.9998779296875,
+            770.0
+          ],
+          [
+            84.999755859375,
+            786.0001220703125
+          ]
+        ]
+      },
+      {
+        "block_label": "text",
+        "block_content": "For the Stable Diffusion experiments, we use the original Stable Diffusion model, i.e., stable-diffusion-v1-4 provided by Huggingface, without further fine-tuning or modifications. We follow the experimental setup of (Duan et al., 2023; Kong et al., 2023), using an image generation step of T = 1000 and a sampling interval of k = 10. We use the LAION-5B dataset (Schuhmann et al., 2022) as the member set and COCO2017-val (Lin et al., 2014) as the non-member set. We randomly select 2500 images from each dataset. We test two scenarios: knowing the ground truth text, denoted as Laion; and generating text through BLIP (Li et al., 2022), denoted as Laion with BLIP.",
+        "block_bbox": [
+          84,
+          782,
+          1143,
+          957
+        ],
+        "block_id": 8,
+        "block_order": 8,
+        "group_id": 8,
+        "global_block_id": 216,
+        "global_group_id": 216,
+        "block_polygon_points": [
+          [
+            81.64698028564453,
+            790.0332641601562
+          ],
+          [
+            1139.64697265625,
+            775.0333862304688
+          ],
+          [
+            1142.0,
+            941.0000610351562
+          ],
+          [
+            84.0,
+            955.9999389648438
+          ]
+        ]
+      },
+      {
+        "block_label": "text",
+        "block_content": "We use the hyperparameters from the papers (Duan et al., 2023; Kong et al., 2023) to run the baseline methods. For our algorithms REDIFFUSE, we fix the diffusion step at t = 10 to call the variation API and directly use the SSIM metric (Wang et al., 2004) to measure the differences between two images. Other hyperparameters remain the same as in the baseline methods.",
+        "block_bbox": [
+          80,
+          957,
+          1146,
+          1079
+        ],
+        "block_id": 9,
+        "block_order": 9,
+        "group_id": 9,
+        "global_block_id": 217,
+        "global_group_id": 217,
+        "block_polygon_points": [
+          [
+            79.0534896850586,
+            966.0079956054688
+          ],
+          [
+            1145.0,
+            957.0000610351562
+          ],
+          [
+            1145.95263671875,
+            1069.738525390625
+          ],
+          [
+            80.006103515625,
+            1078.746337890625
+          ]
+        ]
+      }
+    ],
+    "doc_preprocessor_res": {
+      "model_settings": {
+        "use_doc_orientation_classify": true,
+        "use_doc_unwarping": true
+      },
+      "angle": 0
+    },
+    "layout_det_res": {
+      "boxes": [
+        {
+          "cls_id": 12,
+          "label": "header",
+          "score": 0.8724256157875061,
+          "coordinate": [
+            310,
+            1,
+            912,
+            31
+          ],
+          "order": null,
+          "polygon_points": [
+            [
+              310.0,
+              1.0
+            ],
+            [
+              912.0,
+              1.0
+            ],
+            [
+              912.0,
+              31.0
+            ],
+            [
+              310.0,
+              31.0
+            ]
+          ]
+        },
+        {
+          "cls_id": 17,
+          "label": "paragraph_title",
+          "score": 0.8862105011940002,
+          "coordinate": [
+            83,
+            54,
+            561,
+            93
+          ],
+          "order": 1,
+          "polygon_points": [
+            [
+              82.4833755493164,
+              56.79584503173828
+            ],
+            [
+              559.938232421875,
+              49.789161682128906
+            ],
+            [
+              560.454833984375,
+              84.99332427978516
+            ],
+            [
+              83.0,
+              92.00000762939453
+            ]
+          ]
+        },
+        {
+          "cls_id": 22,
+          "label": "text",
+          "score": 0.8293388485908508,
+          "coordinate": [
+            84,
+            103,
+            665,
+            138
+          ],
+          "order": 2,
+          "polygon_points": [
+            [
+              84.0,
+              103.0
+            ],
+            [
+              665.0,
+              103.0
+            ],
+            [
+              665.0,
+              138.0
+            ],
+            [
+              84.0,
+              138.0
+            ]
+          ]
+        },
+        {
+          "cls_id": 22,
+          "label": "text",
+          "score": 0.9453376531600952,
+          "coordinate": [
+            84,
+            148,
+            1135,
+            295
+          ],
+          "order": 3,
+          "polygon_points": [
+            [
+              84.0,
+              148.0
+            ],
+            [
+              1135.0,
+              148.0
+            ],
+            [
+              1135.0,
+              295.0
+            ],
+            [
+              84.0,
+              295.0
+            ]
+          ]
+        },
+        {
+          "cls_id": 22,
+          "label": "text",
+          "score": 0.9309930801391602,
+          "coordinate": [
+            84,
+            297,
+            1131,
+            390
+          ],
+          "order": 4,
+          "polygon_points": [
+            [
+              83.35745239257812,
+              305.00482177734375
+            ],
+            [
+              1130.0001220703125,
+              297.0
+            ],
+            [
+              1130.6424560546875,
+              380.9951171875
+            ],
+            [
+              83.999755859375,
+              388.99993896484375
+            ]
+          ]
+        },
+        {
+          "cls_id": 22,
+          "label": "text",
+          "score": 0.9435648918151855,
+          "coordinate": [
+            85,
+            392,
+            1131,
+            539
+          ],
+          "order": 5,
+          "polygon_points": [
+            [
+              84.12255096435547,
+              407.005859375
+            ],
+            [
+              1130.0,
+              400.00006103515625
+            ],
+            [
+              1130.87744140625,
+              530.9942016601562
+            ],
+            [
+              85.0,
+              538.0
+            ]
+          ]
+        },
+        {
+          "cls_id": 22,
+          "label": "text",
+          "score": 0.9318143129348755,
+          "coordinate": [
+            84,
+            539,
+            1131,
+            662
+          ],
+          "order": 6,
+          "polygon_points": [
+            [
+              82.46578979492188,
+              554.0220947265625
+            ],
+            [
+              1130.0,
+              538.9998779296875
+            ],
+            [
+              1131.5340576171875,
+              645.9779052734375
+            ],
+            [
+              83.9998779296875,
+              661.0001220703125
+            ]
+          ]
+        },
+        {
+          "cls_id": 22,
+          "label": "text",
+          "score": 0.9381824135780334,
+          "coordinate": [
+            85,
+            658,
+            1137,
+            787
+          ],
+          "order": 7,
+          "polygon_points": [
+            [
+              83.29370880126953,
+              673.9346923828125
+            ],
+            [
+              1134.2938232421875,
+              657.9345703125
+            ],
+            [
+              1135.9998779296875,
+              770.0
+            ],
+            [
+              84.999755859375,
+              786.0001220703125
+            ]
+          ]
+        },
+        {
+          "cls_id": 22,
+          "label": "text",
+          "score": 0.952284038066864,
+          "coordinate": [
+            84,
+            782,
+            1143,
+            957
+          ],
+          "order": 8,
+          "polygon_points": [
+            [
+              81.64698028564453,
+              790.0332641601562
+            ],
+            [
+              1139.64697265625,
+              775.0333862304688
+            ],
+            [
+              1142.0,
+              941.0000610351562
+            ],
+            [
+              84.0,
+              955.9999389648438
+            ]
+          ]
+        },
+        {
+          "cls_id": 22,
+          "label": "text",
+          "score": 0.940440833568573,
+          "coordinate": [
+            80,
+            957,
+            1146,
+            1079
+          ],
+          "order": 9,
+          "polygon_points": [
+            [
+              79.0534896850586,
+              966.0079956054688
+            ],
+            [
+              1145.0,
+              957.0000610351562
+            ],
+            [
+              1145.95263671875,
+              1069.738525390625
+            ],
+            [
+              80.006103515625,
+              1078.746337890625
+            ]
+          ]
+        }
+      ]
+    }
+  },
+  "markdown": {
+    "text": "### A. Datasets, Models and Hyperparameters\n\nWe use NVIDIA RTX 6000 graphics cards for all our experiments.\n\nFor DDIM, we follow the training hyperparameters of (Duan et al., 2023) to train a DDIM model on the CIFAR-10/100 (Krizhevsky et al., 2009) and STL10-Unlabeled (Coates et al., 2011) datasets, using 1000 image generation steps ( $ T = 1000 $) and a sampling interval of  $ k = 100 $. The training iterations are set to 800,000. For all the datasets, we randomly select 50% of the training samples to train the model and designate them as members. The remaining 50% of the training samples are used as nonmembers.\n\nWe use (Matsumoto et al., 2023; Duan et al., 2023; Kong et al., 2023) as our baseline methods. We use their official code repositories and apply the optimal hyperparameters from their papers. For our algorithm, we fix the diffusion step at t = 200 and independently call the variation API 10 times to average the output images as  $ \\hat{x} $.\n\nFor the Diffusion Transformers, we train the model on the ImageNet (Deng et al., 2009) dataset, using 1000 image generation steps (T = 1000), while for other training hyperparameters, we follow the setup of (Peebles & Xie, 2023). We randomly select 100,000 images from the ImageNet training set to train the model at resolutions of either 128 × 128 or 256 × 256. For the 128 × 128 image size, we use 200,000 training iterations. For the 256 × 256 image size, we use 300,000 training iterations. These numbers of training iterations are chosen to ensure the generation of high-quality images.\n\nFor the membership inference attack setup, 1000 images are randomly selected from our training set as the member set, and another 1000 images are randomly chosen from the ImageNet validation set as the non-member set. We fix the diffusion step at t = 100 and the DDIM step at k = 50, and independently call the variation API 10 times to average the output images as  $ \\hat{x} $.\n\nWe also use (Matsumoto et al., 2023; Duan et al., 2023; Kong et al., 2023) as our baseline methods. Since these papers do not study Diffusion Transformers, we adapt their algorithms to the DiT framework for evaluation. We fix the DDIM step at  $ k = 50 $ and choose diffusion steps  $ t \\in [50, 100, 150, 200, 250, 300] $, recording their optimal solutions under these different hyperparameter settings.\n\nFor the Stable Diffusion experiments, we use the original Stable Diffusion model, i.e., stable-diffusion-v1-4 provided by Huggingface, without further fine-tuning or modifications. We follow the experimental setup of (Duan et al., 2023; Kong et al., 2023), using an image generation step of T = 1000 and a sampling interval of k = 10. We use the LAION-5B dataset (Schuhmann et al., 2022) as the member set and COCO2017-val (Lin et al., 2014) as the non-member set. We randomly select 2500 images from each dataset. We test two scenarios: knowing the ground truth text, denoted as Laion; and generating text through BLIP (Li et al., 2022), denoted as Laion with BLIP.\n\nWe use the hyperparameters from the papers (Duan et al., 2023; Kong et al., 2023) to run the baseline methods. For our algorithms REDIFFUSE, we fix the diffusion step at t = 10 to call the variation API and directly use the SSIM metric (Wang et al., 2004) to measure the differences between two images. Other hyperparameters remain the same as in the baseline methods.",
+    "images": {}
+  },
+  "outputImages": {
+    "layout_det_res": "https://pplines-online.bj.bcebos.com/deploy/official/paddleocr/pp-ocr-vl-15//33d0f8f8-555e-40f7-93af-e94464bc5996/layout_det_res_1.jpg?authorization=bce-auth-v1%2FALTAKzReLNvew3ySINYJ0fuAMN%2F2026-04-05T13%3A44%3A13Z%2F-1%2F%2F325a266c4e690c9e2029566ac4d6ecf9808f871362338576980982c6ab24b4fc"
+  },
+  "inputImage": "https://pplines-online.bj.bcebos.com/deploy/official/paddleocr/pp-ocr-vl-15//33d0f8f8-555e-40f7-93af-e94464bc5996/input_img_1.jpg?authorization=bce-auth-v1%2FALTAKzReLNvew3ySINYJ0fuAMN%2F2026-04-05T13%3A44%3A13Z%2F-1%2F%2Fed121d25131ce4d5da4130a193b24da9f2401efb2f027293efb247fa9329d413"
+}

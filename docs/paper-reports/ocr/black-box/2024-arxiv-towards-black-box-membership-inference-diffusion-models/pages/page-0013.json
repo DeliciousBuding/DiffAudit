@@ -1,0 +1,808 @@
+{
+  "prunedResult": {
+    "page_count": 5,
+    "width": 1224,
+    "height": 1584,
+    "model_settings": {
+      "use_doc_preprocessor": true,
+      "use_layout_detection": true,
+      "use_chart_recognition": false,
+      "use_seal_recognition": false,
+      "use_ocr_for_image_block": false,
+      "format_block_content": false,
+      "merge_layout_blocks": true,
+      "markdown_ignore_labels": [
+        "number",
+        "footnote",
+        "header",
+        "header_image",
+        "footer",
+        "footer_image",
+        "aside_text"
+      ],
+      "return_layout_polygon_points": true
+    },
+    "parsing_res_list": [
+      {
+        "block_label": "header",
+        "block_content": "Towards Black-Box  $ \\underline{\\text{Membership Inference}} $ Attack for Diffusion Models",
+        "block_bbox": [
+          309,
+          0,
+          917,
+          31
+        ],
+        "block_id": 0,
+        "block_order": null,
+        "group_id": 0,
+        "global_block_id": 218,
+        "global_group_id": 218,
+        "block_polygon_points": [
+          [
+            316.06927490234375,
+            -5.937523365020752
+          ],
+          [
+            916.3375854492188,
+            1.0656051635742188
+          ],
+          [
+            916.0000610351562,
+            29.999996185302734
+          ],
+          [
+            315.73175048828125,
+            22.996868133544922
+          ]
+        ]
+      },
+      {
+        "block_label": "paragraph_title",
+        "block_content": "B. More Experiment Results",
+        "block_bbox": [
+          74,
+          45,
+          409,
+          78
+        ],
+        "block_id": 1,
+        "block_order": 1,
+        "group_id": 1,
+        "global_block_id": 219,
+        "global_group_id": 219,
+        "block_polygon_points": [
+          [
+            74.0,
+            45.0
+          ],
+          [
+            409.0,
+            45.0
+          ],
+          [
+            409.0,
+            78.0
+          ],
+          [
+            74.0,
+            78.0
+          ]
+        ]
+      },
+      {
+        "block_label": "text",
+        "block_content": "In this section, we show other experiment results which is not in our main paper. We conduct more ablation studies.",
+        "block_bbox": [
+          74,
+          91,
+          1086,
+          133
+        ],
+        "block_id": 2,
+        "block_order": 2,
+        "group_id": 2,
+        "global_block_id": 220,
+        "global_group_id": 220,
+        "block_polygon_points": [
+          [
+            73.99996948242188,
+            98.0
+          ],
+          [
+            1085.1868896484375,
+            105.00128936767578
+          ],
+          [
+            1085.0,
+            132.0
+          ],
+          [
+            73.81307983398438,
+            124.99871063232422
+          ]
+        ]
+      },
+      {
+        "block_label": "text",
+        "block_content": "The Impact of Average Numbers We use different average numbers n and test the influence on the results. Besides the figures of AUC in the main paper, the figures of ASR of DDIM and Diffusion Transformer are also plotted in Figure 7. In addition, we plot the figures of AUC and ASR for Stable Diffusion in Figure 8. We observe that in the DDIM and Diffusion Transformer setup, averaging the images from multiple independent samples as the output further improves accuracy. In the stable diffusion setup, since the image size in the dataset is larger (512x512), the reconstructed images are more stable and not influenced by perturbations at specific coordinates. Therefore, averaging multiple images is not necessary.",
+        "block_bbox": [
+          79,
+          180,
+          1139,
+          359
+        ],
+        "block_id": 3,
+        "block_order": 3,
+        "group_id": 3,
+        "global_block_id": 221,
+        "global_group_id": 221,
+        "block_polygon_points": [
+          [
+            79.0,
+            180.0
+          ],
+          [
+            1139.2840576171875,
+            188.00970458984375
+          ],
+          [
+            1137.9998779296875,
+            358.0
+          ],
+          [
+            77.7158203125,
+            349.99029541015625
+          ]
+        ]
+      },
+      {
+        "block_label": "chart",
+        "block_content": "",
+        "block_bbox": [
+          249,
+          418,
+          593,
+          698
+        ],
+        "block_id": 4,
+        "block_order": null,
+        "group_id": 4,
+        "global_block_id": 222,
+        "global_group_id": 222,
+        "block_polygon_points": [
+          [
+            249.0,
+            418.0
+          ],
+          [
+            593.0,
+            418.0
+          ],
+          [
+            593.0,
+            698.0
+          ],
+          [
+            249.0,
+            698.0
+          ]
+        ]
+      },
+      {
+        "block_label": "chart",
+        "block_content": "",
+        "block_bbox": [
+          611,
+          423,
+          950,
+          698
+        ],
+        "block_id": 5,
+        "block_order": null,
+        "group_id": 5,
+        "global_block_id": 223,
+        "global_group_id": 223,
+        "block_polygon_points": [
+          [
+            611.0,
+            423.0
+          ],
+          [
+            950.0,
+            423.0
+          ],
+          [
+            950.0,
+            698.0
+          ],
+          [
+            611.0,
+            698.0
+          ]
+        ]
+      },
+      {
+        "block_label": "figure_title",
+        "block_content": "Figure 7: The impact of average numbers. Left: DDIM model on CIFAR-10. Right: Diffusion Transformer model on Imagenet. Averaging can further improve the performance of our algorithm.",
+        "block_bbox": [
+          87,
+          718,
+          1132,
+          776
+        ],
+        "block_id": 6,
+        "block_order": null,
+        "group_id": 6,
+        "global_block_id": 224,
+        "global_group_id": 224,
+        "block_polygon_points": [
+          [
+            87.0,
+            718.0
+          ],
+          [
+            1132.0,
+            718.0
+          ],
+          [
+            1132.0,
+            776.0
+          ],
+          [
+            87.0,
+            776.0
+          ]
+        ]
+      },
+      {
+        "block_label": "chart",
+        "block_content": "",
+        "block_bbox": [
+          255,
+          890,
+          590,
+          1168
+        ],
+        "block_id": 7,
+        "block_order": null,
+        "group_id": 7,
+        "global_block_id": 225,
+        "global_group_id": 225,
+        "block_polygon_points": [
+          [
+            255.0,
+            890.0
+          ],
+          [
+            590.0,
+            890.0
+          ],
+          [
+            590.0,
+            1168.0
+          ],
+          [
+            255.0,
+            1168.0
+          ]
+        ]
+      },
+      {
+        "block_label": "chart",
+        "block_content": "",
+        "block_bbox": [
+          613,
+          900,
+          947,
+          1165
+        ],
+        "block_id": 8,
+        "block_order": null,
+        "group_id": 8,
+        "global_block_id": 226,
+        "global_group_id": 226,
+        "block_polygon_points": [
+          [
+            613.0,
+            900.0
+          ],
+          [
+            947.0,
+            900.0
+          ],
+          [
+            947.0,
+            1165.0
+          ],
+          [
+            613.0,
+            1165.0
+          ]
+        ]
+      },
+      {
+        "block_label": "figure_title",
+        "block_content": "Figure 8: The impact of average numbers on Stable Diffusion. We plot the AUC and ASR metrics, and averaging does not improve performance.",
+        "block_bbox": [
+          87,
+          1185,
+          1130,
+          1243
+        ],
+        "block_id": 9,
+        "block_order": null,
+        "group_id": 9,
+        "global_block_id": 227,
+        "global_group_id": 227,
+        "block_polygon_points": [
+          [
+            87.0,
+            1185.0
+          ],
+          [
+            1130.0,
+            1185.0
+          ],
+          [
+            1130.0,
+            1243.0
+          ],
+          [
+            87.0,
+            1243.0
+          ]
+        ]
+      },
+      {
+        "block_label": "text",
+        "block_content": "The Impact of Diffusion Steps We adjust the diffusion step t to examine its impact on the results. We train the DDIM model on CIFAR100 (Figure 9), STL10 (Figure 10) dataset, Diffusion Transformer on the Imagenet  $ 256 \\times 256 $ (Figure 11) dataset and Stable Diffusion on Laion5 dataset (Figure 12). From the results, we see that our algorithm can achieve high performance over a wide range of diffusion steps. This opens up possibilities for practical applications in real-world scenarios.",
+        "block_bbox": [
+          86,
+          1340,
+          1132,
+          1484
+        ],
+        "block_id": 10,
+        "block_order": 4,
+        "group_id": 10,
+        "global_block_id": 228,
+        "global_group_id": 228,
+        "block_polygon_points": [
+          [
+            86.0,
+            1340.0
+          ],
+          [
+            1132.033447265625,
+            1348.0078125
+          ],
+          [
+            1131.0,
+            1483.0
+          ],
+          [
+            84.966552734375,
+            1474.9921875
+          ]
+        ]
+      },
+      {
+        "block_label": "number",
+        "block_content": "13",
+        "block_bbox": [
+          594,
+          1511,
+          621,
+          1534
+        ],
+        "block_id": 11,
+        "block_order": null,
+        "group_id": 11,
+        "global_block_id": 229,
+        "global_group_id": 229,
+        "block_polygon_points": [
+          [
+            594.0,
+            1511.0
+          ],
+          [
+            620.0,
+            1511.0
+          ],
+          [
+            620.0,
+            1533.0
+          ],
+          [
+            594.0,
+            1533.0
+          ]
+        ]
+      }
+    ],
+    "doc_preprocessor_res": {
+      "model_settings": {
+        "use_doc_orientation_classify": true,
+        "use_doc_unwarping": true
+      },
+      "angle": 0
+    },
+    "layout_det_res": {
+      "boxes": [
+        {
+          "cls_id": 12,
+          "label": "header",
+          "score": 0.8591766357421875,
+          "coordinate": [
+            309,
+            0,
+            917,
+            31
+          ],
+          "order": null,
+          "polygon_points": [
+            [
+              316.06927490234375,
+              -5.937523365020752
+            ],
+            [
+              916.3375854492188,
+              1.0656051635742188
+            ],
+            [
+              916.0000610351562,
+              29.999996185302734
+            ],
+            [
+              315.73175048828125,
+              22.996868133544922
+            ]
+          ]
+        },
+        {
+          "cls_id": 17,
+          "label": "paragraph_title",
+          "score": 0.8731248378753662,
+          "coordinate": [
+            74,
+            45,
+            409,
+            78
+          ],
+          "order": 1,
+          "polygon_points": [
+            [
+              74.0,
+              45.0
+            ],
+            [
+              409.0,
+              45.0
+            ],
+            [
+              409.0,
+              78.0
+            ],
+            [
+              74.0,
+              78.0
+            ]
+          ]
+        },
+        {
+          "cls_id": 22,
+          "label": "text",
+          "score": 0.8774796724319458,
+          "coordinate": [
+            74,
+            91,
+            1086,
+            133
+          ],
+          "order": 2,
+          "polygon_points": [
+            [
+              73.99996948242188,
+              98.0
+            ],
+            [
+              1085.1868896484375,
+              105.00128936767578
+            ],
+            [
+              1085.0,
+              132.0
+            ],
+            [
+              73.81307983398438,
+              124.99871063232422
+            ]
+          ]
+        },
+        {
+          "cls_id": 22,
+          "label": "text",
+          "score": 0.9393930435180664,
+          "coordinate": [
+            79,
+            180,
+            1139,
+            359
+          ],
+          "order": 3,
+          "polygon_points": [
+            [
+              79.0,
+              180.0
+            ],
+            [
+              1139.2840576171875,
+              188.00970458984375
+            ],
+            [
+              1137.9998779296875,
+              358.0
+            ],
+            [
+              77.7158203125,
+              349.99029541015625
+            ]
+          ]
+        },
+        {
+          "cls_id": 3,
+          "label": "chart",
+          "score": 0.8930503129959106,
+          "coordinate": [
+            249,
+            418,
+            593,
+            698
+          ],
+          "order": null,
+          "polygon_points": [
+            [
+              249.0,
+              418.0
+            ],
+            [
+              593.0,
+              418.0
+            ],
+            [
+              593.0,
+              698.0
+            ],
+            [
+              249.0,
+              698.0
+            ]
+          ]
+        },
+        {
+          "cls_id": 3,
+          "label": "chart",
+          "score": 0.8967580199241638,
+          "coordinate": [
+            611,
+            423,
+            950,
+            698
+          ],
+          "order": null,
+          "polygon_points": [
+            [
+              611.0,
+              423.0
+            ],
+            [
+              950.0,
+              423.0
+            ],
+            [
+              950.0,
+              698.0
+            ],
+            [
+              611.0,
+              698.0
+            ]
+          ]
+        },
+        {
+          "cls_id": 7,
+          "label": "figure_title",
+          "score": 0.9098824262619019,
+          "coordinate": [
+            87,
+            718,
+            1132,
+            776
+          ],
+          "order": null,
+          "polygon_points": [
+            [
+              87.0,
+              718.0
+            ],
+            [
+              1132.0,
+              718.0
+            ],
+            [
+              1132.0,
+              776.0
+            ],
+            [
+              87.0,
+              776.0
+            ]
+          ]
+        },
+        {
+          "cls_id": 3,
+          "label": "chart",
+          "score": 0.8634843230247498,
+          "coordinate": [
+            255,
+            890,
+            590,
+            1168
+          ],
+          "order": null,
+          "polygon_points": [
+            [
+              255.0,
+              890.0
+            ],
+            [
+              590.0,
+              890.0
+            ],
+            [
+              590.0,
+              1168.0
+            ],
+            [
+              255.0,
+              1168.0
+            ]
+          ]
+        },
+        {
+          "cls_id": 3,
+          "label": "chart",
+          "score": 0.8911752104759216,
+          "coordinate": [
+            613,
+            900,
+            947,
+            1165
+          ],
+          "order": null,
+          "polygon_points": [
+            [
+              613.0,
+              900.0
+            ],
+            [
+              947.0,
+              900.0
+            ],
+            [
+              947.0,
+              1165.0
+            ],
+            [
+              613.0,
+              1165.0
+            ]
+          ]
+        },
+        {
+          "cls_id": 7,
+          "label": "figure_title",
+          "score": 0.8734104037284851,
+          "coordinate": [
+            87,
+            1185,
+            1130,
+            1243
+          ],
+          "order": null,
+          "polygon_points": [
+            [
+              87.0,
+              1185.0
+            ],
+            [
+              1130.0,
+              1185.0
+            ],
+            [
+              1130.0,
+              1243.0
+            ],
+            [
+              87.0,
+              1243.0
+            ]
+          ]
+        },
+        {
+          "cls_id": 22,
+          "label": "text",
+          "score": 0.9255262613296509,
+          "coordinate": [
+            86,
+            1340,
+            1132,
+            1484
+          ],
+          "order": 4,
+          "polygon_points": [
+            [
+              86.0,
+              1340.0
+            ],
+            [
+              1132.033447265625,
+              1348.0078125
+            ],
+            [
+              1131.0,
+              1483.0
+            ],
+            [
+              84.966552734375,
+              1474.9921875
+            ]
+          ]
+        },
+        {
+          "cls_id": 16,
+          "label": "number",
+          "score": 0.7679904103279114,
+          "coordinate": [
+            594,
+            1511,
+            621,
+            1534
+          ],
+          "order": 5,
+          "polygon_points": [
+            [
+              594.0,
+              1511.0
+            ],
+            [
+              620.0,
+              1511.0
+            ],
+            [
+              620.0,
+              1533.0
+            ],
+            [
+              594.0,
+              1533.0
+            ]
+          ]
+        }
+      ]
+    }
+  },
+  "markdown": {
+    "text": "### B. More Experiment Results\n\nIn this section, we show other experiment results which is not in our main paper. We conduct more ablation studies.\n\nThe Impact of Average Numbers We use different average numbers n and test the influence on the results. Besides the figures of AUC in the main paper, the figures of ASR of DDIM and Diffusion Transformer are also plotted in Figure 7. In addition, we plot the figures of AUC and ASR for Stable Diffusion in Figure 8. We observe that in the DDIM and Diffusion Transformer setup, averaging the images from multiple independent samples as the output further improves accuracy. In the stable diffusion setup, since the image size in the dataset is larger (512x512), the reconstructed images are more stable and not influenced by perturbations at specific coordinates. Therefore, averaging multiple images is not necessary.\n\n<div style=\"text-align: center;\"><img src=\"imgs/img_in_chart_box_249_418_593_698.jpg\" alt=\"Image\" width=\"28%\" /></div>\n\n\n<div style=\"text-align: center;\"><img src=\"imgs/img_in_chart_box_611_423_950_698.jpg\" alt=\"Image\" width=\"27%\" /></div>\n\n\n<div style=\"text-align: center;\">Figure 7: The impact of average numbers. Left: DDIM model on CIFAR-10. Right: Diffusion Transformer model on Imagenet. Averaging can further improve the performance of our algorithm.</div>\n\n\n<div style=\"text-align: center;\"><img src=\"imgs/img_in_chart_box_255_890_590_1168.jpg\" alt=\"Image\" width=\"27%\" /></div>\n\n\n<div style=\"text-align: center;\"><img src=\"imgs/img_in_chart_box_613_900_947_1165.jpg\" alt=\"Image\" width=\"27%\" /></div>\n\n\n<div style=\"text-align: center;\">Figure 8: The impact of average numbers on Stable Diffusion. We plot the AUC and ASR metrics, and averaging does not improve performance.</div>\n\n\nThe Impact of Diffusion Steps We adjust the diffusion step t to examine its impact on the results. We train the DDIM model on CIFAR100 (Figure 9), STL10 (Figure 10) dataset, Diffusion Transformer on the Imagenet  $ 256 \\times 256 $ (Figure 11) dataset and Stable Diffusion on Laion5 dataset (Figure 12). From the results, we see that our algorithm can achieve high performance over a wide range of diffusion steps. This opens up possibilities for practical applications in real-world scenarios.",
+    "images": {
+      "imgs/img_in_chart_box_249_418_593_698.jpg": "https://pplines-online.bj.bcebos.com/deploy/official/paddleocr/pp-ocr-vl-15//33d0f8f8-555e-40f7-93af-e94464bc5996/markdown_2/imgs/img_in_chart_box_249_418_593_698.jpg?authorization=bce-auth-v1%2FALTAKzReLNvew3ySINYJ0fuAMN%2F2026-04-05T13%3A44%3A13Z%2F-1%2F%2Fc634efd9d03cbe6e69c45e7cdfe64b4c4d78da71d065a987d8442f8e3be9e14e",
+      "imgs/img_in_chart_box_611_423_950_698.jpg": "https://pplines-online.bj.bcebos.com/deploy/official/paddleocr/pp-ocr-vl-15//33d0f8f8-555e-40f7-93af-e94464bc5996/markdown_2/imgs/img_in_chart_box_611_423_950_698.jpg?authorization=bce-auth-v1%2FALTAKzReLNvew3ySINYJ0fuAMN%2F2026-04-05T13%3A44%3A13Z%2F-1%2F%2F37c37b88cabc5de331fa869cd1a9c32cf98b8494b29a7f51471288dcb1a2c6be",
+      "imgs/img_in_chart_box_255_890_590_1168.jpg": "https://pplines-online.bj.bcebos.com/deploy/official/paddleocr/pp-ocr-vl-15//33d0f8f8-555e-40f7-93af-e94464bc5996/markdown_2/imgs/img_in_chart_box_255_890_590_1168.jpg?authorization=bce-auth-v1%2FALTAKzReLNvew3ySINYJ0fuAMN%2F2026-04-05T13%3A44%3A14Z%2F-1%2F%2Fe1305093e1448fb1aff409e2caad54db7496db2d48ca3de5c454473eae9eb77c",
+      "imgs/img_in_chart_box_613_900_947_1165.jpg": "https://pplines-online.bj.bcebos.com/deploy/official/paddleocr/pp-ocr-vl-15//33d0f8f8-555e-40f7-93af-e94464bc5996/markdown_2/imgs/img_in_chart_box_613_900_947_1165.jpg?authorization=bce-auth-v1%2FALTAKzReLNvew3ySINYJ0fuAMN%2F2026-04-05T13%3A44%3A14Z%2F-1%2F%2F6d67cd5cd49fb9d54a3bd195c37689f229648bef972539b8414a1daf21904824"
+    }
+  },
+  "outputImages": {
+    "layout_det_res": "https://pplines-online.bj.bcebos.com/deploy/official/paddleocr/pp-ocr-vl-15//33d0f8f8-555e-40f7-93af-e94464bc5996/layout_det_res_2.jpg?authorization=bce-auth-v1%2FALTAKzReLNvew3ySINYJ0fuAMN%2F2026-04-05T13%3A44%3A15Z%2F-1%2F%2Fca9c0a541f26c1a5b8a9d92d36c046c5ffc8dcb3c824b1f98ec9ef879a544f5d"
+  },
+  "inputImage": "https://pplines-online.bj.bcebos.com/deploy/official/paddleocr/pp-ocr-vl-15//33d0f8f8-555e-40f7-93af-e94464bc5996/input_img_2.jpg?authorization=bce-auth-v1%2FALTAKzReLNvew3ySINYJ0fuAMN%2F2026-04-05T13%3A44%3A15Z%2F-1%2F%2F49a957e87011a6139ba1b67815d57affbd26583b01d8c0e4f50ac1e23044a5db"
+}

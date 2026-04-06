@@ -11,10 +11,10 @@ An Efficient Membership Inference Attack for the Diffusion Model by Proximal Ini
 - 威胁模型类别：灰盒查询式成员推断攻击
 - 本地 PDF 路径：`D:/Code/DiffAudit/Project/references/materials/gray-box/2024-iclr-pia-proximal-initialization.pdf`
 - GitHub PDF 链接：[2024-iclr-pia-proximal-initialization.pdf](https://github.com/DeliciousBuding/DiffAudit/blob/main/references/materials/gray-box/2024-iclr-pia-proximal-initialization.pdf)
-- OCR 精修版链接：[2024-iclr-pia-proximal-initialization-refined.md](../markdown/gray-box/2024-iclr-pia-proximal-initialization/2024-iclr-pia-proximal-initialization-refined.md)
-- 飞书原生 PDF 获取方式：本轮仅处理本地文件，未做飞书同步
+- OCR 精修版链接：[OCR精修版：An Efficient Membership Inference Attack for the Diffusion Model by Proximal Initialization](https://www.feishu.cn/docx/CVdhdm80qocjBPxNi87cwhARnuf)
+- 飞书原生 PDF：[2024-iclr-pia-proximal-initialization.pdf](https://ncn24qi9j5mt.feishu.cn/file/OALubF47DoG7UCxgFohcMwD6nDe)
 - 开源实现：[kong13661/PIA](https://github.com/kong13661/PIA)
-- 报告状态：本地展示稿初稿
+- 报告状态：已完成
 
 ## 1. 论文定位
 

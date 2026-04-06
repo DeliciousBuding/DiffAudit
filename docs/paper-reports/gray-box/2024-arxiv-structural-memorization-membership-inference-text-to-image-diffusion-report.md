@@ -11,10 +11,10 @@ Unveiling Structural Memorization: Structural Membership Inference Attack for Te
 - 威胁模型类别：灰盒成员推断，攻击者可访问目标文生图模型的编码器、解码器和前向扩散相关推理路径，但不依赖参数梯度
 - 本地 PDF 路径：`D:\Code\DiffAudit\Project\references\materials\gray-box\2024-arxiv-structural-memorization-membership-inference-text-to-image-diffusion.pdf`
 - GitHub PDF：[2024-arxiv-structural-memorization-membership-inference-text-to-image-diffusion.pdf](https://github.com/DeliciousBuding/DiffAudit/blob/main/references/materials/gray-box/2024-arxiv-structural-memorization-membership-inference-text-to-image-diffusion.pdf)
-- OCR/Markdown 精修版链接：[本地 Markdown 精修版](../markdown/gray-box/2024-arxiv-structural-memorization-membership-inference-text-to-image-diffusion/2024-arxiv-structural-memorization-membership-inference-text-to-image-diffusion-refined.md)
-- 飞书原生 PDF 获取方式：当前任务仅处理本地文件，未执行飞书同步；若后续需要线上附件，请以本地 PDF 为源文件补传
+- OCR/Markdown 精修版链接：[OCR精修版：Unveiling Structural Memorization: Structural Membership Inference Attack for Text-to-Image Diffusion Models](https://www.feishu.cn/docx/CYJ7dkLHioaEhyxBMyQcNGHHnKf)
+- 飞书原生 PDF：[2024-arxiv-structural-memorization-membership-inference-text-to-image-diffusion.pdf](https://ncn24qi9j5mt.feishu.cn/file/PtWkbsbUZody0Yxkmk9cfV5Tnjh)
 - 开源实现链接：暂未找到
-- 报告状态：本地展示稿
+- 报告状态：已完成
 
 ## 1. 论文定位
 

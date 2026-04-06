@@ -1,0 +1,898 @@
+        Towards Black-Box Membership Inference Attack for Diffusion Models
+
+
+                             Jingwei Li 1 2 Jing Dong 3 Tianxing He 1 2 Jingzhao Zhang 1 2
+
+
+                          Abstract                                  generation (Rombach et al., 2022; Yu et al., 2022; Nichol
+       Given the rising popularity of AI-generated art              et al., 2021) and image-to-image generation (Saharia et al.,
+       and the associated copyright concerns, identify-             2022a). This surge has given rise to powerful AI art models
+       ing whether an artwork was used to train a diffu-            such as DALL-E 2 (Ramesh et al., 2022), Stable Diffu-
+       sion model is an important research topic. The               sion (Rombach et al., 2022), and Imagen (Saharia et al.,
+       work approaches this problem from the member-                2022b). AI-generated art has a promising future and is
+       ship inference attack (MIA) perspective. We first            expected to have widespread impact.
+       identify the limitation of applying existing MIA             Effective training of diffusion models requires high-quality
+       methods for proprietary diffusion models: the                data. It is thus crucial to design an algorithm that can iden-
+       required access of internal U-nets. To address               tify whether a specific artwork has been used during the
+       the above problem, we introduce a novel mem-                 training of a model, thereby providing protection for these
+       bership inference attack method that uses only               artworks and detecting misuse of data. This is especially
+       the image-to-image variation API and operates                important due to the rapid growth of generative models,
+       without access to the model’s internal U-net. Our            which has raised concerns over intellectual property (IP)
+       method is based on the intuition that the model              rights, data privacy, and the ethical implications of training
+       can more easily obtain an unbiased noise predic-             on copyrighted or proprietary content without consent. As
+       tion estimate for images from the training set. By           these models are increasingly deployed across industries,
+       applying the API multiple times to the target im-            detecting whether a specific piece of content was used in
+       age, averaging the outputs, and comparing the                training can help prevent unauthorized use of artistic works,
+       result to the original image, our approach can               protecting creators’ copyrights and ownership rights. This
+       classify whether a sample was part of the training           is a classic problem in the field of machine learning, first
+       set. We validate our method using DDIM and                   introduced by Shokri et al. (2017) and named “membership
+       Stable Diffusion setups and further extend both              inference attack”.
+       our approach and existing algorithms to the Diffu-
+       sion Transformer architecture. Our experimental              A series of studies have been conducted on membership
+       results consistently outperform previous methods.            inference attacks against diffusion models. Hu & Pang
+                                                                    (2023) was the first to examine this issue, utilizing the loss
+                                                                    function values of diffusion models to determine whether
+                                                                    an image is in the training set. Duan et al. (2023) and Kong
+1. Introduction                                                     et al. (2023) extended this work by relaxing assumptions
+Recently, there has been a surge in the popularity of gener-        about the access requirements of the model.
+ative models, with diffusion models in particular, gaining
+                                                                    Despite great progress, previous methods are not yet ready
+huge attention within the AI community (Sohl-Dickstein
+                                                                    for MIA in proprietary diffusion models. Most existing
+et al., 2015; Song & Ermon, 2019; Song et al., 2020b).
+                                                                    approaches heavily rely on checking whether the U-net of
+These models have demonstrated remarkable capabilities
+                                                                    the model predicts noise accurately, which is not practical
+across various tasks, including unconditional image gener-
+                                                                    since most commercial diffusion models available today
+ation (Ho et al., 2020; Song et al., 2020a), text-to-image
+                                                                    offer only API access, while the U-net remains hidden.
+   1
+    Institute for Interdisciplinary Information Sciences, Ts-       To address the above issue, we propose a membership infer-
+inghua University 2 Shanghai Qizhi Institute 3 The Chinese
+University of Hong Kong.           Correspondence to: Jing-         ence attack method that relies on the variation API and does
+wei Li <ljw22@mails.tsinghua.edu.cn>, Jingzhao Zhang                not require access to the denoise model (e.g., U-net). We
+<jingzhaoz@mail.tsinghua.edu.cn>.                                   observe that if we alter an image using the target diffusion
+                                                                    model’s variation API, the sampling process will be cap-
+Proceedings of the 42 nd International Conference on Machine        tured by “a region of attraction” if the model has seen this
+Learning, Vancouver, Canada. PMLR 267, 2025. Copyright 2025
+by the author(s).                                                   image during training (illustrated in Figure 2). Based on the
+
+                                                                1
+                           Towards Black-Box Membership Inference Attack for Diffusion Models
+
+above observation, we propose the R E D IFFUSE algorithm             laws. Membership inference attacks, initially introduced
+for MIA with image-to-image variation API, and can detect            by Shokri et al. (2017), serve as an effective means to detect
+member images without accessing the denoise model. Our               potential misuse of data without proper authorization. Its
+main contributions are listed as follows:                            objective is to ascertain whether a particular data sample
+                                                                     participated in the training phase of a target model. This
+  1. We propose a membership inference attack method                 approach is instrumental in probing privacy breaches and
+     that does not require access to the model’s internal            identifying illicit data utilization. Researchers primarily fo-
+     structure. Our method only involves using the model’s           cus on membership inference attacks for classification mod-
+     variation API to alter an image and compare it with the         els (Salem et al., 2018; Yeom et al., 2018; Long et al., 2018;
+     original one. We name our method R E D IFFUSE.                  Li & Zhang, 2021), embedding models (Song & Raghu-
+                                                                     nathan, 2020; Duddu et al., 2020; Mahloujifar et al., 2021),
+  2. We evaluate our method using DDIM (Song et al.,                 and generative models (Hayes et al., 2017; Hilprecht et al.,
+     2020a) and Stable Diffusion (Rombach et al.,                    2019; Chen et al., 2020).
+     2022) models on classical datasets, including CI-
+                                                                     In the domain of membership inference attacks against dif-
+     FAR10/100 (Krizhevsky et al., 2009), STL10-
+                                                                     fusion models, Wu et al. (2022); Hu & Pang (2023) use
+     Unlabeled (Coates et al., 2011), LAION-5B (Schuh-
+                                                                     a white-box approach, which assumes access to the entire
+     mann et al., 2022), etc. Our method outperforms the
+                                                                     diffusion model and utilizes loss and likelihood to determine
+     previous methods.
+                                                                     whether a sample is in the training set. Duan et al. (2023);
+  3. We extend both existing algorithms and our own al-              Kong et al. (2023); Tang et al. (2023) have relaxed these re-
+     gorithm to the Diffusion Transformer (Peebles & Xie,            quirements, eliminating the need for the entire model. They
+     2023) architecture, implementing the membership in-             leverage the insight that samples within the training set yield
+     ference attack within this model framework for the              more accurate noise predictions, thereby achieving high ac-
+     first time. Experimental results demonstrate that our           curacy in membership inference attack tasks. However, they
+     algorithm is consistently effective.                            also require the outputs of the U-net, as it is necessary to
+                                                                     obtain the noise predictions of intermediate steps. Recently,
+                                                                     Pang & Wang (2023) proposed a black-box membership
+2. Related Works                                                     inference attack method against diffusion models. Their
+Diffusion Model The diffusion model, initially proposed              method identifies whether a specific image is in a finetuning
+by Sohl-Dickstein et al. (2015), has achieved remarkable re-         dataset of 100 images by calculating the difference between
+sults in producing high-quality samples across a variety             the generated image and the target image, using the corre-
+of domains. This ranges from image generation (Song                  sponding prompt as input. Their approach leverages the
+& Ermon, 2019; Song et al., 2020b; Dhariwal & Nichol,                model’s tendency to memorize finetuning images and gen-
+2021), audio synthesis (Popov et al., 2021; Kong et al., 2020;       erate similar outputs. In contrast, we focus on detecting
+Huang et al., 2022), and video generation (Ho et al., 2022a;b;       whether an image is in the pretraining dataset, where a pre-
+Wu et al., 2023), etc. Among existing diffusion models,              trained model often produces diverse outputs for the same
+the Denoising Diffusion Probabilistic Model (DDPM) (Ho               prompt, making detection more challenging.
+et al., 2020) is one of the most frequently adopted. This
+approach introduces a dual-phase process for image gen-              3. Preliminary
+eration: initially, a forward process gradually transforms           In this section, we begin by introducing the notations used
+training data into pure noise, followed by a reverse process         for several popular diffusion models. We first introduce
+that meticulously reconstructs the original data from this           the Denoising Diffusion Probabilistic Model (DDPM) (Ho
+noise. Building on this model, there have been numerous              et al., 2020). Then, we extend to the Denoising Diffusion
+follow-up studies, such as Stable Diffusion (Rombach et al.,         Implicit Model (DDIM) (Song et al., 2020a) and Stable
+2022), which compresses images into a latent space and               Diffusion (Rombach et al., 2022), which are variants of
+generates images based on text, and the Denoising Diffu-             DDPM used to accelerate image generation or generate
+sion Implicit Models (DDIM) (Song et al., 2020a), which              images grounded in text descriptions. Lastly, we discuss
+removes Gaussian randomness to accelerate the sampling               Diffusion Transformer (Peebles & Xie, 2023), a model
+generation process. These advancements demonstrate the               that replaces the U-net architecture with a transformer and
+versatility and potential of diffusion models.                       achieves higher-quality image generation.
+Data Safety and Membership Inference Attack In the                   Denoising Diffusion Probabilistic Model (DDPM) A
+era of big data, preserving data privacy is paramount. The           diffusion model provides a stochastic path between an image
+training of diffusion models may involve sensitive datasets          and noise. The forward process (denoted as q) iteratively
+like artists’ artworks, which are protected by copyright             incorporates Gaussian noise into an image, while the reverse
+
+                                                                 2
+                             Towards Black-Box Membership Inference Attack for Diffusion Models
+
+process (denoted as pθ ) gradually reconstructs the image            of previous membership inference attack methods. In our
+from noise.                                                          formulations, we assume DDIM as our target model. The
+                          p                                        formulations for DDPM are highly similar and we omit it
+      q(xt | xt−1 ) = N xt ; 1 − βt xt−1 , βt I ,                    for brevity. We will discuss the generalization to the latent
+                                                                     diffusion model in Section 4.3.
+     pθ (xt−1 | xt ) = N (xt−1 ; µθ (xt , t), Σθ (xt , t)) ,
+                                                                     4.1. The variation API for Diffusion Models
+where µθ (·) and Σθ (·) are the mean and covariance of the
+denoised image parameterized by the model parameters θ,              Most previous works on membership inference attacks
+and βt is a noise schedule that controls the amount of noise         against diffusion models aim to prevent data leakage and
+added at each step.                                                  hence rely on thresholding the model’s training loss. For
+                                                                     instance, Hu & Pang (2023) involves a direct comparison of
+Denoising Diffusion Implicit Model (DDIM) DDIM
+                                                                     image losses, while Duan et al. (2023); Kong et al. (2023)
+modifies the sampling process to improve efficiency while
+                                                                     evaluates the accuracy of the model’s noise prediction at
+maintaining high-quality image generation. Unlike DDPM,
+                                                                     initial or intermediate steps. However, the required access
+which requires a large number of denoising steps, DDIM
+                                                                     to the model’s internal U-net structure prevents applications
+uses a non-Markovian process to accelerate sampling.
+                                                                     from copyright protection because most servers typically
+                                     √                               provide only black-box API access.
+                      √
+                                                       
+                               xt − 1 − ᾱt ϵθ (xt , t)
+  xt−1 = ϕθ (xt , t) = ᾱt−1               √
+                                              ᾱt                    In contrast, our method represents a step towards black-
+                                                                     box MIA, as we do not directly access the model’s internal
+                      p
+                     + 1 − ᾱt−1 ϵθ (xt , t) ,
+                                                                     structure. Instead, we rely solely on the variation API, which
+               Qt
+where ᾱt = k=0 αk , αt + βt = 1 and ϵθ (xt , t) is the              takes an input image and returns the corresponding output
+noise predicted by the model at step t. This formulation             image. Below, we formalize the definition of the variation
+requires fewer sampling steps without compromising the               API used in our algorithm.
+quality of the generated images.                                     Definition 4.1 (The variation API). We define the variation
+Stable Diffusion Stable Diffusion leverages a variational            API Vθ (x, t) of a model as follows. Suppose we have an in-
+autoencoder (VAE) (Kingma & Welling, 2013) to encode                 put image x, and the diffusion step of the API is t. The vari-
+images into a latent space and perform diffusion in this             ation API randomly adds t-step Gaussian noise ϵ ∼ N (0, I)
+compressed space. The model uses a text encoder to guide             to the image and denoises it using the DDIM sampling pro-
+the diffusion process, enabling text-to-image generation:            cess ϕθ (xt , t), returning the reconstructed image Vθ (x, t).
+                                                                     The details are as follows:
+    zt−1 ∼ pθ (zt−1 | zt , τθ (y)) ,   x = Decoder(z0 ) ,                          √             √
+                                                                            xt =       ᾱt x +       1 − ᾱt ϵ ,
+where x represents the output image, zt represents the latent         Vθ (x, t) = Φθ (xt , 0) = ϕθ (· · · ϕθ (ϕθ (xt , t), t − 1), 0) .
+variable at step t, and the text conditioning τθ (y) is incor-
+porated into the denoising process to generate the image.
+This approach significantly reduces computational costs              This definition aligns with the image-to-image generation
+and allows for high-quality image synthesis from textual             method of the diffusion model, making access to this API
+descriptions.                                                        practical in many setups (Lugmayr et al., 2022; Saharia
+                                                                     et al., 2022a; Wu & De la Torre, 2023). Some APIs provide
+Diffusion Transformer Diffusion Transformer leverages                the user with a choice of t, while others do not and use
+the Vision Transformer (Dosovitskiy, 2020) structure to re-          the default parameter. We will discuss the influence of
+place the U-net architecture traditionally used in diffusion         different diffusion steps in Section 5.5, showing that the
+models for noise prediction. Its training and sampling meth-         attack performances are relatively stable and not sensitive to
+ods remain consistent with DDIM, with the only difference            the selection of t. We also note that for the target model, we
+being the replacement of noise prediction network ϵθ with            can substitute ϕθ (xt , 0) with other sampling methods, such
+ϵθ̃ , where θ̃ represents a Vision Transformer-based architec-       as the Euler-Maruyama Method (Mao, 2015) or Variational
+ture. This approach further enhances the generation quality          Diffusion Models (Kingma et al., 2021).
+and ensured that the model possesses good scalability prop-
+erties.                                                              4.2. Algorithm
+                                                                     In this section, we present the intuition of our algorithm.
+4. Algorithm Design                                                  We denote ∥ · ∥ as the L2 operator norm of a vector and
+In this section, we introduce our algorithm. We begin by             T = {1, 2, . . . , T } as the set of diffusion steps. The key
+discussing the definition of variation API and the limitations       insight is derived from the training loss function of a fixed
+
+                                                                 3
+                            Towards Black-Box Membership Inference Attack for Diffusion Models
+
+
+
+
+Figure 1: The overview of R E D IFFUSE. We independently input the image to the variation API n times with diffusion step
+t. We take the average of the output images and compare them with the original ones. If the difference is below a certain
+threshold, we determine that the image is in the training set.
+
+sample x0 and a time step t ∈ T :
+                   h         √         √             2i
+ L(θ) = Eϵ∼N (0,I) ϵ − ϵθ      ᾱt x0 + 1 − ᾱt ϵ, t     .
+
+               √          √
+Denote xt = ᾱt x0 + 1 − ᾱt ϵ, we assume that the de-
+noise model is expressive enough (the neural network’s
+dimensionality significantly exceeds that of the image data)
+such that for the input x0 ∈ Rd and time step t ∈ T , the
+Jacobian matrix ∇θ ϵθ (xt , t) is full rank (≥ d). This sug-
+gests that the model can adjust the predicted noise ϵθ (xt , t)       Figure 2: The intuition of our algorithm design. We de-
+locally in any direction. Then for a well trained model, we           note x as the target image, x̂i as the i-th image generated by
+would have ∇θ L(θ) = 0. This implies                                  the variation API, and x̂ as the average image of them. For
+     =⇒ ∇θ ϵθ (xt , t)T Eϵ∼N (0,I) [ϵ − ϵθ (xt , t)] = 0 ,            member image x, the difference v = x − x̂ will be smaller
+                                                                      after averaging due to xi being an unbiased estimator.
+     =⇒ Eϵ∼N (0,I) [ϵ − ϵθ (xt , t)] = 0 .
+
+This is intuitive because if the neural network noise predic-
+tion exhibits a high bias, the network can adjust to fit the          Our algorithm classifies a sample as being in the training
+bias term, further reducing the training loss.                        set if D(x, x̂) is smaller than a threshold τ , where D(x, x̂)
+                                                                      represents the difference between the two images. It can
+Therefore, for images in the training set, we expect the net-         be calculated using traditional functions, such as the SSIM
+work to provide an unbiased noise prediction. Since the               metric (Wang et al., 2004). Alternatively, we can train a
+noise prediction is typically inaccessible in practical appli-        neural network as a proxy. In Section 5, we will introduce
+cations, we use the reconstructed sample x̂ as a proxy. By            the details of D(x, x̂) used in our experiment.
+leveraging the unbiasedness of noise prediction, we show
+that averaging over multiple independent reconstructed sam-           Our algorithm is outlined in Algorithm 1, and we name it
+ples x̂i can significantly reduce estimation error (see The-          R E D IFFUSE. The key ideas of our algorithm are illustrated
+orem 4.2). However, for images not in the training set, the           in Figure 1, and we also provide some theoretical analysis
+neural network may not provide an unbiased prediction at              in Theorem 4.2 to support it.
+these points. The intuition is illustrated in Figure 2.
+                                                                      Analysis We give a short analysis to justify why averaging
+With the above intuition, we introduce the details of our
+                                                                      over n samples in R E D IFFUSE can reduce the prediction
+algorithm. We independently apply the variation API n
+                                                                      error for training data. We have the following theorem
+times with our target image x as input, average the output
+                                                                      showing that if we use the variation API to input a member
+images, and then compare the average result x̂ with the
+                                                                      x ∼ Dtraining , then the error ∥x̂ − x∥ from our method will
+original image. We will discuss the impact of the averaging
+                                                                      be small with high probability.
+number n in Section 5.5. We then evaluate the difference
+between the images using an indicator function:                       Theorem 4.2. Suppose the DDIM model can learn a pa-
+                                                                                                   x ∼ Dtraining
+                                                                      rameter θ such that, for any √       √ with dimension d,
+                 f (x) = 1 [D(x, x̂) < τ ] .                          the prediction error ϵ − ϵθ ( ᾱt x + 1 − ᾱt ϵ, t) is a ran-
+
+                                                                  4
+                            Towards Black-Box Membership Inference Attack for Diffusion Models
+
+Table 1: Comparison of different methods on four datasets for the DDIM model. Previous methods require access to the
+U-Net, whereas our methods do not. We use AUC, ASR, and TP as the metrics, TP refers to the True Positive Rate when the
+False Positive Rate is 1%.
+
+                          Method                             CIFAR10                    CIFAR100                   STL10
+                     Algorithm             U-Net     AUC        ASR       TP     AUC      ASR        TP     AUC     ASR     TP
+           Loss (Matsumoto et al., 2023)     □        0.88      0.82     14.2    0.92     0.84       20.9   0.89    0.82    15.6
+             SecMI (Duan et al., 2023)       □        0.95      0.90     40.7    0.96     0.90       44.9   0.94    0.88    26.9
+              PIA (Kong et al., 2023)        □        0.95      0.89     48.7    0.96     0.90       47.0   0.94    0.87    29.8
+              PIAN (Kong et al., 2023)       □        0.95      0.89     50.4    0.91     0.85       39.2   0.92    0.86    28.5
+                    R E D IFFUSE             ■        0.96      0.91     40.7    0.98     0.93       48.2   0.96    0.90    31.9
+
+                         □: Require the access of U-Net.          ■: Do not require the access of U-Net.
+
+Algorithm 1 MIA through R E D IFFUSE                                    x̂ = Vθ (x, t), and the details are as follows:
+  Input: Target image x, diffusion step t, average number                                                  √         √
+                                                                              z = Encoder(x) , zt = ᾱt z + 1 − ᾱt ϵ ,
+  n, threshold τ , the variation API of the target model Vθ ,
+  distance function D.                                                          ẑ = Φθ (zt , 0) ,     x̂ = Decoder(ẑ) .
+  for k = 1, . . . , n do                                               This definition aligns with the image generation process of
+     Use the variation API Vθ to generate the variation im-             the stable diffusion model.
+     age x̂k = Vθ (x, t) according to Definition 4.1.
+  end for                                                               For the Diffusion Transformer, we define the variation API
+  Average the reconstructed images from each iteration                  as Vθ̃ (x, t), where θ̃ corresponds to the Vision Transformer
+  x̂ = n1 (x̂1 + x̂2 + . . . + x̂n ).                                   architecture instead of the U-net. We repeatedly call the vari-
+  return ”YES” if the distance between the two images                   ation API and calculate the difference between the original
+  D(x, x̂) is less than τ , otherwise ”NO”.                             image and the reconstructed image, as done in DDIM.
+
+                                                                        5. Experiments
+dom variable X = (X1 , X2 , . . . , Xd ) with zero expectation          In this section, we evaluate the performance of our methods
+and finite cumulant-generating function for each coordi-                across various datasets and settings. We follow the same ex-
+nate (Durret, 2010). Suppose the sampling interval k is                 periment setup in previous papers (Duan et al., 2023; Kong
+equal to the variation API diffusion step t. Let x̂ be the              et al., 2023). The detailed experimental settings, including
+average of n output images of x using the variation API.                datasets, models, and hyper-parameter settings can be found
+Then we have                                                            in Appendix A1 .
+
+                                                    √           !!       5.1. Evaluation Metrics
+                                                   β ᾱt
+P(∥x̂ − x∥ ≥ β) ≤ d exp      −n min Ψ∗Xi      p                        , We follow the metrics used in previous papers (Duan et al.,
+                                 i                d(1 − ᾱt )            2023; Kong et al., 2023), including Area Under Receiver Op-
+                                                                         erating Characteristic (AUC), Attack Success Rate (ASR),
+where β > 0 and Ψ∗Xi is the Fenchel-Legendre dual of the                 the True Positive Rate (TP) when the False Positive Rate is
+cumulant-generating function ΨXi .                                       1%. We also plot the ROC curves.
+
+                                                                        5.2. MIA with DDIM Models
+The theorem suggests that averaging the random variational
+data from a training set will result in a lower relative error          We follow the experimental setup of (Duan et al., 2023;
+with high probability when we use a large n. We defer the               Kong et al., 2023). We train a DDIM model on the CIFAR-
+proof of this theorem to Appendix C.                                    10/100 (Krizhevsky et al., 2009) and STL10-Unlabeled
+                                                                        datasets (Coates et al., 2011), using the image generation
+4.3. MIA on Other Diffusion Models                                      step T = 1000 and sampling interval k = 100. For all the
+In this section, we discuss how we can generalize our al-               datasets, we randomly select 50% of the training samples to
+gorithm to other diffusion models. We note that the vari-               train the model and denote them as members. The remain-
+ation API for stable diffusion is different from DDIM, as                 1
+                                                                            Code is available at https://github.com/
+it includes the encoder-decoder process. Again we denote                lijingwei0502/diffusion_mia.
+
+                                                                   5
+                            Towards Black-Box Membership Inference Attack for Diffusion Models
+
+Table 2: Comparison of different methods for Diffusion Transformer using the same set of metrics as Table 1. Previous
+methods require access to the Vision Transformer, whereas our methods do not. We use AUC, ASR, and TP as the metrics,
+TP refers to the True Positive Rate when the False Positive Rate is 1%.
+
+                                      Method                          ImageNet 128 × 128        ImageNet 256 × 256
+                             Algorithm              Transformer       AUC     ASR       TP      AUC      ASR       TP
+                   Loss (Matsumoto et al., 2023)        □             0.83     0.76     10.7     0.78     0.70     7.3
+                     SecMI (Duan et al., 2023)          □             0.80     0.73     8.3      0.88     0.80     16.3
+                       PIA (Kong et al., 2023)          □             0.97     0.92     32.1     0.91     0.85     6.8
+                      PIAN (Kong et al., 2023)          □             0.66     0.64     6.2      0.67     0.66     12.8
+                            R E D IFFUSE                ■             0.98     0.95     44.1     0.97     0.94     47.3
+
+                  □: Require the access of Transformer.          ■: Do not require the access of Transformer.
+
+Table 3: Comparison of different methods for Stable Diffusion using the same set of metrics as Table 1. Again, previous
+methods require access to U-Net, whereas our methods do not. We use AUC, ASR and TP as the metrics, TP refers to the
+True Positive Rate when the False Positive Rate is 1%.
+
+                                      Method                             Laion5                Laion5 with BLIP
+                                Algorithm              U-Net      AUC        ASR      TP       AUC      ASR      TP
+                      Loss (Matsumoto et al., 2023)      □        0.62       0.61     13.2     0.62     0.62     13.3
+                        SecMI (Duan et al., 2023)        □        0.70       0.65     19.2     0.71     0.66     19.8
+                         PIA (Kong et al., 2023)         □        0.70       0.66     19.7     0.73     0.68     20.2
+                        PIAN (Kong et al., 2023)         □        0.56       0.53     4.8      0.55     0.51     4.4
+                               R E D IFFUSE              ■        0.81       0.75     20.6     0.82     0.75     21.7
+
+                        □: Require the access of U-Net.          ■: Do not require the access of U-Net.
+
+
+ing 50% are utilized as nonmembers. We use (Matsumoto                 effective and robust.
+et al., 2023), (Duan et al., 2023), (Kong et al., 2023) as our
+baseline methods. We fix the diffusion step at t = 200, and           5.3. MIA with Diffusion Transformers
+independently call the variation API 10 times to take the av-         We train a diffusion transformer model on the Ima-
+erage of the output images as x̂. We will discuss the impact          geNet (Deng et al., 2009) dataset following the setup of (Pee-
+of the diffusion step and the average number in Section 5.5.          bles & Xie, 2023). We randomly select 100,000 images from
+                                                                      the ImageNet training set to train the model with resolutions
+For the difference function D(x, x̂), following the setup
+                                                                      of either 128 × 128 or 256 × 256. For the membership infer-
+in (Duan et al., 2023), we take the pixel-wise absolute value
+                                                                      ence attack setup, 1000 images are randomly chosen from
+of x−x̂ to obtain a difference vector v for each image. Using
+                                                                      our training set as the member set, and another 1000 images
+the ResNet-18 network (He et al., 2016) and denoting it as
+                                                                      are randomly selected from the ImageNet validation set as
+fR , we perform binary classification on these difference
+                                                                      the non-member set. We fix the diffusion step at t = 150
+vectors. We use 20% of the data as the training set and
+                                                                      and the DDIM step at k = 50, and we independently call
+obtained the label of each difference vector being classified
+                                                                      the variation API 10 times to take the average of the output
+as a member or nonmember. The difference function is
+                                                                      images as x̂.
+obtained by the negated value of the probability outputed
+by the neural network predicting as member: D(x, x̂) =                We use (Matsumoto et al., 2023), (Duan et al., 2023), (Kong
+−fR (v).                                                              et al., 2023) as our baseline methods. Since these work
+                                                                      did not study the case of Diffusion Transformers, we in-
+The result is shown in Table 1. Our method achieves high
+                                                                      tegrate their algorithms into the DiT framework for evalu-
+performance, surpassing several baseline algorithms in most
+                                                                      ation. For the difference function D(x, x̂), following the
+setups, and does not require access to the internal structure
+                                                                      setup in (Duan et al., 2023; Kong et al., 2023), we take the
+of the model. This demonstrates that our algorithm is highly
+                                                                      L2 norm of x − x̂ to measure the differences between two
+
+                                                                  6
+                            Towards Black-Box Membership Inference Attack for Diffusion Models
+
+image.The results, presented in Table 2, demonstrate that
+our method outperforms baseline algorithms and does not
+require access to the Vision Transformer.
+We also plot ROC curves for the DDIM train on CIFAR-10
+and the Diffusion Transformer train on ImageNet in Ap-
+pendix B. The curves further demonstrate the effectiveness
+of our method.
+
+5.4. MIA with the Stable Diffusion Model
+We conduct experiments on the original Stable Diffusion
+model, i.e., stable-diffusion-v1-4 provided by Huggingface,
+without further fine-tuning or modifications. We follow              Figure 3: The impact of average numbers. We train DDIM
+the experiment setup of (Duan et al., 2023; Kong et al.,             model on CIFAR-10. Averaging multiple independent sam-
+2023), use the LAION-5B dataset (Schuhmann et al., 2022)             ples proves to be effective in further improving the overall
+as member and COCO2017-val (Lin et al., 2014) as non-                performance of our algorithm, which validates the intuition
+member. We randomly select 2500 images in each dataset.              of our algorithm design.
+We test two scenarios: Knowing the ground truth text, which
+we denote as Laion5; Not knowing the ground truth text and
+generating text through BLIP (Li et al., 2022), which we             for other diffusion models and datasets in the Appendix B.
+denote as Laion5 with BLIP.
+For the difference function D(x, x̂), since the images in
+these datasets better correlate with human visual percep-
+tion, we directly use the SSIM metric (Wang et al., 2004) to
+measure the differences between two images. The results,
+presented in Table 3, demonstrate that our methods achieve
+high accuracy in this setup, outperforming baseline algo-
+rithms by approximately 10%. Notably, our methods do not
+require access to U-Net.
+                                                                     Figure 4: The impact of diffusion steps on DDIM. We
+5.5. Ablation Studies                                                train a DDIM model on the CIFAR-10 dataset and use differ-
+In this section, we alter some experimental parameters to test       ent diffusion steps for inference. We find that high accuracy
+the robustness of our algorithm. We primarily focus on the           can be achieved as long as a moderate step number is cho-
+ablation study of DDIM and Diffusion Transformer, while              sen. This opens up possibilities for practical applications in
+the ablation study related to Stable Diffusion is provided in        real-world scenarios.
+Appendix B.
+                                                                     The Impact of Sampling Intervals In DDIM and Diffu-
+The Impact of Average Numbers We test the effect of                  sion Transformer, the model uses a set of steps denoted by
+using different averaging numbers n on the results, as shown         τ1 , τ2 , . . . , τT . It samples each of these steps to create the
+in Figure 3. It can be observed that averaging the images            image. The spacing between these steps is referred to as the
+from multiple independent samples to generate the output x̂          sampling interval. We change the sampling interval k and
+further improves accuracy. This observation validates the            check the influence on the results. As shown in Figure 5,
+algorithm design intuition discussed in Section 4.2. Ad-             we adjust this parameter for attacks on both DDIM and
+ditional figures showing the ASR results are presented in            Diffusion Transformer. We find that our method achieves
+Appendix B.                                                          high AUC values across different sampling intervals, demon-
+The Impact of Diffusion Steps We adjust the diffusion                strating that our detection capabilities are not significantly
+step t to examine its impact on the results. The experi-             limited by this parameter. Additionally, in Appendix B, we
+ments are conducted using the DDIM model on CIFAR-10                 plot the effect of different sampling intervals on ASR and
+with diffusion steps for inference. The outcomes are pre-            find that the impact is minimal.
+sented in Figure 4. Our findings indicate that as long as a
+moderate step is chosen, the attack performance remains              6. An Application to DALL-E’s API
+excellent, demonstrating that our algorithm is not sensitive         In this section, we conduct a small experiment with online
+to the choice of t. This further underscores the robustness          API services to test the effectiveness of our algorithm. We
+of our algorithm. We also plot the change of diffusion step          test with the DALL-E 2 (Ramesh et al., 2022) model since
+
+                                                                 7
+                             Towards Black-Box Membership Inference Attack for Diffusion Models
+
+
+
+
+                                                                        Figure 6: Main observation of our attack. DALL-E 2’s
+                                                                        variation API makes minimal changes to famous artworks,
+                                                                        while nonmember images with similar content undergo sig-
+Figure 5: The impact of sampling intervals. We train                    nificant alterations. More examples of changes to the mem-
+DDIM model on CIFAR-10. We find that adjusting the                      ber and non-member inputs after applying the variation API
+sampling interval has a relatively small influence in the first         can be found in Appendix D.
+case and does not affect our method in the latter case. This
+makes our algorithm applicable to more setups.
+                                                                        non-member inputs after applying the variation API can be
+                                                                        found in Appendix D.
+
+DALL-E 2 provides a variation API service. We select                    Table 4: The results of applying our algorithm to DALL-
+different thresholds and classify an image with a variation             E 2’s variation API. We assume some famous paintings as
+error below the threshold as members and those above the                members and use Stable Diffusion 3 along with the titles
+threshold as non-members. We then calculate metrics such                of these artworks to generate corresponding non-members.
+as AUC and ASR. Since the baseline algorithms (Matsumoto                Our algorithm also achieves high accuracy under this setup.
+et al., 2023; Duan et al., 2023; Kong et al., 2023) require
+intermediate results, we are unable to test these algorithms                      Metrics    L1 distance     L2 distance
+under the online API setup.
+                                                                                    AUC          76.2           88.3
+One challenge with MIA for DALL-E 2 is that it does not
+disclose its training set. However, since it is adept at generat-                   ASR          74.5           81.4
+ing various famous artworks, we select 30 famous paintings
+from five famous artists: Van Gogh, Monet, Da Vinci, Dali,
+and Rembrandt, to form our member set. We believe that it               The results indicate that we can apply our algorithm with
+is reasonable to hypothesize that these artworks are used in            online API services. We acknowledge that this part of the
+DALL-E 2’s training set. For constructing the non-member                experimental design has certain limitations. Not every fa-
+set, we used Stable Diffusion 3 (Esser et al., 2024) to gener-          mous painting we selected may be present in DALL-E 2’s
+ate images based on the titles of each painting in the member           training set, and our construction of non-members may ex-
+set. The benefit of constructing non-members in this way is             hibit some distribution shift relative to the member dataset.
+that it allows for control over the content of the artwork de-          Here, we aim to provide a real-world application for black-
+scriptions, reducing bias caused by content shift. Moreover,            box evaluation, leaving a more comprehensive experimental
+these generated images are certainly not in the DALL-E 2’s              design as future work.
+training set.
+The results, presented in Table 4, demonstrate that our al-
+                                                                        7. Conclusion, Limitations and Future
+gorithm achieves a relatively high accuracy under this eval-               Directions
+uation method. Our observation is illustrated in Figure 6.              In this work, we introduce a novel membership inference
+As seen in the figure, for Monet’s iconic painting ”Water               attack method specifically designed for diffusion models.
+Lily Pond”, the original artwork shows minimal changes                  Our approach only requires access to the variation API of
+when using DALL-E 2’s variation API, retaining most of its              the model, bypassing the need for internal network compo-
+main features. In contrast, the artwork generated by Stable             nents such as the U-net. This represents an advancement
+Diffusion 3 undergoes significant changes, with variations              for commercial diffusion models, which typically restrict
+in both the number of flowers and lily pads. Therefore,                 internal access. We demonstrate the effectiveness of our
+we hypothesize that artworks with smaller changes after                 approach across various datasets, showing that it achieves
+API usage are more likely to have appeared in the model’s               high accuracy in identifying whether an image was included
+training set. Other results of changes to the member and                in the training dataset. Our algorithm can detect data misuse
+
+                                                                    8
+                            Towards Black-Box Membership Inference Attack for Diffusion Models
+
+by the model, representing a step forward in protecting the           Dosovitskiy, A. An image is worth 16x16 words: Trans-
+copyright of artworks.                                                  formers for image recognition at scale. arXiv preprint
+                                                                        arXiv:2010.11929, 2020.
+However, our method has certain limitations, particularly the
+requirement for a moderate diffusion step t in the variation          Duan, J., Kong, F., Wang, S., Shi, X., and Xu, K. Are diffu-
+API. The algorithm’s accuracy declines when the diffusion               sion models vulnerable to membership inference attacks?
+step is excessively high. As such, we propose our method                In International Conference on Machine Learning, pp.
+as an initial step towards black-box MIA, with a more com-              8717–8730. PMLR, 2023.
+prehensive solution left for subsequent exploration.
+Future work could focus on developing more robust algo-               Duddu, V., Boutet, A., and Shejwalkar, V. Quantifying
+rithms capable of handling a broader range of diffusion steps.          privacy leakage in graph embedding. In MobiQuitous
+Improving the interpretability of our method and extending             2020-17th EAI International Conference on Mobile and
+it to other generative models are also valuable directions for         Ubiquitous Systems: Computing, Networking and Ser-
+further research.                                                       vices, pp. 76–85, 2020.
+
+                                                                      Durret, R. Probability, theory and examples, cambride ser.
+Impact Statement                                                       Stat. and Prob. Math., Cambridge University Press, New
+                                                                       York, pp. 65, 2010.
+This paper addresses the critical issue of protecting intellec-
+tual property and data privacy in the era of rapidly advancing        Esser, P., Kulal, S., Blattmann, A., Entezari, R., Müller, J.,
+generative models. By proposing a novel membership in-                  Saini, H., Levi, Y., Lorenz, D., Sauer, A., Boesel, F., et al.
+ference attack (MIA) method, our work aims to identify                  Scaling rectified flow transformers for high-resolution
+whether specific artworks have been used during the train-              image synthesis. In Forty-first International Conference
+ing of diffusion models. This has significant implications              on Machine Learning, 2024.
+for safeguarding creators’ copyrights, detecting unautho-
+rized use of artistic works, and promoting ethical practices          Hayes, J., Melis, L., Danezis, G., and De Cristofaro, E.
+in the development and deployment of generative models.                 Logan: Membership inference attacks against generative
+While our method is designed with privacy protection in                 models. arXiv preprint arXiv:1705.07663, 2017.
+mind, we acknowledge the potential for misuse. We hope
+this research serves as a foundation for further discussions          He, K., Zhang, X., Ren, S., and Sun, J. Deep residual learn-
+on data privacy and ethical considerations, encouraging re-             ing for image recognition. In Proceedings of the IEEE
+sponsible use and development of diffusion models in the                conference on computer vision and pattern recognition,
+community.                                                              pp. 770–778, 2016.
+
+                                                                      Hilprecht, B., Härterich, M., and Bernau, D. Monte carlo
+References
+                                                                        and reconstruction membership inference attacks against
+Chen, D., Yu, N., Zhang, Y., and Fritz, M. Gan-leaks:                   generative models. Proceedings on Privacy Enhancing
+  A taxonomy of membership inference attacks against                    Technologies, 2019.
+  generative models. In Proceedings of the 2020 ACM
+  SIGSAC conference on computer and communications                    Ho, J., Jain, A., and Abbeel, P. Denoising diffusion proba-
+  security, pp. 343–362, 2020.                                          bilistic models. Advances in neural information process-
+                                                                        ing systems, 33:6840–6851, 2020.
+Coates, A., Ng, A., and Lee, H. An analysis of single-
+  layer networks in unsupervised feature learning. In Pro-            Ho, J., Chan, W., Saharia, C., Whang, J., Gao, R., Gritsenko,
+  ceedings of the fourteenth international conference on                A., Kingma, D. P., Poole, B., Norouzi, M., Fleet, D. J.,
+  artificial intelligence and statistics, pp. 215–223. JMLR             et al. Imagen video: High definition video generation
+  Workshop and Conference Proceedings, 2011.                            with diffusion models. arXiv preprint arXiv:2210.02303,
+                                                                        2022a.
+Deng, J., Dong, W., Socher, R., Li, L.-J., Li, K., and Fei-Fei,
+  L. Imagenet: A large-scale hierarchical image database.             Ho, J., Salimans, T., Gritsenko, A., Chan, W., Norouzi, M.,
+  In 2009 IEEE conference on computer vision and pattern                and Fleet, D. J. Video diffusion models. Advances in
+  recognition, pp. 248–255. Ieee, 2009.                                Neural Information Processing Systems, 35:8633–8646,
+                                                                        2022b.
+Dhariwal, P. and Nichol, A. Diffusion models beat gans
+  on image synthesis. Advances in neural information                  Hu, H. and Pang, J. Membership inference of diffusion
+  processing systems, 34:8780–8794, 2021.                               models. arXiv preprint arXiv:2301.09956, 2023.
+
+                                                                  9
+                           Towards Black-Box Membership Inference Attack for Diffusion Models
+
+Huang, R., Lam, M. W., Wang, J., Su, D., Yu, D., Ren,                 Mao, X. The truncated euler–maruyama method for stochas-
+ Y., and Zhao, Z. Fastdiff: A fast conditional diffusion               tic differential equations. Journal of Computational and
+  model for high-quality speech synthesis. arXiv preprint              Applied Mathematics, 290:370–384, 2015.
+  arXiv:2204.09934, 2022.
+                                                                      Matsumoto, T., Miura, T., and Yanai, N. Membership in-
+Kingma, D., Salimans, T., Poole, B., and Ho, J. Varia-                 ference attacks against diffusion models. In 2023 IEEE
+  tional diffusion models. Advances in neural information              Security and Privacy Workshops (SPW), pp. 77–83. IEEE,
+  processing systems, 34:21696–21707, 2021.                            2023.
+
+Kingma, D. P. and Welling, M. Auto-encoding variational               Nichol, A., Dhariwal, P., Ramesh, A., Shyam, P., Mishkin,
+  bayes. arXiv preprint arXiv:1312.6114, 2013.                          P., McGrew, B., Sutskever, I., and Chen, M. Glide:
+                                                                        Towards photorealistic image generation and editing
+Kong, F., Duan, J., Ma, R., Shen, H., Zhu, X., Shi, X., and             with text-guided diffusion models. arXiv preprint
+  Xu, K. An efficient membership inference attack for the               arXiv:2112.10741, 2021.
+  diffusion model by proximal initialization. arXiv preprint
+                                                                      Pang, Y. and Wang, T. Black-box membership inference at-
+  arXiv:2305.18355, 2023.
+                                                                        tacks against fine-tuned diffusion models. arXiv preprint
+Kong, Z., Ping, W., Huang, J., Zhao, K., and Catanzaro, B.              arXiv:2312.08207, 2023.
+  Diffwave: A versatile diffusion model for audio synthesis.          Peebles, W. and Xie, S. Scalable diffusion models with
+  arXiv preprint arXiv:2009.09761, 2020.                                transformers. In Proceedings of the IEEE/CVF Interna-
+                                                                        tional Conference on Computer Vision, pp. 4195–4205,
+Krizhevsky, A., Hinton, G., et al. Learning multiple layers
+                                                                        2023.
+  of features from tiny images. 2009.
+                                                                      Popov, V., Vovk, I., Gogoryan, V., Sadekova, T., and Kudi-
+Li, J., Li, D., Xiong, C., and Hoi, S. Blip: Bootstrapping              nov, M. Grad-tts: A diffusion probabilistic model for
+  language-image pre-training for unified vision-language               text-to-speech. In International Conference on Machine
+  understanding and generation. In International confer-                Learning, pp. 8599–8608. PMLR, 2021.
+  ence on machine learning, pp. 12888–12900. PMLR,
+  2022.                                                               Ramesh, A., Dhariwal, P., Nichol, A., Chu, C., and Chen, M.
+                                                                        Hierarchical text-conditional image generation with clip
+Li, Z. and Zhang, Y. Membership leakage in label-only                   latents. arXiv preprint arXiv:2204.06125, 1(2):3, 2022.
+  exposures. In Proceedings of the 2021 ACM SIGSAC
+  Conference on Computer and Communications Security,                 Rombach, R., Blattmann, A., Lorenz, D., Esser, P., and
+  pp. 880–895, 2021.                                                    Ommer, B. High-resolution image synthesis with latent
+                                                                        diffusion models. In Proceedings of the IEEE/CVF con-
+Lin, T.-Y., Maire, M., Belongie, S., Hays, J., Perona, P., Ra-          ference on computer vision and pattern recognition, pp.
+  manan, D., Dollár, P., and Zitnick, C. L. Microsoft coco:           10684–10695, 2022.
+  Common objects in context. In Computer Vision–ECCV
+                                                                      Saharia, C., Chan, W., Chang, H., Lee, C., Ho, J., Salimans,
+  2014: 13th European Conference, Zurich, Switzerland,
+                                                                        T., Fleet, D., and Norouzi, M. Palette: Image-to-image
+  September 6-12, 2014, Proceedings, Part V 13, pp. 740–
+                                                                        diffusion models. In ACM SIGGRAPH 2022 conference
+  755. Springer, 2014.
+                                                                        proceedings, pp. 1–10, 2022a.
+Long, Y., Bindschaedler, V., Wang, L., Bu, D., Wang, X.,              Saharia, C., Chan, W., Saxena, S., Li, L., Whang, J., Denton,
+  Tang, H., Gunter, C. A., and Chen, K. Understanding                   E. L., Ghasemipour, K., Gontijo Lopes, R., Karagol Ayan,
+  membership inferences on well-generalized learning mod-               B., Salimans, T., et al. Photorealistic text-to-image dif-
+  els. arXiv preprint arXiv:1802.04889, 2018.                           fusion models with deep language understanding. Ad-
+                                                                        vances in neural information processing systems, 35:
+Lugmayr, A., Danelljan, M., Romero, A., Yu, F., Timofte,
+                                                                        36479–36494, 2022b.
+  R., and Van Gool, L. Repaint: Inpainting using denoising
+  diffusion probabilistic models. In Proceedings of the               Salem, A., Zhang, Y., Humbert, M., Berrang, P., Fritz, M.,
+  IEEE/CVF conference on computer vision and pattern                    and Backes, M. Ml-leaks: Model and data independent
+  recognition, pp. 11461–11471, 2022.                                   membership inference attacks and defenses on machine
+                                                                        learning models. arXiv preprint arXiv:1806.01246, 2018.
+Mahloujifar, S., Inan, H. A., Chase, M., Ghosh, E., and
+ Hasegawa, M. Membership inference on word embedding                  Schuhmann, C., Beaumont, R., Vencu, R., Gordon, C.,
+ and beyond. arXiv preprint arXiv:2106.11384, 2021.                     Wightman, R., Cherti, M., Coombes, T., Katta, A., Mullis,
+
+                                                                 10
+                          Towards Black-Box Membership Inference Attack for Diffusion Models
+
+  C., Wortsman, M., et al. Laion-5b: An open large-scale            Yeom, S., Giacomelli, I., Fredrikson, M., and Jha, S. Privacy
+  dataset for training next generation image-text models.             risk in machine learning: Analyzing the connection to
+  Advances in Neural Information Processing Systems, 35:              overfitting. In 2018 IEEE 31st computer security founda-
+  25278–25294, 2022.                                                  tions symposium (CSF), pp. 268–282. IEEE, 2018.
+
+Shokri, R., Stronati, M., Song, C., and Shmatikov, V. Mem-          Yu, J., Xu, Y., Koh, J. Y., Luong, T., Baid, G., Wang, Z., Va-
+  bership inference attacks against machine learning mod-             sudevan, V., Ku, A., Yang, Y., Ayan, B. K., et al. Scaling
+  els. In 2017 IEEE symposium on security and privacy                 autoregressive models for content-rich text-to-image gen-
+  (SP), pp. 3–18. IEEE, 2017.                                         eration. arXiv preprint arXiv:2206.10789, 2(3):5, 2022.
+
+Sohl-Dickstein, J., Weiss, E., Maheswaranathan, N., and
+  Ganguli, S. Deep unsupervised learning using nonequi-
+  librium thermodynamics. In International conference on
+  machine learning, pp. 2256–2265. PMLR, 2015.
+
+Song, C. and Raghunathan, A. Information leakage in
+  embedding models. In Proceedings of the 2020 ACM
+  SIGSAC conference on computer and communications
+  security, pp. 377–390, 2020.
+
+Song, J., Meng, C., and Ermon, S. Denoising diffusion im-
+  plicit models. arXiv preprint arXiv:2010.02502, 2020a.
+
+Song, Y. and Ermon, S. Generative modeling by estimating
+  gradients of the data distribution. Advances in neural
+  information processing systems, 32, 2019.
+
+Song, Y., Sohl-Dickstein, J., Kingma, D. P., Kumar, A., Er-
+  mon, S., and Poole, B. Score-based generative modeling
+  through stochastic differential equations. arXiv preprint
+  arXiv:2011.13456, 2020b.
+
+Tang, S., Wu, Z. S., Aydore, S., Kearns, M., and Roth, A.
+  Membership inference attacks on diffusion models via
+  quantile regression. arXiv preprint arXiv:2312.05140,
+  2023.
+
+Wang, Z., Bovik, A. C., Sheikh, H. R., and Simoncelli, E. P.
+ Image quality assessment: from error visibility to struc-
+ tural similarity. IEEE transactions on image processing,
+ 13(4):600–612, 2004.
+
+Wu, C. H. and De la Torre, F. A latent space of stochastic
+ diffusion models for zero-shot image editing and guid-
+ ance. In Proceedings of the IEEE/CVF International
+ Conference on Computer Vision, pp. 7378–7387, 2023.
+
+Wu, J. Z., Ge, Y., Wang, X., Lei, S. W., Gu, Y., Shi, Y.,
+ Hsu, W., Shan, Y., Qie, X., and Shou, M. Z. Tune-a-
+ video: One-shot tuning of image diffusion models for
+ text-to-video generation. In Proceedings of the IEEE/CVF
+ International Conference on Computer Vision, pp. 7623–
+ 7633, 2023.
+
+Wu, Y., Yu, N., Li, Z., Backes, M., and Zhang, Y. Member-
+ ship inference attacks against text-to-image generation
+ models. arXiv preprint arXiv:2210.00968, 2022.
+
+                                                               11
+                           Towards Black-Box Membership Inference Attack for Diffusion Models
+
+A. Datasets, Models and Hyperparameters
+We use NVIDIA RTX 6000 graphics cards for all our experiments.
+For DDIM, we follow the training hyperparameters of (Duan et al., 2023) to train a DDIM model on the CIFAR-
+10/100 (Krizhevsky et al., 2009) and STL10-Unlabeled (Coates et al., 2011) datasets, using 1000 image generation
+steps (T = 1000) and a sampling interval of k = 100. The training iterations are set to 800,000. For all the datasets, we
+randomly select 50% of the training samples to train the model and designate them as members. The remaining 50% of the
+training samples are used as nonmembers.
+We use (Matsumoto et al., 2023; Duan et al., 2023; Kong et al., 2023) as our baseline methods. We use their official code
+repositories and apply the optimal hyperparameters from their papers. For our algorithm, we fix the diffusion step at t = 200
+and independently call the variation API 10 times to average the output images as x̂.
+For the Diffusion Transformers, we train the model on the ImageNet (Deng et al., 2009) dataset, using 1000 image generation
+steps (T = 1000), while for other training hyperparameters, we follow the setup of (Peebles & Xie, 2023). We randomly
+select 100,000 images from the ImageNet training set to train the model at resolutions of either 128 × 128 or 256 × 256.
+For the 128 × 128 image size, we use 200,000 training iterations. For the 256 × 256 image size, we use 300,000 training
+iterations. These numbers of training iterations are chosen to ensure the generation of high-quality images.
+For the membership inference attack setup, 1000 images are randomly selected from our training set as the member set, and
+another 1000 images are randomly chosen from the ImageNet validation set as the non-member set. We fix the diffusion
+step at t = 100 and the DDIM step at k = 50, and independently call the variation API 10 times to average the output
+images as x̂.
+We also use (Matsumoto et al., 2023; Duan et al., 2023; Kong et al., 2023) as our baseline methods. Since these papers do
+not study Diffusion Transformers, we adapt their algorithms to the DiT framework for evaluation. We fix the DDIM step at
+k = 50 and choose diffusion steps t ∈ [50, 100, 150, 200, 250, 300], recording their optimal solutions under these different
+hyperparameter settings.
+For the Stable Diffusion experiments, we use the original Stable Diffusion model, i.e., stable-diffusion-v1-4 provided by
+Huggingface, without further fine-tuning or modifications. We follow the experimental setup of (Duan et al., 2023; Kong
+et al., 2023), using an image generation step of T = 1000 and a sampling interval of k = 10. We use the LAION-5B
+dataset (Schuhmann et al., 2022) as the member set and COCO2017-val (Lin et al., 2014) as the non-member set. We
+randomly select 2500 images from each dataset. We test two scenarios: knowing the ground truth text, denoted as Laion;
+and generating text through BLIP (Li et al., 2022), denoted as Laion with BLIP.
+We use the hyperparameters from the papers (Duan et al., 2023; Kong et al., 2023) to run the baseline methods. For our
+algorithms R E D IFFUSE, we fix the diffusion step at t = 10 to call the variation API and directly use the SSIM metric (Wang
+et al., 2004) to measure the differences between two images. Other hyperparameters remain the same as in the baseline
+methods.
+
+
+
+
+                                                             12
+                           Towards Black-Box Membership Inference Attack for Diffusion Models
+
+B. More Experiment Results
+In this section, we show other experiment results which is not in our main paper. We conduct more ablation studies.
+
+
+
+The Impact of Average Numbers We use different average numbers n and test the influence on the results. Besides the
+figures of AUC in the main paper, the figures of ASR of DDIM and Diffusion Transformer are also plotted in Figure 7. In
+addition, we plot the figures of AUC and ASR for Stable Diffusion in Figure 8. We observe that in the DDIM and Diffusion
+Transformer setup, averaging the images from multiple independent samples as the output further improves accuracy. In the
+stable diffusion setup, since the image size in the dataset is larger (512x512), the reconstructed images are more stable and
+not influenced by perturbations at specific coordinates. Therefore, averaging multiple images is not necessary.
+
+
+
+
+Figure 7: The impact of average numbers. Left: DDIM model on CIFAR-10. Right: Diffusion Transformer model on
+Imagenet. Averaging can further improve the performance of our algorithm.
+
+
+
+
+Figure 8: The impact of average numbers on Stable Diffusion. We plot the AUC and ASR metrics, and averaging does
+not improve performance.
+
+
+
+
+The Impact of Diffusion Steps We adjust the diffusion step t to examine its impact on the results. We train the
+DDIM model on CIFAR100 (Figure 9), STL10 (Figure 10) dataset, Diffusion Transformer on the Imagenet 256 × 256
+(Figure 11)dataset and Stable Diffusion on Laion5 dataset (Figure 12). From the results, we see that our algorithm can
+achieve high performance over a wide range of diffusion steps. This opens up possibilities for practical applications in
+real-world scenarios.
+
+                                                             13
+                            Towards Black-Box Membership Inference Attack for Diffusion Models
+
+
+
+
+Figure 9: The impact of diffusion steps. We train a DDIM model on the CIFAR-100 dataset and use different diffusion
+step for inference.
+
+
+
+
+Figure 10: The impact of diffusion steps. We train a DDIM model on the STL-10 dataset and use different diffusion step
+for inference.
+
+
+
+
+Figure 11: The impact of diffusion steps. We train a Diffusion Transformer model on the Imagenet 256 × 256 dataset and
+use different diffusion step for inference. The robust results imply that our algorithm is also not very sensitive to the choice
+of t in this setup.
+
+
+
+
+Figure 12: The impact of diffusion steps. We use the Stable Diffusion model with the Laion5 dataset for evaluation and
+test different diffusion steps for inference. Specifically, using relatively small diffusion steps results in better performance.
+
+                                                               14
+                          Towards Black-Box Membership Inference Attack for Diffusion Models
+
+The Impact of Sampling Intervals We change the sampling intervals to see if there is any influence on the results. In
+addition to the AUC figures in the main paper, the ASR figures of DDIM and Diffusion Transformer are also plotted in
+Figure 13. We also plot the AUC and ASR for Stable Diffusion in Figure 14. From the results, we observe that our algorithm
+consistently performs well across different sampling intervals.
+
+
+
+
+Figure 13: The impact of sampling intervals. Left: DDIM model on CIFAR-10. Right: Diffusion Transformer on Imagenet.
+We find that adjusting the sampling interval does not significantly affect of the accuracy.
+
+
+
+
+Figure 14: The impact of sampling intervals on Stable Diffusion. We plot the AUC and ASR metrics, observe that
+different sampling intervals have minimal impact on it.
+
+
+The ROC curves We plot ROC curves for the DDIM train on CIFAR-10 and Diffusion Transformer train on ImageNet
+256 × 256 in Figure 15. The curves further demonstrate the effectiveness of our method.
+
+
+
+
+Figure 15: The ROC curves of various setups. Left: DDIM model on CIFAR-10. Right: Diffusion Transformer on
+ImageNet 256 × 256. The curves show that our algorithm outperforms the baseline algorithms.
+
+
+
+
+                                                           15
+                            Towards Black-Box Membership Inference Attack for Diffusion Models
+
+C. Proof
+In this section, we present the proof of the theorem.
+Theorem 4.2. Suppose√the DDIM      √ model can learn a parameter θ such that, for any x ∼ Dtraining with dimension d, the
+prediction error ϵ − ϵθ ( ᾱt x + 1 − ᾱt ϵ, t) is a random variable X = (X1 , X2 , . . . , Xd ) with zero expectation and finite
+cumulant-generating function for each coordinate (Durret, 2010). Suppose the sampling interval k is equal to the variation
+API diffusion step t. Let x̂ be the average of n output images of x using the variation API. Then we have
+                                                                                 √          !!
+                                                                       ∗        β ᾱt
+                                 P(∥x̂ − x∥ ≥ β) ≤ d exp −n min ΨXi p                            ,
+                                                                  i            d(1 − ᾱt )
+
+where β > 0 and Ψ∗Xi is the Fenchel-Legendre dual of the cumulant-generating function ΨXi .
+
+Proof. We denote xi as the i-th                                                                                i
+                            √ output√image ofix using the variation API. We denote the i-th Gaussian noise as ϵ and the
+                        i
+forward process yields xt = ᾱt x + 1 − ᾱt ϵ .
+As the sampling interval is equal to the variation API diffusion step t, we have
+                                           √         √         √
+                          i        xit − 1 − ᾱt ϵθ ( ᾱt x + 1 − ᾱt ϵi , t)
+                        x −x=                         √                       − x,
+                                                        ᾱt
+                                   √         √              √           √         √
+                                      ᾱt x + 1 − ᾱt ϵi − 1 − ᾱt ϵθ ( ᾱt x + 1 − ᾱt ϵi , t)
+                                =                              √                                − x,
+                                                                 ᾱt
+                                   √
+                                      1 − ᾱt i       √        √
+                                = √          (ϵ − ϵθ ( ᾱt x + 1 − ᾱt ϵi , t)) .
+                                         ᾱt
+
+
+                                                                                       √       √
+If we denote  the random variable X i = (X1i , X2i , . . . , Xdi ) represents ϵi − ϵθ ( ᾱt x + 1 − ᾱt ϵi , t), then we consider
+         n
+Sni = j=1 Xji . From the assumption we know that all the Xji are i.i.d. random variables(with the same distribution of Xi
+      P
+
+in Theorem 4.2) with zero expectation and finite cumulant-generating function ΨXi (s) = log E[esXi ] < +∞. Using the
+theorem of Cramér–Chernoff method for sums of i.i.d. random variables (Durret, 2010), we get the following probability
+inequality for any β > 0:
+
+                                                                          β
+                                              P(|Sni | ≥ β) ≤ exp(−nΨ∗Xi ( )) ,
+                                                                          n
+where β > 0 and Ψ∗Xi (y) = sups>0 (sy − ΨXi (s)) is the Fenchel-Legendre dual of the cumulant-generating function ΨXi .
+                                                                                           Pn               √
+                                                                                                              √ ᾱt ∥Sn ∥, we get
+Therefore, denote Sn = (Sn1 , Sn2 , . . . , Snd ), taking the definition of ∥x̂ − x∥ = ∥ n1 i=1 (xi − x)∥ = n1−ᾱt
+the following bound of the reconstruction error:
+                                      d                     √                                   √
+                                      X                 nβ ᾱt                                 β ᾱt
+                 P(∥x̂ − x∥ ≥ β) ≤         P (|Sni | ≥ p             ) ≤ d exp(−n min Ψ∗Xi ( p            )) ,
+                                       i=1
+                                                         d(1 − ᾱt )               i          d(1 − ᾱt )
+
+So averaging the randomly reconstructed data from a training set will result in a smaller reconstruction error with high
+probability of 1 − O(exp(−n)) when we use a large n.
+
+
+
+
+                                                               16
+                          Towards Black-Box Membership Inference Attack for Diffusion Models
+
+D. More Results of Variation Images
+In this section, we provide more results of the variation of member and nonmember image when applying to DALL-E 2’s
+variation API. The experimental results are recorded in Figure 16, from which we can see that the variation in the member
+inputs after applying the DALL-E 2’s variation API is relatively small than non-member inputs.
+
+
+
+
+Figure 16: More results of the variation images. From the figures we can see that DALL-E 2’s variation API makes less
+changes to images in member set than non-member set.
+
+
+
+
+                                                           17
+

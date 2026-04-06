@@ -1,0 +1,2124 @@
+{
+  "prunedResult": {
+    "page_count": 5,
+    "width": 1224,
+    "height": 1584,
+    "model_settings": {
+      "use_doc_preprocessor": true,
+      "use_layout_detection": true,
+      "use_chart_recognition": false,
+      "use_seal_recognition": false,
+      "use_ocr_for_image_block": false,
+      "format_block_content": false,
+      "merge_layout_blocks": true,
+      "markdown_ignore_labels": [
+        "number",
+        "footnote",
+        "header",
+        "header_image",
+        "footer",
+        "footer_image",
+        "aside_text"
+      ],
+      "return_layout_polygon_points": true
+    },
+    "parsing_res_list": [
+      {
+        "block_label": "header",
+        "block_content": "Towards Black-Box Membership Inference Attack for Diffusion Models",
+        "block_bbox": [
+          313,
+          7,
+          923,
+          50
+        ],
+        "block_id": 0,
+        "block_order": null,
+        "group_id": 0,
+        "global_block_id": 28,
+        "global_group_id": 28,
+        "block_polygon_points": [
+          [
+            313.00006103515625,
+            7.000002384185791
+          ],
+          [
+            922.4911499023438,
+            16.096881866455078
+          ],
+          [
+            921.9906616210938,
+            49.62672805786133
+          ],
+          [
+            312.49957275390625,
+            40.529850006103516
+          ]
+        ]
+      },
+      {
+        "block_label": "text",
+        "block_content": "process (denoted as  $ p_{\\theta} $) gradually reconstructs the image from noise.",
+        "block_bbox": [
+          80,
+          63,
+          607,
+          128
+        ],
+        "block_id": 1,
+        "block_order": 1,
+        "group_id": 1,
+        "global_block_id": 29,
+        "global_group_id": 29,
+        "block_polygon_points": [
+          [
+            80.0,
+            63.0
+          ],
+          [
+            607.0,
+            63.0
+          ],
+          [
+            607.0,
+            128.0
+          ],
+          [
+            80.0,
+            128.0
+          ]
+        ]
+      },
+      {
+        "block_label": "display_formula",
+        "block_content": " $$ \\begin{align*}q(x_{t}\\mid x_{t-1})&=\\mathcal{N}\\left(x_{t};\\sqrt{1-\\beta_{t}}x_{t-1},\\beta_{t}\\mathbf{I}\\right),\\\\p_{\\theta}(x_{t-1}\\mid x_{t})&=\\mathcal{N}\\left(x_{t-1};\\mu_{\\theta}(x_{t},t),\\Sigma_{\\theta}(x_{t},t)\\right),\\end{align*} $$ ",
+        "block_bbox": [
+          135,
+          139,
+          563,
+          226
+        ],
+        "block_id": 2,
+        "block_order": 2,
+        "group_id": 2,
+        "global_block_id": 30,
+        "global_group_id": 30,
+        "block_polygon_points": [
+          [
+            135.0,
+            139.0
+          ],
+          [
+            563.0,
+            139.0
+          ],
+          [
+            563.0,
+            226.0
+          ],
+          [
+            135.0,
+            226.0
+          ]
+        ]
+      },
+      {
+        "block_label": "text",
+        "block_content": "where  $ \\mu_{\\theta}(\\cdot) $ and  $ \\Sigma_{\\theta}(\\cdot) $ are the mean and covariance of the denoised image parameterized by the model parameters  $ \\theta $, and  $ \\beta_{t} $ is a noise schedule that controls the amount of noise added at each step.",
+        "block_bbox": [
+          86,
+          238,
+          605,
+          352
+        ],
+        "block_id": 3,
+        "block_order": 3,
+        "group_id": 3,
+        "global_block_id": 31,
+        "global_group_id": 31,
+        "block_polygon_points": [
+          [
+            86.0,
+            238.0
+          ],
+          [
+            605.0,
+            238.0
+          ],
+          [
+            605.0,
+            352.0
+          ],
+          [
+            86.0,
+            352.0
+          ]
+        ]
+      },
+      {
+        "block_label": "text",
+        "block_content": "Denoising Diffusion Implicit Model (DDIM) DDIM modifies the sampling process to improve efficiency while maintaining high-quality image generation. Unlike DDPM, which requires a large number of denoising steps, DDIM uses a non-Markovian process to accelerate sampling.",
+        "block_bbox": [
+          88,
+          356,
+          604,
+          492
+        ],
+        "block_id": 4,
+        "block_order": 4,
+        "group_id": 4,
+        "global_block_id": 32,
+        "global_group_id": 32,
+        "block_polygon_points": [
+          [
+            88.0,
+            356.0
+          ],
+          [
+            604.0,
+            356.0
+          ],
+          [
+            604.0,
+            492.0
+          ],
+          [
+            88.0,
+            492.0
+          ]
+        ]
+      },
+      {
+        "block_label": "display_formula",
+        "block_content": " $$ \\begin{align*}x_{t-1}=\\phi_{\\theta}(x_{t},t)&=\\sqrt{\\bar{\\alpha}_{t-1}}\\left(\\frac{x_{t}-\\sqrt{1-\\bar{\\alpha}_{t}}\\epsilon_{\\theta}(x_{t},t)}{\\sqrt{\\bar{\\alpha}_{t}}}\\right)\\\\&+\\sqrt{1-\\bar{\\alpha}_{t-1}}\\epsilon_{\\theta}(x_{t},t),\\end{align*} $$ ",
+        "block_bbox": [
+          102,
+          502,
+          581,
+          604
+        ],
+        "block_id": 5,
+        "block_order": 5,
+        "group_id": 5,
+        "global_block_id": 33,
+        "global_group_id": 33,
+        "block_polygon_points": [
+          [
+            102.0,
+            510.0
+          ],
+          [
+            580.0,
+            510.0
+          ],
+          [
+            580.0,
+            603.0
+          ],
+          [
+            102.0,
+            603.0
+          ]
+        ]
+      },
+      {
+        "block_label": "text",
+        "block_content": "where  $ \\bar{\\alpha}_t = \\prod_{k=0}^t \\alpha_k $,  $ \\alpha_t + \\beta_t = 1 $ and  $ \\epsilon_\\theta(x_t, t) $ is the noise predicted by the model at step  $ t $. This formulation requires fewer sampling steps without compromising the quality of the generated images.",
+        "block_bbox": [
+          87,
+          623,
+          600,
+          734
+        ],
+        "block_id": 6,
+        "block_order": 6,
+        "group_id": 6,
+        "global_block_id": 34,
+        "global_group_id": 34,
+        "block_polygon_points": [
+          [
+            87.0,
+            623.0
+          ],
+          [
+            600.0,
+            623.0
+          ],
+          [
+            600.0,
+            734.0
+          ],
+          [
+            87.0,
+            734.0
+          ]
+        ]
+      },
+      {
+        "block_label": "text",
+        "block_content": "Stable Diffusion Stable Diffusion leverages a variational autoencoder (VAE) (Kingma & Welling, 2013) to encode images into a latent space and perform diffusion in this compressed space. The model uses a text encoder to guide the diffusion process, enabling text-to-image generation:",
+        "block_bbox": [
+          86,
+          743,
+          600,
+          877
+        ],
+        "block_id": 7,
+        "block_order": 7,
+        "group_id": 7,
+        "global_block_id": 35,
+        "global_group_id": 35,
+        "block_polygon_points": [
+          [
+            86.0,
+            743.0
+          ],
+          [
+            600.0,
+            743.0
+          ],
+          [
+            600.0,
+            877.0
+          ],
+          [
+            86.0,
+            877.0
+          ]
+        ]
+      },
+      {
+        "block_label": "display_formula",
+        "block_content": " $$ z_{t-1}\\sim p_{\\theta}(z_{t-1}\\mid z_{t},\\tau_{\\theta}(y)),\\quad x=\\mathrm{D e c o d e r}(z_{0}), $$ ",
+        "block_bbox": [
+          125,
+          895,
+          563,
+          923
+        ],
+        "block_id": 8,
+        "block_order": 8,
+        "group_id": 8,
+        "global_block_id": 36,
+        "global_group_id": 36,
+        "block_polygon_points": [
+          [
+            125.0,
+            895.0
+          ],
+          [
+            563.0,
+            895.0
+          ],
+          [
+            563.0,
+            923.0
+          ],
+          [
+            125.0,
+            923.0
+          ]
+        ]
+      },
+      {
+        "block_label": "text",
+        "block_content": "where $x$ represents the output image, $z_t$ represents the latent variable at step $t$, and the text conditioning $\\tau_\\theta(y)$ is incorporated into the denoising process to generate the image. This approach significantly reduces computational costs and allows for high-quality image synthesis from textual descriptions.",
+        "block_bbox": [
+          86,
+          941,
+          601,
+          1098
+        ],
+        "block_id": 9,
+        "block_order": 9,
+        "group_id": 9,
+        "global_block_id": 37,
+        "global_group_id": 37,
+        "block_polygon_points": [
+          [
+            86.0,
+            941.0
+          ],
+          [
+            601.0,
+            941.0
+          ],
+          [
+            601.0,
+            1098.0
+          ],
+          [
+            86.0,
+            1098.0
+          ]
+        ]
+      },
+      {
+        "block_label": "text",
+        "block_content": "Diffusion Transformer Diffusion Transformer leverages the Vision Transformer (Dosovitskiy, 2020) structure to replace the U-net architecture traditionally used in diffusion models for noise prediction. Its training and sampling methods remain consistent with DDIM, with the only difference being the replacement of noise prediction network  $ \\epsilon_{\\theta} $ with  $ \\epsilon_{\\tilde{\\theta}} $, where  $ \\tilde{\\theta} $ represents a Vision Transformer-based architecture. This approach further enhances the generation quality and ensured that the model possesses good scalability properties.",
+        "block_bbox": [
+          85,
+          1108,
+          604,
+          1366
+        ],
+        "block_id": 10,
+        "block_order": 10,
+        "group_id": 10,
+        "global_block_id": 38,
+        "global_group_id": 38,
+        "block_polygon_points": [
+          [
+            85.0,
+            1108.0
+          ],
+          [
+            604.0,
+            1108.0
+          ],
+          [
+            604.0,
+            1366.0
+          ],
+          [
+            85.0,
+            1366.0
+          ]
+        ]
+      },
+      {
+        "block_label": "paragraph_title",
+        "block_content": "4. Algorithm Design",
+        "block_bbox": [
+          87,
+          1387,
+          320,
+          1417
+        ],
+        "block_id": 11,
+        "block_order": 11,
+        "group_id": 11,
+        "global_block_id": 39,
+        "global_group_id": 39,
+        "block_polygon_points": [
+          [
+            87.0,
+            1387.0
+          ],
+          [
+            320.0,
+            1387.0
+          ],
+          [
+            320.0,
+            1417.0
+          ],
+          [
+            87.0,
+            1417.0
+          ]
+        ]
+      },
+      {
+        "block_label": "text",
+        "block_content": "In this section, we introduce our algorithm. We begin by discussing the definition of variation API and the limitations of previous membership inference attack methods. In our formulations, we assume DDIM as our target model. The formulations for DDPM are highly similar and we omit it for brevity. We will discuss the generalization to the latent diffusion model in Section 4.3.",
+        "block_bbox": [
+          85,
+          1421,
+          599,
+          1477
+        ],
+        "block_id": 12,
+        "block_order": 12,
+        "group_id": 12,
+        "global_block_id": 40,
+        "global_group_id": 40,
+        "block_polygon_points": [
+          [
+            85.0,
+            1421.0
+          ],
+          [
+            599.0,
+            1421.0
+          ],
+          [
+            599.0,
+            1477.0
+          ],
+          [
+            85.0,
+            1477.0
+          ]
+        ]
+      },
+      {
+        "block_label": "text",
+        "block_content": "",
+        "block_bbox": [
+          632,
+          73,
+          1151,
+          222
+        ],
+        "block_id": 13,
+        "block_order": 13,
+        "group_id": 12,
+        "global_block_id": 41,
+        "global_group_id": 41,
+        "block_polygon_points": [
+          [
+            632.0,
+            73.0
+          ],
+          [
+            1151.0,
+            73.0
+          ],
+          [
+            1151.0,
+            222.0
+          ],
+          [
+            632.0,
+            222.0
+          ]
+        ]
+      },
+      {
+        "block_label": "paragraph_title",
+        "block_content": "4.1. The variation API for Diffusion Models",
+        "block_bbox": [
+          632,
+          233,
+          1041,
+          265
+        ],
+        "block_id": 14,
+        "block_order": 14,
+        "group_id": 14,
+        "global_block_id": 42,
+        "global_group_id": 42,
+        "block_polygon_points": [
+          [
+            632,
+            233
+          ],
+          [
+            632,
+            264
+          ],
+          [
+            1040,
+            264
+          ],
+          [
+            1040,
+            241
+          ],
+          [
+            700,
+            241
+          ],
+          [
+            699,
+            233
+          ]
+        ]
+      },
+      {
+        "block_label": "text",
+        "block_content": "Most previous works on membership inference attacks against diffusion models aim to prevent data leakage and hence rely on thresholding the model's training loss. For instance, Hu & Pang (2023) involves a direct comparison of image losses, while Duan et al. (2023); Kong et al. (2023) evaluates the accuracy of the model's noise prediction at initial or intermediate steps. However, the required access to the model's internal U-net structure prevents applications from copyright protection because most servers typically provide only black-box API access.",
+        "block_bbox": [
+          627,
+          274,
+          1151,
+          537
+        ],
+        "block_id": 15,
+        "block_order": 15,
+        "group_id": 15,
+        "global_block_id": 43,
+        "global_group_id": 43,
+        "block_polygon_points": [
+          [
+            627.0,
+            274.0
+          ],
+          [
+            1151.0,
+            274.0
+          ],
+          [
+            1151.0,
+            537.0
+          ],
+          [
+            627.0,
+            537.0
+          ]
+        ]
+      },
+      {
+        "block_label": "text",
+        "block_content": "In contrast, our method represents a step towards black-box MIA, as we do not directly access the model's internal structure. Instead, we rely solely on the variation API, which takes an input image and returns the corresponding output image. Below, we formalize the definition of the variation API used in our algorithm.",
+        "block_bbox": [
+          626,
+          542,
+          1153,
+          702
+        ],
+        "block_id": 16,
+        "block_order": 16,
+        "group_id": 16,
+        "global_block_id": 44,
+        "global_group_id": 44,
+        "block_polygon_points": [
+          [
+            626.0,
+            542.0
+          ],
+          [
+            1153.0,
+            542.0
+          ],
+          [
+            1153.0,
+            702.0
+          ],
+          [
+            626.0,
+            702.0
+          ]
+        ]
+      },
+      {
+        "block_label": "text",
+        "block_content": "Definition 4.1 (The variation API). We define the variation API  $ V_{\\theta}(x,t) $ of a model as follows. Suppose we have an input image x, and the diffusion step of the API is t. The variation API randomly adds t-step Gaussian noise  $ \\epsilon \\sim \\mathcal{N}(0, I) $ to the image and denoises it using the DDIM sampling process  $ \\phi_{\\theta}(x_t, t) $, returning the reconstructed image  $ V_{\\theta}(x, t) $. The details are as follows:",
+        "block_bbox": [
+          624,
+          708,
+          1156,
+          894
+        ],
+        "block_id": 17,
+        "block_order": 17,
+        "group_id": 17,
+        "global_block_id": 45,
+        "global_group_id": 45,
+        "block_polygon_points": [
+          [
+            624.0,
+            708.0
+          ],
+          [
+            1156.0,
+            708.0
+          ],
+          [
+            1156.0,
+            894.0
+          ],
+          [
+            624.0,
+            894.0
+          ]
+        ]
+      },
+      {
+        "block_label": "display_formula",
+        "block_content": " $$ \\begin{align*}x_{t}&=\\sqrt{\\bar{\\alpha}_{t}}x+\\sqrt{1-\\bar{\\alpha}_{t}}\\epsilon,\\\\V_{\\theta}(x,t)&=\\Phi_{\\theta}(x_{t},0)=\\phi_{\\theta}(\\cdots\\phi_{\\theta}(\\phi_{\\theta}(x_{t},t),t-1),0).\\end{align*} $$ ",
+        "block_bbox": [
+          640,
+          918,
+          1138,
+          982
+        ],
+        "block_id": 18,
+        "block_order": 18,
+        "group_id": 18,
+        "global_block_id": 46,
+        "global_group_id": 46,
+        "block_polygon_points": [
+          [
+            640.0,
+            918.0
+          ],
+          [
+            1138.0,
+            918.0
+          ],
+          [
+            1138.0,
+            982.0
+          ],
+          [
+            640.0,
+            982.0
+          ]
+        ]
+      },
+      {
+        "block_label": "text",
+        "block_content": "This definition aligns with the image-to-image generation method of the diffusion model, making access to this API practical in many setups (Lugmayr et al., 2022; Saharia et al., 2022a; Wu & De la Torre, 2023). Some APIs provide the user with a choice of t, while others do not and use the default parameter. We will discuss the influence of different diffusion steps in Section 5.5, showing that the attack performances are relatively stable and not sensitive to the selection of t. We also note that for the target model, we can substitute  $ \\phi_{\\theta}(x_t,0) $ with other sampling methods, such as the Euler-Maruyama Method (Mao, 2015) or Variational Diffusion Models (Kingma et al., 2021).",
+        "block_bbox": [
+          625,
+          1016,
+          1151,
+          1328
+        ],
+        "block_id": 19,
+        "block_order": 19,
+        "group_id": 19,
+        "global_block_id": 47,
+        "global_group_id": 47,
+        "block_polygon_points": [
+          [
+            625.0,
+            1016.0
+          ],
+          [
+            1151.0,
+            1016.0
+          ],
+          [
+            1151.0,
+            1328.0
+          ],
+          [
+            625.0,
+            1328.0
+          ]
+        ]
+      },
+      {
+        "block_label": "paragraph_title",
+        "block_content": "4.2. Algorithm",
+        "block_bbox": [
+          628,
+          1343,
+          772,
+          1369
+        ],
+        "block_id": 20,
+        "block_order": 20,
+        "group_id": 20,
+        "global_block_id": 48,
+        "global_group_id": 48,
+        "block_polygon_points": [
+          [
+            628.0,
+            1343.0
+          ],
+          [
+            772.0,
+            1343.0
+          ],
+          [
+            772.0,
+            1369.0
+          ],
+          [
+            628.0,
+            1369.0
+          ]
+        ]
+      },
+      {
+        "block_label": "text",
+        "block_content": "In this section, we present the intuition of our algorithm. We denote  $ \\|\\cdot\\| $ as the  $ L_2 $ operator norm of a vector and  $ \\mathcal{T}=\\{1,2,\\ldots,T\\} $ as the set of diffusion steps. The key insight is derived from the training loss function of a fixed",
+        "block_bbox": [
+          624,
+          1372,
+          1147,
+          1482
+        ],
+        "block_id": 21,
+        "block_order": 21,
+        "group_id": 21,
+        "global_block_id": 49,
+        "global_group_id": 49,
+        "block_polygon_points": [
+          [
+            624.0,
+            1372.0
+          ],
+          [
+            1147.0,
+            1372.0
+          ],
+          [
+            1147.0,
+            1482.0
+          ],
+          [
+            624.0,
+            1482.0
+          ]
+        ]
+      },
+      {
+        "block_label": "number",
+        "block_content": "3",
+        "block_bbox": [
+          603,
+          1504,
+          620,
+          1525
+        ],
+        "block_id": 22,
+        "block_order": null,
+        "group_id": 22,
+        "global_block_id": 50,
+        "global_group_id": 50,
+        "block_polygon_points": [
+          [
+            603.0,
+            1504.0
+          ],
+          [
+            619.0,
+            1504.0
+          ],
+          [
+            619.0,
+            1524.0
+          ],
+          [
+            603.0,
+            1524.0
+          ]
+        ]
+      }
+    ],
+    "doc_preprocessor_res": {
+      "model_settings": {
+        "use_doc_orientation_classify": true,
+        "use_doc_unwarping": true
+      },
+      "angle": 0
+    },
+    "layout_det_res": {
+      "boxes": [
+        {
+          "cls_id": 12,
+          "label": "header",
+          "score": 0.8965566158294678,
+          "coordinate": [
+            313,
+            7,
+            923,
+            50
+          ],
+          "order": null,
+          "polygon_points": [
+            [
+              313.00006103515625,
+              7.000002384185791
+            ],
+            [
+              922.4911499023438,
+              16.096881866455078
+            ],
+            [
+              921.9906616210938,
+              49.62672805786133
+            ],
+            [
+              312.49957275390625,
+              40.529850006103516
+            ]
+          ]
+        },
+        {
+          "cls_id": 22,
+          "label": "text",
+          "score": 0.8875383734703064,
+          "coordinate": [
+            80,
+            63,
+            607,
+            128
+          ],
+          "order": 1,
+          "polygon_points": [
+            [
+              80.0,
+              63.0
+            ],
+            [
+              607.0,
+              63.0
+            ],
+            [
+              607.0,
+              128.0
+            ],
+            [
+              80.0,
+              128.0
+            ]
+          ]
+        },
+        {
+          "cls_id": 15,
+          "label": "inline_formula",
+          "score": 0.6023334264755249,
+          "coordinate": [
+            271,
+            69,
+            302,
+            94
+          ],
+          "order": 2,
+          "polygon_points": [
+            [
+              271,
+              69
+            ],
+            [
+              271,
+              93
+            ],
+            [
+              301,
+              93
+            ],
+            [
+              301,
+              69
+            ]
+          ]
+        },
+        {
+          "cls_id": 5,
+          "label": "display_formula",
+          "score": 0.49093371629714966,
+          "coordinate": [
+            135,
+            139,
+            563,
+            226
+          ],
+          "order": 3,
+          "polygon_points": [
+            [
+              135.0,
+              139.0
+            ],
+            [
+              563.0,
+              139.0
+            ],
+            [
+              563.0,
+              226.0
+            ],
+            [
+              135.0,
+              226.0
+            ]
+          ]
+        },
+        {
+          "cls_id": 22,
+          "label": "text",
+          "score": 0.9160537123680115,
+          "coordinate": [
+            86,
+            238,
+            605,
+            352
+          ],
+          "order": 4,
+          "polygon_points": [
+            [
+              86.0,
+              238.0
+            ],
+            [
+              605.0,
+              238.0
+            ],
+            [
+              605.0,
+              352.0
+            ],
+            [
+              86.0,
+              352.0
+            ]
+          ]
+        },
+        {
+          "cls_id": 15,
+          "label": "inline_formula",
+          "score": 0.7313242554664612,
+          "coordinate": [
+            154,
+            243,
+            203,
+            268
+          ],
+          "order": 5,
+          "polygon_points": [
+            [
+              154,
+              243
+            ],
+            [
+              154,
+              267
+            ],
+            [
+              202,
+              267
+            ],
+            [
+              202,
+              243
+            ]
+          ]
+        },
+        {
+          "cls_id": 15,
+          "label": "inline_formula",
+          "score": 0.7434807419776917,
+          "coordinate": [
+            243,
+            244,
+            291,
+            270
+          ],
+          "order": 6,
+          "polygon_points": [
+            [
+              243.0,
+              244.0
+            ],
+            [
+              290.0,
+              244.0
+            ],
+            [
+              290.0,
+              269.0
+            ],
+            [
+              243.0,
+              269.0
+            ]
+          ]
+        },
+        {
+          "cls_id": 15,
+          "label": "inline_formula",
+          "score": 0.4121667444705963,
+          "coordinate": [
+            584,
+            272,
+            601,
+            294
+          ],
+          "order": 7,
+          "polygon_points": [
+            [
+              584.0,
+              272.0
+            ],
+            [
+              600.0,
+              272.0
+            ],
+            [
+              600.0,
+              293.0
+            ],
+            [
+              584.0,
+              293.0
+            ]
+          ]
+        },
+        {
+          "cls_id": 15,
+          "label": "inline_formula",
+          "score": 0.7110199928283691,
+          "coordinate": [
+            132,
+            293,
+            155,
+            318
+          ],
+          "order": 8,
+          "polygon_points": [
+            [
+              132.0,
+              293.0
+            ],
+            [
+              154.0,
+              293.0
+            ],
+            [
+              154.0,
+              317.0
+            ],
+            [
+              132.0,
+              317.0
+            ]
+          ]
+        },
+        {
+          "cls_id": 22,
+          "label": "text",
+          "score": 0.9441524744033813,
+          "coordinate": [
+            88,
+            356,
+            604,
+            492
+          ],
+          "order": 9,
+          "polygon_points": [
+            [
+              88.0,
+              356.0
+            ],
+            [
+              604.0,
+              356.0
+            ],
+            [
+              604.0,
+              492.0
+            ],
+            [
+              88.0,
+              492.0
+            ]
+          ]
+        },
+        {
+          "cls_id": 5,
+          "label": "display_formula",
+          "score": 0.9211810231208801,
+          "coordinate": [
+            102,
+            502,
+            581,
+            604
+          ],
+          "order": 10,
+          "polygon_points": [
+            [
+              102.0,
+              510.0
+            ],
+            [
+              580.0,
+              510.0
+            ],
+            [
+              580.0,
+              603.0
+            ],
+            [
+              102.0,
+              603.0
+            ]
+          ]
+        },
+        {
+          "cls_id": 22,
+          "label": "text",
+          "score": 0.9176042675971985,
+          "coordinate": [
+            87,
+            623,
+            600,
+            734
+          ],
+          "order": 11,
+          "polygon_points": [
+            [
+              87.0,
+              623.0
+            ],
+            [
+              600.0,
+              623.0
+            ],
+            [
+              600.0,
+              734.0
+            ],
+            [
+              87.0,
+              734.0
+            ]
+          ]
+        },
+        {
+          "cls_id": 15,
+          "label": "inline_formula",
+          "score": 0.8142074346542358,
+          "coordinate": [
+            154,
+            623,
+            422,
+            652
+          ],
+          "order": 12,
+          "polygon_points": [
+            [
+              154,
+              623
+            ],
+            [
+              154,
+              651
+            ],
+            [
+              421,
+              651
+            ],
+            [
+              421,
+              623
+            ]
+          ]
+        },
+        {
+          "cls_id": 15,
+          "label": "inline_formula",
+          "score": 0.7728672027587891,
+          "coordinate": [
+            465,
+            627,
+            540,
+            652
+          ],
+          "order": 13,
+          "polygon_points": [
+            [
+              465.0,
+              627.0
+            ],
+            [
+              539.0,
+              627.0
+            ],
+            [
+              539.0,
+              651.0
+            ],
+            [
+              465.0,
+              651.0
+            ]
+          ]
+        },
+        {
+          "cls_id": 22,
+          "label": "text",
+          "score": 0.9404789805412292,
+          "coordinate": [
+            86,
+            743,
+            600,
+            877
+          ],
+          "order": 14,
+          "polygon_points": [
+            [
+              86.0,
+              743.0
+            ],
+            [
+              600.0,
+              743.0
+            ],
+            [
+              600.0,
+              877.0
+            ],
+            [
+              86.0,
+              877.0
+            ]
+          ]
+        },
+        {
+          "cls_id": 5,
+          "label": "display_formula",
+          "score": 0.8389592170715332,
+          "coordinate": [
+            125,
+            895,
+            563,
+            923
+          ],
+          "order": 15,
+          "polygon_points": [
+            [
+              125.0,
+              895.0
+            ],
+            [
+              563.0,
+              895.0
+            ],
+            [
+              563.0,
+              923.0
+            ],
+            [
+              125.0,
+              923.0
+            ]
+          ]
+        },
+        {
+          "cls_id": 22,
+          "label": "text",
+          "score": 0.9424865245819092,
+          "coordinate": [
+            86,
+            941,
+            601,
+            1098
+          ],
+          "order": 16,
+          "polygon_points": [
+            [
+              86.0,
+              941.0
+            ],
+            [
+              601.0,
+              941.0
+            ],
+            [
+              601.0,
+              1098.0
+            ],
+            [
+              86.0,
+              1098.0
+            ]
+          ]
+        },
+        {
+          "cls_id": 15,
+          "label": "inline_formula",
+          "score": 0.5672071576118469,
+          "coordinate": [
+            405,
+            948,
+            426,
+            967
+          ],
+          "order": 17,
+          "polygon_points": [
+            [
+              405,
+              948
+            ],
+            [
+              405,
+              966
+            ],
+            [
+              425,
+              966
+            ],
+            [
+              425,
+              948
+            ]
+          ]
+        },
+        {
+          "cls_id": 15,
+          "label": "inline_formula",
+          "score": 0.6846343874931335,
+          "coordinate": [
+            472,
+            970,
+            521,
+            994
+          ],
+          "order": 18,
+          "polygon_points": [
+            [
+              472.0,
+              970.0
+            ],
+            [
+              520.0,
+              970.0
+            ],
+            [
+              520.0,
+              993.0
+            ],
+            [
+              472.0,
+              993.0
+            ]
+          ]
+        },
+        {
+          "cls_id": 22,
+          "label": "text",
+          "score": 0.9574456214904785,
+          "coordinate": [
+            85,
+            1108,
+            604,
+            1366
+          ],
+          "order": 19,
+          "polygon_points": [
+            [
+              85.0,
+              1108.0
+            ],
+            [
+              604.0,
+              1108.0
+            ],
+            [
+              604.0,
+              1366.0
+            ],
+            [
+              85.0,
+              1366.0
+            ]
+          ]
+        },
+        {
+          "cls_id": 15,
+          "label": "inline_formula",
+          "score": 0.6633982062339783,
+          "coordinate": [
+            91,
+            1266,
+            116,
+            1288
+          ],
+          "order": 20,
+          "polygon_points": [
+            [
+              91,
+              1266
+            ],
+            [
+              91,
+              1287
+            ],
+            [
+              115,
+              1287
+            ],
+            [
+              115,
+              1266
+            ]
+          ]
+        },
+        {
+          "cls_id": 15,
+          "label": "inline_formula",
+          "score": 0.5087767243385315,
+          "coordinate": [
+            533,
+            1242,
+            555,
+            1263
+          ],
+          "order": 21,
+          "polygon_points": [
+            [
+              533.0,
+              1242.0
+            ],
+            [
+              554.0,
+              1242.0
+            ],
+            [
+              554.0,
+              1262.0
+            ],
+            [
+              533.0,
+              1262.0
+            ]
+          ]
+        },
+        {
+          "cls_id": 15,
+          "label": "inline_formula",
+          "score": 0.546209990978241,
+          "coordinate": [
+            178,
+            1261,
+            195,
+            1284
+          ],
+          "order": 22,
+          "polygon_points": [
+            [
+              178.0,
+              1261.0
+            ],
+            [
+              194.0,
+              1261.0
+            ],
+            [
+              194.0,
+              1283.0
+            ],
+            [
+              178.0,
+              1283.0
+            ]
+          ]
+        },
+        {
+          "cls_id": 17,
+          "label": "paragraph_title",
+          "score": 0.845866858959198,
+          "coordinate": [
+            87,
+            1387,
+            320,
+            1417
+          ],
+          "order": 23,
+          "polygon_points": [
+            [
+              87.0,
+              1387.0
+            ],
+            [
+              320.0,
+              1387.0
+            ],
+            [
+              320.0,
+              1417.0
+            ],
+            [
+              87.0,
+              1417.0
+            ]
+          ]
+        },
+        {
+          "cls_id": 22,
+          "label": "text",
+          "score": 0.8995410799980164,
+          "coordinate": [
+            85,
+            1421,
+            599,
+            1477
+          ],
+          "order": 24,
+          "polygon_points": [
+            [
+              85.0,
+              1421.0
+            ],
+            [
+              599.0,
+              1421.0
+            ],
+            [
+              599.0,
+              1477.0
+            ],
+            [
+              85.0,
+              1477.0
+            ]
+          ]
+        },
+        {
+          "cls_id": 22,
+          "label": "text",
+          "score": 0.9433140754699707,
+          "coordinate": [
+            632,
+            73,
+            1151,
+            222
+          ],
+          "order": 25,
+          "polygon_points": [
+            [
+              632.0,
+              73.0
+            ],
+            [
+              1151.0,
+              73.0
+            ],
+            [
+              1151.0,
+              222.0
+            ],
+            [
+              632.0,
+              222.0
+            ]
+          ]
+        },
+        {
+          "cls_id": 17,
+          "label": "paragraph_title",
+          "score": 0.8530828952789307,
+          "coordinate": [
+            632,
+            233,
+            1041,
+            265
+          ],
+          "order": 26,
+          "polygon_points": [
+            [
+              632,
+              233
+            ],
+            [
+              632,
+              264
+            ],
+            [
+              1040,
+              264
+            ],
+            [
+              1040,
+              241
+            ],
+            [
+              700,
+              241
+            ],
+            [
+              699,
+              233
+            ]
+          ]
+        },
+        {
+          "cls_id": 22,
+          "label": "text",
+          "score": 0.9550960063934326,
+          "coordinate": [
+            627,
+            274,
+            1151,
+            537
+          ],
+          "order": 27,
+          "polygon_points": [
+            [
+              627.0,
+              274.0
+            ],
+            [
+              1151.0,
+              274.0
+            ],
+            [
+              1151.0,
+              537.0
+            ],
+            [
+              627.0,
+              537.0
+            ]
+          ]
+        },
+        {
+          "cls_id": 22,
+          "label": "text",
+          "score": 0.9460239410400391,
+          "coordinate": [
+            626,
+            542,
+            1153,
+            702
+          ],
+          "order": 28,
+          "polygon_points": [
+            [
+              626.0,
+              542.0
+            ],
+            [
+              1153.0,
+              542.0
+            ],
+            [
+              1153.0,
+              702.0
+            ],
+            [
+              626.0,
+              702.0
+            ]
+          ]
+        },
+        {
+          "cls_id": 22,
+          "label": "text",
+          "score": 0.9434858560562134,
+          "coordinate": [
+            624,
+            708,
+            1156,
+            894
+          ],
+          "order": 29,
+          "polygon_points": [
+            [
+              624.0,
+              708.0
+            ],
+            [
+              1156.0,
+              708.0
+            ],
+            [
+              1156.0,
+              894.0
+            ],
+            [
+              624.0,
+              894.0
+            ]
+          ]
+        },
+        {
+          "cls_id": 15,
+          "label": "inline_formula",
+          "score": 0.5773248076438904,
+          "coordinate": [
+            671,
+            734,
+            741,
+            760
+          ],
+          "order": 30,
+          "polygon_points": [
+            [
+              671,
+              734
+            ],
+            [
+              671,
+              759
+            ],
+            [
+              740,
+              759
+            ],
+            [
+              740,
+              734
+            ]
+          ]
+        },
+        {
+          "cls_id": 15,
+          "label": "inline_formula",
+          "score": 0.6663804650306702,
+          "coordinate": [
+            1040,
+            788,
+            1150,
+            814
+          ],
+          "order": 31,
+          "polygon_points": [
+            [
+              1040.0,
+              788.0
+            ],
+            [
+              1150.0,
+              788.0
+            ],
+            [
+              1150.0,
+              814.0
+            ],
+            [
+              1040.0,
+              814.0
+            ]
+          ]
+        },
+        {
+          "cls_id": 15,
+          "label": "inline_formula",
+          "score": 0.6566206216812134,
+          "coordinate": [
+            675,
+            840,
+            752,
+            864
+          ],
+          "order": 32,
+          "polygon_points": [
+            [
+              675.0,
+              840.0
+            ],
+            [
+              751.0,
+              840.0
+            ],
+            [
+              751.0,
+              863.0
+            ],
+            [
+              675.0,
+              863.0
+            ]
+          ]
+        },
+        {
+          "cls_id": 15,
+          "label": "inline_formula",
+          "score": 0.673117458820343,
+          "coordinate": [
+            1074,
+            841,
+            1147,
+            867
+          ],
+          "order": 33,
+          "polygon_points": [
+            [
+              1081.0,
+              841.0
+            ],
+            [
+              1146.0,
+              841.0
+            ],
+            [
+              1146.0,
+              866.0
+            ],
+            [
+              1081.0,
+              866.0
+            ]
+          ]
+        },
+        {
+          "cls_id": 5,
+          "label": "display_formula",
+          "score": 0.6988243460655212,
+          "coordinate": [
+            640,
+            918,
+            1138,
+            982
+          ],
+          "order": 34,
+          "polygon_points": [
+            [
+              640.0,
+              918.0
+            ],
+            [
+              1138.0,
+              918.0
+            ],
+            [
+              1138.0,
+              982.0
+            ],
+            [
+              640.0,
+              982.0
+            ]
+          ]
+        },
+        {
+          "cls_id": 22,
+          "label": "text",
+          "score": 0.9540823698043823,
+          "coordinate": [
+            625,
+            1016,
+            1151,
+            1328
+          ],
+          "order": 35,
+          "polygon_points": [
+            [
+              625.0,
+              1016.0
+            ],
+            [
+              1151.0,
+              1016.0
+            ],
+            [
+              1151.0,
+              1328.0
+            ],
+            [
+              625.0,
+              1328.0
+            ]
+          ]
+        },
+        {
+          "cls_id": 15,
+          "label": "inline_formula",
+          "score": 0.7736104726791382,
+          "coordinate": [
+            755,
+            1247,
+            834,
+            1272
+          ],
+          "order": 36,
+          "polygon_points": [
+            [
+              755,
+              1254
+            ],
+            [
+              755,
+              1271
+            ],
+            [
+              833,
+              1271
+            ],
+            [
+              833,
+              1247
+            ],
+            [
+              762,
+              1247
+            ],
+            [
+              762,
+              1253
+            ],
+            [
+              761,
+              1254
+            ]
+          ]
+        },
+        {
+          "cls_id": 17,
+          "label": "paragraph_title",
+          "score": 0.8270831108093262,
+          "coordinate": [
+            628,
+            1343,
+            772,
+            1369
+          ],
+          "order": 37,
+          "polygon_points": [
+            [
+              628.0,
+              1343.0
+            ],
+            [
+              772.0,
+              1343.0
+            ],
+            [
+              772.0,
+              1369.0
+            ],
+            [
+              628.0,
+              1369.0
+            ]
+          ]
+        },
+        {
+          "cls_id": 22,
+          "label": "text",
+          "score": 0.9230865240097046,
+          "coordinate": [
+            624,
+            1372,
+            1147,
+            1482
+          ],
+          "order": 38,
+          "polygon_points": [
+            [
+              624.0,
+              1372.0
+            ],
+            [
+              1147.0,
+              1372.0
+            ],
+            [
+              1147.0,
+              1482.0
+            ],
+            [
+              624.0,
+              1482.0
+            ]
+          ]
+        },
+        {
+          "cls_id": 15,
+          "label": "inline_formula",
+          "score": 0.7167206406593323,
+          "coordinate": [
+            731,
+            1399,
+            773,
+            1424
+          ],
+          "order": 39,
+          "polygon_points": [
+            [
+              731,
+              1399
+            ],
+            [
+              731,
+              1423
+            ],
+            [
+              772,
+              1423
+            ],
+            [
+              772,
+              1399
+            ]
+          ]
+        },
+        {
+          "cls_id": 15,
+          "label": "inline_formula",
+          "score": 0.7319653034210205,
+          "coordinate": [
+            836,
+            1401,
+            863,
+            1425
+          ],
+          "order": 40,
+          "polygon_points": [
+            [
+              836.0,
+              1401.0
+            ],
+            [
+              862.0,
+              1401.0
+            ],
+            [
+              862.0,
+              1424.0
+            ],
+            [
+              836.0,
+              1424.0
+            ]
+          ]
+        },
+        {
+          "cls_id": 15,
+          "label": "inline_formula",
+          "score": 0.7783710956573486,
+          "coordinate": [
+            629,
+            1423,
+            797,
+            1450
+          ],
+          "order": 41,
+          "polygon_points": [
+            [
+              629.0,
+              1423.0
+            ],
+            [
+              797.0,
+              1423.0
+            ],
+            [
+              797.0,
+              1450.0
+            ],
+            [
+              629.0,
+              1450.0
+            ]
+          ]
+        },
+        {
+          "cls_id": 16,
+          "label": "number",
+          "score": 0.7084293961524963,
+          "coordinate": [
+            603,
+            1504,
+            620,
+            1525
+          ],
+          "order": 42,
+          "polygon_points": [
+            [
+              603.0,
+              1504.0
+            ],
+            [
+              619.0,
+              1504.0
+            ],
+            [
+              619.0,
+              1524.0
+            ],
+            [
+              603.0,
+              1524.0
+            ]
+          ]
+        }
+      ]
+    }
+  },
+  "markdown": {
+    "text": "process (denoted as  $ p_{\\theta} $) gradually reconstructs the image from noise.\n\n $$ \\begin{align*}q(x_{t}\\mid x_{t-1})&=\\mathcal{N}\\left(x_{t};\\sqrt{1-\\beta_{t}}x_{t-1},\\beta_{t}\\mathbf{I}\\right),\\\\p_{\\theta}(x_{t-1}\\mid x_{t})&=\\mathcal{N}\\left(x_{t-1};\\mu_{\\theta}(x_{t},t),\\Sigma_{\\theta}(x_{t},t)\\right),\\end{align*} $$ \n\nwhere  $ \\mu_{\\theta}(\\cdot) $ and  $ \\Sigma_{\\theta}(\\cdot) $ are the mean and covariance of the denoised image parameterized by the model parameters  $ \\theta $, and  $ \\beta_{t} $ is a noise schedule that controls the amount of noise added at each step.\n\nDenoising Diffusion Implicit Model (DDIM) DDIM modifies the sampling process to improve efficiency while maintaining high-quality image generation. Unlike DDPM, which requires a large number of denoising steps, DDIM uses a non-Markovian process to accelerate sampling.\n\n $$ \\begin{align*}x_{t-1}=\\phi_{\\theta}(x_{t},t)&=\\sqrt{\\bar{\\alpha}_{t-1}}\\left(\\frac{x_{t}-\\sqrt{1-\\bar{\\alpha}_{t}}\\epsilon_{\\theta}(x_{t},t)}{\\sqrt{\\bar{\\alpha}_{t}}}\\right)\\\\&+\\sqrt{1-\\bar{\\alpha}_{t-1}}\\epsilon_{\\theta}(x_{t},t),\\end{align*} $$ \n\nwhere  $ \\bar{\\alpha}_t = \\prod_{k=0}^t \\alpha_k $,  $ \\alpha_t + \\beta_t = 1 $ and  $ \\epsilon_\\theta(x_t, t) $ is the noise predicted by the model at step  $ t $. This formulation requires fewer sampling steps without compromising the quality of the generated images.\n\nStable Diffusion Stable Diffusion leverages a variational autoencoder (VAE) (Kingma & Welling, 2013) to encode images into a latent space and perform diffusion in this compressed space. The model uses a text encoder to guide the diffusion process, enabling text-to-image generation:\n\n $$ z_{t-1}\\sim p_{\\theta}(z_{t-1}\\mid z_{t},\\tau_{\\theta}(y)),\\quad x=\\mathrm{D e c o d e r}(z_{0}), $$ \n\nwhere $x$ represents the output image, $z_t$ represents the latent variable at step $t$, and the text conditioning $\\tau_\\theta(y)$ is incorporated into the denoising process to generate the image. This approach significantly reduces computational costs and allows for high-quality image synthesis from textual descriptions.\n\nDiffusion Transformer Diffusion Transformer leverages the Vision Transformer (Dosovitskiy, 2020) structure to replace the U-net architecture traditionally used in diffusion models for noise prediction. Its training and sampling methods remain consistent with DDIM, with the only difference being the replacement of noise prediction network  $ \\epsilon_{\\theta} $ with  $ \\epsilon_{\\tilde{\\theta}} $, where  $ \\tilde{\\theta} $ represents a Vision Transformer-based architecture. This approach further enhances the generation quality and ensured that the model possesses good scalability properties.\n\n## 4. Algorithm Design\n\nIn this section, we introduce our algorithm. We begin by discussing the definition of variation API and the limitations of previous membership inference attack methods. In our formulations, we assume DDIM as our target model. The formulations for DDPM are highly similar and we omit it for brevity. We will discuss the generalization to the latent diffusion model in Section 4.3.\n\n\n\n### 4.1. The variation API for Diffusion Models\n\nMost previous works on membership inference attacks against diffusion models aim to prevent data leakage and hence rely on thresholding the model's training loss. For instance, Hu & Pang (2023) involves a direct comparison of image losses, while Duan et al. (2023); Kong et al. (2023) evaluates the accuracy of the model's noise prediction at initial or intermediate steps. However, the required access to the model's internal U-net structure prevents applications from copyright protection because most servers typically provide only black-box API access.\n\nIn contrast, our method represents a step towards black-box MIA, as we do not directly access the model's internal structure. Instead, we rely solely on the variation API, which takes an input image and returns the corresponding output image. Below, we formalize the definition of the variation API used in our algorithm.\n\nDefinition 4.1 (The variation API). We define the variation API  $ V_{\\theta}(x,t) $ of a model as follows. Suppose we have an input image x, and the diffusion step of the API is t. The variation API randomly adds t-step Gaussian noise  $ \\epsilon \\sim \\mathcal{N}(0, I) $ to the image and denoises it using the DDIM sampling process  $ \\phi_{\\theta}(x_t, t) $, returning the reconstructed image  $ V_{\\theta}(x, t) $. The details are as follows:\n\n $$ \\begin{align*}x_{t}&=\\sqrt{\\bar{\\alpha}_{t}}x+\\sqrt{1-\\bar{\\alpha}_{t}}\\epsilon,\\\\V_{\\theta}(x,t)&=\\Phi_{\\theta}(x_{t},0)=\\phi_{\\theta}(\\cdots\\phi_{\\theta}(\\phi_{\\theta}(x_{t},t),t-1),0).\\end{align*} $$ \n\nThis definition aligns with the image-to-image generation method of the diffusion model, making access to this API practical in many setups (Lugmayr et al., 2022; Saharia et al., 2022a; Wu & De la Torre, 2023). Some APIs provide the user with a choice of t, while others do not and use the default parameter. We will discuss the influence of different diffusion steps in Section 5.5, showing that the attack performances are relatively stable and not sensitive to the selection of t. We also note that for the target model, we can substitute  $ \\phi_{\\theta}(x_t,0) $ with other sampling methods, such as the Euler-Maruyama Method (Mao, 2015) or Variational Diffusion Models (Kingma et al., 2021).\n\n### 4.2. Algorithm\n\nIn this section, we present the intuition of our algorithm. We denote  $ \\|\\cdot\\| $ as the  $ L_2 $ operator norm of a vector and  $ \\mathcal{T}=\\{1,2,\\ldots,T\\} $ as the set of diffusion steps. The key insight is derived from the training loss function of a fixed",
+    "images": {}
+  },
+  "outputImages": {
+    "layout_det_res": "https://pplines-online.bj.bcebos.com/deploy/official/paddleocr/pp-ocr-vl-15//b4807864-7379-4b74-9091-e7245ed13668/layout_det_res_2.jpg?authorization=bce-auth-v1%2FALTAKzReLNvew3ySINYJ0fuAMN%2F2026-04-05T13%3A44%3A16Z%2F-1%2F%2Fdb690aea478740dd9ab2f43c252f17f944af2199a704d88f02697197931a44f3"
+  },
+  "inputImage": "https://pplines-online.bj.bcebos.com/deploy/official/paddleocr/pp-ocr-vl-15//b4807864-7379-4b74-9091-e7245ed13668/input_img_2.jpg?authorization=bce-auth-v1%2FALTAKzReLNvew3ySINYJ0fuAMN%2F2026-04-05T13%3A44%3A17Z%2F-1%2F%2F1b6c29f22e1afbbd856fe3039f87fea00f17247bc80ee6d0d889856c16980de7"
+}

@@ -1,0 +1,330 @@
+{
+  "table_of_contents": [
+    {
+      "title": "\u76f8\u5173\u6587\u732e\u6574\u7406",
+      "heading_level": null,
+      "page_id": 0,
+      "polygon": [
+        [
+          90.0,
+          79.71600341796875
+        ],
+        [
+          196.5635986328125,
+          79.71600341796875
+        ],
+        [
+          196.5635986328125,
+          95.67657470703125
+        ],
+        [
+          90.0,
+          95.67657470703125
+        ]
+      ]
+    },
+    {
+      "title": "\u683c\u5f0f:",
+      "heading_level": null,
+      "page_id": 0,
+      "polygon": [
+        [
+          89.05078125,
+          105.24700927734375
+        ],
+        [
+          141.34152221679688,
+          104.0166015625
+        ],
+        [
+          141.34152221679688,
+          119.28753662109375
+        ],
+        [
+          87.88671875,
+          119.28753662109375
+        ]
+      ]
+    },
+    {
+      "title": "\u4e00\u3001DP-DocLDM / *DP-DocLDM: Differentially Private \nDocument Image Generation using Latent Diffusion \nModels*",
+      "heading_level": null,
+      "page_id": 0,
+      "polygon": [
+        [
+          87.3046875,
+          269.07598876953125
+        ],
+        [
+          515.62646484375,
+          268.05859375
+        ],
+        [
+          515.62646484375,
+          326.43658447265625
+        ],
+        [
+          87.3046875,
+          326.43658447265625
+        ]
+      ]
+    },
+    {
+      "title": "\u5dee\u5206\u9690\u79c1\u7c7b",
+      "heading_level": null,
+      "page_id": 0,
+      "polygon": [
+        [
+          104.04000091552734,
+          457.1796875
+        ],
+        [
+          183.32217407226562,
+          455.53515625
+        ],
+        [
+          183.32217407226562,
+          472.0875244140625
+        ],
+        [
+          103.01953125,
+          472.0875244140625
+        ]
+      ]
+    },
+    {
+      "title": "\u4e8c\u3001MP-LoRA / SMP-LoRA /Privacy-Preserving Low-Rank Adaptation \nAgainst Membership Inference Attacks for Latent Diffusion \nModels(MP-LoRA)",
+      "heading_level": null,
+      "page_id": 0,
+      "polygon": [
+        [
+          88.46875,
+          621.3670043945312
+        ],
+        [
+          514.6937255859375,
+          620.3994140625
+        ],
+        [
+          514.6937255859375,
+          671.7675628662109
+        ],
+        [
+          87.3046875,
+          671.7675628662109
+        ]
+      ]
+    },
+    {
+      "title": "\u4e09\u3001DualMD / DistillIMD / DUAL-MODEL DEFENSE: SAFEGUARDING \nDIFFUSION MODELS FROM MEMBERSHIP INFERENCE ATTACKS THROUGH \nDISJOINT DATA SPLITTING(DualMD / DistillMD)",
+      "heading_level": null,
+      "page_id": 1,
+      "polygon": [
+        [
+          88.759765625,
+          219.24700927734375
+        ],
+        [
+          514.7203979492188,
+          217.900390625
+        ],
+        [
+          514.7203979492188,
+          269.64752197265625
+        ],
+        [
+          88.759765625,
+          269.64752197265625
+        ]
+      ]
+    },
+    {
+      "title": "\u56db \u3001 DIFFENCE/DIFFENCE: Fencing Membership Privacy With \nDiffusion Models",
+      "heading_level": null,
+      "page_id": 1,
+      "polygon": [
+        [
+          88.759765625,
+          505.74267578125
+        ],
+        [
+          514.6800537109375,
+          505.74267578125
+        ],
+        [
+          514.6800537109375,
+          542.0475463867188
+        ],
+        [
+          87.595703125,
+          542.0475463867188
+        ]
+      ]
+    },
+    {
+      "title": "/DEFENDING DIFFUSION MODELS AGAINST MEMBERSHIP INFERENCE \nATTACKS VIA HIGHER-ORDER LANGEVIN DYNAMICS",
+      "heading_level": null,
+      "page_id": 2,
+      "polygon": [
+        [
+          89.05078125,
+          108.9501953125
+        ],
+        [
+          514.6188354492188,
+          107.3056640625
+        ],
+        [
+          514.6188354492188,
+          142.56756591796875
+        ],
+        [
+          87.88671875,
+          142.56756591796875
+        ]
+      ]
+    },
+    {
+      "title": "\u516d\u3001Saliency Map Perturbation / Inference Attacks Against Graph \nGenerative Diffusion Models",
+      "heading_level": null,
+      "page_id": 2,
+      "polygon": [
+        [
+          89.05078125,
+          346.447021484375
+        ],
+        [
+          514.6809692382812,
+          344.9404296875
+        ],
+        [
+          514.6809692382812,
+          378.6075439453125
+        ],
+        [
+          87.88671875,
+          378.6075439453125
+        ]
+      ]
+    }
+  ],
+  "page_stats": [
+    {
+      "page_id": 0,
+      "text_extraction_method": "pdftext",
+      "block_counts": [
+        [
+          "Span",
+          69
+        ],
+        [
+          "Line",
+          35
+        ],
+        [
+          "Text",
+          14
+        ],
+        [
+          "SectionHeader",
+          5
+        ]
+      ],
+      "block_metadata": {
+        "llm_request_count": 0,
+        "llm_error_count": 0,
+        "llm_tokens_used": 0,
+        "previous_text": "",
+        "previous_type": "",
+        "previous_order": 0
+      }
+    },
+    {
+      "page_id": 1,
+      "text_extraction_method": "pdftext",
+      "block_counts": [
+        [
+          "Span",
+          67
+        ],
+        [
+          "Line",
+          34
+        ],
+        [
+          "Text",
+          17
+        ],
+        [
+          "SectionHeader",
+          2
+        ]
+      ],
+      "block_metadata": {
+        "llm_request_count": 0,
+        "llm_error_count": 0,
+        "llm_tokens_used": 0,
+        "previous_text": "",
+        "previous_type": "",
+        "previous_order": 0
+      }
+    },
+    {
+      "page_id": 2,
+      "text_extraction_method": "pdftext",
+      "block_counts": [
+        [
+          "Span",
+          69
+        ],
+        [
+          "Line",
+          35
+        ],
+        [
+          "Text",
+          20
+        ],
+        [
+          "SectionHeader",
+          2
+        ]
+      ],
+      "block_metadata": {
+        "llm_request_count": 0,
+        "llm_error_count": 0,
+        "llm_tokens_used": 0,
+        "previous_text": "",
+        "previous_type": "",
+        "previous_order": 0
+      }
+    },
+    {
+      "page_id": 3,
+      "text_extraction_method": "pdftext",
+      "block_counts": [
+        [
+          "Span",
+          13
+        ],
+        [
+          "Line",
+          7
+        ],
+        [
+          "Text",
+          4
+        ]
+      ],
+      "block_metadata": {
+        "llm_request_count": 0,
+        "llm_error_count": 0,
+        "llm_tokens_used": 0,
+        "previous_text": "",
+        "previous_type": "",
+        "previous_order": 0
+      }
+    }
+  ],
+  "debug_data_path": "debug_data\\survey-index-diffusion-privacy-literature"
+}

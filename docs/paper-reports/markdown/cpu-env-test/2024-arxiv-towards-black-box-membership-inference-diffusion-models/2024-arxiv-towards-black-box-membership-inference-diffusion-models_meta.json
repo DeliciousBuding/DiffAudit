@@ -1,0 +1,172 @@
+{
+  "table_of_contents": [
+    {
+      "title": "4. Algorithm Design",
+      "heading_level": null,
+      "page_id": 2,
+      "polygon": [
+        [
+          54.685546875,
+          678.8081436157227
+        ],
+        [
+          158.05148315429688,
+          678.3046875
+        ],
+        [
+          158.05148315429688,
+          690.7633438110352
+        ],
+        [
+          54.685546875,
+          690.7633438110352
+        ]
+      ]
+    },
+    {
+      "title": "4.1. The variation API for Diffusion Models",
+      "heading_level": null,
+      "page_id": 2,
+      "polygon": [
+        [
+          304.505859375,
+          138.4453125
+        ],
+        [
+          492.5052185058594,
+          136.8984375
+        ],
+        [
+          492.5052185058594,
+          148.608154296875
+        ],
+        [
+          304.505859375,
+          148.608154296875
+        ]
+      ]
+    },
+    {
+      "title": "4.2. Algorithm",
+      "heading_level": null,
+      "page_id": 2,
+      "polygon": [
+        [
+          305.40234375,
+          656.26171875
+        ],
+        [
+          369.1483459472656,
+          656.26171875
+        ],
+        [
+          369.1483459472656,
+          667.1110916137695
+        ],
+        [
+          305.40234375,
+          667.1110916137695
+        ]
+      ]
+    }
+  ],
+  "page_stats": [
+    {
+      "page_id": 2,
+      "text_extraction_method": "pdftext",
+      "block_counts": [
+        [
+          "Span",
+          658
+        ],
+        [
+          "Line",
+          117
+        ],
+        [
+          "Text",
+          14
+        ],
+        [
+          "Equation",
+          4
+        ],
+        [
+          "SectionHeader",
+          3
+        ],
+        [
+          "PageHeader",
+          1
+        ],
+        [
+          "PageFooter",
+          1
+        ]
+      ],
+      "block_metadata": {
+        "llm_request_count": 0,
+        "llm_error_count": 0,
+        "llm_tokens_used": 0,
+        "previous_text": "",
+        "previous_type": "",
+        "previous_order": 0
+      }
+    },
+    {
+      "page_id": 3,
+      "text_extraction_method": "pdftext",
+      "block_counts": [
+        [
+          "Span",
+          553
+        ],
+        [
+          "Line",
+          86
+        ],
+        [
+          "Text",
+          10
+        ],
+        [
+          "Equation",
+          3
+        ],
+        [
+          "Reference",
+          3
+        ],
+        [
+          "Figure",
+          2
+        ],
+        [
+          "Caption",
+          2
+        ],
+        [
+          "FigureGroup",
+          2
+        ],
+        [
+          "PageHeader",
+          1
+        ],
+        [
+          "PageFooter",
+          1
+        ]
+      ],
+      "block_metadata": {
+        "llm_request_count": 0,
+        "llm_error_count": 0,
+        "llm_tokens_used": 0,
+        "previous_text": "",
+        "previous_type": "",
+        "previous_order": 0
+      }
+    }
+  ],
+  "debug_data_path": "debug_data\\2024-arxiv-towards-black-box-membership-inference-diffusion-models"
+}

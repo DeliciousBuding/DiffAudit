@@ -1,0 +1,325 @@
+{
+  "input": "D:\\Code\\DiffAudit\\Project\\references\\materials\\black-box\\2024-arxiv-towards-black-box-membership-inference-diffusion-models.pdf",
+  "apiUrl": "https://paddleocr.aistudio-app.com/api/v2/ocr/jobs",
+  "model": "PaddleOCR-VL-1.5",
+  "jobId": "34271855468912640",
+  "jobState": "done",
+  "outputDir": "D:\\Code\\DiffAudit\\Project\\docs\\paper-reports\\ocr\\black-box\\2024-arxiv-towards-black-box-membership-inference-diffusion-models",
+  "mergedMarkdown": "merged.md",
+  "manifestVersion": 1,
+  "options": {
+    "imagePrefix": "",
+    "pageStart": 1,
+    "envFile": "C:\\Users\\Ding\\.config\\local-secrets\\ai-providers\\paddleocr.env",
+    "optionalPayload": {
+      "showFormulaNumber": true,
+      "restructurePages": true,
+      "mergeTables": true,
+      "relevelTitles": true,
+      "prettifyMarkdown": true,
+      "visualize": true
+    }
+  },
+  "pages": [
+    {
+      "page": 1,
+      "markdown": "pages/page-0001.md",
+      "json": "pages/page-0001.json",
+      "markdownImages": [],
+      "visuals": [
+        "visuals/page-0001/layout_det_res-001.jpg"
+      ]
+    },
+    {
+      "page": 2,
+      "markdown": "pages/page-0002.md",
+      "json": "pages/page-0002.json",
+      "markdownImages": [],
+      "visuals": [
+        "visuals/page-0002/layout_det_res-001.jpg"
+      ]
+    },
+    {
+      "page": 3,
+      "markdown": "pages/page-0003.md",
+      "json": "pages/page-0003.json",
+      "markdownImages": [],
+      "visuals": [
+        "visuals/page-0003/layout_det_res-001.jpg"
+      ]
+    },
+    {
+      "page": 4,
+      "markdown": "pages/page-0004.md",
+      "json": "pages/page-0004.json",
+      "markdownImages": [
+        "assets/page-0004/001.jpg",
+        "assets/page-0004/002.jpg"
+      ],
+      "visuals": [
+        "visuals/page-0004/layout_det_res-001.jpg"
+      ]
+    },
+    {
+      "page": 5,
+      "markdown": "pages/page-0005.md",
+      "json": "pages/page-0005.json",
+      "markdownImages": [],
+      "visuals": [
+        "visuals/page-0005/layout_det_res-001.jpg"
+      ]
+    },
+    {
+      "page": 6,
+      "markdown": "pages/page-0006.md",
+      "json": "pages/page-0006.json",
+      "markdownImages": [],
+      "visuals": [
+        "visuals/page-0006/layout_det_res-001.jpg"
+      ]
+    },
+    {
+      "page": 7,
+      "markdown": "pages/page-0007.md",
+      "json": "pages/page-0007.json",
+      "markdownImages": [
+        "assets/page-0007/001.jpg",
+        "assets/page-0007/002.jpg"
+      ],
+      "visuals": [
+        "visuals/page-0007/layout_det_res-001.jpg"
+      ]
+    },
+    {
+      "page": 8,
+      "markdown": "pages/page-0008.md",
+      "json": "pages/page-0008.json",
+      "markdownImages": [
+        "assets/page-0008/001.jpg",
+        "assets/page-0008/002.jpg"
+      ],
+      "visuals": [
+        "visuals/page-0008/layout_det_res-001.jpg"
+      ]
+    },
+    {
+      "page": 9,
+      "markdown": "pages/page-0009.md",
+      "json": "pages/page-0009.json",
+      "markdownImages": [],
+      "visuals": [
+        "visuals/page-0009/layout_det_res-001.jpg"
+      ]
+    },
+    {
+      "page": 10,
+      "markdown": "pages/page-0010.md",
+      "json": "pages/page-0010.json",
+      "markdownImages": [],
+      "visuals": [
+        "visuals/page-0010/layout_det_res-001.jpg"
+      ]
+    },
+    {
+      "page": 11,
+      "markdown": "pages/page-0011.md",
+      "json": "pages/page-0011.json",
+      "markdownImages": [],
+      "visuals": [
+        "visuals/page-0011/layout_det_res-001.jpg"
+      ]
+    },
+    {
+      "page": 12,
+      "markdown": "pages/page-0012.md",
+      "json": "pages/page-0012.json",
+      "markdownImages": [],
+      "visuals": [
+        "visuals/page-0012/layout_det_res-001.jpg"
+      ]
+    },
+    {
+      "page": 13,
+      "markdown": "pages/page-0013.md",
+      "json": "pages/page-0013.json",
+      "markdownImages": [
+        "assets/page-0013/001.jpg",
+        "assets/page-0013/002.jpg",
+        "assets/page-0013/003.jpg",
+        "assets/page-0013/004.jpg"
+      ],
+      "visuals": [
+        "visuals/page-0013/layout_det_res-001.jpg"
+      ]
+    },
+    {
+      "page": 14,
+      "markdown": "pages/page-0014.md",
+      "json": "pages/page-0014.json",
+      "markdownImages": [
+        "assets/page-0014/001.jpg",
+        "assets/page-0014/002.jpg",
+        "assets/page-0014/003.jpg",
+        "assets/page-0014/004.jpg"
+      ],
+      "visuals": [
+        "visuals/page-0014/layout_det_res-001.jpg"
+      ]
+    },
+    {
+      "page": 15,
+      "markdown": "pages/page-0015.md",
+      "json": "pages/page-0015.json",
+      "markdownImages": [
+        "assets/page-0015/001.jpg",
+        "assets/page-0015/002.jpg",
+        "assets/page-0015/003.jpg",
+        "assets/page-0015/004.jpg",
+        "assets/page-0015/005.jpg",
+        "assets/page-0015/006.jpg"
+      ],
+      "visuals": [
+        "visuals/page-0015/layout_det_res-001.jpg"
+      ]
+    },
+    {
+      "page": 16,
+      "markdown": "pages/page-0016.md",
+      "json": "pages/page-0016.json",
+      "markdownImages": [],
+      "visuals": [
+        "visuals/page-0016/layout_det_res-001.jpg"
+      ]
+    },
+    {
+      "page": 17,
+      "markdown": "pages/page-0017.md",
+      "json": "pages/page-0017.json",
+      "markdownImages": [
+        "assets/page-0017/001.jpg",
+        "assets/page-0017/002.jpg",
+        "assets/page-0017/003.jpg",
+        "assets/page-0017/004.jpg",
+        "assets/page-0017/005.jpg",
+        "assets/page-0017/006.jpg",
+        "assets/page-0017/007.jpg",
+        "assets/page-0017/008.jpg",
+        "assets/page-0017/009.jpg",
+        "assets/page-0017/010.jpg",
+        "assets/page-0017/011.jpg",
+        "assets/page-0017/012.jpg",
+        "assets/page-0017/013.jpg",
+        "assets/page-0017/014.jpg",
+        "assets/page-0017/015.jpg",
+        "assets/page-0017/016.jpg",
+        "assets/page-0017/017.jpg",
+        "assets/page-0017/018.jpg",
+        "assets/page-0017/019.jpg",
+        "assets/page-0017/020.jpg",
+        "assets/page-0017/021.jpg",
+        "assets/page-0017/022.jpg",
+        "assets/page-0017/023.jpg",
+        "assets/page-0017/024.jpg",
+        "assets/page-0017/025.jpg"
+      ],
+      "visuals": [
+        "visuals/page-0017/layout_det_res-001.jpg"
+      ]
+    }
+  ],
+  "linePayloadCount": 4,
+  "dataInfo": [
+    {
+      "numPages": 5,
+      "pages": [
+        {
+          "width": 1224,
+          "height": 1584
+        },
+        {
+          "width": 1224,
+          "height": 1584
+        },
+        {
+          "width": 1224,
+          "height": 1584
+        },
+        {
+          "width": 1224,
+          "height": 1584
+        },
+        {
+          "width": 1224,
+          "height": 1584
+        }
+      ],
+      "type": "pdf"
+    },
+    {
+      "numPages": 5,
+      "pages": [
+        {
+          "width": 1224,
+          "height": 1584
+        },
+        {
+          "width": 1224,
+          "height": 1584
+        },
+        {
+          "width": 1224,
+          "height": 1584
+        },
+        {
+          "width": 1224,
+          "height": 1584
+        },
+        {
+          "width": 1224,
+          "height": 1584
+        }
+      ],
+      "type": "pdf"
+    },
+    {
+      "numPages": 5,
+      "pages": [
+        {
+          "width": 1224,
+          "height": 1584
+        },
+        {
+          "width": 1224,
+          "height": 1584
+        },
+        {
+          "width": 1224,
+          "height": 1584
+        },
+        {
+          "width": 1224,
+          "height": 1584
+        },
+        {
+          "width": 1224,
+          "height": 1584
+        }
+      ],
+      "type": "pdf"
+    },
+    {
+      "numPages": 2,
+      "pages": [
+        {
+          "width": 1224,
+          "height": 1584
+        },
+        {
+          "width": 1224,
+          "height": 1584
+        }
+      ],
+      "type": "pdf"
+    }
+  ]
+}

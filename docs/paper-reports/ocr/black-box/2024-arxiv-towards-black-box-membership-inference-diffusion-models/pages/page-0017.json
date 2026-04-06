@@ -1,0 +1,1124 @@
+{
+  "prunedResult": {
+    "page_count": 2,
+    "width": 1224,
+    "height": 1584,
+    "model_settings": {
+      "use_doc_preprocessor": true,
+      "use_layout_detection": true,
+      "use_chart_recognition": false,
+      "use_seal_recognition": false,
+      "use_ocr_for_image_block": false,
+      "format_block_content": false,
+      "merge_layout_blocks": true,
+      "markdown_ignore_labels": [
+        "number",
+        "footnote",
+        "header",
+        "header_image",
+        "footer",
+        "footer_image",
+        "aside_text"
+      ],
+      "return_layout_polygon_points": true
+    },
+    "parsing_res_list": [
+      {
+        "block_label": "header",
+        "block_content": "Towards Black-Box Membership Inference Attack for Diffusion Models",
+        "block_bbox": [
+          301,
+          11,
+          900,
+          44
+        ],
+        "block_id": 0,
+        "block_order": null,
+        "group_id": 0,
+        "global_block_id": 267,
+        "global_group_id": 267,
+        "block_polygon_points": [
+          [
+            300.875732421875,
+            13.360739707946777
+          ],
+          [
+            898.679443359375,
+            6.978533744812012
+          ],
+          [
+            899.0,
+            37.000022888183594
+          ],
+          [
+            301.1962890625,
+            43.38222885131836
+          ]
+        ]
+      },
+      {
+        "block_label": "paragraph_title",
+        "block_content": "D. More Results of Variation Images",
+        "block_bbox": [
+          76,
+          60,
+          481,
+          96
+        ],
+        "block_id": 1,
+        "block_order": 1,
+        "group_id": 1,
+        "global_block_id": 268,
+        "global_group_id": 268,
+        "block_polygon_points": [
+          [
+            76.0,
+            60.0
+          ],
+          [
+            481.0,
+            60.0
+          ],
+          [
+            481.0,
+            96.0
+          ],
+          [
+            76.0,
+            96.0
+          ]
+        ]
+      },
+      {
+        "block_label": "text",
+        "block_content": "In this section, we provide more results of the variation of member and nonmember image when applying to DALL-E 2's variation API. The experimental results are recorded in Figure 16, from which we can see that the variation in the member inputs after applying the DALL-E 2's variation API is relatively small than non-member inputs.",
+        "block_bbox": [
+          75,
+          101,
+          1130,
+          189
+        ],
+        "block_id": 2,
+        "block_order": 2,
+        "group_id": 2,
+        "global_block_id": 269,
+        "global_group_id": 269,
+        "block_polygon_points": [
+          [
+            74.40052032470703,
+            109.00456237792969
+          ],
+          [
+            1129.0,
+            100.99998474121094
+          ],
+          [
+            1129.599609375,
+            179.9954376220703
+          ],
+          [
+            75.0001220703125,
+            188.00001525878906
+          ]
+        ]
+      },
+      {
+        "block_label": "image",
+        "block_content": "",
+        "block_bbox": [
+          206,
+          207,
+          982,
+          662
+        ],
+        "block_id": 3,
+        "block_order": null,
+        "group_id": 3,
+        "global_block_id": 270,
+        "global_group_id": 270,
+        "block_polygon_points": [
+          [
+            206.0,
+            207.0
+          ],
+          [
+            982.0,
+            207.0
+          ],
+          [
+            982.0,
+            662.0
+          ],
+          [
+            206.0,
+            662.0
+          ]
+        ]
+      },
+      {
+        "block_label": "figure_title",
+        "block_content": "Figure 16: More results of the variation images. From the figures we can see that DALL-E 2's variation API makes less changes to images in member set than non-member set.",
+        "block_bbox": [
+          66,
+          677,
+          1133,
+          736
+        ],
+        "block_id": 4,
+        "block_order": null,
+        "group_id": 4,
+        "global_block_id": 271,
+        "global_group_id": 271,
+        "block_polygon_points": [
+          [
+            66,
+            677
+          ],
+          [
+            66,
+            728
+          ],
+          [
+            208,
+            735
+          ],
+          [
+            1132,
+            728
+          ],
+          [
+            1132,
+            685
+          ],
+          [
+            704,
+            692
+          ]
+        ]
+      }
+    ],
+    "doc_preprocessor_res": {
+      "model_settings": {
+        "use_doc_orientation_classify": true,
+        "use_doc_unwarping": true
+      },
+      "angle": 0
+    },
+    "layout_det_res": {
+      "boxes": [
+        {
+          "cls_id": 12,
+          "label": "header",
+          "score": 0.9003453850746155,
+          "coordinate": [
+            301,
+            11,
+            900,
+            44
+          ],
+          "order": null,
+          "polygon_points": [
+            [
+              300.875732421875,
+              13.360739707946777
+            ],
+            [
+              898.679443359375,
+              6.978533744812012
+            ],
+            [
+              899.0,
+              37.000022888183594
+            ],
+            [
+              301.1962890625,
+              43.38222885131836
+            ]
+          ]
+        },
+        {
+          "cls_id": 17,
+          "label": "paragraph_title",
+          "score": 0.8744980692863464,
+          "coordinate": [
+            76,
+            60,
+            481,
+            96
+          ],
+          "order": 1,
+          "polygon_points": [
+            [
+              76.0,
+              60.0
+            ],
+            [
+              481.0,
+              60.0
+            ],
+            [
+              481.0,
+              96.0
+            ],
+            [
+              76.0,
+              96.0
+            ]
+          ]
+        },
+        {
+          "cls_id": 22,
+          "label": "text",
+          "score": 0.9248597025871277,
+          "coordinate": [
+            75,
+            101,
+            1130,
+            189
+          ],
+          "order": 2,
+          "polygon_points": [
+            [
+              74.40052032470703,
+              109.00456237792969
+            ],
+            [
+              1129.0,
+              100.99998474121094
+            ],
+            [
+              1129.599609375,
+              179.9954376220703
+            ],
+            [
+              75.0001220703125,
+              188.00001525878906
+            ]
+          ]
+        },
+        {
+          "cls_id": 14,
+          "label": "image",
+          "score": 0.8073444366455078,
+          "coordinate": [
+            206,
+            207,
+            982,
+            662
+          ],
+          "order": null,
+          "polygon_points": [
+            [
+              206.0,
+              207.0
+            ],
+            [
+              982.0,
+              207.0
+            ],
+            [
+              982.0,
+              662.0
+            ],
+            [
+              206.0,
+              662.0
+            ]
+          ]
+        },
+        {
+          "cls_id": 14,
+          "label": "image",
+          "score": 0.43765637278556824,
+          "coordinate": [
+            354,
+            212,
+            444,
+            303
+          ],
+          "order": null,
+          "polygon_points": [
+            [
+              354,
+              212
+            ],
+            [
+              354,
+              302
+            ],
+            [
+              443,
+              302
+            ],
+            [
+              443,
+              212
+            ]
+          ]
+        },
+        {
+          "cls_id": 14,
+          "label": "image",
+          "score": 0.36493268609046936,
+          "coordinate": [
+            458,
+            211,
+            549,
+            299
+          ],
+          "order": null,
+          "polygon_points": [
+            [
+              458.0,
+              211.0
+            ],
+            [
+              549.0,
+              211.0
+            ],
+            [
+              549.0,
+              299.0
+            ],
+            [
+              458.0,
+              299.0
+            ]
+          ]
+        },
+        {
+          "cls_id": 14,
+          "label": "image",
+          "score": 0.3919832110404968,
+          "coordinate": [
+            564,
+            210,
+            656,
+            302
+          ],
+          "order": null,
+          "polygon_points": [
+            [
+              564.0,
+              210.0
+            ],
+            [
+              656.0,
+              210.0
+            ],
+            [
+              656.0,
+              302.0
+            ],
+            [
+              564.0,
+              302.0
+            ]
+          ]
+        },
+        {
+          "cls_id": 14,
+          "label": "image",
+          "score": 0.3455241918563843,
+          "coordinate": [
+            673,
+            212,
+            765,
+            302
+          ],
+          "order": null,
+          "polygon_points": [
+            [
+              673.0,
+              212.0
+            ],
+            [
+              765.0,
+              212.0
+            ],
+            [
+              765.0,
+              302.0
+            ],
+            [
+              673.0,
+              302.0
+            ]
+          ]
+        },
+        {
+          "cls_id": 14,
+          "label": "image",
+          "score": 0.3201480209827423,
+          "coordinate": [
+            782,
+            214,
+            873,
+            302
+          ],
+          "order": null,
+          "polygon_points": [
+            [
+              782.0,
+              214.0
+            ],
+            [
+              873.0,
+              214.0
+            ],
+            [
+              873.0,
+              302.0
+            ],
+            [
+              782.0,
+              302.0
+            ]
+          ]
+        },
+        {
+          "cls_id": 14,
+          "label": "image",
+          "score": 0.39435842633247375,
+          "coordinate": [
+            889,
+            212,
+            978,
+            302
+          ],
+          "order": null,
+          "polygon_points": [
+            [
+              889.0,
+              212.0
+            ],
+            [
+              978.0,
+              212.0
+            ],
+            [
+              978.0,
+              302.0
+            ],
+            [
+              889.0,
+              302.0
+            ]
+          ]
+        },
+        {
+          "cls_id": 14,
+          "label": "image",
+          "score": 0.30495569109916687,
+          "coordinate": [
+            352,
+            315,
+            443,
+            411
+          ],
+          "order": null,
+          "polygon_points": [
+            [
+              352.0,
+              315.0
+            ],
+            [
+              443.0,
+              315.0
+            ],
+            [
+              443.0,
+              411.0
+            ],
+            [
+              352.0,
+              411.0
+            ]
+          ]
+        },
+        {
+          "cls_id": 14,
+          "label": "image",
+          "score": 0.3180665373802185,
+          "coordinate": [
+            457,
+            316,
+            547,
+            408
+          ],
+          "order": null,
+          "polygon_points": [
+            [
+              457.0,
+              316.0
+            ],
+            [
+              547.0,
+              316.0
+            ],
+            [
+              547.0,
+              408.0
+            ],
+            [
+              457.0,
+              408.0
+            ]
+          ]
+        },
+        {
+          "cls_id": 14,
+          "label": "image",
+          "score": 0.360014408826828,
+          "coordinate": [
+            559,
+            313,
+            655,
+            410
+          ],
+          "order": null,
+          "polygon_points": [
+            [
+              559.0,
+              313.0
+            ],
+            [
+              655.0,
+              313.0
+            ],
+            [
+              655.0,
+              410.0
+            ],
+            [
+              559.0,
+              410.0
+            ]
+          ]
+        },
+        {
+          "cls_id": 14,
+          "label": "image",
+          "score": 0.3499019742012024,
+          "coordinate": [
+            668,
+            313,
+            765,
+            410
+          ],
+          "order": null,
+          "polygon_points": [
+            [
+              668.0,
+              313.0
+            ],
+            [
+              765.0,
+              313.0
+            ],
+            [
+              765.0,
+              410.0
+            ],
+            [
+              668.0,
+              410.0
+            ]
+          ]
+        },
+        {
+          "cls_id": 14,
+          "label": "image",
+          "score": 0.39693889021873474,
+          "coordinate": [
+            778,
+            314,
+            872,
+            410
+          ],
+          "order": null,
+          "polygon_points": [
+            [
+              778.0,
+              314.0
+            ],
+            [
+              872.0,
+              314.0
+            ],
+            [
+              872.0,
+              410.0
+            ],
+            [
+              778.0,
+              410.0
+            ]
+          ]
+        },
+        {
+          "cls_id": 14,
+          "label": "image",
+          "score": 0.38546547293663025,
+          "coordinate": [
+            888,
+            314,
+            978,
+            410
+          ],
+          "order": null,
+          "polygon_points": [
+            [
+              888.0,
+              314.0
+            ],
+            [
+              978.0,
+              314.0
+            ],
+            [
+              978.0,
+              410.0
+            ],
+            [
+              888.0,
+              410.0
+            ]
+          ]
+        },
+        {
+          "cls_id": 14,
+          "label": "image",
+          "score": 0.39004966616630554,
+          "coordinate": [
+            350,
+            448,
+            444,
+            544
+          ],
+          "order": null,
+          "polygon_points": [
+            [
+              350.0,
+              448.0
+            ],
+            [
+              438.0,
+              448.0
+            ],
+            [
+              438.0,
+              543.0
+            ],
+            [
+              350.0,
+              543.0
+            ]
+          ]
+        },
+        {
+          "cls_id": 14,
+          "label": "image",
+          "score": 0.4574091136455536,
+          "coordinate": [
+            455,
+            450,
+            547,
+            542
+          ],
+          "order": null,
+          "polygon_points": [
+            [
+              455.0,
+              450.0
+            ],
+            [
+              547.0,
+              450.0
+            ],
+            [
+              547.0,
+              542.0
+            ],
+            [
+              455.0,
+              542.0
+            ]
+          ]
+        },
+        {
+          "cls_id": 14,
+          "label": "image",
+          "score": 0.38580089807510376,
+          "coordinate": [
+            558,
+            447,
+            653,
+            548
+          ],
+          "order": null,
+          "polygon_points": [
+            [
+              558.0,
+              447.0
+            ],
+            [
+              653.0,
+              447.0
+            ],
+            [
+              653.0,
+              548.0
+            ],
+            [
+              558.0,
+              548.0
+            ]
+          ]
+        },
+        {
+          "cls_id": 14,
+          "label": "image",
+          "score": 0.4049365222454071,
+          "coordinate": [
+            666,
+            444,
+            764,
+            546
+          ],
+          "order": null,
+          "polygon_points": [
+            [
+              666.0,
+              444.0
+            ],
+            [
+              764.0,
+              444.0
+            ],
+            [
+              764.0,
+              546.0
+            ],
+            [
+              666.0,
+              546.0
+            ]
+          ]
+        },
+        {
+          "cls_id": 14,
+          "label": "image",
+          "score": 0.3282720148563385,
+          "coordinate": [
+            778,
+            445,
+            873,
+            547
+          ],
+          "order": null,
+          "polygon_points": [
+            [
+              778.0,
+              445.0
+            ],
+            [
+              873.0,
+              445.0
+            ],
+            [
+              873.0,
+              547.0
+            ],
+            [
+              778.0,
+              547.0
+            ]
+          ]
+        },
+        {
+          "cls_id": 14,
+          "label": "image",
+          "score": 0.3975156843662262,
+          "coordinate": [
+            885,
+            447,
+            981,
+            548
+          ],
+          "order": null,
+          "polygon_points": [
+            [
+              885.0,
+              447.0
+            ],
+            [
+              981.0,
+              447.0
+            ],
+            [
+              981.0,
+              548.0
+            ],
+            [
+              885.0,
+              548.0
+            ]
+          ]
+        },
+        {
+          "cls_id": 14,
+          "label": "image",
+          "score": 0.4614240527153015,
+          "coordinate": [
+            350,
+            562,
+            442,
+            653
+          ],
+          "order": null,
+          "polygon_points": [
+            [
+              350.0,
+              562.0
+            ],
+            [
+              442.0,
+              562.0
+            ],
+            [
+              442.0,
+              653.0
+            ],
+            [
+              350.0,
+              653.0
+            ]
+          ]
+        },
+        {
+          "cls_id": 14,
+          "label": "image",
+          "score": 0.4698142111301422,
+          "coordinate": [
+            455,
+            564,
+            546,
+            653
+          ],
+          "order": null,
+          "polygon_points": [
+            [
+              455.0,
+              564.0
+            ],
+            [
+              546.0,
+              564.0
+            ],
+            [
+              546.0,
+              653.0
+            ],
+            [
+              455.0,
+              653.0
+            ]
+          ]
+        },
+        {
+          "cls_id": 14,
+          "label": "image",
+          "score": 0.4557443857192993,
+          "coordinate": [
+            558,
+            561,
+            651,
+            654
+          ],
+          "order": null,
+          "polygon_points": [
+            [
+              558.0,
+              561.0
+            ],
+            [
+              651.0,
+              561.0
+            ],
+            [
+              651.0,
+              654.0
+            ],
+            [
+              558.0,
+              654.0
+            ]
+          ]
+        },
+        {
+          "cls_id": 14,
+          "label": "image",
+          "score": 0.45446649193763733,
+          "coordinate": [
+            665,
+            560,
+            761,
+            655
+          ],
+          "order": null,
+          "polygon_points": [
+            [
+              665.0,
+              560.0
+            ],
+            [
+              761.0,
+              560.0
+            ],
+            [
+              761.0,
+              655.0
+            ],
+            [
+              665.0,
+              655.0
+            ]
+          ]
+        },
+        {
+          "cls_id": 14,
+          "label": "image",
+          "score": 0.372339129447937,
+          "coordinate": [
+            778,
+            560,
+            872,
+            656
+          ],
+          "order": null,
+          "polygon_points": [
+            [
+              778.0,
+              560.0
+            ],
+            [
+              872.0,
+              560.0
+            ],
+            [
+              872.0,
+              656.0
+            ],
+            [
+              778.0,
+              656.0
+            ]
+          ]
+        },
+        {
+          "cls_id": 14,
+          "label": "image",
+          "score": 0.3330162763595581,
+          "coordinate": [
+            888,
+            559,
+            982,
+            656
+          ],
+          "order": null,
+          "polygon_points": [
+            [
+              888.0,
+              559.0
+            ],
+            [
+              982.0,
+              559.0
+            ],
+            [
+              982.0,
+              656.0
+            ],
+            [
+              888.0,
+              656.0
+            ]
+          ]
+        },
+        {
+          "cls_id": 7,
+          "label": "figure_title",
+          "score": 0.9042247533798218,
+          "coordinate": [
+            66,
+            677,
+            1133,
+            736
+          ],
+          "order": null,
+          "polygon_points": [
+            [
+              66,
+              677
+            ],
+            [
+              66,
+              728
+            ],
+            [
+              208,
+              735
+            ],
+            [
+              1132,
+              728
+            ],
+            [
+              1132,
+              685
+            ],
+            [
+              704,
+              692
+            ]
+          ]
+        }
+      ]
+    }
+  },
+  "markdown": {
+    "text": "### D. More Results of Variation Images\n\nIn this section, we provide more results of the variation of member and nonmember image when applying to DALL-E 2's variation API. The experimental results are recorded in Figure 16, from which we can see that the variation in the member inputs after applying the DALL-E 2's variation API is relatively small than non-member inputs.\n\n<div style=\"text-align: center;\"><img src=\"imgs/img_in_image_box_206_207_982_662.jpg\" alt=\"Image\" width=\"63%\" /></div>\n\n\n<div style=\"text-align: center;\">Figure 16: More results of the variation images. From the figures we can see that DALL-E 2's variation API makes less changes to images in member set than non-member set.</div>\n",
+    "images": {
+      "imgs/img_in_image_box_206_207_982_662.jpg": "https://pplines-online.bj.bcebos.com/deploy/official/paddleocr/pp-ocr-vl-15//06699ef5-5fb9-4340-9338-90d43b8130c9/markdown_1/imgs/img_in_image_box_206_207_982_662.jpg?authorization=bce-auth-v1%2FALTAKzReLNvew3ySINYJ0fuAMN%2F2026-04-05T13%3A44%3A12Z%2F-1%2F%2F54534ae421fdff086faa98d6c518dff37c287cd75a7d03b212b661b041065884",
+      "imgs/img_in_image_box_354_212_444_303.jpg": "https://pplines-online.bj.bcebos.com/deploy/official/paddleocr/pp-ocr-vl-15//06699ef5-5fb9-4340-9338-90d43b8130c9/markdown_1/imgs/img_in_image_box_354_212_444_303.jpg?authorization=bce-auth-v1%2FALTAKzReLNvew3ySINYJ0fuAMN%2F2026-04-05T13%3A44%3A12Z%2F-1%2F%2F8d5ee5adb0482222626068e5f6ca33639b34f87358585585c45f018654630010",
+      "imgs/img_in_image_box_458_211_549_299.jpg": "https://pplines-online.bj.bcebos.com/deploy/official/paddleocr/pp-ocr-vl-15//06699ef5-5fb9-4340-9338-90d43b8130c9/markdown_1/imgs/img_in_image_box_458_211_549_299.jpg?authorization=bce-auth-v1%2FALTAKzReLNvew3ySINYJ0fuAMN%2F2026-04-05T13%3A44%3A12Z%2F-1%2F%2Fe7c9832e687221c7fcfe823f3b50b5bd0d40a5efdfc9a100520e7b378611a0b0",
+      "imgs/img_in_image_box_564_210_656_302.jpg": "https://pplines-online.bj.bcebos.com/deploy/official/paddleocr/pp-ocr-vl-15//06699ef5-5fb9-4340-9338-90d43b8130c9/markdown_1/imgs/img_in_image_box_564_210_656_302.jpg?authorization=bce-auth-v1%2FALTAKzReLNvew3ySINYJ0fuAMN%2F2026-04-05T13%3A44%3A12Z%2F-1%2F%2F789c0d190a682e0b23e79786941f06f5955d0f2b5737169ddfc579164ade7463",
+      "imgs/img_in_image_box_673_212_765_302.jpg": "https://pplines-online.bj.bcebos.com/deploy/official/paddleocr/pp-ocr-vl-15//06699ef5-5fb9-4340-9338-90d43b8130c9/markdown_1/imgs/img_in_image_box_673_212_765_302.jpg?authorization=bce-auth-v1%2FALTAKzReLNvew3ySINYJ0fuAMN%2F2026-04-05T13%3A44%3A12Z%2F-1%2F%2F4d929c03305b2fa94e7b4e2ac9d90c9bbc7e22c3a6ae20fbb5bde6a0642515da",
+      "imgs/img_in_image_box_782_214_873_302.jpg": "https://pplines-online.bj.bcebos.com/deploy/official/paddleocr/pp-ocr-vl-15//06699ef5-5fb9-4340-9338-90d43b8130c9/markdown_1/imgs/img_in_image_box_782_214_873_302.jpg?authorization=bce-auth-v1%2FALTAKzReLNvew3ySINYJ0fuAMN%2F2026-04-05T13%3A44%3A12Z%2F-1%2F%2Fa786e3fd6436d75a38c812a64cebfb3288ef238b69028f5d4d59e0fbcd848c0a",
+      "imgs/img_in_image_box_889_212_978_302.jpg": "https://pplines-online.bj.bcebos.com/deploy/official/paddleocr/pp-ocr-vl-15//06699ef5-5fb9-4340-9338-90d43b8130c9/markdown_1/imgs/img_in_image_box_889_212_978_302.jpg?authorization=bce-auth-v1%2FALTAKzReLNvew3ySINYJ0fuAMN%2F2026-04-05T13%3A44%3A13Z%2F-1%2F%2F5f4f585a515e91ed49b429ffa235a7d2393d132dc588598e0cff25ea8cbfecdd",
+      "imgs/img_in_image_box_352_315_443_411.jpg": "https://pplines-online.bj.bcebos.com/deploy/official/paddleocr/pp-ocr-vl-15//06699ef5-5fb9-4340-9338-90d43b8130c9/markdown_1/imgs/img_in_image_box_352_315_443_411.jpg?authorization=bce-auth-v1%2FALTAKzReLNvew3ySINYJ0fuAMN%2F2026-04-05T13%3A44%3A13Z%2F-1%2F%2F51215e56c0e52b7630729c6ad96008fc8fd860e1abe7797326a9e6981aa8b5d5",
+      "imgs/img_in_image_box_457_316_547_408.jpg": "https://pplines-online.bj.bcebos.com/deploy/official/paddleocr/pp-ocr-vl-15//06699ef5-5fb9-4340-9338-90d43b8130c9/markdown_1/imgs/img_in_image_box_457_316_547_408.jpg?authorization=bce-auth-v1%2FALTAKzReLNvew3ySINYJ0fuAMN%2F2026-04-05T13%3A44%3A13Z%2F-1%2F%2F465d01853bc65177f5903dfcaf63ec3027b48c24c6033e4a5168087261ea22c0",
+      "imgs/img_in_image_box_559_313_655_410.jpg": "https://pplines-online.bj.bcebos.com/deploy/official/paddleocr/pp-ocr-vl-15//06699ef5-5fb9-4340-9338-90d43b8130c9/markdown_1/imgs/img_in_image_box_559_313_655_410.jpg?authorization=bce-auth-v1%2FALTAKzReLNvew3ySINYJ0fuAMN%2F2026-04-05T13%3A44%3A13Z%2F-1%2F%2F009d1625fb2f3802fdc4a6135216117ff33172bbb68276c0d6dd91bc037e6c25",
+      "imgs/img_in_image_box_668_313_765_410.jpg": "https://pplines-online.bj.bcebos.com/deploy/official/paddleocr/pp-ocr-vl-15//06699ef5-5fb9-4340-9338-90d43b8130c9/markdown_1/imgs/img_in_image_box_668_313_765_410.jpg?authorization=bce-auth-v1%2FALTAKzReLNvew3ySINYJ0fuAMN%2F2026-04-05T13%3A44%3A13Z%2F-1%2F%2F00f01f7a9f5a60fd3af742b63852f872b0ec8be6b8824a70a5b12c3574a1f287",
+      "imgs/img_in_image_box_778_314_872_410.jpg": "https://pplines-online.bj.bcebos.com/deploy/official/paddleocr/pp-ocr-vl-15//06699ef5-5fb9-4340-9338-90d43b8130c9/markdown_1/imgs/img_in_image_box_778_314_872_410.jpg?authorization=bce-auth-v1%2FALTAKzReLNvew3ySINYJ0fuAMN%2F2026-04-05T13%3A44%3A13Z%2F-1%2F%2F004d167b80ecc9d1cf5aa06f8c4209c32c9144e777bf900ced2603fa3bc9bb63",
+      "imgs/img_in_image_box_888_314_978_410.jpg": "https://pplines-online.bj.bcebos.com/deploy/official/paddleocr/pp-ocr-vl-15//06699ef5-5fb9-4340-9338-90d43b8130c9/markdown_1/imgs/img_in_image_box_888_314_978_410.jpg?authorization=bce-auth-v1%2FALTAKzReLNvew3ySINYJ0fuAMN%2F2026-04-05T13%3A44%3A13Z%2F-1%2F%2Fbb3eedfff7fc231e63b161437503a53cad82ed074bda54e885f84733a7842839",
+      "imgs/img_in_image_box_350_448_444_544.jpg": "https://pplines-online.bj.bcebos.com/deploy/official/paddleocr/pp-ocr-vl-15//06699ef5-5fb9-4340-9338-90d43b8130c9/markdown_1/imgs/img_in_image_box_350_448_444_544.jpg?authorization=bce-auth-v1%2FALTAKzReLNvew3ySINYJ0fuAMN%2F2026-04-05T13%3A44%3A13Z%2F-1%2F%2F655f56e141e1cc5b19d1418168c791b92b3132597089613fbcab9391871e9f8f",
+      "imgs/img_in_image_box_455_450_547_542.jpg": "https://pplines-online.bj.bcebos.com/deploy/official/paddleocr/pp-ocr-vl-15//06699ef5-5fb9-4340-9338-90d43b8130c9/markdown_1/imgs/img_in_image_box_455_450_547_542.jpg?authorization=bce-auth-v1%2FALTAKzReLNvew3ySINYJ0fuAMN%2F2026-04-05T13%3A44%3A14Z%2F-1%2F%2Fa4e523acb390dca546b5d964690f8cf4385d5913983c3ea8a1154602db895f4d",
+      "imgs/img_in_image_box_558_447_653_548.jpg": "https://pplines-online.bj.bcebos.com/deploy/official/paddleocr/pp-ocr-vl-15//06699ef5-5fb9-4340-9338-90d43b8130c9/markdown_1/imgs/img_in_image_box_558_447_653_548.jpg?authorization=bce-auth-v1%2FALTAKzReLNvew3ySINYJ0fuAMN%2F2026-04-05T13%3A44%3A14Z%2F-1%2F%2Fbb09ca190c913e2b307285df641ab88dd8fdd2facb99bb69b2c6ca7356a8e210",
+      "imgs/img_in_image_box_666_444_764_546.jpg": "https://pplines-online.bj.bcebos.com/deploy/official/paddleocr/pp-ocr-vl-15//06699ef5-5fb9-4340-9338-90d43b8130c9/markdown_1/imgs/img_in_image_box_666_444_764_546.jpg?authorization=bce-auth-v1%2FALTAKzReLNvew3ySINYJ0fuAMN%2F2026-04-05T13%3A44%3A14Z%2F-1%2F%2F8dc6f1970c9a98a01b96ebaa3302ddb29d072959ecee20475862249b4d35a8f5",
+      "imgs/img_in_image_box_778_445_873_547.jpg": "https://pplines-online.bj.bcebos.com/deploy/official/paddleocr/pp-ocr-vl-15//06699ef5-5fb9-4340-9338-90d43b8130c9/markdown_1/imgs/img_in_image_box_778_445_873_547.jpg?authorization=bce-auth-v1%2FALTAKzReLNvew3ySINYJ0fuAMN%2F2026-04-05T13%3A44%3A14Z%2F-1%2F%2F858cde28ca04619efce93ab103beb3299a951a340b3cbb8ab3bae889f21b78ff",
+      "imgs/img_in_image_box_885_447_981_548.jpg": "https://pplines-online.bj.bcebos.com/deploy/official/paddleocr/pp-ocr-vl-15//06699ef5-5fb9-4340-9338-90d43b8130c9/markdown_1/imgs/img_in_image_box_885_447_981_548.jpg?authorization=bce-auth-v1%2FALTAKzReLNvew3ySINYJ0fuAMN%2F2026-04-05T13%3A44%3A14Z%2F-1%2F%2Ffa21daea5d1489e71c8135f7b2aedbea1b301199491f2ab4209fff0c20b73627",
+      "imgs/img_in_image_box_350_562_442_653.jpg": "https://pplines-online.bj.bcebos.com/deploy/official/paddleocr/pp-ocr-vl-15//06699ef5-5fb9-4340-9338-90d43b8130c9/markdown_1/imgs/img_in_image_box_350_562_442_653.jpg?authorization=bce-auth-v1%2FALTAKzReLNvew3ySINYJ0fuAMN%2F2026-04-05T13%3A44%3A14Z%2F-1%2F%2F45c26aeb40f101b4ab1d337c45be694d6fca71d5222a9c70deac3580768d7abe",
+      "imgs/img_in_image_box_455_564_546_653.jpg": "https://pplines-online.bj.bcebos.com/deploy/official/paddleocr/pp-ocr-vl-15//06699ef5-5fb9-4340-9338-90d43b8130c9/markdown_1/imgs/img_in_image_box_455_564_546_653.jpg?authorization=bce-auth-v1%2FALTAKzReLNvew3ySINYJ0fuAMN%2F2026-04-05T13%3A44%3A14Z%2F-1%2F%2F8fe293ffb4c00d07688108f93f0983ac0a6f9f45b6e42d948b8951a9d0dab26a",
+      "imgs/img_in_image_box_558_561_651_654.jpg": "https://pplines-online.bj.bcebos.com/deploy/official/paddleocr/pp-ocr-vl-15//06699ef5-5fb9-4340-9338-90d43b8130c9/markdown_1/imgs/img_in_image_box_558_561_651_654.jpg?authorization=bce-auth-v1%2FALTAKzReLNvew3ySINYJ0fuAMN%2F2026-04-05T13%3A44%3A14Z%2F-1%2F%2Fdc1de1cec821cfb58bd0d719c55ad922f020ad8f3daf61bc5f1f1184a5193a3d",
+      "imgs/img_in_image_box_665_560_761_655.jpg": "https://pplines-online.bj.bcebos.com/deploy/official/paddleocr/pp-ocr-vl-15//06699ef5-5fb9-4340-9338-90d43b8130c9/markdown_1/imgs/img_in_image_box_665_560_761_655.jpg?authorization=bce-auth-v1%2FALTAKzReLNvew3ySINYJ0fuAMN%2F2026-04-05T13%3A44%3A14Z%2F-1%2F%2Fc3ad499f8de9b7293be300ce61cda19bdb0de518aa50fe9f0125057fbf0b70fa",
+      "imgs/img_in_image_box_778_560_872_656.jpg": "https://pplines-online.bj.bcebos.com/deploy/official/paddleocr/pp-ocr-vl-15//06699ef5-5fb9-4340-9338-90d43b8130c9/markdown_1/imgs/img_in_image_box_778_560_872_656.jpg?authorization=bce-auth-v1%2FALTAKzReLNvew3ySINYJ0fuAMN%2F2026-04-05T13%3A44%3A15Z%2F-1%2F%2F40be549658388d5320fb64feefb0cb745f5f4b3db2522aac299e66cefb5b94b5",
+      "imgs/img_in_image_box_888_559_982_656.jpg": "https://pplines-online.bj.bcebos.com/deploy/official/paddleocr/pp-ocr-vl-15//06699ef5-5fb9-4340-9338-90d43b8130c9/markdown_1/imgs/img_in_image_box_888_559_982_656.jpg?authorization=bce-auth-v1%2FALTAKzReLNvew3ySINYJ0fuAMN%2F2026-04-05T13%3A44%3A15Z%2F-1%2F%2Fa5266bb45f545bf790b4cd85dfa4310d48960f06baeb2db993431ed747a37189"
+    }
+  },
+  "outputImages": {
+    "layout_det_res": "https://pplines-online.bj.bcebos.com/deploy/official/paddleocr/pp-ocr-vl-15//06699ef5-5fb9-4340-9338-90d43b8130c9/layout_det_res_1.jpg?authorization=bce-auth-v1%2FALTAKzReLNvew3ySINYJ0fuAMN%2F2026-04-05T13%3A44%3A15Z%2F-1%2F%2F84f8cfc1fd72f9e57573a52244608c4b2e4b98d6af7e3b4906ec26e4fdd1c72c"
+  },
+  "inputImage": "https://pplines-online.bj.bcebos.com/deploy/official/paddleocr/pp-ocr-vl-15//06699ef5-5fb9-4340-9338-90d43b8130c9/input_img_1.jpg?authorization=bce-auth-v1%2FALTAKzReLNvew3ySINYJ0fuAMN%2F2026-04-05T13%3A44%3A15Z%2F-1%2F%2Ff4c363300b4961898bd95de62dcb2a6c2ae86adb9cba3c00fc5923ae72081341"
+}

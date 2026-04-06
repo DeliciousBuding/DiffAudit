@@ -6,7 +6,7 @@ An Efficient Membership Inference Attack for the Diffusion Model by Proximal Ini
 - GitHub PDF：[2024-iclr-pia-proximal-initialization.pdf](https://github.com/DeliciousBuding/DiffAudit/blob/main/references/materials/gray-box/2024-iclr-pia-proximal-initialization.pdf)
 - 本地 PDF：`D:/Code/DiffAudit/Project/references/materials/gray-box/2024-iclr-pia-proximal-initialization.pdf`
 - born-digital 源稿：[2024-iclr-pia-proximal-initialization.md](./2024-iclr-pia-proximal-initialization.md)
-- 对应展示稿：[2024-iclr-pia-proximal-initialization-report.md](../../../gray-box/2024-iclr-pia-proximal-initialization-report.md)
+- 对应展示稿：[论文报告：An Efficient Membership Inference Attack for the Diffusion Model by Proximal Initialization](https://www.feishu.cn/docx/VPNhdJMryo5K86xOfE8cX3PFnDd)
 - 开源实现：[kong13661/PIA](https://github.com/kong13661/PIA)
 - 整理说明：本稿基于本地 born-digital markdown 精修，保留公式、主结果和 DiffAudit 落地相关信息，优先服务本地阅读与后续细修
 
@@ -25,8 +25,6 @@ An Efficient Membership Inference Attack for the Diffusion Model by Proximal Ini
 ## 4. 方法总览
 
 论文的关键观察是：在 DDIM 的确定性轨迹里，只要知道 `x_0` 和轨迹上任意一点 `x_k`，就能恢复任意 `x_t`。作者于是直接取最靠近原样本的 `k=0`，用模型在 `t=0` 的输出 `\epsilon_\theta(x_0,0)` 近似真实噪声，再构造 `x_t` 并发起第二次查询。成员样本若更贴近训练时学到的轨迹，那么两次查询结果之间的一致性应更强，故攻击分数更小。
-
-![PIA 方法图](../../../assets/gray-box/2024-iclr-pia-proximal-initialization-key-figure-1-p1.jpeg)
 
 这张方法图把 `PIA` 的真正创新点表达得很清楚：第一次查询的价值在于提供 proximal initialization，而不是像 Naive Attack 那样只产生一次性的 loss 信号。
 
@@ -71,8 +69,6 @@ $$
 ## 8. 主要结果
 
 论文最醒目的结果出现在 Grad-TTS：`PIA` 在 LJSpeech 上达到 `99.6` 的 AUC、`94.2` 的 `TPR@1%FPR`；在 LibriTTS 上，`PIAN` 的 `TPR@1%FPR` 进一步提升到 `44.7`。DDPM 上，`PIA` 相对 `SecMI` 的优势主要体现在低误报区间，例如 CIFAR100 上从 `11.1` 提升到 `19.6` 的 `TPR@1%FPR`。Stable Diffusion 上则出现明显分化：`PIA` 仍优于 `SecMI`，但 `PIAN` 大幅退化，说明归一化技巧不适合 latent diffusion。
-
-![PIA 结果图](../../../assets/gray-box/2024-iclr-pia-proximal-initialization-key-figure-2-p13.jpeg)
 
 这张图虽然来自附录，但它直接展示了低 FPR 区间下 `PIA` 对 Naive Attack 与 `SecMI` 的优势，因此比单纯复述表格均值更适合用于本地展示稿和路线判断。
 

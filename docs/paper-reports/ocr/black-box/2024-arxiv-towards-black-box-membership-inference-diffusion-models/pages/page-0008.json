@@ -1,0 +1,1055 @@
+{
+  "prunedResult": {
+    "page_count": 5,
+    "width": 1224,
+    "height": 1584,
+    "model_settings": {
+      "use_doc_preprocessor": true,
+      "use_layout_detection": true,
+      "use_chart_recognition": false,
+      "use_seal_recognition": false,
+      "use_ocr_for_image_block": false,
+      "format_block_content": false,
+      "merge_layout_blocks": true,
+      "markdown_ignore_labels": [
+        "number",
+        "footnote",
+        "header",
+        "header_image",
+        "footer",
+        "footer_image",
+        "aside_text"
+      ],
+      "return_layout_polygon_points": true
+    },
+    "parsing_res_list": [
+      {
+        "block_label": "header",
+        "block_content": "Towards Black-Box Membership Inference Attack for Diffusion Models",
+        "block_bbox": [
+          283,
+          1,
+          904,
+          43
+        ],
+        "block_id": 0,
+        "block_order": null,
+        "group_id": 0,
+        "global_block_id": 127,
+        "global_group_id": 127,
+        "block_polygon_points": [
+          [
+            289.9999694824219,
+            0.9999995231628418
+          ],
+          [
+            903.4305419921875,
+            9.005622863769531
+          ],
+          [
+            903.0,
+            42.000003814697266
+          ],
+          [
+            289.5694274902344,
+            33.994380950927734
+          ]
+        ]
+      },
+      {
+        "block_label": "chart",
+        "block_content": "",
+        "block_bbox": [
+          126,
+          77,
+          483,
+          378
+        ],
+        "block_id": 1,
+        "block_order": null,
+        "group_id": 1,
+        "global_block_id": 128,
+        "global_group_id": 128,
+        "block_polygon_points": [
+          [
+            126.0,
+            77.0
+          ],
+          [
+            483.0,
+            77.0
+          ],
+          [
+            483.0,
+            378.0
+          ],
+          [
+            126.0,
+            378.0
+          ]
+        ]
+      },
+      {
+        "block_label": "figure_title",
+        "block_content": "Figure 5: The impact of sampling intervals. We train DDIM model on CIFAR-10. We find that adjusting the sampling interval has a relatively small influence in the first case and does not affect our method in the latter case. This makes our algorithm applicable to more setups.",
+        "block_bbox": [
+          75,
+          392,
+          591,
+          529
+        ],
+        "block_id": 2,
+        "block_order": null,
+        "group_id": 2,
+        "global_block_id": 129,
+        "global_group_id": 129,
+        "block_polygon_points": [
+          [
+            74.78479766845703,
+            398.369140625
+          ],
+          [
+            589.8798217773438,
+            391.2713623046875
+          ],
+          [
+            591.6670532226562,
+            520.97705078125
+          ],
+          [
+            76.572021484375,
+            528.0748291015625
+          ]
+        ]
+      },
+      {
+        "block_label": "text",
+        "block_content": "DALL-E 2 provides a variation API service. We select different thresholds and classify an image with a variation error below the threshold as members and those above the threshold as non-members. We then calculate metrics such as AUC and ASR. Since the baseline algorithms (Matsumoto et al., 2023; Duan et al., 2023; Kong et al., 2023) require intermediate results, we are unable to test these algorithms under the online API setup.",
+        "block_bbox": [
+          82,
+          586,
+          593,
+          798
+        ],
+        "block_id": 3,
+        "block_order": 1,
+        "group_id": 3,
+        "global_block_id": 130,
+        "global_group_id": 130,
+        "block_polygon_points": [
+          [
+            82.0,
+            586.0
+          ],
+          [
+            593.0,
+            586.0
+          ],
+          [
+            593.0,
+            798.0
+          ],
+          [
+            82.0,
+            798.0
+          ]
+        ]
+      },
+      {
+        "block_label": "text",
+        "block_content": "One challenge with MIA for DALL-E 2 is that it does not disclose its training set. However, since it is adept at generating various famous artworks, we select 30 famous paintings from five famous artists: Van Gogh, Monet, Da Vinci, Dali, and Rembrandt, to form our member set. We believe that it is reasonable to hypothesize that these artworks are used in DALL-E 2's training set. For constructing the non-member set, we used Stable Diffusion 3 (Esser et al., 2024) to generate images based on the titles of each painting in the member set. The benefit of constructing non-members in this way is that it allows for control over the content of the artwork descriptions, reducing bias caused by content shift. Moreover, these generated images are certainly not in the DALL-E 2's training set.",
+        "block_bbox": [
+          85,
+          803,
+          597,
+          1160
+        ],
+        "block_id": 4,
+        "block_order": 2,
+        "group_id": 4,
+        "global_block_id": 131,
+        "global_group_id": 131,
+        "block_polygon_points": [
+          [
+            85.0,
+            803.0
+          ],
+          [
+            597.0,
+            803.0
+          ],
+          [
+            597.0,
+            1160.0
+          ],
+          [
+            85.0,
+            1160.0
+          ]
+        ]
+      },
+      {
+        "block_label": "text",
+        "block_content": "The results, presented in Table 4, demonstrate that our algorithm achieves a relatively high accuracy under this evaluation method. Our observation is illustrated in Figure 6. As seen in the figure, for Monet's iconic painting \"Water Lily Pond\", the original artwork shows minimal changes when using DALL-E 2's variation API, retaining most of its main features. In contrast, the artwork generated by Stable Diffusion 3 undergoes significant changes, with variations in both the number of flowers and lily pads. Therefore, we hypothesize that artworks with smaller changes after API usage are more likely to have appeared in the model's training set. Other results of changes to the member and",
+        "block_bbox": [
+          85,
+          1166,
+          599,
+          1473
+        ],
+        "block_id": 5,
+        "block_order": 3,
+        "group_id": 5,
+        "global_block_id": 132,
+        "global_group_id": 132,
+        "block_polygon_points": [
+          [
+            85.0,
+            1166.0
+          ],
+          [
+            599.0,
+            1166.0
+          ],
+          [
+            599.0,
+            1473.0
+          ],
+          [
+            85.0,
+            1473.0
+          ]
+        ]
+      },
+      {
+        "block_label": "image",
+        "block_content": "",
+        "block_bbox": [
+          701,
+          72,
+          1049,
+          290
+        ],
+        "block_id": 6,
+        "block_order": null,
+        "group_id": 6,
+        "global_block_id": 133,
+        "global_group_id": 133,
+        "block_polygon_points": [
+          [
+            701.0,
+            72.0
+          ],
+          [
+            1049.0,
+            72.0
+          ],
+          [
+            1049.0,
+            290.0
+          ],
+          [
+            701.0,
+            290.0
+          ]
+        ]
+      },
+      {
+        "block_label": "figure_title",
+        "block_content": "Figure 6: Main observation of our attack. DALL-E 2's variation API makes minimal changes to famous artworks, while nonmember images with similar content undergo significant alterations. More examples of changes to the member and non-member inputs after applying the variation API can be found in Appendix D.",
+        "block_bbox": [
+          615,
+          309,
+          1130,
+          471
+        ],
+        "block_id": 7,
+        "block_order": null,
+        "group_id": 7,
+        "global_block_id": 134,
+        "global_group_id": 134,
+        "block_polygon_points": [
+          [
+            615.0,
+            309.0
+          ],
+          [
+            1130.0,
+            309.0
+          ],
+          [
+            1130.0,
+            471.0
+          ],
+          [
+            615.0,
+            471.0
+          ]
+        ]
+      },
+      {
+        "block_label": "text",
+        "block_content": "non-member inputs after applying the variation API can be found in Appendix D.",
+        "block_bbox": [
+          617,
+          511,
+          1127,
+          568
+        ],
+        "block_id": 8,
+        "block_order": 4,
+        "group_id": 8,
+        "global_block_id": 135,
+        "global_group_id": 135,
+        "block_polygon_points": [
+          [
+            617.0,
+            511.0
+          ],
+          [
+            1127.0,
+            511.0
+          ],
+          [
+            1127.0,
+            568.0
+          ],
+          [
+            617.0,
+            568.0
+          ]
+        ]
+      },
+      {
+        "block_label": "figure_title",
+        "block_content": "Table 4: The results of applying our algorithm to DALL-E 2's variation API. We assume some famous paintings as members and use Stable Diffusion 3 along with the titles of these artworks to generate corresponding non-members. Our algorithm also achieves high accuracy under this setup.",
+        "block_bbox": [
+          618,
+          588,
+          1133,
+          721
+        ],
+        "block_id": 9,
+        "block_order": null,
+        "group_id": 9,
+        "global_block_id": 136,
+        "global_group_id": 136,
+        "block_polygon_points": [
+          [
+            618.0,
+            588.0
+          ],
+          [
+            1133.0,
+            588.0
+          ],
+          [
+            1133.0,
+            721.0
+          ],
+          [
+            618.0,
+            721.0
+          ]
+        ]
+      },
+      {
+        "block_label": "table",
+        "block_content": "<table><tr><td>Metrics</td><td>$ L_{1} $ distance</td><td>$ L_{2} $ distance</td></tr><tr><td>AUC</td><td>76.2</td><td>88.3</td></tr><tr><td>ASR</td><td>74.5</td><td>81.4</td></tr></table>",
+        "block_bbox": [
+          699,
+          737,
+          1046,
+          861
+        ],
+        "block_id": 10,
+        "block_order": null,
+        "group_id": 10,
+        "global_block_id": 137,
+        "global_group_id": 137,
+        "block_polygon_points": [
+          [
+            699.0,
+            737.0
+          ],
+          [
+            1046.0,
+            737.0
+          ],
+          [
+            1046.0,
+            861.0
+          ],
+          [
+            699.0,
+            861.0
+          ]
+        ]
+      },
+      {
+        "block_label": "text",
+        "block_content": "The results indicate that we can apply our algorithm with online API services. We acknowledge that this part of the experimental design has certain limitations. Not every famous painting we selected may be present in DALL-E 2's training set, and our construction of non-members may exhibit some distribution shift relative to the member dataset. Here, we aim to provide a real-world application for black-box evaluation, leaving a more comprehensive experimental design as future work.",
+        "block_bbox": [
+          619,
+          902,
+          1138,
+          1134
+        ],
+        "block_id": 11,
+        "block_order": 5,
+        "group_id": 11,
+        "global_block_id": 138,
+        "global_group_id": 138,
+        "block_polygon_points": [
+          [
+            619.0,
+            902.0
+          ],
+          [
+            1138.0,
+            902.0
+          ],
+          [
+            1138.0,
+            1134.0
+          ],
+          [
+            619.0,
+            1134.0
+          ]
+        ]
+      },
+      {
+        "block_label": "paragraph_title",
+        "block_content": "7. Conclusion, Limitations and Future Directions",
+        "block_bbox": [
+          624,
+          1153,
+          1050,
+          1211
+        ],
+        "block_id": 12,
+        "block_order": 6,
+        "group_id": 12,
+        "global_block_id": 139,
+        "global_group_id": 139,
+        "block_polygon_points": [
+          [
+            624.0,
+            1153.0
+          ],
+          [
+            1050.0,
+            1153.0
+          ],
+          [
+            1050.0,
+            1211.0
+          ],
+          [
+            624.0,
+            1211.0
+          ]
+        ]
+      },
+      {
+        "block_label": "text",
+        "block_content": "In this work, we introduce a novel membership inference attack method specifically designed for diffusion models. Our approach only requires access to the variation API of the model, bypassing the need for internal network components such as the U-net. This represents an advancement for commercial diffusion models, which typically restrict internal access. We demonstrate the effectiveness of our approach across various datasets, showing that it achieves high accuracy in identifying whether an image was included in the training dataset. Our algorithm can detect data misuse.",
+        "block_bbox": [
+          618,
+          1217,
+          1139,
+          1476
+        ],
+        "block_id": 13,
+        "block_order": 7,
+        "group_id": 13,
+        "global_block_id": 140,
+        "global_group_id": 140,
+        "block_polygon_points": [
+          [
+            618.0,
+            1217.0
+          ],
+          [
+            1139.0,
+            1217.0
+          ],
+          [
+            1139.0,
+            1476.0
+          ],
+          [
+            618.0,
+            1476.0
+          ]
+        ]
+      },
+      {
+        "block_label": "number",
+        "block_content": "8",
+        "block_bbox": [
+          597,
+          1496,
+          614,
+          1517
+        ],
+        "block_id": 14,
+        "block_order": null,
+        "group_id": 14,
+        "global_block_id": 141,
+        "global_group_id": 141,
+        "block_polygon_points": [
+          [
+            597.0,
+            1496.0
+          ],
+          [
+            613.0,
+            1496.0
+          ],
+          [
+            613.0,
+            1516.0
+          ],
+          [
+            597.0,
+            1516.0
+          ]
+        ]
+      }
+    ],
+    "doc_preprocessor_res": {
+      "model_settings": {
+        "use_doc_orientation_classify": true,
+        "use_doc_unwarping": true
+      },
+      "angle": 0
+    },
+    "layout_det_res": {
+      "boxes": [
+        {
+          "cls_id": 12,
+          "label": "header",
+          "score": 0.8936720490455627,
+          "coordinate": [
+            283,
+            1,
+            904,
+            43
+          ],
+          "order": null,
+          "polygon_points": [
+            [
+              289.9999694824219,
+              0.9999995231628418
+            ],
+            [
+              903.4305419921875,
+              9.005622863769531
+            ],
+            [
+              903.0,
+              42.000003814697266
+            ],
+            [
+              289.5694274902344,
+              33.994380950927734
+            ]
+          ]
+        },
+        {
+          "cls_id": 3,
+          "label": "chart",
+          "score": 0.9494468569755554,
+          "coordinate": [
+            126,
+            77,
+            483,
+            378
+          ],
+          "order": null,
+          "polygon_points": [
+            [
+              126.0,
+              77.0
+            ],
+            [
+              483.0,
+              77.0
+            ],
+            [
+              483.0,
+              378.0
+            ],
+            [
+              126.0,
+              378.0
+            ]
+          ]
+        },
+        {
+          "cls_id": 7,
+          "label": "figure_title",
+          "score": 0.9192824959754944,
+          "coordinate": [
+            75,
+            392,
+            591,
+            529
+          ],
+          "order": null,
+          "polygon_points": [
+            [
+              74.78479766845703,
+              398.369140625
+            ],
+            [
+              589.8798217773438,
+              391.2713623046875
+            ],
+            [
+              591.6670532226562,
+              520.97705078125
+            ],
+            [
+              76.572021484375,
+              528.0748291015625
+            ]
+          ]
+        },
+        {
+          "cls_id": 22,
+          "label": "text",
+          "score": 0.9551375508308411,
+          "coordinate": [
+            82,
+            586,
+            593,
+            798
+          ],
+          "order": 1,
+          "polygon_points": [
+            [
+              82.0,
+              586.0
+            ],
+            [
+              593.0,
+              586.0
+            ],
+            [
+              593.0,
+              798.0
+            ],
+            [
+              82.0,
+              798.0
+            ]
+          ]
+        },
+        {
+          "cls_id": 22,
+          "label": "text",
+          "score": 0.9634825587272644,
+          "coordinate": [
+            85,
+            803,
+            597,
+            1160
+          ],
+          "order": 2,
+          "polygon_points": [
+            [
+              85.0,
+              803.0
+            ],
+            [
+              597.0,
+              803.0
+            ],
+            [
+              597.0,
+              1160.0
+            ],
+            [
+              85.0,
+              1160.0
+            ]
+          ]
+        },
+        {
+          "cls_id": 22,
+          "label": "text",
+          "score": 0.9539511799812317,
+          "coordinate": [
+            85,
+            1166,
+            599,
+            1473
+          ],
+          "order": 3,
+          "polygon_points": [
+            [
+              85.0,
+              1166.0
+            ],
+            [
+              599.0,
+              1166.0
+            ],
+            [
+              599.0,
+              1473.0
+            ],
+            [
+              85.0,
+              1473.0
+            ]
+          ]
+        },
+        {
+          "cls_id": 14,
+          "label": "image",
+          "score": 0.9534905552864075,
+          "coordinate": [
+            701,
+            72,
+            1049,
+            290
+          ],
+          "order": null,
+          "polygon_points": [
+            [
+              701.0,
+              72.0
+            ],
+            [
+              1049.0,
+              72.0
+            ],
+            [
+              1049.0,
+              290.0
+            ],
+            [
+              701.0,
+              290.0
+            ]
+          ]
+        },
+        {
+          "cls_id": 7,
+          "label": "figure_title",
+          "score": 0.924060583114624,
+          "coordinate": [
+            615,
+            309,
+            1130,
+            471
+          ],
+          "order": null,
+          "polygon_points": [
+            [
+              615.0,
+              309.0
+            ],
+            [
+              1130.0,
+              309.0
+            ],
+            [
+              1130.0,
+              471.0
+            ],
+            [
+              615.0,
+              471.0
+            ]
+          ]
+        },
+        {
+          "cls_id": 22,
+          "label": "text",
+          "score": 0.8681793212890625,
+          "coordinate": [
+            617,
+            511,
+            1127,
+            568
+          ],
+          "order": 4,
+          "polygon_points": [
+            [
+              617.0,
+              511.0
+            ],
+            [
+              1127.0,
+              511.0
+            ],
+            [
+              1127.0,
+              568.0
+            ],
+            [
+              617.0,
+              568.0
+            ]
+          ]
+        },
+        {
+          "cls_id": 7,
+          "label": "figure_title",
+          "score": 0.9238082766532898,
+          "coordinate": [
+            618,
+            588,
+            1133,
+            721
+          ],
+          "order": null,
+          "polygon_points": [
+            [
+              618.0,
+              588.0
+            ],
+            [
+              1133.0,
+              588.0
+            ],
+            [
+              1133.0,
+              721.0
+            ],
+            [
+              618.0,
+              721.0
+            ]
+          ]
+        },
+        {
+          "cls_id": 21,
+          "label": "table",
+          "score": 0.9419936537742615,
+          "coordinate": [
+            699,
+            737,
+            1046,
+            861
+          ],
+          "order": null,
+          "polygon_points": [
+            [
+              699.0,
+              737.0
+            ],
+            [
+              1046.0,
+              737.0
+            ],
+            [
+              1046.0,
+              861.0
+            ],
+            [
+              699.0,
+              861.0
+            ]
+          ]
+        },
+        {
+          "cls_id": 15,
+          "label": "inline_formula",
+          "score": 0.703617513179779,
+          "coordinate": [
+            805,
+            747,
+            831,
+            773
+          ],
+          "order": 5,
+          "polygon_points": [
+            [
+              805,
+              747
+            ],
+            [
+              805,
+              772
+            ],
+            [
+              830,
+              772
+            ],
+            [
+              830,
+              747
+            ]
+          ]
+        },
+        {
+          "cls_id": 15,
+          "label": "inline_formula",
+          "score": 0.6890516877174377,
+          "coordinate": [
+            928,
+            748,
+            957,
+            773
+          ],
+          "order": 6,
+          "polygon_points": [
+            [
+              928.0,
+              748.0
+            ],
+            [
+              956.0,
+              748.0
+            ],
+            [
+              956.0,
+              772.0
+            ],
+            [
+              928.0,
+              772.0
+            ]
+          ]
+        },
+        {
+          "cls_id": 22,
+          "label": "text",
+          "score": 0.9479326605796814,
+          "coordinate": [
+            619,
+            902,
+            1138,
+            1134
+          ],
+          "order": 7,
+          "polygon_points": [
+            [
+              619.0,
+              902.0
+            ],
+            [
+              1138.0,
+              902.0
+            ],
+            [
+              1138.0,
+              1134.0
+            ],
+            [
+              619.0,
+              1134.0
+            ]
+          ]
+        },
+        {
+          "cls_id": 17,
+          "label": "paragraph_title",
+          "score": 0.885349690914154,
+          "coordinate": [
+            624,
+            1153,
+            1050,
+            1211
+          ],
+          "order": 8,
+          "polygon_points": [
+            [
+              624.0,
+              1153.0
+            ],
+            [
+              1050.0,
+              1153.0
+            ],
+            [
+              1050.0,
+              1211.0
+            ],
+            [
+              624.0,
+              1211.0
+            ]
+          ]
+        },
+        {
+          "cls_id": 22,
+          "label": "text",
+          "score": 0.9542554616928101,
+          "coordinate": [
+            618,
+            1217,
+            1139,
+            1476
+          ],
+          "order": 9,
+          "polygon_points": [
+            [
+              618.0,
+              1217.0
+            ],
+            [
+              1139.0,
+              1217.0
+            ],
+            [
+              1139.0,
+              1476.0
+            ],
+            [
+              618.0,
+              1476.0
+            ]
+          ]
+        },
+        {
+          "cls_id": 16,
+          "label": "number",
+          "score": 0.729049563407898,
+          "coordinate": [
+            597,
+            1496,
+            614,
+            1517
+          ],
+          "order": 10,
+          "polygon_points": [
+            [
+              597.0,
+              1496.0
+            ],
+            [
+              613.0,
+              1496.0
+            ],
+            [
+              613.0,
+              1516.0
+            ],
+            [
+              597.0,
+              1516.0
+            ]
+          ]
+        }
+      ]
+    }
+  },
+  "markdown": {
+    "text": "<div style=\"text-align: center;\"><img src=\"imgs/img_in_chart_box_126_77_483_378.jpg\" alt=\"Image\" width=\"29%\" /></div>\n\n\n<div style=\"text-align: center;\">Figure 5: The impact of sampling intervals. We train DDIM model on CIFAR-10. We find that adjusting the sampling interval has a relatively small influence in the first case and does not affect our method in the latter case. This makes our algorithm applicable to more setups.</div>\n\n\nDALL-E 2 provides a variation API service. We select different thresholds and classify an image with a variation error below the threshold as members and those above the threshold as non-members. We then calculate metrics such as AUC and ASR. Since the baseline algorithms (Matsumoto et al., 2023; Duan et al., 2023; Kong et al., 2023) require intermediate results, we are unable to test these algorithms under the online API setup.\n\nOne challenge with MIA for DALL-E 2 is that it does not disclose its training set. However, since it is adept at generating various famous artworks, we select 30 famous paintings from five famous artists: Van Gogh, Monet, Da Vinci, Dali, and Rembrandt, to form our member set. We believe that it is reasonable to hypothesize that these artworks are used in DALL-E 2's training set. For constructing the non-member set, we used Stable Diffusion 3 (Esser et al., 2024) to generate images based on the titles of each painting in the member set. The benefit of constructing non-members in this way is that it allows for control over the content of the artwork descriptions, reducing bias caused by content shift. Moreover, these generated images are certainly not in the DALL-E 2's training set.\n\nThe results, presented in Table 4, demonstrate that our algorithm achieves a relatively high accuracy under this evaluation method. Our observation is illustrated in Figure 6. As seen in the figure, for Monet's iconic painting \"Water Lily Pond\", the original artwork shows minimal changes when using DALL-E 2's variation API, retaining most of its main features. In contrast, the artwork generated by Stable Diffusion 3 undergoes significant changes, with variations in both the number of flowers and lily pads. Therefore, we hypothesize that artworks with smaller changes after API usage are more likely to have appeared in the model's training set. Other results of changes to the member and\n\n<div style=\"text-align: center;\"><img src=\"imgs/img_in_image_box_701_72_1049_290.jpg\" alt=\"Image\" width=\"28%\" /></div>\n\n\n<div style=\"text-align: center;\">Figure 6: Main observation of our attack. DALL-E 2's variation API makes minimal changes to famous artworks, while nonmember images with similar content undergo significant alterations. More examples of changes to the member and non-member inputs after applying the variation API can be found in Appendix D.</div>\n\n\nnon-member inputs after applying the variation API can be found in Appendix D.\n\n<div style=\"text-align: center;\">Table 4: The results of applying our algorithm to DALL-E 2's variation API. We assume some famous paintings as members and use Stable Diffusion 3 along with the titles of these artworks to generate corresponding non-members. Our algorithm also achieves high accuracy under this setup.</div>\n\n\n\n<table border=1 style='margin: auto; word-wrap: break-word;'><tr><td style='text-align: center; word-wrap: break-word;'>Metrics</td><td style='text-align: center; word-wrap: break-word;'>$ L_{1} $ distance</td><td style='text-align: center; word-wrap: break-word;'>$ L_{2} $ distance</td></tr><tr><td style='text-align: center; word-wrap: break-word;'>AUC</td><td style='text-align: center; word-wrap: break-word;'>76.2</td><td style='text-align: center; word-wrap: break-word;'>88.3</td></tr><tr><td style='text-align: center; word-wrap: break-word;'>ASR</td><td style='text-align: center; word-wrap: break-word;'>74.5</td><td style='text-align: center; word-wrap: break-word;'>81.4</td></tr></table>\n\nThe results indicate that we can apply our algorithm with online API services. We acknowledge that this part of the experimental design has certain limitations. Not every famous painting we selected may be present in DALL-E 2's training set, and our construction of non-members may exhibit some distribution shift relative to the member dataset. Here, we aim to provide a real-world application for black-box evaluation, leaving a more comprehensive experimental design as future work.\n\n## 7. Conclusion, Limitations and Future Directions\n\nIn this work, we introduce a novel membership inference attack method specifically designed for diffusion models. Our approach only requires access to the variation API of the model, bypassing the need for internal network components such as the U-net. This represents an advancement for commercial diffusion models, which typically restrict internal access. We demonstrate the effectiveness of our approach across various datasets, showing that it achieves high accuracy in identifying whether an image was included in the training dataset. Our algorithm can detect data misuse.",
+    "images": {
+      "imgs/img_in_chart_box_126_77_483_378.jpg": "https://pplines-online.bj.bcebos.com/deploy/official/paddleocr/pp-ocr-vl-15//be0e6e8a-5a5c-4946-a77a-70ce855ed7cd/markdown_2/imgs/img_in_chart_box_126_77_483_378.jpg?authorization=bce-auth-v1%2FALTAKzReLNvew3ySINYJ0fuAMN%2F2026-04-05T13%3A44%3A15Z%2F-1%2F%2Fd7a4c7532b594b18d14c36f0f056178d2759535108341df54a37483d0dd8bc7b",
+      "imgs/img_in_image_box_701_72_1049_290.jpg": "https://pplines-online.bj.bcebos.com/deploy/official/paddleocr/pp-ocr-vl-15//be0e6e8a-5a5c-4946-a77a-70ce855ed7cd/markdown_2/imgs/img_in_image_box_701_72_1049_290.jpg?authorization=bce-auth-v1%2FALTAKzReLNvew3ySINYJ0fuAMN%2F2026-04-05T13%3A44%3A15Z%2F-1%2F%2F58c897ca7cb3f011e3240c876b3f7276471538b3f14552ce3599ca249809db7f"
+    }
+  },
+  "outputImages": {
+    "layout_det_res": "https://pplines-online.bj.bcebos.com/deploy/official/paddleocr/pp-ocr-vl-15//be0e6e8a-5a5c-4946-a77a-70ce855ed7cd/layout_det_res_2.jpg?authorization=bce-auth-v1%2FALTAKzReLNvew3ySINYJ0fuAMN%2F2026-04-05T13%3A44%3A16Z%2F-1%2F%2F596cc437e20ff541ebe3b16406abc79d8568d27b981bb40fd527d7fabe0e76f6"
+  },
+  "inputImage": "https://pplines-online.bj.bcebos.com/deploy/official/paddleocr/pp-ocr-vl-15//be0e6e8a-5a5c-4946-a77a-70ce855ed7cd/input_img_2.jpg?authorization=bce-auth-v1%2FALTAKzReLNvew3ySINYJ0fuAMN%2F2026-04-05T13%3A44%3A16Z%2F-1%2F%2Fafa4e3c4e6d0fa1354b0e71b9d042e889714c5373ad2f5263b603d7afddf183f"
+}

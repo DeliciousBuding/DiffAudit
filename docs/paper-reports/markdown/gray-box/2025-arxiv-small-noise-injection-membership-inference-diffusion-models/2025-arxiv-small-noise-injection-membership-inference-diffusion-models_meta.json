@@ -1,0 +1,842 @@
+{
+  "table_of_contents": [
+    {
+      "title": "Noise Aggregation Analysis Driven by Small-Noise\nInjection: Efficient Membership Inference for\nDiffusion Models",
+      "heading_level": null,
+      "page_id": 0,
+      "polygon": [
+        [
+          50.203125,
+          53.09869384765625
+        ],
+        [
+          560.6343994140625,
+          53.09869384765625
+        ],
+        [
+          560.6343994140625,
+          132.79998779296875
+        ],
+        [
+          50.203125,
+          132.79998779296875
+        ]
+      ]
+    },
+    {
+      "title": "I. INTRODUCTION",
+      "heading_level": null,
+      "page_id": 0,
+      "polygon": [
+        [
+          134.47265625,
+          512.40234375
+        ],
+        [
+          213.376220703125,
+          512.40234375
+        ],
+        [
+          213.376220703125,
+          523.6992797851562
+        ],
+        [
+          134.47265625,
+          523.6992797851562
+        ]
+      ]
+    },
+    {
+      "title": "II. RELATED WORK",
+      "heading_level": null,
+      "page_id": 1,
+      "polygon": [
+        [
+          393.2578125,
+          363.18316650390625
+        ],
+        [
+          480.459716796875,
+          361.96875
+        ],
+        [
+          480.459716796875,
+          373.1457824707031
+        ],
+        [
+          393.2578125,
+          373.1457824707031
+        ]
+      ]
+    },
+    {
+      "title": "A. Diffusion Models",
+      "heading_level": null,
+      "page_id": 1,
+      "polygon": [
+        [
+          311.080078125,
+          388.6097106933594
+        ],
+        [
+          395.349609375,
+          387.4921875
+        ],
+        [
+          395.349609375,
+          398.5722961425781
+        ],
+        [
+          311.080078125,
+          398.5722961425781
+        ]
+      ]
+    },
+    {
+      "title": "B. Membership Inference Attacks",
+      "heading_level": null,
+      "page_id": 2,
+      "polygon": [
+        [
+          47.513671875,
+          51.177978515625
+        ],
+        [
+          185.58114624023438,
+          51.177978515625
+        ],
+        [
+          185.58114624023438,
+          61.14056396484375
+        ],
+        [
+          47.513671875,
+          61.14056396484375
+        ]
+      ]
+    },
+    {
+      "title": "III. PRELIMINARIES",
+      "heading_level": null,
+      "page_id": 2,
+      "polygon": [
+        [
+          129.990234375,
+          666.31640625
+        ],
+        [
+          217.9102020263672,
+          666.31640625
+        ],
+        [
+          217.9102020263672,
+          677.4070129394531
+        ],
+        [
+          129.990234375,
+          677.4070129394531
+        ]
+      ]
+    },
+    {
+      "title": "A. Diffusion Models",
+      "heading_level": null,
+      "page_id": 2,
+      "polygon": [
+        [
+          47.513671875,
+          681.3984375
+        ],
+        [
+          132.2513427734375,
+          681.3984375
+        ],
+        [
+          132.2513427734375,
+          691.9755477905273
+        ],
+        [
+          47.513671875,
+          691.9755477905273
+        ]
+      ]
+    },
+    {
+      "title": "B. Membership Inference Attack",
+      "heading_level": null,
+      "page_id": 2,
+      "polygon": [
+        [
+          308.98828125,
+          493.453125
+        ],
+        [
+          444.71966552734375,
+          493.453125
+        ],
+        [
+          444.71966552734375,
+          504.3175964355469
+        ],
+        [
+          308.98828125,
+          504.3175964355469
+        ]
+      ]
+    },
+    {
+      "title": "IV. METHODOLOGY",
+      "heading_level": null,
+      "page_id": 3,
+      "polygon": [
+        [
+          129.392578125,
+          322.5234375
+        ],
+        [
+          217.92308044433594,
+          322.5234375
+        ],
+        [
+          217.92308044433594,
+          333.43804931640625
+        ],
+        [
+          129.392578125,
+          333.43804931640625
+        ]
+      ]
+    },
+    {
+      "title": "A. Small-Scale Noise Injection Strategy",
+      "heading_level": null,
+      "page_id": 3,
+      "polygon": [
+        [
+          47.513671875,
+          498.29388427734375
+        ],
+        [
+          211.34442138671875,
+          497.70703125
+        ],
+        [
+          211.34442138671875,
+          508.2564697265625
+        ],
+        [
+          47.513671875,
+          508.2564697265625
+        ]
+      ]
+    },
+    {
+      "title": "B. Iterative Denoising Prediction Stage",
+      "heading_level": null,
+      "page_id": 3,
+      "polygon": [
+        [
+          311.080078125,
+          680.2739410400391
+        ],
+        [
+          474.18902587890625,
+          679.46484375
+        ],
+        [
+          474.18902587890625,
+          690.2365417480469
+        ],
+        [
+          311.080078125,
+          690.2365417480469
+        ]
+      ]
+    },
+    {
+      "title": "C. Noise Aggregation Degree Quantification Analysis",
+      "heading_level": null,
+      "page_id": 4,
+      "polygon": [
+        [
+          48.708984375,
+          361.58203125
+        ],
+        [
+          268.5496520996094,
+          360.03515625
+        ],
+        [
+          268.5496520996094,
+          371.7615051269531
+        ],
+        [
+          47.513671875,
+          371.7615051269531
+        ]
+      ]
+    },
+    {
+      "title": "V. EXPERIMENTS",
+      "heading_level": null,
+      "page_id": 4,
+      "polygon": [
+        [
+          398.63671875,
+          486.4921875
+        ],
+        [
+          475.2239990234375,
+          486.4921875
+        ],
+        [
+          475.2239990234375,
+          497.11102294921875
+        ],
+        [
+          398.63671875,
+          497.11102294921875
+        ]
+      ]
+    },
+    {
+      "title": "A. Experimental Setup",
+      "heading_level": null,
+      "page_id": 4,
+      "polygon": [
+        [
+          311.080078125,
+          501.9609375
+        ],
+        [
+          404.912109375,
+          501.9609375
+        ],
+        [
+          404.912109375,
+          512.1695251464844
+        ],
+        [
+          311.080078125,
+          512.1695251464844
+        ]
+      ]
+    },
+    {
+      "title": "B. Baseline Method Comparison",
+      "heading_level": null,
+      "page_id": 5,
+      "polygon": [
+        [
+          311.080078125,
+          497.48101806640625
+        ],
+        [
+          446.5229187011719,
+          496.93359375
+        ],
+        [
+          446.5229187011719,
+          507.443603515625
+        ],
+        [
+          311.080078125,
+          507.443603515625
+        ]
+      ]
+    },
+    {
+      "title": "C. Ablation Studies",
+      "heading_level": null,
+      "page_id": 6,
+      "polygon": [
+        [
+          48.41015625,
+          593.2265625
+        ],
+        [
+          129.6710205078125,
+          593.2265625
+        ],
+        [
+          129.6710205078125,
+          604.4566040039062
+        ],
+        [
+          48.41015625,
+          604.4566040039062
+        ]
+      ]
+    },
+    {
+      "title": "D. Large-Scale Text-to-Image Model Evaluation",
+      "heading_level": null,
+      "page_id": 7,
+      "polygon": [
+        [
+          310.78125,
+          86.625
+        ],
+        [
+          509.63592529296875,
+          85.078125
+        ],
+        [
+          509.63592529296875,
+          96.60858154296875
+        ],
+        [
+          309.5859375,
+          96.60858154296875
+        ]
+      ]
+    },
+    {
+      "title": "VI. CONCLUSION",
+      "heading_level": null,
+      "page_id": 7,
+      "polygon": [
+        [
+          398.0390625,
+          355.1345520019531
+        ],
+        [
+          475.80755615234375,
+          354.62109375
+        ],
+        [
+          475.80755615234375,
+          365.09716796875
+        ],
+        [
+          398.0390625,
+          365.09716796875
+        ]
+      ]
+    },
+    {
+      "title": "REFERENCES",
+      "heading_level": null,
+      "page_id": 7,
+      "polygon": [
+        [
+          407.6015625,
+          599.02734375
+        ],
+        [
+          465.4085998535156,
+          599.02734375
+        ],
+        [
+          465.4085998535156,
+          610.3510131835938
+        ],
+        [
+          407.6015625,
+          610.3510131835938
+        ]
+      ]
+    }
+  ],
+  "page_stats": [
+    {
+      "page_id": 0,
+      "text_extraction_method": "pdftext",
+      "block_counts": [
+        [
+          "Span",
+          182
+        ],
+        [
+          "Line",
+          94
+        ],
+        [
+          "Text",
+          9
+        ],
+        [
+          "SectionHeader",
+          2
+        ],
+        [
+          "PageHeader",
+          1
+        ]
+      ],
+      "block_metadata": {
+        "llm_request_count": 0,
+        "llm_error_count": 0,
+        "llm_tokens_used": 0,
+        "previous_text": "",
+        "previous_type": "",
+        "previous_order": 0
+      }
+    },
+    {
+      "page_id": 1,
+      "text_extraction_method": "pdftext",
+      "block_counts": [
+        [
+          "Span",
+          152
+        ],
+        [
+          "Line",
+          73
+        ],
+        [
+          "Text",
+          5
+        ],
+        [
+          "ListItem",
+          4
+        ],
+        [
+          "SectionHeader",
+          2
+        ],
+        [
+          "Figure",
+          1
+        ],
+        [
+          "Caption",
+          1
+        ],
+        [
+          "FigureGroup",
+          1
+        ],
+        [
+          "ListGroup",
+          1
+        ]
+      ],
+      "block_metadata": {
+        "llm_request_count": 0,
+        "llm_error_count": 0,
+        "llm_tokens_used": 0,
+        "previous_text": "",
+        "previous_type": "",
+        "previous_order": 0
+      }
+    },
+    {
+      "page_id": 2,
+      "text_extraction_method": "pdftext",
+      "block_counts": [
+        [
+          "Span",
+          619
+        ],
+        [
+          "Line",
+          121
+        ],
+        [
+          "Text",
+          14
+        ],
+        [
+          "Equation",
+          8
+        ],
+        [
+          "SectionHeader",
+          4
+        ]
+      ],
+      "block_metadata": {
+        "llm_request_count": 0,
+        "llm_error_count": 0,
+        "llm_tokens_used": 0,
+        "previous_text": "",
+        "previous_type": "",
+        "previous_order": 0
+      }
+    },
+    {
+      "page_id": 3,
+      "text_extraction_method": "pdftext",
+      "block_counts": [
+        [
+          "Span",
+          397
+        ],
+        [
+          "Line",
+          94
+        ],
+        [
+          "Text",
+          8
+        ],
+        [
+          "SectionHeader",
+          3
+        ],
+        [
+          "Equation",
+          2
+        ],
+        [
+          "Figure",
+          1
+        ],
+        [
+          "Caption",
+          1
+        ],
+        [
+          "FigureGroup",
+          1
+        ]
+      ],
+      "block_metadata": {
+        "llm_request_count": 0,
+        "llm_error_count": 0,
+        "llm_tokens_used": 0,
+        "previous_text": "",
+        "previous_type": "",
+        "previous_order": 0
+      }
+    },
+    {
+      "page_id": 4,
+      "text_extraction_method": "pdftext",
+      "block_counts": [
+        [
+          "Span",
+          572
+        ],
+        [
+          "Line",
+          131
+        ],
+        [
+          "Text",
+          22
+        ],
+        [
+          "Equation",
+          10
+        ],
+        [
+          "SectionHeader",
+          3
+        ]
+      ],
+      "block_metadata": {
+        "llm_request_count": 0,
+        "llm_error_count": 0,
+        "llm_tokens_used": 0,
+        "previous_text": "",
+        "previous_type": "",
+        "previous_order": 0
+      }
+    },
+    {
+      "page_id": 5,
+      "text_extraction_method": "pdftext",
+      "block_counts": [
+        [
+          "Span",
+          130
+        ],
+        [
+          "TableCell",
+          82
+        ],
+        [
+          "Line",
+          49
+        ],
+        [
+          "Text",
+          4
+        ],
+        [
+          "ListItem",
+          4
+        ],
+        [
+          "Caption",
+          3
+        ],
+        [
+          "Table",
+          2
+        ],
+        [
+          "Figure",
+          1
+        ],
+        [
+          "SectionHeader",
+          1
+        ],
+        [
+          "TableGroup",
+          1
+        ],
+        [
+          "FigureGroup",
+          1
+        ],
+        [
+          "ListGroup",
+          1
+        ]
+      ],
+      "block_metadata": {
+        "llm_request_count": 0,
+        "llm_error_count": 0,
+        "llm_tokens_used": 0,
+        "previous_text": "",
+        "previous_type": "",
+        "previous_order": 0
+      }
+    },
+    {
+      "page_id": 6,
+      "text_extraction_method": "pdftext",
+      "block_counts": [
+        [
+          "Span",
+          74
+        ],
+        [
+          "Line",
+          31
+        ],
+        [
+          "TableCell",
+          30
+        ],
+        [
+          "Caption",
+          3
+        ],
+        [
+          "Text",
+          3
+        ],
+        [
+          "Figure",
+          2
+        ],
+        [
+          "FigureGroup",
+          2
+        ],
+        [
+          "Table",
+          1
+        ],
+        [
+          "SectionHeader",
+          1
+        ],
+        [
+          "TableGroup",
+          1
+        ]
+      ],
+      "block_metadata": {
+        "llm_request_count": 0,
+        "llm_error_count": 0,
+        "llm_tokens_used": 0,
+        "previous_text": "",
+        "previous_type": "",
+        "previous_order": 0
+      }
+    },
+    {
+      "page_id": 7,
+      "text_extraction_method": "pdftext",
+      "block_counts": [
+        [
+          "Span",
+          252
+        ],
+        [
+          "Line",
+          107
+        ],
+        [
+          "TableCell",
+          64
+        ],
+        [
+          "ListItem",
+          6
+        ],
+        [
+          "Text",
+          5
+        ],
+        [
+          "SectionHeader",
+          3
+        ],
+        [
+          "Caption",
+          2
+        ],
+        [
+          "Table",
+          2
+        ],
+        [
+          "ListGroup",
+          2
+        ],
+        [
+          "TableGroup",
+          1
+        ]
+      ],
+      "block_metadata": {
+        "llm_request_count": 0,
+        "llm_error_count": 0,
+        "llm_tokens_used": 0,
+        "previous_text": "",
+        "previous_type": "",
+        "previous_order": 0
+      }
+    },
+    {
+      "page_id": 8,
+      "text_extraction_method": "pdftext",
+      "block_counts": [
+        [
+          "Span",
+          410
+        ],
+        [
+          "Line",
+          127
+        ],
+        [
+          "ListItem",
+          36
+        ],
+        [
+          "ListGroup",
+          2
+        ]
+      ],
+      "block_metadata": {
+        "llm_request_count": 0,
+        "llm_error_count": 0,
+        "llm_tokens_used": 0,
+        "previous_text": "",
+        "previous_type": "",
+        "previous_order": 0
+      }
+    }
+  ],
+  "debug_data_path": "debug_data\\2025-arxiv-small-noise-injection-membership-inference-diffusion-models"
+}

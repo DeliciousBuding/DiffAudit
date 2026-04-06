@@ -1,0 +1,18 @@
+{
+  "traceId": "0d2d8fae-2e02-499c-97f5-dfe34d9c4f97",
+  "code": 0,
+  "msg": "Success",
+  "data": {
+    "jobId": "34255981623857152",
+    "state": "done",
+    "resultUrl": {
+      "jsonUrl": "https://bj.bcebos.com/v1/paddleocr-store-5/job/bf74dbaa7d14df0acbfb234f126ddba0a299893ecc16ee203aecfb6947897458/json/7de98a75b2df6378e8d0213933910809.json?authorization=bce-auth-v1%2FALTAKDN8mY5KlNI7zaRpLmOqrw%2F2026-04-05T12%3A41%3A27Z%2F604800%2F%2Fbdb651084f0296a7c5e0050ba8fc4f83204e7e46af7e019f1936226a289ec612"
+    },
+    "extractProgress": {
+      "startTime": "2026-04-05 20:41:03",
+      "endTime": "2026-04-05 20:41:27",
+      "totalPages": 18,
+      "extractedPages": 18
+    }
+  }
+}

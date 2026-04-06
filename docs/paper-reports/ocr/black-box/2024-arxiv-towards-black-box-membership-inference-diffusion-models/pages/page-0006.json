@@ -1,0 +1,1258 @@
+{
+  "prunedResult": {
+    "page_count": 5,
+    "width": 1224,
+    "height": 1584,
+    "model_settings": {
+      "use_doc_preprocessor": true,
+      "use_layout_detection": true,
+      "use_chart_recognition": false,
+      "use_seal_recognition": false,
+      "use_ocr_for_image_block": false,
+      "format_block_content": false,
+      "merge_layout_blocks": true,
+      "markdown_ignore_labels": [
+        "number",
+        "footnote",
+        "header",
+        "header_image",
+        "footer",
+        "footer_image",
+        "aside_text"
+      ],
+      "return_layout_polygon_points": true
+    },
+    "parsing_res_list": [
+      {
+        "block_label": "header",
+        "block_content": "Towards Black-Box Membership Inference Attack for Diffusion Models",
+        "block_bbox": [
+          318,
+          0,
+          924,
+          36
+        ],
+        "block_id": 0,
+        "block_order": null,
+        "group_id": 0,
+        "global_block_id": 93,
+        "global_group_id": 93,
+        "block_polygon_points": [
+          [
+            318,
+            0
+          ],
+          [
+            318,
+            21
+          ],
+          [
+            557,
+            21
+          ],
+          [
+            722,
+            28
+          ],
+          [
+            888,
+            35
+          ],
+          [
+            923,
+            35
+          ],
+          [
+            923,
+            8
+          ],
+          [
+            832,
+            0
+          ]
+        ]
+      },
+      {
+        "block_label": "figure_title",
+        "block_content": "Table 2: Comparison of different methods for Diffusion Transformer using the same set of metrics as Table 1. Previous methods require access to the Vision Transformer, whereas our methods do not. We use AUC, ASR, and TP as the metrics, TP refers to the True Positive Rate when the False Positive Rate is 1%.",
+        "block_bbox": [
+          85,
+          40,
+          1149,
+          142
+        ],
+        "block_id": 1,
+        "block_order": null,
+        "group_id": 1,
+        "global_block_id": 94,
+        "global_group_id": 94,
+        "block_polygon_points": [
+          [
+            85.22357177734375,
+            32.15743637084961
+          ],
+          [
+            1149.323974609375,
+            47.17295837402344
+          ],
+          [
+            1148.0,
+            141.0
+          ],
+          [
+            83.89959716796875,
+            125.98448181152344
+          ]
+        ]
+      },
+      {
+        "block_label": "table",
+        "block_content": "<table><tr><td colspan=\"2\">Method</td><td colspan=\"3\">ImageNet 128  $ \\times $ 128</td><td colspan=\"3\">ImageNet 256  $ \\times $ 256</td></tr><tr><td>Algorithm</td><td>Transformer</td><td>AUC</td><td>ASR</td><td>TP</td><td>AUC</td><td>ASR</td><td>TP</td></tr><tr><td>Loss (Matsumoto et al., 2023)</td><td>☐</td><td>0.83</td><td>0.76</td><td>10.7</td><td>0.78</td><td>0.70</td><td>7.3</td></tr><tr><td>SecMI (Duan et al., 2023)</td><td>☐</td><td>0.80</td><td>0.73</td><td>8.3</td><td>0.88</td><td>0.80</td><td>16.3</td></tr><tr><td>PIA (Kong et al., 2023)</td><td>☐</td><td>0.97</td><td>0.92</td><td>32.1</td><td>0.91</td><td>0.85</td><td>6.8</td></tr><tr><td>PIAN (Kong et al., 2023)</td><td>☐</td><td>0.66</td><td>0.64</td><td>6.2</td><td>0.67</td><td>0.66</td><td>12.8</td></tr><tr><td>REDIFFUSE</td><td>☑</td><td>0.98</td><td>0.95</td><td>44.1</td><td>0.97</td><td>0.94</td><td>47.3</td></tr></table>",
+        "block_bbox": [
+          245,
+          138,
+          988,
+          397
+        ],
+        "block_id": 2,
+        "block_order": null,
+        "group_id": 2,
+        "global_block_id": 95,
+        "global_group_id": 95,
+        "block_polygon_points": [
+          [
+            245.0,
+            138.0
+          ],
+          [
+            988.0,
+            138.0
+          ],
+          [
+            988.0,
+            397.0
+          ],
+          [
+            245.0,
+            397.0
+          ]
+        ]
+      },
+      {
+        "block_label": "vision_footnote",
+        "block_content": "□: Require the access of Transformer. ■: Do not require the access of Transformer.",
+        "block_bbox": [
+          244,
+          403,
+          986,
+          434
+        ],
+        "block_id": 3,
+        "block_order": null,
+        "group_id": 3,
+        "global_block_id": 96,
+        "global_group_id": 96,
+        "block_polygon_points": [
+          [
+            244.05911254882812,
+            396.74688720703125
+          ],
+          [
+            985.2763671875,
+            403.74896240234375
+          ],
+          [
+            985.0,
+            433.00006103515625
+          ],
+          [
+            243.78274536132812,
+            425.99798583984375
+          ]
+        ]
+      },
+      {
+        "block_label": "figure_title",
+        "block_content": "Table 3: Comparison of different methods for Stable Diffusion using the same set of metrics as Table 1. Again, previous methods require access to U-Net, whereas our methods do not. We use AUC, ASR and TP as the metrics, TP refers to the True Positive Rate when the False Positive Rate is 1%.",
+        "block_bbox": [
+          88,
+          452,
+          1137,
+          537
+        ],
+        "block_id": 4,
+        "block_order": null,
+        "group_id": 4,
+        "global_block_id": 97,
+        "global_group_id": 97,
+        "block_polygon_points": [
+          [
+            95.0,
+            452.0000305175781
+          ],
+          [
+            1136.5177001953125,
+            459.0035400390625
+          ],
+          [
+            1136.0,
+            536.0
+          ],
+          [
+            94.4822998046875,
+            528.9965209960938
+          ]
+        ]
+      },
+      {
+        "block_label": "table",
+        "block_content": "<table><tr><td colspan=\"2\">Method</td><td colspan=\"3\">Laion5</td><td colspan=\"3\">Laion5 with BLIP</td></tr><tr><td>Algorithm</td><td>U-Net</td><td>AUC</td><td>ASR</td><td>TP</td><td>AUC</td><td>ASR</td><td>TP</td></tr><tr><td>Loss (Matsumoto et al., 2023)</td><td>☐</td><td>0.62</td><td>0.61</td><td>13.2</td><td>0.62</td><td>0.62</td><td>13.3</td></tr><tr><td>SecMI (Duan et al., 2023)</td><td>☐</td><td>0.70</td><td>0.65</td><td>19.2</td><td>0.71</td><td>0.66</td><td>19.8</td></tr><tr><td>PIA (Kong et al., 2023)</td><td>☐</td><td>0.70</td><td>0.66</td><td>19.7</td><td>0.73</td><td>0.68</td><td>20.2</td></tr><tr><td>PIAN (Kong et al., 2023)</td><td>☐</td><td>0.56</td><td>0.53</td><td>4.8</td><td>0.55</td><td>0.51</td><td>4.4</td></tr><tr><td>REDIFFUSE</td><td>☑</td><td>0.81</td><td>0.75</td><td>20.6</td><td>0.82</td><td>0.75</td><td>21.7</td></tr></table>",
+        "block_bbox": [
+          263,
+          540,
+          963,
+          802
+        ],
+        "block_id": 5,
+        "block_order": null,
+        "group_id": 5,
+        "global_block_id": 98,
+        "global_group_id": 98,
+        "block_polygon_points": [
+          [
+            263.0,
+            540.0
+          ],
+          [
+            963.0,
+            540.0
+          ],
+          [
+            963.0,
+            802.0
+          ],
+          [
+            263.0,
+            802.0
+          ]
+        ]
+      },
+      {
+        "block_label": "vision_footnote",
+        "block_content": "□: Require the access of U-Net. ■: Do not require the access of U-Net.",
+        "block_bbox": [
+          290,
+          809,
+          934,
+          839
+        ],
+        "block_id": 6,
+        "block_order": null,
+        "group_id": 6,
+        "global_block_id": 99,
+        "global_group_id": 99,
+        "block_polygon_points": [
+          [
+            289.99993896484375,
+            809.0
+          ],
+          [
+            933.2612915039062,
+            817.0032958984375
+          ],
+          [
+            932.9053344726562,
+            845.6131591796875
+          ],
+          [
+            289.64398193359375,
+            837.60986328125
+          ]
+        ]
+      },
+      {
+        "block_label": "text",
+        "block_content": "ing 50% are utilized as nonmembers. We use (Matsumoto et al., 2023), (Duan et al., 2023), (Kong et al., 2023) as our baseline methods. We fix the diffusion step at t = 200, and independently call the variation API 10 times to take the average of the output images as  $ \\hat{x} $. We will discuss the impact of the diffusion step and the average number in Section 5.5.",
+        "block_bbox": [
+          85,
+          885,
+          598,
+          1047
+        ],
+        "block_id": 7,
+        "block_order": 1,
+        "group_id": 7,
+        "global_block_id": 100,
+        "global_group_id": 100,
+        "block_polygon_points": [
+          [
+            85.0,
+            885.0
+          ],
+          [
+            598.0,
+            885.0
+          ],
+          [
+            598.0,
+            1047.0
+          ],
+          [
+            85.0,
+            1047.0
+          ]
+        ]
+      },
+      {
+        "block_label": "text",
+        "block_content": "For the difference function  $ D(x, \\hat{x}) $, following the setup in (Duan et al., 2023), we take the pixel-wise absolute value of  $ x - \\hat{x} $ to obtain a difference vector v for each image. Using the ResNet-18 network (He et al., 2016) and denoting it as  $ f_R $, we perform binary classification on these difference vectors. We use 20% of the data as the training set and obtained the label of each difference vector being classified as a member or nonmember. The difference function is obtained by the negated value of the probability output by the neural network predicting as member:  $ D(x, \\hat{x}) = -f_R(v) $.",
+        "block_bbox": [
+          81,
+          1054,
+          597,
+          1343
+        ],
+        "block_id": 8,
+        "block_order": 2,
+        "group_id": 8,
+        "global_block_id": 101,
+        "global_group_id": 101,
+        "block_polygon_points": [
+          [
+            81.0,
+            1054.0
+          ],
+          [
+            597.0,
+            1054.0
+          ],
+          [
+            597.0,
+            1343.0
+          ],
+          [
+            81.0,
+            1343.0
+          ]
+        ]
+      },
+      {
+        "block_label": "text",
+        "block_content": "The result is shown in Table 1. Our method achieves high performance, surpassing several baseline algorithms in most setups, and does not require access to the internal structure of the model. This demonstrates that our algorithm is highly effective and robust.",
+        "block_bbox": [
+          80,
+          1351,
+          592,
+          1466
+        ],
+        "block_id": 9,
+        "block_order": 3,
+        "group_id": 9,
+        "global_block_id": 102,
+        "global_group_id": 102,
+        "block_polygon_points": [
+          [
+            80.0,
+            1351.0
+          ],
+          [
+            592.0,
+            1351.0
+          ],
+          [
+            592.0,
+            1466.0
+          ],
+          [
+            80.0,
+            1466.0
+          ]
+        ]
+      },
+      {
+        "block_label": "text",
+        "block_content": "",
+        "block_bbox": [
+          624,
+          890,
+          808,
+          916
+        ],
+        "block_id": 10,
+        "block_order": 4,
+        "group_id": 9,
+        "global_block_id": 103,
+        "global_group_id": 103,
+        "block_polygon_points": [
+          [
+            624.0,
+            890.0
+          ],
+          [
+            808.0,
+            890.0
+          ],
+          [
+            808.0,
+            916.0
+          ],
+          [
+            624.0,
+            916.0
+          ]
+        ]
+      },
+      {
+        "block_label": "paragraph_title",
+        "block_content": "5.3. MIA with Diffusion Transformers",
+        "block_bbox": [
+          624,
+          937,
+          985,
+          962
+        ],
+        "block_id": 11,
+        "block_order": 5,
+        "group_id": 11,
+        "global_block_id": 104,
+        "global_group_id": 104,
+        "block_polygon_points": [
+          [
+            624.0,
+            937.0
+          ],
+          [
+            985.0,
+            937.0
+          ],
+          [
+            985.0,
+            962.0
+          ],
+          [
+            624.0,
+            962.0
+          ]
+        ]
+      },
+      {
+        "block_label": "text",
+        "block_content": "We train a diffusion transformer model on the ImageNet (Deng et al., 2009) dataset following the setup of (Peebles & Xie, 2023). We randomly select 100,000 images from the ImageNet training set to train the model with resolutions of either  $ 128 \\times 128 $ or  $ 256 \\times 256 $. For the membership inference attack setup, 1000 images are randomly chosen from our training set as the member set, and another 1000 images are randomly selected from the ImageNet validation set as the non-member set. We fix the diffusion step at t = 150 and the DDIM step at k = 50, and we independently call the variation API 10 times to take the average of the output images as  $ \\hat{x} $.",
+        "block_bbox": [
+          620,
+          968,
+          1147,
+          1282
+        ],
+        "block_id": 12,
+        "block_order": 6,
+        "group_id": 12,
+        "global_block_id": 105,
+        "global_group_id": 105,
+        "block_polygon_points": [
+          [
+            620.0,
+            968.0
+          ],
+          [
+            1147.0,
+            968.0
+          ],
+          [
+            1147.0,
+            1282.0
+          ],
+          [
+            620.0,
+            1282.0
+          ]
+        ]
+      },
+      {
+        "block_label": "text",
+        "block_content": "We use (Matsumoto et al., 2023), (Duan et al., 2023), (Kong et al., 2023) as our baseline methods. Since these work did not study the case of Diffusion Transformers, we integrate their algorithms into the DiT framework for evaluation. For the difference function  $ D(x, \\hat{x}) $, following the setup in (Duan et al., 2023; Kong et al., 2023), we take the L2 norm of  $ x - \\hat{x} $ to measure the differences between two",
+        "block_bbox": [
+          616,
+          1290,
+          1142,
+          1474
+        ],
+        "block_id": 13,
+        "block_order": 7,
+        "group_id": 13,
+        "global_block_id": 106,
+        "global_group_id": 106,
+        "block_polygon_points": [
+          [
+            616.0,
+            1290.0
+          ],
+          [
+            1142.0,
+            1290.0
+          ],
+          [
+            1142.0,
+            1474.0
+          ],
+          [
+            616.0,
+            1474.0
+          ]
+        ]
+      },
+      {
+        "block_label": "number",
+        "block_content": "6",
+        "block_bbox": [
+          595,
+          1513,
+          612,
+          1533
+        ],
+        "block_id": 14,
+        "block_order": null,
+        "group_id": 14,
+        "global_block_id": 107,
+        "global_group_id": 107,
+        "block_polygon_points": [
+          [
+            595.0,
+            1513.0
+          ],
+          [
+            611.0,
+            1513.0
+          ],
+          [
+            611.0,
+            1532.0
+          ],
+          [
+            595.0,
+            1532.0
+          ]
+        ]
+      }
+    ],
+    "doc_preprocessor_res": {
+      "model_settings": {
+        "use_doc_orientation_classify": true,
+        "use_doc_unwarping": true
+      },
+      "angle": 0
+    },
+    "layout_det_res": {
+      "boxes": [
+        {
+          "cls_id": 12,
+          "label": "header",
+          "score": 0.7958377599716187,
+          "coordinate": [
+            318,
+            0,
+            924,
+            36
+          ],
+          "order": null,
+          "polygon_points": [
+            [
+              318,
+              0
+            ],
+            [
+              318,
+              21
+            ],
+            [
+              557,
+              21
+            ],
+            [
+              722,
+              28
+            ],
+            [
+              888,
+              35
+            ],
+            [
+              923,
+              35
+            ],
+            [
+              923,
+              8
+            ],
+            [
+              832,
+              0
+            ]
+          ]
+        },
+        {
+          "cls_id": 7,
+          "label": "figure_title",
+          "score": 0.9054121375083923,
+          "coordinate": [
+            85,
+            40,
+            1149,
+            142
+          ],
+          "order": null,
+          "polygon_points": [
+            [
+              85.22357177734375,
+              32.15743637084961
+            ],
+            [
+              1149.323974609375,
+              47.17295837402344
+            ],
+            [
+              1148.0,
+              141.0
+            ],
+            [
+              83.89959716796875,
+              125.98448181152344
+            ]
+          ]
+        },
+        {
+          "cls_id": 21,
+          "label": "table",
+          "score": 0.9593167304992676,
+          "coordinate": [
+            245,
+            138,
+            988,
+            397
+          ],
+          "order": null,
+          "polygon_points": [
+            [
+              245.0,
+              138.0
+            ],
+            [
+              988.0,
+              138.0
+            ],
+            [
+              988.0,
+              397.0
+            ],
+            [
+              245.0,
+              397.0
+            ]
+          ]
+        },
+        {
+          "cls_id": 24,
+          "label": "vision_footnote",
+          "score": 0.5992177724838257,
+          "coordinate": [
+            244,
+            403,
+            986,
+            434
+          ],
+          "order": null,
+          "polygon_points": [
+            [
+              244.05911254882812,
+              396.74688720703125
+            ],
+            [
+              985.2763671875,
+              403.74896240234375
+            ],
+            [
+              985.0,
+              433.00006103515625
+            ],
+            [
+              243.78274536132812,
+              425.99798583984375
+            ]
+          ]
+        },
+        {
+          "cls_id": 7,
+          "label": "figure_title",
+          "score": 0.9025364518165588,
+          "coordinate": [
+            88,
+            452,
+            1137,
+            537
+          ],
+          "order": null,
+          "polygon_points": [
+            [
+              95.0,
+              452.0000305175781
+            ],
+            [
+              1136.5177001953125,
+              459.0035400390625
+            ],
+            [
+              1136.0,
+              536.0
+            ],
+            [
+              94.4822998046875,
+              528.9965209960938
+            ]
+          ]
+        },
+        {
+          "cls_id": 21,
+          "label": "table",
+          "score": 0.9619297981262207,
+          "coordinate": [
+            263,
+            540,
+            963,
+            802
+          ],
+          "order": null,
+          "polygon_points": [
+            [
+              263.0,
+              540.0
+            ],
+            [
+              963.0,
+              540.0
+            ],
+            [
+              963.0,
+              802.0
+            ],
+            [
+              263.0,
+              802.0
+            ]
+          ]
+        },
+        {
+          "cls_id": 24,
+          "label": "vision_footnote",
+          "score": 0.6150983572006226,
+          "coordinate": [
+            290,
+            809,
+            934,
+            839
+          ],
+          "order": null,
+          "polygon_points": [
+            [
+              289.99993896484375,
+              809.0
+            ],
+            [
+              933.2612915039062,
+              817.0032958984375
+            ],
+            [
+              932.9053344726562,
+              845.6131591796875
+            ],
+            [
+              289.64398193359375,
+              837.60986328125
+            ]
+          ]
+        },
+        {
+          "cls_id": 22,
+          "label": "text",
+          "score": 0.9438773393630981,
+          "coordinate": [
+            85,
+            885,
+            598,
+            1047
+          ],
+          "order": 1,
+          "polygon_points": [
+            [
+              85.0,
+              885.0
+            ],
+            [
+              598.0,
+              885.0
+            ],
+            [
+              598.0,
+              1047.0
+            ],
+            [
+              85.0,
+              1047.0
+            ]
+          ]
+        },
+        {
+          "cls_id": 22,
+          "label": "text",
+          "score": 0.95259028673172,
+          "coordinate": [
+            81,
+            1054,
+            597,
+            1343
+          ],
+          "order": 2,
+          "polygon_points": [
+            [
+              81.0,
+              1054.0
+            ],
+            [
+              597.0,
+              1054.0
+            ],
+            [
+              597.0,
+              1343.0
+            ],
+            [
+              81.0,
+              1343.0
+            ]
+          ]
+        },
+        {
+          "cls_id": 15,
+          "label": "inline_formula",
+          "score": 0.5872793793678284,
+          "coordinate": [
+            336,
+            1057,
+            404,
+            1082
+          ],
+          "order": 3,
+          "polygon_points": [
+            [
+              336,
+              1057
+            ],
+            [
+              336,
+              1081
+            ],
+            [
+              403,
+              1081
+            ],
+            [
+              403,
+              1064
+            ],
+            [
+              398,
+              1064
+            ],
+            [
+              397,
+              1063
+            ],
+            [
+              397,
+              1057
+            ]
+          ]
+        },
+        {
+          "cls_id": 15,
+          "label": "inline_formula",
+          "score": 0.3309178650379181,
+          "coordinate": [
+            111,
+            1108,
+            156,
+            1130
+          ],
+          "order": 4,
+          "polygon_points": [
+            [
+              111.0,
+              1108.0
+            ],
+            [
+              155.0,
+              1108.0
+            ],
+            [
+              155.0,
+              1129.0
+            ],
+            [
+              111.0,
+              1129.0
+            ]
+          ]
+        },
+        {
+          "cls_id": 15,
+          "label": "inline_formula",
+          "score": 0.4423989951610565,
+          "coordinate": [
+            87,
+            1159,
+            119,
+            1184
+          ],
+          "order": 5,
+          "polygon_points": [
+            [
+              87.0,
+              1159.0
+            ],
+            [
+              118.0,
+              1159.0
+            ],
+            [
+              118.0,
+              1183.0
+            ],
+            [
+              87.0,
+              1183.0
+            ]
+          ]
+        },
+        {
+          "cls_id": 15,
+          "label": "inline_formula",
+          "score": 0.3705149292945862,
+          "coordinate": [
+            494,
+            1291,
+            589,
+            1317
+          ],
+          "order": 6,
+          "polygon_points": [
+            [
+              494.0,
+              1291.0
+            ],
+            [
+              589.0,
+              1291.0
+            ],
+            [
+              589.0,
+              1317.0
+            ],
+            [
+              494.0,
+              1317.0
+            ]
+          ]
+        },
+        {
+          "cls_id": 15,
+          "label": "inline_formula",
+          "score": 0.4334385395050049,
+          "coordinate": [
+            87,
+            1312,
+            160,
+            1339
+          ],
+          "order": 7,
+          "polygon_points": [
+            [
+              87.0,
+              1312.0
+            ],
+            [
+              159.0,
+              1312.0
+            ],
+            [
+              159.0,
+              1338.0
+            ],
+            [
+              87.0,
+              1338.0
+            ]
+          ]
+        },
+        {
+          "cls_id": 22,
+          "label": "text",
+          "score": 0.9421733021736145,
+          "coordinate": [
+            80,
+            1351,
+            592,
+            1466
+          ],
+          "order": 8,
+          "polygon_points": [
+            [
+              80.0,
+              1351.0
+            ],
+            [
+              592.0,
+              1351.0
+            ],
+            [
+              592.0,
+              1466.0
+            ],
+            [
+              80.0,
+              1466.0
+            ]
+          ]
+        },
+        {
+          "cls_id": 22,
+          "label": "text",
+          "score": 0.8121970891952515,
+          "coordinate": [
+            624,
+            890,
+            808,
+            916
+          ],
+          "order": 9,
+          "polygon_points": [
+            [
+              624.0,
+              890.0
+            ],
+            [
+              808.0,
+              890.0
+            ],
+            [
+              808.0,
+              916.0
+            ],
+            [
+              624.0,
+              916.0
+            ]
+          ]
+        },
+        {
+          "cls_id": 17,
+          "label": "paragraph_title",
+          "score": 0.8462632894515991,
+          "coordinate": [
+            624,
+            937,
+            985,
+            962
+          ],
+          "order": 10,
+          "polygon_points": [
+            [
+              624.0,
+              937.0
+            ],
+            [
+              985.0,
+              937.0
+            ],
+            [
+              985.0,
+              962.0
+            ],
+            [
+              624.0,
+              962.0
+            ]
+          ]
+        },
+        {
+          "cls_id": 22,
+          "label": "text",
+          "score": 0.9610161185264587,
+          "coordinate": [
+            620,
+            968,
+            1147,
+            1282
+          ],
+          "order": 11,
+          "polygon_points": [
+            [
+              620.0,
+              968.0
+            ],
+            [
+              1147.0,
+              968.0
+            ],
+            [
+              1147.0,
+              1282.0
+            ],
+            [
+              620.0,
+              1282.0
+            ]
+          ]
+        },
+        {
+          "cls_id": 22,
+          "label": "text",
+          "score": 0.9498574137687683,
+          "coordinate": [
+            616,
+            1290,
+            1142,
+            1474
+          ],
+          "order": 12,
+          "polygon_points": [
+            [
+              616.0,
+              1290.0
+            ],
+            [
+              1142.0,
+              1290.0
+            ],
+            [
+              1142.0,
+              1474.0
+            ],
+            [
+              616.0,
+              1474.0
+            ]
+          ]
+        },
+        {
+          "cls_id": 15,
+          "label": "inline_formula",
+          "score": 0.317095547914505,
+          "coordinate": [
+            927,
+            1396,
+            998,
+            1421
+          ],
+          "order": 13,
+          "polygon_points": [
+            [
+              927,
+              1405
+            ],
+            [
+              927,
+              1420
+            ],
+            [
+              997,
+              1420
+            ],
+            [
+              997,
+              1396
+            ],
+            [
+              933,
+              1396
+            ],
+            [
+              933,
+              1404
+            ],
+            [
+              932,
+              1405
+            ]
+          ]
+        },
+        {
+          "cls_id": 15,
+          "label": "inline_formula",
+          "score": 0.4025113880634308,
+          "coordinate": [
+            726,
+            1449,
+            782,
+            1469
+          ],
+          "order": 14,
+          "polygon_points": [
+            [
+              725.9999389648438,
+              1448.9998779296875
+            ],
+            [
+              780.9999389648438,
+              1448.9998779296875
+            ],
+            [
+              780.9999389648438,
+              1467.9998779296875
+            ],
+            [
+              725.9999389648438,
+              1467.9998779296875
+            ]
+          ]
+        },
+        {
+          "cls_id": 16,
+          "label": "number",
+          "score": 0.7053675651550293,
+          "coordinate": [
+            595,
+            1513,
+            612,
+            1533
+          ],
+          "order": 15,
+          "polygon_points": [
+            [
+              595.0,
+              1513.0
+            ],
+            [
+              611.0,
+              1513.0
+            ],
+            [
+              611.0,
+              1532.0
+            ],
+            [
+              595.0,
+              1532.0
+            ]
+          ]
+        }
+      ]
+    }
+  },
+  "markdown": {
+    "text": "<div style=\"text-align: center;\">Table 2: Comparison of different methods for Diffusion Transformer using the same set of metrics as Table 1. Previous methods require access to the Vision Transformer, whereas our methods do not. We use AUC, ASR, and TP as the metrics, TP refers to the True Positive Rate when the False Positive Rate is 1%.</div>\n\n\n\n<table border=1 style='margin: auto; word-wrap: break-word;'><tr><td colspan=\"2\">Method</td><td colspan=\"3\">ImageNet 128  $ \\times $ 128</td><td colspan=\"3\">ImageNet 256  $ \\times $ 256</td></tr><tr><td style='text-align: center; word-wrap: break-word;'>Algorithm</td><td style='text-align: center; word-wrap: break-word;'>Transformer</td><td style='text-align: center; word-wrap: break-word;'>AUC</td><td style='text-align: center; word-wrap: break-word;'>ASR</td><td style='text-align: center; word-wrap: break-word;'>TP</td><td style='text-align: center; word-wrap: break-word;'>AUC</td><td style='text-align: center; word-wrap: break-word;'>ASR</td><td style='text-align: center; word-wrap: break-word;'>TP</td></tr><tr><td style='text-align: center; word-wrap: break-word;'>Loss (Matsumoto et al., 2023)</td><td style='text-align: center; word-wrap: break-word;'>☐</td><td style='text-align: center; word-wrap: break-word;'>0.83</td><td style='text-align: center; word-wrap: break-word;'>0.76</td><td style='text-align: center; word-wrap: break-word;'>10.7</td><td style='text-align: center; word-wrap: break-word;'>0.78</td><td style='text-align: center; word-wrap: break-word;'>0.70</td><td style='text-align: center; word-wrap: break-word;'>7.3</td></tr><tr><td style='text-align: center; word-wrap: break-word;'>SecMI (Duan et al., 2023)</td><td style='text-align: center; word-wrap: break-word;'>☐</td><td style='text-align: center; word-wrap: break-word;'>0.80</td><td style='text-align: center; word-wrap: break-word;'>0.73</td><td style='text-align: center; word-wrap: break-word;'>8.3</td><td style='text-align: center; word-wrap: break-word;'>0.88</td><td style='text-align: center; word-wrap: break-word;'>0.80</td><td style='text-align: center; word-wrap: break-word;'>16.3</td></tr><tr><td style='text-align: center; word-wrap: break-word;'>PIA (Kong et al., 2023)</td><td style='text-align: center; word-wrap: break-word;'>☐</td><td style='text-align: center; word-wrap: break-word;'>0.97</td><td style='text-align: center; word-wrap: break-word;'>0.92</td><td style='text-align: center; word-wrap: break-word;'>32.1</td><td style='text-align: center; word-wrap: break-word;'>0.91</td><td style='text-align: center; word-wrap: break-word;'>0.85</td><td style='text-align: center; word-wrap: break-word;'>6.8</td></tr><tr><td style='text-align: center; word-wrap: break-word;'>PIAN (Kong et al., 2023)</td><td style='text-align: center; word-wrap: break-word;'>☐</td><td style='text-align: center; word-wrap: break-word;'>0.66</td><td style='text-align: center; word-wrap: break-word;'>0.64</td><td style='text-align: center; word-wrap: break-word;'>6.2</td><td style='text-align: center; word-wrap: break-word;'>0.67</td><td style='text-align: center; word-wrap: break-word;'>0.66</td><td style='text-align: center; word-wrap: break-word;'>12.8</td></tr><tr><td style='text-align: center; word-wrap: break-word;'>REDIFFUSE</td><td style='text-align: center; word-wrap: break-word;'>☑</td><td style='text-align: center; word-wrap: break-word;'>0.98</td><td style='text-align: center; word-wrap: break-word;'>0.95</td><td style='text-align: center; word-wrap: break-word;'>44.1</td><td style='text-align: center; word-wrap: break-word;'>0.97</td><td style='text-align: center; word-wrap: break-word;'>0.94</td><td style='text-align: center; word-wrap: break-word;'>47.3</td></tr></table>\n\n□: Require the access of Transformer. ■: Do not require the access of Transformer.\n\n<div style=\"text-align: center;\">Table 3: Comparison of different methods for Stable Diffusion using the same set of metrics as Table 1. Again, previous methods require access to U-Net, whereas our methods do not. We use AUC, ASR and TP as the metrics, TP refers to the True Positive Rate when the False Positive Rate is 1%.</div>\n\n\n\n<table border=1 style='margin: auto; word-wrap: break-word;'><tr><td colspan=\"2\">Method</td><td colspan=\"3\">Laion5</td><td colspan=\"3\">Laion5 with BLIP</td></tr><tr><td style='text-align: center; word-wrap: break-word;'>Algorithm</td><td style='text-align: center; word-wrap: break-word;'>U-Net</td><td style='text-align: center; word-wrap: break-word;'>AUC</td><td style='text-align: center; word-wrap: break-word;'>ASR</td><td style='text-align: center; word-wrap: break-word;'>TP</td><td style='text-align: center; word-wrap: break-word;'>AUC</td><td style='text-align: center; word-wrap: break-word;'>ASR</td><td style='text-align: center; word-wrap: break-word;'>TP</td></tr><tr><td style='text-align: center; word-wrap: break-word;'>Loss (Matsumoto et al., 2023)</td><td style='text-align: center; word-wrap: break-word;'>☐</td><td style='text-align: center; word-wrap: break-word;'>0.62</td><td style='text-align: center; word-wrap: break-word;'>0.61</td><td style='text-align: center; word-wrap: break-word;'>13.2</td><td style='text-align: center; word-wrap: break-word;'>0.62</td><td style='text-align: center; word-wrap: break-word;'>0.62</td><td style='text-align: center; word-wrap: break-word;'>13.3</td></tr><tr><td style='text-align: center; word-wrap: break-word;'>SecMI (Duan et al., 2023)</td><td style='text-align: center; word-wrap: break-word;'>☐</td><td style='text-align: center; word-wrap: break-word;'>0.70</td><td style='text-align: center; word-wrap: break-word;'>0.65</td><td style='text-align: center; word-wrap: break-word;'>19.2</td><td style='text-align: center; word-wrap: break-word;'>0.71</td><td style='text-align: center; word-wrap: break-word;'>0.66</td><td style='text-align: center; word-wrap: break-word;'>19.8</td></tr><tr><td style='text-align: center; word-wrap: break-word;'>PIA (Kong et al., 2023)</td><td style='text-align: center; word-wrap: break-word;'>☐</td><td style='text-align: center; word-wrap: break-word;'>0.70</td><td style='text-align: center; word-wrap: break-word;'>0.66</td><td style='text-align: center; word-wrap: break-word;'>19.7</td><td style='text-align: center; word-wrap: break-word;'>0.73</td><td style='text-align: center; word-wrap: break-word;'>0.68</td><td style='text-align: center; word-wrap: break-word;'>20.2</td></tr><tr><td style='text-align: center; word-wrap: break-word;'>PIAN (Kong et al., 2023)</td><td style='text-align: center; word-wrap: break-word;'>☐</td><td style='text-align: center; word-wrap: break-word;'>0.56</td><td style='text-align: center; word-wrap: break-word;'>0.53</td><td style='text-align: center; word-wrap: break-word;'>4.8</td><td style='text-align: center; word-wrap: break-word;'>0.55</td><td style='text-align: center; word-wrap: break-word;'>0.51</td><td style='text-align: center; word-wrap: break-word;'>4.4</td></tr><tr><td style='text-align: center; word-wrap: break-word;'>REDIFFUSE</td><td style='text-align: center; word-wrap: break-word;'>☑</td><td style='text-align: center; word-wrap: break-word;'>0.81</td><td style='text-align: center; word-wrap: break-word;'>0.75</td><td style='text-align: center; word-wrap: break-word;'>20.6</td><td style='text-align: center; word-wrap: break-word;'>0.82</td><td style='text-align: center; word-wrap: break-word;'>0.75</td><td style='text-align: center; word-wrap: break-word;'>21.7</td></tr></table>\n\n□: Require the access of U-Net. ■: Do not require the access of U-Net.\n\ning 50% are utilized as nonmembers. We use (Matsumoto et al., 2023), (Duan et al., 2023), (Kong et al., 2023) as our baseline methods. We fix the diffusion step at t = 200, and independently call the variation API 10 times to take the average of the output images as  $ \\hat{x} $. We will discuss the impact of the diffusion step and the average number in Section 5.5.\n\nFor the difference function  $ D(x, \\hat{x}) $, following the setup in (Duan et al., 2023), we take the pixel-wise absolute value of  $ x - \\hat{x} $ to obtain a difference vector v for each image. Using the ResNet-18 network (He et al., 2016) and denoting it as  $ f_R $, we perform binary classification on these difference vectors. We use 20% of the data as the training set and obtained the label of each difference vector being classified as a member or nonmember. The difference function is obtained by the negated value of the probability output by the neural network predicting as member:  $ D(x, \\hat{x}) = -f_R(v) $.\n\nThe result is shown in Table 1. Our method achieves high performance, surpassing several baseline algorithms in most setups, and does not require access to the internal structure of the model. This demonstrates that our algorithm is highly effective and robust.\n\n\n\n### 5.3. MIA with Diffusion Transformers\n\nWe train a diffusion transformer model on the ImageNet (Deng et al., 2009) dataset following the setup of (Peebles & Xie, 2023). We randomly select 100,000 images from the ImageNet training set to train the model with resolutions of either  $ 128 \\times 128 $ or  $ 256 \\times 256 $. For the membership inference attack setup, 1000 images are randomly chosen from our training set as the member set, and another 1000 images are randomly selected from the ImageNet validation set as the non-member set. We fix the diffusion step at t = 150 and the DDIM step at k = 50, and we independently call the variation API 10 times to take the average of the output images as  $ \\hat{x} $.\n\nWe use (Matsumoto et al., 2023), (Duan et al., 2023), (Kong et al., 2023) as our baseline methods. Since these work did not study the case of Diffusion Transformers, we integrate their algorithms into the DiT framework for evaluation. For the difference function  $ D(x, \\hat{x}) $, following the setup in (Duan et al., 2023; Kong et al., 2023), we take the L2 norm of  $ x - \\hat{x} $ to measure the differences between two",
+    "images": {}
+  },
+  "outputImages": {
+    "layout_det_res": "https://pplines-online.bj.bcebos.com/deploy/official/paddleocr/pp-ocr-vl-15//be0e6e8a-5a5c-4946-a77a-70ce855ed7cd/layout_det_res_0.jpg?authorization=bce-auth-v1%2FALTAKzReLNvew3ySINYJ0fuAMN%2F2026-04-05T13%3A44%3A14Z%2F-1%2F%2F3a93db8d60fa0a06157f58f7dc6aac5f0e67f0de3aced435894e6fc4286cc795"
+  },
+  "inputImage": "https://pplines-online.bj.bcebos.com/deploy/official/paddleocr/pp-ocr-vl-15//be0e6e8a-5a5c-4946-a77a-70ce855ed7cd/input_img_0.jpg?authorization=bce-auth-v1%2FALTAKzReLNvew3ySINYJ0fuAMN%2F2026-04-05T13%3A44%3A14Z%2F-1%2F%2F6d5f2c38ed9f4f087c7c2af951c3557d99af7d92a55af7cbf460b3bf268ddf68"
+}

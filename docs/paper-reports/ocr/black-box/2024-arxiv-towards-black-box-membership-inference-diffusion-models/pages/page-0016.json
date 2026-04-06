@@ -1,0 +1,1605 @@
+{
+  "prunedResult": {
+    "page_count": 2,
+    "width": 1224,
+    "height": 1584,
+    "model_settings": {
+      "use_doc_preprocessor": true,
+      "use_layout_detection": true,
+      "use_chart_recognition": false,
+      "use_seal_recognition": false,
+      "use_ocr_for_image_block": false,
+      "format_block_content": false,
+      "merge_layout_blocks": true,
+      "markdown_ignore_labels": [
+        "number",
+        "footnote",
+        "header",
+        "header_image",
+        "footer",
+        "footer_image",
+        "aside_text"
+      ],
+      "return_layout_polygon_points": true
+    },
+    "parsing_res_list": [
+      {
+        "block_label": "header",
+        "block_content": "Towards Black-Box Membership Inference Attack for Diffusion Models",
+        "block_bbox": [
+          314,
+          1,
+          913,
+          40
+        ],
+        "block_id": 0,
+        "block_order": null,
+        "group_id": 0,
+        "global_block_id": 253,
+        "global_group_id": 253,
+        "block_polygon_points": [
+          [
+            313.50567626953125,
+            4.033246994018555
+          ],
+          [
+            911.8102416992188,
+            -4.427614212036133
+          ],
+          [
+            912.3252563476562,
+            31.995405197143555
+          ],
+          [
+            314.02069091796875,
+            40.456268310546875
+          ]
+        ]
+      },
+      {
+        "block_label": "paragraph_title",
+        "block_content": "C. Proof",
+        "block_bbox": [
+          87,
+          65,
+          190,
+          94
+        ],
+        "block_id": 1,
+        "block_order": 1,
+        "group_id": 1,
+        "global_block_id": 254,
+        "global_group_id": 254,
+        "block_polygon_points": [
+          [
+            87.0,
+            65.0
+          ],
+          [
+            190.0,
+            65.0
+          ],
+          [
+            190.0,
+            94.0
+          ],
+          [
+            87.0,
+            94.0
+          ]
+        ]
+      },
+      {
+        "block_label": "text",
+        "block_content": "In this section, we present the proof of the theorem.",
+        "block_bbox": [
+          86,
+          106,
+          539,
+          140
+        ],
+        "block_id": 2,
+        "block_order": 2,
+        "group_id": 2,
+        "global_block_id": 255,
+        "global_group_id": 255,
+        "block_polygon_points": [
+          [
+            85.55242919921875,
+            112.14080047607422
+          ],
+          [
+            537.976806640625,
+            104.60039520263672
+          ],
+          [
+            538.449951171875,
+            132.99249267578125
+          ],
+          [
+            86.02557373046875,
+            140.53289794921875
+          ]
+        ]
+      },
+      {
+        "block_label": "text",
+        "block_content": "Theorem 4.2. Suppose the DDIM model can learn a parameter  $ \\nu $ such that, for any  $ x \\sim \\mathcal{D}_{training} $ with dimension  $ d $, the prediction error  $ \\epsilon - \\epsilon_0 (\\sqrt{\\bar{\\alpha}_t} x + \\sqrt{1 - \\bar{\\alpha}_t} \\epsilon, t) $ is a random variable  $ X = (X_1, X_2, \\ldots, X_d) $ with zero expectation and finite cumulant-generating function for each coordinate (Durret, 2010). Suppose the sampling interval  $ k $ is equal to the variation API diffusion step  $ t $. Let  $ \\hat{x} $ be the average of  $ n $ output images of  $ x $ using the variation API. Then we have",
+        "block_bbox": [
+          86,
+          145,
+          1137,
+          262
+        ],
+        "block_id": 3,
+        "block_order": 3,
+        "group_id": 3,
+        "global_block_id": 256,
+        "global_group_id": 256,
+        "block_polygon_points": [
+          [
+            86.0,
+            153.0
+          ],
+          [
+            1136.0,
+            153.0
+          ],
+          [
+            1136.0,
+            261.0
+          ],
+          [
+            86.0,
+            261.0
+          ]
+        ]
+      },
+      {
+        "block_label": "display_formula",
+        "block_content": " $$ \\mathbb{P}(\\|\\hat{x}-x\\|\\geq\\beta)\\leq d\\exp\\left(-n\\min_{i}\\Psi_{X_{i}}^{*}\\left(\\frac{\\beta\\sqrt{\\bar{\\alpha}_{t}}}{\\sqrt{d(1-\\bar{\\alpha}_{t})}}\\right)\\right), $$ ",
+        "block_bbox": [
+          344,
+          274,
+          882,
+          352
+        ],
+        "block_id": 4,
+        "block_order": 4,
+        "group_id": 4,
+        "global_block_id": 257,
+        "global_group_id": 257,
+        "block_polygon_points": [
+          [
+            344.0,
+            274.0
+          ],
+          [
+            882.0,
+            274.0
+          ],
+          [
+            882.0,
+            352.0
+          ],
+          [
+            344.0,
+            352.0
+          ]
+        ]
+      },
+      {
+        "block_label": "text",
+        "block_content": "where  $ \\beta > 0 $ and  $ \\Psi_{X_i}^* $ is the Fenchel-Legendre dual of the cumulant-generating function  $ \\Psi_{X_i} $.",
+        "block_bbox": [
+          90,
+          370,
+          893,
+          402
+        ],
+        "block_id": 5,
+        "block_order": 5,
+        "group_id": 5,
+        "global_block_id": 258,
+        "global_group_id": 258,
+        "block_polygon_points": [
+          [
+            90.0,
+            370.0
+          ],
+          [
+            893.0,
+            370.0
+          ],
+          [
+            893.0,
+            402.0
+          ],
+          [
+            90.0,
+            402.0
+          ]
+        ]
+      },
+      {
+        "block_label": "text",
+        "block_content": "Proof. We denote  $ x^i $ as the  $ i $-th output image of  $ x $ using the variation API. We denote the  $ i $-th Gaussian noise as  $ \\epsilon^i $ and the forward process yields  $ x_t^i = \\sqrt{\\bar{\\alpha}_t} x + \\sqrt{1 - \\bar{\\alpha}_t} \\epsilon^i $.",
+        "block_bbox": [
+          92,
+          430,
+          1132,
+          489
+        ],
+        "block_id": 6,
+        "block_order": 6,
+        "group_id": 6,
+        "global_block_id": 259,
+        "global_group_id": 259,
+        "block_polygon_points": [
+          [
+            92.0,
+            430.0
+          ],
+          [
+            1132.0,
+            430.0
+          ],
+          [
+            1132.0,
+            489.0
+          ],
+          [
+            92.0,
+            489.0
+          ]
+        ]
+      },
+      {
+        "block_label": "text",
+        "block_content": "As the sampling interval is equal to the variation API diffusion step t, we have",
+        "block_bbox": [
+          92,
+          501,
+          763,
+          530
+        ],
+        "block_id": 7,
+        "block_order": 7,
+        "group_id": 7,
+        "global_block_id": 260,
+        "global_group_id": 260,
+        "block_polygon_points": [
+          [
+            92.0,
+            501.0
+          ],
+          [
+            763.0,
+            501.0
+          ],
+          [
+            763.0,
+            530.0
+          ],
+          [
+            92.0,
+            530.0
+          ]
+        ]
+      },
+      {
+        "block_label": "display_formula",
+        "block_content": " $$ \\begin{align*}x^{i}-x&=\\frac{x^{i}_{t}-\\sqrt{1-\\bar{\\alpha}_{t}}\\epsilon_{\\theta}(\\sqrt{\\bar{\\alpha}_{t}}x+\\sqrt{1-\\bar{\\alpha}_{t}}\\epsilon^{i},t)}{\\sqrt{\\bar{\\alpha}_{t}}}-x,\\\\&=\\frac{\\sqrt{\\bar{\\alpha}_{t}}x+\\sqrt{1-\\bar{\\alpha}_{t}}\\epsilon^{i}-\\sqrt{1-\\bar{\\alpha}_{t}}\\epsilon_{\\theta}(\\sqrt{\\bar{\\alpha}_{t}}x+\\sqrt{1-\\bar{\\alpha}_{t}}\\epsilon^{i},t)}{\\sqrt{\\bar{\\alpha}_{t}}}-x,\\\\&=\\frac{\\sqrt{1-\\bar{\\alpha}_{t}}}{\\sqrt{\\bar{\\alpha}_{t}}}(\\epsilon^{i}-\\epsilon_{\\theta}(\\sqrt{\\bar{\\alpha}_{t}}x+\\sqrt{1-\\bar{\\alpha}_{t}}\\epsilon^{i},t)).\\end{align*} $$ ",
+        "block_bbox": [
+          295,
+          545,
+          930,
+          742
+        ],
+        "block_id": 8,
+        "block_order": 8,
+        "group_id": 8,
+        "global_block_id": 261,
+        "global_group_id": 261,
+        "block_polygon_points": [
+          [
+            295.0,
+            545.0
+          ],
+          [
+            930.0,
+            545.0
+          ],
+          [
+            930.0,
+            742.0
+          ],
+          [
+            295.0,
+            742.0
+          ]
+        ]
+      },
+      {
+        "block_label": "text",
+        "block_content": "If we denote the random variable  $ X^i = (X_1^i, X_2^i, \\ldots, X_d^i) $ represents  $ \\epsilon^i - \\epsilon_\\theta(\\sqrt{\\bar{\\alpha}_t}x + \\sqrt{1 - \\bar{\\alpha}_t}\\epsilon^i, t) $, then we consider  $ S_n^i = \\sum_{j=1}^n X_j^i $. From the assumption we know that all the  $ X_j^i $ are i.i.d. random variables (with the same distribution of  $ X_i $ in Theorem 4.2) with zero expectation and finite cumulant-generating function  $ \\Psi_{X_i}(s) = \\log E[e^{sX_i}] < +\\infty $. Using the theorem of Cramér–Chernoff method for sums of i.i.d. random variables (Durret, 2010), we get the following probability inequality for any  $ \\beta > 0 $:",
+        "block_bbox": [
+          91,
+          801,
+          1137,
+          952
+        ],
+        "block_id": 9,
+        "block_order": 9,
+        "group_id": 9,
+        "global_block_id": 262,
+        "global_group_id": 262,
+        "block_polygon_points": [
+          [
+            90.0422592163086,
+            808.0064086914062
+          ],
+          [
+            1136.0001220703125,
+            801.0000610351562
+          ],
+          [
+            1136.9578857421875,
+            943.9935913085938
+          ],
+          [
+            91.0,
+            950.9999389648438
+          ]
+        ]
+      },
+      {
+        "block_label": "display_formula",
+        "block_content": " $$ \\mathbb{P}(|S_{n}^{i}|\\geq\\beta)\\leq\\exp(-n\\Psi_{X_{i}}^{*}(\\frac{\\beta}{n})), $$ ",
+        "block_bbox": [
+          460,
+          965,
+          767,
+          1021
+        ],
+        "block_id": 10,
+        "block_order": 10,
+        "group_id": 10,
+        "global_block_id": 263,
+        "global_group_id": 263,
+        "block_polygon_points": [
+          [
+            460.0,
+            965.0
+          ],
+          [
+            767.0,
+            965.0
+          ],
+          [
+            767.0,
+            1021.0
+          ],
+          [
+            460.0,
+            1021.0
+          ]
+        ]
+      },
+      {
+        "block_label": "text",
+        "block_content": "where  $ \\beta > 0 $ and  $ \\Psi_{X_i}^*(y) = \\sup_{s > 0}(sy - \\Psi_{X_i}(s)) $ is the Fenchel-Legendre dual of the cumulant-generating function  $ \\Psi_{X_i} $. Therefore, denote  $ S_n = (S_n^1, S_n^2, \\ldots, S_n^d) $, taking the definition of  $ \\|\\hat{x} - x\\| = \\left\\|\\frac{1}{n} \\sum_{i=1}^n (x^i - x)\\right\\| = \\frac{\\sqrt{1 - \\hat{\\alpha}_i}}{n \\sqrt{\\hat{\\alpha}_i}}\\|S_n\\| $, we get the following bound of the reconstruction error:",
+        "block_bbox": [
+          90,
+          1034,
+          1139,
+          1146
+        ],
+        "block_id": 11,
+        "block_order": 11,
+        "group_id": 11,
+        "global_block_id": 264,
+        "global_group_id": 264,
+        "block_polygon_points": [
+          [
+            90.0,
+            1034.0
+          ],
+          [
+            1139.0,
+            1034.0
+          ],
+          [
+            1139.0,
+            1146.0
+          ],
+          [
+            90.0,
+            1146.0
+          ]
+        ]
+      },
+      {
+        "block_label": "display_formula",
+        "block_content": " $$ \\mathbb{P}(\\|\\hat{x}-x\\|\\geq\\beta)\\leq\\sum_{i=1}^{d}P(|S_{n}^{i}|\\geq\\frac{n\\beta\\sqrt{\\bar{\\alpha}_{t}}}{\\sqrt{d(1-\\bar{\\alpha}_{t})}})\\leq d\\exp(-n\\min_{i}\\Psi_{X_{i}}^{*}(\\frac{\\beta\\sqrt{\\bar{\\alpha}_{t}}}{\\sqrt{d(1-\\bar{\\alpha}_{t})}})), $$ ",
+        "block_bbox": [
+          233,
+          1163,
+          998,
+          1236
+        ],
+        "block_id": 12,
+        "block_order": 12,
+        "group_id": 12,
+        "global_block_id": 265,
+        "global_group_id": 265,
+        "block_polygon_points": [
+          [
+            233.0,
+            1163.0
+          ],
+          [
+            998.0,
+            1163.0
+          ],
+          [
+            998.0,
+            1236.0
+          ],
+          [
+            233.0,
+            1236.0
+          ]
+        ]
+      },
+      {
+        "block_label": "text",
+        "block_content": "So averaging the randomly reconstructed data from a training set will result in a smaller reconstruction error with high probability of  $ 1 - \\mathcal{O}(\\exp(-n)) $ when we use a large n.",
+        "block_bbox": [
+          92,
+          1248,
+          1138,
+          1312
+        ],
+        "block_id": 13,
+        "block_order": 13,
+        "group_id": 13,
+        "global_block_id": 266,
+        "global_group_id": 266,
+        "block_polygon_points": [
+          [
+            92.0,
+            1248.0
+          ],
+          [
+            1138.0,
+            1248.0
+          ],
+          [
+            1138.0,
+            1312.0
+          ],
+          [
+            92.0,
+            1312.0
+          ]
+        ]
+      }
+    ],
+    "doc_preprocessor_res": {
+      "model_settings": {
+        "use_doc_orientation_classify": true,
+        "use_doc_unwarping": true
+      },
+      "angle": 0
+    },
+    "layout_det_res": {
+      "boxes": [
+        {
+          "cls_id": 12,
+          "label": "header",
+          "score": 0.9102363586425781,
+          "coordinate": [
+            314,
+            1,
+            913,
+            40
+          ],
+          "order": null,
+          "polygon_points": [
+            [
+              313.50567626953125,
+              4.033246994018555
+            ],
+            [
+              911.8102416992188,
+              -4.427614212036133
+            ],
+            [
+              912.3252563476562,
+              31.995405197143555
+            ],
+            [
+              314.02069091796875,
+              40.456268310546875
+            ]
+          ]
+        },
+        {
+          "cls_id": 17,
+          "label": "paragraph_title",
+          "score": 0.8554801344871521,
+          "coordinate": [
+            87,
+            65,
+            190,
+            94
+          ],
+          "order": 1,
+          "polygon_points": [
+            [
+              87.0,
+              65.0
+            ],
+            [
+              190.0,
+              65.0
+            ],
+            [
+              190.0,
+              94.0
+            ],
+            [
+              87.0,
+              94.0
+            ]
+          ]
+        },
+        {
+          "cls_id": 22,
+          "label": "text",
+          "score": 0.8464965224266052,
+          "coordinate": [
+            86,
+            106,
+            539,
+            140
+          ],
+          "order": 2,
+          "polygon_points": [
+            [
+              85.55242919921875,
+              112.14080047607422
+            ],
+            [
+              537.976806640625,
+              104.60039520263672
+            ],
+            [
+              538.449951171875,
+              132.99249267578125
+            ],
+            [
+              86.02557373046875,
+              140.53289794921875
+            ]
+          ]
+        },
+        {
+          "cls_id": 22,
+          "label": "text",
+          "score": 0.9340405464172363,
+          "coordinate": [
+            86,
+            145,
+            1137,
+            262
+          ],
+          "order": 3,
+          "polygon_points": [
+            [
+              86.0,
+              153.0
+            ],
+            [
+              1136.0,
+              153.0
+            ],
+            [
+              1136.0,
+              261.0
+            ],
+            [
+              86.0,
+              261.0
+            ]
+          ]
+        },
+        {
+          "cls_id": 15,
+          "label": "inline_formula",
+          "score": 0.6533459424972534,
+          "coordinate": [
+            834,
+            146,
+            942,
+            173
+          ],
+          "order": 4,
+          "polygon_points": [
+            [
+              834,
+              146
+            ],
+            [
+              834,
+              166
+            ],
+            [
+              858,
+              172
+            ],
+            [
+              941,
+              172
+            ],
+            [
+              941,
+              153
+            ],
+            [
+              923,
+              146
+            ],
+            [
+              876,
+              146
+            ],
+            [
+              863,
+              146
+            ]
+          ]
+        },
+        {
+          "cls_id": 15,
+          "label": "inline_formula",
+          "score": 0.8189268112182617,
+          "coordinate": [
+            232,
+            174,
+            480,
+            204
+          ],
+          "order": 5,
+          "polygon_points": [
+            [
+              232.0,
+              174.0
+            ],
+            [
+              480.0,
+              174.0
+            ],
+            [
+              480.0,
+              204.0
+            ],
+            [
+              232.0,
+              204.0
+            ]
+          ]
+        },
+        {
+          "cls_id": 15,
+          "label": "inline_formula",
+          "score": 0.8061229586601257,
+          "coordinate": [
+            666,
+            170,
+            868,
+            200
+          ],
+          "order": 6,
+          "polygon_points": [
+            [
+              666.0,
+              170.0
+            ],
+            [
+              868.0,
+              170.0
+            ],
+            [
+              868.0,
+              200.0
+            ],
+            [
+              666.0,
+              200.0
+            ]
+          ]
+        },
+        {
+          "cls_id": 5,
+          "label": "display_formula",
+          "score": 0.9149659276008606,
+          "coordinate": [
+            344,
+            274,
+            882,
+            352
+          ],
+          "order": 7,
+          "polygon_points": [
+            [
+              344.0,
+              274.0
+            ],
+            [
+              882.0,
+              274.0
+            ],
+            [
+              882.0,
+              352.0
+            ],
+            [
+              344.0,
+              352.0
+            ]
+          ]
+        },
+        {
+          "cls_id": 22,
+          "label": "text",
+          "score": 0.8289678692817688,
+          "coordinate": [
+            90,
+            370,
+            893,
+            402
+          ],
+          "order": 8,
+          "polygon_points": [
+            [
+              90.0,
+              370.0
+            ],
+            [
+              893.0,
+              370.0
+            ],
+            [
+              893.0,
+              402.0
+            ],
+            [
+              90.0,
+              402.0
+            ]
+          ]
+        },
+        {
+          "cls_id": 15,
+          "label": "inline_formula",
+          "score": 0.7642073631286621,
+          "coordinate": [
+            151,
+            372,
+            206,
+            398
+          ],
+          "order": 9,
+          "polygon_points": [
+            [
+              151,
+              372
+            ],
+            [
+              151,
+              397
+            ],
+            [
+              205,
+              397
+            ],
+            [
+              205,
+              372
+            ]
+          ]
+        },
+        {
+          "cls_id": 15,
+          "label": "inline_formula",
+          "score": 0.7597700953483582,
+          "coordinate": [
+            247,
+            376,
+            285,
+            403
+          ],
+          "order": 10,
+          "polygon_points": [
+            [
+              247.0,
+              376.0
+            ],
+            [
+              284.0,
+              376.0
+            ],
+            [
+              284.0,
+              402.0
+            ],
+            [
+              247.0,
+              402.0
+            ]
+          ]
+        },
+        {
+          "cls_id": 15,
+          "label": "inline_formula",
+          "score": 0.591239869594574,
+          "coordinate": [
+            858,
+            374,
+            889,
+            398
+          ],
+          "order": 11,
+          "polygon_points": [
+            [
+              858.0,
+              374.0
+            ],
+            [
+              888.0,
+              374.0
+            ],
+            [
+              888.0,
+              397.0
+            ],
+            [
+              858.0,
+              397.0
+            ]
+          ]
+        },
+        {
+          "cls_id": 22,
+          "label": "text",
+          "score": 0.9070363640785217,
+          "coordinate": [
+            92,
+            430,
+            1132,
+            489
+          ],
+          "order": 12,
+          "polygon_points": [
+            [
+              92.0,
+              430.0
+            ],
+            [
+              1132.0,
+              430.0
+            ],
+            [
+              1132.0,
+              489.0
+            ],
+            [
+              92.0,
+              489.0
+            ]
+          ]
+        },
+        {
+          "cls_id": 15,
+          "label": "inline_formula",
+          "score": 0.7003222107887268,
+          "coordinate": [
+            254,
+            434,
+            276,
+            455
+          ],
+          "order": 13,
+          "polygon_points": [
+            [
+              254,
+              434
+            ],
+            [
+              254,
+              454
+            ],
+            [
+              275,
+              454
+            ],
+            [
+              275,
+              434
+            ]
+          ]
+        },
+        {
+          "cls_id": 15,
+          "label": "inline_formula",
+          "score": 0.645971417427063,
+          "coordinate": [
+            1044,
+            432,
+            1064,
+            454
+          ],
+          "order": 14,
+          "polygon_points": [
+            [
+              1044.0,
+              432.0
+            ],
+            [
+              1063.0,
+              432.0
+            ],
+            [
+              1063.0,
+              453.0
+            ],
+            [
+              1044.0,
+              453.0
+            ]
+          ]
+        },
+        {
+          "cls_id": 15,
+          "label": "inline_formula",
+          "score": 0.8425910472869873,
+          "coordinate": [
+            292,
+            457,
+            511,
+            486
+          ],
+          "order": 15,
+          "polygon_points": [
+            [
+              292.0,
+              457.0
+            ],
+            [
+              511.0,
+              457.0
+            ],
+            [
+              511.0,
+              486.0
+            ],
+            [
+              292.0,
+              486.0
+            ]
+          ]
+        },
+        {
+          "cls_id": 22,
+          "label": "text",
+          "score": 0.8599438667297363,
+          "coordinate": [
+            92,
+            501,
+            763,
+            530
+          ],
+          "order": 16,
+          "polygon_points": [
+            [
+              92.0,
+              501.0
+            ],
+            [
+              763.0,
+              501.0
+            ],
+            [
+              763.0,
+              530.0
+            ],
+            [
+              92.0,
+              530.0
+            ]
+          ]
+        },
+        {
+          "cls_id": 5,
+          "label": "display_formula",
+          "score": 0.9419165253639221,
+          "coordinate": [
+            295,
+            545,
+            930,
+            742
+          ],
+          "order": 17,
+          "polygon_points": [
+            [
+              295.0,
+              545.0
+            ],
+            [
+              930.0,
+              545.0
+            ],
+            [
+              930.0,
+              742.0
+            ],
+            [
+              295.0,
+              742.0
+            ]
+          ]
+        },
+        {
+          "cls_id": 22,
+          "label": "text",
+          "score": 0.9227450489997864,
+          "coordinate": [
+            91,
+            801,
+            1137,
+            952
+          ],
+          "order": 18,
+          "polygon_points": [
+            [
+              90.0422592163086,
+              808.0064086914062
+            ],
+            [
+              1136.0001220703125,
+              801.0000610351562
+            ],
+            [
+              1136.9578857421875,
+              943.9935913085938
+            ],
+            [
+              91.0,
+              950.9999389648438
+            ]
+          ]
+        },
+        {
+          "cls_id": 15,
+          "label": "inline_formula",
+          "score": 0.8524346351623535,
+          "coordinate": [
+            396,
+            804,
+            607,
+            834
+          ],
+          "order": 19,
+          "polygon_points": [
+            [
+              396,
+              804
+            ],
+            [
+              396,
+              833
+            ],
+            [
+              606,
+              833
+            ],
+            [
+              606,
+              804
+            ]
+          ]
+        },
+        {
+          "cls_id": 15,
+          "label": "inline_formula",
+          "score": 0.8486807942390442,
+          "coordinate": [
+            704,
+            804,
+            969,
+            832
+          ],
+          "order": 20,
+          "polygon_points": [
+            [
+              704.0,
+              804.0
+            ],
+            [
+              969.0,
+              804.0
+            ],
+            [
+              969.0,
+              832.0
+            ],
+            [
+              704.0,
+              832.0
+            ]
+          ]
+        },
+        {
+          "cls_id": 15,
+          "label": "inline_formula",
+          "score": 0.8609614372253418,
+          "coordinate": [
+            96,
+            834,
+            236,
+            869
+          ],
+          "order": 21,
+          "polygon_points": [
+            [
+              96.0,
+              834.0
+            ],
+            [
+              236.0,
+              834.0
+            ],
+            [
+              236.0,
+              869.0
+            ],
+            [
+              96.0,
+              869.0
+            ]
+          ]
+        },
+        {
+          "cls_id": 15,
+          "label": "inline_formula",
+          "score": 0.715427041053772,
+          "coordinate": [
+            603,
+            834,
+            630,
+            865
+          ],
+          "order": 22,
+          "polygon_points": [
+            [
+              603.0,
+              834.0
+            ],
+            [
+              629.0,
+              834.0
+            ],
+            [
+              629.0,
+              864.0
+            ],
+            [
+              603.0,
+              864.0
+            ]
+          ]
+        },
+        {
+          "cls_id": 15,
+          "label": "inline_formula",
+          "score": 0.6959894299507141,
+          "coordinate": [
+            1106,
+            831,
+            1133,
+            855
+          ],
+          "order": 23,
+          "polygon_points": [
+            [
+              1106.0,
+              831.0
+            ],
+            [
+              1132.0,
+              831.0
+            ],
+            [
+              1132.0,
+              854.0
+            ],
+            [
+              1106.0,
+              854.0
+            ]
+          ]
+        },
+        {
+          "cls_id": 15,
+          "label": "inline_formula",
+          "score": 0.8059840798377991,
+          "coordinate": [
+            778,
+            860,
+            1038,
+            891
+          ],
+          "order": 24,
+          "polygon_points": [
+            [
+              778.0,
+              860.0
+            ],
+            [
+              1038.0,
+              860.0
+            ],
+            [
+              1038.0,
+              891.0
+            ],
+            [
+              778.0,
+              891.0
+            ]
+          ]
+        },
+        {
+          "cls_id": 15,
+          "label": "inline_formula",
+          "score": 0.7357561588287354,
+          "coordinate": [
+            254,
+            919,
+            310,
+            945
+          ],
+          "order": 25,
+          "polygon_points": [
+            [
+              254.0,
+              919.0
+            ],
+            [
+              309.0,
+              919.0
+            ],
+            [
+              309.0,
+              944.0
+            ],
+            [
+              254.0,
+              944.0
+            ]
+          ]
+        },
+        {
+          "cls_id": 5,
+          "label": "display_formula",
+          "score": 0.905328094959259,
+          "coordinate": [
+            460,
+            965,
+            767,
+            1021
+          ],
+          "order": 26,
+          "polygon_points": [
+            [
+              460.0,
+              965.0
+            ],
+            [
+              767.0,
+              965.0
+            ],
+            [
+              767.0,
+              1021.0
+            ],
+            [
+              460.0,
+              1021.0
+            ]
+          ]
+        },
+        {
+          "cls_id": 22,
+          "label": "text",
+          "score": 0.9075658917427063,
+          "coordinate": [
+            90,
+            1034,
+            1139,
+            1146
+          ],
+          "order": 27,
+          "polygon_points": [
+            [
+              90.0,
+              1034.0
+            ],
+            [
+              1139.0,
+              1034.0
+            ],
+            [
+              1139.0,
+              1146.0
+            ],
+            [
+              90.0,
+              1146.0
+            ]
+          ]
+        },
+        {
+          "cls_id": 15,
+          "label": "inline_formula",
+          "score": 0.7836921811103821,
+          "coordinate": [
+            152,
+            1039,
+            209,
+            1064
+          ],
+          "order": 28,
+          "polygon_points": [
+            [
+              152,
+              1039
+            ],
+            [
+              152,
+              1063
+            ],
+            [
+              208,
+              1063
+            ],
+            [
+              208,
+              1039
+            ]
+          ]
+        },
+        {
+          "cls_id": 15,
+          "label": "inline_formula",
+          "score": 0.8530521988868713,
+          "coordinate": [
+            247,
+            1037,
+            530,
+            1067
+          ],
+          "order": 29,
+          "polygon_points": [
+            [
+              247.0,
+              1037.0
+            ],
+            [
+              530.0,
+              1037.0
+            ],
+            [
+              530.0,
+              1067.0
+            ],
+            [
+              247.0,
+              1067.0
+            ]
+          ]
+        },
+        {
+          "cls_id": 15,
+          "label": "inline_formula",
+          "score": 0.6062296628952026,
+          "coordinate": [
+            1093,
+            1036,
+            1132,
+            1059
+          ],
+          "order": 30,
+          "polygon_points": [
+            [
+              1093.0,
+              1036.0
+            ],
+            [
+              1131.0,
+              1036.0
+            ],
+            [
+              1131.0,
+              1058.0
+            ],
+            [
+              1093.0,
+              1058.0
+            ]
+          ]
+        },
+        {
+          "cls_id": 15,
+          "label": "inline_formula",
+          "score": 0.869647204875946,
+          "coordinate": [
+            255,
+            1082,
+            454,
+            1115
+          ],
+          "order": 31,
+          "polygon_points": [
+            [
+              255.0,
+              1082.0
+            ],
+            [
+              454.0,
+              1082.0
+            ],
+            [
+              454.0,
+              1115.0
+            ],
+            [
+              255.0,
+              1115.0
+            ]
+          ]
+        },
+        {
+          "cls_id": 15,
+          "label": "inline_formula",
+          "score": 0.8544484376907349,
+          "coordinate": [
+            666,
+            1077,
+            1067,
+            1118
+          ],
+          "order": 32,
+          "polygon_points": [
+            [
+              666.0,
+              1077.0
+            ],
+            [
+              1067.0,
+              1077.0
+            ],
+            [
+              1067.0,
+              1118.0
+            ],
+            [
+              666.0,
+              1118.0
+            ]
+          ]
+        },
+        {
+          "cls_id": 5,
+          "label": "display_formula",
+          "score": 0.9051603674888611,
+          "coordinate": [
+            233,
+            1163,
+            998,
+            1236
+          ],
+          "order": 33,
+          "polygon_points": [
+            [
+              233.0,
+              1163.0
+            ],
+            [
+              998.0,
+              1163.0
+            ],
+            [
+              998.0,
+              1236.0
+            ],
+            [
+              233.0,
+              1236.0
+            ]
+          ]
+        },
+        {
+          "cls_id": 22,
+          "label": "text",
+          "score": 0.9076841473579407,
+          "coordinate": [
+            92,
+            1248,
+            1138,
+            1312
+          ],
+          "order": 34,
+          "polygon_points": [
+            [
+              92.0,
+              1248.0
+            ],
+            [
+              1138.0,
+              1248.0
+            ],
+            [
+              1138.0,
+              1312.0
+            ],
+            [
+              92.0,
+              1312.0
+            ]
+          ]
+        },
+        {
+          "cls_id": 15,
+          "label": "inline_formula",
+          "score": 0.6984955072402954,
+          "coordinate": [
+            219,
+            1281,
+            363,
+            1310
+          ],
+          "order": 35,
+          "polygon_points": [
+            [
+              219,
+              1281
+            ],
+            [
+              219,
+              1309
+            ],
+            [
+              362,
+              1309
+            ],
+            [
+              362,
+              1281
+            ]
+          ]
+        }
+      ]
+    }
+  },
+  "markdown": {
+    "text": "### C. Proof\n\nIn this section, we present the proof of the theorem.\n\nTheorem 4.2. Suppose the DDIM model can learn a parameter  $ \\nu $ such that, for any  $ x \\sim \\mathcal{D}_{training} $ with dimension  $ d $, the prediction error  $ \\epsilon - \\epsilon_0 (\\sqrt{\\bar{\\alpha}_t} x + \\sqrt{1 - \\bar{\\alpha}_t} \\epsilon, t) $ is a random variable  $ X = (X_1, X_2, \\ldots, X_d) $ with zero expectation and finite cumulant-generating function for each coordinate (Durret, 2010). Suppose the sampling interval  $ k $ is equal to the variation API diffusion step  $ t $. Let  $ \\hat{x} $ be the average of  $ n $ output images of  $ x $ using the variation API. Then we have\n\n $$ \\mathbb{P}(\\|\\hat{x}-x\\|\\geq\\beta)\\leq d\\exp\\left(-n\\min_{i}\\Psi_{X_{i}}^{*}\\left(\\frac{\\beta\\sqrt{\\bar{\\alpha}_{t}}}{\\sqrt{d(1-\\bar{\\alpha}_{t})}}\\right)\\right), $$ \n\nwhere  $ \\beta > 0 $ and  $ \\Psi_{X_i}^* $ is the Fenchel-Legendre dual of the cumulant-generating function  $ \\Psi_{X_i} $.\n\nProof. We denote  $ x^i $ as the  $ i $-th output image of  $ x $ using the variation API. We denote the  $ i $-th Gaussian noise as  $ \\epsilon^i $ and the forward process yields  $ x_t^i = \\sqrt{\\bar{\\alpha}_t} x + \\sqrt{1 - \\bar{\\alpha}_t} \\epsilon^i $.\n\nAs the sampling interval is equal to the variation API diffusion step t, we have\n\n $$ \\begin{align*}x^{i}-x&=\\frac{x^{i}_{t}-\\sqrt{1-\\bar{\\alpha}_{t}}\\epsilon_{\\theta}(\\sqrt{\\bar{\\alpha}_{t}}x+\\sqrt{1-\\bar{\\alpha}_{t}}\\epsilon^{i},t)}{\\sqrt{\\bar{\\alpha}_{t}}}-x,\\\\&=\\frac{\\sqrt{\\bar{\\alpha}_{t}}x+\\sqrt{1-\\bar{\\alpha}_{t}}\\epsilon^{i}-\\sqrt{1-\\bar{\\alpha}_{t}}\\epsilon_{\\theta}(\\sqrt{\\bar{\\alpha}_{t}}x+\\sqrt{1-\\bar{\\alpha}_{t}}\\epsilon^{i},t)}{\\sqrt{\\bar{\\alpha}_{t}}}-x,\\\\&=\\frac{\\sqrt{1-\\bar{\\alpha}_{t}}}{\\sqrt{\\bar{\\alpha}_{t}}}(\\epsilon^{i}-\\epsilon_{\\theta}(\\sqrt{\\bar{\\alpha}_{t}}x+\\sqrt{1-\\bar{\\alpha}_{t}}\\epsilon^{i},t)).\\end{align*} $$ \n\nIf we denote the random variable  $ X^i = (X_1^i, X_2^i, \\ldots, X_d^i) $ represents  $ \\epsilon^i - \\epsilon_\\theta(\\sqrt{\\bar{\\alpha}_t}x + \\sqrt{1 - \\bar{\\alpha}_t}\\epsilon^i, t) $, then we consider  $ S_n^i = \\sum_{j=1}^n X_j^i $. From the assumption we know that all the  $ X_j^i $ are i.i.d. random variables (with the same distribution of  $ X_i $ in Theorem 4.2) with zero expectation and finite cumulant-generating function  $ \\Psi_{X_i}(s) = \\log E[e^{sX_i}] < +\\infty $. Using the theorem of Cramér–Chernoff method for sums of i.i.d. random variables (Durret, 2010), we get the following probability inequality for any  $ \\beta > 0 $:\n\n $$ \\mathbb{P}(|S_{n}^{i}|\\geq\\beta)\\leq\\exp(-n\\Psi_{X_{i}}^{*}(\\frac{\\beta}{n})), $$ \n\nwhere  $ \\beta > 0 $ and  $ \\Psi_{X_i}^*(y) = \\sup_{s > 0}(sy - \\Psi_{X_i}(s)) $ is the Fenchel-Legendre dual of the cumulant-generating function  $ \\Psi_{X_i} $. Therefore, denote  $ S_n = (S_n^1, S_n^2, \\ldots, S_n^d) $, taking the definition of  $ \\|\\hat{x} - x\\| = \\left\\|\\frac{1}{n} \\sum_{i=1}^n (x^i - x)\\right\\| = \\frac{\\sqrt{1 - \\hat{\\alpha}_i}}{n \\sqrt{\\hat{\\alpha}_i}}\\|S_n\\| $, we get the following bound of the reconstruction error:\n\n $$ \\mathbb{P}(\\|\\hat{x}-x\\|\\geq\\beta)\\leq\\sum_{i=1}^{d}P(|S_{n}^{i}|\\geq\\frac{n\\beta\\sqrt{\\bar{\\alpha}_{t}}}{\\sqrt{d(1-\\bar{\\alpha}_{t})}})\\leq d\\exp(-n\\min_{i}\\Psi_{X_{i}}^{*}(\\frac{\\beta\\sqrt{\\bar{\\alpha}_{t}}}{\\sqrt{d(1-\\bar{\\alpha}_{t})}})), $$ \n\nSo averaging the randomly reconstructed data from a training set will result in a smaller reconstruction error with high probability of  $ 1 - \\mathcal{O}(\\exp(-n)) $ when we use a large n.",
+    "images": {}
+  },
+  "outputImages": {
+    "layout_det_res": "https://pplines-online.bj.bcebos.com/deploy/official/paddleocr/pp-ocr-vl-15//06699ef5-5fb9-4340-9338-90d43b8130c9/layout_det_res_0.jpg?authorization=bce-auth-v1%2FALTAKzReLNvew3ySINYJ0fuAMN%2F2026-04-05T13%3A44%3A11Z%2F-1%2F%2F50bfbbe29a0f74c1d68dff4177f24ceb2ddd37c64c0c89063ae1a771a329c8d9"
+  },
+  "inputImage": "https://pplines-online.bj.bcebos.com/deploy/official/paddleocr/pp-ocr-vl-15//06699ef5-5fb9-4340-9338-90d43b8130c9/input_img_0.jpg?authorization=bce-auth-v1%2FALTAKzReLNvew3ySINYJ0fuAMN%2F2026-04-05T13%3A44%3A12Z%2F-1%2F%2Fb46712e1cae900f490545f542bc53aab58a6a3f8108ef9374ffb9a8f2fb7fc75"
+}

@@ -1,0 +1,1568 @@
+{
+  "prunedResult": {
+    "page_count": 5,
+    "width": 1224,
+    "height": 1584,
+    "model_settings": {
+      "use_doc_preprocessor": true,
+      "use_layout_detection": true,
+      "use_chart_recognition": false,
+      "use_seal_recognition": false,
+      "use_ocr_for_image_block": false,
+      "format_block_content": false,
+      "merge_layout_blocks": true,
+      "markdown_ignore_labels": [
+        "number",
+        "footnote",
+        "header",
+        "header_image",
+        "footer",
+        "footer_image",
+        "aside_text"
+      ],
+      "return_layout_polygon_points": true
+    },
+    "parsing_res_list": [
+      {
+        "block_label": "header",
+        "block_content": "Proceedings on Privacy Enhancing Technologies 2025(2)",
+        "block_bbox": [
+          82,
+          53,
+          425,
+          83
+        ],
+        "block_id": 0,
+        "block_order": null,
+        "group_id": 0,
+        "global_block_id": 233,
+        "global_group_id": 233,
+        "block_polygon_points": [
+          [
+            82.0,
+            53.0
+          ],
+          [
+            425.0,
+            53.0
+          ],
+          [
+            425.0,
+            83.0
+          ],
+          [
+            82.0,
+            83.0
+          ]
+        ]
+      },
+      {
+        "block_label": "header",
+        "block_content": "Yan Pang, Tianhao Wang, Xuhui Kang, Mengdi Huai, and Yang Zhang",
+        "block_bbox": [
+          720,
+          60,
+          1154,
+          87
+        ],
+        "block_id": 1,
+        "block_order": null,
+        "group_id": 1,
+        "global_block_id": 234,
+        "global_group_id": 234,
+        "block_polygon_points": [
+          [
+            720.0,
+            60.0
+          ],
+          [
+            1154.0,
+            60.0
+          ],
+          [
+            1154.0,
+            87.0
+          ],
+          [
+            720.0,
+            87.0
+          ]
+        ]
+      },
+      {
+        "block_label": "figure_title",
+        "block_content": "Table 6: Efficacy of various defensive measures against LSA $ ^{*} $, GSA $ _{1} $, and GSA $ _{2} $. Specifically, DP-SGD and RandAugment significantly hindered the attacks' effectiveness.",
+        "block_bbox": [
+          84,
+          130,
+          1153,
+          189
+        ],
+        "block_id": 2,
+        "block_order": null,
+        "group_id": 2,
+        "global_block_id": 235,
+        "global_group_id": 235,
+        "block_polygon_points": [
+          [
+            84.0,
+            130.0
+          ],
+          [
+            1152.0,
+            130.0
+          ],
+          [
+            1152.0,
+            181.0
+          ],
+          [
+            84.0,
+            181.0
+          ]
+        ]
+      },
+      {
+        "block_label": "table",
+        "block_content": "<table><tr><td rowspan=\"2\">Method</td><td colspan=\"2\">DP-SGD</td><td colspan=\"2\">RandAugment</td><td colspan=\"2\">RandomHorizontalFlip</td><td colspan=\"2\">Cutout</td><td colspan=\"2\">No Defense</td></tr><tr><td>ASR $ \\uparrow $</td><td>AUC $ \\uparrow $</td><td>ASR $ \\uparrow $</td><td>AUC $ \\uparrow $</td><td>ASR $ \\uparrow $</td><td>AUC $ \\uparrow $</td><td>ASR $ \\uparrow $</td><td>AUC $ \\uparrow $</td><td>ASR $ \\uparrow $</td><td>AUC $ \\uparrow $</td></tr><tr><td>LSA $ ^{*} $</td><td>0.504</td><td>0.508</td><td>0.505</td><td>0.501</td><td>0.524</td><td>0.536</td><td>0.765</td><td>0.846</td><td>0.830</td><td>0.909</td></tr><tr><td>GSA $ _{1} $</td><td>0.506</td><td>0.511</td><td>0.512</td><td>0.518</td><td>0.793</td><td>0.874</td><td>0.923</td><td>0.977</td><td>0.993</td><td>0.999</td></tr><tr><td>GSA $ _{2} $</td><td>0.501</td><td>0.502</td><td>0.504</td><td>0.507</td><td>0.737</td><td>0.811</td><td>0.979</td><td>0.997</td><td>0.988</td><td>0.999</td></tr></table>",
+        "block_bbox": [
+          226,
+          209,
+          1015,
+          352
+        ],
+        "block_id": 3,
+        "block_order": null,
+        "group_id": 3,
+        "global_block_id": 236,
+        "global_group_id": 236,
+        "block_polygon_points": [
+          [
+            226.0,
+            209.0
+          ],
+          [
+            1015.0,
+            209.0
+          ],
+          [
+            1015.0,
+            352.0
+          ],
+          [
+            226.0,
+            352.0
+          ]
+        ]
+      },
+      {
+        "block_label": "text",
+        "block_content": "details in Table 3. The results show that both DP-SGD and RandAugment effectively defend against LSA as well as our GSA $ _{1} $ and GSA $ _{2} $, reducing the attack ASR and AUC to levels similar to random guessing. The defense effects are also visualized in Figure 7.",
+        "block_bbox": [
+          86,
+          384,
+          596,
+          486
+        ],
+        "block_id": 4,
+        "block_order": 1,
+        "group_id": 4,
+        "global_block_id": 237,
+        "global_group_id": 237,
+        "block_polygon_points": [
+          [
+            86.0,
+            392.0
+          ],
+          [
+            595.0,
+            392.0
+          ],
+          [
+            595.0,
+            485.0
+          ],
+          [
+            86.0,
+            485.0
+          ]
+        ]
+      },
+      {
+        "block_label": "paragraph_title",
+        "block_content": "8 Limitation",
+        "block_bbox": [
+          86,
+          501,
+          241,
+          528
+        ],
+        "block_id": 5,
+        "block_order": 2,
+        "group_id": 5,
+        "global_block_id": 238,
+        "global_group_id": 238,
+        "block_polygon_points": [
+          [
+            86.0,
+            501.0
+          ],
+          [
+            241.0,
+            501.0
+          ],
+          [
+            241.0,
+            528.0
+          ],
+          [
+            86.0,
+            528.0
+          ]
+        ]
+      },
+      {
+        "block_label": "text",
+        "block_content": "As shown in Table 5, while GSA₁ and GSA₂ can yield satisfactory results with limited computational resources, they are still constrained by their time consumption. Even after implementing subsampling and aggregation across three dimensions, the process of gradient extraction remains time-intensive for larger datasets and more intricate models compared to simply computing the loss. Future studies are anticipated to explore these areas further and identify additional dimensions for reduction. Additionally, the methods employed in this study, GSA₁ and GSA₂, necessitate gradient information from the model for a successful attack. This suggests that requiring complete parameters of the target model during the attack is a rather stringent condition.",
+        "block_bbox": [
+          82,
+          536,
+          596,
+          827
+        ],
+        "block_id": 6,
+        "block_order": 3,
+        "group_id": 6,
+        "global_block_id": 239,
+        "global_group_id": 239,
+        "block_polygon_points": [
+          [
+            82.0,
+            536.0
+          ],
+          [
+            596.0,
+            536.0
+          ],
+          [
+            596.0,
+            827.0
+          ],
+          [
+            82.0,
+            827.0
+          ]
+        ]
+      },
+      {
+        "block_label": "paragraph_title",
+        "block_content": "9 Related Work",
+        "block_bbox": [
+          83,
+          844,
+          270,
+          869
+        ],
+        "block_id": 7,
+        "block_order": 4,
+        "group_id": 7,
+        "global_block_id": 240,
+        "global_group_id": 240,
+        "block_polygon_points": [
+          [
+            83.0,
+            844.0
+          ],
+          [
+            270.0,
+            844.0
+          ],
+          [
+            270.0,
+            869.0
+          ],
+          [
+            83.0,
+            869.0
+          ]
+        ]
+      },
+      {
+        "block_label": "text",
+        "block_content": "Diffusion Model. Diffusion model is an emergent generative network originally inspired by diffusion processes from non-equilibrium thermodynamics [53]. Distinguished from previous Generative Adversarial Networks (GANs) [7, 10] and Variational Autoencoders (VAEs) [32], the objective of the diffusion model is to approximate the actual data distribution by engaging a parameterized reverse process that aligns with a simulated diffusion process.",
+        "block_bbox": [
+          81,
+          887,
+          597,
+          1054
+        ],
+        "block_id": 8,
+        "block_order": 5,
+        "group_id": 8,
+        "global_block_id": 241,
+        "global_group_id": 241,
+        "block_polygon_points": [
+          [
+            81.0,
+            887.0
+          ],
+          [
+            597.0,
+            887.0
+          ],
+          [
+            597.0,
+            1054.0
+          ],
+          [
+            81.0,
+            1054.0
+          ]
+        ]
+      },
+      {
+        "block_label": "text",
+        "block_content": "Diffusion models can be connected with score-based models [57], generating samples by estimating the gradients of the data distribution and utilizing this gradient information to guide the process of noise addition, thereby producing samples of superior quality. Moreover, the diffusion model showcases the capability to generate images conditioned on specific inputs [10, 36, 42, 47].",
+        "block_bbox": [
+          81,
+          1053,
+          596,
+          1197
+        ],
+        "block_id": 9,
+        "block_order": 6,
+        "group_id": 9,
+        "global_block_id": 242,
+        "global_group_id": 242,
+        "block_polygon_points": [
+          [
+            81.0,
+            1053.0
+          ],
+          [
+            596.0,
+            1053.0
+          ],
+          [
+            596.0,
+            1197.0
+          ],
+          [
+            81.0,
+            1197.0
+          ]
+        ]
+      },
+      {
+        "block_label": "text",
+        "block_content": "Apart from generating images, diffusion models are capable of performing specific area retouching in images according to given specifications, hence effectively accomplishing inpainting  $ [34] $ tasks. Nowadays, advancements in diffusion models have granted them the ability to generate not only static images but also videos  $ [24] $ and 3D scenes  $ [17] $.",
+        "block_bbox": [
+          81,
+          1195,
+          596,
+          1340
+        ],
+        "block_id": 10,
+        "block_order": 7,
+        "group_id": 10,
+        "global_block_id": 243,
+        "global_group_id": 243,
+        "block_polygon_points": [
+          [
+            81,
+            1195
+          ],
+          [
+            81,
+            1339
+          ],
+          [
+            595,
+            1339
+          ],
+          [
+            595,
+            1195
+          ]
+        ]
+      },
+      {
+        "block_label": "text",
+        "block_content": "Membership Inference Attack. Membership inference attacks, primarily steered by the seminal work of Homer et al. [25], have become an integral part of privacy attack research. The nature of these attacks is typically determined by the depth of information obtained about the target model, whether they are black-box [6, 28, 46, 50, 52, 55, 58, 64] or white-box [38, 44]. The primary objective lies in determining whether a sample is part of the target model's training set using various metrics functions such as loss [46, 64], confidence [50], entropy [50, 55], or difficulty calibration [61].",
+        "block_bbox": [
+          79,
+          1348,
+          595,
+          1470
+        ],
+        "block_id": 11,
+        "block_order": 8,
+        "group_id": 11,
+        "global_block_id": 244,
+        "global_group_id": 244,
+        "block_polygon_points": [
+          [
+            79.0,
+            1348.0
+          ],
+          [
+            595.0,
+            1348.0
+          ],
+          [
+            595.0,
+            1470.0
+          ],
+          [
+            79.0,
+            1470.0
+          ]
+        ]
+      },
+      {
+        "block_label": "text",
+        "block_content": "",
+        "block_bbox": [
+          632,
+          385,
+          1156,
+          485
+        ],
+        "block_id": 12,
+        "block_order": 9,
+        "group_id": 11,
+        "global_block_id": 245,
+        "global_group_id": 245,
+        "block_polygon_points": [
+          [
+            632.0,
+            385.0
+          ],
+          [
+            1156.0,
+            385.0
+          ],
+          [
+            1156.0,
+            485.0
+          ],
+          [
+            632.0,
+            485.0
+          ]
+        ]
+      },
+      {
+        "block_label": "text",
+        "block_content": "Defense. As the popularity of diffusion models continues to rise, a growing body of research quickly unfolds around the privacy and security protections associated with these models. Attacks on diffusion models currently extend beyond mere training data leakage [4, 12, 14, 27, 35, 62] to include the potential use of sensitive data for training [51], as well as model theft [40]. Consequently, effective defense mechanisms against these novel attack types have started to emerge. To prevent the leakage of training data from the target model, privacy distillation [14] methods can be employed. Using this approach, a secure diffusion model can be trained on data generated by the target model after sensitive information has been filtered out. This effectively prevents the leakage of sensitive information during the model training process. For artists concerned about their artwork being used to train diffusion models to generate similar styles, GLAZE [51] teams suggest adding a watermark to the original art pieces to prevent them from being mimicked by diffusion models. Simultaneously, for every institution, a diffusion model trained using computational resources can be considered one of the company's assets. As such, the desired target model can be fine-tuned to learn a unique diffusion process [40], which in turn, contributes to the model's protection.",
+        "block_bbox": [
+          630,
+          492,
+          1164,
+          997
+        ],
+        "block_id": 13,
+        "block_order": 10,
+        "group_id": 13,
+        "global_block_id": 246,
+        "global_group_id": 246,
+        "block_polygon_points": [
+          [
+            630.0,
+            492.0
+          ],
+          [
+            1164.0,
+            492.0
+          ],
+          [
+            1164.0,
+            997.0
+          ],
+          [
+            630.0,
+            997.0
+          ]
+        ]
+      },
+      {
+        "block_label": "paragraph_title",
+        "block_content": "10 Conclusion",
+        "block_bbox": [
+          637,
+          1036,
+          813,
+          1060
+        ],
+        "block_id": 14,
+        "block_order": 11,
+        "group_id": 14,
+        "global_block_id": 247,
+        "global_group_id": 247,
+        "block_polygon_points": [
+          [
+            637.0,
+            1036.0
+          ],
+          [
+            813.0,
+            1036.0
+          ],
+          [
+            813.0,
+            1060.0
+          ],
+          [
+            637.0,
+            1060.0
+          ]
+        ]
+      },
+      {
+        "block_label": "text",
+        "block_content": "In this work, we propose a membership inference attack framework that utilizes the norm of the gradient information in diffusion models and presents two specific attack examples, namely GSA₁ and GSA₂. We find that the attack performance on the DDPM and Imagen, trained with the CIFAR-10, ImageNet, and MS COCO datasets, is quite remarkable according to all four evaluation metrics. We posit that a diffusion model's gradient information is more indicative of overfitting to a data point than its loss, hence employing gradient information in MIA could lead to higher success rates. This assertion aligns with the nuanced understanding of model dynamics in the machine learning field. Compared to existing white box loss-based attack methodologies [4, 27, 35], our proposed approach demonstrates superior performance under identical model configurations, showcasing efficiency and stability across various datasets and models. This paper introduces the perspective of leveraging gradients for MIA and hopes to inspire valuable follow-up works in this direction.",
+        "block_bbox": [
+          631,
+          1067,
+          1163,
+          1476
+        ],
+        "block_id": 15,
+        "block_order": 12,
+        "group_id": 15,
+        "global_block_id": 248,
+        "global_group_id": 248,
+        "block_polygon_points": [
+          [
+            631.0,
+            1067.0
+          ],
+          [
+            1163.0,
+            1067.0
+          ],
+          [
+            1163.0,
+            1476.0
+          ],
+          [
+            631.0,
+            1476.0
+          ]
+        ]
+      },
+      {
+        "block_label": "number",
+        "block_content": "410",
+        "block_bbox": [
+          600,
+          1476,
+          626,
+          1492
+        ],
+        "block_id": 16,
+        "block_order": null,
+        "group_id": 16,
+        "global_block_id": 249,
+        "global_group_id": 249,
+        "block_polygon_points": [
+          [
+            600.0,
+            1476.0
+          ],
+          [
+            625.0,
+            1476.0
+          ],
+          [
+            625.0,
+            1491.0
+          ],
+          [
+            600.0,
+            1491.0
+          ]
+        ]
+      }
+    ],
+    "doc_preprocessor_res": {
+      "model_settings": {
+        "use_doc_orientation_classify": true,
+        "use_doc_unwarping": true
+      },
+      "angle": 0
+    },
+    "layout_det_res": {
+      "boxes": [
+        {
+          "cls_id": 12,
+          "label": "header",
+          "score": 0.8822406530380249,
+          "coordinate": [
+            82,
+            53,
+            425,
+            83
+          ],
+          "order": null,
+          "polygon_points": [
+            [
+              82.0,
+              53.0
+            ],
+            [
+              425.0,
+              53.0
+            ],
+            [
+              425.0,
+              83.0
+            ],
+            [
+              82.0,
+              83.0
+            ]
+          ]
+        },
+        {
+          "cls_id": 12,
+          "label": "header",
+          "score": 0.8676036596298218,
+          "coordinate": [
+            720,
+            60,
+            1154,
+            87
+          ],
+          "order": null,
+          "polygon_points": [
+            [
+              720.0,
+              60.0
+            ],
+            [
+              1154.0,
+              60.0
+            ],
+            [
+              1154.0,
+              87.0
+            ],
+            [
+              720.0,
+              87.0
+            ]
+          ]
+        },
+        {
+          "cls_id": 7,
+          "label": "figure_title",
+          "score": 0.8591664433479309,
+          "coordinate": [
+            84,
+            130,
+            1153,
+            189
+          ],
+          "order": null,
+          "polygon_points": [
+            [
+              84.0,
+              130.0
+            ],
+            [
+              1152.0,
+              130.0
+            ],
+            [
+              1152.0,
+              181.0
+            ],
+            [
+              84.0,
+              181.0
+            ]
+          ]
+        },
+        {
+          "cls_id": 15,
+          "label": "inline_formula",
+          "score": 0.44582074880599976,
+          "coordinate": [
+            551,
+            137,
+            596,
+            159
+          ],
+          "order": 1,
+          "polygon_points": [
+            [
+              551,
+              137
+            ],
+            [
+              551,
+              158
+            ],
+            [
+              595,
+              158
+            ],
+            [
+              595,
+              137
+            ]
+          ]
+        },
+        {
+          "cls_id": 15,
+          "label": "inline_formula",
+          "score": 0.5498257875442505,
+          "coordinate": [
+            604,
+            139,
+            650,
+            161
+          ],
+          "order": 2,
+          "polygon_points": [
+            [
+              604.0,
+              139.0
+            ],
+            [
+              649.0,
+              139.0
+            ],
+            [
+              649.0,
+              160.0
+            ],
+            [
+              604.0,
+              160.0
+            ]
+          ]
+        },
+        {
+          "cls_id": 15,
+          "label": "inline_formula",
+          "score": 0.5937392115592957,
+          "coordinate": [
+            691,
+            139,
+            737,
+            161
+          ],
+          "order": 3,
+          "polygon_points": [
+            [
+              691.0,
+              139.0
+            ],
+            [
+              736.0,
+              139.0
+            ],
+            [
+              736.0,
+              160.0
+            ],
+            [
+              691.0,
+              160.0
+            ]
+          ]
+        },
+        {
+          "cls_id": 21,
+          "label": "table",
+          "score": 0.94715416431427,
+          "coordinate": [
+            226,
+            209,
+            1015,
+            352
+          ],
+          "order": null,
+          "polygon_points": [
+            [
+              226.0,
+              209.0
+            ],
+            [
+              1015.0,
+              209.0
+            ],
+            [
+              1015.0,
+              352.0
+            ],
+            [
+              226.0,
+              352.0
+            ]
+          ]
+        },
+        {
+          "cls_id": 15,
+          "label": "inline_formula",
+          "score": 0.31297409534454346,
+          "coordinate": [
+            310,
+            248,
+            358,
+            270
+          ],
+          "order": 4,
+          "polygon_points": [
+            [
+              310,
+              248
+            ],
+            [
+              310,
+              269
+            ],
+            [
+              357,
+              269
+            ],
+            [
+              357,
+              248
+            ]
+          ]
+        },
+        {
+          "cls_id": 15,
+          "label": "inline_formula",
+          "score": 0.3645864427089691,
+          "coordinate": [
+            246,
+            280,
+            285,
+            301
+          ],
+          "order": 5,
+          "polygon_points": [
+            [
+              246.0,
+              280.0
+            ],
+            [
+              284.0,
+              280.0
+            ],
+            [
+              284.0,
+              300.0
+            ],
+            [
+              246.0,
+              300.0
+            ]
+          ]
+        },
+        {
+          "cls_id": 15,
+          "label": "inline_formula",
+          "score": 0.5091531872749329,
+          "coordinate": [
+            246,
+            306,
+            289,
+            326
+          ],
+          "order": 6,
+          "polygon_points": [
+            [
+              246.0,
+              306.0
+            ],
+            [
+              288.0,
+              306.0
+            ],
+            [
+              288.0,
+              325.0
+            ],
+            [
+              246.0,
+              325.0
+            ]
+          ]
+        },
+        {
+          "cls_id": 15,
+          "label": "inline_formula",
+          "score": 0.5203384757041931,
+          "coordinate": [
+            245,
+            328,
+            289,
+            349
+          ],
+          "order": 7,
+          "polygon_points": [
+            [
+              245.0,
+              328.0
+            ],
+            [
+              288.0,
+              328.0
+            ],
+            [
+              288.0,
+              348.0
+            ],
+            [
+              245.0,
+              348.0
+            ]
+          ]
+        },
+        {
+          "cls_id": 22,
+          "label": "text",
+          "score": 0.9065020680427551,
+          "coordinate": [
+            86,
+            384,
+            596,
+            486
+          ],
+          "order": 8,
+          "polygon_points": [
+            [
+              86.0,
+              392.0
+            ],
+            [
+              595.0,
+              392.0
+            ],
+            [
+              595.0,
+              485.0
+            ],
+            [
+              86.0,
+              485.0
+            ]
+          ]
+        },
+        {
+          "cls_id": 15,
+          "label": "inline_formula",
+          "score": 0.408415824174881,
+          "coordinate": [
+            367,
+            411,
+            407,
+            431
+          ],
+          "order": 9,
+          "polygon_points": [
+            [
+              367,
+              411
+            ],
+            [
+              367,
+              430
+            ],
+            [
+              406,
+              430
+            ],
+            [
+              406,
+              411
+            ]
+          ]
+        },
+        {
+          "cls_id": 15,
+          "label": "inline_formula",
+          "score": 0.6614778637886047,
+          "coordinate": [
+            516,
+            412,
+            558,
+            433
+          ],
+          "order": 10,
+          "polygon_points": [
+            [
+              515.9999389648438,
+              412.0
+            ],
+            [
+              556.9999389648438,
+              412.0
+            ],
+            [
+              556.9999389648438,
+              432.0
+            ],
+            [
+              515.9999389648438,
+              432.0
+            ]
+          ]
+        },
+        {
+          "cls_id": 15,
+          "label": "inline_formula",
+          "score": 0.5434140563011169,
+          "coordinate": [
+            91,
+            434,
+            139,
+            456
+          ],
+          "order": 11,
+          "polygon_points": [
+            [
+              90.99998474121094,
+              434.0
+            ],
+            [
+              137.99998474121094,
+              434.0
+            ],
+            [
+              137.99998474121094,
+              455.0
+            ],
+            [
+              90.99998474121094,
+              455.0
+            ]
+          ]
+        },
+        {
+          "cls_id": 17,
+          "label": "paragraph_title",
+          "score": 0.8539331555366516,
+          "coordinate": [
+            86,
+            501,
+            241,
+            528
+          ],
+          "order": 12,
+          "polygon_points": [
+            [
+              86.0,
+              501.0
+            ],
+            [
+              241.0,
+              501.0
+            ],
+            [
+              241.0,
+              528.0
+            ],
+            [
+              86.0,
+              528.0
+            ]
+          ]
+        },
+        {
+          "cls_id": 22,
+          "label": "text",
+          "score": 0.9570071697235107,
+          "coordinate": [
+            82,
+            536,
+            596,
+            827
+          ],
+          "order": 13,
+          "polygon_points": [
+            [
+              82.0,
+              536.0
+            ],
+            [
+              596.0,
+              536.0
+            ],
+            [
+              596.0,
+              827.0
+            ],
+            [
+              82.0,
+              827.0
+            ]
+          ]
+        },
+        {
+          "cls_id": 15,
+          "label": "inline_formula",
+          "score": 0.570414662361145,
+          "coordinate": [
+            316,
+            540,
+            361,
+            560
+          ],
+          "order": 14,
+          "polygon_points": [
+            [
+              316,
+              540
+            ],
+            [
+              316,
+              559
+            ],
+            [
+              360,
+              559
+            ],
+            [
+              360,
+              540
+            ]
+          ]
+        },
+        {
+          "cls_id": 15,
+          "label": "inline_formula",
+          "score": 0.6502434015274048,
+          "coordinate": [
+            401,
+            540,
+            446,
+            560
+          ],
+          "order": 15,
+          "polygon_points": [
+            [
+              401.0,
+              540.0
+            ],
+            [
+              445.0,
+              540.0
+            ],
+            [
+              445.0,
+              559.0
+            ],
+            [
+              401.0,
+              559.0
+            ]
+          ]
+        },
+        {
+          "cls_id": 15,
+          "label": "inline_formula",
+          "score": 0.5598679780960083,
+          "coordinate": [
+            385,
+            729,
+            429,
+            750
+          ],
+          "order": 16,
+          "polygon_points": [
+            [
+              385.0,
+              729.0
+            ],
+            [
+              428.0,
+              729.0
+            ],
+            [
+              428.0,
+              749.0
+            ],
+            [
+              385.0,
+              749.0
+            ]
+          ]
+        },
+        {
+          "cls_id": 15,
+          "label": "inline_formula",
+          "score": 0.3925682008266449,
+          "coordinate": [
+            305,
+            730,
+            349,
+            751
+          ],
+          "order": 17,
+          "polygon_points": [
+            [
+              305.0,
+              730.0
+            ],
+            [
+              348.0,
+              730.0
+            ],
+            [
+              348.0,
+              750.0
+            ],
+            [
+              305.0,
+              750.0
+            ]
+          ]
+        },
+        {
+          "cls_id": 17,
+          "label": "paragraph_title",
+          "score": 0.843099057674408,
+          "coordinate": [
+            83,
+            844,
+            270,
+            869
+          ],
+          "order": 18,
+          "polygon_points": [
+            [
+              83.0,
+              844.0
+            ],
+            [
+              270.0,
+              844.0
+            ],
+            [
+              270.0,
+              869.0
+            ],
+            [
+              83.0,
+              869.0
+            ]
+          ]
+        },
+        {
+          "cls_id": 22,
+          "label": "text",
+          "score": 0.9519461989402771,
+          "coordinate": [
+            81,
+            887,
+            597,
+            1054
+          ],
+          "order": 19,
+          "polygon_points": [
+            [
+              81.0,
+              887.0
+            ],
+            [
+              597.0,
+              887.0
+            ],
+            [
+              597.0,
+              1054.0
+            ],
+            [
+              81.0,
+              1054.0
+            ]
+          ]
+        },
+        {
+          "cls_id": 22,
+          "label": "text",
+          "score": 0.9498444199562073,
+          "coordinate": [
+            81,
+            1053,
+            596,
+            1197
+          ],
+          "order": 20,
+          "polygon_points": [
+            [
+              81.0,
+              1053.0
+            ],
+            [
+              596.0,
+              1053.0
+            ],
+            [
+              596.0,
+              1197.0
+            ],
+            [
+              81.0,
+              1197.0
+            ]
+          ]
+        },
+        {
+          "cls_id": 22,
+          "label": "text",
+          "score": 0.9428171515464783,
+          "coordinate": [
+            81,
+            1195,
+            596,
+            1340
+          ],
+          "order": 21,
+          "polygon_points": [
+            [
+              81,
+              1195
+            ],
+            [
+              81,
+              1339
+            ],
+            [
+              595,
+              1339
+            ],
+            [
+              595,
+              1195
+            ]
+          ]
+        },
+        {
+          "cls_id": 22,
+          "label": "text",
+          "score": 0.947300910949707,
+          "coordinate": [
+            79,
+            1348,
+            595,
+            1470
+          ],
+          "order": 22,
+          "polygon_points": [
+            [
+              79.0,
+              1348.0
+            ],
+            [
+              595.0,
+              1348.0
+            ],
+            [
+              595.0,
+              1470.0
+            ],
+            [
+              79.0,
+              1470.0
+            ]
+          ]
+        },
+        {
+          "cls_id": 22,
+          "label": "text",
+          "score": 0.9420300722122192,
+          "coordinate": [
+            632,
+            385,
+            1156,
+            485
+          ],
+          "order": 23,
+          "polygon_points": [
+            [
+              632.0,
+              385.0
+            ],
+            [
+              1156.0,
+              385.0
+            ],
+            [
+              1156.0,
+              485.0
+            ],
+            [
+              632.0,
+              485.0
+            ]
+          ]
+        },
+        {
+          "cls_id": 22,
+          "label": "text",
+          "score": 0.9690815210342407,
+          "coordinate": [
+            630,
+            492,
+            1164,
+            997
+          ],
+          "order": 24,
+          "polygon_points": [
+            [
+              630.0,
+              492.0
+            ],
+            [
+              1164.0,
+              492.0
+            ],
+            [
+              1164.0,
+              997.0
+            ],
+            [
+              630.0,
+              997.0
+            ]
+          ]
+        },
+        {
+          "cls_id": 17,
+          "label": "paragraph_title",
+          "score": 0.818009078502655,
+          "coordinate": [
+            637,
+            1036,
+            813,
+            1060
+          ],
+          "order": 25,
+          "polygon_points": [
+            [
+              637.0,
+              1036.0
+            ],
+            [
+              813.0,
+              1036.0
+            ],
+            [
+              813.0,
+              1060.0
+            ],
+            [
+              637.0,
+              1060.0
+            ]
+          ]
+        },
+        {
+          "cls_id": 22,
+          "label": "text",
+          "score": 0.9603344798088074,
+          "coordinate": [
+            631,
+            1067,
+            1163,
+            1476
+          ],
+          "order": 26,
+          "polygon_points": [
+            [
+              631.0,
+              1067.0
+            ],
+            [
+              1163.0,
+              1067.0
+            ],
+            [
+              1163.0,
+              1476.0
+            ],
+            [
+              631.0,
+              1476.0
+            ]
+          ]
+        },
+        {
+          "cls_id": 15,
+          "label": "inline_formula",
+          "score": 0.5026896595954895,
+          "coordinate": [
+            1076,
+            1117,
+            1122,
+            1140
+          ],
+          "order": 27,
+          "polygon_points": [
+            [
+              1076,
+              1117
+            ],
+            [
+              1076,
+              1139
+            ],
+            [
+              1121,
+              1139
+            ],
+            [
+              1121,
+              1117
+            ]
+          ]
+        },
+        {
+          "cls_id": 16,
+          "label": "number",
+          "score": 0.6941014528274536,
+          "coordinate": [
+            600,
+            1476,
+            626,
+            1492
+          ],
+          "order": 28,
+          "polygon_points": [
+            [
+              600.0,
+              1476.0
+            ],
+            [
+              625.0,
+              1476.0
+            ],
+            [
+              625.0,
+              1491.0
+            ],
+            [
+              600.0,
+              1491.0
+            ]
+          ]
+        }
+      ]
+    }
+  },
+  "markdown": {
+    "text": "<div style=\"text-align: center;\">Table 6: Efficacy of various defensive measures against LSA $ ^{*} $, GSA $ _{1} $, and GSA $ _{2} $. Specifically, DP-SGD and RandAugment significantly hindered the attacks' effectiveness.</div>\n\n\n\n<table border=1 style='margin: auto; word-wrap: break-word;'><tr><td rowspan=\"2\">Method</td><td colspan=\"2\">DP-SGD</td><td colspan=\"2\">RandAugment</td><td colspan=\"2\">RandomHorizontalFlip</td><td colspan=\"2\">Cutout</td><td colspan=\"2\">No Defense</td></tr><tr><td style='text-align: center; word-wrap: break-word;'>ASR $ \\uparrow $</td><td style='text-align: center; word-wrap: break-word;'>AUC $ \\uparrow $</td><td style='text-align: center; word-wrap: break-word;'>ASR $ \\uparrow $</td><td style='text-align: center; word-wrap: break-word;'>AUC $ \\uparrow $</td><td style='text-align: center; word-wrap: break-word;'>ASR $ \\uparrow $</td><td style='text-align: center; word-wrap: break-word;'>AUC $ \\uparrow $</td><td style='text-align: center; word-wrap: break-word;'>ASR $ \\uparrow $</td><td style='text-align: center; word-wrap: break-word;'>AUC $ \\uparrow $</td><td style='text-align: center; word-wrap: break-word;'>ASR $ \\uparrow $</td><td style='text-align: center; word-wrap: break-word;'>AUC $ \\uparrow $</td></tr><tr><td style='text-align: center; word-wrap: break-word;'>LSA $ ^{*} $</td><td style='text-align: center; word-wrap: break-word;'>0.504</td><td style='text-align: center; word-wrap: break-word;'>0.508</td><td style='text-align: center; word-wrap: break-word;'>0.505</td><td style='text-align: center; word-wrap: break-word;'>0.501</td><td style='text-align: center; word-wrap: break-word;'>0.524</td><td style='text-align: center; word-wrap: break-word;'>0.536</td><td style='text-align: center; word-wrap: break-word;'>0.765</td><td style='text-align: center; word-wrap: break-word;'>0.846</td><td style='text-align: center; word-wrap: break-word;'>0.830</td><td style='text-align: center; word-wrap: break-word;'>0.909</td></tr><tr><td style='text-align: center; word-wrap: break-word;'>GSA $ _{1} $</td><td style='text-align: center; word-wrap: break-word;'>0.506</td><td style='text-align: center; word-wrap: break-word;'>0.511</td><td style='text-align: center; word-wrap: break-word;'>0.512</td><td style='text-align: center; word-wrap: break-word;'>0.518</td><td style='text-align: center; word-wrap: break-word;'>0.793</td><td style='text-align: center; word-wrap: break-word;'>0.874</td><td style='text-align: center; word-wrap: break-word;'>0.923</td><td style='text-align: center; word-wrap: break-word;'>0.977</td><td style='text-align: center; word-wrap: break-word;'>0.993</td><td style='text-align: center; word-wrap: break-word;'>0.999</td></tr><tr><td style='text-align: center; word-wrap: break-word;'>GSA $ _{2} $</td><td style='text-align: center; word-wrap: break-word;'>0.501</td><td style='text-align: center; word-wrap: break-word;'>0.502</td><td style='text-align: center; word-wrap: break-word;'>0.504</td><td style='text-align: center; word-wrap: break-word;'>0.507</td><td style='text-align: center; word-wrap: break-word;'>0.737</td><td style='text-align: center; word-wrap: break-word;'>0.811</td><td style='text-align: center; word-wrap: break-word;'>0.979</td><td style='text-align: center; word-wrap: break-word;'>0.997</td><td style='text-align: center; word-wrap: break-word;'>0.988</td><td style='text-align: center; word-wrap: break-word;'>0.999</td></tr></table>\n\ndetails in Table 3. The results show that both DP-SGD and RandAugment effectively defend against LSA as well as our GSA $ _{1} $ and GSA $ _{2} $, reducing the attack ASR and AUC to levels similar to random guessing. The defense effects are also visualized in Figure 7.\n\n## 8 Limitation\n\nAs shown in Table 5, while GSA₁ and GSA₂ can yield satisfactory results with limited computational resources, they are still constrained by their time consumption. Even after implementing subsampling and aggregation across three dimensions, the process of gradient extraction remains time-intensive for larger datasets and more intricate models compared to simply computing the loss. Future studies are anticipated to explore these areas further and identify additional dimensions for reduction. Additionally, the methods employed in this study, GSA₁ and GSA₂, necessitate gradient information from the model for a successful attack. This suggests that requiring complete parameters of the target model during the attack is a rather stringent condition.\n\n## 9 Related Work\n\nDiffusion Model. Diffusion model is an emergent generative network originally inspired by diffusion processes from non-equilibrium thermodynamics [53]. Distinguished from previous Generative Adversarial Networks (GANs) [7, 10] and Variational Autoencoders (VAEs) [32], the objective of the diffusion model is to approximate the actual data distribution by engaging a parameterized reverse process that aligns with a simulated diffusion process.\n\nDiffusion models can be connected with score-based models [57], generating samples by estimating the gradients of the data distribution and utilizing this gradient information to guide the process of noise addition, thereby producing samples of superior quality. Moreover, the diffusion model showcases the capability to generate images conditioned on specific inputs [10, 36, 42, 47].\n\nApart from generating images, diffusion models are capable of performing specific area retouching in images according to given specifications, hence effectively accomplishing inpainting  $ [34] $ tasks. Nowadays, advancements in diffusion models have granted them the ability to generate not only static images but also videos  $ [24] $ and 3D scenes  $ [17] $.\n\nMembership Inference Attack. Membership inference attacks, primarily steered by the seminal work of Homer et al. [25], have become an integral part of privacy attack research. The nature of these attacks is typically determined by the depth of information obtained about the target model, whether they are black-box [6, 28, 46, 50, 52, 55, 58, 64] or white-box [38, 44]. The primary objective lies in determining whether a sample is part of the target model's training set using various metrics functions such as loss [46, 64], confidence [50], entropy [50, 55], or difficulty calibration [61].\n\n\n\nDefense. As the popularity of diffusion models continues to rise, a growing body of research quickly unfolds around the privacy and security protections associated with these models. Attacks on diffusion models currently extend beyond mere training data leakage [4, 12, 14, 27, 35, 62] to include the potential use of sensitive data for training [51], as well as model theft [40]. Consequently, effective defense mechanisms against these novel attack types have started to emerge. To prevent the leakage of training data from the target model, privacy distillation [14] methods can be employed. Using this approach, a secure diffusion model can be trained on data generated by the target model after sensitive information has been filtered out. This effectively prevents the leakage of sensitive information during the model training process. For artists concerned about their artwork being used to train diffusion models to generate similar styles, GLAZE [51] teams suggest adding a watermark to the original art pieces to prevent them from being mimicked by diffusion models. Simultaneously, for every institution, a diffusion model trained using computational resources can be considered one of the company's assets. As such, the desired target model can be fine-tuned to learn a unique diffusion process [40], which in turn, contributes to the model's protection.\n\n## 10 Conclusion\n\nIn this work, we propose a membership inference attack framework that utilizes the norm of the gradient information in diffusion models and presents two specific attack examples, namely GSA₁ and GSA₂. We find that the attack performance on the DDPM and Imagen, trained with the CIFAR-10, ImageNet, and MS COCO datasets, is quite remarkable according to all four evaluation metrics. We posit that a diffusion model's gradient information is more indicative of overfitting to a data point than its loss, hence employing gradient information in MIA could lead to higher success rates. This assertion aligns with the nuanced understanding of model dynamics in the machine learning field. Compared to existing white box loss-based attack methodologies [4, 27, 35], our proposed approach demonstrates superior performance under identical model configurations, showcasing efficiency and stability across various datasets and models. This paper introduces the perspective of leveraging gradients for MIA and hopes to inspire valuable follow-up works in this direction.",
+    "images": {}
+  },
+  "outputImages": {
+    "layout_det_res": "https://pplines-online.bj.bcebos.com/deploy/official/paddleocr/pp-ocr-vl-15//53709ce1-e233-4d48-96df-051d5fb45d24/layout_det_res_2.jpg?authorization=bce-auth-v1%2FALTAKzReLNvew3ySINYJ0fuAMN%2F2026-04-05T12%3A41%3A16Z%2F-1%2F%2Fc8a1eceb01fa86ac7ffaa3775f471be84a65eeee4df2ca5979fa0bd2fb5ae653"
+  },
+  "inputImage": "https://pplines-online.bj.bcebos.com/deploy/official/paddleocr/pp-ocr-vl-15//53709ce1-e233-4d48-96df-051d5fb45d24/input_img_2.jpg?authorization=bce-auth-v1%2FALTAKzReLNvew3ySINYJ0fuAMN%2F2026-04-05T12%3A41%3A16Z%2F-1%2F%2F42c8a7f3d1d270a10875e5f20e1c239884559334ea2979235438de3c38e7b079"
+}

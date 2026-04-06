@@ -1,0 +1,929 @@
+{
+  "prunedResult": {
+    "page_count": 5,
+    "width": 1224,
+    "height": 1584,
+    "model_settings": {
+      "use_doc_preprocessor": true,
+      "use_layout_detection": true,
+      "use_chart_recognition": false,
+      "use_seal_recognition": false,
+      "use_ocr_for_image_block": false,
+      "format_block_content": false,
+      "merge_layout_blocks": true,
+      "markdown_ignore_labels": [
+        "number",
+        "footnote",
+        "header",
+        "header_image",
+        "footer",
+        "footer_image",
+        "aside_text"
+      ],
+      "return_layout_polygon_points": true
+    },
+    "parsing_res_list": [
+      {
+        "block_label": "doc_title",
+        "block_content": "Towards Black-Box Membership Inference Attack for Diffusion Models",
+        "block_bbox": [
+          110,
+          87,
+          1095,
+          144
+        ],
+        "block_id": 0,
+        "block_order": 1,
+        "group_id": 0,
+        "global_block_id": 0,
+        "global_group_id": 0,
+        "block_polygon_points": [
+          [
+            109.99996948242188,
+            86.99999237060547
+          ],
+          [
+            1094.673583984375,
+            104.01162719726562
+          ],
+          [
+            1093.883056640625,
+            149.76931762695312
+          ],
+          [
+            109.20944213867188,
+            132.7576904296875
+          ]
+        ]
+      },
+      {
+        "block_label": "text",
+        "block_content": "Jingwei Li $ ^{1,2} $ Jing Dong $ ^{3} $ Tianxing He $ ^{1,2} $ Jingzhao Zhang $ ^{1,2} $",
+        "block_bbox": [
+          308,
+          218,
+          905,
+          258
+        ],
+        "block_id": 1,
+        "block_order": 2,
+        "group_id": 1,
+        "global_block_id": 1,
+        "global_group_id": 1,
+        "block_polygon_points": [
+          [
+            308.0,
+            218.0
+          ],
+          [
+            905.0,
+            218.0
+          ],
+          [
+            905.0,
+            258.0
+          ],
+          [
+            308.0,
+            258.0
+          ]
+        ]
+      },
+      {
+        "block_label": "paragraph_title",
+        "block_content": "Abstract",
+        "block_bbox": [
+          281,
+          296,
+          391,
+          326
+        ],
+        "block_id": 2,
+        "block_order": 3,
+        "group_id": 2,
+        "global_block_id": 2,
+        "global_group_id": 2,
+        "block_polygon_points": [
+          [
+            281.0,
+            296.0
+          ],
+          [
+            391.0,
+            296.0
+          ],
+          [
+            391.0,
+            326.0
+          ],
+          [
+            281.0,
+            326.0
+          ]
+        ]
+      },
+      {
+        "block_label": "abstract",
+        "block_content": "Given the rising popularity of AI-generated art and the associated copyright concerns, identifying whether an artwork was used to train a diffusion model is an important research topic. The work approaches this problem from the membership inference attack (MIA) perspective. We first identify the limitation of applying existing MIA methods for proprietary diffusion models: the required access of internal U-nets. To address the above problem, we introduce a novel membership inference attack method that uses only the image-to-image variation API and operates without access to the model's internal U-net. Our method is based on the intuition that the model can more easily obtain an unbiased noise prediction estimate for images from the training set. By applying the API multiple times to the target image, averaging the outputs, and comparing the result to the original image, our approach can classify whether a sample was part of the training set. We validate our method using DDIM and Stable Diffusion setups and further extend both our approach and existing algorithms to the Diffusion Transformer architecture. Our experimental results consistently outperform previous methods.",
+        "block_bbox": [
+          115,
+          332,
+          560,
+          993
+        ],
+        "block_id": 3,
+        "block_order": 4,
+        "group_id": 3,
+        "global_block_id": 3,
+        "global_group_id": 3,
+        "block_polygon_points": [
+          [
+            115.0,
+            332.0
+          ],
+          [
+            560.0,
+            332.0
+          ],
+          [
+            560.0,
+            993.0
+          ],
+          [
+            115.0,
+            993.0
+          ]
+        ]
+      },
+      {
+        "block_label": "paragraph_title",
+        "block_content": "1. Introduction",
+        "block_bbox": [
+          87,
+          1051,
+          261,
+          1079
+        ],
+        "block_id": 4,
+        "block_order": 5,
+        "group_id": 4,
+        "global_block_id": 4,
+        "global_group_id": 4,
+        "block_polygon_points": [
+          [
+            87.0,
+            1051.0
+          ],
+          [
+            261.0,
+            1051.0
+          ],
+          [
+            261.0,
+            1079.0
+          ],
+          [
+            87.0,
+            1079.0
+          ]
+        ]
+      },
+      {
+        "block_label": "text",
+        "block_content": "Recently, there has been a surge in the popularity of generative models, with diffusion models in particular, gaining huge attention within the AI community (Sohl-Dickstein et al., 2015; Song & Ermon, 2019; Song et al., 2020b). These models have demonstrated remarkable capabilities across various tasks, including unconditional image generation (Ho et al., 2020; Song et al., 2020a), text-to-image generation (Rombach et al., 2022; Yu et al., 2022; Nichol et al., 2021) and image-to-image generation (Saharia et al., 2022a). This surge has given rise to powerful AI art models such as DALL-E 2 (Ramesh et al., 2022), Stable Diffusion (Rombach et al., 2022), and Imagen (Saharia et al., 2022b). AI-generated art has a promising future and is expected to have widespread impact.",
+        "block_bbox": [
+          84,
+          1083,
+          601,
+          1266
+        ],
+        "block_id": 5,
+        "block_order": 6,
+        "group_id": 5,
+        "global_block_id": 5,
+        "global_group_id": 5,
+        "block_polygon_points": [
+          [
+            84.0,
+            1083.0
+          ],
+          [
+            601.0,
+            1083.0
+          ],
+          [
+            601.0,
+            1266.0
+          ],
+          [
+            84.0,
+            1266.0
+          ]
+        ]
+      },
+      {
+        "block_label": "text",
+        "block_content": "",
+        "block_bbox": [
+          622,
+          302,
+          1153,
+          488
+        ],
+        "block_id": 6,
+        "block_order": 7,
+        "group_id": 5,
+        "global_block_id": 6,
+        "global_group_id": 6,
+        "block_polygon_points": [
+          [
+            622.0,
+            302.0
+          ],
+          [
+            1153.0,
+            302.0
+          ],
+          [
+            1153.0,
+            488.0
+          ],
+          [
+            622.0,
+            488.0
+          ]
+        ]
+      },
+      {
+        "block_label": "text",
+        "block_content": "Effective training of diffusion models requires high-quality data. It is thus crucial to design an algorithm that can identify whether a specific artwork has been used during the training of a model, thereby providing protection for these artworks and detecting misuse of data. This is especially important due to the rapid growth of generative models, which has raised concerns over intellectual property (IP) rights, data privacy, and the ethical implications of training on copyrighted or proprietary content without consent. As these models are increasingly deployed across industries, detecting whether a specific piece of content was used in training can help prevent unauthorized use of artistic works, protecting creators' copyrights and ownership rights. This is a classic problem in the field of machine learning, first introduced by Shokri et al. (2017) and named \"membership inference attack\".",
+        "block_bbox": [
+          624,
+          494,
+          1157,
+          918
+        ],
+        "block_id": 7,
+        "block_order": 8,
+        "group_id": 7,
+        "global_block_id": 7,
+        "global_group_id": 7,
+        "block_polygon_points": [
+          [
+            624.0,
+            494.0
+          ],
+          [
+            1157.0,
+            494.0
+          ],
+          [
+            1157.0,
+            918.0
+          ],
+          [
+            624.0,
+            918.0
+          ]
+        ]
+      },
+      {
+        "block_label": "text",
+        "block_content": "A series of studies have been conducted on membership inference attacks against diffusion models. Hu & Pang (2023) was the first to examine this issue, utilizing the loss function values of diffusion models to determine whether an image is in the training set. Duan et al. (2023) and Kong et al. (2023) extended this work by relaxing assumptions about the access requirements of the model.",
+        "block_bbox": [
+          624,
+          924,
+          1157,
+          1110
+        ],
+        "block_id": 8,
+        "block_order": 9,
+        "group_id": 8,
+        "global_block_id": 8,
+        "global_group_id": 8,
+        "block_polygon_points": [
+          [
+            624.0,
+            924.0
+          ],
+          [
+            1157.0,
+            924.0
+          ],
+          [
+            1157.0,
+            1110.0
+          ],
+          [
+            624.0,
+            1110.0
+          ]
+        ]
+      },
+      {
+        "block_label": "text",
+        "block_content": "Despite great progress, previous methods are not yet ready for MIA in proprietary diffusion models. Most existing approaches heavily rely on checking whether the U-net of the model predicts noise accurately, which is not practical since most commercial diffusion models available today offer only API access, while the U-net remains hidden.",
+        "block_bbox": [
+          624,
+          1118,
+          1157,
+          1276
+        ],
+        "block_id": 9,
+        "block_order": 10,
+        "group_id": 9,
+        "global_block_id": 9,
+        "global_group_id": 9,
+        "block_polygon_points": [
+          [
+            624.0,
+            1118.0
+          ],
+          [
+            1157.0,
+            1118.0
+          ],
+          [
+            1157.0,
+            1276.0
+          ],
+          [
+            624.0,
+            1276.0
+          ]
+        ]
+      },
+      {
+        "block_label": "text",
+        "block_content": "To address the above issue, we propose a membership inference attack method that relies on the variation API and does not require access to the denoise model (e.g., U-net). We observe that if we alter an image using the target diffusion model's variation API, the sampling process will be captured by \"a region of attraction\" if the model has seen this image during training (illustrated in Figure 2). Based on the",
+        "block_bbox": [
+          622,
+          1283,
+          1155,
+          1472
+        ],
+        "block_id": 10,
+        "block_order": 11,
+        "group_id": 10,
+        "global_block_id": 10,
+        "global_group_id": 10,
+        "block_polygon_points": [
+          [
+            622.0,
+            1283.0
+          ],
+          [
+            1155.0,
+            1283.0
+          ],
+          [
+            1155.0,
+            1472.0
+          ],
+          [
+            622.0,
+            1472.0
+          ]
+        ]
+      },
+      {
+        "block_label": "footnote",
+        "block_content": " $ ^{1} $Institute for Interdisciplinary Information Sciences, Tsinghua University  $ ^{2} $Shanghai Qizhi Institute  $ ^{3} $The Chinese University of Hong Kong. Correspondence to: Jingwei Li <ljw22@mails.tsinghua.edu.cn>, Jingzhao Zhang <jingzhaoz@mail.tsinghua.edu.cn>.",
+        "block_bbox": [
+          85,
+          1275,
+          600,
+          1390
+        ],
+        "block_id": 11,
+        "block_order": null,
+        "group_id": 11,
+        "global_block_id": 11,
+        "global_group_id": 11,
+        "block_polygon_points": [
+          [
+            85.0,
+            1275.0
+          ],
+          [
+            600.0,
+            1275.0
+          ],
+          [
+            600.0,
+            1390.0
+          ],
+          [
+            85.0,
+            1390.0
+          ]
+        ]
+      },
+      {
+        "block_label": "footnote",
+        "block_content": "Proceedings of the  $ \\frac{4}{2} $ $ ^{nd} $ International Conference on Machine Learning, Vancouver, Canada. PMLR 267, 2025. Copyright 2025 by the author(s).",
+        "block_bbox": [
+          84,
+          1404,
+          597,
+          1477
+        ],
+        "block_id": 12,
+        "block_order": null,
+        "group_id": 12,
+        "global_block_id": 12,
+        "global_group_id": 12,
+        "block_polygon_points": [
+          [
+            84.0,
+            1404.0
+          ],
+          [
+            597.0,
+            1404.0
+          ],
+          [
+            597.0,
+            1477.0
+          ],
+          [
+            84.0,
+            1477.0
+          ]
+        ]
+      },
+      {
+        "block_label": "number",
+        "block_content": "1",
+        "block_bbox": [
+          603,
+          1504,
+          617,
+          1526
+        ],
+        "block_id": 13,
+        "block_order": null,
+        "group_id": 13,
+        "global_block_id": 13,
+        "global_group_id": 13,
+        "block_polygon_points": [
+          [
+            603.0,
+            1504.0
+          ],
+          [
+            616.0,
+            1504.0
+          ],
+          [
+            616.0,
+            1525.0
+          ],
+          [
+            603.0,
+            1525.0
+          ]
+        ]
+      }
+    ],
+    "doc_preprocessor_res": {
+      "model_settings": {
+        "use_doc_orientation_classify": true,
+        "use_doc_unwarping": true
+      },
+      "angle": 0
+    },
+    "layout_det_res": {
+      "boxes": [
+        {
+          "cls_id": 6,
+          "label": "doc_title",
+          "score": 0.8978731632232666,
+          "coordinate": [
+            110,
+            87,
+            1095,
+            144
+          ],
+          "order": 1,
+          "polygon_points": [
+            [
+              109.99996948242188,
+              86.99999237060547
+            ],
+            [
+              1094.673583984375,
+              104.01162719726562
+            ],
+            [
+              1093.883056640625,
+              149.76931762695312
+            ],
+            [
+              109.20944213867188,
+              132.7576904296875
+            ]
+          ]
+        },
+        {
+          "cls_id": 22,
+          "label": "text",
+          "score": 0.8564711213111877,
+          "coordinate": [
+            308,
+            218,
+            905,
+            258
+          ],
+          "order": 2,
+          "polygon_points": [
+            [
+              308.0,
+              218.0
+            ],
+            [
+              905.0,
+              218.0
+            ],
+            [
+              905.0,
+              258.0
+            ],
+            [
+              308.0,
+              258.0
+            ]
+          ]
+        },
+        {
+          "cls_id": 17,
+          "label": "paragraph_title",
+          "score": 0.792772650718689,
+          "coordinate": [
+            281,
+            296,
+            391,
+            326
+          ],
+          "order": 3,
+          "polygon_points": [
+            [
+              281.0,
+              296.0
+            ],
+            [
+              391.0,
+              296.0
+            ],
+            [
+              391.0,
+              326.0
+            ],
+            [
+              281.0,
+              326.0
+            ]
+          ]
+        },
+        {
+          "cls_id": 0,
+          "label": "abstract",
+          "score": 0.9854121804237366,
+          "coordinate": [
+            115,
+            332,
+            560,
+            993
+          ],
+          "order": 4,
+          "polygon_points": [
+            [
+              115.0,
+              332.0
+            ],
+            [
+              560.0,
+              332.0
+            ],
+            [
+              560.0,
+              993.0
+            ],
+            [
+              115.0,
+              993.0
+            ]
+          ]
+        },
+        {
+          "cls_id": 17,
+          "label": "paragraph_title",
+          "score": 0.8307493925094604,
+          "coordinate": [
+            87,
+            1051,
+            261,
+            1079
+          ],
+          "order": 5,
+          "polygon_points": [
+            [
+              87.0,
+              1051.0
+            ],
+            [
+              261.0,
+              1051.0
+            ],
+            [
+              261.0,
+              1079.0
+            ],
+            [
+              87.0,
+              1079.0
+            ]
+          ]
+        },
+        {
+          "cls_id": 22,
+          "label": "text",
+          "score": 0.9462442994117737,
+          "coordinate": [
+            84,
+            1083,
+            601,
+            1266
+          ],
+          "order": 6,
+          "polygon_points": [
+            [
+              84.0,
+              1083.0
+            ],
+            [
+              601.0,
+              1083.0
+            ],
+            [
+              601.0,
+              1266.0
+            ],
+            [
+              84.0,
+              1266.0
+            ]
+          ]
+        },
+        {
+          "cls_id": 22,
+          "label": "text",
+          "score": 0.9503427743911743,
+          "coordinate": [
+            622,
+            302,
+            1153,
+            488
+          ],
+          "order": 7,
+          "polygon_points": [
+            [
+              622.0,
+              302.0
+            ],
+            [
+              1153.0,
+              302.0
+            ],
+            [
+              1153.0,
+              488.0
+            ],
+            [
+              622.0,
+              488.0
+            ]
+          ]
+        },
+        {
+          "cls_id": 22,
+          "label": "text",
+          "score": 0.9638276100158691,
+          "coordinate": [
+            624,
+            494,
+            1157,
+            918
+          ],
+          "order": 8,
+          "polygon_points": [
+            [
+              624.0,
+              494.0
+            ],
+            [
+              1157.0,
+              494.0
+            ],
+            [
+              1157.0,
+              918.0
+            ],
+            [
+              624.0,
+              918.0
+            ]
+          ]
+        },
+        {
+          "cls_id": 22,
+          "label": "text",
+          "score": 0.9501557946205139,
+          "coordinate": [
+            624,
+            924,
+            1157,
+            1110
+          ],
+          "order": 9,
+          "polygon_points": [
+            [
+              624.0,
+              924.0
+            ],
+            [
+              1157.0,
+              924.0
+            ],
+            [
+              1157.0,
+              1110.0
+            ],
+            [
+              624.0,
+              1110.0
+            ]
+          ]
+        },
+        {
+          "cls_id": 22,
+          "label": "text",
+          "score": 0.9470816254615784,
+          "coordinate": [
+            624,
+            1118,
+            1157,
+            1276
+          ],
+          "order": 10,
+          "polygon_points": [
+            [
+              624.0,
+              1118.0
+            ],
+            [
+              1157.0,
+              1118.0
+            ],
+            [
+              1157.0,
+              1276.0
+            ],
+            [
+              624.0,
+              1276.0
+            ]
+          ]
+        },
+        {
+          "cls_id": 22,
+          "label": "text",
+          "score": 0.9520315527915955,
+          "coordinate": [
+            622,
+            1283,
+            1155,
+            1472
+          ],
+          "order": 11,
+          "polygon_points": [
+            [
+              622.0,
+              1283.0
+            ],
+            [
+              1155.0,
+              1283.0
+            ],
+            [
+              1155.0,
+              1472.0
+            ],
+            [
+              622.0,
+              1472.0
+            ]
+          ]
+        },
+        {
+          "cls_id": 10,
+          "label": "footnote",
+          "score": 0.9331142902374268,
+          "coordinate": [
+            85,
+            1275,
+            600,
+            1390
+          ],
+          "order": null,
+          "polygon_points": [
+            [
+              85.0,
+              1275.0
+            ],
+            [
+              600.0,
+              1275.0
+            ],
+            [
+              600.0,
+              1390.0
+            ],
+            [
+              85.0,
+              1390.0
+            ]
+          ]
+        },
+        {
+          "cls_id": 10,
+          "label": "footnote",
+          "score": 0.9110044240951538,
+          "coordinate": [
+            84,
+            1404,
+            597,
+            1477
+          ],
+          "order": null,
+          "polygon_points": [
+            [
+              84.0,
+              1404.0
+            ],
+            [
+              597.0,
+              1404.0
+            ],
+            [
+              597.0,
+              1477.0
+            ],
+            [
+              84.0,
+              1477.0
+            ]
+          ]
+        },
+        {
+          "cls_id": 16,
+          "label": "number",
+          "score": 0.6548082828521729,
+          "coordinate": [
+            603,
+            1504,
+            617,
+            1526
+          ],
+          "order": 12,
+          "polygon_points": [
+            [
+              603.0,
+              1504.0
+            ],
+            [
+              616.0,
+              1504.0
+            ],
+            [
+              616.0,
+              1525.0
+            ],
+            [
+              603.0,
+              1525.0
+            ]
+          ]
+        }
+      ]
+    }
+  },
+  "markdown": {
+    "text": "# Towards Black-Box Membership Inference Attack for Diffusion Models\n\nJingwei Li $ ^{1,2} $ Jing Dong $ ^{3} $ Tianxing He $ ^{1,2} $ Jingzhao Zhang $ ^{1,2} $\n\n## Abstract\n\nGiven the rising popularity of AI-generated art and the associated copyright concerns, identifying whether an artwork was used to train a diffusion model is an important research topic. The work approaches this problem from the membership inference attack (MIA) perspective. We first identify the limitation of applying existing MIA methods for proprietary diffusion models: the required access of internal U-nets. To address the above problem, we introduce a novel membership inference attack method that uses only the image-to-image variation API and operates without access to the model's internal U-net. Our method is based on the intuition that the model can more easily obtain an unbiased noise prediction estimate for images from the training set. By applying the API multiple times to the target image, averaging the outputs, and comparing the result to the original image, our approach can classify whether a sample was part of the training set. We validate our method using DDIM and Stable Diffusion setups and further extend both our approach and existing algorithms to the Diffusion Transformer architecture. Our experimental results consistently outperform previous methods.\n\n## 1. Introduction\n\nRecently, there has been a surge in the popularity of generative models, with diffusion models in particular, gaining huge attention within the AI community (Sohl-Dickstein et al., 2015; Song & Ermon, 2019; Song et al., 2020b). These models have demonstrated remarkable capabilities across various tasks, including unconditional image generation (Ho et al., 2020; Song et al., 2020a), text-to-image generation (Rombach et al., 2022; Yu et al., 2022; Nichol et al., 2021) and image-to-image generation (Saharia et al., 2022a). This surge has given rise to powerful AI art models such as DALL-E 2 (Ramesh et al., 2022), Stable Diffusion (Rombach et al., 2022), and Imagen (Saharia et al., 2022b). AI-generated art has a promising future and is expected to have widespread impact.\n\n\n\nEffective training of diffusion models requires high-quality data. It is thus crucial to design an algorithm that can identify whether a specific artwork has been used during the training of a model, thereby providing protection for these artworks and detecting misuse of data. This is especially important due to the rapid growth of generative models, which has raised concerns over intellectual property (IP) rights, data privacy, and the ethical implications of training on copyrighted or proprietary content without consent. As these models are increasingly deployed across industries, detecting whether a specific piece of content was used in training can help prevent unauthorized use of artistic works, protecting creators' copyrights and ownership rights. This is a classic problem in the field of machine learning, first introduced by Shokri et al. (2017) and named \"membership inference attack\".\n\nA series of studies have been conducted on membership inference attacks against diffusion models. Hu & Pang (2023) was the first to examine this issue, utilizing the loss function values of diffusion models to determine whether an image is in the training set. Duan et al. (2023) and Kong et al. (2023) extended this work by relaxing assumptions about the access requirements of the model.\n\nDespite great progress, previous methods are not yet ready for MIA in proprietary diffusion models. Most existing approaches heavily rely on checking whether the U-net of the model predicts noise accurately, which is not practical since most commercial diffusion models available today offer only API access, while the U-net remains hidden.\n\nTo address the above issue, we propose a membership inference attack method that relies on the variation API and does not require access to the denoise model (e.g., U-net). We observe that if we alter an image using the target diffusion model's variation API, the sampling process will be captured by \"a region of attraction\" if the model has seen this image during training (illustrated in Figure 2). Based on the",
+    "images": {}
+  },
+  "outputImages": {
+    "layout_det_res": "https://pplines-online.bj.bcebos.com/deploy/official/paddleocr/pp-ocr-vl-15//b4807864-7379-4b74-9091-e7245ed13668/layout_det_res_0.jpg?authorization=bce-auth-v1%2FALTAKzReLNvew3ySINYJ0fuAMN%2F2026-04-05T13%3A44%3A14Z%2F-1%2F%2F5c75154f38d8761d7eb7bd0f21cae024ed959445bc88cc68bbb8533cdace8b42"
+  },
+  "inputImage": "https://pplines-online.bj.bcebos.com/deploy/official/paddleocr/pp-ocr-vl-15//b4807864-7379-4b74-9091-e7245ed13668/input_img_0.jpg?authorization=bce-auth-v1%2FALTAKzReLNvew3ySINYJ0fuAMN%2F2026-04-05T13%3A44%3A14Z%2F-1%2F%2Fee3496c52c32e9d64b2f4f09e934d830261cdebb2921b8f7661b31751b95edbd"
+}

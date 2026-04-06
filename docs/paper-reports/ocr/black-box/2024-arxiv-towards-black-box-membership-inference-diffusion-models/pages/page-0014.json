@@ -1,0 +1,722 @@
+{
+  "prunedResult": {
+    "page_count": 5,
+    "width": 1224,
+    "height": 1584,
+    "model_settings": {
+      "use_doc_preprocessor": true,
+      "use_layout_detection": true,
+      "use_chart_recognition": false,
+      "use_seal_recognition": false,
+      "use_ocr_for_image_block": false,
+      "format_block_content": false,
+      "merge_layout_blocks": true,
+      "markdown_ignore_labels": [
+        "number",
+        "footnote",
+        "header",
+        "header_image",
+        "footer",
+        "footer_image",
+        "aside_text"
+      ],
+      "return_layout_polygon_points": true
+    },
+    "parsing_res_list": [
+      {
+        "block_label": "header",
+        "block_content": "Towards Black-Box Membership Inference Attack for Diffusion Models",
+        "block_bbox": [
+          316,
+          2,
+          924,
+          48
+        ],
+        "block_id": 0,
+        "block_order": null,
+        "group_id": 0,
+        "global_block_id": 230,
+        "global_group_id": 230,
+        "block_polygon_points": [
+          [
+            316,
+            10
+          ],
+          [
+            316,
+            32
+          ],
+          [
+            715,
+            32
+          ],
+          [
+            716,
+            40
+          ],
+          [
+            923,
+            47
+          ],
+          [
+            923,
+            25
+          ],
+          [
+            788,
+            10
+          ],
+          [
+            641,
+            2
+          ],
+          [
+            396,
+            2
+          ]
+        ]
+      },
+      {
+        "block_label": "chart",
+        "block_content": "",
+        "block_bbox": [
+          357,
+          60,
+          883,
+          309
+        ],
+        "block_id": 1,
+        "block_order": null,
+        "group_id": 1,
+        "global_block_id": 231,
+        "global_group_id": 231,
+        "block_polygon_points": [
+          [
+            357.0,
+            60.0
+          ],
+          [
+            883.0,
+            60.0
+          ],
+          [
+            883.0,
+            309.0
+          ],
+          [
+            357.0,
+            309.0
+          ]
+        ]
+      },
+      {
+        "block_label": "figure_title",
+        "block_content": "Figure 9: The impact of diffusion steps. We train a DDIM model on the CIFAR-100 dataset and use different diffusion step for inference.",
+        "block_bbox": [
+          86,
+          315,
+          1144,
+          395
+        ],
+        "block_id": 2,
+        "block_order": null,
+        "group_id": 2,
+        "global_block_id": 232,
+        "global_group_id": 232,
+        "block_polygon_points": [
+          [
+            86.91748046875,
+            314.8609924316406
+          ],
+          [
+            1144.256591796875,
+            339.0287170410156
+          ],
+          [
+            1143.0001220703125,
+            393.9999694824219
+          ],
+          [
+            85.6610107421875,
+            369.8322448730469
+          ]
+        ]
+      },
+      {
+        "block_label": "chart",
+        "block_content": "",
+        "block_bbox": [
+          349,
+          414,
+          869,
+          656
+        ],
+        "block_id": 3,
+        "block_order": null,
+        "group_id": 3,
+        "global_block_id": 233,
+        "global_group_id": 233,
+        "block_polygon_points": [
+          [
+            349.0,
+            414.0
+          ],
+          [
+            869.0,
+            414.0
+          ],
+          [
+            869.0,
+            656.0
+          ],
+          [
+            349.0,
+            656.0
+          ]
+        ]
+      },
+      {
+        "block_label": "figure_title",
+        "block_content": "Figure 10: The impact of diffusion steps. We train a DDIM model on the STL-10 dataset and use different diffusion step for inference.",
+        "block_bbox": [
+          86,
+          660,
+          1138,
+          734
+        ],
+        "block_id": 4,
+        "block_order": null,
+        "group_id": 4,
+        "global_block_id": 234,
+        "global_group_id": 234,
+        "block_polygon_points": [
+          [
+            86.21551513671875,
+            657.7020263671875
+          ],
+          [
+            1138.115234375,
+            679.7208251953125
+          ],
+          [
+            1137.0,
+            733.0
+          ],
+          [
+            85.10028076171875,
+            710.981201171875
+          ]
+        ]
+      },
+      {
+        "block_label": "chart",
+        "block_content": "",
+        "block_bbox": [
+          352,
+          784,
+          867,
+          1024
+        ],
+        "block_id": 5,
+        "block_order": null,
+        "group_id": 5,
+        "global_block_id": 235,
+        "global_group_id": 235,
+        "block_polygon_points": [
+          [
+            352.0,
+            784.0
+          ],
+          [
+            867.0,
+            784.0
+          ],
+          [
+            867.0,
+            1024.0
+          ],
+          [
+            352.0,
+            1024.0
+          ]
+        ]
+      },
+      {
+        "block_label": "figure_title",
+        "block_content": "Figure 11: The impact of diffusion steps. We train a Diffusion Transformer model on the Imagenet  $ 256 \\times 256 $ dataset and use different diffusion step for inference. The robust results imply that our algorithm is also not very sensitive to the choice of t in this setup.",
+        "block_bbox": [
+          87,
+          1025,
+          1137,
+          1124
+        ],
+        "block_id": 6,
+        "block_order": null,
+        "group_id": 6,
+        "global_block_id": 236,
+        "global_group_id": 236,
+        "block_polygon_points": [
+          [
+            87.00006103515625,
+            1033.0
+          ],
+          [
+            1131.078369140625,
+            1048.015625
+          ],
+          [
+            1130.0,
+            1123.000244140625
+          ],
+          [
+            85.92169189453125,
+            1107.984619140625
+          ]
+        ]
+      },
+      {
+        "block_label": "chart",
+        "block_content": "",
+        "block_bbox": [
+          343,
+          1176,
+          866,
+          1417
+        ],
+        "block_id": 7,
+        "block_order": null,
+        "group_id": 7,
+        "global_block_id": 237,
+        "global_group_id": 237,
+        "block_polygon_points": [
+          [
+            343.0,
+            1176.0
+          ],
+          [
+            866.0,
+            1176.0
+          ],
+          [
+            866.0,
+            1417.0
+          ],
+          [
+            343.0,
+            1417.0
+          ]
+        ]
+      },
+      {
+        "block_label": "figure_title",
+        "block_content": "Figure 12: The impact of diffusion steps. We use the Stable Diffusion model with the Laion5 dataset for evaluation and test different diffusion steps for inference. Specifically, using relatively small diffusion steps results in better performance.",
+        "block_bbox": [
+          80,
+          1421,
+          1133,
+          1497
+        ],
+        "block_id": 8,
+        "block_order": null,
+        "group_id": 8,
+        "global_block_id": 238,
+        "global_group_id": 238,
+        "block_polygon_points": [
+          [
+            80.0,
+            1429.0
+          ],
+          [
+            1132.7412109375,
+            1444.010498046875
+          ],
+          [
+            1131.9998779296875,
+            1496.0
+          ],
+          [
+            79.2586669921875,
+            1480.989501953125
+          ]
+        ]
+      },
+      {
+        "block_label": "number",
+        "block_content": "14",
+        "block_bbox": [
+          594,
+          1521,
+          621,
+          1542
+        ],
+        "block_id": 9,
+        "block_order": null,
+        "group_id": 9,
+        "global_block_id": 239,
+        "global_group_id": 239,
+        "block_polygon_points": [
+          [
+            594.0,
+            1521.0
+          ],
+          [
+            620.0,
+            1521.0
+          ],
+          [
+            620.0,
+            1541.0
+          ],
+          [
+            594.0,
+            1541.0
+          ]
+        ]
+      }
+    ],
+    "doc_preprocessor_res": {
+      "model_settings": {
+        "use_doc_orientation_classify": true,
+        "use_doc_unwarping": true
+      },
+      "angle": 0
+    },
+    "layout_det_res": {
+      "boxes": [
+        {
+          "cls_id": 12,
+          "label": "header",
+          "score": 0.8965070843696594,
+          "coordinate": [
+            316,
+            2,
+            924,
+            48
+          ],
+          "order": null,
+          "polygon_points": [
+            [
+              316,
+              10
+            ],
+            [
+              316,
+              32
+            ],
+            [
+              715,
+              32
+            ],
+            [
+              716,
+              40
+            ],
+            [
+              923,
+              47
+            ],
+            [
+              923,
+              25
+            ],
+            [
+              788,
+              10
+            ],
+            [
+              641,
+              2
+            ],
+            [
+              396,
+              2
+            ]
+          ]
+        },
+        {
+          "cls_id": 3,
+          "label": "chart",
+          "score": 0.936659038066864,
+          "coordinate": [
+            357,
+            60,
+            883,
+            309
+          ],
+          "order": null,
+          "polygon_points": [
+            [
+              357.0,
+              60.0
+            ],
+            [
+              883.0,
+              60.0
+            ],
+            [
+              883.0,
+              309.0
+            ],
+            [
+              357.0,
+              309.0
+            ]
+          ]
+        },
+        {
+          "cls_id": 7,
+          "label": "figure_title",
+          "score": 0.9078992605209351,
+          "coordinate": [
+            86,
+            315,
+            1144,
+            395
+          ],
+          "order": null,
+          "polygon_points": [
+            [
+              86.91748046875,
+              314.8609924316406
+            ],
+            [
+              1144.256591796875,
+              339.0287170410156
+            ],
+            [
+              1143.0001220703125,
+              393.9999694824219
+            ],
+            [
+              85.6610107421875,
+              369.8322448730469
+            ]
+          ]
+        },
+        {
+          "cls_id": 3,
+          "label": "chart",
+          "score": 0.9199790358543396,
+          "coordinate": [
+            349,
+            414,
+            869,
+            656
+          ],
+          "order": null,
+          "polygon_points": [
+            [
+              349.0,
+              414.0
+            ],
+            [
+              869.0,
+              414.0
+            ],
+            [
+              869.0,
+              656.0
+            ],
+            [
+              349.0,
+              656.0
+            ]
+          ]
+        },
+        {
+          "cls_id": 7,
+          "label": "figure_title",
+          "score": 0.898924708366394,
+          "coordinate": [
+            86,
+            660,
+            1138,
+            734
+          ],
+          "order": null,
+          "polygon_points": [
+            [
+              86.21551513671875,
+              657.7020263671875
+            ],
+            [
+              1138.115234375,
+              679.7208251953125
+            ],
+            [
+              1137.0,
+              733.0
+            ],
+            [
+              85.10028076171875,
+              710.981201171875
+            ]
+          ]
+        },
+        {
+          "cls_id": 3,
+          "label": "chart",
+          "score": 0.9367748498916626,
+          "coordinate": [
+            352,
+            784,
+            867,
+            1024
+          ],
+          "order": null,
+          "polygon_points": [
+            [
+              352.0,
+              784.0
+            ],
+            [
+              867.0,
+              784.0
+            ],
+            [
+              867.0,
+              1024.0
+            ],
+            [
+              352.0,
+              1024.0
+            ]
+          ]
+        },
+        {
+          "cls_id": 7,
+          "label": "figure_title",
+          "score": 0.8993910551071167,
+          "coordinate": [
+            87,
+            1025,
+            1137,
+            1124
+          ],
+          "order": null,
+          "polygon_points": [
+            [
+              87.00006103515625,
+              1033.0
+            ],
+            [
+              1131.078369140625,
+              1048.015625
+            ],
+            [
+              1130.0,
+              1123.000244140625
+            ],
+            [
+              85.92169189453125,
+              1107.984619140625
+            ]
+          ]
+        },
+        {
+          "cls_id": 3,
+          "label": "chart",
+          "score": 0.9261682629585266,
+          "coordinate": [
+            343,
+            1176,
+            866,
+            1417
+          ],
+          "order": null,
+          "polygon_points": [
+            [
+              343.0,
+              1176.0
+            ],
+            [
+              866.0,
+              1176.0
+            ],
+            [
+              866.0,
+              1417.0
+            ],
+            [
+              343.0,
+              1417.0
+            ]
+          ]
+        },
+        {
+          "cls_id": 7,
+          "label": "figure_title",
+          "score": 0.9210284352302551,
+          "coordinate": [
+            80,
+            1421,
+            1133,
+            1497
+          ],
+          "order": null,
+          "polygon_points": [
+            [
+              80.0,
+              1429.0
+            ],
+            [
+              1132.7412109375,
+              1444.010498046875
+            ],
+            [
+              1131.9998779296875,
+              1496.0
+            ],
+            [
+              79.2586669921875,
+              1480.989501953125
+            ]
+          ]
+        },
+        {
+          "cls_id": 16,
+          "label": "number",
+          "score": 0.7564275860786438,
+          "coordinate": [
+            594,
+            1521,
+            621,
+            1542
+          ],
+          "order": 1,
+          "polygon_points": [
+            [
+              594.0,
+              1521.0
+            ],
+            [
+              620.0,
+              1521.0
+            ],
+            [
+              620.0,
+              1541.0
+            ],
+            [
+              594.0,
+              1541.0
+            ]
+          ]
+        }
+      ]
+    }
+  },
+  "markdown": {
+    "text": "<div style=\"text-align: center;\"><img src=\"imgs/img_in_chart_box_357_60_883_309.jpg\" alt=\"Image\" width=\"42%\" /></div>\n\n\n<div style=\"text-align: center;\">Figure 9: The impact of diffusion steps. We train a DDIM model on the CIFAR-100 dataset and use different diffusion step for inference.</div>\n\n\n<div style=\"text-align: center;\"><img src=\"imgs/img_in_chart_box_349_414_869_656.jpg\" alt=\"Image\" width=\"42%\" /></div>\n\n\n<div style=\"text-align: center;\">Figure 10: The impact of diffusion steps. We train a DDIM model on the STL-10 dataset and use different diffusion step for inference.</div>\n\n\n<div style=\"text-align: center;\"><img src=\"imgs/img_in_chart_box_352_784_867_1024.jpg\" alt=\"Image\" width=\"42%\" /></div>\n\n\n<div style=\"text-align: center;\">Figure 11: The impact of diffusion steps. We train a Diffusion Transformer model on the Imagenet  $ 256 \\times 256 $ dataset and use different diffusion step for inference. The robust results imply that our algorithm is also not very sensitive to the choice of t in this setup.</div>\n\n\n<div style=\"text-align: center;\"><img src=\"imgs/img_in_chart_box_343_1176_866_1417.jpg\" alt=\"Image\" width=\"42%\" /></div>\n\n\n<div style=\"text-align: center;\">Figure 12: The impact of diffusion steps. We use the Stable Diffusion model with the Laion5 dataset for evaluation and test different diffusion steps for inference. Specifically, using relatively small diffusion steps results in better performance.</div>\n",
+    "images": {
+      "imgs/img_in_chart_box_357_60_883_309.jpg": "https://pplines-online.bj.bcebos.com/deploy/official/paddleocr/pp-ocr-vl-15//33d0f8f8-555e-40f7-93af-e94464bc5996/markdown_3/imgs/img_in_chart_box_357_60_883_309.jpg?authorization=bce-auth-v1%2FALTAKzReLNvew3ySINYJ0fuAMN%2F2026-04-05T13%3A44%3A15Z%2F-1%2F%2F18c8faee9375aad429f7d99c131e6443b4e02a98ac5bf07aabeafd5d9b48159a",
+      "imgs/img_in_chart_box_349_414_869_656.jpg": "https://pplines-online.bj.bcebos.com/deploy/official/paddleocr/pp-ocr-vl-15//33d0f8f8-555e-40f7-93af-e94464bc5996/markdown_3/imgs/img_in_chart_box_349_414_869_656.jpg?authorization=bce-auth-v1%2FALTAKzReLNvew3ySINYJ0fuAMN%2F2026-04-05T13%3A44%3A15Z%2F-1%2F%2Fd0779baf5c811dfbb030ca3098aed1193f26bac20da5c8c73700d3d47e23a921",
+      "imgs/img_in_chart_box_352_784_867_1024.jpg": "https://pplines-online.bj.bcebos.com/deploy/official/paddleocr/pp-ocr-vl-15//33d0f8f8-555e-40f7-93af-e94464bc5996/markdown_3/imgs/img_in_chart_box_352_784_867_1024.jpg?authorization=bce-auth-v1%2FALTAKzReLNvew3ySINYJ0fuAMN%2F2026-04-05T13%3A44%3A15Z%2F-1%2F%2Fced31986dcd83dadf9f899e5665da0dc322eaa56a625aac3736bf4b3d4caf5bd",
+      "imgs/img_in_chart_box_343_1176_866_1417.jpg": "https://pplines-online.bj.bcebos.com/deploy/official/paddleocr/pp-ocr-vl-15//33d0f8f8-555e-40f7-93af-e94464bc5996/markdown_3/imgs/img_in_chart_box_343_1176_866_1417.jpg?authorization=bce-auth-v1%2FALTAKzReLNvew3ySINYJ0fuAMN%2F2026-04-05T13%3A44%3A16Z%2F-1%2F%2F6e6c5cb66611c7c0e3e5c144d00ff837ba288b08bf97d9b52c6477f36e547be5"
+    }
+  },
+  "outputImages": {
+    "layout_det_res": "https://pplines-online.bj.bcebos.com/deploy/official/paddleocr/pp-ocr-vl-15//33d0f8f8-555e-40f7-93af-e94464bc5996/layout_det_res_3.jpg?authorization=bce-auth-v1%2FALTAKzReLNvew3ySINYJ0fuAMN%2F2026-04-05T13%3A44%3A16Z%2F-1%2F%2Fbb7346d8c330d9c7bb00a5fe47aeb0a8573d2807592136fe488f58876fb4d85e"
+  },
+  "inputImage": "https://pplines-online.bj.bcebos.com/deploy/official/paddleocr/pp-ocr-vl-15//33d0f8f8-555e-40f7-93af-e94464bc5996/input_img_3.jpg?authorization=bce-auth-v1%2FALTAKzReLNvew3ySINYJ0fuAMN%2F2026-04-05T13%3A44%3A17Z%2F-1%2F%2F9e96f847f8bec38e2d0cde4c323076f22ffa54cffae3c3f6b89c619df222bbdf"
+}

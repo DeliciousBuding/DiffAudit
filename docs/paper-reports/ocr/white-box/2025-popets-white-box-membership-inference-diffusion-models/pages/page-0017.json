@@ -1,0 +1,1694 @@
+{
+  "prunedResult": {
+    "page_count": 3,
+    "width": 1224,
+    "height": 1584,
+    "model_settings": {
+      "use_doc_preprocessor": true,
+      "use_layout_detection": true,
+      "use_chart_recognition": false,
+      "use_seal_recognition": false,
+      "use_ocr_for_image_block": false,
+      "format_block_content": false,
+      "merge_layout_blocks": true,
+      "markdown_ignore_labels": [
+        "number",
+        "footnote",
+        "header",
+        "header_image",
+        "footer",
+        "footer_image",
+        "aside_text"
+      ],
+      "return_layout_polygon_points": true
+    },
+    "parsing_res_list": [
+      {
+        "block_label": "header",
+        "block_content": "Proceedings on Privacy Enhancing Technologies 2025(2)",
+        "block_bbox": [
+          82,
+          73,
+          429,
+          98
+        ],
+        "block_id": 0,
+        "block_order": null,
+        "group_id": 0,
+        "global_block_id": 381,
+        "global_group_id": 381,
+        "block_polygon_points": [
+          [
+            82.0,
+            73.0
+          ],
+          [
+            429.0,
+            73.0
+          ],
+          [
+            429.0,
+            98.0
+          ],
+          [
+            82.0,
+            98.0
+          ]
+        ]
+      },
+      {
+        "block_label": "header",
+        "block_content": "Yan Pang, Tianhao Wang, Xuhui Kang, Mengdi Huai, and Yang Zhang",
+        "block_bbox": [
+          726,
+          88,
+          1164,
+          109
+        ],
+        "block_id": 1,
+        "block_order": null,
+        "group_id": 1,
+        "global_block_id": 382,
+        "global_group_id": 382,
+        "block_polygon_points": [
+          [
+            726.0,
+            88.0
+          ],
+          [
+            1164.0,
+            88.0
+          ],
+          [
+            1164.0,
+            109.0
+          ],
+          [
+            726.0,
+            109.0
+          ]
+        ]
+      },
+      {
+        "block_label": "paragraph_title",
+        "block_content": "D.2 Proximal Initialization Attack (PIA)",
+        "block_bbox": [
+          82,
+          127,
+          524,
+          160
+        ],
+        "block_id": 2,
+        "block_order": 1,
+        "group_id": 2,
+        "global_block_id": 383,
+        "global_group_id": 383,
+        "block_polygon_points": [
+          [
+            82.0,
+            127.0
+          ],
+          [
+            524.0,
+            127.0
+          ],
+          [
+            524.0,
+            160.0
+          ],
+          [
+            82.0,
+            160.0
+          ]
+        ]
+      },
+      {
+        "block_label": "text",
+        "block_content": "Building upon the work of Duan et al. [12], Kong et al. [30] also identified the deterministic properties inherent to the DDIM model [29, 54, 57]. In the DDIM framework, given  $ x_0 $ and  $ x_k $, it is feasible to utilize these two points to predict any other ground truth point  $ x_t $ [30]. Consequently, this methodology employs the  $ \\ell_p $-norm to compute the distance between any ground truth point  $ x_{t-t'} $ and its predicted counterpart  $ x'_{t-t'} $. After leveraging the ground truth extraction properties of DDIM [29] and utilizing the sampling formula from [54], the equation to compute the distance is given by:",
+        "block_bbox": [
+          79,
+          164,
+          599,
+          390
+        ],
+        "block_id": 3,
+        "block_order": 2,
+        "group_id": 3,
+        "global_block_id": 384,
+        "global_group_id": 384,
+        "block_polygon_points": [
+          [
+            79.0,
+            164.0
+          ],
+          [
+            599.0,
+            164.0
+          ],
+          [
+            599.0,
+            390.0
+          ],
+          [
+            79.0,
+            390.0
+          ]
+        ]
+      },
+      {
+        "block_label": "display_formula",
+        "block_content": " $$ R_{t,p}=\\left\\|\\epsilon_{\\theta}(x_{0},0)-\\epsilon_{\\theta}(\\sqrt{\\bar{\\alpha}_{t}}x_{0}+\\sqrt{1-\\bar{\\alpha}_{t}}\\epsilon_{\\theta}(x_{0},0),t)\\right\\|_{p}. $$ ",
+        "block_bbox": [
+          131,
+          396,
+          543,
+          424
+        ],
+        "block_id": 4,
+        "block_order": 3,
+        "group_id": 4,
+        "global_block_id": 385,
+        "global_group_id": 385,
+        "block_polygon_points": [
+          [
+            131.0,
+            396.0
+          ],
+          [
+            543.0,
+            396.0
+          ],
+          [
+            543.0,
+            424.0
+          ],
+          [
+            131.0,
+            424.0
+          ]
+        ]
+      },
+      {
+        "block_label": "text",
+        "block_content": "The notation in the above equation is consistent with the DDPM model, where  $ R_{t,p} $ denotes the distance. Given that  $ \\epsilon $ is initialized at  $ t = 0 $, this method is termed the Proximal Initialization Attack (PIA). When normalizing  $ \\epsilon_{\\theta}(x_0, 0) $, it is referred to as PIAN (PIA Normalize). This work employs a threshold-based [64] attack approach.",
+        "block_bbox": [
+          78,
+          430,
+          595,
+          577
+        ],
+        "block_id": 5,
+        "block_order": 4,
+        "group_id": 5,
+        "global_block_id": 386,
+        "global_group_id": 386,
+        "block_polygon_points": [
+          [
+            78.0,
+            430.0
+          ],
+          [
+            595.0,
+            430.0
+          ],
+          [
+            595.0,
+            577.0
+          ],
+          [
+            78.0,
+            577.0
+          ]
+        ]
+      },
+      {
+        "block_label": "text",
+        "block_content": "Compared to SecMI [12], the attack accuracy has seen a notable improvement. Yet, when juxtaposed with white-box attacks [4, 27], the success rate of this model attack remains suboptimal.",
+        "block_bbox": [
+          78,
+          577,
+          593,
+          653
+        ],
+        "block_id": 6,
+        "block_order": 5,
+        "group_id": 6,
+        "global_block_id": 387,
+        "global_group_id": 387,
+        "block_polygon_points": [
+          [
+            78.0,
+            577.0
+          ],
+          [
+            593.0,
+            577.0
+          ],
+          [
+            593.0,
+            653.0
+          ],
+          [
+            78.0,
+            653.0
+          ]
+        ]
+      },
+      {
+        "block_label": "paragraph_title",
+        "block_content": "D.3 GAN-Leaks",
+        "block_bbox": [
+          78,
+          672,
+          263,
+          698
+        ],
+        "block_id": 7,
+        "block_order": 6,
+        "group_id": 7,
+        "global_block_id": 388,
+        "global_group_id": 388,
+        "block_polygon_points": [
+          [
+            78.0,
+            672.0
+          ],
+          [
+            263.0,
+            672.0
+          ],
+          [
+            263.0,
+            698.0
+          ],
+          [
+            78.0,
+            698.0
+          ]
+        ]
+      },
+      {
+        "block_label": "text",
+        "block_content": "GAN-Leaks [5] is a pivotal work in the realm of MIA against GAN models. This work meticulously breaks down attack scenarios into categories based on the level of access to the latent code, generator, and discriminator. For each category, from full black-box to accessible discriminator, GAN-Leaks presents tailored attack methodologies. This work formalizes MIA as an optimization problem. For a given query sample, the goal is to identify the closest reconstruction by optimizing within the generator's output space. A query sample is deemed a member if its reconstruction error is smaller. This can be represented as:",
+        "block_bbox": [
+          74,
+          704,
+          592,
+          950
+        ],
+        "block_id": 8,
+        "block_order": 7,
+        "group_id": 8,
+        "global_block_id": 389,
+        "global_group_id": 389,
+        "block_polygon_points": [
+          [
+            74.0,
+            704.0
+          ],
+          [
+            592.0,
+            704.0
+          ],
+          [
+            592.0,
+            950.0
+          ],
+          [
+            74.0,
+            950.0
+          ]
+        ]
+      },
+      {
+        "block_label": "display_formula",
+        "block_content": " $$ \\mathcal{R}(x|\\mathcal{G}_{v})=G_{v}(z^{*}),\\mathrm{w h e r e}z^{*}=\\underset{\\tau}{\\operatorname{a r g m i n}}L(x,G_{v}(z)) $$ ",
+        "block_bbox": [
+          130,
+          953,
+          528,
+          988
+        ],
+        "block_id": 9,
+        "block_order": 8,
+        "group_id": 9,
+        "global_block_id": 390,
+        "global_group_id": 390,
+        "block_polygon_points": [
+          [
+            130.0,
+            953.0
+          ],
+          [
+            528.0,
+            953.0
+          ],
+          [
+            528.0,
+            988.0
+          ],
+          [
+            130.0,
+            988.0
+          ]
+        ]
+      },
+      {
+        "block_label": "text",
+        "block_content": "where  $ L(\\cdot,\\cdot) $ represents the general distance metric,  $ G_{v} $ denotes the victim generator, and  $ z^{*} $ is the optimal estimate.",
+        "block_bbox": [
+          636,
+          143,
+          1160,
+          192
+        ],
+        "block_id": 10,
+        "block_order": 9,
+        "group_id": 10,
+        "global_block_id": 391,
+        "global_group_id": 391,
+        "block_polygon_points": [
+          [
+            636.0,
+            143.0
+          ],
+          [
+            1160.0,
+            143.0
+          ],
+          [
+            1160.0,
+            192.0
+          ],
+          [
+            636.0,
+            192.0
+          ]
+        ]
+      },
+      {
+        "block_label": "text",
+        "block_content": "GAN-Leaks [5] is a straightforward attack approach that can be universally applied across diverse settings and generative networks. However, its reliability is contingent upon the quality of the reconstructed image, which can be significantly influenced by the complexity of the original image. A complex image, even if it is from the training set, might encompass intricate details leading to a substantial discrepancy between the reconstructed and query images, resulting in misclassification. To address this, the authors employed a calibration technique to rectify such inaccuracies, ensuring commendable attack accuracy for GAN-Leaks on smaller datasets (comprising fewer than 1000 images). Nonetheless, when applied to extensive datasets, the efficacy of GAN-Leaks diminishes.",
+        "block_bbox": [
+          635,
+          192,
+          1163,
+          485
+        ],
+        "block_id": 11,
+        "block_order": 10,
+        "group_id": 11,
+        "global_block_id": 392,
+        "global_group_id": 392,
+        "block_polygon_points": [
+          [
+            635.0,
+            192.0
+          ],
+          [
+            1163.0,
+            192.0
+          ],
+          [
+            1163.0,
+            485.0
+          ],
+          [
+            635.0,
+            485.0
+          ]
+        ]
+      },
+      {
+        "block_label": "paragraph_title",
+        "block_content": "D.4 Likelihood-based Attack",
+        "block_bbox": [
+          634,
+          523,
+          958,
+          551
+        ],
+        "block_id": 12,
+        "block_order": 11,
+        "group_id": 12,
+        "global_block_id": 393,
+        "global_group_id": 393,
+        "block_polygon_points": [
+          [
+            634.0,
+            523.0
+          ],
+          [
+            958.0,
+            523.0
+          ],
+          [
+            958.0,
+            551.0
+          ],
+          [
+            634.0,
+            551.0
+          ]
+        ]
+      },
+      {
+        "block_label": "text",
+        "block_content": "The log-likelihood of the samples can be used to conduct a membership inference attack. The formula is given by:",
+        "block_bbox": [
+          632,
+          556,
+          1160,
+          606
+        ],
+        "block_id": 13,
+        "block_order": 12,
+        "group_id": 13,
+        "global_block_id": 394,
+        "global_group_id": 394,
+        "block_polygon_points": [
+          [
+            632.0,
+            556.0
+          ],
+          [
+            1160.0,
+            556.0
+          ],
+          [
+            1160.0,
+            606.0
+          ],
+          [
+            632.0,
+            606.0
+          ]
+        ]
+      },
+      {
+        "block_label": "display_formula",
+        "block_content": " $$ \\log p(x)=\\log p_{T}(x_{T})-\\int_{0}^{T}\\nabla\\cdot\\tilde{\\mathbf{f}}_{\\theta}(x_{t},t)d t. $$ ",
+        "block_bbox": [
+          722,
+          652,
+          1066,
+          706
+        ],
+        "block_id": 14,
+        "block_order": 13,
+        "group_id": 14,
+        "global_block_id": 395,
+        "global_group_id": 395,
+        "block_polygon_points": [
+          [
+            722.0,
+            652.0
+          ],
+          [
+            1066.0,
+            652.0
+          ],
+          [
+            1066.0,
+            706.0
+          ],
+          [
+            722.0,
+            706.0
+          ]
+        ]
+      },
+      {
+        "block_label": "text",
+        "block_content": "This equation was originally proposed by Song et al. [57]. If the log-likelihood value exceeds the threshold, the sample is inferred as a member. The term  $ \\nabla \\cdot \\tilde{f}_{\\theta}(x_t, t) $ is estimated using the Skilling-Hutchinson trace estimator, as suggested by Grathwohl et al. [16].",
+        "block_bbox": [
+          630,
+          709,
+          1161,
+          811
+        ],
+        "block_id": 15,
+        "block_order": 14,
+        "group_id": 15,
+        "global_block_id": 396,
+        "global_group_id": 396,
+        "block_polygon_points": [
+          [
+            630.0,
+            709.0
+          ],
+          [
+            1161.0,
+            709.0
+          ],
+          [
+            1161.0,
+            811.0
+          ],
+          [
+            630.0,
+            811.0
+          ]
+        ]
+      },
+      {
+        "block_label": "paragraph_title",
+        "block_content": "E Additional Information for Ablation Study",
+        "block_bbox": [
+          631,
+          851,
+          1133,
+          878
+        ],
+        "block_id": 16,
+        "block_order": 15,
+        "group_id": 16,
+        "global_block_id": 397,
+        "global_group_id": 397,
+        "block_polygon_points": [
+          [
+            631.0,
+            851.0
+          ],
+          [
+            1133.0,
+            851.0
+          ],
+          [
+            1133.0,
+            878.0
+          ],
+          [
+            631.0,
+            878.0
+          ]
+        ]
+      },
+      {
+        "block_label": "text",
+        "block_content": "We employed GSA $ _{1} $ and GSA $ _{2} $ on CIFAR-10, ImageNet, and MS COCO to further conduct layer-wise reduction as mentioned in Section 3.2, aiming to reduce computational time and resource consumption. The experimental results are presented in Figure 9.",
+        "block_bbox": [
+          631,
+          882,
+          1161,
+          986
+        ],
+        "block_id": 17,
+        "block_order": 16,
+        "group_id": 17,
+        "global_block_id": 398,
+        "global_group_id": 398,
+        "block_polygon_points": [
+          [
+            631.0,
+            882.0
+          ],
+          [
+            1161.0,
+            882.0
+          ],
+          [
+            1161.0,
+            986.0
+          ],
+          [
+            631.0,
+            986.0
+          ]
+        ]
+      },
+      {
+        "block_label": "number",
+        "block_content": "414",
+        "block_bbox": [
+          598,
+          1563,
+          627,
+          1582
+        ],
+        "block_id": 18,
+        "block_order": null,
+        "group_id": 18,
+        "global_block_id": 399,
+        "global_group_id": 399,
+        "block_polygon_points": [
+          [
+            598.0,
+            1563.0
+          ],
+          [
+            626.0,
+            1563.0
+          ],
+          [
+            626.0,
+            1581.0
+          ],
+          [
+            598.0,
+            1581.0
+          ]
+        ]
+      }
+    ],
+    "doc_preprocessor_res": {
+      "model_settings": {
+        "use_doc_orientation_classify": true,
+        "use_doc_unwarping": true
+      },
+      "angle": 0
+    },
+    "layout_det_res": {
+      "boxes": [
+        {
+          "cls_id": 12,
+          "label": "header",
+          "score": 0.8767716884613037,
+          "coordinate": [
+            82,
+            73,
+            429,
+            98
+          ],
+          "order": null,
+          "polygon_points": [
+            [
+              82.0,
+              73.0
+            ],
+            [
+              429.0,
+              73.0
+            ],
+            [
+              429.0,
+              98.0
+            ],
+            [
+              82.0,
+              98.0
+            ]
+          ]
+        },
+        {
+          "cls_id": 12,
+          "label": "header",
+          "score": 0.8655611276626587,
+          "coordinate": [
+            726,
+            88,
+            1164,
+            109
+          ],
+          "order": null,
+          "polygon_points": [
+            [
+              726.0,
+              88.0
+            ],
+            [
+              1164.0,
+              88.0
+            ],
+            [
+              1164.0,
+              109.0
+            ],
+            [
+              726.0,
+              109.0
+            ]
+          ]
+        },
+        {
+          "cls_id": 17,
+          "label": "paragraph_title",
+          "score": 0.8738301992416382,
+          "coordinate": [
+            82,
+            127,
+            524,
+            160
+          ],
+          "order": 1,
+          "polygon_points": [
+            [
+              82.0,
+              127.0
+            ],
+            [
+              524.0,
+              127.0
+            ],
+            [
+              524.0,
+              160.0
+            ],
+            [
+              82.0,
+              160.0
+            ]
+          ]
+        },
+        {
+          "cls_id": 22,
+          "label": "text",
+          "score": 0.9582496881484985,
+          "coordinate": [
+            79,
+            164,
+            599,
+            390
+          ],
+          "order": 2,
+          "polygon_points": [
+            [
+              79.0,
+              164.0
+            ],
+            [
+              599.0,
+              164.0
+            ],
+            [
+              599.0,
+              390.0
+            ],
+            [
+              79.0,
+              390.0
+            ]
+          ]
+        },
+        {
+          "cls_id": 15,
+          "label": "inline_formula",
+          "score": 0.49574288725852966,
+          "coordinate": [
+            394,
+            222,
+            414,
+            240
+          ],
+          "order": 3,
+          "polygon_points": [
+            [
+              394,
+              222
+            ],
+            [
+              394,
+              239
+            ],
+            [
+              413,
+              239
+            ],
+            [
+              413,
+              222
+            ]
+          ]
+        },
+        {
+          "cls_id": 15,
+          "label": "inline_formula",
+          "score": 0.5126095414161682,
+          "coordinate": [
+            451,
+            221,
+            472,
+            240
+          ],
+          "order": 4,
+          "polygon_points": [
+            [
+              451.0,
+              221.0
+            ],
+            [
+              471.0,
+              221.0
+            ],
+            [
+              471.0,
+              239.0
+            ],
+            [
+              451.0,
+              239.0
+            ]
+          ]
+        },
+        {
+          "cls_id": 15,
+          "label": "inline_formula",
+          "score": 0.6098765730857849,
+          "coordinate": [
+            85,
+            266,
+            105,
+            285
+          ],
+          "order": 5,
+          "polygon_points": [
+            [
+              85.0,
+              266.0
+            ],
+            [
+              104.0,
+              266.0
+            ],
+            [
+              104.0,
+              284.0
+            ],
+            [
+              85.0,
+              284.0
+            ]
+          ]
+        },
+        {
+          "cls_id": 15,
+          "label": "inline_formula",
+          "score": 0.6336862444877625,
+          "coordinate": [
+            507,
+            269,
+            526,
+            292
+          ],
+          "order": 6,
+          "polygon_points": [
+            [
+              507.0,
+              269.0
+            ],
+            [
+              525.0,
+              269.0
+            ],
+            [
+              525.0,
+              291.0
+            ],
+            [
+              507.0,
+              291.0
+            ]
+          ]
+        },
+        {
+          "cls_id": 15,
+          "label": "inline_formula",
+          "score": 0.7473152875900269,
+          "coordinate": [
+            501,
+            296,
+            538,
+            315
+          ],
+          "order": 7,
+          "polygon_points": [
+            [
+              501.0,
+              296.0
+            ],
+            [
+              537.0,
+              296.0
+            ],
+            [
+              537.0,
+              314.0
+            ],
+            [
+              501.0,
+              314.0
+            ]
+          ]
+        },
+        {
+          "cls_id": 15,
+          "label": "inline_formula",
+          "score": 0.7586104869842529,
+          "coordinate": [
+            256,
+            318,
+            300,
+            340
+          ],
+          "order": 8,
+          "polygon_points": [
+            [
+              256.0,
+              318.0
+            ],
+            [
+              299.0,
+              318.0
+            ],
+            [
+              299.0,
+              339.0
+            ],
+            [
+              256.0,
+              339.0
+            ]
+          ]
+        },
+        {
+          "cls_id": 5,
+          "label": "display_formula",
+          "score": 0.8705316781997681,
+          "coordinate": [
+            131,
+            396,
+            543,
+            424
+          ],
+          "order": 9,
+          "polygon_points": [
+            [
+              131.0,
+              396.0
+            ],
+            [
+              543.0,
+              396.0
+            ],
+            [
+              543.0,
+              424.0
+            ],
+            [
+              131.0,
+              424.0
+            ]
+          ]
+        },
+        {
+          "cls_id": 22,
+          "label": "text",
+          "score": 0.9454074501991272,
+          "coordinate": [
+            78,
+            430,
+            595,
+            577
+          ],
+          "order": 10,
+          "polygon_points": [
+            [
+              78.0,
+              430.0
+            ],
+            [
+              595.0,
+              430.0
+            ],
+            [
+              595.0,
+              577.0
+            ],
+            [
+              78.0,
+              577.0
+            ]
+          ]
+        },
+        {
+          "cls_id": 15,
+          "label": "inline_formula",
+          "score": 0.7433671355247498,
+          "coordinate": [
+            196,
+            457,
+            225,
+            477
+          ],
+          "order": 11,
+          "polygon_points": [
+            [
+              196,
+              457
+            ],
+            [
+              196,
+              476
+            ],
+            [
+              224,
+              476
+            ],
+            [
+              224,
+              457
+            ]
+          ]
+        },
+        {
+          "cls_id": 15,
+          "label": "inline_formula",
+          "score": 0.4407723844051361,
+          "coordinate": [
+            104,
+            478,
+            146,
+            498
+          ],
+          "order": 12,
+          "polygon_points": [
+            [
+              104.0,
+              478.0
+            ],
+            [
+              145.0,
+              478.0
+            ],
+            [
+              145.0,
+              497.0
+            ],
+            [
+              104.0,
+              497.0
+            ]
+          ]
+        },
+        {
+          "cls_id": 15,
+          "label": "inline_formula",
+          "score": 0.7444154620170593,
+          "coordinate": [
+            286,
+            504,
+            351,
+            527
+          ],
+          "order": 13,
+          "polygon_points": [
+            [
+              286.0,
+              504.0
+            ],
+            [
+              350.0,
+              504.0
+            ],
+            [
+              350.0,
+              526.0
+            ],
+            [
+              286.0,
+              526.0
+            ]
+          ]
+        },
+        {
+          "cls_id": 22,
+          "label": "text",
+          "score": 0.9300895929336548,
+          "coordinate": [
+            78,
+            577,
+            593,
+            653
+          ],
+          "order": 14,
+          "polygon_points": [
+            [
+              78.0,
+              577.0
+            ],
+            [
+              593.0,
+              577.0
+            ],
+            [
+              593.0,
+              653.0
+            ],
+            [
+              78.0,
+              653.0
+            ]
+          ]
+        },
+        {
+          "cls_id": 17,
+          "label": "paragraph_title",
+          "score": 0.8418579697608948,
+          "coordinate": [
+            78,
+            672,
+            263,
+            698
+          ],
+          "order": 15,
+          "polygon_points": [
+            [
+              78.0,
+              672.0
+            ],
+            [
+              263.0,
+              672.0
+            ],
+            [
+              263.0,
+              698.0
+            ],
+            [
+              78.0,
+              698.0
+            ]
+          ]
+        },
+        {
+          "cls_id": 22,
+          "label": "text",
+          "score": 0.9634041786193848,
+          "coordinate": [
+            74,
+            704,
+            592,
+            950
+          ],
+          "order": 16,
+          "polygon_points": [
+            [
+              74.0,
+              704.0
+            ],
+            [
+              592.0,
+              704.0
+            ],
+            [
+              592.0,
+              950.0
+            ],
+            [
+              74.0,
+              950.0
+            ]
+          ]
+        },
+        {
+          "cls_id": 5,
+          "label": "display_formula",
+          "score": 0.8250346183776855,
+          "coordinate": [
+            130,
+            953,
+            528,
+            988
+          ],
+          "order": 17,
+          "polygon_points": [
+            [
+              130.0,
+              953.0
+            ],
+            [
+              528.0,
+              953.0
+            ],
+            [
+              528.0,
+              988.0
+            ],
+            [
+              130.0,
+              988.0
+            ]
+          ]
+        },
+        {
+          "cls_id": 22,
+          "label": "text",
+          "score": 0.9029668569564819,
+          "coordinate": [
+            636,
+            143,
+            1160,
+            192
+          ],
+          "order": 18,
+          "polygon_points": [
+            [
+              636.0,
+              143.0
+            ],
+            [
+              1160.0,
+              143.0
+            ],
+            [
+              1160.0,
+              192.0
+            ],
+            [
+              636.0,
+              192.0
+            ]
+          ]
+        },
+        {
+          "cls_id": 15,
+          "label": "inline_formula",
+          "score": 0.7457037568092346,
+          "coordinate": [
+            696,
+            144,
+            740,
+            165
+          ],
+          "order": 19,
+          "polygon_points": [
+            [
+              696,
+              144
+            ],
+            [
+              696,
+              164
+            ],
+            [
+              739,
+              164
+            ],
+            [
+              739,
+              144
+            ]
+          ]
+        },
+        {
+          "cls_id": 15,
+          "label": "inline_formula",
+          "score": 0.7329791188240051,
+          "coordinate": [
+            1041,
+            148,
+            1065,
+            168
+          ],
+          "order": 20,
+          "polygon_points": [
+            [
+              1041.0,
+              148.0
+            ],
+            [
+              1064.0,
+              148.0
+            ],
+            [
+              1064.0,
+              167.0
+            ],
+            [
+              1041.0,
+              167.0
+            ]
+          ]
+        },
+        {
+          "cls_id": 15,
+          "label": "inline_formula",
+          "score": 0.6973708868026733,
+          "coordinate": [
+            813,
+            170,
+            831,
+            188
+          ],
+          "order": 21,
+          "polygon_points": [
+            [
+              813.0,
+              170.0
+            ],
+            [
+              830.0,
+              170.0
+            ],
+            [
+              830.0,
+              187.0
+            ],
+            [
+              813.0,
+              187.0
+            ]
+          ]
+        },
+        {
+          "cls_id": 22,
+          "label": "text",
+          "score": 0.9696804881095886,
+          "coordinate": [
+            635,
+            192,
+            1163,
+            485
+          ],
+          "order": 22,
+          "polygon_points": [
+            [
+              635.0,
+              192.0
+            ],
+            [
+              1163.0,
+              192.0
+            ],
+            [
+              1163.0,
+              485.0
+            ],
+            [
+              635.0,
+              485.0
+            ]
+          ]
+        },
+        {
+          "cls_id": 17,
+          "label": "paragraph_title",
+          "score": 0.840247631072998,
+          "coordinate": [
+            634,
+            523,
+            958,
+            551
+          ],
+          "order": 23,
+          "polygon_points": [
+            [
+              634.0,
+              523.0
+            ],
+            [
+              958.0,
+              523.0
+            ],
+            [
+              958.0,
+              551.0
+            ],
+            [
+              634.0,
+              551.0
+            ]
+          ]
+        },
+        {
+          "cls_id": 22,
+          "label": "text",
+          "score": 0.9014227986335754,
+          "coordinate": [
+            632,
+            556,
+            1160,
+            606
+          ],
+          "order": 24,
+          "polygon_points": [
+            [
+              632.0,
+              556.0
+            ],
+            [
+              1160.0,
+              556.0
+            ],
+            [
+              1160.0,
+              606.0
+            ],
+            [
+              632.0,
+              606.0
+            ]
+          ]
+        },
+        {
+          "cls_id": 5,
+          "label": "display_formula",
+          "score": 0.9048452973365784,
+          "coordinate": [
+            722,
+            652,
+            1066,
+            706
+          ],
+          "order": 25,
+          "polygon_points": [
+            [
+              722.0,
+              652.0
+            ],
+            [
+              1066.0,
+              652.0
+            ],
+            [
+              1066.0,
+              706.0
+            ],
+            [
+              722.0,
+              706.0
+            ]
+          ]
+        },
+        {
+          "cls_id": 22,
+          "label": "text",
+          "score": 0.9275429844856262,
+          "coordinate": [
+            630,
+            709,
+            1161,
+            811
+          ],
+          "order": 26,
+          "polygon_points": [
+            [
+              630.0,
+              709.0
+            ],
+            [
+              1161.0,
+              709.0
+            ],
+            [
+              1161.0,
+              811.0
+            ],
+            [
+              630.0,
+              811.0
+            ]
+          ]
+        },
+        {
+          "cls_id": 15,
+          "label": "inline_formula",
+          "score": 0.7863423228263855,
+          "coordinate": [
+            820,
+            761,
+            907,
+            784
+          ],
+          "order": 27,
+          "polygon_points": [
+            [
+              820,
+              761
+            ],
+            [
+              820,
+              783
+            ],
+            [
+              906,
+              783
+            ],
+            [
+              906,
+              761
+            ]
+          ]
+        },
+        {
+          "cls_id": 17,
+          "label": "paragraph_title",
+          "score": 0.8572033047676086,
+          "coordinate": [
+            631,
+            851,
+            1133,
+            878
+          ],
+          "order": 28,
+          "polygon_points": [
+            [
+              631.0,
+              851.0
+            ],
+            [
+              1133.0,
+              851.0
+            ],
+            [
+              1133.0,
+              878.0
+            ],
+            [
+              631.0,
+              878.0
+            ]
+          ]
+        },
+        {
+          "cls_id": 22,
+          "label": "text",
+          "score": 0.927910327911377,
+          "coordinate": [
+            631,
+            882,
+            1161,
+            986
+          ],
+          "order": 29,
+          "polygon_points": [
+            [
+              631.0,
+              882.0
+            ],
+            [
+              1161.0,
+              882.0
+            ],
+            [
+              1161.0,
+              986.0
+            ],
+            [
+              631.0,
+              986.0
+            ]
+          ]
+        },
+        {
+          "cls_id": 15,
+          "label": "inline_formula",
+          "score": 0.6972917318344116,
+          "coordinate": [
+            752,
+            887,
+            797,
+            907
+          ],
+          "order": 30,
+          "polygon_points": [
+            [
+              752,
+              887
+            ],
+            [
+              752,
+              906
+            ],
+            [
+              796,
+              906
+            ],
+            [
+              796,
+              887
+            ]
+          ]
+        },
+        {
+          "cls_id": 15,
+          "label": "inline_formula",
+          "score": 0.7001184821128845,
+          "coordinate": [
+            837,
+            886,
+            881,
+            906
+          ],
+          "order": 31,
+          "polygon_points": [
+            [
+              837.0,
+              886.0
+            ],
+            [
+              880.0,
+              886.0
+            ],
+            [
+              880.0,
+              905.0
+            ],
+            [
+              837.0,
+              905.0
+            ]
+          ]
+        },
+        {
+          "cls_id": 16,
+          "label": "number",
+          "score": 0.7425711154937744,
+          "coordinate": [
+            598,
+            1563,
+            627,
+            1582
+          ],
+          "order": 32,
+          "polygon_points": [
+            [
+              598.0,
+              1563.0
+            ],
+            [
+              626.0,
+              1563.0
+            ],
+            [
+              626.0,
+              1581.0
+            ],
+            [
+              598.0,
+              1581.0
+            ]
+          ]
+        }
+      ]
+    }
+  },
+  "markdown": {
+    "text": "### D.2 Proximal Initialization Attack (PIA)\n\nBuilding upon the work of Duan et al. [12], Kong et al. [30] also identified the deterministic properties inherent to the DDIM model [29, 54, 57]. In the DDIM framework, given  $ x_0 $ and  $ x_k $, it is feasible to utilize these two points to predict any other ground truth point  $ x_t $ [30]. Consequently, this methodology employs the  $ \\ell_p $-norm to compute the distance between any ground truth point  $ x_{t-t'} $ and its predicted counterpart  $ x'_{t-t'} $. After leveraging the ground truth extraction properties of DDIM [29] and utilizing the sampling formula from [54], the equation to compute the distance is given by:\n\n $$ R_{t,p}=\\left\\|\\epsilon_{\\theta}(x_{0},0)-\\epsilon_{\\theta}(\\sqrt{\\bar{\\alpha}_{t}}x_{0}+\\sqrt{1-\\bar{\\alpha}_{t}}\\epsilon_{\\theta}(x_{0},0),t)\\right\\|_{p}. $$ \n\nThe notation in the above equation is consistent with the DDPM model, where  $ R_{t,p} $ denotes the distance. Given that  $ \\epsilon $ is initialized at  $ t = 0 $, this method is termed the Proximal Initialization Attack (PIA). When normalizing  $ \\epsilon_{\\theta}(x_0, 0) $, it is referred to as PIAN (PIA Normalize). This work employs a threshold-based [64] attack approach.\n\nCompared to SecMI [12], the attack accuracy has seen a notable improvement. Yet, when juxtaposed with white-box attacks [4, 27], the success rate of this model attack remains suboptimal.\n\n### D.3 GAN-Leaks\n\nGAN-Leaks [5] is a pivotal work in the realm of MIA against GAN models. This work meticulously breaks down attack scenarios into categories based on the level of access to the latent code, generator, and discriminator. For each category, from full black-box to accessible discriminator, GAN-Leaks presents tailored attack methodologies. This work formalizes MIA as an optimization problem. For a given query sample, the goal is to identify the closest reconstruction by optimizing within the generator's output space. A query sample is deemed a member if its reconstruction error is smaller. This can be represented as:\n\n $$ \\mathcal{R}(x|\\mathcal{G}_{v})=G_{v}(z^{*}),\\mathrm{w h e r e}z^{*}=\\underset{\\tau}{\\operatorname{a r g m i n}}L(x,G_{v}(z)) $$ \n\nwhere  $ L(\\cdot,\\cdot) $ represents the general distance metric,  $ G_{v} $ denotes the victim generator, and  $ z^{*} $ is the optimal estimate.\n\nGAN-Leaks [5] is a straightforward attack approach that can be universally applied across diverse settings and generative networks. However, its reliability is contingent upon the quality of the reconstructed image, which can be significantly influenced by the complexity of the original image. A complex image, even if it is from the training set, might encompass intricate details leading to a substantial discrepancy between the reconstructed and query images, resulting in misclassification. To address this, the authors employed a calibration technique to rectify such inaccuracies, ensuring commendable attack accuracy for GAN-Leaks on smaller datasets (comprising fewer than 1000 images). Nonetheless, when applied to extensive datasets, the efficacy of GAN-Leaks diminishes.\n\n### D.4 Likelihood-based Attack\n\nThe log-likelihood of the samples can be used to conduct a membership inference attack. The formula is given by:\n\n $$ \\log p(x)=\\log p_{T}(x_{T})-\\int_{0}^{T}\\nabla\\cdot\\tilde{\\mathbf{f}}_{\\theta}(x_{t},t)d t. $$ \n\nThis equation was originally proposed by Song et al. [57]. If the log-likelihood value exceeds the threshold, the sample is inferred as a member. The term  $ \\nabla \\cdot \\tilde{f}_{\\theta}(x_t, t) $ is estimated using the Skilling-Hutchinson trace estimator, as suggested by Grathwohl et al. [16].\n\n### E Additional Information for Ablation Study\n\nWe employed GSA $ _{1} $ and GSA $ _{2} $ on CIFAR-10, ImageNet, and MS COCO to further conduct layer-wise reduction as mentioned in Section 3.2, aiming to reduce computational time and resource consumption. The experimental results are presented in Figure 9.",
+    "images": {}
+  },
+  "outputImages": {
+    "layout_det_res": "https://pplines-online.bj.bcebos.com/deploy/official/paddleocr/pp-ocr-vl-15//d4ed2188-add5-4796-bd7d-c5fa104a8bf2/layout_det_res_1.jpg?authorization=bce-auth-v1%2FALTAKzReLNvew3ySINYJ0fuAMN%2F2026-04-05T12%3A41%3A23Z%2F-1%2F%2F0ae60694a1554c127c08444b926118d6acfd49a79d9b80408ddb1ea70bde41d1"
+  },
+  "inputImage": "https://pplines-online.bj.bcebos.com/deploy/official/paddleocr/pp-ocr-vl-15//d4ed2188-add5-4796-bd7d-c5fa104a8bf2/input_img_1.jpg?authorization=bce-auth-v1%2FALTAKzReLNvew3ySINYJ0fuAMN%2F2026-04-05T12%3A41%3A23Z%2F-1%2F%2Fe06e7fb232cb466eb98bcee5b4431d6b17e9ca595ef63dd95f3fa1fd7c16d3d3"
+}

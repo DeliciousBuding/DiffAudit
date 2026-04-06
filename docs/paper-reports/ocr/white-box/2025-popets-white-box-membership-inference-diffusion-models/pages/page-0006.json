@@ -1,0 +1,2359 @@
+{
+  "prunedResult": {
+    "page_count": 5,
+    "width": 1224,
+    "height": 1584,
+    "model_settings": {
+      "use_doc_preprocessor": true,
+      "use_layout_detection": true,
+      "use_chart_recognition": false,
+      "use_seal_recognition": false,
+      "use_ocr_for_image_block": false,
+      "format_block_content": false,
+      "merge_layout_blocks": true,
+      "markdown_ignore_labels": [
+        "number",
+        "footnote",
+        "header",
+        "header_image",
+        "footer",
+        "footer_image",
+        "aside_text"
+      ],
+      "return_layout_polygon_points": true
+    },
+    "parsing_res_list": [
+      {
+        "block_label": "header",
+        "block_content": "White-box Membership Inference Attacks against Diffusion Models",
+        "block_bbox": [
+          72,
+          42,
+          491,
+          71
+        ],
+        "block_id": 0,
+        "block_order": null,
+        "group_id": 0,
+        "global_block_id": 110,
+        "global_group_id": 110,
+        "block_polygon_points": [
+          [
+            72,
+            42
+          ],
+          [
+            72,
+            63
+          ],
+          [
+            183,
+            70
+          ],
+          [
+            490,
+            70
+          ],
+          [
+            490,
+            50
+          ],
+          [
+            140,
+            50
+          ],
+          [
+            139,
+            42
+          ]
+        ]
+      },
+      {
+        "block_label": "header",
+        "block_content": "Proceedings on Privacy Enhancing Technologies 2025(2)",
+        "block_bbox": [
+          812,
+          51,
+          1163,
+          74
+        ],
+        "block_id": 1,
+        "block_order": null,
+        "group_id": 1,
+        "global_block_id": 111,
+        "global_group_id": 111,
+        "block_polygon_points": [
+          [
+            812.0,
+            51.0
+          ],
+          [
+            1163.0,
+            51.0
+          ],
+          [
+            1163.0,
+            74.0
+          ],
+          [
+            812.0,
+            74.0
+          ]
+        ]
+      },
+      {
+        "block_label": "algorithm",
+        "block_content": "Algorithm 1 GSA₁\n\nInput: Target model denoted as  $ \\epsilon_\\theta $ with N layers, a equidistantly selected set of timesteps K, and a sample x.\n\n1: for  $ t \\in K $ do\n2: Sample  $ \\epsilon_t $ from Gaussian distribution\n3: Compute  $ x_t $ based on Equation 1\n4: Compute loss  $ L_t $ from Equation 2\n5: end for\n\n6:  $ \\bar{L} \\leftarrow \\frac{1}{|K|} \\sum_{t \\in K} L_t $\n\n7:  $ \\mathcal{G} \\leftarrow \\left[ \\left\\| \\frac{\\partial \\bar{L}}{\\partial W_1} \\right\\|_2^2, \\cdots \\left\\| \\frac{\\partial \\bar{L}}{\\partial W_N} \\right\\|_2^2 \\right] $\n\nOutput:  $ \\mathcal{G} $",
+        "block_bbox": [
+          75,
+          98,
+          591,
+          443
+        ],
+        "block_id": 2,
+        "block_order": 1,
+        "group_id": 2,
+        "global_block_id": 112,
+        "global_group_id": 112,
+        "block_polygon_points": [
+          [
+            75.0,
+            98.0
+          ],
+          [
+            591.0,
+            98.0
+          ],
+          [
+            591.0,
+            443.0
+          ],
+          [
+            75.0,
+            443.0
+          ]
+        ]
+      },
+      {
+        "block_label": "text",
+        "block_content": "more time-efficient. To balance effectiveness and efficiency, we use equidistant sampling to derive a subsampled timestep set K from the total diffusion steps T. Following this, for the timesteps in K, we can aggregate the gradients or losses generated at each timestep using statistical methods such as the mean, median, or trimmed mean to produce the final output. If the values being aggregated are the gradients from each timestep, the output can be directly used as the final output. However, if the aggregated values are the losses, the processed loss value needs to be used in backpropagation to extract gradient information for the final output.",
+        "block_bbox": [
+          81,
+          511,
+          592,
+          754
+        ],
+        "block_id": 3,
+        "block_order": 2,
+        "group_id": 3,
+        "global_block_id": 113,
+        "global_group_id": 113,
+        "block_polygon_points": [
+          [
+            81.0,
+            511.0
+          ],
+          [
+            592.0,
+            511.0
+          ],
+          [
+            592.0,
+            754.0
+          ],
+          [
+            81.0,
+            754.0
+          ]
+        ]
+      },
+      {
+        "block_label": "paragraph_title",
+        "block_content": "3.3 Our Instantiations",
+        "block_bbox": [
+          82,
+          780,
+          332,
+          806
+        ],
+        "block_id": 4,
+        "block_order": 3,
+        "group_id": 4,
+        "global_block_id": 114,
+        "global_group_id": 114,
+        "block_polygon_points": [
+          [
+            82.0,
+            780.0
+          ],
+          [
+            332.0,
+            780.0
+          ],
+          [
+            332.0,
+            806.0
+          ],
+          [
+            82.0,
+            806.0
+          ]
+        ]
+      },
+      {
+        "block_label": "text",
+        "block_content": "We present two exemplary instantiations of the attack within the framework, representing two extreme points in the trade-off space between efficiency and effectiveness. We call them GSA₁ and GSA₂. GSA₁ performs more reduction, gaining efficiency but losing information. GSA₂ does less reduction, retaining effectiveness but at a cost to efficiency. In the GSA₁ method, although we equidistantly sample |K| timesteps from T, only a single gradient computation is required. This outcome is realized by in GSA₁ computing the loss, Lₜ, for each timestep present in K. Subsequently, we take the mean of these individual losses, represented as L, to perform backpropagation. This process eventually yields a solitary gradient vector. On the other hand, GSA₂ entails performing backpropagation and computing gradients for each timestep in K, and then using the mean of all gradient vectors, denoted as G, as the final output.",
+        "block_bbox": [
+          78,
+          809,
+          594,
+          1141
+        ],
+        "block_id": 5,
+        "block_order": 4,
+        "group_id": 5,
+        "global_block_id": 115,
+        "global_group_id": 115,
+        "block_polygon_points": [
+          [
+            78.0,
+            809.0
+          ],
+          [
+            594.0,
+            809.0
+          ],
+          [
+            594.0,
+            1141.0
+          ],
+          [
+            78.0,
+            1141.0
+          ]
+        ]
+      },
+      {
+        "block_label": "text",
+        "block_content": "Note that we only slightly optimize our two instantiations in this paper because they are already very effective. We leave more detailed investigations of the design space and more effective proposals as future work.",
+        "block_bbox": [
+          78,
+          1140,
+          593,
+          1235
+        ],
+        "block_id": 6,
+        "block_order": 5,
+        "group_id": 6,
+        "global_block_id": 116,
+        "global_group_id": 116,
+        "block_polygon_points": [
+          [
+            78.0,
+            1140.0
+          ],
+          [
+            593.0,
+            1140.0
+          ],
+          [
+            593.0,
+            1235.0
+          ],
+          [
+            78.0,
+            1235.0
+          ]
+        ]
+      },
+      {
+        "block_label": "text",
+        "block_content": "Based on our detailed analysis of existing white-box attacks  $ [4, 27, 35] $, we first find that the optimal timesteps for mounting the most effective attacks vary depending on the specific dataset and diffusion model in question.",
+        "block_bbox": [
+          78,
+          1233,
+          593,
+          1328
+        ],
+        "block_id": 7,
+        "block_order": 6,
+        "group_id": 7,
+        "global_block_id": 117,
+        "global_group_id": 117,
+        "block_polygon_points": [
+          [
+            78,
+            1233
+          ],
+          [
+            78,
+            1327
+          ],
+          [
+            464,
+            1327
+          ],
+          [
+            494,
+            1327
+          ],
+          [
+            592,
+            1320
+          ],
+          [
+            592,
+            1233
+          ]
+        ]
+      },
+      {
+        "block_label": "text",
+        "block_content": "Consequently, we adopt the equidistant sampling strategy to select sample timesteps from the range  $ [1, T] $, denoted by a set K. This approach is designed to encompass timesteps that can distinctly differentiate between member and non-member samples, avoiding an exclusive focus on timesteps that are either too early or too late.",
+        "block_bbox": [
+          77,
+          1328,
+          592,
+          1472
+        ],
+        "block_id": 8,
+        "block_order": 7,
+        "group_id": 8,
+        "global_block_id": 118,
+        "global_group_id": 118,
+        "block_polygon_points": [
+          [
+            77.0,
+            1328.0
+          ],
+          [
+            592.0,
+            1328.0
+          ],
+          [
+            592.0,
+            1472.0
+          ],
+          [
+            77.0,
+            1472.0
+          ]
+        ]
+      },
+      {
+        "block_label": "algorithm",
+        "block_content": "Algorithm 2 GSA₂\n\nInput: Target model denoted as  $ \\epsilon_\\theta $ with N layers, a equidistantly selected set of timesteps K, and a sample x.\n\n1:  $ \\mathcal{G} \\leftarrow [  $$ \n2: for  $ t \\in K $ do\n3: Sample  $ \\epsilon_t $ from Gaussian distribution\n4: Compute  $ x_t $ based on Equation 1\n5: Compute loss  $ L_t $ from Equation 2\n6:  $ \\mathcal{G}_t = \\left[ \\left\\| \\frac{\\partial L_t}{\\partial W_1} \\right\\|_2^2, \\ldots \\left\\| \\frac{\\partial L_t}{\\partial W_N} \\right\\|_2^2 \\right] $\n7: end for\n8:  $ \\mathcal{G} \\leftarrow \\frac{1}{|K|} \\sum_{t \\in K} \\mathcal{G}_t $\n\nOutput:  $ \\mathcal{G} $",
+        "block_bbox": [
+          633,
+          104,
+          1155,
+          446
+        ],
+        "block_id": 9,
+        "block_order": 8,
+        "group_id": 9,
+        "global_block_id": 119,
+        "global_group_id": 119,
+        "block_polygon_points": [
+          [
+            633.0,
+            104.0
+          ],
+          [
+            1155.0,
+            104.0
+          ],
+          [
+            1155.0,
+            446.0
+          ],
+          [
+            633.0,
+            446.0
+          ]
+        ]
+      },
+      {
+        "block_label": "text",
+        "block_content": "After getting loss from each selected step, we use backpropagation to compute the gradients for the model. Given the diverse nature of gradients within a layer, we aggregate the model's gradient information on a per-layer basis. That is, once the gradient information for a layer's parameters is obtained, the  $ \\ell_{2} $-norm of these gradients is used as the representation for that layer's gradient information. This approach offers a dual advantage: it substantially reduces computational overhead while also holistically encapsulating that layer's gradient information.",
+        "block_bbox": [
+          631,
+          522,
+          1157,
+          737
+        ],
+        "block_id": 10,
+        "block_order": 9,
+        "group_id": 10,
+        "global_block_id": 120,
+        "global_group_id": 120,
+        "block_polygon_points": [
+          [
+            631.0,
+            522.0
+          ],
+          [
+            1157.0,
+            522.0
+          ],
+          [
+            1157.0,
+            737.0
+          ],
+          [
+            631.0,
+            737.0
+          ]
+        ]
+      },
+      {
+        "block_label": "text",
+        "block_content": "This forms the basis of GSA₂ (given in Algorithm 2): for each timestep t in the set K, we calculate the per-layer gradient using the  $ \\ell_2 $-norm, and then find their average.",
+        "block_bbox": [
+          632,
+          737,
+          1154,
+          809
+        ],
+        "block_id": 11,
+        "block_order": 10,
+        "group_id": 11,
+        "global_block_id": 121,
+        "global_group_id": 121,
+        "block_polygon_points": [
+          [
+            632.0,
+            737.0
+          ],
+          [
+            1154.0,
+            737.0
+          ],
+          [
+            1154.0,
+            809.0
+          ],
+          [
+            632.0,
+            809.0
+          ]
+        ]
+      },
+      {
+        "block_label": "text",
+        "block_content": "However, this approach can still incur substantial computational costs when applied to large diffusion models and datasets — taking nearly 6 hours to execute on Imagen. To address this inefficiency, we preprocess the loss values from multiple timesteps before doing gradient computation. In light of this challenge, we introduce GSA₁ (outlined in Algorithm 1), which reduces the gradient extraction time for the Imagen model to less than 2 hours, significantly decreasing the computational time required.",
+        "block_bbox": [
+          630,
+          809,
+          1155,
+          1001
+        ],
+        "block_id": 12,
+        "block_order": 11,
+        "group_id": 12,
+        "global_block_id": 122,
+        "global_group_id": 122,
+        "block_polygon_points": [
+          [
+            630.0,
+            809.0
+          ],
+          [
+            1155.0,
+            809.0
+          ],
+          [
+            1155.0,
+            1001.0
+          ],
+          [
+            630.0,
+            1001.0
+          ]
+        ]
+      },
+      {
+        "block_label": "paragraph_title",
+        "block_content": "4 Experimental Setup",
+        "block_bbox": [
+          634,
+          1025,
+          883,
+          1052
+        ],
+        "block_id": 13,
+        "block_order": 12,
+        "group_id": 13,
+        "global_block_id": 123,
+        "global_group_id": 123,
+        "block_polygon_points": [
+          [
+            634.0,
+            1025.0
+          ],
+          [
+            883.0,
+            1025.0
+          ],
+          [
+            883.0,
+            1052.0
+          ],
+          [
+            634.0,
+            1052.0
+          ]
+        ]
+      },
+      {
+        "block_label": "paragraph_title",
+        "block_content": "4.1 Datasets",
+        "block_bbox": [
+          634,
+          1059,
+          783,
+          1084
+        ],
+        "block_id": 14,
+        "block_order": 13,
+        "group_id": 14,
+        "global_block_id": 124,
+        "global_group_id": 124,
+        "block_polygon_points": [
+          [
+            634.0,
+            1059.0
+          ],
+          [
+            783.0,
+            1059.0
+          ],
+          [
+            783.0,
+            1084.0
+          ],
+          [
+            634.0,
+            1084.0
+          ]
+        ]
+      },
+      {
+        "block_label": "text",
+        "block_content": "We use CIFAR-10, ImageNet, and MS COCO datasets. The use of CIFAR-10 allows for an easier comparison of attack results as it has been frequently employed in previous work [4, 12, 30, 35]. Both ImageNet and MS COCO serve as significant target datasets in the domain of image generation, with MS COCO used for training in various tasks, such as VQ-diffusion [18], Parti Finetuned [66], U-ViT-S/2 [2], and Imagen [48].",
+        "block_bbox": [
+          632,
+          1101,
+          1156,
+          1269
+        ],
+        "block_id": 15,
+        "block_order": 14,
+        "group_id": 15,
+        "global_block_id": 125,
+        "global_group_id": 125,
+        "block_polygon_points": [
+          [
+            632.0,
+            1101.0
+          ],
+          [
+            1156.0,
+            1101.0
+          ],
+          [
+            1156.0,
+            1269.0
+          ],
+          [
+            632.0,
+            1269.0
+          ]
+        ]
+      },
+      {
+        "block_label": "text",
+        "block_content": "ImageNet dataset is a large-scale and diverse collection of images designed for image classification and object recognition tasks in the fields of machine learning and computer vision. When conducting experiments with the ImageNet dataset, researchers typically utilize a specific subset consisting of 1.2 million images for training and 50,000 images for validation, while an additional 100,000 images are reserved for testing. Considering the constraints on training resources and to ensure diversity in the training images, we opt",
+        "block_bbox": [
+          631,
+          1278,
+          1154,
+          1471
+        ],
+        "block_id": 16,
+        "block_order": 15,
+        "group_id": 16,
+        "global_block_id": 126,
+        "global_group_id": 126,
+        "block_polygon_points": [
+          [
+            631.0,
+            1278.0
+          ],
+          [
+            1154.0,
+            1278.0
+          ],
+          [
+            1154.0,
+            1471.0
+          ],
+          [
+            631.0,
+            1471.0
+          ]
+        ]
+      },
+      {
+        "block_label": "number",
+        "block_content": "403",
+        "block_bbox": [
+          599,
+          1476,
+          623,
+          1492
+        ],
+        "block_id": 17,
+        "block_order": null,
+        "group_id": 17,
+        "global_block_id": 127,
+        "global_group_id": 127,
+        "block_polygon_points": [
+          [
+            599.0,
+            1476.0
+          ],
+          [
+            622.0,
+            1476.0
+          ],
+          [
+            622.0,
+            1491.0
+          ],
+          [
+            599.0,
+            1491.0
+          ]
+        ]
+      }
+    ],
+    "doc_preprocessor_res": {
+      "model_settings": {
+        "use_doc_orientation_classify": true,
+        "use_doc_unwarping": true
+      },
+      "angle": 0
+    },
+    "layout_det_res": {
+      "boxes": [
+        {
+          "cls_id": 12,
+          "label": "header",
+          "score": 0.8742803335189819,
+          "coordinate": [
+            72,
+            42,
+            491,
+            71
+          ],
+          "order": null,
+          "polygon_points": [
+            [
+              72,
+              42
+            ],
+            [
+              72,
+              63
+            ],
+            [
+              183,
+              70
+            ],
+            [
+              490,
+              70
+            ],
+            [
+              490,
+              50
+            ],
+            [
+              140,
+              50
+            ],
+            [
+              139,
+              42
+            ]
+          ]
+        },
+        {
+          "cls_id": 12,
+          "label": "header",
+          "score": 0.8659554123878479,
+          "coordinate": [
+            812,
+            51,
+            1163,
+            74
+          ],
+          "order": null,
+          "polygon_points": [
+            [
+              812.0,
+              51.0
+            ],
+            [
+              1163.0,
+              51.0
+            ],
+            [
+              1163.0,
+              74.0
+            ],
+            [
+              812.0,
+              74.0
+            ]
+          ]
+        },
+        {
+          "cls_id": 1,
+          "label": "algorithm",
+          "score": 0.943363606929779,
+          "coordinate": [
+            75,
+            98,
+            591,
+            443
+          ],
+          "order": 1,
+          "polygon_points": [
+            [
+              75.0,
+              98.0
+            ],
+            [
+              591.0,
+              98.0
+            ],
+            [
+              591.0,
+              443.0
+            ],
+            [
+              75.0,
+              443.0
+            ]
+          ]
+        },
+        {
+          "cls_id": 15,
+          "label": "inline_formula",
+          "score": 0.534213125705719,
+          "coordinate": [
+            176,
+            104,
+            232,
+            127
+          ],
+          "order": 2,
+          "polygon_points": [
+            [
+              176,
+              104
+            ],
+            [
+              176,
+              126
+            ],
+            [
+              231,
+              126
+            ],
+            [
+              231,
+              104
+            ]
+          ]
+        },
+        {
+          "cls_id": 15,
+          "label": "inline_formula",
+          "score": 0.5825879573822021,
+          "coordinate": [
+            334,
+            144,
+            354,
+            164
+          ],
+          "order": 3,
+          "polygon_points": [
+            [
+              334.0,
+              144.0
+            ],
+            [
+              353.0,
+              144.0
+            ],
+            [
+              353.0,
+              163.0
+            ],
+            [
+              334.0,
+              163.0
+            ]
+          ]
+        },
+        {
+          "cls_id": 15,
+          "label": "inline_formula",
+          "score": 0.3365880250930786,
+          "coordinate": [
+            302,
+            166,
+            322,
+            188
+          ],
+          "order": 4,
+          "polygon_points": [
+            [
+              302.0,
+              166.0
+            ],
+            [
+              321.0,
+              166.0
+            ],
+            [
+              321.0,
+              187.0
+            ],
+            [
+              302.0,
+              187.0
+            ]
+          ]
+        },
+        {
+          "cls_id": 15,
+          "label": "inline_formula",
+          "score": 0.6556738018989563,
+          "coordinate": [
+            143,
+            186,
+            189,
+            209
+          ],
+          "order": 5,
+          "polygon_points": [
+            [
+              143.0,
+              186.0
+            ],
+            [
+              188.0,
+              186.0
+            ],
+            [
+              188.0,
+              208.0
+            ],
+            [
+              143.0,
+              208.0
+            ]
+          ]
+        },
+        {
+          "cls_id": 15,
+          "label": "inline_formula",
+          "score": 0.6016572117805481,
+          "coordinate": [
+            192,
+            216,
+            210,
+            236
+          ],
+          "order": 6,
+          "polygon_points": [
+            [
+              192.0,
+              216.0
+            ],
+            [
+              209.0,
+              216.0
+            ],
+            [
+              209.0,
+              235.0
+            ],
+            [
+              192.0,
+              235.0
+            ]
+          ]
+        },
+        {
+          "cls_id": 15,
+          "label": "inline_formula",
+          "score": 0.5818867087364197,
+          "coordinate": [
+            209,
+            241,
+            228,
+            262
+          ],
+          "order": 7,
+          "polygon_points": [
+            [
+              209.0,
+              241.0
+            ],
+            [
+              227.0,
+              241.0
+            ],
+            [
+              227.0,
+              261.0
+            ],
+            [
+              209.0,
+              261.0
+            ]
+          ]
+        },
+        {
+          "cls_id": 15,
+          "label": "inline_formula",
+          "score": 0.6648498773574829,
+          "coordinate": [
+            242,
+            266,
+            262,
+            289
+          ],
+          "order": 8,
+          "polygon_points": [
+            [
+              242.0,
+              266.0
+            ],
+            [
+              261.0,
+              266.0
+            ],
+            [
+              261.0,
+              288.0
+            ],
+            [
+              242.0,
+              288.0
+            ]
+          ]
+        },
+        {
+          "cls_id": 15,
+          "label": "inline_formula",
+          "score": 0.6787086725234985,
+          "coordinate": [
+            113,
+            316,
+            247,
+            354
+          ],
+          "order": 9,
+          "polygon_points": [
+            [
+              113.0,
+              316.0
+            ],
+            [
+              247.0,
+              316.0
+            ],
+            [
+              247.0,
+              354.0
+            ],
+            [
+              113.0,
+              354.0
+            ]
+          ]
+        },
+        {
+          "cls_id": 15,
+          "label": "inline_formula",
+          "score": 0.8050858974456787,
+          "coordinate": [
+            116,
+            357,
+            325,
+            412
+          ],
+          "order": 10,
+          "polygon_points": [
+            [
+              116.0,
+              357.0
+            ],
+            [
+              325.0,
+              357.0
+            ],
+            [
+              325.0,
+              412.0
+            ],
+            [
+              116.0,
+              412.0
+            ]
+          ]
+        },
+        {
+          "cls_id": 15,
+          "label": "inline_formula",
+          "score": 0.5270828604698181,
+          "coordinate": [
+            161,
+            413,
+            180,
+            436
+          ],
+          "order": 11,
+          "polygon_points": [
+            [
+              161.0,
+              413.0
+            ],
+            [
+              179.0,
+              413.0
+            ],
+            [
+              179.0,
+              435.0
+            ],
+            [
+              161.0,
+              435.0
+            ]
+          ]
+        },
+        {
+          "cls_id": 22,
+          "label": "text",
+          "score": 0.9553341865539551,
+          "coordinate": [
+            81,
+            511,
+            592,
+            754
+          ],
+          "order": 12,
+          "polygon_points": [
+            [
+              81.0,
+              511.0
+            ],
+            [
+              592.0,
+              511.0
+            ],
+            [
+              592.0,
+              754.0
+            ],
+            [
+              81.0,
+              754.0
+            ]
+          ]
+        },
+        {
+          "cls_id": 17,
+          "label": "paragraph_title",
+          "score": 0.8406345248222351,
+          "coordinate": [
+            82,
+            780,
+            332,
+            806
+          ],
+          "order": 13,
+          "polygon_points": [
+            [
+              82.0,
+              780.0
+            ],
+            [
+              332.0,
+              780.0
+            ],
+            [
+              332.0,
+              806.0
+            ],
+            [
+              82.0,
+              806.0
+            ]
+          ]
+        },
+        {
+          "cls_id": 22,
+          "label": "text",
+          "score": 0.9581030607223511,
+          "coordinate": [
+            78,
+            809,
+            594,
+            1141
+          ],
+          "order": 14,
+          "polygon_points": [
+            [
+              78.0,
+              809.0
+            ],
+            [
+              594.0,
+              809.0
+            ],
+            [
+              594.0,
+              1141.0
+            ],
+            [
+              78.0,
+              1141.0
+            ]
+          ]
+        },
+        {
+          "cls_id": 15,
+          "label": "inline_formula",
+          "score": 0.5355714559555054,
+          "coordinate": [
+            85,
+            884,
+            130,
+            905
+          ],
+          "order": 15,
+          "polygon_points": [
+            [
+              85,
+              884
+            ],
+            [
+              85,
+              904
+            ],
+            [
+              129,
+              904
+            ],
+            [
+              129,
+              884
+            ]
+          ]
+        },
+        {
+          "cls_id": 15,
+          "label": "inline_formula",
+          "score": 0.31685134768486023,
+          "coordinate": [
+            570,
+            560,
+            588,
+            582
+          ],
+          "order": 16,
+          "polygon_points": [
+            [
+              570.0,
+              560.0
+            ],
+            [
+              587.0,
+              560.0
+            ],
+            [
+              587.0,
+              581.0
+            ],
+            [
+              570.0,
+              581.0
+            ]
+          ]
+        },
+        {
+          "cls_id": 15,
+          "label": "inline_formula",
+          "score": 0.5144044756889343,
+          "coordinate": [
+            465,
+            858,
+            507,
+            879
+          ],
+          "order": 17,
+          "polygon_points": [
+            [
+              465.0,
+              858.0
+            ],
+            [
+              506.0,
+              858.0
+            ],
+            [
+              506.0,
+              878.0
+            ],
+            [
+              465.0,
+              878.0
+            ]
+          ]
+        },
+        {
+          "cls_id": 15,
+          "label": "inline_formula",
+          "score": 0.5868406891822815,
+          "coordinate": [
+            543,
+            858,
+            587,
+            879
+          ],
+          "order": 18,
+          "polygon_points": [
+            [
+              543.0,
+              858.0
+            ],
+            [
+              586.0,
+              858.0
+            ],
+            [
+              586.0,
+              878.0
+            ],
+            [
+              543.0,
+              878.0
+            ]
+          ]
+        },
+        {
+          "cls_id": 15,
+          "label": "inline_formula",
+          "score": 0.64982670545578,
+          "coordinate": [
+            150,
+            906,
+            194,
+            927
+          ],
+          "order": 19,
+          "polygon_points": [
+            [
+              150.0,
+              906.0
+            ],
+            [
+              193.0,
+              906.0
+            ],
+            [
+              193.0,
+              926.0
+            ],
+            [
+              150.0,
+              926.0
+            ]
+          ]
+        },
+        {
+          "cls_id": 15,
+          "label": "inline_formula",
+          "score": 0.6797940731048584,
+          "coordinate": [
+            272,
+            927,
+            315,
+            949
+          ],
+          "order": 20,
+          "polygon_points": [
+            [
+              272.0,
+              927.0
+            ],
+            [
+              314.0,
+              927.0
+            ],
+            [
+              314.0,
+              948.0
+            ],
+            [
+              272.0,
+              948.0
+            ]
+          ]
+        },
+        {
+          "cls_id": 15,
+          "label": "inline_formula",
+          "score": 0.6337934732437134,
+          "coordinate": [
+            392,
+            973,
+            435,
+            996
+          ],
+          "order": 21,
+          "polygon_points": [
+            [
+              392.0,
+              973.0
+            ],
+            [
+              434.0,
+              973.0
+            ],
+            [
+              434.0,
+              995.0
+            ],
+            [
+              392.0,
+              995.0
+            ]
+          ]
+        },
+        {
+          "cls_id": 15,
+          "label": "inline_formula",
+          "score": 0.6754364371299744,
+          "coordinate": [
+            83,
+            1001,
+            105,
+            1022
+          ],
+          "order": 22,
+          "polygon_points": [
+            [
+              83.0,
+              1001.0
+            ],
+            [
+              104.0,
+              1001.0
+            ],
+            [
+              104.0,
+              1021.0
+            ],
+            [
+              83.0,
+              1021.0
+            ]
+          ]
+        },
+        {
+          "cls_id": 15,
+          "label": "inline_formula",
+          "score": 0.32593995332717896,
+          "coordinate": [
+            404,
+            1021,
+            418,
+            1043
+          ],
+          "order": 23,
+          "polygon_points": [
+            [
+              404.0,
+              1021.0
+            ],
+            [
+              417.0,
+              1021.0
+            ],
+            [
+              417.0,
+              1042.0
+            ],
+            [
+              404.0,
+              1042.0
+            ]
+          ]
+        },
+        {
+          "cls_id": 15,
+          "label": "inline_formula",
+          "score": 0.6634572744369507,
+          "coordinate": [
+            236,
+            1070,
+            278,
+            1093
+          ],
+          "order": 24,
+          "polygon_points": [
+            [
+              236.0,
+              1069.9998779296875
+            ],
+            [
+              277.0,
+              1069.9998779296875
+            ],
+            [
+              277.0,
+              1091.9998779296875
+            ],
+            [
+              236.0,
+              1091.9998779296875
+            ]
+          ]
+        },
+        {
+          "cls_id": 15,
+          "label": "inline_formula",
+          "score": 0.33201637864112854,
+          "coordinate": [
+            415,
+            1093,
+            433,
+            1114
+          ],
+          "order": 25,
+          "polygon_points": [
+            [
+              415.0,
+              1093.0
+            ],
+            [
+              432.0,
+              1093.0
+            ],
+            [
+              432.0,
+              1113.0
+            ],
+            [
+              415.0,
+              1113.0
+            ]
+          ]
+        },
+        {
+          "cls_id": 15,
+          "label": "inline_formula",
+          "score": 0.5516993403434753,
+          "coordinate": [
+            394,
+            1118,
+            411,
+            1139
+          ],
+          "order": 26,
+          "polygon_points": [
+            [
+              394.0,
+              1118.0
+            ],
+            [
+              410.0,
+              1118.0
+            ],
+            [
+              410.0,
+              1138.0
+            ],
+            [
+              394.0,
+              1138.0
+            ]
+          ]
+        },
+        {
+          "cls_id": 22,
+          "label": "text",
+          "score": 0.9338018298149109,
+          "coordinate": [
+            78,
+            1140,
+            593,
+            1235
+          ],
+          "order": 27,
+          "polygon_points": [
+            [
+              78.0,
+              1140.0
+            ],
+            [
+              593.0,
+              1140.0
+            ],
+            [
+              593.0,
+              1235.0
+            ],
+            [
+              78.0,
+              1235.0
+            ]
+          ]
+        },
+        {
+          "cls_id": 22,
+          "label": "text",
+          "score": 0.9274812340736389,
+          "coordinate": [
+            78,
+            1233,
+            593,
+            1328
+          ],
+          "order": 28,
+          "polygon_points": [
+            [
+              78,
+              1233
+            ],
+            [
+              78,
+              1327
+            ],
+            [
+              464,
+              1327
+            ],
+            [
+              494,
+              1327
+            ],
+            [
+              592,
+              1320
+            ],
+            [
+              592,
+              1233
+            ]
+          ]
+        },
+        {
+          "cls_id": 22,
+          "label": "text",
+          "score": 0.9523165822029114,
+          "coordinate": [
+            77,
+            1328,
+            592,
+            1472
+          ],
+          "order": 29,
+          "polygon_points": [
+            [
+              77.0,
+              1328.0
+            ],
+            [
+              592.0,
+              1328.0
+            ],
+            [
+              592.0,
+              1472.0
+            ],
+            [
+              77.0,
+              1472.0
+            ]
+          ]
+        },
+        {
+          "cls_id": 1,
+          "label": "algorithm",
+          "score": 0.9142029285430908,
+          "coordinate": [
+            633,
+            104,
+            1155,
+            446
+          ],
+          "order": 30,
+          "polygon_points": [
+            [
+              633.0,
+              104.0
+            ],
+            [
+              1155.0,
+              104.0
+            ],
+            [
+              1155.0,
+              446.0
+            ],
+            [
+              633.0,
+              446.0
+            ]
+          ]
+        },
+        {
+          "cls_id": 15,
+          "label": "inline_formula",
+          "score": 0.4950462877750397,
+          "coordinate": [
+            733,
+            112,
+            795,
+            136
+          ],
+          "order": 31,
+          "polygon_points": [
+            [
+              733,
+              112
+            ],
+            [
+              733,
+              135
+            ],
+            [
+              794,
+              135
+            ],
+            [
+              794,
+              112
+            ]
+          ]
+        },
+        {
+          "cls_id": 15,
+          "label": "inline_formula",
+          "score": 0.448824942111969,
+          "coordinate": [
+            863,
+            170,
+            883,
+            192
+          ],
+          "order": 32,
+          "polygon_points": [
+            [
+              863.0,
+              170.0
+            ],
+            [
+              882.0,
+              170.0
+            ],
+            [
+              882.0,
+              191.0
+            ],
+            [
+              863.0,
+              191.0
+            ]
+          ]
+        },
+        {
+          "cls_id": 15,
+          "label": "inline_formula",
+          "score": 0.5897603034973145,
+          "coordinate": [
+            897,
+            149,
+            917,
+            167
+          ],
+          "order": 33,
+          "polygon_points": [
+            [
+              897.0,
+              149.0
+            ],
+            [
+              916.0,
+              149.0
+            ],
+            [
+              916.0,
+              166.0
+            ],
+            [
+              897.0,
+              166.0
+            ]
+          ]
+        },
+        {
+          "cls_id": 15,
+          "label": "inline_formula",
+          "score": 0.6134368777275085,
+          "coordinate": [
+            667,
+            194,
+            736,
+            218
+          ],
+          "order": 34,
+          "polygon_points": [
+            [
+              667.0,
+              194.0
+            ],
+            [
+              735.0,
+              194.0
+            ],
+            [
+              735.0,
+              217.0
+            ],
+            [
+              667.0,
+              217.0
+            ]
+          ]
+        },
+        {
+          "cls_id": 15,
+          "label": "inline_formula",
+          "score": 0.730434775352478,
+          "coordinate": [
+            700,
+            218,
+            744,
+            239
+          ],
+          "order": 35,
+          "polygon_points": [
+            [
+              700.0,
+              218.0
+            ],
+            [
+              743.0,
+              218.0
+            ],
+            [
+              743.0,
+              238.0
+            ],
+            [
+              700.0,
+              238.0
+            ]
+          ]
+        },
+        {
+          "cls_id": 15,
+          "label": "inline_formula",
+          "score": 0.6037231087684631,
+          "coordinate": [
+            748,
+            245,
+            765,
+            265
+          ],
+          "order": 36,
+          "polygon_points": [
+            [
+              748.0,
+              245.0
+            ],
+            [
+              764.0,
+              245.0
+            ],
+            [
+              764.0,
+              264.0
+            ],
+            [
+              748.0,
+              264.0
+            ]
+          ]
+        },
+        {
+          "cls_id": 15,
+          "label": "inline_formula",
+          "score": 0.6362607479095459,
+          "coordinate": [
+            762,
+            269,
+            782,
+            289
+          ],
+          "order": 37,
+          "polygon_points": [
+            [
+              762.0,
+              269.0
+            ],
+            [
+              781.0,
+              269.0
+            ],
+            [
+              781.0,
+              288.0
+            ],
+            [
+              762.0,
+              288.0
+            ]
+          ]
+        },
+        {
+          "cls_id": 15,
+          "label": "inline_formula",
+          "score": 0.6877248287200928,
+          "coordinate": [
+            799,
+            290,
+            817,
+            313
+          ],
+          "order": 38,
+          "polygon_points": [
+            [
+              799.0,
+              290.0
+            ],
+            [
+              816.0,
+              290.0
+            ],
+            [
+              816.0,
+              312.0
+            ],
+            [
+              799.0,
+              312.0
+            ]
+          ]
+        },
+        {
+          "cls_id": 15,
+          "label": "inline_formula",
+          "score": 0.7851945757865906,
+          "coordinate": [
+            686,
+            310,
+            898,
+            360
+          ],
+          "order": 39,
+          "polygon_points": [
+            [
+              686,
+              310
+            ],
+            [
+              686,
+              359
+            ],
+            [
+              897,
+              359
+            ],
+            [
+              897,
+              319
+            ],
+            [
+              891,
+              310
+            ],
+            [
+              886,
+              310
+            ],
+            [
+              867,
+              310
+            ],
+            [
+              856,
+              310
+            ],
+            [
+              849,
+              310
+            ],
+            [
+              832,
+              310
+            ],
+            [
+              782,
+              310
+            ]
+          ]
+        },
+        {
+          "cls_id": 15,
+          "label": "inline_formula",
+          "score": 0.6311335563659668,
+          "coordinate": [
+            659,
+            385,
+            808,
+            415
+          ],
+          "order": 40,
+          "polygon_points": [
+            [
+              665.9999389648438,
+              385.0
+            ],
+            [
+              806.9999389648438,
+              385.0
+            ],
+            [
+              806.9999389648438,
+              414.0
+            ],
+            [
+              665.9999389648438,
+              414.0
+            ]
+          ]
+        },
+        {
+          "cls_id": 15,
+          "label": "inline_formula",
+          "score": 0.43663349747657776,
+          "coordinate": [
+            710,
+            415,
+            729,
+            438
+          ],
+          "order": 41,
+          "polygon_points": [
+            [
+              710.0,
+              415.0
+            ],
+            [
+              728.0,
+              415.0
+            ],
+            [
+              728.0,
+              437.0
+            ],
+            [
+              710.0,
+              437.0
+            ]
+          ]
+        },
+        {
+          "cls_id": 22,
+          "label": "text",
+          "score": 0.9554534554481506,
+          "coordinate": [
+            631,
+            522,
+            1157,
+            737
+          ],
+          "order": 42,
+          "polygon_points": [
+            [
+              631.0,
+              522.0
+            ],
+            [
+              1157.0,
+              522.0
+            ],
+            [
+              1157.0,
+              737.0
+            ],
+            [
+              631.0,
+              737.0
+            ]
+          ]
+        },
+        {
+          "cls_id": 15,
+          "label": "inline_formula",
+          "score": 0.3641708493232727,
+          "coordinate": [
+            1063,
+            619,
+            1082,
+            641
+          ],
+          "order": 43,
+          "polygon_points": [
+            [
+              1063,
+              619
+            ],
+            [
+              1063,
+              640
+            ],
+            [
+              1081,
+              640
+            ],
+            [
+              1081,
+              619
+            ]
+          ]
+        },
+        {
+          "cls_id": 22,
+          "label": "text",
+          "score": 0.9119013547897339,
+          "coordinate": [
+            632,
+            737,
+            1154,
+            809
+          ],
+          "order": 44,
+          "polygon_points": [
+            [
+              632.0,
+              737.0
+            ],
+            [
+              1154.0,
+              737.0
+            ],
+            [
+              1154.0,
+              809.0
+            ],
+            [
+              632.0,
+              809.0
+            ]
+          ]
+        },
+        {
+          "cls_id": 15,
+          "label": "inline_formula",
+          "score": 0.5363221168518066,
+          "coordinate": [
+            845,
+            739,
+            888,
+            759
+          ],
+          "order": 45,
+          "polygon_points": [
+            [
+              845,
+              739
+            ],
+            [
+              845,
+              758
+            ],
+            [
+              887,
+              758
+            ],
+            [
+              887,
+              739
+            ]
+          ]
+        },
+        {
+          "cls_id": 22,
+          "label": "text",
+          "score": 0.9463704824447632,
+          "coordinate": [
+            630,
+            809,
+            1155,
+            1001
+          ],
+          "order": 46,
+          "polygon_points": [
+            [
+              630.0,
+              809.0
+            ],
+            [
+              1155.0,
+              809.0
+            ],
+            [
+              1155.0,
+              1001.0
+            ],
+            [
+              630.0,
+              1001.0
+            ]
+          ]
+        },
+        {
+          "cls_id": 15,
+          "label": "inline_formula",
+          "score": 0.3902268707752228,
+          "coordinate": [
+            665,
+            786,
+            732,
+            807
+          ],
+          "order": 47,
+          "polygon_points": [
+            [
+              665.0,
+              786.0
+            ],
+            [
+              731.0,
+              786.0
+            ],
+            [
+              731.0,
+              806.0
+            ],
+            [
+              665.0,
+              806.0
+            ]
+          ]
+        },
+        {
+          "cls_id": 15,
+          "label": "inline_formula",
+          "score": 0.4731517732143402,
+          "coordinate": [
+            637,
+            928,
+            681,
+            950
+          ],
+          "order": 48,
+          "polygon_points": [
+            [
+              637.0,
+              928.0
+            ],
+            [
+              680.0,
+              928.0
+            ],
+            [
+              680.0,
+              949.0
+            ],
+            [
+              637.0,
+              949.0
+            ]
+          ]
+        },
+        {
+          "cls_id": 17,
+          "label": "paragraph_title",
+          "score": 0.7449149489402771,
+          "coordinate": [
+            634,
+            1025,
+            883,
+            1052
+          ],
+          "order": 49,
+          "polygon_points": [
+            [
+              634.0,
+              1025.0
+            ],
+            [
+              883.0,
+              1025.0
+            ],
+            [
+              883.0,
+              1052.0
+            ],
+            [
+              634.0,
+              1052.0
+            ]
+          ]
+        },
+        {
+          "cls_id": 17,
+          "label": "paragraph_title",
+          "score": 0.6811632513999939,
+          "coordinate": [
+            634,
+            1059,
+            783,
+            1084
+          ],
+          "order": 50,
+          "polygon_points": [
+            [
+              634.0,
+              1059.0
+            ],
+            [
+              783.0,
+              1059.0
+            ],
+            [
+              783.0,
+              1084.0
+            ],
+            [
+              634.0,
+              1084.0
+            ]
+          ]
+        },
+        {
+          "cls_id": 22,
+          "label": "text",
+          "score": 0.9328651428222656,
+          "coordinate": [
+            632,
+            1101,
+            1156,
+            1269
+          ],
+          "order": 51,
+          "polygon_points": [
+            [
+              632.0,
+              1101.0
+            ],
+            [
+              1156.0,
+              1101.0
+            ],
+            [
+              1156.0,
+              1269.0
+            ],
+            [
+              632.0,
+              1269.0
+            ]
+          ]
+        },
+        {
+          "cls_id": 22,
+          "label": "text",
+          "score": 0.9550579190254211,
+          "coordinate": [
+            631,
+            1278,
+            1154,
+            1471
+          ],
+          "order": 52,
+          "polygon_points": [
+            [
+              631.0,
+              1278.0
+            ],
+            [
+              1154.0,
+              1278.0
+            ],
+            [
+              1154.0,
+              1471.0
+            ],
+            [
+              631.0,
+              1471.0
+            ]
+          ]
+        },
+        {
+          "cls_id": 16,
+          "label": "number",
+          "score": 0.7081359028816223,
+          "coordinate": [
+            599,
+            1476,
+            623,
+            1492
+          ],
+          "order": 53,
+          "polygon_points": [
+            [
+              599.0,
+              1476.0
+            ],
+            [
+              622.0,
+              1476.0
+            ],
+            [
+              622.0,
+              1491.0
+            ],
+            [
+              599.0,
+              1491.0
+            ]
+          ]
+        }
+      ]
+    }
+  },
+  "markdown": {
+    "text": "Algorithm 1 GSA₁\n\nInput: Target model denoted as  $ \\epsilon_\\theta $ with N layers, a equidistantly selected set of timesteps K, and a sample x.\n\n1: for  $ t \\in K $ do\n2: Sample  $ \\epsilon_t $ from Gaussian distribution\n3: Compute  $ x_t $ based on Equation 1\n4: Compute loss  $ L_t $ from Equation 2\n5: end for\n\n6:  $ \\bar{L} \\leftarrow \\frac{1}{|K|} \\sum_{t \\in K} L_t $\n\n7:  $ \\mathcal{G} \\leftarrow \\left[ \\left\\| \\frac{\\partial \\bar{L}}{\\partial W_1} \\right\\|_2^2, \\cdots \\left\\| \\frac{\\partial \\bar{L}}{\\partial W_N} \\right\\|_2^2 \\right] $\n\nOutput:  $ \\mathcal{G} $\n\nmore time-efficient. To balance effectiveness and efficiency, we use equidistant sampling to derive a subsampled timestep set K from the total diffusion steps T. Following this, for the timesteps in K, we can aggregate the gradients or losses generated at each timestep using statistical methods such as the mean, median, or trimmed mean to produce the final output. If the values being aggregated are the gradients from each timestep, the output can be directly used as the final output. However, if the aggregated values are the losses, the processed loss value needs to be used in backpropagation to extract gradient information for the final output.\n\n### 3.3 Our Instantiations\n\nWe present two exemplary instantiations of the attack within the framework, representing two extreme points in the trade-off space between efficiency and effectiveness. We call them GSA₁ and GSA₂. GSA₁ performs more reduction, gaining efficiency but losing information. GSA₂ does less reduction, retaining effectiveness but at a cost to efficiency. In the GSA₁ method, although we equidistantly sample |K| timesteps from T, only a single gradient computation is required. This outcome is realized by in GSA₁ computing the loss, Lₜ, for each timestep present in K. Subsequently, we take the mean of these individual losses, represented as L, to perform backpropagation. This process eventually yields a solitary gradient vector. On the other hand, GSA₂ entails performing backpropagation and computing gradients for each timestep in K, and then using the mean of all gradient vectors, denoted as G, as the final output.\n\nNote that we only slightly optimize our two instantiations in this paper because they are already very effective. We leave more detailed investigations of the design space and more effective proposals as future work.\n\nBased on our detailed analysis of existing white-box attacks  $ [4, 27, 35] $, we first find that the optimal timesteps for mounting the most effective attacks vary depending on the specific dataset and diffusion model in question.\n\nConsequently, we adopt the equidistant sampling strategy to select sample timesteps from the range  $ [1, T] $, denoted by a set K. This approach is designed to encompass timesteps that can distinctly differentiate between member and non-member samples, avoiding an exclusive focus on timesteps that are either too early or too late.\n\nAlgorithm 2 GSA₂\n\nInput: Target model denoted as  $ \\epsilon_\\theta $ with N layers, a equidistantly selected set of timesteps K, and a sample x.\n\n1:  $ \\mathcal{G} \\leftarrow [  $$ \n2: for  $ t \\in K $ do\n3: Sample  $ \\epsilon_t $ from Gaussian distribution\n4: Compute  $ x_t $ based on Equation 1\n5: Compute loss  $ L_t $ from Equation 2\n6:  $ \\mathcal{G}_t = \\left[ \\left\\| \\frac{\\partial L_t}{\\partial W_1} \\right\\|_2^2, \\ldots \\left\\| \\frac{\\partial L_t}{\\partial W_N} \\right\\|_2^2 \\right] $\n7: end for\n8:  $ \\mathcal{G} \\leftarrow \\frac{1}{|K|} \\sum_{t \\in K} \\mathcal{G}_t $\n\nOutput:  $ \\mathcal{G} $\n\nAfter getting loss from each selected step, we use backpropagation to compute the gradients for the model. Given the diverse nature of gradients within a layer, we aggregate the model's gradient information on a per-layer basis. That is, once the gradient information for a layer's parameters is obtained, the  $ \\ell_{2} $-norm of these gradients is used as the representation for that layer's gradient information. This approach offers a dual advantage: it substantially reduces computational overhead while also holistically encapsulating that layer's gradient information.\n\nThis forms the basis of GSA₂ (given in Algorithm 2): for each timestep t in the set K, we calculate the per-layer gradient using the  $ \\ell_2 $-norm, and then find their average.\n\nHowever, this approach can still incur substantial computational costs when applied to large diffusion models and datasets — taking nearly 6 hours to execute on Imagen. To address this inefficiency, we preprocess the loss values from multiple timesteps before doing gradient computation. In light of this challenge, we introduce GSA₁ (outlined in Algorithm 1), which reduces the gradient extraction time for the Imagen model to less than 2 hours, significantly decreasing the computational time required.\n\n## 4 Experimental Setup\n\n### 4.1 Datasets\n\nWe use CIFAR-10, ImageNet, and MS COCO datasets. The use of CIFAR-10 allows for an easier comparison of attack results as it has been frequently employed in previous work [4, 12, 30, 35]. Both ImageNet and MS COCO serve as significant target datasets in the domain of image generation, with MS COCO used for training in various tasks, such as VQ-diffusion [18], Parti Finetuned [66], U-ViT-S/2 [2], and Imagen [48].\n\nImageNet dataset is a large-scale and diverse collection of images designed for image classification and object recognition tasks in the fields of machine learning and computer vision. When conducting experiments with the ImageNet dataset, researchers typically utilize a specific subset consisting of 1.2 million images for training and 50,000 images for validation, while an additional 100,000 images are reserved for testing. Considering the constraints on training resources and to ensure diversity in the training images, we opt",
+    "images": {}
+  },
+  "outputImages": {
+    "layout_det_res": "https://pplines-online.bj.bcebos.com/deploy/official/paddleocr/pp-ocr-vl-15//be89aefa-2ad6-4789-859d-51acf964ae99/layout_det_res_0.jpg?authorization=bce-auth-v1%2FALTAKzReLNvew3ySINYJ0fuAMN%2F2026-04-05T12%3A41%3A12Z%2F-1%2F%2Fd7af68c6b6a506b2e990867a3aa2e7e70b38dd3df06a5623775e2f6fa586325c"
+  },
+  "inputImage": "https://pplines-online.bj.bcebos.com/deploy/official/paddleocr/pp-ocr-vl-15//be89aefa-2ad6-4789-859d-51acf964ae99/input_img_0.jpg?authorization=bce-auth-v1%2FALTAKzReLNvew3ySINYJ0fuAMN%2F2026-04-05T12%3A41%3A13Z%2F-1%2F%2F321d0f79cf32b8229d47aa52d8608ea80a0173878bebf416a205641896d2d73b"
+}

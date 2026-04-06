@@ -1,0 +1,1655 @@
+{
+  "prunedResult": {
+    "page_count": 5,
+    "width": 1224,
+    "height": 1584,
+    "model_settings": {
+      "use_doc_preprocessor": true,
+      "use_layout_detection": true,
+      "use_chart_recognition": false,
+      "use_seal_recognition": false,
+      "use_ocr_for_image_block": false,
+      "format_block_content": false,
+      "merge_layout_blocks": true,
+      "markdown_ignore_labels": [
+        "number",
+        "footnote",
+        "header",
+        "header_image",
+        "footer",
+        "footer_image",
+        "aside_text"
+      ],
+      "return_layout_polygon_points": true
+    },
+    "parsing_res_list": [
+      {
+        "block_label": "header",
+        "block_content": "Proceedings on Privacy Enhancing Technologies 2025(2)",
+        "block_bbox": [
+          67,
+          50,
+          424,
+          84
+        ],
+        "block_id": 0,
+        "block_order": null,
+        "group_id": 0,
+        "global_block_id": 128,
+        "global_group_id": 128,
+        "block_polygon_points": [
+          [
+            67.04039001464844,
+            48.79465103149414
+          ],
+          [
+            423.74578857421875,
+            60.751251220703125
+          ],
+          [
+            422.83612060546875,
+            87.88836669921875
+          ],
+          [
+            66.13075256347656,
+            75.9317626953125
+          ]
+        ]
+      },
+      {
+        "block_label": "header",
+        "block_content": "Yan Pang, Tianhao Wang, Xuhui Kang, Mengdi Huai, and Yang Zhang",
+        "block_bbox": [
+          727,
+          64,
+          1168,
+          92
+        ],
+        "block_id": 1,
+        "block_order": null,
+        "group_id": 1,
+        "global_block_id": 129,
+        "global_group_id": 129,
+        "block_polygon_points": [
+          [
+            727.0,
+            64.0
+          ],
+          [
+            1168.0,
+            64.0
+          ],
+          [
+            1168.0,
+            92.0
+          ],
+          [
+            727.0,
+            92.0
+          ]
+        ]
+      },
+      {
+        "block_label": "chart",
+        "block_content": "",
+        "block_bbox": [
+          82,
+          116,
+          436,
+          342
+        ],
+        "block_id": 2,
+        "block_order": null,
+        "group_id": 2,
+        "global_block_id": 130,
+        "global_group_id": 130,
+        "block_polygon_points": [
+          [
+            82.0,
+            116.0
+          ],
+          [
+            436.0,
+            116.0
+          ],
+          [
+            436.0,
+            342.0
+          ],
+          [
+            82.0,
+            342.0
+          ]
+        ]
+      },
+      {
+        "block_label": "chart",
+        "block_content": "",
+        "block_bbox": [
+          439,
+          127,
+          793,
+          340
+        ],
+        "block_id": 3,
+        "block_order": null,
+        "group_id": 3,
+        "global_block_id": 131,
+        "global_group_id": 131,
+        "block_polygon_points": [
+          [
+            439.0,
+            127.0
+          ],
+          [
+            793.0,
+            127.0
+          ],
+          [
+            793.0,
+            340.0
+          ],
+          [
+            439.0,
+            340.0
+          ]
+        ]
+      },
+      {
+        "block_label": "chart",
+        "block_content": "",
+        "block_bbox": [
+          794,
+          129,
+          1150,
+          342
+        ],
+        "block_id": 4,
+        "block_order": null,
+        "group_id": 4,
+        "global_block_id": 132,
+        "global_group_id": 132,
+        "block_polygon_points": [
+          [
+            794.0,
+            129.0
+          ],
+          [
+            1150.0,
+            129.0
+          ],
+          [
+            1150.0,
+            342.0
+          ],
+          [
+            794.0,
+            342.0
+          ]
+        ]
+      },
+      {
+        "block_label": "figure_title",
+        "block_content": "Figure 2: Loss distribution for member vs. non-member samples across CIFAR-10, ImageNet, and MS COCO (from left to right), used by existing work [4, 27, 35]. Models use default settings from Table 3.",
+        "block_bbox": [
+          77,
+          368,
+          1155,
+          422
+        ],
+        "block_id": 5,
+        "block_order": null,
+        "group_id": 5,
+        "global_block_id": 133,
+        "global_group_id": 133,
+        "block_polygon_points": [
+          [
+            77.0,
+            368.0
+          ],
+          [
+            1155.0,
+            368.0
+          ],
+          [
+            1155.0,
+            422.0
+          ],
+          [
+            77.0,
+            422.0
+          ]
+        ]
+      },
+      {
+        "block_label": "text",
+        "block_content": "to utilize the ImageNet test set as the training set for training the models in our work.",
+        "block_bbox": [
+          77,
+          454,
+          592,
+          506
+        ],
+        "block_id": 6,
+        "block_order": 1,
+        "group_id": 6,
+        "global_block_id": 134,
+        "global_group_id": 134,
+        "block_polygon_points": [
+          [
+            77.0,
+            454.0
+          ],
+          [
+            592.0,
+            454.0
+          ],
+          [
+            592.0,
+            506.0
+          ],
+          [
+            77.0,
+            506.0
+          ]
+        ]
+      },
+      {
+        "block_label": "text",
+        "block_content": "CIFAR-10 dataset comprises 10 categories of  $ 32 \\times 32 $ color images, with each category containing 6,000 images. These categories include airplanes, automobiles, birds, cats, deer, dogs, frogs, horses, ships, and trucks. In total, the dataset consists of 60,000 images, of which 50,000 are designated for training and 10,000 for testing. The CIFAR-10 dataset is commonly employed as a benchmark for image classification and object recognition tasks in the fields of machine learning and computer vision.",
+        "block_bbox": [
+          77,
+          514,
+          594,
+          710
+        ],
+        "block_id": 7,
+        "block_order": 2,
+        "group_id": 7,
+        "global_block_id": 135,
+        "global_group_id": 135,
+        "block_polygon_points": [
+          [
+            77.0,
+            514.0
+          ],
+          [
+            594.0,
+            514.0
+          ],
+          [
+            594.0,
+            710.0
+          ],
+          [
+            77.0,
+            710.0
+          ]
+        ]
+      },
+      {
+        "block_label": "text",
+        "block_content": "MS COCO dataset contains over 200,000 labeled high-resolution images collected from the internet, with a total of 1.5 million object instances and 80 different object categories. The categories cover a wide range of common objects, including people, animals, vehicles, and household items, among others. The MS COCO dataset is noteworthy for its diversity and the complexity of its images and annotations. Images in the MS COCO dataset depict a wide variety of scenes and object layouts. In this experiment, we utilize all images from the MS COCO training set for model training. The first caption from the five associated with each image is selected as the corresponding textual description.",
+        "block_bbox": [
+          77,
+          717,
+          592,
+          980
+        ],
+        "block_id": 8,
+        "block_order": 3,
+        "group_id": 8,
+        "global_block_id": 136,
+        "global_group_id": 136,
+        "block_polygon_points": [
+          [
+            77.0,
+            717.0
+          ],
+          [
+            592.0,
+            717.0
+          ],
+          [
+            592.0,
+            980.0
+          ],
+          [
+            77.0,
+            980.0
+          ]
+        ]
+      },
+      {
+        "block_label": "paragraph_title",
+        "block_content": "4.2 Training Setup",
+        "block_bbox": [
+          76,
+          995,
+          291,
+          1025
+        ],
+        "block_id": 9,
+        "block_order": 4,
+        "group_id": 9,
+        "global_block_id": 137,
+        "global_group_id": 137,
+        "block_polygon_points": [
+          [
+            76.0,
+            995.0
+          ],
+          [
+            291.0,
+            995.0
+          ],
+          [
+            291.0,
+            1025.0
+          ],
+          [
+            76.0,
+            1025.0
+          ]
+        ]
+      },
+      {
+        "block_label": "figure_title",
+        "block_content": "Table 3: Default parameters used for the experiments.",
+        "block_bbox": [
+          99,
+          1047,
+          565,
+          1075
+        ],
+        "block_id": 10,
+        "block_order": null,
+        "group_id": 10,
+        "global_block_id": 138,
+        "global_group_id": 138,
+        "block_polygon_points": [
+          [
+            99.0,
+            1047.0
+          ],
+          [
+            565.0,
+            1047.0
+          ],
+          [
+            565.0,
+            1075.0
+          ],
+          [
+            99.0,
+            1075.0
+          ]
+        ]
+      },
+      {
+        "block_label": "table",
+        "block_content": "<table><tr><td>Parameters</td><td>Unconditional Diffusion</td><td>Unconditional Diffusion</td><td>Imagen</td></tr><tr><td>Channels</td><td>128</td><td>128</td><td>128</td></tr><tr><td>Diffusion steps</td><td>1000</td><td>1000</td><td>1000</td></tr><tr><td>Dataset</td><td>CIFAR-10</td><td>ImageNet</td><td>MS COCO</td></tr><tr><td>Training data size</td><td>8000</td><td>8000</td><td>30000</td></tr><tr><td>Resolution</td><td>32</td><td>64</td><td>64</td></tr><tr><td>Learning rate</td><td>$ 1 \\times 10^{-4} $</td><td>$ 1 \\times 10^{-4} $</td><td>$ 1 \\times 10^{-4} $</td></tr><tr><td>Batch size</td><td>64</td><td>64</td><td>64</td></tr><tr><td>Noise schedule</td><td>linear</td><td>linear</td><td>linear, cosine</td></tr><tr><td>Learning rate schedule</td><td>cosine</td><td>cosine</td><td>cosine</td></tr><tr><td>Training time</td><td>400 epochs</td><td>400 epochs</td><td>600,000 steps</td></tr></table>",
+        "block_bbox": [
+          81,
+          1094,
+          582,
+          1368
+        ],
+        "block_id": 11,
+        "block_order": null,
+        "group_id": 11,
+        "global_block_id": 139,
+        "global_group_id": 139,
+        "block_polygon_points": [
+          [
+            81.0,
+            1094.0
+          ],
+          [
+            582.0,
+            1094.0
+          ],
+          [
+            582.0,
+            1368.0
+          ],
+          [
+            81.0,
+            1368.0
+          ]
+        ]
+      },
+      {
+        "block_label": "text",
+        "block_content": "We tabulated the default training parameters for the unconditional diffusion model on CIFAR-10 and ImageNet, and for Imagen on MS COCO, in Table 3. Given that we have employed ASR (Accuracy) as our evaluation metric, we endeavor to maintain a balance between the quantities of the member set and the non-member set to ensure the precision of model validation. The structure for the unconditional diffusion model aligns with those from the diffusers library [60] in Huggingface. Imagen is based on the open-source implementation by Phil Wang et al. $ ^{3} $, and we have retained consistency in its configuration. All experiments were conducted using two NVIDIA A100 GPUs.",
+        "block_bbox": [
+          74,
+          1380,
+          587,
+          1488
+        ],
+        "block_id": 12,
+        "block_order": 5,
+        "group_id": 12,
+        "global_block_id": 140,
+        "global_group_id": 140,
+        "block_polygon_points": [
+          [
+            74.16323852539062,
+            1379.021240234375
+          ],
+          [
+            587.666259765625,
+            1388.357666015625
+          ],
+          [
+            585.8267822265625,
+            1489.524169921875
+          ],
+          [
+            72.32382202148438,
+            1480.187744140625
+          ]
+        ]
+      },
+      {
+        "block_label": "text",
+        "block_content": "",
+        "block_bbox": [
+          630,
+          457,
+          1154,
+          625
+        ],
+        "block_id": 13,
+        "block_order": 6,
+        "group_id": 12,
+        "global_block_id": 141,
+        "global_group_id": 141,
+        "block_polygon_points": [
+          [
+            630.0,
+            457.0
+          ],
+          [
+            1154.0,
+            457.0
+          ],
+          [
+            1154.0,
+            625.0
+          ],
+          [
+            630.0,
+            625.0
+          ]
+        ]
+      },
+      {
+        "block_label": "paragraph_title",
+        "block_content": "4.3 Metrics",
+        "block_bbox": [
+          632,
+          643,
+          772,
+          669
+        ],
+        "block_id": 14,
+        "block_order": 7,
+        "group_id": 14,
+        "global_block_id": 142,
+        "global_group_id": 142,
+        "block_polygon_points": [
+          [
+            632.0,
+            643.0
+          ],
+          [
+            772.0,
+            643.0
+          ],
+          [
+            772.0,
+            669.0
+          ],
+          [
+            632.0,
+            669.0
+          ]
+        ]
+      },
+      {
+        "block_label": "text",
+        "block_content": "In the process of comparing experimental results, we employ Attack Success Rate (ASR) [6], Area Under the ROC Curve (AUC), and True-Positive Rate (TPR) values under fixed low False-Positive Rate (FPR) as evaluation metrics.",
+        "block_bbox": [
+          629,
+          680,
+          1154,
+          776
+        ],
+        "block_id": 15,
+        "block_order": 8,
+        "group_id": 15,
+        "global_block_id": 143,
+        "global_group_id": 143,
+        "block_polygon_points": [
+          [
+            629.0,
+            680.0
+          ],
+          [
+            1154.0,
+            680.0
+          ],
+          [
+            1154.0,
+            776.0
+          ],
+          [
+            629.0,
+            776.0
+          ]
+        ]
+      },
+      {
+        "block_label": "text",
+        "block_content": "In our experiments, we ensure an equal number of member and non-member image samples. Given the balanced nature of our dataset and the stability of ASR in such contexts, we employ ASR as our primary evaluation metric.",
+        "block_bbox": [
+          629,
+          775,
+          1154,
+          872
+        ],
+        "block_id": 16,
+        "block_order": 9,
+        "group_id": 16,
+        "global_block_id": 144,
+        "global_group_id": 144,
+        "block_polygon_points": [
+          [
+            629,
+            775
+          ],
+          [
+            629,
+            871
+          ],
+          [
+            1147,
+            871
+          ],
+          [
+            1153,
+            855
+          ],
+          [
+            1147,
+            847
+          ],
+          [
+            1153,
+            831
+          ],
+          [
+            1153,
+            775
+          ]
+        ]
+      },
+      {
+        "block_label": "text",
+        "block_content": "We note that most instances MIAs on diffusion models use the AUC metric for evaluation [4, 12, 27, 30, 35]. Likewise, in assessing the merits of our work in Section 5.1, we will also use AUC as one of our assessment metrics. Additionally, as Carlini et al. [3] argued that TPR under a low FPR scenario is a key evaluation criterion, we also use TPR at 1% FPR and 0.1% FPR, respectively.",
+        "block_bbox": [
+          628,
+          869,
+          1154,
+          1017
+        ],
+        "block_id": 17,
+        "block_order": 10,
+        "group_id": 17,
+        "global_block_id": 145,
+        "global_group_id": 145,
+        "block_polygon_points": [
+          [
+            628,
+            869
+          ],
+          [
+            628,
+            1016
+          ],
+          [
+            1147,
+            1016
+          ],
+          [
+            1153,
+            975
+          ],
+          [
+            1147,
+            869
+          ]
+        ]
+      },
+      {
+        "block_label": "paragraph_title",
+        "block_content": "5 Evaluation Results",
+        "block_bbox": [
+          631,
+          1033,
+          873,
+          1061
+        ],
+        "block_id": 18,
+        "block_order": 11,
+        "group_id": 18,
+        "global_block_id": 146,
+        "global_group_id": 146,
+        "block_polygon_points": [
+          [
+            631.0,
+            1033.0
+          ],
+          [
+            873.0,
+            1033.0
+          ],
+          [
+            873.0,
+            1061.0
+          ],
+          [
+            631.0,
+            1061.0
+          ]
+        ]
+      },
+      {
+        "block_label": "paragraph_title",
+        "block_content": "5.1 Comparison with Existing Methods",
+        "block_bbox": [
+          631,
+          1069,
+          1068,
+          1100
+        ],
+        "block_id": 19,
+        "block_order": 12,
+        "group_id": 19,
+        "global_block_id": 147,
+        "global_group_id": 147,
+        "block_polygon_points": [
+          [
+            631.0,
+            1069.0
+          ],
+          [
+            1068.0,
+            1069.0
+          ],
+          [
+            1068.0,
+            1100.0
+          ],
+          [
+            631.0,
+            1100.0
+          ]
+        ]
+      },
+      {
+        "block_label": "figure_title",
+        "block_content": "Table 4: Existing white-box attacks on the CIFAR-10 dataset are benchmarked using four distinct metrics. LiRA $ ^{*} $, LSA $ ^{*} $, GSA $ _{1} $, and GSA $ _{2} $ are all obtained under the same conditions.",
+        "block_bbox": [
+          627,
+          1134,
+          1157,
+          1216
+        ],
+        "block_id": 20,
+        "block_order": null,
+        "group_id": 20,
+        "global_block_id": 148,
+        "global_group_id": 148,
+        "block_polygon_points": [
+          [
+            633.9999389648438,
+            1134.0
+          ],
+          [
+            1157.118408203125,
+            1142.01708984375
+          ],
+          [
+            1155.999755859375,
+            1215.0
+          ],
+          [
+            632.8814086914062,
+            1206.98291015625
+          ]
+        ]
+      },
+      {
+        "block_label": "table",
+        "block_content": "<table><tr><td rowspan=\"2\">Attack method</td><td colspan=\"4\">CIFAR-10</td></tr><tr><td>ASR $ ^{\\dagger} $</td><td>AUC $ ^{\\dagger} $</td><td>TPR@1%FPR(\\%)^{ $ \\dagger $}</td><td>TPR@0.1%FPR(\\%)^{ $ \\dagger $}</td></tr><tr><td>Baseline</td><td>0.736</td><td>0.801</td><td>5.65</td><td>-</td></tr><tr><td>LiRA</td><td>-</td><td>0.982</td><td>5(5M) 99(102M)</td><td>7.1</td></tr><tr><td>Strong LiRA</td><td>-</td><td>0.997</td><td>-</td><td>29.4</td></tr><tr><td>LiRA $ ^{*} $</td><td>0.626</td><td>0.71</td><td>1.45</td><td>0.25</td></tr><tr><td>LSA $ ^{*} $</td><td>0.83</td><td>0.909</td><td>13.77</td><td>0.925</td></tr><tr><td>GSA $ _{1} $</td><td>0.993</td><td>0.999</td><td>99.7</td><td>82.9</td></tr><tr><td>GSA $ _{2} $</td><td>0.988</td><td>0.999</td><td>97.88</td><td>58.57</td></tr></table>",
+        "block_bbox": [
+          637,
+          1230,
+          1161,
+          1467
+        ],
+        "block_id": 21,
+        "block_order": null,
+        "group_id": 21,
+        "global_block_id": 149,
+        "global_group_id": 149,
+        "block_polygon_points": [
+          [
+            637.2391357421875,
+            1229.6627197265625
+          ],
+          [
+            1166.343017578125,
+            1244.8377685546875
+          ],
+          [
+            1159.9998779296875,
+            1466.0001220703125
+          ],
+          [
+            630.89599609375,
+            1450.8250732421875
+          ]
+        ]
+      },
+      {
+        "block_label": "vision_footnote",
+        "block_content": " $ ^{3} $Code available at https://github.com/lucidrains/imagen-pytorch",
+        "block_bbox": [
+          628,
+          1467,
+          1044,
+          1505
+        ],
+        "block_id": 22,
+        "block_order": null,
+        "group_id": 22,
+        "global_block_id": 150,
+        "global_group_id": 150,
+        "block_polygon_points": [
+          [
+            628.1243286132812,
+            1464.2486572265625
+          ],
+          [
+            1043.947265625,
+            1483.0428466796875
+          ],
+          [
+            1042.696044921875,
+            1510.7264404296875
+          ],
+          [
+            626.8731079101562,
+            1491.9322509765625
+          ]
+        ]
+      },
+      {
+        "block_label": "number",
+        "block_content": "404",
+        "block_bbox": [
+          592,
+          1495,
+          619,
+          1511
+        ],
+        "block_id": 23,
+        "block_order": null,
+        "group_id": 23,
+        "global_block_id": 151,
+        "global_group_id": 151,
+        "block_polygon_points": [
+          [
+            592.0,
+            1495.0
+          ],
+          [
+            618.0,
+            1495.0
+          ],
+          [
+            618.0,
+            1510.0
+          ],
+          [
+            592.0,
+            1510.0
+          ]
+        ]
+      }
+    ],
+    "doc_preprocessor_res": {
+      "model_settings": {
+        "use_doc_orientation_classify": true,
+        "use_doc_unwarping": true
+      },
+      "angle": 0
+    },
+    "layout_det_res": {
+      "boxes": [
+        {
+          "cls_id": 12,
+          "label": "header",
+          "score": 0.8890795707702637,
+          "coordinate": [
+            67,
+            50,
+            424,
+            84
+          ],
+          "order": null,
+          "polygon_points": [
+            [
+              67.04039001464844,
+              48.79465103149414
+            ],
+            [
+              423.74578857421875,
+              60.751251220703125
+            ],
+            [
+              422.83612060546875,
+              87.88836669921875
+            ],
+            [
+              66.13075256347656,
+              75.9317626953125
+            ]
+          ]
+        },
+        {
+          "cls_id": 12,
+          "label": "header",
+          "score": 0.8725345134735107,
+          "coordinate": [
+            727,
+            64,
+            1168,
+            92
+          ],
+          "order": null,
+          "polygon_points": [
+            [
+              727.0,
+              64.0
+            ],
+            [
+              1168.0,
+              64.0
+            ],
+            [
+              1168.0,
+              92.0
+            ],
+            [
+              727.0,
+              92.0
+            ]
+          ]
+        },
+        {
+          "cls_id": 3,
+          "label": "chart",
+          "score": 0.9474044442176819,
+          "coordinate": [
+            82,
+            116,
+            436,
+            342
+          ],
+          "order": null,
+          "polygon_points": [
+            [
+              82.0,
+              116.0
+            ],
+            [
+              436.0,
+              116.0
+            ],
+            [
+              436.0,
+              342.0
+            ],
+            [
+              82.0,
+              342.0
+            ]
+          ]
+        },
+        {
+          "cls_id": 3,
+          "label": "chart",
+          "score": 0.9565820693969727,
+          "coordinate": [
+            439,
+            127,
+            793,
+            340
+          ],
+          "order": null,
+          "polygon_points": [
+            [
+              439.0,
+              127.0
+            ],
+            [
+              793.0,
+              127.0
+            ],
+            [
+              793.0,
+              340.0
+            ],
+            [
+              439.0,
+              340.0
+            ]
+          ]
+        },
+        {
+          "cls_id": 3,
+          "label": "chart",
+          "score": 0.9525377750396729,
+          "coordinate": [
+            794,
+            129,
+            1150,
+            342
+          ],
+          "order": null,
+          "polygon_points": [
+            [
+              794.0,
+              129.0
+            ],
+            [
+              1150.0,
+              129.0
+            ],
+            [
+              1150.0,
+              342.0
+            ],
+            [
+              794.0,
+              342.0
+            ]
+          ]
+        },
+        {
+          "cls_id": 7,
+          "label": "figure_title",
+          "score": 0.9075525403022766,
+          "coordinate": [
+            77,
+            368,
+            1155,
+            422
+          ],
+          "order": null,
+          "polygon_points": [
+            [
+              77.0,
+              368.0
+            ],
+            [
+              1155.0,
+              368.0
+            ],
+            [
+              1155.0,
+              422.0
+            ],
+            [
+              77.0,
+              422.0
+            ]
+          ]
+        },
+        {
+          "cls_id": 22,
+          "label": "text",
+          "score": 0.8880710601806641,
+          "coordinate": [
+            77,
+            454,
+            592,
+            506
+          ],
+          "order": 1,
+          "polygon_points": [
+            [
+              77.0,
+              454.0
+            ],
+            [
+              592.0,
+              454.0
+            ],
+            [
+              592.0,
+              506.0
+            ],
+            [
+              77.0,
+              506.0
+            ]
+          ]
+        },
+        {
+          "cls_id": 22,
+          "label": "text",
+          "score": 0.9545748233795166,
+          "coordinate": [
+            77,
+            514,
+            594,
+            710
+          ],
+          "order": 2,
+          "polygon_points": [
+            [
+              77.0,
+              514.0
+            ],
+            [
+              594.0,
+              514.0
+            ],
+            [
+              594.0,
+              710.0
+            ],
+            [
+              77.0,
+              710.0
+            ]
+          ]
+        },
+        {
+          "cls_id": 22,
+          "label": "text",
+          "score": 0.9584589600563049,
+          "coordinate": [
+            77,
+            717,
+            592,
+            980
+          ],
+          "order": 3,
+          "polygon_points": [
+            [
+              77.0,
+              717.0
+            ],
+            [
+              592.0,
+              717.0
+            ],
+            [
+              592.0,
+              980.0
+            ],
+            [
+              77.0,
+              980.0
+            ]
+          ]
+        },
+        {
+          "cls_id": 17,
+          "label": "paragraph_title",
+          "score": 0.8543128371238708,
+          "coordinate": [
+            76,
+            995,
+            291,
+            1025
+          ],
+          "order": 4,
+          "polygon_points": [
+            [
+              76.0,
+              995.0
+            ],
+            [
+              291.0,
+              995.0
+            ],
+            [
+              291.0,
+              1025.0
+            ],
+            [
+              76.0,
+              1025.0
+            ]
+          ]
+        },
+        {
+          "cls_id": 7,
+          "label": "figure_title",
+          "score": 0.8517665863037109,
+          "coordinate": [
+            99,
+            1047,
+            565,
+            1075
+          ],
+          "order": null,
+          "polygon_points": [
+            [
+              99.0,
+              1047.0
+            ],
+            [
+              565.0,
+              1047.0
+            ],
+            [
+              565.0,
+              1075.0
+            ],
+            [
+              99.0,
+              1075.0
+            ]
+          ]
+        },
+        {
+          "cls_id": 21,
+          "label": "table",
+          "score": 0.958276093006134,
+          "coordinate": [
+            81,
+            1094,
+            582,
+            1368
+          ],
+          "order": null,
+          "polygon_points": [
+            [
+              81.0,
+              1094.0
+            ],
+            [
+              582.0,
+              1094.0
+            ],
+            [
+              582.0,
+              1368.0
+            ],
+            [
+              81.0,
+              1368.0
+            ]
+          ]
+        },
+        {
+          "cls_id": 22,
+          "label": "text",
+          "score": 0.9129115343093872,
+          "coordinate": [
+            74,
+            1380,
+            587,
+            1488
+          ],
+          "order": 5,
+          "polygon_points": [
+            [
+              74.16323852539062,
+              1379.021240234375
+            ],
+            [
+              587.666259765625,
+              1388.357666015625
+            ],
+            [
+              585.8267822265625,
+              1489.524169921875
+            ],
+            [
+              72.32382202148438,
+              1480.187744140625
+            ]
+          ]
+        },
+        {
+          "cls_id": 22,
+          "label": "text",
+          "score": 0.9479663372039795,
+          "coordinate": [
+            630,
+            457,
+            1154,
+            625
+          ],
+          "order": 6,
+          "polygon_points": [
+            [
+              630.0,
+              457.0
+            ],
+            [
+              1154.0,
+              457.0
+            ],
+            [
+              1154.0,
+              625.0
+            ],
+            [
+              630.0,
+              625.0
+            ]
+          ]
+        },
+        {
+          "cls_id": 17,
+          "label": "paragraph_title",
+          "score": 0.8215861916542053,
+          "coordinate": [
+            632,
+            643,
+            772,
+            669
+          ],
+          "order": 7,
+          "polygon_points": [
+            [
+              632.0,
+              643.0
+            ],
+            [
+              772.0,
+              643.0
+            ],
+            [
+              772.0,
+              669.0
+            ],
+            [
+              632.0,
+              669.0
+            ]
+          ]
+        },
+        {
+          "cls_id": 22,
+          "label": "text",
+          "score": 0.9375739097595215,
+          "coordinate": [
+            629,
+            680,
+            1154,
+            776
+          ],
+          "order": 8,
+          "polygon_points": [
+            [
+              629.0,
+              680.0
+            ],
+            [
+              1154.0,
+              680.0
+            ],
+            [
+              1154.0,
+              776.0
+            ],
+            [
+              629.0,
+              776.0
+            ]
+          ]
+        },
+        {
+          "cls_id": 22,
+          "label": "text",
+          "score": 0.9384451508522034,
+          "coordinate": [
+            629,
+            775,
+            1154,
+            872
+          ],
+          "order": 9,
+          "polygon_points": [
+            [
+              629,
+              775
+            ],
+            [
+              629,
+              871
+            ],
+            [
+              1147,
+              871
+            ],
+            [
+              1153,
+              855
+            ],
+            [
+              1147,
+              847
+            ],
+            [
+              1153,
+              831
+            ],
+            [
+              1153,
+              775
+            ]
+          ]
+        },
+        {
+          "cls_id": 22,
+          "label": "text",
+          "score": 0.9443827271461487,
+          "coordinate": [
+            628,
+            869,
+            1154,
+            1017
+          ],
+          "order": 10,
+          "polygon_points": [
+            [
+              628,
+              869
+            ],
+            [
+              628,
+              1016
+            ],
+            [
+              1147,
+              1016
+            ],
+            [
+              1153,
+              975
+            ],
+            [
+              1147,
+              869
+            ]
+          ]
+        },
+        {
+          "cls_id": 17,
+          "label": "paragraph_title",
+          "score": 0.828640341758728,
+          "coordinate": [
+            631,
+            1033,
+            873,
+            1061
+          ],
+          "order": 11,
+          "polygon_points": [
+            [
+              631.0,
+              1033.0
+            ],
+            [
+              873.0,
+              1033.0
+            ],
+            [
+              873.0,
+              1061.0
+            ],
+            [
+              631.0,
+              1061.0
+            ]
+          ]
+        },
+        {
+          "cls_id": 17,
+          "label": "paragraph_title",
+          "score": 0.8282321691513062,
+          "coordinate": [
+            631,
+            1069,
+            1068,
+            1100
+          ],
+          "order": 12,
+          "polygon_points": [
+            [
+              631.0,
+              1069.0
+            ],
+            [
+              1068.0,
+              1069.0
+            ],
+            [
+              1068.0,
+              1100.0
+            ],
+            [
+              631.0,
+              1100.0
+            ]
+          ]
+        },
+        {
+          "cls_id": 7,
+          "label": "figure_title",
+          "score": 0.9082924127578735,
+          "coordinate": [
+            627,
+            1134,
+            1157,
+            1216
+          ],
+          "order": null,
+          "polygon_points": [
+            [
+              633.9999389648438,
+              1134.0
+            ],
+            [
+              1157.118408203125,
+              1142.01708984375
+            ],
+            [
+              1155.999755859375,
+              1215.0
+            ],
+            [
+              632.8814086914062,
+              1206.98291015625
+            ]
+          ]
+        },
+        {
+          "cls_id": 15,
+          "label": "inline_formula",
+          "score": 0.5088517665863037,
+          "coordinate": [
+            634,
+            1183,
+            682,
+            1206
+          ],
+          "order": 13,
+          "polygon_points": [
+            [
+              634,
+              1183
+            ],
+            [
+              634,
+              1205
+            ],
+            [
+              681,
+              1205
+            ],
+            [
+              681,
+              1183
+            ]
+          ]
+        },
+        {
+          "cls_id": 15,
+          "label": "inline_formula",
+          "score": 0.5969842672348022,
+          "coordinate": [
+            724,
+            1183,
+            771,
+            1207
+          ],
+          "order": 14,
+          "polygon_points": [
+            [
+              724.0,
+              1183.0
+            ],
+            [
+              770.0,
+              1183.0
+            ],
+            [
+              770.0,
+              1206.0
+            ],
+            [
+              724.0,
+              1206.0
+            ]
+          ]
+        },
+        {
+          "cls_id": 21,
+          "label": "table",
+          "score": 0.9446535110473633,
+          "coordinate": [
+            637,
+            1230,
+            1161,
+            1467
+          ],
+          "order": null,
+          "polygon_points": [
+            [
+              637.2391357421875,
+              1229.6627197265625
+            ],
+            [
+              1166.343017578125,
+              1244.8377685546875
+            ],
+            [
+              1159.9998779296875,
+              1466.0001220703125
+            ],
+            [
+              630.89599609375,
+              1450.8250732421875
+            ]
+          ]
+        },
+        {
+          "cls_id": 24,
+          "label": "vision_footnote",
+          "score": 0.8134720325469971,
+          "coordinate": [
+            628,
+            1467,
+            1044,
+            1505
+          ],
+          "order": null,
+          "polygon_points": [
+            [
+              628.1243286132812,
+              1464.2486572265625
+            ],
+            [
+              1043.947265625,
+              1483.0428466796875
+            ],
+            [
+              1042.696044921875,
+              1510.7264404296875
+            ],
+            [
+              626.8731079101562,
+              1491.9322509765625
+            ]
+          ]
+        },
+        {
+          "cls_id": 16,
+          "label": "number",
+          "score": 0.6952220797538757,
+          "coordinate": [
+            592,
+            1495,
+            619,
+            1511
+          ],
+          "order": 15,
+          "polygon_points": [
+            [
+              592.0,
+              1495.0
+            ],
+            [
+              618.0,
+              1495.0
+            ],
+            [
+              618.0,
+              1510.0
+            ],
+            [
+              592.0,
+              1510.0
+            ]
+          ]
+        }
+      ]
+    }
+  },
+  "markdown": {
+    "text": "<div style=\"text-align: center;\"><img src=\"imgs/img_in_chart_box_82_116_436_342.jpg\" alt=\"Image\" width=\"28%\" /></div>\n\n\n<div style=\"text-align: center;\"><img src=\"imgs/img_in_chart_box_439_127_793_340.jpg\" alt=\"Image\" width=\"28%\" /></div>\n\n\n<div style=\"text-align: center;\"><img src=\"imgs/img_in_chart_box_794_129_1150_342.jpg\" alt=\"Image\" width=\"29%\" /></div>\n\n\n<div style=\"text-align: center;\">Figure 2: Loss distribution for member vs. non-member samples across CIFAR-10, ImageNet, and MS COCO (from left to right), used by existing work [4, 27, 35]. Models use default settings from Table 3.</div>\n\n\nto utilize the ImageNet test set as the training set for training the models in our work.\n\nCIFAR-10 dataset comprises 10 categories of  $ 32 \\times 32 $ color images, with each category containing 6,000 images. These categories include airplanes, automobiles, birds, cats, deer, dogs, frogs, horses, ships, and trucks. In total, the dataset consists of 60,000 images, of which 50,000 are designated for training and 10,000 for testing. The CIFAR-10 dataset is commonly employed as a benchmark for image classification and object recognition tasks in the fields of machine learning and computer vision.\n\nMS COCO dataset contains over 200,000 labeled high-resolution images collected from the internet, with a total of 1.5 million object instances and 80 different object categories. The categories cover a wide range of common objects, including people, animals, vehicles, and household items, among others. The MS COCO dataset is noteworthy for its diversity and the complexity of its images and annotations. Images in the MS COCO dataset depict a wide variety of scenes and object layouts. In this experiment, we utilize all images from the MS COCO training set for model training. The first caption from the five associated with each image is selected as the corresponding textual description.\n\n### 4.2 Training Setup\n\n<div style=\"text-align: center;\">Table 3: Default parameters used for the experiments.</div>\n\n\n\n<table border=1 style='margin: auto; word-wrap: break-word;'><tr><td style='text-align: center; word-wrap: break-word;'>Parameters</td><td style='text-align: center; word-wrap: break-word;'>Unconditional Diffusion</td><td style='text-align: center; word-wrap: break-word;'>Unconditional Diffusion</td><td style='text-align: center; word-wrap: break-word;'>Imagen</td></tr><tr><td style='text-align: center; word-wrap: break-word;'>Channels</td><td style='text-align: center; word-wrap: break-word;'>128</td><td style='text-align: center; word-wrap: break-word;'>128</td><td style='text-align: center; word-wrap: break-word;'>128</td></tr><tr><td style='text-align: center; word-wrap: break-word;'>Diffusion steps</td><td style='text-align: center; word-wrap: break-word;'>1000</td><td style='text-align: center; word-wrap: break-word;'>1000</td><td style='text-align: center; word-wrap: break-word;'>1000</td></tr><tr><td style='text-align: center; word-wrap: break-word;'>Dataset</td><td style='text-align: center; word-wrap: break-word;'>CIFAR-10</td><td style='text-align: center; word-wrap: break-word;'>ImageNet</td><td style='text-align: center; word-wrap: break-word;'>MS COCO</td></tr><tr><td style='text-align: center; word-wrap: break-word;'>Training data size</td><td style='text-align: center; word-wrap: break-word;'>8000</td><td style='text-align: center; word-wrap: break-word;'>8000</td><td style='text-align: center; word-wrap: break-word;'>30000</td></tr><tr><td style='text-align: center; word-wrap: break-word;'>Resolution</td><td style='text-align: center; word-wrap: break-word;'>32</td><td style='text-align: center; word-wrap: break-word;'>64</td><td style='text-align: center; word-wrap: break-word;'>64</td></tr><tr><td style='text-align: center; word-wrap: break-word;'>Learning rate</td><td style='text-align: center; word-wrap: break-word;'>$ 1 \\times 10^{-4} $</td><td style='text-align: center; word-wrap: break-word;'>$ 1 \\times 10^{-4} $</td><td style='text-align: center; word-wrap: break-word;'>$ 1 \\times 10^{-4} $</td></tr><tr><td style='text-align: center; word-wrap: break-word;'>Batch size</td><td style='text-align: center; word-wrap: break-word;'>64</td><td style='text-align: center; word-wrap: break-word;'>64</td><td style='text-align: center; word-wrap: break-word;'>64</td></tr><tr><td style='text-align: center; word-wrap: break-word;'>Noise schedule</td><td style='text-align: center; word-wrap: break-word;'>linear</td><td style='text-align: center; word-wrap: break-word;'>linear</td><td style='text-align: center; word-wrap: break-word;'>linear, cosine</td></tr><tr><td style='text-align: center; word-wrap: break-word;'>Learning rate schedule</td><td style='text-align: center; word-wrap: break-word;'>cosine</td><td style='text-align: center; word-wrap: break-word;'>cosine</td><td style='text-align: center; word-wrap: break-word;'>cosine</td></tr><tr><td style='text-align: center; word-wrap: break-word;'>Training time</td><td style='text-align: center; word-wrap: break-word;'>400 epochs</td><td style='text-align: center; word-wrap: break-word;'>400 epochs</td><td style='text-align: center; word-wrap: break-word;'>600,000 steps</td></tr></table>\n\nWe tabulated the default training parameters for the unconditional diffusion model on CIFAR-10 and ImageNet, and for Imagen on MS COCO, in Table 3. Given that we have employed ASR (Accuracy) as our evaluation metric, we endeavor to maintain a balance between the quantities of the member set and the non-member set to ensure the precision of model validation. The structure for the unconditional diffusion model aligns with those from the diffusers library [60] in Huggingface. Imagen is based on the open-source implementation by Phil Wang et al. $ ^{3} $, and we have retained consistency in its configuration. All experiments were conducted using two NVIDIA A100 GPUs.\n\n\n\n### 4.3 Metrics\n\nIn the process of comparing experimental results, we employ Attack Success Rate (ASR) [6], Area Under the ROC Curve (AUC), and True-Positive Rate (TPR) values under fixed low False-Positive Rate (FPR) as evaluation metrics.\n\nIn our experiments, we ensure an equal number of member and non-member image samples. Given the balanced nature of our dataset and the stability of ASR in such contexts, we employ ASR as our primary evaluation metric.\n\nWe note that most instances MIAs on diffusion models use the AUC metric for evaluation [4, 12, 27, 30, 35]. Likewise, in assessing the merits of our work in Section 5.1, we will also use AUC as one of our assessment metrics. Additionally, as Carlini et al. [3] argued that TPR under a low FPR scenario is a key evaluation criterion, we also use TPR at 1% FPR and 0.1% FPR, respectively.\n\n## 5 Evaluation Results\n\n### 5.1 Comparison with Existing Methods\n\n<div style=\"text-align: center;\">Table 4: Existing white-box attacks on the CIFAR-10 dataset are benchmarked using four distinct metrics. LiRA $ ^{*} $, LSA $ ^{*} $, GSA $ _{1} $, and GSA $ _{2} $ are all obtained under the same conditions.</div>\n\n\n\n<table border=1 style='margin: auto; word-wrap: break-word;'><tr><td rowspan=\"2\">Attack method</td><td colspan=\"4\">CIFAR-10</td></tr><tr><td style='text-align: center; word-wrap: break-word;'>ASR $ ^{\\dagger} $</td><td style='text-align: center; word-wrap: break-word;'>AUC $ ^{\\dagger} $</td><td style='text-align: center; word-wrap: break-word;'>TPR@1%FPR(\\%)^{ $ \\dagger $}</td><td style='text-align: center; word-wrap: break-word;'>TPR@0.1%FPR(\\%)^{ $ \\dagger $}</td></tr><tr><td style='text-align: center; word-wrap: break-word;'>Baseline</td><td style='text-align: center; word-wrap: break-word;'>0.736</td><td style='text-align: center; word-wrap: break-word;'>0.801</td><td style='text-align: center; word-wrap: break-word;'>5.65</td><td style='text-align: center; word-wrap: break-word;'>-</td></tr><tr><td style='text-align: center; word-wrap: break-word;'>LiRA</td><td style='text-align: center; word-wrap: break-word;'>-</td><td style='text-align: center; word-wrap: break-word;'>0.982</td><td style='text-align: center; word-wrap: break-word;'>5(5M) 99(102M)</td><td style='text-align: center; word-wrap: break-word;'>7.1</td></tr><tr><td style='text-align: center; word-wrap: break-word;'>Strong LiRA</td><td style='text-align: center; word-wrap: break-word;'>-</td><td style='text-align: center; word-wrap: break-word;'>0.997</td><td style='text-align: center; word-wrap: break-word;'>-</td><td style='text-align: center; word-wrap: break-word;'>29.4</td></tr><tr><td style='text-align: center; word-wrap: break-word;'>LiRA $ ^{*} $</td><td style='text-align: center; word-wrap: break-word;'>0.626</td><td style='text-align: center; word-wrap: break-word;'>0.71</td><td style='text-align: center; word-wrap: break-word;'>1.45</td><td style='text-align: center; word-wrap: break-word;'>0.25</td></tr><tr><td style='text-align: center; word-wrap: break-word;'>LSA $ ^{*} $</td><td style='text-align: center; word-wrap: break-word;'>0.83</td><td style='text-align: center; word-wrap: break-word;'>0.909</td><td style='text-align: center; word-wrap: break-word;'>13.77</td><td style='text-align: center; word-wrap: break-word;'>0.925</td></tr><tr><td style='text-align: center; word-wrap: break-word;'>GSA $ _{1} $</td><td style='text-align: center; word-wrap: break-word;'>0.993</td><td style='text-align: center; word-wrap: break-word;'>0.999</td><td style='text-align: center; word-wrap: break-word;'>99.7</td><td style='text-align: center; word-wrap: break-word;'>82.9</td></tr><tr><td style='text-align: center; word-wrap: break-word;'>GSA $ _{2} $</td><td style='text-align: center; word-wrap: break-word;'>0.988</td><td style='text-align: center; word-wrap: break-word;'>0.999</td><td style='text-align: center; word-wrap: break-word;'>97.88</td><td style='text-align: center; word-wrap: break-word;'>58.57</td></tr></table>\n\n $ ^{3} $Code available at https://github.com/lucidrains/imagen-pytorch",
+    "images": {
+      "imgs/img_in_chart_box_82_116_436_342.jpg": "https://pplines-online.bj.bcebos.com/deploy/official/paddleocr/pp-ocr-vl-15//be89aefa-2ad6-4789-859d-51acf964ae99/markdown_1/imgs/img_in_chart_box_82_116_436_342.jpg?authorization=bce-auth-v1%2FALTAKzReLNvew3ySINYJ0fuAMN%2F2026-04-05T12%3A41%3A13Z%2F-1%2F%2Fe175df757d53bce3d051e95273bab046ea293b0e8113cd51ee98dd0969f8c3af",
+      "imgs/img_in_chart_box_439_127_793_340.jpg": "https://pplines-online.bj.bcebos.com/deploy/official/paddleocr/pp-ocr-vl-15//be89aefa-2ad6-4789-859d-51acf964ae99/markdown_1/imgs/img_in_chart_box_439_127_793_340.jpg?authorization=bce-auth-v1%2FALTAKzReLNvew3ySINYJ0fuAMN%2F2026-04-05T12%3A41%3A13Z%2F-1%2F%2F6fd748eb9f010290fccbc29bd29d3a6f79d800df64d49a349c0389b59af80347",
+      "imgs/img_in_chart_box_794_129_1150_342.jpg": "https://pplines-online.bj.bcebos.com/deploy/official/paddleocr/pp-ocr-vl-15//be89aefa-2ad6-4789-859d-51acf964ae99/markdown_1/imgs/img_in_chart_box_794_129_1150_342.jpg?authorization=bce-auth-v1%2FALTAKzReLNvew3ySINYJ0fuAMN%2F2026-04-05T12%3A41%3A13Z%2F-1%2F%2F75e1b2176ed582b966fba658a03c7e2fa2aa49cb3cfb23f45512d2e219546fbb"
+    }
+  },
+  "outputImages": {
+    "layout_det_res": "https://pplines-online.bj.bcebos.com/deploy/official/paddleocr/pp-ocr-vl-15//be89aefa-2ad6-4789-859d-51acf964ae99/layout_det_res_1.jpg?authorization=bce-auth-v1%2FALTAKzReLNvew3ySINYJ0fuAMN%2F2026-04-05T12%3A41%3A14Z%2F-1%2F%2F3cc3551c20f1a30ab87dc4fbf6dfc3bdab43a523468b2dce0978f39b35d3c8e6"
+  },
+  "inputImage": "https://pplines-online.bj.bcebos.com/deploy/official/paddleocr/pp-ocr-vl-15//be89aefa-2ad6-4789-859d-51acf964ae99/input_img_1.jpg?authorization=bce-auth-v1%2FALTAKzReLNvew3ySINYJ0fuAMN%2F2026-04-05T12%3A41%3A14Z%2F-1%2F%2Feb121087175ebdc460624e15948e05187768704861076c57f421c371abd63f14"
+}

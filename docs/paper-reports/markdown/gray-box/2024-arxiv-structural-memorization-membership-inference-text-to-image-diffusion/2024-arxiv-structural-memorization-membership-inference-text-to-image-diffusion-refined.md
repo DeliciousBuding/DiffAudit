@@ -4,7 +4,7 @@ Unveiling Structural Memorization: Structural Membership Inference Attack for Te
 ## 文档说明
 
 - GitHub PDF：[2024-arxiv-structural-memorization-membership-inference-text-to-image-diffusion.pdf](https://github.com/DeliciousBuding/DiffAudit/blob/main/references/materials/gray-box/2024-arxiv-structural-memorization-membership-inference-text-to-image-diffusion.pdf)
-- 对应报告：[本地展示稿](../../../gray-box/2024-arxiv-structural-memorization-membership-inference-text-to-image-diffusion-report.md)
+- 对应报告：[论文报告：Unveiling Structural Memorization: Structural Membership Inference Attack for Text-to-Image Diffusion Models](https://www.feishu.cn/docx/CQ1VdhIhxoowmbxW1qWc9a6FnTd)
 - 开源实现：暂未找到
 - 整理说明：本稿基于同目录 born-digital Markdown 精修，保留原论文的核心公式、实验数字和章节逻辑，但压缩为便于复核的中文笔记
 

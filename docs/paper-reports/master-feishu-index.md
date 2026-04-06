@@ -3,12 +3,12 @@
 **GitHub 仓库主页**：[DeliciousBuding/DiffAudit](https://github.com/DeliciousBuding/DiffAudit/)
 
 **更新时间**：
-2026-04-06 04:57:29 +08:00
+2026-04-06 15:04:35 +08:00
 
 **文档用途**：供团队内部查看当前研究范围、复现状态、关键阻塞，以及每篇材料的详细阅读报告入口。当前版本已切换到研究归档与展示版口径。
 
 **同步基线提交**：
-a6599c2
+06c083d
 
 ## 当前状态概览
 | 模块 | 当前阶段 | 当前判断 | 主要阻塞 | 下一步 |
@@ -36,9 +36,11 @@ a6599c2
 - 论文索引源文件：[references/materials/paper-index.md](https://github.com/DeliciousBuding/DiffAudit/blob/main/references/materials/paper-index.md)
 
 ## 论文索引说明
-- 每篇条目统一给出文件位置、内容简介、核心方法 / 结论、与 DiffAudit 的关系、开源实现，以及单篇阅读报告入口。
+- 每篇条目优先给出飞书 PDF，其次补 GitHub PDF；只有飞书无法稳定承载时才退回 GitHub 作为主链接。
+- 已按新规范重发的条目，统一补充 `飞书 PDF / GitHub PDF / 数据集与模型 / 开源仓库 / 阅读报告` 五类入口信息。
+- 对尚未重发的旧条目，后续也会逐篇补齐同一字段集。
 - `内容简介 / 核心方法 / 结论 / 和 DiffAudit 的关系` 三栏均由详细阅读报告中的 Extracted Summary 自动回写。
-- 在线文档中的本地 PDF 链接统一使用 GitHub 浏览链接；`阅读报告` 链接统一指向对应飞书文档。
+- `阅读报告` 链接统一指向对应飞书文档；精修原文与 PDF 则优先放到各论文飞书目录中。
 
 ## 论文在线索引
 
@@ -46,16 +48,20 @@ a6599c2
 
 ### Towards Black-Box Membership Inference Attack for Diffusion Models
 
-- 文件：[2024-arxiv-towards-black-box-membership-inference-diffusion-models.pdf](https://github.com/DeliciousBuding/DiffAudit/blob/main/references/materials/black-box/2024-arxiv-towards-black-box-membership-inference-diffusion-models.pdf)
+- 飞书 PDF：[2024-arxiv-towards-black-box-membership-inference-diffusion-models.pdf](https://ncn24qi9j5mt.feishu.cn/file/ANFUbPmGRoEDZWx586icD8isnde)
+- GitHub PDF：[2024-arxiv-towards-black-box-membership-inference-diffusion-models.pdf](https://github.com/DeliciousBuding/DiffAudit/blob/main/references/materials/black-box/2024-arxiv-towards-black-box-membership-inference-diffusion-models.pdf)
+- 数据集与模型：DDIM on CIFAR-10/CIFAR-100/STL10；DiT on ImageNet；Stable Diffusion with LAION-5B members and COCO2017-val non-members
 - 内容简介：这篇论文研究扩散模型的黑盒成员推断问题，目标是在看不到 U-Net、DiT 或中间 timestep 输出的情况下，仅凭图像变体 API 判断某张图像是否出现在训练集中。论文将该问题定位为版权审计和训练数据使用取证的现实需求，尤其面向商业化闭源扩散服务。
 - 核心方法 / 结论：作者提出 `REDIFFUSE`，核心做法是在固定扩散步下多次调用 variation API，对返回图像求平均后再与原图比较；若平均重构更接近原图，则更可能是训练成员。论文同时给出平均化误差收缩的理论解释，并在 DDIM、Stable Diffusion、Diffusion Transformer 上报告了优于 Loss、SecMI、PIA、PIAN 等基线的结果。
 - 和 DiffAudit 的关系：它对 DiffAudit 的价值在于明确提供了一条独立的黑盒路线：当目标系统只暴露公开生成接口而不暴露内部噪声估计时，仍然可以围绕 query budget、差异函数和代理分类器设计成员审计流程。相较当前仓库已覆盖的 `SecMI`、`PIA` 灰盒链路，这篇论文更适合作为未来黑盒实验与产品叙事的基础文献。
-- 开源仓库：暂未找到
+- 开源仓库：[lijingwei0502/diffusion_mia](https://github.com/lijingwei0502/diffusion_mia)
 - 阅读报告：[Towards Black-Box Membership Inference Attack for Diffusion Models](https://www.feishu.cn/docx/C8qcdxXjpoK3VyxMCzGcxUaOnXg)
 
 ### Membership Inference on Text-to-Image Diffusion Models via Conditional Likelihood Discrepancy
 
-- 文件：[2024-neurips-clid-membership-inference-text-to-image-diffusion.pdf](https://github.com/DeliciousBuding/DiffAudit/blob/main/references/materials/black-box/2024-neurips-clid-membership-inference-text-to-image-diffusion.pdf)
+- 飞书 PDF：[2024-neurips-clid-membership-inference-text-to-image-diffusion.pdf](https://ncn24qi9j5mt.feishu.cn/file/Df7bbbOCZo3fflxq9PNcI0Fsn3b)
+- GitHub PDF：[2024-neurips-clid-membership-inference-text-to-image-diffusion.pdf](https://github.com/DeliciousBuding/DiffAudit/blob/main/references/materials/black-box/2024-neurips-clid-membership-inference-text-to-image-diffusion.pdf)
+- 数据集与模型：Pokemon、MS-COCO、Flickr fine-tuning；processed LAION pretraining；Stable Diffusion v1-4/v1-5
 - 内容简介：这篇论文讨论文本到图像扩散模型的成员推断，核心问题是判断一条图文样本是否参与过模型训练。作者指出，已有扩散模型成员推断方法主要依赖图像侧误差或高成本 shadow models，在文本到图像模型上会受到更强泛化能力和扩散训练随机性的影响，因此在更真实的训练步数与默认数据增强条件下效果明显下降。
 - 核心方法 / 结论：论文提出 Conditional Likelihood Discrepancy（CLiD），其出发点是文本到图像模型对条件分布 `p(x|c)` 的过拟合强于对边缘分布 `p(x)` 的过拟合。作者用完整文本、空文本和多种削弱文本条件之间的 ELBO 近似差值构造成员性指标，并实现了阈值版 `CLiDth` 与向量版 `CLiDvec`。在 Pokemon、MS-COCO、Flickr 微调场景以及一个处理后的 LAION 预训练场景中，CLiD 在 AUC、ASR 和 `TPR@1%FPR` 上普遍优于 Loss、SecMI、PIA 和 PFAMI 等基线，且对默认数据增强更稳健。
 - 和 DiffAudit 的关系：对 DiffAudit 而言，这篇论文最重要的价值是证明“条件扰动前后的响应差异”是比纯图像误差更强的审计信号。不过论文本身采用的是灰盒查询设定，需要访问扩散过程中的中间噪声预测，因此不能直接当作严格 black-box 方法复用。它更适合作为 black-box 路线的邻近理论支点和信号设计参考。
@@ -64,7 +70,9 @@ a6599c2
 
 ### Black-box Membership Inference Attacks against Fine-tuned Diffusion Models
 
-- 文件：[2025-ndss-black-box-membership-inference-fine-tuned-diffusion-models.pdf](https://github.com/DeliciousBuding/DiffAudit/blob/main/references/materials/black-box/2025-ndss-black-box-membership-inference-fine-tuned-diffusion-models.pdf)
+- 飞书 PDF：[2025-ndss-black-box-membership-inference-fine-tuned-diffusion-models.pdf](https://ncn24qi9j5mt.feishu.cn/file/A43xbNYYfojZMdxyOdecmW8enmc)
+- GitHub PDF：[2025-ndss-black-box-membership-inference-fine-tuned-diffusion-models.pdf](https://github.com/DeliciousBuding/DiffAudit/blob/main/references/materials/black-box/2025-ndss-black-box-membership-inference-fine-tuned-diffusion-models.pdf)
+- 数据集与模型：CelebA-Dialog、WIT、MS COCO；Stable Diffusion v1-5 fine-tuning；captioning + similarity-based attacks
 - 内容简介：这篇论文研究黑盒成员推断在微调扩散模型上的可行性，核心问题是在仅有文本到图像查询接口、且攻击者无法访问参数与中间状态的条件下，判断给定样本是否属于目标模型的微调训练集。作者将威胁模型聚焦于下游微调数据，而非预训练数据，并把攻击场景分成“是否拥有原始提示词”和“辅助数据是否与成员集重叠”两个维度下的四种设置。
 - 核心方法 / 结论：论文提出的核心方法是基于相似度分数的黑盒攻击框架：对同一查询多次调用目标模型，比较查询图像与生成图像在特征空间中的相似度，再通过阈值、分布检验或分类器输出成员判定。论文报告在 CelebA-Dialog、WIT、MS COCO 上取得较高 AUC，并在有限采样预算下明显优于既有黑盒基线；同时，DeiT 与余弦相似度最稳定，DP-SGD 会显著削弱攻击效果。
 - 和 DiffAudit 的关系：对 DiffAudit 而言，这篇论文是黑盒路线中的关键参照，因为它证明了仅凭输出接口与有限辅助信息，微调扩散模型就可能泄露训练参与信息。它还明确揭示了黑盒路线中的真实边界条件，例如 captioning 质量、辅助数据重叠、影子模型选择和采样预算，因此适合用作黑盒审计叙事与实验分层的锚点文献。
@@ -73,7 +81,9 @@ a6599c2
 
 ### Membership Inference Attacks for Face Images Against Fine-tuned Latent Diffusion Models
 
-- 文件：[2025-visapp-membership-inference-face-fine-tuned-latent-diffusion-models.pdf](https://github.com/DeliciousBuding/DiffAudit/blob/main/references/materials/black-box/2025-visapp-membership-inference-face-fine-tuned-latent-diffusion-models.pdf)
+- 飞书 PDF：[2025-visapp-membership-inference-face-fine-tuned-latent-diffusion-models.pdf](https://ncn24qi9j5mt.feishu.cn/file/FVslb3Bbzo2Nb7xDylpcF5TKn2c)
+- GitHub PDF：[2025-visapp-membership-inference-face-fine-tuned-latent-diffusion-models.pdf](https://github.com/DeliciousBuding/DiffAudit/blob/main/references/materials/black-box/2025-visapp-membership-inference-face-fine-tuned-latent-diffusion-models.pdf)
+- 数据集与模型：DTU、AAU、LFW；Stable Diffusion v1.5 fine-tuning；ResNet-18 attack classifier
 - 内容简介：这篇论文研究的是一个面向人脸图像的黑盒成员推断问题：当 Stable Diffusion v1.5 被某批人脸照片微调后，外部攻击者能否仅通过 prompt 查询与生成结果，判断这批人脸是否属于训练集。作者特别把问题限制在 face-image fine-tuning 场景，因此结论更像是高敏感领域案例分析，而不是对所有扩散模型的普遍断言。
 - 核心方法 / 结论：论文的方法是先用目标模型生成图像，把这些生成图像当作成员分布的正样本代理，再配合同域 auxiliary negatives 训练一个 ResNet-18 攻击模型。结果表明，该方法在数据集级别通常有效，例如 DTU 与 AAU 人脸集合之间可获得约 `0.86` 的 AUC；visible watermark 会把 AUC 推高到 `1.00`，guidance scale 也会显著影响结果；但对同一分布中的 seen / unseen 单样本识别基本失败，AUC 约为 `0.53`。
 - 和 DiffAudit 的关系：它对 DiffAudit 的意义在于补充了“面向敏感人脸数据的黑盒审计”这一现实叙事，并揭示了生成条件、辅助数据构造和水印会显著改变成员信号强度。仓库当前已有黑盒主线骨架，但尚未覆盖这篇论文所需的人脸抓取、BLIP 标注、SD v1.5 微调与攻击分类器训练，因此该文更适合作为黑盒路线的案例参照和条件分析材料。
@@ -84,7 +94,9 @@ a6599c2
 
 ### Are Diffusion Models Vulnerable to Membership Inference Attacks?
 
-- 文件：[2023-icml-secmi-membership-inference-diffusion-models.pdf](https://github.com/DeliciousBuding/DiffAudit/blob/main/references/materials/gray-box/2023-icml-secmi-membership-inference-diffusion-models.pdf)
+- 飞书 PDF：[2023-icml-secmi-membership-inference-diffusion-models.pdf](https://ncn24qi9j5mt.feishu.cn/file/Oc72bykWdoE45MxU2FKcBTYQnQe)
+- GitHub PDF：[2023-icml-secmi-membership-inference-diffusion-models.pdf](https://github.com/DeliciousBuding/DiffAudit/blob/main/references/materials/gray-box/2023-icml-secmi-membership-inference-diffusion-models.pdf)
+- 数据集与模型：DDPM on CIFAR-10/CIFAR-100/STL10-U/Tiny-ImageNet；LDM on Pokemon/COCO；Stable Diffusion v1-4/v1-5
 - 内容简介：这篇论文研究扩散模型上的成员推断问题，目标是在攻击者掌握待测样本并可访问扩散过程部分中间信号时，判断该样本是否属于训练集。作者首先证明，直接移植 GAN 或 VAE 上的既有生成模型 MIA 到 DDPM 基本无效，因此扩散模型需要单独建模其泄露机制。
 - 核心方法 / 结论：作者提出 `SecMI`，核心思想是比较扩散模型在某个时间步上的后验估计误差。论文用 deterministic reverse 与 denoise 近似单样本的 posterior estimation error，定义 `t-error` 作为成员信号，并给出阈值版 `SecMI_stat` 与学习版 `SecMI_NNs`。在 DDPM 四个数据集上，两者平均 `ASR/AUC` 分别达到 `0.810/0.881` 与 `0.889/0.949`，在 LDM 和 Stable Diffusion 上也保持了明显高于随机的可分性。
 - 和 DiffAudit 的关系：它对 DiffAudit 的意义在于奠定了灰盒主线的基准接口与证据标准：要获得强成员推断性能，攻击者通常需要接触中间 timestep 的误差信号，而不是只看最终生成结果。当前仓库已经围绕 `SecMI` 准备了 vendored 子集、planner、adapter 与 smoke 流程，因此这篇论文既是灰盒路线的理论起点，也是现有工程骨架最直接对应的基础文献。
@@ -93,16 +105,20 @@ a6599c2
 
 ### SIDE: Surrogate Conditional Data Extraction from Diffusion Models
 
-- 文件：[2024-arxiv-side-extracting-training-data-unconditional-diffusion-models.pdf](https://github.com/DeliciousBuding/DiffAudit/blob/main/references/materials/gray-box/2024-arxiv-side-extracting-training-data-unconditional-diffusion-models.pdf)
+- 飞书 PDF：[2024-arxiv-side-extracting-training-data-unconditional-diffusion-models.pdf](https://ncn24qi9j5mt.feishu.cn/file/C1L2bJ2T9oOr6Kx1fQ7cvzlBnYx)
+- GitHub PDF：[2024-arxiv-side-extracting-training-data-unconditional-diffusion-models.pdf](https://github.com/DeliciousBuding/DiffAudit/blob/main/references/materials/gray-box/2024-arxiv-side-extracting-training-data-unconditional-diffusion-models.pdf)
+- 数据集与模型：CIFAR-10、CelebA-HQ-FI、CelebA-25000、CelebA、ImageNet、LAION-5B；unconditional diffusion models；surrogate clustering + time-aware classifier or LoRA conditioning
 - 内容简介：这篇论文讨论扩散模型训练数据提取中的一个关键误区：无条件扩散模型通常被认为比条件模型安全，因为攻击者没有 prompt 或类别标签来精确引导生成过程。作者的目标是检验这种安全感是否成立，并在统一的理论框架下说明不同形式的条件信息为何会放大记忆与泄露风险。
 - 核心方法 / 结论：论文提出 SIDE，通过目标模型自生成样本的特征聚类来构造 surrogate condition，再用时间相关分类器或 LoRA 条件微调把这些伪标签接入反向扩散过程。实验显示，SIDE 在 CIFAR-10、CelebA、ImageNet 和 LAION-5B 上均优于既有无条件与条件抽取基线，说明只要条件足够精确，即便原模型是无条件的，也能被定向推向记忆样本所在的高密度区域。
 - 和 DiffAudit 的关系：对 DiffAudit 而言，这篇论文的价值主要在于 threat model 与 side-information 视角的扩展。它不是最贴近当前 gray-box 审计实现的低成本基线，因为主实验要求白盒参数访问，但它揭示了“内部聚类结构可被代理成条件信号”这一更强的泄露机制，可作为后续 gray-box 路线、泄露指标设计和 beyond-membership 训练样本提取叙事的重要背景文献。
 - 开源仓库：暂未找到
-- 阅读报告：[SIDE: Surrogate Conditional Data Extraction from Diffusion Models](https://www.feishu.cn/docx/TPA1dUmgzoVauDxbPjpcLSz7nOe)
+- 阅读报告：[SIDE: Surrogate Conditional Data Extraction from Diffusion Models](https://www.feishu.cn/docx/UzXzdZMx6oeAx8xfmbrcsW1znjg)
 
 ### Unveiling Structural Memorization: Structural Membership Inference Attack for Text-to-Image Diffusion Models
 
-- 文件：[2024-arxiv-structural-memorization-membership-inference-text-to-image-diffusion.pdf](https://github.com/DeliciousBuding/DiffAudit/blob/main/references/materials/gray-box/2024-arxiv-structural-memorization-membership-inference-text-to-image-diffusion.pdf)
+- 飞书 PDF：[2024-arxiv-structural-memorization-membership-inference-text-to-image-diffusion.pdf](https://ncn24qi9j5mt.feishu.cn/file/PtWkbsbUZody0Yxkmk9cfV5Tnjh)
+- GitHub PDF：[2024-arxiv-structural-memorization-membership-inference-text-to-image-diffusion.pdf](https://github.com/DeliciousBuding/DiffAudit/blob/main/references/materials/gray-box/2024-arxiv-structural-memorization-membership-inference-text-to-image-diffusion.pdf)
+- 数据集与模型：Latent Diffusion Model、Stable Diffusion v1-1；BLIP captioning + DDIM inversion + SSIM
 - 内容简介：这篇论文研究文生图扩散模型上的成员推断攻击，核心问题是：当目标模型由大规模互联网图像训练而成时，攻击是否还能依赖像素级误差识别训练成员。作者认为更现实的信号来自结构级记忆，即训练成员在前向扩散早期比非成员保留更多图像结构，因此成员与非成员在结构相似度衰减曲线上会出现系统性差异。
 - 核心方法 / 结论：论文提出一种结构式灰盒攻击。做法是先把输入图像编码到 latent 空间，用 BLIP 生成近似文本提示，再执行 DDIM inversion 得到带噪 latent，最后解码回图像空间，并用原图与输出图的 SSIM 作为成员分数。实验在 Latent Diffusion Model 和 Stable Diffusion v1-1 上表明，该方法在 AUC、ASR、`TPR@1%FPR` 等指标上普遍优于 `SecMI`、`PIA` 和 `Naive Loss`，同时对附加噪声等扰动更稳健。
 - 和 DiffAudit 的关系：对 DiffAudit 来说，这篇论文的重要性在于它补足了灰盒路线中的“结构记忆”分支。当前仓库已覆盖 `SecMI` 与 `PIA` 等像素级或噪声级基线，而本文提供了一个不同的比较轴：在相近的灰盒访问条件下，直接利用前向扩散中的结构保持性做成员审计。这使它非常适合作为后续灰盒实验和路线叙事中的对照论文。
@@ -111,25 +127,31 @@ a6599c2
 
 ### An Efficient Membership Inference Attack for the Diffusion Model by Proximal Initialization
 
-- 文件：[2024-iclr-pia-proximal-initialization.pdf](https://github.com/DeliciousBuding/DiffAudit/blob/main/references/materials/gray-box/2024-iclr-pia-proximal-initialization.pdf)
+- 飞书 PDF：[2024-iclr-pia-proximal-initialization.pdf](https://ncn24qi9j5mt.feishu.cn/file/OALubF47DoG7UCxgFohcMwD6nDe)
+- GitHub PDF：[2024-iclr-pia-proximal-initialization.pdf](https://github.com/DeliciousBuding/DiffAudit/blob/main/references/materials/gray-box/2024-iclr-pia-proximal-initialization.pdf)
+- 数据集与模型：DDPM on CIFAR10/CIFAR100/TinyImageNet；Stable Diffusion on COCO/Laion；Grad-TTS on LJSpeech/VCTK/LibriTTS
 - 内容简介：这篇论文研究扩散模型上的灰盒成员推断，目标是在攻击者看不到模型参数、但能访问 `t=0` 与目标时刻 `t` 的中间噪声相关输出时，判断给定样本是否出现在训练集中。作者特别关注查询代价问题，希望用比 `SecMI` 更少的查询获得稳定成员信号。
 - 核心方法 / 结论：作者提出 `PIA`（以及归一化版本 `PIAN`），核心做法是把模型在 `t=0` 的输出当作 proximal initialization，用它构造 groundtruth trajectory，再与时刻 `t` 的预测结果做 `\ell_p` 距离比较。论文在 DDPM、Stable Diffusion 与 Grad-TTS 上报告，`PIA/PIAN` 往往能达到与 `SecMI` 相当或更高的 AUC，并在 `TPR@1%FPR` 上更优，同时只需两次查询。
 - 和 DiffAudit 的关系：它对 DiffAudit 的意义在于明确给出了灰盒路线里一个更低成本、可工程化的主力方法。当前仓库已经存在 `PIA` 的 planner、资产探测和 smoke 路径，因此这篇论文不仅是灰盒基线文献，也能直接支撑后续真实资产接入与运行链扩展。
 - 开源仓库：[kong13661/PIA](https://github.com/kong13661/PIA)
-- 阅读报告：[An Efficient Membership Inference Attack for the Diffusion Model by Proximal Initialization](https://www.feishu.cn/docx/Vc9edKDxuo4jghxhweDcXSL6njT)
+- 阅读报告：[An Efficient Membership Inference Attack for the Diffusion Model by Proximal Initialization](https://www.feishu.cn/docx/VPNhdJMryo5K86xOfE8cX3PFnDd)
 
 ### Score-based Membership Inference on Diffusion Models
 
-- 文件：[2025-arxiv-sima-score-based-membership-inference-diffusion-models.pdf](https://github.com/DeliciousBuding/DiffAudit/blob/main/references/materials/gray-box/2025-arxiv-sima-score-based-membership-inference-diffusion-models.pdf)
+- 飞书 PDF：[2025-arxiv-sima-score-based-membership-inference-diffusion-models.pdf](https://ncn24qi9j5mt.feishu.cn/file/DxgtbkEpmo6nkkxRH94cQcEsn8d)
+- GitHub PDF：[2025-arxiv-sima-score-based-membership-inference-diffusion-models.pdf](https://github.com/DeliciousBuding/DiffAudit/blob/main/references/materials/gray-box/2025-arxiv-sima-score-based-membership-inference-diffusion-models.pdf)
+- 数据集与模型：DDPM、Guided Diffusion、LDM、Stable Diffusion；single-query score-norm attack
 - 内容简介：这篇论文研究扩散模型的成员推断攻击，核心问题是攻击者能否仅通过模型对查询样本输出的预测噪声来判断该样本是否属于训练集。作者将目标限定在 gray-box 场景，即攻击者可以访问模型并在给定时间步上读取 denoiser 输出，但不依赖复杂辅助分类器或大量重复查询。
 - 核心方法 / 结论：论文提出 SimA，将攻击统计量定义为预测噪声范数 $A(x,t)=\lVert \hat{\epsilon}_\theta(x,t)\rVert_p$，并用高斯卷积后的数据分布、score 函数与有限训练集局部核均值之间的关系解释其有效性。实验表明，SimA 在 DDPM 和 Guided Diffusion 上通常达到或超过既有基线，同时只需单次查询；但在 LDM 与部分 Stable Diffusion 设定上，该类方法整体退化到接近随机，说明潜变量瓶颈显著改变了泄露机制。
 - 和 DiffAudit 的关系：对 DiffAudit 而言，这篇论文一方面提供了一个可解释、低查询成本、适合做 gray-box 基线的成员推断方法，另一方面也明确提示 pixel-space 与 latent-space 扩散模型不应被放在同一泄露假设下分析。它既能支撑当前 gray-box 主线的最短路径实现，也能为后续将审计路线拆分到 LDM/Stable Diffusion 提供机制证据。
 - 开源仓库：[mx-ethan-rao/SimA](https://github.com/mx-ethan-rao/SimA)
-- 阅读报告：[SCORE-BASED MEMBERSHIP INFERENCE ON DIFFUSION MODELS](https://www.feishu.cn/docx/AoQCdwScKof18ExgDxMcDU3znAd)
+- 阅读报告：[SCORE-BASED MEMBERSHIP INFERENCE ON DIFFUSION MODELS](https://www.feishu.cn/docx/RN4ldU8uVo3gRyxBxQPcjSZQnhg)
 
 ### Noise Aggregation Analysis Driven by Small-Noise Injection: Efficient Membership Inference for Diffusion Models
 
-- 文件：[2025-arxiv-small-noise-injection-membership-inference-diffusion-models.pdf](https://github.com/DeliciousBuding/DiffAudit/blob/main/references/materials/gray-box/2025-arxiv-small-noise-injection-membership-inference-diffusion-models.pdf)
+- 飞书 PDF：[2025-arxiv-small-noise-injection-membership-inference-diffusion-models.pdf](https://ncn24qi9j5mt.feishu.cn/file/TMzAbW4EEosEuZxQvXmczPchnhh)
+- GitHub PDF：[2025-arxiv-small-noise-injection-membership-inference-diffusion-models.pdf](https://github.com/DeliciousBuding/DiffAudit/blob/main/references/materials/gray-box/2025-arxiv-small-noise-injection-membership-inference-diffusion-models.pdf)
+- 数据集与模型：DDPM on CIFAR-10/CIFAR-100/Tiny-ImageNet；Stable Diffusion；small-noise injection + multi-step noise aggregation
 - 内容简介：该文研究扩散模型成员推断攻击，核心问题是在不直接读取模型参数的前提下，判断某张图像是否参与过训练。论文针对现有方法查询成本高、对扩散模型适配性有限的问题，提出利用轻微噪声扰动后噪声预测稳定性差异来识别成员与非成员。
 - 核心方法 / 结论：作者的方法先用前向扩散闭式形式向原图一次性注入小噪声，再在相邻时间步上提取去噪网络的噪声预测序列，并用 L1/L2 距离、质心距离、密度或凸包体积衡量其聚合程度。论文报告该方法在 DDPM 的 CIFAR-10、CIFAR-100 和 Tiny-ImageNet 上以 5 次查询取得优于 SecMI 的 ASR 和 AUC；但在 Stable Diffusion 上虽然 ASR/AUC 仍有优势，低误报率指标并不占优。
 - 和 DiffAudit 的关系：对 DiffAudit 而言，这篇论文的重要性在于它提供了一条清晰的 gray-box aggregation-based 路线，可与 loss-based、posterior-based 扩散 MIA 方法形成直接对照。它尤其适合被记录为“查询效率较高、但需要时间步噪声预测接口且在 latent diffusion 上证据偏弱”的代表工作。
@@ -138,7 +160,9 @@ a6599c2
 
 ### CDI: Copyrighted Data Identification in Diffusion Models
 
-- 文件：[2025-cvpr-cdi-copyrighted-data-identification-diffusion-models.pdf](https://github.com/DeliciousBuding/DiffAudit/blob/main/references/materials/gray-box/2025-cvpr-cdi-copyrighted-data-identification-diffusion-models.pdf)
+- 飞书 PDF：[2025-cvpr-cdi-copyrighted-data-identification-diffusion-models.pdf](https://ncn24qi9j5mt.feishu.cn/file/Lf4nb8TtmoFg5Dx0PffcQ5pwnXc)
+- GitHub PDF：[2025-cvpr-cdi-copyrighted-data-identification-diffusion-models.pdf](https://github.com/DeliciousBuding/DiffAudit/blob/main/references/materials/gray-box/2025-cvpr-cdi-copyrighted-data-identification-diffusion-models.pdf)
+- 数据集与模型：公开嫌疑集合 `P` 与同分布对照集合 `U`；多类扩散模型；逻辑回归评分器 + Welch t 检验
 - 内容简介：这篇论文研究扩散模型训练数据的版权审计问题，目标不是判定单张图像是否为训练成员，而是判断某个数据拥有者的一组公开作品是否整体被用于训练可疑扩散模型。作者指出，现有针对扩散模型的单样本成员推断在大规模、现实模型上不够稳定，难以单独支撑高置信度版权主张。
 - 核心方法 / 结论：论文提出 CDI，将公开嫌疑集合 `P` 与同分布未公开集合 `U` 做对照，从现有 MIA 与三种新增特征中抽取成员性信号，经逻辑回归评分器聚合后，再用单尾 Welch t 检验输出集合级显著性结论。实验显示，CDI 在多类扩散模型上均有效，部分 COCO 文本条件模型只需约 70 个样本即可达到 `p < 0.01`，且统计检验与新特征都会显著降低样本需求。
 - 和 DiffAudit 的关系：对 DiffAudit 而言，这篇论文的意义在于提供了一条“数据集级审计 / 证据聚合”路线，适合补强单样本灰盒 MIA 难以解释的场景。它尤其提示：在灰盒设定下，应优先聚合已有 MIA 和 Multiple Loss 这类可访问特征，再叠加统计检验形成更可用于审计叙事的集合级证据。
@@ -147,16 +171,20 @@ a6599c2
 
 ### Noise as a Probe: Membership Inference Attacks on Diffusion Models Leveraging Initial Noise
 
-- 文件：[2026-arxiv-noise-as-a-probe-membership-inference-diffusion-models.pdf](https://github.com/DeliciousBuding/DiffAudit/blob/main/references/materials/gray-box/2026-arxiv-noise-as-a-probe-membership-inference-diffusion-models.pdf)
+- 飞书 PDF：[2026-arxiv-noise-as-a-probe-membership-inference-diffusion-models.pdf](https://ncn24qi9j5mt.feishu.cn/file/KxRYbKM5rooeg0xU43VcLCZEnBe)
+- GitHub PDF：[2026-arxiv-noise-as-a-probe-membership-inference-diffusion-models.pdf](https://github.com/DeliciousBuding/DiffAudit/blob/main/references/materials/gray-box/2026-arxiv-noise-as-a-probe-membership-inference-diffusion-models.pdf)
+- 数据集与模型：fine-tuned text-to-image diffusion models；pretrained base + DDIM inversion + semantic initial noise
 - 内容简介：这篇论文研究微调扩散模型中的成员推断问题，关注点不是中间去噪轨迹，而是初始噪声本身是否残留了足够的语义信息。作者指出，常见噪声日程在最大噪声步仍保留非零信号，因此“初始噪声”并非完全无语义，这为成员推断提供了新的攻击入口。
 - 核心方法 / 结论：论文提出的核心方法是先用公开预训练底座对目标样本执行 DDIM inversion，得到带有样本语义的初始噪声，再将该噪声送入目标微调模型并比较生成结果与原图的距离。实验结果表明，这种语义化初始噪声能够明显放大成员与非成员之间的差异，使方法在多个数据集上取得优于既有端到端攻击的 AUC 和低 FPR 指标。
 - 和 DiffAudit 的关系：对 DiffAudit 来说，这篇论文的重要性在于它把“可控初始噪声”明确识别为一种可审计接口，说明即便系统不暴露中间结果，仍可能从采样入口和最终生成图像中提取成员信号。它因此是灰盒路线向受限黑盒路线延伸时的关键桥接材料，也提醒后续评估必须关注 seed、latent 或 noise engineering 接口的隐私风险。
 - 开源仓库：暂未找到
-- 阅读报告：[Noise as a Probe: Membership Inference Attacks on Diffusion Models Leveraging Initial Noise](https://www.feishu.cn/docx/Rga7dRsjdoBu8txA7JrcyvFPnof)
+- 阅读报告：[Noise as a Probe: Membership Inference Attacks on Diffusion Models Leveraging Initial Noise](https://www.feishu.cn/docx/KjgqdFESSoivAlxKfjyc1JxJn8X)
 
 ### No Caption, No Problem: Caption-Free Membership Inference via Model-Fitted Embeddings
 
-- 文件：[2026-openreview-mofit-caption-free-membership-inference.pdf](https://github.com/DeliciousBuding/DiffAudit/blob/main/references/materials/gray-box/2026-openreview-mofit-caption-free-membership-inference.pdf)
+- 飞书 PDF：[2026-openreview-mofit-caption-free-membership-inference.pdf](https://ncn24qi9j5mt.feishu.cn/file/RgGObebMJo6O3txk2K9c2y08nxf)
+- GitHub PDF：[2026-openreview-mofit-caption-free-membership-inference.pdf](https://github.com/DeliciousBuding/DiffAudit/blob/main/references/materials/gray-box/2026-openreview-mofit-caption-free-membership-inference.pdf)
+- 数据集与模型：Pokemon、MS-COCO、Flickr；text-to-image latent diffusion models；caption-free two-stage optimization
 - 内容简介：这篇论文研究 text-to-image latent diffusion models 的成员推断问题，但把攻击条件收紧到更现实的 caption-free 设定：审计者只有查询图像，没有训练时的真实文本标注。作者指出，现有依赖 ground-truth caption 的方法在替换为 VLM 生成 caption 后，成员与非成员的条件损失分布会显著重叠，导致推断性能明显下降。
 - 核心方法 / 结论：论文提出 MOFIT。其做法不是恢复真实 caption，而是先在无条件分支上优化扰动，把查询图像推向目标模型学到的先验流形，得到 model-fitted surrogate；再从该 surrogate 中优化出与之紧耦合的条件嵌入 `\phi^\*`。推断时用原图与 `\phi^\*` 的故意失配来放大成员样本的条件损失响应，并用 `L_{\text{MOFIT}}=L_{cond}-L_{uncond}` 及辅助分数做判定。论文报告该方法在 Pokemon、MS-COCO、Flickr 上都显著优于 VLM-captioned 基线，并在 MS-COCO 上超过了使用真实 caption 的 CLiD。
 - 和 DiffAudit 的关系：对 DiffAudit 来说，这篇工作的重要性在于它把 gray-box 路线推进到“不依赖真实 caption”的实际审计场景，并提供了一个可复用的两阶段优化框架。它也明确暴露了方法边界：需要可微访问目标模型、计算成本较高、且在 LoRA 场景下效果明显退化，因此既适合作为 caption-free gray-box 主线文献，也适合作为后续防御评估的参照点。
