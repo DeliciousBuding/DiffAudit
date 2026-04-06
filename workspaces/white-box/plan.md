@@ -35,6 +35,7 @@
 
 - 已选主线：`2025 PoPETS White-box Membership Inference Attacks against Diffusion Models`
 - 已下载官方代码：`workspaces/white-box/external/GSA`
+- 已建立正式资产根目录：`workspaces/white-box/assets/gsa/`
 - 已完成最小白盒梯度 smoke：`workspaces/white-box/smoke-ddpm/member-gradients.pt`
 - 已完成最小白盒 toy 端到端执行 smoke：`workspaces/white-box/runs/gsa-closed-loop-smoke-20260407-cpu/summary.json`
 - 已完成新资源适用性判断：`workspaces/white-box/2026-04-07-gsa-asset-intake.md`
@@ -47,6 +48,7 @@
 - 当前 toy 端到端执行 smoke 仍是 toy synthetic assets，不具备论文级解释力
 - `CIFAR-10` 归档只能补数据桶，`ckpt_cifar10.pt` / `ckpt_tini.pt` 仍有 checkpoint format mismatch
 - 仓库内还没有 `diffaudit` 级白盒 adapter / CLI
+- 当前正式 handoff 已收口到 `workspaces/white-box/assets/gsa/HANDOFF.md`
 
 ## 面向论文的可执行路径
 

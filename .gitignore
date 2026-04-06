@@ -43,3 +43,7 @@ tmp/
 condaenv.*.requirements.txt
 external/
 workspaces/gray-box/assets/
+workspaces/white-box/assets/gsa/**
+!workspaces/white-box/assets/gsa/
+!workspaces/white-box/assets/gsa/README.md
+!workspaces/white-box/assets/gsa/HANDOFF.md
