@@ -808,7 +808,10 @@ def run_recon_runtime_mainline(
                 "--inference_steps",
                 str(inference_steps),
             ]
-        inference_reused = _count_generated_images(generated_dir) >= num_validation_images
+        expected_generated_images = (
+            int(runtime_assets["dataset_profiles"][artifact_name]["sample_count"]) * num_validation_images
+        )
+        inference_reused = _count_generated_images(generated_dir) >= expected_generated_images
         if inference_reused:
             inference_result = {
                 "returncode": 0,
