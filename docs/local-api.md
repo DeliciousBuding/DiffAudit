@@ -133,6 +133,12 @@ job 元数据会写到：
 
 读取 job 当前状态。
 
+### `GET /api/v1/audit/jobs`
+
+按创建时间倒序返回当前已知 job 列表。
+
+这个接口的用途是让平台或本机脚本在刷新页面后重新发现已提交任务，而不是只能依赖内存中的 `job_id`。
+
 状态集合：
 
 - `queued`
@@ -147,6 +153,17 @@ job 元数据会写到：
 - `stdout_tail`
 - `stderr_tail`
 
+## 并发约束
+
+当前 API 不允许对同一个 `workspace_name` 并发提交多个 `queued/running` 任务。
+
+原因：
+
+- 同一个 workspace 会落到同一实验目录
+- 并发写入会互相覆盖 summary、artifact 和生成图片
+
+如果同一个 workspace 已有活动任务，`POST /api/v1/audit/jobs` 会返回 `409 Conflict`。
+
 ## 平台联调建议
 
 平台仓库不要复制研究结果，也不要自己再实现一套 `recon` 执行器。
@@ -155,8 +172,9 @@ job 元数据会写到：
 
 1. 调 `GET /api/v1/models` 获取可用模型入口
 2. 调 `GET /api/v1/experiments/recon/best` 获取当前最佳证据
-3. 调 `POST /api/v1/audit/jobs` 提交受控任务
-4. 调 `GET /api/v1/audit/jobs/{job_id}` 轮询状态
+3. 调 `GET /api/v1/audit/jobs` 恢复本机已有任务列表
+4. 调 `POST /api/v1/audit/jobs` 提交受控任务
+5. 调 `GET /api/v1/audit/jobs/{job_id}` 轮询状态
 
 ## 当前边界
 
@@ -173,4 +191,5 @@ job 元数据会写到：
 - 本地 HTTP 服务入口
 - `recon` 最佳证据查询
 - 任意已知 workspace 的 summary 查询
-- `recon_artifact_mainline` / `recon_runtime_mainline` 的受控 job 提交与状态查询
+- `recon_artifact_mainline` / `recon_runtime_mainline` 的受控 job 提交、列表与状态查询
+- 同 workspace 活动任务的冲突保护

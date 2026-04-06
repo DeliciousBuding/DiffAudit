@@ -203,6 +203,90 @@ class LocalApiTests(unittest.TestCase):
             self.assertEqual(fetched["workspace_name"], "api-job-001")
             self.assertEqual(fetched["payload"]["artifact_dir"], "D:/artifacts/recon-scores")
 
+    def test_list_jobs_returns_latest_first(self) -> None:
+        from fastapi.testclient import TestClient
+
+        from diffaudit.local_api.app import create_app
+
+        with tempfile.TemporaryDirectory() as tmpdir:
+            root = Path(tmpdir)
+            experiments_root = root / "experiments"
+            jobs_root = root / "jobs"
+            experiments_root.mkdir(parents=True, exist_ok=True)
+            jobs_root.mkdir(parents=True, exist_ok=True)
+
+            app = create_app(
+                experiments_root=experiments_root,
+                jobs_root=jobs_root,
+            )
+            client = TestClient(app)
+
+            first = client.post(
+                "/api/v1/audit/jobs",
+                json={
+                    "job_type": "recon_artifact_mainline",
+                    "workspace_name": "api-job-001",
+                    "artifact_dir": "D:/artifacts/one",
+                },
+            )
+            self.assertEqual(first.status_code, 202)
+
+            second = client.post(
+                "/api/v1/audit/jobs",
+                json={
+                    "job_type": "recon_artifact_mainline",
+                    "workspace_name": "api-job-002",
+                    "artifact_dir": "D:/artifacts/two",
+                },
+            )
+            self.assertEqual(second.status_code, 202)
+
+            list_response = client.get("/api/v1/audit/jobs")
+            self.assertEqual(list_response.status_code, 200)
+            payload = list_response.json()
+            self.assertEqual(len(payload), 2)
+            self.assertEqual(payload[0]["workspace_name"], "api-job-002")
+            self.assertEqual(payload[1]["workspace_name"], "api-job-001")
+
+    def test_rejects_active_duplicate_workspace_job(self) -> None:
+        from fastapi.testclient import TestClient
+
+        from diffaudit.local_api.app import create_app
+
+        with tempfile.TemporaryDirectory() as tmpdir:
+            root = Path(tmpdir)
+            experiments_root = root / "experiments"
+            jobs_root = root / "jobs"
+            experiments_root.mkdir(parents=True, exist_ok=True)
+            jobs_root.mkdir(parents=True, exist_ok=True)
+
+            app = create_app(
+                experiments_root=experiments_root,
+                jobs_root=jobs_root,
+            )
+            client = TestClient(app)
+
+            first = client.post(
+                "/api/v1/audit/jobs",
+                json={
+                    "job_type": "recon_artifact_mainline",
+                    "workspace_name": "shared-workspace",
+                    "artifact_dir": "D:/artifacts/one",
+                },
+            )
+            self.assertEqual(first.status_code, 202)
+
+            second = client.post(
+                "/api/v1/audit/jobs",
+                json={
+                    "job_type": "recon_artifact_mainline",
+                    "workspace_name": "shared-workspace",
+                    "artifact_dir": "D:/artifacts/two",
+                },
+            )
+            self.assertEqual(second.status_code, 409)
+            self.assertIn("already has an active job", second.json()["detail"])
+
 
 if __name__ == "__main__":
     unittest.main()
