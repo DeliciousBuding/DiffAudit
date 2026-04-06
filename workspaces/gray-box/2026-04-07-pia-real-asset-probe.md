@@ -1,13 +1,19 @@
-# 2026-04-07 Gray-Box Follow-Up: PIA Real-Asset Probe Ready
+# 2026-04-07 Gray-Box Follow-Up: PIA Single-Machine Asset Probe Ready
 
 ## Status Panel
 
 - `owner`: `research_leader`
 - `updated_at`: `2026-04-07 19:05:00 +08:00`
 - `selected_mainline`: `PIA`
-- `current_state`: `real-asset probe ready on CPU`
+- `current_state`: `single-machine asset probe + runtime preview ready on CPU`
 - `gpu_usage`: `not requested`
-- `evidence_level`: `real-asset-probe`
+- `evidence_level`: `single-machine-asset-probe`
+
+## Timeline Note
+
+- `2026-04-07 17:55 +08:00`: [2026-04-07-pia-followup.md](2026-04-07-pia-followup.md) reported the template config finished planning but `probe-pia-assets` was still `blocked` because the shared plan pointed at placeholder checkpoints/datasets.
+- Assets were staged next inside `Project/workspaces/gray-box/assets/pia`, so the `tmp/configs/pia-cifar10-graybox-assets.local.yaml` configuration could reference canonical dataset/model locations.
+- `2026-04-07 19:05 +08:00`: single-machine `probe-pia-assets`, `dry-run-pia`, `runtime-probe-pia`, and `runtime-preview-pia` all returned `ready` for the canonical assets (see `runs/pia-cifar10-graybox-assets-probe-20260407`), resolving the earlier block for this workspace-level track.
 
 ## A. Local Asset Placement
 
@@ -100,7 +106,12 @@ Interpretation:
 - the newly staged CIFAR10 dataset root is acceptable to the current `PIA` asset probe
 - the newly staged DDPM checkpoint is acceptable to the current `PIA` checkpoint loader
 - the current adapter can now load and score real member/non-member CIFAR10 batches on CPU
-- this line no longer blocks at the asset-probe layer
+- this line no longer blocks at the single-machine asset-probe layer
+
+More precise wording:
+
+- `single-machine asset probe + runtime preview ready`
+- not `team-wide asset closure ready`
 
 ## E. What Is Still Missing
 

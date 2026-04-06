@@ -4,8 +4,8 @@
 
 - `owner`: `research_leader`
 - `scope`: 部分中间信息、条件似然、结构特征下的成员推断
-- `status`: `PIA real-asset preview ready`
-- `blocked by`: 真实 `PIA` runtime mainline 仍未接进 `Project`，且当前 DDPM checkpoint 的论文来源尚未核准
+- `status`: `PIA single-machine asset probe + preview ready`
+- `blocked by`: 真实 `PIA` runtime mainline 仍未接进 `Project`，当前 DDPM checkpoint 的论文来源尚未核准，团队范围内可复核证据链也还没完全对齐
 - `next step`: 在不申请 GPU 的前提下，决定是先补 `Project` 侧真实 `PIA` 执行封装，还是先核准这批 DDPM checkpoint 的 provenance
 - `last updated`: 2026-04-07
 
@@ -45,7 +45,7 @@
 ## 起步方案
 
 1. 先把灰盒边界定义写清楚
-2. 已把 `PIA` 的真实 `checkpoint + dataset_root + member split` 绑定到本地-only config，并确认 `probe/dry-run/runtime-probe/runtime-preview` 都能在 CPU 上走通
+2. 已把 `PIA` 的真实 `checkpoint + dataset_root + member split` 绑定到本地-only config，并确认单机环境下的 `probe/dry-run/runtime-probe/runtime-preview` 都能在 CPU 上走通
 3. 不再重复 GPU synthetic smoke
 4. 下一步只做两件事中的一件：
    - 补 `Project` 侧真实 `PIA` 执行封装
@@ -54,6 +54,7 @@
 
 ## 当前阻塞项
 
+- 同日更早的 `2026-04-07-pia-followup.md` 仍记录模板 config 的 `blocked` 状态；后续单机资产接线结果需要与这份基线一起阅读
 - `PIA` 的真实数据 preview 已经通过，但当前仓库还没有真实 runtime mainline runner
 - 这批新到位的 DDPM checkpoint 能通过当前 probe/runtime-probe，不等于已经核准为论文口径资产
 - 当前最短下一步不是 GPU，而是执行封装或 provenance 核准
