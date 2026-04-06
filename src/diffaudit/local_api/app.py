@@ -212,6 +212,29 @@ def _summary_envelope(summary_path: Path) -> ExperimentSummaryEnvelope:
     )
 
 
+def _list_jobs(jobs_root: Path) -> list[dict[str, object]]:
+    jobs: list[dict[str, object]] = []
+    for job_path in sorted(jobs_root.glob("*.json")):
+        jobs.append(_read_json(job_path))
+    jobs.sort(
+        key=lambda item: (
+            str(item.get("created_at", "")),
+            str(item.get("job_id", "")),
+        ),
+        reverse=True,
+    )
+    return jobs
+
+
+def _has_active_workspace_job(jobs_root: Path, workspace_name: str) -> bool:
+    for job in _list_jobs(jobs_root):
+        if job.get("workspace_name") != workspace_name:
+            continue
+        if job.get("status") in {"queued", "running"}:
+            return True
+    return False
+
+
 def _iter_blackbox_summaries(experiments_root: Path) -> list[tuple[Path, dict[str, object]]]:
     results: list[tuple[Path, dict[str, object]]] = []
     for summary_path in sorted(experiments_root.glob("*/summary.json")):
@@ -448,6 +471,11 @@ def create_app(
 
     @app.post("/api/v1/audit/jobs", response_model=AuditJobResponse, status_code=202)
     def create_audit_job(payload: AuditJobCreate) -> AuditJobResponse:
+        if _has_active_workspace_job(jobs_path, payload.workspace_name):
+            raise HTTPException(
+                status_code=409,
+                detail=f"workspace '{payload.workspace_name}' already has an active job",
+            )
         record = _create_job_record(jobs_path, payload)
         if auto_start_jobs:
             thread = threading.Thread(
@@ -457,6 +485,10 @@ def create_app(
             )
             thread.start()
         return AuditJobResponse.model_validate(record)
+
+    @app.get("/api/v1/audit/jobs", response_model=list[AuditJobResponse])
+    def list_audit_jobs() -> list[AuditJobResponse]:
+        return [AuditJobResponse.model_validate(job) for job in _list_jobs(jobs_path)]
 
     @app.get("/api/v1/audit/jobs/{job_id}", response_model=AuditJobResponse)
     def get_audit_job(job_id: str) -> AuditJobResponse:
