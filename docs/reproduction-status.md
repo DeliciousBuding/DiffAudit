@@ -2,6 +2,12 @@
 
 这份文档用于汇总仓库当前各条攻击线的真实推进状态。
 
+口径约束：
+
+- 黑盒、灰盒、白盒三条线都已纳入统一研究规划
+- 统一规划只表示都在正式路线图内，不表示当前资源平均分配
+- 当前执行优先级仍是黑盒第一，灰盒第二层维护，白盒以研究准备为主
+
 判断标准统一分为：
 
 - `research-ready`：论文、代码仓库、资产要求已整理
@@ -34,17 +40,21 @@
 
 ## 当前判断
 
-1. 黑盒主线当前不是“继续扩实验规模”，而是“固化 `recon` 公开子集的最终口径并保持文档一致”。
-2. `recon` 当前最可信主证据是 [recon-runtime-mainline-ddim-public-100-step30](../experiments/recon-runtime-mainline-ddim-public-100-step30/summary.json)，指标为 `auc=0.849 / asr=0.51 / tpr@1%fpr=1.0`；它之所以比 `step10` 更应被当作主证据，不是因为所有指标都更高，而是因为这次收口修正了 `shadow_non_member` 半成品目录被误复用的问题，并补齐了对应 artifact-mainline 证据。
-3. [recon-runtime-mainline-ddim-public-100-step10](../experiments/recon-runtime-mainline-ddim-public-100-step10/summary.json) 仍然是有价值的对照基线，指标为 `auc=0.788 / asr=0.63 / tpr@1%fpr=0.99`；`step30` 相比它提升了排序相关指标，但 `asr` 更低，因此当前只能说“修正后的 `step30` 证据更完整”，不能直接声称“更多采样步数必然更强”。
-4. `recon` 当前最佳 AUC 仍来自 [recon-runtime-mainline-ddim-public-50-step10](../experiments/recon-runtime-mainline-ddim-public-50-step10/summary.json) 的 `0.866`。因此，“最大公开子集主证据”与“当前最佳单指标结果”是两个不同结论，不能混写。
-5. `kandinsky_v22` 的最小真实 runtime-mainline 已经有证据，但 `10/10` 与单样本诊断都仍异常慢；在拿到能定位首个阶段耗时的有效日志前，不应默认继续占用 GPU。
-6. `DiT` 官方采样路径已经有 [dit-sample-step10](../experiments/dit-sample-step10/summary.json) 和 [dit-sample-step50](../experiments/dit-sample-step50/summary.json)，说明模型覆盖证据在推进，但它还没有进入成员推断协议，不应被写成黑盒主线已经闭环。
+1. 当前仓库不是“只做黑盒”，而是“黑/灰/白三线统一规划、分层执行”；其中黑盒仍是当前第一优先执行线，灰盒维持可运行与待资产闭环状态，白盒维持研究准备态。
+2. 黑盒主线当前不是“继续扩实验规模”，而是“固化 `recon` 公开子集的最终口径并保持文档一致”。
+3. `recon` 当前最可信主证据是 [recon-runtime-mainline-ddim-public-100-step30](../experiments/recon-runtime-mainline-ddim-public-100-step30/summary.json)，指标为 `auc=0.849 / asr=0.51 / tpr@1%fpr=1.0`；它之所以比 `step10` 更应被当作主证据，不是因为所有指标都更高，而是因为这次收口修正了 `shadow_non_member` 半成品目录被误复用的问题，并补齐了对应 artifact-mainline 证据。
+4. [recon-runtime-mainline-ddim-public-100-step10](../experiments/recon-runtime-mainline-ddim-public-100-step10/summary.json) 仍然是有价值的对照基线，指标为 `auc=0.788 / asr=0.63 / tpr@1%fpr=0.99`；`step30` 相比它提升了排序相关指标，但 `asr` 更低，因此当前只能说“修正后的 `step30` 证据更完整”，不能直接声称“更多采样步数必然更强”。
+5. `recon` 当前最佳 AUC 仍来自 [recon-runtime-mainline-ddim-public-50-step10](../experiments/recon-runtime-mainline-ddim-public-50-step10/summary.json) 的 `0.866`。因此，“最大公开子集主证据”与“当前最佳单指标结果”是两个不同结论，不能混写。
+6. `kandinsky_v22` 的最小真实 runtime-mainline 已经有证据，但 `10/10` 与单样本诊断都仍异常慢；在拿到能定位首个阶段耗时的有效日志前，不应默认继续占用 GPU。
+7. `DiT` 官方采样路径已经有 [dit-sample-step10](../experiments/dit-sample-step10/summary.json) 和 [dit-sample-step50](../experiments/dit-sample-step50/summary.json)，说明模型覆盖证据在推进，但它还没有进入成员推断协议，不应被写成黑盒主线已经闭环。
+8. `secmi / pia` 仍在统一规划里，当前状态是“代码与 smoke 证据已具备，但缺真实论文资产”；它们不是被移出路线图，而是暂未进入第一执行层。
+9. 白盒相关论文仍在统一规划里，当前状态是“研究问题与资产条件已整理，但缺真实访问接口”；在这些条件未满足前，不应写成即将复现成功。
 
 ## 下一步
 
 1. 固化 `recon` 公开资产映射与 `public-100 step10` / `step30` 的解释口径，确保 [README.md](../README.md)、[ROADMAP.md](../ROADMAP.md)、[workspaces/black-box/plan.md](../workspaces/black-box/plan.md) 和 [experiments/blackbox-status/summary.json](../experiments/blackbox-status/summary.json) 一致。
 2. 把 `target/shadow/member/non-member` 的当前最可辩护语义继续收口到 [recon-public-asset-mapping.md](recon-public-asset-mapping.md)，在拿到更强证据前不要越权声称论文语义已核准。
 3. 继续暂停 `Kandinsky 10/10`，直到先拿到能定位首个阶段耗时的有效日志；如果只能做一件事，优先做文档固化而不是新 GPU 任务。
+4. 维持灰盒与白盒状态可见性，确保三条线在状态文档里都被持续跟踪，但不把这件事表述成当前执行优先级已经改变。
 
-更新时间：`2026-04-06 20:58:25 +08:00`
+更新时间：`2026-04-06 21:18:00 +08:00`
