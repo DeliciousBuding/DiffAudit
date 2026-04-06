@@ -7,6 +7,8 @@ import (
 	"os"
 	"path/filepath"
 	"sort"
+	"strings"
+	"time"
 )
 
 type Config struct {
@@ -17,6 +19,30 @@ type Config struct {
 type Server struct {
 	config Config
 	mux    *http.ServeMux
+}
+
+type auditJobCreate struct {
+	JobType       string `json:"job_type"`
+	WorkspaceName string `json:"workspace_name"`
+	RepoRoot      string `json:"repo_root,omitempty"`
+	Method        string `json:"method,omitempty"`
+	ArtifactDir   string `json:"artifact_dir,omitempty"`
+}
+
+type auditJobRecord struct {
+	JobID         string         `json:"job_id"`
+	JobType       string         `json:"job_type"`
+	Status        string         `json:"status"`
+	WorkspaceName string         `json:"workspace_name"`
+	CreatedAt     string         `json:"created_at"`
+	UpdatedAt     string         `json:"updated_at"`
+	Payload       auditJobCreate `json:"payload"`
+	Command       []string       `json:"command"`
+	SummaryPath   *string        `json:"summary_path"`
+	Metrics       any            `json:"metrics"`
+	Error         *string        `json:"error"`
+	StdoutTail    []string       `json:"stdout_tail"`
+	StderrTail    []string       `json:"stderr_tail"`
 }
 
 type modelOption struct {
@@ -75,6 +101,9 @@ func NewServer(config Config) *Server {
 	mux.HandleFunc("GET /api/v1/models", server.handleModels)
 	mux.HandleFunc("GET /api/v1/experiments/recon/best", server.handleBestRecon)
 	mux.HandleFunc("GET /api/v1/experiments/{workspace}/summary", server.handleWorkspaceSummary)
+	mux.HandleFunc("GET /api/v1/audit/jobs", server.handleListJobs)
+	mux.HandleFunc("POST /api/v1/audit/jobs", server.handleCreateJob)
+	mux.HandleFunc("GET /api/v1/audit/jobs/{jobID}", server.handleGetJob)
 	return server
 }
 
@@ -111,6 +140,68 @@ func (s *Server) handleWorkspaceSummary(writer http.ResponseWriter, request *htt
 	}
 	summaryPath := filepath.Join(s.config.ExperimentsRoot, workspace, "summary.json")
 	s.handleSummaryPath(writer, summaryPath)
+}
+
+func (s *Server) handleListJobs(writer http.ResponseWriter, _ *http.Request) {
+	jobs, err := s.listJobs()
+	if err != nil {
+		writeError(writer, http.StatusInternalServerError, err.Error())
+		return
+	}
+	writeJSON(writer, http.StatusOK, jobs)
+}
+
+func (s *Server) handleCreateJob(writer http.ResponseWriter, request *http.Request) {
+	var payload auditJobCreate
+	if err := json.NewDecoder(request.Body).Decode(&payload); err != nil {
+		writeError(writer, http.StatusBadRequest, "invalid json body")
+		return
+	}
+	if err := validateCreatePayload(payload); err != nil {
+		writeError(writer, http.StatusBadRequest, err.Error())
+		return
+	}
+	hasActive, err := s.hasActiveWorkspaceJob(payload.WorkspaceName)
+	if err != nil {
+		writeError(writer, http.StatusInternalServerError, err.Error())
+		return
+	}
+	if hasActive {
+		writeError(writer, http.StatusConflict, "workspace '"+payload.WorkspaceName+"' already has an active job")
+		return
+	}
+
+	now := time.Now().UTC().Format(time.RFC3339Nano)
+	record := auditJobRecord{
+		JobID:         "job_" + strings.ReplaceAll(now, ":", "") + "_" + payload.WorkspaceName,
+		JobType:       payload.JobType,
+		Status:        "queued",
+		WorkspaceName: payload.WorkspaceName,
+		CreatedAt:     now,
+		UpdatedAt:     now,
+		Payload:       payload,
+		Command:       nil,
+		SummaryPath:   nil,
+		Metrics:       nil,
+		Error:         nil,
+		StdoutTail:    nil,
+		StderrTail:    nil,
+	}
+	if err := s.writeJob(record); err != nil {
+		writeError(writer, http.StatusInternalServerError, err.Error())
+		return
+	}
+	writeJSON(writer, http.StatusAccepted, record)
+}
+
+func (s *Server) handleGetJob(writer http.ResponseWriter, request *http.Request) {
+	jobID := request.PathValue("jobID")
+	record, err := s.readJob(jobID)
+	if err != nil {
+		writeError(writer, http.StatusNotFound, err.Error())
+		return
+	}
+	writeJSON(writer, http.StatusOK, record)
 }
 
 func (s *Server) handleSummaryPath(writer http.ResponseWriter, summaryPath string) {
@@ -226,6 +317,92 @@ func readJSONFile(path string) (map[string]any, error) {
 		return nil, err
 	}
 	return payload, nil
+}
+
+func validateCreatePayload(payload auditJobCreate) error {
+	if payload.JobType == "" {
+		return errors.New("job_type is required")
+	}
+	if payload.WorkspaceName == "" {
+		return errors.New("workspace_name is required")
+	}
+	if strings.Contains(payload.WorkspaceName, "/") || strings.Contains(payload.WorkspaceName, "\\") {
+		return errors.New("workspace_name must be a single workspace directory name")
+	}
+	if payload.JobType == "recon_artifact_mainline" && payload.ArtifactDir == "" {
+		return errors.New("recon_artifact_mainline requires artifact_dir")
+	}
+	return nil
+}
+
+func (s *Server) jobsGlob() string {
+	return filepath.Join(s.config.JobsRoot, "*.json")
+}
+
+func (s *Server) readJob(jobID string) (auditJobRecord, error) {
+	var record auditJobRecord
+	path := filepath.Join(s.config.JobsRoot, jobID+".json")
+	data, err := os.ReadFile(path)
+	if err != nil {
+		return record, err
+	}
+	if err := json.Unmarshal(data, &record); err != nil {
+		return record, err
+	}
+	return record, nil
+}
+
+func (s *Server) writeJob(record auditJobRecord) error {
+	if err := os.MkdirAll(s.config.JobsRoot, 0o755); err != nil {
+		return err
+	}
+	data, err := json.Marshal(record)
+	if err != nil {
+		return err
+	}
+	return os.WriteFile(filepath.Join(s.config.JobsRoot, record.JobID+".json"), data, 0o644)
+}
+
+func (s *Server) listJobs() ([]auditJobRecord, error) {
+	matches, err := filepath.Glob(s.jobsGlob())
+	if err != nil {
+		return nil, err
+	}
+	jobs := make([]auditJobRecord, 0, len(matches))
+	for _, path := range matches {
+		data, err := os.ReadFile(path)
+		if err != nil {
+			return nil, err
+		}
+		var record auditJobRecord
+		if err := json.Unmarshal(data, &record); err != nil {
+			return nil, err
+		}
+		jobs = append(jobs, record)
+	}
+	sort.Slice(jobs, func(i, j int) bool {
+		if jobs[i].CreatedAt == jobs[j].CreatedAt {
+			return jobs[i].JobID > jobs[j].JobID
+		}
+		return jobs[i].CreatedAt > jobs[j].CreatedAt
+	})
+	return jobs, nil
+}
+
+func (s *Server) hasActiveWorkspaceJob(workspaceName string) (bool, error) {
+	jobs, err := s.listJobs()
+	if err != nil {
+		return false, err
+	}
+	for _, job := range jobs {
+		if job.WorkspaceName != workspaceName {
+			continue
+		}
+		if job.Status == "queued" || job.Status == "running" {
+			return true, nil
+		}
+	}
+	return false, nil
 }
 
 func writeJSON(writer http.ResponseWriter, statusCode int, payload any) {
