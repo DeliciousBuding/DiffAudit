@@ -136,6 +136,73 @@ func TestBestReconEndpoint(t *testing.T) {
 	}
 }
 
+func TestBestReconEndpointPrefersBlackboxStatusSourceOfTruth(t *testing.T) {
+	root := t.TempDir()
+	experimentsRoot := filepath.Join(root, "experiments")
+	statusWorkspace := filepath.Join(experimentsRoot, "recon-runtime-mainline-ddim-public-50-step10")
+	largerWorkspace := filepath.Join(experimentsRoot, "recon-runtime-mainline-ddim-public-100-step10")
+
+	writeJSONFile(t, filepath.Join(statusWorkspace, "summary.json"), map[string]any{
+		"status":    "ready",
+		"paper":     "BlackBox_Reconstruction_ArXiv2023",
+		"method":    "recon",
+		"mode":      "runtime-mainline",
+		"workspace": statusWorkspace,
+		"metrics": map[string]any{
+			"auc": 0.866,
+		},
+		"artifact_paths": map[string]any{
+			"summary": filepath.Join(statusWorkspace, "summary.json"),
+		},
+	})
+	writeJSONFile(t, filepath.Join(largerWorkspace, "summary.json"), map[string]any{
+		"status":    "ready",
+		"paper":     "BlackBox_Reconstruction_ArXiv2023",
+		"method":    "recon",
+		"mode":      "runtime-mainline",
+		"workspace": largerWorkspace,
+		"artifacts": map[string]any{
+			"target_member":     map[string]any{"sample_count": 100.0},
+			"target_non_member": map[string]any{"sample_count": 100.0},
+			"shadow_member":     map[string]any{"sample_count": 100.0},
+			"shadow_non_member": map[string]any{"sample_count": 100.0},
+		},
+		"metrics": map[string]any{
+			"auc": 0.788,
+		},
+		"artifact_paths": map[string]any{
+			"summary": filepath.Join(largerWorkspace, "summary.json"),
+		},
+	})
+
+	writeJSONFile(t, filepath.Join(experimentsRoot, "blackbox-status", "summary.json"), map[string]any{
+		"status": "ready",
+		"track":  "black-box",
+		"methods": map[string]any{
+			"recon": map[string]any{
+				"best_evidence_path": filepath.Join(statusWorkspace, "summary.json"),
+			},
+		},
+	})
+
+	server := NewServer(Config{
+		ExperimentsRoot: experimentsRoot,
+		JobsRoot:        filepath.Join(root, "jobs"),
+	})
+
+	request := httptest.NewRequest(http.MethodGet, "/api/v1/experiments/recon/best", nil)
+	recorder := httptest.NewRecorder()
+	server.Handler().ServeHTTP(recorder, request)
+
+	if recorder.Code != http.StatusOK {
+		t.Fatalf("expected 200, got %d", recorder.Code)
+	}
+	payload := decodeJSONResponse(t, recorder)
+	if payload["workspace"] != statusWorkspace {
+		t.Fatalf("expected blackbox-status workspace %s, got %v", statusWorkspace, payload["workspace"])
+	}
+}
+
 func TestWorkspaceSummaryEndpoint(t *testing.T) {
 	root := t.TempDir()
 	experimentsRoot := filepath.Join(root, "experiments")
