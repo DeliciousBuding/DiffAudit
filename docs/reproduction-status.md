@@ -2,6 +2,8 @@
 
 这份文档用于汇总仓库当前各条攻击线的真实推进状态。
 
+如果你只想先看一页综合判断，而不是逐线细节，优先看 [comprehensive-progress.md](comprehensive-progress.md)。
+
 口径约束：
 
 - 黑盒、灰盒、白盒三条线都已纳入统一研究规划

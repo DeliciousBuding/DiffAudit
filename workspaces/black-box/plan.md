@@ -4,10 +4,10 @@
 
 - `owner`: active-thread
 - `scope`: 统一黑/灰/白研究规划下的第一优先执行线，负责黑盒成员推断、数据集级审计、black-box leakage 线索整理
-- `status`: 进行中，`Stable Diffusion + DDIM` 的 `100-sample public runtime-mainline` 已通，`DiT` 官方 `step50 sample-smoke` 已通；`DDIM public-100 step30` 已完成收口并进入 `blackbox-status` 主证据
+- `status`: 进行中，`recon` 是当前最强 black-box evidence line；`DDIM public-100 step30` 已完成收口并进入 `blackbox-status` 主证据，但当前 black-box 防御仍未正式落地
 - `blocked by`: `recon` 公开资产包（DOI: `10.5281/zenodo.13371475`）的 target/shadow/member/non-member 论文语义仍需核准；`Kandinsky 10/10` 当前本机链路仍异常慢
 - `next command`: `conda run -n diffaudit-research python -m diffaudit summarize-blackbox-results --experiments-root experiments --workspace experiments/blackbox-status`
-- `last updated`: 2026-04-06
+- `last updated`: 2026-04-07
 
 ## 统一规划定位
 
@@ -15,6 +15,7 @@
 - 黑盒、灰盒、白盒已被纳入统一路线图，但当前资源分层仍以黑盒为先
 - 本文件的职责是把黑盒主线写清楚，避免被误读成“仓库只做黑盒”
 - 灰盒与白盒的推进状态以 `docs/reproduction-status.md` 和 `ROADMAP.md` 的统一口径为准
+- 当前算法主讲闭环不是黑盒，而是灰盒 `PIA`；黑盒当前更适合作为“风险已被验证”的主证据线
 
 ## 主论文与场景
 
@@ -76,6 +77,7 @@
 7. 评估 `variation` 真实 API 调用所需的凭据、预算和 query image 约束
 8. 评估 `CLiD` 的真实 text-to-image 资产是否可在当前机器上最小复现
 9. 维持黑盒状态文档、实验目录和主线命令说明同步，并明确这些同步属于统一三线规划下的黑盒执行层收口
+10. 把 `B-1 / B-2` 只记录为 black-box defense backlog，不提前写成已有可比较结果
 
 ## 当前阻塞项
 

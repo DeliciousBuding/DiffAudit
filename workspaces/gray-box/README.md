@@ -9,9 +9,9 @@
 
 ## 当前建议任务
 
-1. 先界定灰盒到底允许看到哪些中间信息
-2. 先看 `observable-contract.md`，把 gray-box 权限分层写清楚
-3. 当前 `PIA` intake 条件统一看 `pia-intake-gate.md`
-4. 当前 `PIA` 真实主线结果统一看 `2026-04-07-pia-runtime-mainline.md`
-5. 优先围绕 `2024-iclr-pia-proximal-initialization.pdf`、`2024-neurips-clid-membership-inference-text-to-image-diffusion.pdf`、`2024-arxiv-structural-memorization-membership-inference-text-to-image-diffusion.pdf`
-6. 先形成实验假设和资产需求，不要直接写执行代码
+1. 当前灰盒主讲线是 `PIA`，先看 `2026-04-07-pia-runtime-mainline.md` 和 `assets/pia/manifest.json`
+2. 当前灰盒 baseline 是 `SecMI`，目标是尽快判定它能否进入真实资产闭环
+3. 当前最重要的新增工作不是再补 smoke，而是把现有 defense prototype 正式定义成 `G-1`
+4. `PIA` 论文必须自己读懂，先写清楚它依赖什么信号完成攻击，再设计为什么 `G-1` 应该有效
+5. 在 `PIA baseline + defended` 的正式对照表没出来前，不扩 `CelebA-HQ / ImageNet-64`
+6. 综合进度口径统一看 `../../docs/comprehensive-progress.md`

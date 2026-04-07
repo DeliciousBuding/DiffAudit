@@ -20,7 +20,13 @@ DiffAudit 是一个面向扩散模型的隐私风险审计研究仓库。
 - `white-box`：白盒成员推断，依赖模型内部信息，通常攻击信号最强
 - `gray-box`：灰盒或半白盒攻击，介于黑盒与白盒之间
 
-当前默认优先级是 `black-box`。白盒和灰盒要尽量复用相同的配置结构、adapter 结构、dry-run 机制和结果记录方式，避免每条线都各写一套。
+当前执行顺序仍分层，但口径需要区分：
+
+- `black-box`：当前最强风险证据线
+- `gray-box`：当前最成熟、最适合作为“攻击 + 防御”主讲闭环的一条线
+- `white-box`：当前技术深度补充线
+
+白盒和灰盒要尽量复用相同的配置结构、adapter 结构、dry-run 机制和结果记录方式，避免每条线都各写一套。
 
 ## 多人协作模式
 
@@ -68,6 +74,7 @@ DiffAudit 是一个面向扩散模型的隐私风险审计研究仓库。
 - 完整的审计报告输出层
 
 当前方法线的最新状态见 [docs/reproduction-status.md](docs/reproduction-status.md)。
+研究仓库的一页综合进度见 [docs/comprehensive-progress.md](docs/comprehensive-progress.md)。
 黑盒结果的统一机读汇总见 `experiments/blackbox-status/summary.json`。
 本地 HTTP API 说明见 [docs/local-api.md](docs/local-api.md)。
 

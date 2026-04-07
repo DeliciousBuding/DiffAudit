@@ -2,177 +2,176 @@
 
 ## 目标
 
-这份路线图面向一个统一目标：
+这份路线图只面向 `Project` 研究仓库。
 
-- 把黑盒、灰盒、白盒三条攻击线都纳入同一套研究与证据规划
-- 先把黑盒主线做成项目里第一个接近论文级复现的板块
-- 在不打断黑盒主执行队列的前提下，持续维护灰盒可运行性与白盒研究准备度
-- 再按证据成熟度补齐 `Stable Diffusion / Kandinsky / DiT` 等模型线和后续攻击线
+统一目标：
 
-当前不追求“所有论文都碰一下”，而追求“统一规划三条线，但先把黑盒第一主线做深做硬”。
+- 让黑盒、灰盒、白盒三条攻击线进入同一套研究与证据规划
+- 让攻击、资产、manifest、summary、防御结果都能被统一记录
+- 在当前阶段形成“至少一条可辩护攻击主线 + 至少一条可比较防御原型”
 
-## 当前状态
+当前不追求“所有论文都碰一下”，而追求“把最值得讲、最有证据的几条线真正打穿”。
 
-截至 `2026-04-06`，项目已经从研究整理阶段进入真实证据积累阶段。
+## 当前综合判断
 
-已完成的关键里程碑：
+截至 `2026-04-07`：
 
-- `Stable Diffusion v1.5 + DDIM`
-  - `1-sample runtime-mainline`
-  - `10-sample public runtime-mainline`
-  - `25-sample public runtime-mainline`
-  - `50-sample public runtime-mainline`
-  - `100-sample public runtime-mainline`
-- `Kandinsky v2.2`
-  - `1-sample runtime-mainline`
-- `DiT-XL/2`
-  - 官方 checkpoint `step10 sample-smoke`
-  - 官方 checkpoint `step50 sample-smoke`
-- 黑盒统一汇总、状态文档、Feishu 在线索引已经打通
+- 黑盒：
+  - `recon` 是当前最强证据线
+  - `CLiD`、`variation` 已有证据，但都还不是当前最强执行主线
+- 灰盒：
+  - `PIA` 是当前最成熟、最适合做“攻击 + 防御”主讲闭环的一条线
+  - `SecMI` 仍然更像 baseline，而不是当前最该押注的主线
+- 白盒：
+  - `GSA` 已到 real-asset closed loop ready
+  - 但现在更像“闭环打通”，还不是论文级稳定攻击结果
+- 防御：
+  - 当前最接近正式结果的是灰盒 `G-1` 近似原型
+  - `W-1` 的候选实现 `DPDM` 已在本地，但还没接成正式 baseline
+  - `B-1`、`B-2`、`W-2`、`G-2` 仍主要停留在设计层
 
-当前最大公开子集证据：
+## 当前优先级
 
-- `recon-runtime-mainline-ddim-public-100-step30`
-  - `auc = 0.849`
-  - `asr = 0.51`
-  - `tpr@1%fpr = 1.0`
+固定顺序：
 
-当前最佳判别指标仍来自：
+1. `PIA` 攻击基线稳定化
+2. `PIA + G-1` 正式防御比较
+3. `recon` 主证据口径固化
+4. `GSA` 统计稳定化
+5. `W-1 / DPDM` 第一版基线
+6. `SecMI` 真实资产闭环或明确降级
+7. 统一 attack-defense 对比表
 
-- `recon-runtime-mainline-ddim-public-50-step10`
-  - `auc = 0.866`
-  - `asr = 0.51`
-  - `tpr@1%fpr = 1.0`
+## 主路线
 
-当前主阻塞：
-
-- 公开资产的 `target/shadow/member/non-member` 语义映射仍未最终核准
-- `DDIM public-100 step10` 与 `step30` 的指标差异还没有形成统一解释口径
-- `Kandinsky 10/10` 当前本机链路异常慢，且还没有拿到能定位首个阶段耗时的有效日志
-- `variation` 与 `CLiD` 还没有真实资产闭环
-- `DiT` 还只有官方采样证据，没有进入成员推断协议
-- 白盒仍缺 checkpoint / gradient / activation 访问条件
-
-## 总路线
-
-统一规划原则：
-
-- 黑盒、灰盒、白盒都属于正式研究路线，不再按“是否以后再做”区分，而按“当前执行优先级”和“资产成熟度”排队
-- 共享能力统一复用 `config / planner / adapter / dry-run / summary` 这套仓库骨架，避免把黑盒主线写成唯一长期形态
-- 当前执行顺序仍保持分层：先黑盒主证据，再黑盒扩线与模型覆盖，再灰盒高质量闭环，最后白盒进入主执行队列
-
-### Phase 1: 做硬黑盒主线
+### Phase 1: 黑盒证据线稳态化
 
 目标：
 
-- 把 `NDSS 2025 recon` 这条线从“小规模可运行”推进到“公开中样本稳定复现”
+- 维持 `recon` 作为当前最强 black-box evidence line
 
-执行顺序：
+当前主线：
 
-1. 将 `DDIM public-25` 固化为当前基准
-2. 扩到 `DDIM public-50`
-3. 视资源扩到 `DDIM public-100`
-4. 在每一档记录：
-   - 样本规模
-   - 采样步数
-   - 总耗时
-   - 生成图片数量
-   - score artifact 体积
-   - `auc / asr / tpr@1%fpr`
+- `recon`
+
+当前要求：
+
+1. 固化 `public-100 step10 / step30` 的解释边界
+2. 继续收口 `target/shadow/member/non-member` 的最可辩护语义
+3. 暂不继续无节制扩模型覆盖
+4. 将 `B-1 / B-2` 只登记为 defense backlog，不伪装成已落地结果
 
 完成标准：
 
-- 至少一档 `50+` 样本的 `Stable Diffusion + DDIM runtime-mainline`
-- 所有结果都有 `runtime-mainline + artifact-mainline + blackbox-status` 三层证据
+- `recon` 主证据、最佳单指标结果、对照基线三者不再混写
 
-### Phase 2: 补齐模型覆盖
+### Phase 2: 灰盒主讲线打穿
 
 目标：
 
-- 把“三个模型都跑过”提升为“三个模型都有明确证据等级”
+- 让灰盒形成当前最稳的“攻击 + 防御”可讲闭环
 
-执行顺序：
+当前主线：
 
-1. `Kandinsky`
-   - 从 `1-sample` 扩到 `10/10`
-   - 如资源允许，再扩到 `25/25`
-2. `DiT`
-   - 从 `step10 sample-smoke` 提升到更高步数
-   - 优先 `step50`
-   - 再评估 `step100` 或 `512` 分辨率
+- `PIA`
+
+当前 baseline：
+
+- `SecMI`
+
+当前要求：
+
+1. 继续固化 `PIA` 的 canonical roots、provenance 与 summary 口径
+2. 重新跑更大样本、更稳定重复次数的 `PIA runtime mainline`
+3. 把当前 dropout-style defense prototype 正式定义成 `G-1`
+4. 在同一主基线上做出 `PIA baseline vs defended` 正式对比
+5. 给 `SecMI` 一个明确判定：
+   - 要么推进到真实资产闭环
+   - 要么明确降级为 baseline / blocked
 
 完成标准：
 
-- `SD/DDIM`: 中样本 `runtime-mainline`
-- `Kandinsky`: 不再只是最小 smoke
-- `DiT`: 不再只是 `step10`
+- 至少一条灰盒攻击线具备稳定 `runtime mainline`
+- 至少一条灰盒防御线具备同口径前后对比
 
-### Phase 3: 第二黑盒路线闭环
+### Phase 3: 白盒深度线补强
 
 目标：
 
-- 推进 `Towards Black-Box Membership Inference Attack for Diffusion Models`
+- 让白盒从“闭环已打通”推进到“统计上更可信”
 
-执行原则：
+当前主线：
 
-- 这条线现在是第二优先级
-- 在 `NDSS recon` 形成中样本稳定结果前，不抢主线资源
+- `GSA`
 
-推进内容：
+当前防御候选：
 
-- 搜索真实可用 variation / image editing 接口或等价本地代理协议
-- 明确 query budget、评估协议和对照指标
-- 补可复用的数据输入规范
+- `W-1 = DPDM / Diffusion-DP`
+
+当前要求：
+
+1. 扩大 `GSA` 的 `target/shadow + member/non-member` bucket 规模
+2. 提高 `checkpoint-*` 的训练强度
+3. 把 `DPDM` 接成正式 `W-1` 基线
+4. 暂缓 `W-2`，直到 `W-1` 有正式结果
 
 完成标准：
 
-- 不是只有文档理解，而是进入真实资产可运行阶段
+- `GSA` 结果不再只是极小样本闭环
+- `W-1` 至少有一版可运行 baseline
 
-### Phase 4: 灰盒与白盒不断档维护
+### Phase 4: 统一评估表
 
 目标：
 
-- 把灰盒与白盒持续留在统一路线图内，但不让它们抢黑盒主线
+- 把不同线的结果收口成一份综合进度和统一对比表
 
-灰盒：
+统一字段：
 
-- `SecMI / PIA` 维持代码可运行
-- 有真实 checkpoint 时优先补单条高质量复现，不平均铺开
-- 进入真实资产阶段后，按“单条高质量闭环优先于多论文铺开”执行
+- `track`
+- `attack`
+- `defense`
+- `dataset`
+- `model`
+- `AUC`
+- `ASR`
+- `TPR@low-FPR`
+- `quality/cost`
+- `evidence_level`
 
-白盒：
+完成标准：
 
-- 继续积累 checkpoint、训练配置、梯度接口信息
-- 继续约束研究问题、资产要求和最小可验证接口
-- 等真实访问条件具备后再进主执行队列，不提前伪造结论
+- 黑盒、灰盒、白盒可以放进同一张对比表
+- 攻击与防御前后结果可以直接比较
 
-## 执行原则
+## 工作区分工口径
 
-- 主线优先级固定为：
-  - `NDSS recon > DiT/Kandinsky 模型覆盖 > variation/CLiD > gray-box > white-box`
-- 统一规划不等于平均分配资源；当前资源仍优先投向黑盒主线，灰盒和白盒按维护态或准备态推进
-- 每次只推进一个主实验和一个次实验
-- 每次实验完成后必须同步：
-  - `experiments/*/summary.json`
-  - `experiments/blackbox-status/summary.json`
-  - `docs/reproduction-status.md`
-  - `workspaces/black-box/plan.md`
-  - `docs/paper-reports/master-feishu-index.md`
-  - Feishu 在线文档
-- GPU 任务必须严格走调度器申请与释放
-- 每个阶段至少形成一次小提交并立即推送
+- `workspaces/black-box/`
+  - 负责 black-box evidence line
+- `workspaces/gray-box/`
+  - 负责当前主讲线 `PIA` 与灰盒防御
+- `workspaces/white-box/`
+  - 负责 `GSA` 与白盒防御候选
+
+## 当前执行纪律
+
+- 不把 `smoke / preview / toy` 写成论文复现成功
+- `PIA` 与 `GSA` 论文必须自己读懂，不得只跑代码
+- 在 `CIFAR-10 + DDPM` 的攻击-防御对比表没站稳前，不扩 `CelebA-HQ / ImageNet-64`
+- 每次重要状态变化都必须同步：
+  - [docs/reproduction-status.md](docs/reproduction-status.md)
+  - [docs/comprehensive-progress.md](docs/comprehensive-progress.md)
+  - 对应工作区 README 或主线文档
 
 ## 下一步
 
 当前最短路径：
 
-1. 固化公开资产的 `target/shadow/member/non-member` 语义映射，并明确 `public-100 step10` / `step30` 与 `public-50 step10` 的解释口径
-2. 维持 `docs/reproduction-status.md`、`workspaces/black-box/plan.md` 与 `experiments/blackbox-status/summary.json` 的事实一致，并明确它们属于三线统一规划下的第一优先执行层
-3. 在拿到有效阶段日志前继续暂停 `Kandinsky`，之后再决定是否恢复 `10/10`
-4. 灰盒继续维持 `SecMI / PIA` 的可运行与状态可见性，白盒继续累积可访问资产条件，但都不改写当前黑盒优先级
+1. 给 `PIA` 补一份真正的“攻击依赖信号”笔记，并据此正式定义 `G-1`
+2. 重新跑 `PIA baseline + defended`，扩大样本量与重复次数
+3. 对 `SecMI` 做 promote / block 决策
+4. 扩大 `GSA` bucket 与训练强度
+5. 把 `DPDM` 接成 `W-1` 第一版白盒防御 baseline
+6. 产出统一 attack-defense 总表
 
-如果必须只做一件事：
-
-- 先把 `DDIM public-100 step30` 的结果口径和阻塞项写死
-
-因为当前最大的缺口不是“缺一次新实验”，而是“已有主证据和状态文档还没完全收口”。`Kandinsky` 继续跑之前，先把 `recon` 公开子集的结论、边界和阻塞写清楚，才能避免后续继续在错误口径上追加证据。
+综合进度入口见 [docs/comprehensive-progress.md](docs/comprehensive-progress.md)。
