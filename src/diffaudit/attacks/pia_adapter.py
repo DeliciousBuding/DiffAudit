@@ -892,7 +892,7 @@ def run_pia_runtime_mainline(
             "member_split_root": str(split_root),
             "batch_size": int(batch_size),
             "max_samples": int(selected_max_samples),
-            "num_samples": int(runtime_context.plan.num_samples),
+            "num_samples": int(member_score_tensor.shape[0]),
             "attack_num": runtime_context.plan.attack_num,
             "interval": runtime_context.plan.interval,
             "weights_key": weights_key,

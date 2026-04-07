@@ -394,6 +394,8 @@ class PiaAdapterTests(unittest.TestCase):
             self.assertIn("asr", payload["metrics"])
             self.assertIn("tpr_at_1pct_fpr", payload["metrics"])
             self.assertIn("tpr_at_0_1pct_fpr", payload["metrics"])
+            self.assertEqual(payload["runtime"]["max_samples"], 4)
+            self.assertEqual(payload["runtime"]["num_samples"], 4)
             self.assertEqual(payload["sample_count_per_split"], 4)
             self.assertTrue(Path(payload["artifact_paths"]["summary"]).exists())
 
