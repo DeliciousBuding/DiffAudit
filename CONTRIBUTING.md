@@ -184,3 +184,19 @@ pre-commit install
 - 默认通过 PR 合并
 
 具体操作说明见 [docs/github-collaboration.md](docs/github-collaboration.md)。
+
+## 十一、Copilot Review 规则
+
+仓库已启用 Copilot code review。
+
+使用规则：
+
+- 把 Copilot 当成第一轮静态 reviewer，不把它当最终结论
+- 高优先级关注 `src/diffaudit/`、`tests/`、`scripts/`、`configs/`
+- 低优先级路径包括 `references/`、论文 PDF、长篇阅读笔记、纯实验产物
+- 如果 Copilot 对研究状态、复现完成度、paper-aligned 口径提出质疑，优先认真核对
+- 如果 Copilot 只给风格建议，而没有行为风险、复现风险或路径风险，可以低优先处理
+
+仓库级审查指令位于：
+
+- `.github/copilot-instructions.md`
