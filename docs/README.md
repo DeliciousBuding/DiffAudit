@@ -4,6 +4,8 @@
 - `asset-registry-local-api.md`: minimal asset registry intake contract for Local-API
 - `reproduction-status.md`: per-track reproduction status
 - `next-run-intake-index.md`: next-run intake gate entrypoints and contracts
+- `mia-defense-research-index.md`: route, literature, and asset mapping for the MIA defense strategy document
+- `mia-defense-execution-checklist.md`: actionable execution checklist derived from the MIA defense strategy document
 
 这里存放项目级文档，而不是个人临时笔记。
 
@@ -25,3 +27,5 @@
 - [environment.md](environment.md)：环境与依赖说明
 - [getting-started.md](getting-started.md)：新成员上手指南
 - [github-collaboration.md](github-collaboration.md)：协作与分支规范
+- [mia-defense-research-index.md](mia-defense-research-index.md)：`mia-defense-document.docx` 的正式研究索引
+- [mia-defense-execution-checklist.md](mia-defense-execution-checklist.md)：基于当前仓库状态整理的执行清单
