@@ -18,7 +18,8 @@
 
 - 黑盒：
   - `recon` 是当前最强证据线
-  - `CLiD`、`variation` 已有证据，但都还不是当前最强执行主线
+  - `variation` 已可在本地 CPU 上重复跑 synthetic smoke，适合作为第二黑盒候选线保留
+  - `CLiD` 已有证据，但还不是当前最强执行主线
 - 灰盒：
   - `PIA` 是当前最成熟、最适合做“攻击 + 防御”主讲闭环的一条线
   - `SecMI` 仍然更像 baseline，而不是当前最该押注的主线
@@ -60,6 +61,7 @@
 2. 继续收口 `target/shadow/member/non-member` 的最可辩护语义
 3. 暂不继续无节制扩模型覆盖
 4. 将 `B-1 / B-2` 只登记为 defense backlog，不伪装成已落地结果
+5. 将 `variation/Towards` 明确登记为“local synthetic-smoke verified, real API still blocked”的第二黑盒候选线
 
 完成标准：
 

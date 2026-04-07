@@ -4,7 +4,7 @@
 
 - `owner`: active-thread
 - `scope`: 统一黑/灰/白研究规划下的第一优先执行线，负责黑盒成员推断、数据集级审计、black-box leakage 线索整理
-- `status`: 进行中，`recon` 是当前最强 black-box evidence line；`DDIM public-100 step30` 已完成收口并进入 `blackbox-status` 主证据，但当前 black-box 防御仍未正式落地
+- `status`: 进行中，`recon` 是当前最强 black-box evidence line；`variation` 已在本地 CPU 上再次通过 synthetic smoke（`experiments/variation-synth-smoke-local-20260408/summary.json`）；`DDIM public-100 step30` 已完成收口并进入 `blackbox-status` 主证据，但当前 black-box 防御仍未正式落地
 - `blocked by`: `recon` 公开资产包（DOI: `10.5281/zenodo.13371475`）的 target/shadow/member/non-member 论文语义仍需核准；`Kandinsky 10/10` 当前本机链路仍异常慢
 - `next command`: `conda run -n diffaudit-research python -m diffaudit summarize-blackbox-results --experiments-root experiments --workspace experiments/blackbox-status`
 - `last updated`: 2026-04-07
@@ -46,6 +46,7 @@
 - `experiments/recon-runtime-mainline-kandinsky-public-smoke/summary.json`
 - `experiments/recon-runtime-mainline-kandinsky-public-smoke/artifact-mainline/summary.json`
 - `experiments/variation-synth-smoke/summary.json`
+- `experiments/variation-synth-smoke-local-20260408/summary.json`
 - `experiments/blackbox-status/summary.json`
 - `experiments/dit-sample-smoke/summary.json`
 - `experiments/dit-sample-step10/summary.json`
@@ -75,9 +76,10 @@
 5. 维持 `DiT` 官方 `sample.py` 路线可重复执行，并把本地 checkpoint 驱动的 `step50` 证据视需要继续往更高步数或更高分辨率推进
 6. `kandinsky_v22` public smoke 已通，但 `10/10` 与单样本直跑当前都异常慢；`Stable Diffusion + DDIM` 的 `100-sample public` 也已通；`DiT step50` 也已补上，下一步是解释 `DDIM step10` / `step30` 的指标差异，并在拿到有效日志前继续暂停 `Kandinsky`
 7. 评估 `variation` 真实 API 调用所需的凭据、预算和 query image 约束
-8. 评估 `CLiD` 的真实 text-to-image 资产是否可在当前机器上最小复现
-9. 维持黑盒状态文档、实验目录和主线命令说明同步，并明确这些同步属于统一三线规划下的黑盒执行层收口
-10. 把 `B-1 / B-2` 只记录为 black-box defense backlog，不提前写成已有可比较结果
+8. 把 `variation` 明确写成“可本地重复验证的第二黑盒候选线”，方便申报阶段引用
+9. 评估 `CLiD` 的真实 text-to-image 资产是否可在当前机器上最小复现
+10. 维持黑盒状态文档、实验目录和主线命令说明同步，并明确这些同步属于统一三线规划下的黑盒执行层收口
+11. 把 `B-1 / B-2` 只记录为 black-box defense backlog，不提前写成已有可比较结果
 
 ## 当前阻塞项
 
