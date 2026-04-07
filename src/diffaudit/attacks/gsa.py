@@ -3,6 +3,7 @@
 from __future__ import annotations
 
 import json
+import os
 import subprocess
 import sys
 from pathlib import Path
@@ -123,13 +124,14 @@ def probe_gsa_assets(
     }
 
 
-def _run_subprocess(command: list[str], cwd: str | Path) -> dict[str, Any]:
+def _run_subprocess(command: list[str], cwd: str | Path, env: dict[str, str] | None = None) -> dict[str, Any]:
     completed = subprocess.run(
         command,
         cwd=str(Path(cwd)),
         capture_output=True,
         text=True,
         check=False,
+        env=env,
     )
     return {
         "returncode": completed.returncode,
@@ -217,6 +219,7 @@ def run_gsa_runtime_mainline(
     sampling_frequency: int = 2,
     attack_method: int = 1,
     prediction_type: str = "epsilon",
+    device: str = "auto",
     provenance_status: str = "workspace-verified",
 ) -> dict[str, Any]:
     workspace_path = Path(workspace)
@@ -253,6 +256,13 @@ def run_gsa_runtime_mainline(
         return result
 
     repo_path = Path(repo_root).resolve()
+    requested_device = device.lower()
+    if requested_device not in {"auto", "cpu", "cuda"}:
+        raise ValueError(f"Unsupported GSA runtime device: {device}")
+    resolved_device = "cuda" if requested_device == "cuda" else "cpu"
+    if requested_device == "auto":
+        resolved_device = "cuda" if torch.cuda.is_available() else "cpu"
+
     gradients_root = workspace_path / "gradients"
     gradients_root.mkdir(parents=True, exist_ok=True)
     jobs = {
@@ -303,7 +313,10 @@ def run_gsa_runtime_mainline(
             "--output_name",
             str(Path(spec["output_name"]).resolve()),
         ]
-        command_result = _run_subprocess(command, cwd=repo_path)
+        command_env = dict(**os.environ)
+        if resolved_device == "cpu":
+            command_env["CUDA_VISIBLE_DEVICES"] = "-1"
+        command_result = _run_subprocess(command, cwd=repo_path, env=command_env)
         command_results[job_name] = command_result
         if command_result["returncode"] != 0 or not Path(spec["output_name"]).exists():
             all_gradients_ready = False
@@ -348,7 +361,7 @@ def run_gsa_runtime_mainline(
         "mode": "runtime-mainline",
         "workspace": str(workspace_path),
         "workspace_name": workspace_path.name,
-        "device": "cpu",
+        "device": resolved_device,
         "contract_stage": "target",
         "asset_grade": "real-asset-closed-loop",
         "provenance_status": provenance_status,
@@ -365,6 +378,7 @@ def run_gsa_runtime_mainline(
         "runtime": {
             "repo_root": str(repo_path),
             "assets_root": str(Path(assets_root).resolve()),
+            "requested_device": requested_device,
             "resolution": int(resolution),
             "ddpm_num_steps": int(ddpm_num_steps),
             "sampling_frequency": int(sampling_frequency),
