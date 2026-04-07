@@ -1,0 +1,29 @@
+{
+  "schema": "diffaudit.intake.manifest.v1",
+  "contract_key": "white-box/gsa/ddpm-cifar10",
+  "track": "white-box",
+  "method": "gsa",
+  "contract_stage": "target",
+  "asset_grade": "real-asset-closed-loop",
+  "provenance_status": "workspace-verified",
+  "evidence_level": "runtime-mainline",
+  "datasets": {
+    "target_member": "workspaces/white-box/assets/gsa/datasets/target-member",
+    "target_nonmember": "workspaces/white-box/assets/gsa/datasets/target-nonmember",
+    "shadow_member": "workspaces/white-box/assets/gsa/datasets/shadow-member",
+    "shadow_nonmember": "workspaces/white-box/assets/gsa/datasets/shadow-nonmember"
+  },
+  "split_counts": {
+    "target_member": 4,
+    "target_nonmember": 4,
+    "shadow_member": 4,
+    "shadow_nonmember": 4
+  },
+  "checkpoint_roots": {
+    "target": "workspaces/white-box/assets/gsa/checkpoints/target/checkpoint-2",
+    "shadow": "workspaces/white-box/assets/gsa/checkpoints/shadow/checkpoint-2"
+  },
+  "checkpoint_format": "accelerate-checkpoint-dir",
+  "source_archive": "workspaces/white-box/assets/gsa/sources/cifar-10-python.tar.gz",
+  "canonical_summary": "workspaces/white-box/runs/gsa-runtime-mainline-20260407-cpu/summary.json"
+}

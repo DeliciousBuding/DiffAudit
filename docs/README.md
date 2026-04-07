@@ -1,5 +1,10 @@
 # 文档目录
 
+- `local-api.md`: how to run the Local-API service
+- `asset-registry-local-api.md`: minimal asset registry intake contract for Local-API
+- `reproduction-status.md`: per-track reproduction status
+- `next-run-intake-index.md`: next-run intake gate entrypoints and contracts
+
 这里存放项目级文档，而不是个人临时笔记。
 
 ## 建议放什么

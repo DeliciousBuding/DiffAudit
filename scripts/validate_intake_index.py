@@ -16,6 +16,24 @@ def _is_rel_path(p: str) -> bool:
     return not (p.startswith("/") or (len(p) >= 3 and p[1:3] == ":\\"))
 
 
+def _extract_rel_paths(value: object) -> list[str]:
+    """Best-effort: pull repo-relative path candidates out of manifest fields.
+
+    The intake manifest uses a mix of string path values (single-root fields)
+    and dicts of path values (e.g. datasets/checkpoint_roots).
+    """
+
+    if isinstance(value, str):
+        return [value]
+    if isinstance(value, dict):
+        paths: list[str] = []
+        for v in value.values():
+            if isinstance(v, str):
+                paths.append(v)
+        return paths
+    return []
+
+
 def main(argv: list[str] | None = None) -> int:
     parser = argparse.ArgumentParser(
         prog="validate_intake_index",
@@ -73,6 +91,15 @@ def main(argv: list[str] | None = None) -> int:
                     continue
 
                 manifest = _load_json(manifest_path)
+                if manifest.get("schema") != "diffaudit.intake.manifest.v1":
+                    errors.append(
+                        f"entries[{i}] manifest unsupported schema: {manifest.get('schema')!r}"
+                    )
+                if manifest.get("contract_key") != entry.get("contract_key"):
+                    errors.append(
+                        f"entries[{i}] contract_key mismatch: entry={entry.get('contract_key')!r} "
+                        f"manifest={manifest.get('contract_key')!r}"
+                    )
                 if manifest.get("track") != entry.get("track"):
                     errors.append(
                         f"entries[{i}] track mismatch: entry={entry.get('track')!r} manifest={manifest.get('track')!r}"
@@ -117,6 +144,13 @@ def main(argv: list[str] | None = None) -> int:
                                     f"entries[{i}] manifest missing fields required by "
                                     f"compatibility.commands[{j}]: {missing}"
                                 )
+                            for field in required:
+                                for path_value in _extract_rel_paths(manifest.get(field)):
+                                    if not _is_rel_path(path_value):
+                                        errors.append(
+                                            f"entries[{i}] manifest field {field!r} must contain repo-relative paths: "
+                                            f"{path_value!r}"
+                                        )
 
                 paths = entry.get("paths") or {}
                 if isinstance(paths, dict) and "assets_root" in paths:
