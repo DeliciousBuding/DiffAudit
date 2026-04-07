@@ -16,22 +16,7 @@ from diffaudit.attacks.clid import (
     summarize_clid_artifacts,
 )
 from diffaudit.attacks.dit import probe_dit_assets, run_dit_sample_smoke
-from diffaudit.attacks.gsa import probe_gsa_assets, run_gsa_runtime_mainline
 from diffaudit.attacks.pia import build_pia_plan, explain_pia_assets, probe_pia_dry_run
-from diffaudit.attacks.recon import (
-    build_recon_plan,
-    explain_recon_assets,
-    prepare_recon_public_subset,
-    probe_recon_dry_run,
-    probe_recon_runtime_assets,
-    probe_recon_score_artifacts,
-    run_recon_artifact_mainline,
-    run_recon_eval_smoke,
-    run_recon_mainline_smoke,
-    run_recon_runtime_mainline,
-    run_recon_upstream_eval_smoke,
-    summarize_recon_artifacts,
-)
 from diffaudit.attacks.secmi import build_secmi_plan, explain_secmi_assets
 from diffaudit.attacks.variation import (
     build_variation_plan,
@@ -829,6 +814,8 @@ def main(argv: list[str] | None = None) -> int:
         return 0
 
     if args.command == "plan-recon":
+        from diffaudit.attacks.recon import build_recon_plan
+
         config = load_audit_config(args.config)
         plan = build_recon_plan(config)
         print(json.dumps(asdict(plan), indent=2, ensure_ascii=True))
@@ -859,17 +846,23 @@ def main(argv: list[str] | None = None) -> int:
         return 0 if payload["status"] == "ready" else 1
 
     if args.command == "probe-recon-assets":
+        from diffaudit.attacks.recon import explain_recon_assets
+
         config = load_audit_config(args.config)
         payload = explain_recon_assets(config)
         print(json.dumps(payload, indent=2, ensure_ascii=True))
         return 0 if payload["status"] == "ready" else 1
 
     if args.command == "probe-recon-score-artifacts":
+        from diffaudit.attacks.recon import probe_recon_score_artifacts
+
         payload = probe_recon_score_artifacts(args.artifact_dir)
         print(json.dumps(payload, indent=2, ensure_ascii=True))
         return 0 if payload["status"] == "ready" else 1
 
     if args.command == "probe-recon-runtime-assets":
+        from diffaudit.attacks.recon import probe_recon_runtime_assets
+
         payload = probe_recon_runtime_assets(
             target_member_dataset=args.target_member_dataset,
             target_nonmember_dataset=args.target_nonmember_dataset,
@@ -888,6 +881,8 @@ def main(argv: list[str] | None = None) -> int:
         return 0 if payload["status"] == "ready" else 1
 
     if args.command == "prepare-recon-public-subset":
+        from diffaudit.attacks.recon import prepare_recon_public_subset
+
         payload = prepare_recon_public_subset(
             bundle_root=args.bundle_root,
             output_dir=args.output_dir,
@@ -914,6 +909,8 @@ def main(argv: list[str] | None = None) -> int:
         return 0 if payload["status"] == "ready" else 1
 
     if args.command == "probe-gsa-assets":
+        from diffaudit.attacks.gsa import probe_gsa_assets
+
         payload = probe_gsa_assets(
             assets_root=args.assets_root,
             repo_root=args.repo_root,
@@ -954,6 +951,8 @@ def main(argv: list[str] | None = None) -> int:
         return exit_code
 
     if args.command == "dry-run-recon":
+        from diffaudit.attacks.recon import probe_recon_dry_run
+
         config = load_audit_config(args.config)
         exit_code, payload = probe_recon_dry_run(config, args.repo_root)
         print(json.dumps(payload, indent=2, ensure_ascii=True))
@@ -982,11 +981,15 @@ def main(argv: list[str] | None = None) -> int:
         return 0
 
     if args.command == "run-recon-eval-smoke":
+        from diffaudit.attacks.recon import run_recon_eval_smoke
+
         payload = run_recon_eval_smoke(args.workspace)
         print(json.dumps(payload, indent=2, ensure_ascii=True))
         return 0
 
     if args.command == "summarize-recon-artifacts":
+        from diffaudit.attacks.recon import summarize_recon_artifacts
+
         payload = summarize_recon_artifacts(
             artifact_dir=args.artifact_dir,
             workspace=args.workspace,
@@ -995,6 +998,8 @@ def main(argv: list[str] | None = None) -> int:
         return 0
 
     if args.command == "run-recon-upstream-eval-smoke":
+        from diffaudit.attacks.recon import run_recon_upstream_eval_smoke
+
         payload = run_recon_upstream_eval_smoke(
             args.workspace,
             repo_root=args.repo_root,
@@ -1004,6 +1009,8 @@ def main(argv: list[str] | None = None) -> int:
         return 0 if payload["status"] == "ready" else 1
 
     if args.command == "run-recon-mainline-smoke":
+        from diffaudit.attacks.recon import run_recon_mainline_smoke
+
         payload = run_recon_mainline_smoke(
             args.workspace,
             repo_root=args.repo_root,
@@ -1013,6 +1020,8 @@ def main(argv: list[str] | None = None) -> int:
         return 0 if payload["status"] == "ready" else 1
 
     if args.command == "run-recon-artifact-mainline":
+        from diffaudit.attacks.recon import run_recon_artifact_mainline
+
         payload = run_recon_artifact_mainline(
             artifact_dir=args.artifact_dir,
             workspace=args.workspace,
@@ -1023,6 +1032,8 @@ def main(argv: list[str] | None = None) -> int:
         return 0 if payload["status"] == "ready" else 1
 
     if args.command == "run-recon-runtime-mainline":
+        from diffaudit.attacks.recon import run_recon_runtime_mainline
+
         payload = run_recon_runtime_mainline(
             target_member_dataset=args.target_member_dataset,
             target_nonmember_dataset=args.target_nonmember_dataset,
@@ -1172,6 +1183,8 @@ def main(argv: list[str] | None = None) -> int:
         return 0 if payload["status"] == "ready" else 1
 
     if args.command == "run-gsa-runtime-mainline":
+        from diffaudit.attacks.gsa import run_gsa_runtime_mainline
+
         payload = run_gsa_runtime_mainline(
             workspace=args.workspace,
             assets_root=args.assets_root,
