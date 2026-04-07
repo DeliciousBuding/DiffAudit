@@ -1,0 +1,3 @@
+# Keep example outputs out of version control (they contain timestamps, hostnames, etc.).
+examples/**/out/
+
