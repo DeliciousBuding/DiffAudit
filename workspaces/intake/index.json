@@ -1,0 +1,67 @@
+{
+  "schema": "diffaudit.intake.index.v1",
+  "updated_at": "2026-04-07",
+  "entries": [
+    {
+      "id": "gray-box/pia/cifar10-ddpm",
+      "track": "gray-box",
+      "method": "pia",
+      "paths": {
+        "assets_root": "workspaces/gray-box/assets/pia"
+      },
+      "manifest": "workspaces/gray-box/assets/pia/manifest.json",
+      "admission": {
+        "status": "admitted",
+        "level": "system-intake-ready",
+        "evidence_level": "runtime-mainline",
+        "provenance_status": "source-retained-unverified"
+      },
+      "compatibility": {
+        "surface": "diffaudit-cli",
+        "commands": [
+          {
+            "name": "run-pia-runtime-mainline",
+            "required_manifest_fields": [
+              "checkpoint_root",
+              "dataset_root",
+              "member_split_root",
+              "member_split_file"
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "id": "white-box/gsa/cifar10-ddpm",
+      "track": "white-box",
+      "method": "gsa",
+      "paths": {
+        "assets_root": "workspaces/white-box/assets/gsa"
+      },
+      "manifest": "workspaces/white-box/assets/gsa/manifests/cifar10-ddpm-mainline.json",
+      "admission": {
+        "status": "admitted",
+        "level": "system-intake-ready",
+        "evidence_level": "runtime-mainline",
+        "provenance_status": "workspace-verified"
+      },
+      "compatibility": {
+        "surface": "diffaudit-cli",
+        "commands": [
+          {
+            "name": "run-gsa-runtime-mainline",
+            "required_manifest_fields": [
+              "datasets",
+              "checkpoint_roots",
+              "checkpoint_format"
+            ]
+          }
+        ],
+        "constraints": [
+          "checkpoint_format must be accelerate-checkpoint-dir"
+        ]
+      }
+    }
+  ]
+}
+
