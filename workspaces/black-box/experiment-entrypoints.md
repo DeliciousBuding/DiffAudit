@@ -2,18 +2,34 @@
 
 这份文档只回答一个问题：黑盒方向读完论文后，下一步该落到仓库哪个入口。
 
-## 入口一：`secmi-baseline`
+## 入口一：`recon-mainline`
 
-- 目标：跑通当前仓库已有的 `SecMI` 资产探针、adapter、dry-run 和 synthetic smoke。
-- 适配论文：`2025-324-paper` 的最小工程基础、`Towards Black-Box...` 的 baseline 准备。
+- 目标：维持当前最强 black-box evidence line。
+- 适配论文：`Black-box Membership Inference Attacks against Fine-tuned Diffusion Models`。
 - 命令顺序：
-  - `python -m diffaudit plan-secmi --config configs/attacks/secmi_plan.yaml`
-  - `python -m diffaudit probe-secmi-assets --config configs/attacks/secmi_plan.yaml`
-  - `python -m diffaudit prepare-secmi --config configs/attacks/secmi_plan.yaml --repo-root third_party/secmi`
-  - `python -m diffaudit dry-run-secmi --config configs/attacks/secmi_plan.yaml --repo-root third_party/secmi`
-- 产出：`code-ready / asset-ready / blocked` 状态和缺失资产说明。
+  - `python -m diffaudit plan-recon --config configs/attacks/recon_plan.yaml`
+  - `python -m diffaudit probe-recon-assets --config configs/attacks/recon_plan.yaml`
+  - `python -m diffaudit dry-run-recon --config configs/attacks/recon_plan.yaml --repo-root external/Reconstruction-based-Attack`
+  - `python -m diffaudit run-recon-mainline-smoke --workspace experiments/recon-mainline-smoke --repo-root external/Reconstruction-based-Attack --method threshold`
+- 产出：black-box 主证据、对照基线和 artifact mainline 入口。
 
-## 入口二：`clid-track`
+## 入口二：`variation-track`
+
+- 目标：把 `Towards Black-Box` 升成正式本地黑盒次主线。
+- 适配论文：`Towards Black-Box Membership Inference Attack for Diffusion Models`。
+- 当前已验证：
+  - `experiments/variation-synth-smoke/summary.json`
+  - `experiments/variation-synth-smoke-local-20260408/summary.json`
+- 命令顺序：
+  - `python -m diffaudit plan-variation --config configs/attacks/variation_plan.yaml`
+  - `python -m diffaudit probe-variation-assets --config configs/attacks/variation_plan.yaml`
+  - `python -m diffaudit dry-run-variation --config configs/attacks/variation_plan.yaml`
+  - `python -m diffaudit run-variation-synth-smoke --workspace experiments/variation-synth-smoke`
+- 产出：
+  - local synthetic-smoke verified
+  - real API blocked / ready 的显式判定
+
+## 入口三：`clid-track`
 
 - 目标：把 prompt-conditioned 成员推断补成独立轨道。
 - 适配论文：`CLiD`。
@@ -26,7 +42,7 @@
   - 条件输入 schema
   - 结果记录字段
 
-## 入口三：`dataset-audit-track`
+## 入口四：`dataset-audit-track`
 
 - 目标：把单样本成员判别扩展为数据集级审计。
 - 适配论文：`CDI`，次选 `SIDE` 的泄露讨论。
@@ -38,3 +54,10 @@
   - 审计证据 schema
   - 聚合统计脚本
   - 更偏报告化的输出
+
+## 不属于黑盒入口的内容
+
+- `SecMI`
+- `PIA`
+
+它们属于灰盒路线，不应继续作为黑盒入口文档的一部分。
