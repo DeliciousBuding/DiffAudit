@@ -1,0 +1,40 @@
+team:
+  owner: your-name
+  machine: your-machine-name
+  os: windows-or-linux-or-macos
+
+repo:
+  project_root: .
+
+black_box:
+  recon:
+    query_dataset_pt: REPLACE_WITH_QUERY_DATASET_PT
+    lora_checkpoint_dir: REPLACE_WITH_LORA_CHECKPOINT_DIR
+  variation:
+    query_image_root: REPLACE_WITH_QUERY_IMAGE_ROOT
+    endpoint: REPLACE_WITH_VARIATION_API_OR_PROXY
+  clid:
+    dataset_train_ref: REPLACE_WITH_TRAIN_DATASET_REF
+    dataset_test_ref: REPLACE_WITH_TEST_DATASET_REF
+    model_dir: REPLACE_WITH_DIFFUSERS_MODEL_DIR
+
+gray_box:
+  pia:
+    dataset_parent: REPLACE_WITH_PARENT_OF_DATASET_DIR
+    model_dir: REPLACE_WITH_PIA_MODEL_DIR
+    member_split_root: external/PIA/DDPM
+  secmi:
+    dataset_root: REPLACE_WITH_SECMI_DATASET_ROOT
+    model_dir: REPLACE_WITH_SECMI_MODEL_DIR
+    flagfile_path: REPLACE_WITH_SECMI_FLAGFILE
+
+white_box:
+  gsa:
+    repo_root: workspaces/white-box/external/GSA
+    assets_root: workspaces/white-box/assets/gsa
+  dpdm:
+    repo_root: external/DPDM
+
+notes:
+  warning: do-not-commit personal local paths
+  purpose: teammate-local asset binding template for black-box gray-box white-box lines

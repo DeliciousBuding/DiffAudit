@@ -11,7 +11,7 @@
 ## 使用原则
 
 - 共享配置里不要写个人私有资产的真实路径
-- 需要本地路径时，先参考 `assets/example.local.yaml`
+- 需要本地路径时，优先参考 `assets/team.local.template.yaml`
 - `attacks/*.yaml` 负责描述攻击设定，不负责泄露个人机器目录结构
 
 ## 当前建议
@@ -23,3 +23,4 @@
 - `attacks/variation_plan.yaml`：作为 API-only 黑盒 variation 攻击探针与 smoke 的模板
 - `benchmarks/secmi_smoke.yaml`：作为最小 smoke 配置
 - `assets/example.local.yaml`：作为个人本地资产映射参考
+- `assets/team.local.template.yaml`：作为队友接仓时统一填写的三线本地资产模板

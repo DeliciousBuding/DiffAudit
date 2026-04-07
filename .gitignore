@@ -37,6 +37,8 @@ tmp/
 # Environment files
 .env
 .env.*
+configs/assets/*.local.yaml
+!configs/assets/example.local.yaml
 
 # Local environments
 .conda/

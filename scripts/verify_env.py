@@ -7,6 +7,7 @@ import json
 
 
 PACKAGES = [
+    "diffaudit",
     "numpy",
     "pandas",
     "matplotlib",
@@ -16,6 +17,9 @@ PACKAGES = [
     "diffusers",
     "transformers",
     "accelerate",
+    "xgboost",
+    "fastapi",
+    "uvicorn",
 ]
 
 
