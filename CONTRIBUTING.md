@@ -76,6 +76,16 @@ PR 描述至少写清楚：
 - 怎么验证
 - 还差什么
 
+当前仓库默认 PR 模板位于：
+
+- `.github/PULL_REQUEST_TEMPLATE.md`
+
+提交 PR 前，建议先本地跑：
+
+```powershell
+python scripts/run_local_checks.py --fast
+```
+
 ## 五、实验命名规范
 
 配置文件建议命名：
@@ -144,8 +154,27 @@ conda run -n diffaudit-research python -m unittest tests.test_attack_registry te
 
 - `python -m diffaudit --help`
 - `python -m unittest tests.test_attack_registry tests.test_smoke_pipeline`
+- `python scripts/bootstrap_research_env.py`
+- `python scripts/render_team_local_configs.py --team-local configs/assets/team.local.template.yaml --output-dir tmp/configs/rendered-ci`
+- `pytest tests/test_variation_attack.py tests/test_render_team_local_configs.py -q`
 
-## 九、GitHub 协作建议
+## 九、本地 hook / pre-commit
+
+仓库当前提供：
+
+- `.pre-commit-config.yaml`
+- `scripts/run_local_checks.py`
+
+推荐安装：
+
+```powershell
+conda activate diffaudit-research
+pre-commit install
+```
+
+安装后，提交前会自动执行基础文本检查与最小本地检查链。
+
+## 十、GitHub 协作建议
 
 最合适的团队模式是：
 

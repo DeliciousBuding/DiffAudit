@@ -28,9 +28,16 @@ jobs:
 
       - name: Verify CLI Install
         run: |
+          python scripts/bootstrap_research_env.py
           python -m diffaudit --help
           diffaudit --help
+          python scripts/verify_env.py
+
+      - name: Render Local Config Templates
+        run: |
+          python scripts/render_team_local_configs.py --team-local configs/assets/team.local.template.yaml --output-dir tmp/configs/rendered-ci
 
       - name: Run Core Tests
         run: |
           python -m unittest tests.test_attack_registry tests.test_smoke_pipeline
+          python -m pytest tests/test_variation_attack.py tests/test_render_team_local_configs.py -q

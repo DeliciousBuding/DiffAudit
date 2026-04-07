@@ -1,0 +1,20 @@
+# Default owners
+* @DeliciousBuding
+
+# Research-wide docs and governance
+/README.md @DeliciousBuding
+/AGENTS.md @DeliciousBuding
+/CONTRIBUTING.md @DeliciousBuding
+/ROADMAP.md @DeliciousBuding
+/docs/ @DeliciousBuding
+
+# Shared execution code
+/src/diffaudit/ @DeliciousBuding
+/tests/ @DeliciousBuding
+/scripts/ @DeliciousBuding
+/configs/ @DeliciousBuding
+
+# Track workspaces
+/workspaces/black-box/ @DeliciousBuding
+/workspaces/gray-box/ @DeliciousBuding
+/workspaces/white-box/ @DeliciousBuding

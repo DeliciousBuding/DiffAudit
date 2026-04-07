@@ -14,6 +14,8 @@ dependencies:
       - numpy
       - pandas
       - pillow
+      - pre-commit
+      - pytest
       - pyyaml
       - scikit-learn
       - scipy
