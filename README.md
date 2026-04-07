@@ -212,7 +212,7 @@ python -m diffaudit run-smoke --config configs/benchmarks/secmi_smoke.yaml --wor
 python -m diffaudit plan-secmi --config configs/attacks/secmi_plan.yaml
 ```
 
-注意：`configs/attacks/secmi_plan.yaml` 现在是共享模板，不包含你的真实本地资产路径。正式运行前，请先参考 `configs/assets/example.local.yaml`，把 `dataset_root` 和 `model_dir` 改成你自己的本地值。
+注意：`configs/attacks/secmi_plan.yaml` 现在是共享模板，不包含你的真实本地资产路径。正式运行前，请先参考 `configs/assets/team.local.template.yaml`，在本地复制出 `configs/assets/team.local.yaml`，再把 `dataset_root` 和 `model_dir` 绑定到你自己的机器路径。
 
 探测 `SecMI` 资产是否齐全：
 

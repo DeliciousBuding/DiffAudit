@@ -15,7 +15,8 @@
 ## 你应该先知道的几件事
 
 - 这是研究仓库，不是产品仓库
-- 当前主线优先是 `black-box`
+- 当前不是“只做黑盒”，而是三线并行、分层推进
+- 当前最成熟的“攻击 + 防御”主讲闭环是 `PIA`
 - 代码、资产、实验三者必须分开表述
 - 没有真实运行证据，不要说“复现成功”
 
@@ -23,14 +24,17 @@
 
 ```powershell
 conda activate diffaudit-research
+python scripts/bootstrap_research_env.py --install
 python scripts/verify_env.py
 python -m diffaudit --help
 python -m unittest
-python -m diffaudit probe-secmi-assets --config configs/attacks/secmi_plan.yaml
-python -m diffaudit dry-run-secmi --config configs/attacks/secmi_plan.yaml --repo-root third_party/secmi
+python -m diffaudit plan-variation --config configs/attacks/variation_plan.yaml
+python -m diffaudit run-variation-synth-smoke --workspace experiments/variation-synth-smoke-local
+python -m diffaudit plan-pia --config configs/attacks/pia_plan.yaml
+python -m diffaudit probe-gsa-assets --repo-root workspaces/white-box/external/GSA --assets-root workspaces/white-box/assets/gsa
 ```
 
-上面的 `secmi_plan.yaml` 默认是模板。第一次使用前，先参考 `configs/assets/example.local.yaml` 把本地 `dataset_root` 和 `model_dir` 填进去。
+第一次使用前，先复制 `configs/assets/team.local.template.yaml` 为本地 `configs/assets/team.local.yaml`，再填写自己的真实路径。
 
 如果当前 shell 还没激活 conda，也可以直接写成：
 
