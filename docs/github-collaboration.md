@@ -2,6 +2,10 @@
 
 这份文档说明如何把当前公开仓库开放给队友协作，以及推荐的权限和分支保护策略。
 
+根级 GitHub 设置基线见：
+
+- [github-settings-baseline.md](D:\Code\DiffAudit\Project\docs\github-settings-baseline.md)
+
 ## 一、怎么让队友可以 push
 
 最直接的做法不是共享你的账号，而是把他们加为仓库协作者。
@@ -99,3 +103,8 @@ git config user.email "你在GitHub已验证的邮箱"
 - 给 `Write`
 - `main` 开保护
 - 统一通过 PR 合并
+
+补充：
+
+- 仓库级 Copilot review 指令见 `Project/.github/copilot-instructions.md`
+- 研究仓库不把 Copilot 当最终 reviewer，而是当第一轮静态检查

@@ -185,6 +185,10 @@ pre-commit install
 
 具体操作说明见 [docs/github-collaboration.md](docs/github-collaboration.md)。
 
+根级 GitHub 设置基线见：
+
+- `docs/github-settings-baseline.md`
+
 ## 十一、Copilot Review 规则
 
 仓库已启用 Copilot code review。
