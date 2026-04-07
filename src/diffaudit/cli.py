@@ -16,6 +16,7 @@ from diffaudit.attacks.clid import (
     summarize_clid_artifacts,
 )
 from diffaudit.attacks.dit import probe_dit_assets, run_dit_sample_smoke
+from diffaudit.attacks.gsa import probe_gsa_assets, run_gsa_runtime_mainline
 from diffaudit.attacks.pia import build_pia_plan, explain_pia_assets, probe_pia_dry_run
 from diffaudit.attacks.recon import (
     build_recon_plan,
@@ -662,6 +663,123 @@ def build_parser() -> argparse.ArgumentParser:
         help="device used for the runtime smoke run",
     )
 
+    pia_runtime_mainline_parser = subparsers.add_parser(
+        "run-pia-runtime-mainline",
+        help="run the canonical PIA DDPM path on real local assets and emit a reproducible summary",
+    )
+    pia_runtime_mainline_parser.add_argument("--config", required=True, help="path to audit yaml")
+    pia_runtime_mainline_parser.add_argument(
+        "--workspace",
+        required=True,
+        help="workspace directory for runtime mainline artifacts",
+    )
+    pia_runtime_mainline_parser.add_argument(
+        "--repo-root",
+        default="external/PIA",
+        help="path to local PIA repository root",
+    )
+    pia_runtime_mainline_parser.add_argument(
+        "--member-split-root",
+        default="external/PIA/DDPM",
+        help="path to PIA DDPM member split npz files",
+    )
+    pia_runtime_mainline_parser.add_argument(
+        "--device",
+        default="cpu",
+        help="device used for the runtime mainline run",
+    )
+    pia_runtime_mainline_parser.add_argument(
+        "--max-samples",
+        type=int,
+        default=None,
+        help="optional cap on member and non-member samples consumed per split",
+    )
+    pia_runtime_mainline_parser.add_argument(
+        "--batch-size",
+        type=int,
+        default=8,
+        help="batch size used while scoring member and non-member batches",
+    )
+    pia_runtime_mainline_parser.add_argument(
+        "--stochastic-dropout-defense",
+        action="store_true",
+        help="enable stochastic dropout at inference time as a minimal gray-box defense prototype",
+    )
+    pia_runtime_mainline_parser.add_argument(
+        "--provenance-status",
+        default="source-retained-unverified",
+        help="provenance label recorded in the emitted summary",
+    )
+
+    gsa_asset_probe_parser = subparsers.add_parser(
+        "probe-gsa-assets",
+        help="inspect white-box GSA dataset buckets, manifests and checkpoint-* readiness",
+    )
+    gsa_asset_probe_parser.add_argument(
+        "--repo-root",
+        default="workspaces/white-box/external/GSA",
+        help="path to local GSA repository root",
+    )
+    gsa_asset_probe_parser.add_argument(
+        "--assets-root",
+        default="workspaces/white-box/assets/gsa",
+        help="path to the canonical white-box GSA assets root",
+    )
+
+    gsa_runtime_mainline_parser = subparsers.add_parser(
+        "run-gsa-runtime-mainline",
+        help="run the canonical white-box GSA DDPM closed loop against real local assets",
+    )
+    gsa_runtime_mainline_parser.add_argument(
+        "--workspace",
+        required=True,
+        help="workspace directory for white-box GSA runtime mainline artifacts",
+    )
+    gsa_runtime_mainline_parser.add_argument(
+        "--repo-root",
+        default="workspaces/white-box/external/GSA",
+        help="path to local GSA repository root",
+    )
+    gsa_runtime_mainline_parser.add_argument(
+        "--assets-root",
+        default="workspaces/white-box/assets/gsa",
+        help="path to the canonical white-box GSA assets root",
+    )
+    gsa_runtime_mainline_parser.add_argument(
+        "--resolution",
+        type=int,
+        default=32,
+        help="image resolution passed to the official GSA DDPM gradient extractor",
+    )
+    gsa_runtime_mainline_parser.add_argument(
+        "--ddpm-num-steps",
+        type=int,
+        default=20,
+        help="DDPM steps passed to the official GSA DDPM gradient extractor",
+    )
+    gsa_runtime_mainline_parser.add_argument(
+        "--sampling-frequency",
+        type=int,
+        default=2,
+        help="sampling frequency passed to the official GSA DDPM gradient extractor",
+    )
+    gsa_runtime_mainline_parser.add_argument(
+        "--attack-method",
+        type=int,
+        default=1,
+        help="GSA attack method passed to the official DDPM gradient extractor",
+    )
+    gsa_runtime_mainline_parser.add_argument(
+        "--prediction-type",
+        default="epsilon",
+        help="prediction type passed to the official GSA DDPM gradient extractor",
+    )
+    gsa_runtime_mainline_parser.add_argument(
+        "--provenance-status",
+        default="workspace-verified",
+        help="provenance label recorded in the emitted summary",
+    )
+
     local_api_parser = subparsers.add_parser(
         "serve-local-api",
         help="serve the local DiffAudit API over HTTP",
@@ -792,6 +910,14 @@ def main(argv: list[str] | None = None) -> int:
     if args.command == "probe-variation-assets":
         config = load_audit_config(args.config)
         payload = explain_variation_assets(config)
+        print(json.dumps(payload, indent=2, ensure_ascii=True))
+        return 0 if payload["status"] == "ready" else 1
+
+    if args.command == "probe-gsa-assets":
+        payload = probe_gsa_assets(
+            assets_root=args.assets_root,
+            repo_root=args.repo_root,
+        )
         print(json.dumps(payload, indent=2, ensure_ascii=True))
         return 0 if payload["status"] == "ready" else 1
 
@@ -1023,6 +1149,39 @@ def main(argv: list[str] | None = None) -> int:
             args.workspace,
             repo_root=args.repo_root,
             device=args.device,
+        )
+        print(json.dumps(payload, indent=2, ensure_ascii=True))
+        return 0 if payload["status"] == "ready" else 1
+
+    if args.command == "run-pia-runtime-mainline":
+        from diffaudit.attacks.pia_adapter import run_pia_runtime_mainline
+
+        config = load_audit_config(args.config)
+        payload = run_pia_runtime_mainline(
+            config,
+            workspace=args.workspace,
+            repo_root=args.repo_root,
+            member_split_root=args.member_split_root,
+            device=args.device,
+            max_samples=args.max_samples,
+            batch_size=args.batch_size,
+            stochastic_dropout_defense=args.stochastic_dropout_defense,
+            provenance_status=args.provenance_status,
+        )
+        print(json.dumps(payload, indent=2, ensure_ascii=True))
+        return 0 if payload["status"] == "ready" else 1
+
+    if args.command == "run-gsa-runtime-mainline":
+        payload = run_gsa_runtime_mainline(
+            workspace=args.workspace,
+            assets_root=args.assets_root,
+            repo_root=args.repo_root,
+            resolution=args.resolution,
+            ddpm_num_steps=args.ddpm_num_steps,
+            sampling_frequency=args.sampling_frequency,
+            attack_method=args.attack_method,
+            prediction_type=args.prediction_type,
+            provenance_status=args.provenance_status,
         )
         print(json.dumps(payload, indent=2, ensure_ascii=True))
         return 0 if payload["status"] == "ready" else 1

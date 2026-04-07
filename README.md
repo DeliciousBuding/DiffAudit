@@ -51,7 +51,8 @@ DiffAudit 是一个面向扩散模型的隐私风险审计研究仓库。
 - 配置驱动的 smoke pipeline
 - `SecMI` 的计划层、资产解析、workspace 校验、adapter 准备和 dry-run 校验
 - `PIA` 的计划层、资产解析、dry-run、runtime probe、runtime preview 和 synthetic smoke
-- `GSA` 白盒主线的 CPU gradient smoke 与最小端到端执行 smoke
+- `PIA` 的真实 `runtime mainline` 与最小 gray-box 防御钩子
+- `GSA` 白盒主线的 CPU gradient smoke、最小端到端执行 smoke 和 real-asset closed loop mainline
 - `CLiD` 的计划层、资产解析、dry-run、dry-run smoke 和 artifact summary
 - `recon` 纯黑盒主线的计划层、资产解析、dry-run、分阶段 smoke、统一 mainline smoke 和 artifact-driven mainline
 - `variation` API-only 黑盒线的计划层、资产解析、dry-run 和 synthetic smoke
@@ -271,10 +272,28 @@ python -m diffaudit runtime-probe-pia --config configs/attacks/pia_plan.yaml --r
 python -m diffaudit runtime-preview-pia --config configs/attacks/pia_plan.yaml --repo-root external/PIA --member-split-root external/PIA/DDPM --device cpu --preview-batch-size 4
 ```
 
+运行 `PIA` runtime mainline：
+
+```powershell
+python -m diffaudit run-pia-runtime-mainline --config configs/attacks/pia_plan.yaml --workspace experiments/pia-runtime-mainline --repo-root external/PIA --member-split-root external/PIA/DDPM --device cpu
+```
+
 运行 `PIA` runtime smoke：
 
 ```powershell
 python -m diffaudit run-pia-runtime-smoke --workspace experiments/pia-runtime-smoke-cpu --repo-root external/PIA --device cpu
+```
+
+探测 `GSA` 资产是否齐全：
+
+```powershell
+python -m diffaudit probe-gsa-assets --repo-root workspaces/white-box/external/GSA --assets-root workspaces/white-box/assets/gsa
+```
+
+运行 `GSA` runtime mainline：
+
+```powershell
+python -m diffaudit run-gsa-runtime-mainline --workspace workspaces/white-box/runs/gsa-runtime-mainline --repo-root workspaces/white-box/external/GSA --assets-root workspaces/white-box/assets/gsa --resolution 32 --ddpm-num-steps 20 --sampling-frequency 2 --attack-method 1
 ```
 
 运行 `PIA` synthetic smoke：

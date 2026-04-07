@@ -308,6 +308,95 @@ class PiaAdapterTests(unittest.TestCase):
         self.assertEqual(payload["mode"], "runtime-smoke")
         self.assertTrue(payload["checks"]["runtime_probe_ready"])
 
+    def test_cli_runs_pia_runtime_mainline(self) -> None:
+        from PIL import Image
+        import numpy as np
+
+        from diffaudit.attacks.pia_adapter import bootstrap_pia_smoke_assets
+        from diffaudit.cli import main
+
+        class FakeCIFAR10:
+            def __init__(self, root, train, transform=None, download=False):
+                del root, train, download
+                self.transform = transform
+                self.images = [
+                    np.full((32, 32, 3), fill_value=value, dtype=np.uint8)
+                    for value in (16, 24, 32, 40, 180, 188, 196, 204)
+                ]
+
+            def __len__(self) -> int:
+                return len(self.images)
+
+            def __getitem__(self, index: int):
+                image = Image.fromarray(self.images[index])
+                tensor = self.transform(image) if self.transform is not None else image
+                return tensor, index
+
+        with tempfile.TemporaryDirectory() as tmpdir:
+            root = Path(tmpdir)
+            repo_root = root / "PIA"
+            create_minimal_pia_repo(repo_root)
+
+            dataset_root = root / "datasets"
+            (dataset_root / "cifar10").mkdir(parents=True)
+
+            member_split_root = root / "member_splits"
+            member_split_root.mkdir()
+            np.savez(
+                member_split_root / "CIFAR10_train_ratio0.5.npz",
+                mia_train_idxs=np.array([0, 1, 2, 3]),
+                mia_eval_idxs=np.array([4, 5, 6, 7]),
+            )
+
+            model_dir = root / "model"
+            bootstrap_pia_smoke_assets(target_dir=model_dir, repo_root=repo_root)
+
+            config_path = root / "audit.yaml"
+            config_path.write_text(
+                PIA_CONFIG_TEMPLATE
+                .replace("PLACEHOLDER_DATASET", str(dataset_root).replace("\\", "/"))
+                .replace("PLACEHOLDER_MODEL", str(model_dir).replace("\\", "/")),
+                encoding="utf-8",
+            )
+
+            stdout = StringIO()
+            with patch("torchvision.datasets.CIFAR10", FakeCIFAR10):
+                with redirect_stdout(stdout):
+                    exit_code = main(
+                        [
+                            "run-pia-runtime-mainline",
+                            "--config",
+                            str(config_path),
+                            "--workspace",
+                            str(root / "pia-runtime-mainline"),
+                            "--repo-root",
+                            str(repo_root),
+                            "--member-split-root",
+                            str(member_split_root),
+                            "--device",
+                            "cpu",
+                            "--max-samples",
+                            "4",
+                            "--batch-size",
+                            "2",
+                        ]
+                    )
+
+            payload = json.loads(stdout.getvalue())
+            self.assertEqual(exit_code, 0)
+            self.assertEqual(payload["status"], "ready")
+            self.assertEqual(payload["mode"], "runtime-mainline")
+            self.assertEqual(payload["workspace_name"], "pia-runtime-mainline")
+            self.assertEqual(payload["evidence_level"], "runtime-mainline")
+            self.assertEqual(payload["asset_grade"], "single-machine-real-asset")
+            self.assertEqual(payload["provenance_status"], "source-retained-unverified")
+            self.assertIn("auc", payload["metrics"])
+            self.assertIn("asr", payload["metrics"])
+            self.assertIn("tpr_at_1pct_fpr", payload["metrics"])
+            self.assertIn("tpr_at_0_1pct_fpr", payload["metrics"])
+            self.assertEqual(payload["sample_count_per_split"], 4)
+            self.assertTrue(Path(payload["artifact_paths"]["summary"]).exists())
+
 
 if __name__ == "__main__":
     unittest.main()

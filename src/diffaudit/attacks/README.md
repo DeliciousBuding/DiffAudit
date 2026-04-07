@@ -30,7 +30,8 @@
 
 ### 白盒
 
-当前还没有正式代码模块，白盒仍处于 research-ready。
+- `gsa.py`
+  - `GSA` 的 workspace 校验、资产探针和 real-asset closed-loop mainline
 
 ## 推荐新增方式
 
