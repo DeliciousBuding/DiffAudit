@@ -4,6 +4,7 @@
   "entries": [
     {
       "id": "gray-box/pia/cifar10-ddpm",
+      "contract_key": "gray-box/pia/cifar10-ddpm",
       "track": "gray-box",
       "method": "pia",
       "paths": {
@@ -33,6 +34,7 @@
     },
     {
       "id": "white-box/gsa/cifar10-ddpm",
+      "contract_key": "white-box/gsa/ddpm-cifar10",
       "track": "white-box",
       "method": "gsa",
       "paths": {
@@ -64,4 +66,3 @@
     }
   ]
 }
-
