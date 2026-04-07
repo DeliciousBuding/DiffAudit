@@ -48,7 +48,7 @@ Rules:
 | `black-box` | `2025-ndss-black-box-membership-inference-fine-tuned-diffusion-models.pdf`, `2024-arxiv-towards-black-box-membership-inference-diffusion-models.pdf`, `2024-neurips-clid-membership-inference-text-to-image-diffusion.pdf` |
 | `gray-box` | `2023-icml-secmi-membership-inference-diffusion-models.pdf`, `2024-iclr-pia-proximal-initialization.pdf`, `2025-arxiv-sima-score-based-membership-inference-diffusion-models.pdf`, `2025-arxiv-small-noise-injection-membership-inference-diffusion-models.pdf` |
 | `white-box` | `2025-popets-white-box-membership-inference-diffusion-models.pdf`, `2024-neurips-finding-nemo-localizing-memorization-neurons-diffusion-models.pdf` |
-| `context` | `diffaudit-team-onboarding.pdf`, `diffaudit-product-requirements.pdf` |
+| `context` | `diffaudit-team-onboarding.pdf`, `diffaudit-product-requirements.pdf`, `mia-defense-document.docx`, `context/mia-defense-document.md` |
 | `survey` | `2025-neurips-tracing-the-roots-origin-attribution-diffusion-trajectories.pdf`, `2025-icdar-dp-docldm-private-document-image-generation-latent-diffusion.pdf`, `2025-aaai-privacy-preserving-lora-membership-inference-latent-diffusion-models.pdf`, `2024-arxiv-dual-model-defense-diffusion-membership-inference-disjoint-data-splitting.pdf`, `2025-ndss-diffence-fencing-membership-privacy-diffusion-models.pdf`, `2025-arxiv-defending-diffusion-models-membership-inference-higher-order-langevin-dynamics.pdf`, `2026-arxiv-inference-attacks-graph-generative-diffusion-models.pdf`, `2025-arxiv-perturb-a-model-not-an-image-anti-personalized-diffusion-models.pdf`, `survey-index-diffusion-privacy-literature.pdf` |
 
 ## Source of Truth
