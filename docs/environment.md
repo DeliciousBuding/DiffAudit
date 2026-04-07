@@ -41,6 +41,12 @@ python -m diffaudit --help
 diffaudit --help
 ```
 
+为了避免环境更新后 editable install 丢失，推荐紧接着执行：
+
+```powershell
+python scripts/bootstrap_research_env.py --install
+```
+
 ## 如果当前 shell 没有激活 conda
 
 有些终端线程不会自动继承你本地已经激活过的环境。这时不要直接用系统 Python 跑仓库命令，优先显式前缀：
@@ -58,16 +64,21 @@ conda run -n diffaudit-research python -m diffaudit probe-secmi-assets --config 
 
 建议先用 `conda env list` 确认 `diffaudit-research` 确实存在，再执行后续命令。
 
+## 队友接仓推荐步骤
+
+如果是新机器或新同学刚接仓，优先按 [teammate-setup.md](teammate-setup.md) 执行，不要直接手改共享配置。
+
 ## 本地资产路径如何填写
 
 `configs/attacks/secmi_plan.yaml` 是共享模板，不应该提交个人机器上的真实路径。
 
 推荐做法：
 
-1. 先查看 `configs/assets/example.local.yaml`
-2. 在本地复制或修改自己的 `configs/attacks/secmi_plan.yaml`
-3. 只在你自己的工作副本里把 `dataset_root` 和 `model_dir` 改成真实路径
-4. 先用 `probe-secmi-assets` 确认资产 readiness，再跑 `dry-run-secmi`
+1. 先查看 `configs/assets/team.local.template.yaml`
+2. 在本地复制成 `configs/assets/team.local.yaml`
+3. 只在 `team.local.yaml` 里填写你自己的真实路径
+4. 共享配置继续保持占位符或相对路径
+5. 先用各线的 `probe-*` 命令确认资产 readiness，再跑后续命令
 
 ## 当前已验证的 GPU 栈
 

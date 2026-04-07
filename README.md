@@ -178,11 +178,18 @@ python -m ipykernel install --user --name diffaudit-research --display-name "Pyt
 ```
 
 环境说明见 [docs/environment.md](docs/environment.md)。
+队友接仓指南见 [docs/teammate-setup.md](docs/teammate-setup.md)。
 
 环境验证：
 
 ```powershell
 python scripts/verify_env.py
+```
+
+推荐在环境创建或更新后补一次：
+
+```powershell
+python scripts/bootstrap_research_env.py --install
 ```
 
 如果当前 shell 没有激活 conda 环境，也可以直接用：
