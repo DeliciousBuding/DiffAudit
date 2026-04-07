@@ -47,6 +47,12 @@ diffaudit --help
 python scripts/bootstrap_research_env.py --install
 ```
 
+如果是队友第一次接仓，环境通过后继续执行：
+
+```powershell
+python scripts/render_team_local_configs.py
+```
+
 ## 如果当前 shell 没有激活 conda
 
 有些终端线程不会自动继承你本地已经激活过的环境。这时不要直接用系统 Python 跑仓库命令，优先显式前缀：
