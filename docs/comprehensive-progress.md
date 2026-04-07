@@ -25,12 +25,16 @@
 ### 黑盒
 
 - 主线：`recon`
+- 次主线候选：`variation`（对应 `Towards Black-Box`）
 - 当前能说的话：
   - 公开资产上的 black-box 风险已经有可引用主证据
+  - `variation` 已能在本地 CPU 上重复跑 synthetic smoke
 - 当前不能说的话：
   - 还不能把 black-box 防御讲成已有结果
+  - 还不能把 `variation` 写成真实 API 闭环
 - 当前用途：
   - 作为申报和答辩里的“风险存在”主证据
+  - `variation` 适合作为第二黑盒候选线补充进申报叙事
 
 ### 灰盒
 

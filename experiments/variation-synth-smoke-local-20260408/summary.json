@@ -1,0 +1,27 @@
+{
+  "status": "ready",
+  "track": "black-box",
+  "method": "variation",
+  "paper": "Towards_Black_Box_Diffusion_2024",
+  "mode": "synthetic-smoke",
+  "device": "cpu",
+  "workspace": "experiments\\variation-synth-smoke-local-20260408",
+  "artifact_paths": {
+    "summary": "experiments\\variation-synth-smoke-local-20260408\\summary.json"
+  },
+  "checks": {
+    "synthetic_queries_created": true,
+    "distance_scores_computed": true,
+    "threshold_metrics_computed": true,
+    "synthetic_assets_cleaned": true
+  },
+  "metrics": {
+    "auc": 1.0,
+    "asr": 1.0,
+    "threshold": 0.48
+  },
+  "notes": [
+    "Synthetic smoke emulates query-image variation distances without external API calls.",
+    "Smoke validates the black-box threshold-style evaluation path only."
+  ]
+}
