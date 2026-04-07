@@ -760,6 +760,12 @@ def build_parser() -> argparse.ArgumentParser:
         help="prediction type passed to the official GSA DDPM gradient extractor",
     )
     gsa_runtime_mainline_parser.add_argument(
+        "--device",
+        default="auto",
+        choices=["auto", "cpu", "cuda"],
+        help="device hint for GSA gradient extraction subprocesses",
+    )
+    gsa_runtime_mainline_parser.add_argument(
         "--provenance-status",
         default="workspace-verified",
         help="provenance label recorded in the emitted summary",
@@ -1194,6 +1200,7 @@ def main(argv: list[str] | None = None) -> int:
             sampling_frequency=args.sampling_frequency,
             attack_method=args.attack_method,
             prediction_type=args.prediction_type,
+            device=args.device,
             provenance_status=args.provenance_status,
         )
         print(json.dumps(payload, indent=2, ensure_ascii=True))
