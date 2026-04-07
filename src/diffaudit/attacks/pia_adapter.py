@@ -5,6 +5,7 @@ from __future__ import annotations
 import importlib.util
 import json
 import shutil
+import time
 from dataclasses import dataclass
 from pathlib import Path
 from types import ModuleType
@@ -451,6 +452,95 @@ def _compute_auc(member_scores: torch.Tensor, nonmember_scores: torch.Tensor) ->
     return float((wins + ties).mean().item())
 
 
+def _compute_threshold_metrics(
+    member_scores: np.ndarray,
+    nonmember_scores: np.ndarray,
+) -> dict[str, float]:
+    scores = np.concatenate([member_scores, nonmember_scores])
+    labels = np.concatenate(
+        [
+            np.ones(member_scores.shape[0], dtype=np.int64),
+            np.zeros(nonmember_scores.shape[0], dtype=np.int64),
+        ]
+    )
+    thresholds = np.unique(scores)[::-1]
+    if thresholds.size == 0:
+        thresholds = np.asarray([0.0], dtype=float)
+
+    best_asr = -1.0
+    best_threshold = float(thresholds[0])
+    best_tpr_at_1pct = 0.0
+    best_tpr_at_0_1pct = 0.0
+    for threshold in thresholds:
+        predictions = (scores >= threshold).astype(np.int64)
+        tp = int(((predictions == 1) & (labels == 1)).sum())
+        tn = int(((predictions == 0) & (labels == 0)).sum())
+        fp = int(((predictions == 1) & (labels == 0)).sum())
+        fn = int(((predictions == 0) & (labels == 1)).sum())
+        asr = float((tp + tn) / labels.shape[0])
+        if asr > best_asr:
+            best_asr = asr
+            best_threshold = float(threshold)
+        tpr = float(tp / (tp + fn)) if (tp + fn) else 0.0
+        fpr = float(fp / (fp + tn)) if (fp + tn) else 0.0
+        if fpr <= 0.01:
+            best_tpr_at_1pct = max(best_tpr_at_1pct, tpr)
+        if fpr <= 0.001:
+            best_tpr_at_0_1pct = max(best_tpr_at_0_1pct, tpr)
+
+    return {
+        "asr": round(best_asr, 6),
+        "threshold": round(best_threshold, 6),
+        "tpr_at_1pct_fpr": round(best_tpr_at_1pct, 6),
+        "tpr_at_0_1pct_fpr": round(best_tpr_at_0_1pct, 6),
+    }
+
+
+def _select_preview_indices(
+    split_indices: list[int],
+    max_samples: int | None,
+) -> list[int]:
+    if max_samples is None or max_samples <= 0:
+        return list(split_indices)
+    return list(split_indices[: max_samples])
+
+
+def _build_pia_subset_loader(
+    dataset: str,
+    dataset_dir: str | Path,
+    member_split_path: str | Path,
+    batch_size: int,
+    max_samples: int | None,
+    membership: str,
+):
+    if dataset.upper() != "CIFAR10":
+        raise ValueError(f"PIA runtime mainline currently supports CIFAR10 only: {dataset}")
+
+    split_payload = np.load(member_split_path)
+    if membership == "member":
+        raw_indices = split_payload["mia_train_idxs"].tolist()
+    else:
+        raw_indices = split_payload["mia_eval_idxs"].tolist()
+    selected_indices = _select_preview_indices(raw_indices, max_samples=max_samples)
+    if not selected_indices:
+        raise ValueError(f"PIA split has no samples for membership={membership}")
+
+    transform = tv_transforms.Compose([tv_transforms.ToTensor()])
+    dataset_obj = tv_datasets.CIFAR10(
+        root=str(dataset_dir),
+        train=True,
+        download=False,
+        transform=transform,
+    )
+    subset = Subset(dataset_obj, selected_indices)
+    loader = DataLoader(
+        subset,
+        batch_size=min(batch_size, len(subset)),
+        shuffle=False,
+    )
+    return loader, selected_indices
+
+
 def run_synthetic_pia_smoke(
     workspace: str | Path,
     repo_root: str | Path = "external/PIA",
@@ -636,4 +726,191 @@ def run_pia_runtime_smoke(
         encoding="utf-8",
     )
     shutil.rmtree(synthetic_root, ignore_errors=True)
+    return result
+
+
+def run_pia_runtime_mainline(
+    config: AuditConfig,
+    workspace: str | Path,
+    repo_root: str | Path = "external/PIA",
+    member_split_root: str | Path | None = None,
+    device: str = "cpu",
+    max_samples: int | None = None,
+    batch_size: int = 8,
+    stochastic_dropout_defense: bool = False,
+    provenance_status: str = "source-retained-unverified",
+) -> dict[str, Any]:
+    started_at = time.perf_counter()
+    workspace_path = Path(workspace)
+    workspace_path.mkdir(parents=True, exist_ok=True)
+
+    exit_code, readiness = probe_pia_runtime(
+        config,
+        repo_root=repo_root,
+        member_split_root=member_split_root,
+        device=device,
+    )
+    if exit_code != 0 or readiness["status"] != "ready":
+        result = {
+            "status": "blocked",
+            "track": "gray-box",
+            "method": "pia",
+            "paper": "PIA_ICLR2024",
+            "mode": "runtime-mainline",
+            "workspace": str(workspace_path),
+            "workspace_name": workspace_path.name,
+            "contract_stage": "target",
+            "asset_grade": "single-machine-real-asset",
+            "provenance_status": provenance_status,
+            "evidence_level": "runtime-mainline",
+            "checks": {
+                "runtime_probe_ready": False,
+            },
+            "runtime_probe": readiness,
+            "artifact_paths": {
+                "summary": str(workspace_path / "summary.json"),
+            },
+            "notes": [
+                "Runtime mainline requires the canonical checkpoint, dataset root, and member split to be ready.",
+            ],
+        }
+        (workspace_path / "summary.json").write_text(
+            json.dumps(result, indent=2, ensure_ascii=True),
+            encoding="utf-8",
+        )
+        return result
+
+    runtime_context = prepare_pia_runtime(
+        config,
+        repo_root=repo_root,
+        member_split_root=member_split_root,
+        device=device,
+    )
+    model, weights_key = load_pia_model(
+        runtime_context.checkpoint_path,
+        runtime_context.model_module,
+        device=device,
+    )
+    if stochastic_dropout_defense:
+        model.train()
+    else:
+        model.eval()
+    attacker = _build_pia_attacker(
+        components_module=runtime_context.components_module,
+        model=model,
+        attacker_name=runtime_context.plan.attacker_name,
+        attack_num=runtime_context.plan.attack_num,
+        interval=runtime_context.plan.interval,
+        device=device,
+    )
+
+    split_root = Path(member_split_root) if member_split_root else Path(repo_root) / "DDPM"
+    asset_summary = probe_pia_assets(
+        dataset=runtime_context.plan.dataset,
+        dataset_root=runtime_context.plan.data_root,
+        model_dir=runtime_context.plan.model_dir,
+        member_split_root=split_root,
+    )
+    selected_max_samples = max_samples or runtime_context.plan.num_samples
+    member_loader, member_indices = _build_pia_subset_loader(
+        dataset=runtime_context.plan.dataset,
+        dataset_dir=asset_summary["paths"]["dataset_dir"],
+        member_split_path=asset_summary["paths"]["member_split"],
+        batch_size=batch_size,
+        max_samples=selected_max_samples,
+        membership="member",
+    )
+    nonmember_loader, nonmember_indices = _build_pia_subset_loader(
+        dataset=runtime_context.plan.dataset,
+        dataset_dir=asset_summary["paths"]["dataset_dir"],
+        member_split_path=asset_summary["paths"]["member_split"],
+        batch_size=batch_size,
+        max_samples=selected_max_samples,
+        membership="nonmember",
+    )
+
+    member_scores: list[torch.Tensor] = []
+    nonmember_scores: list[torch.Tensor] = []
+    with torch.no_grad():
+        for batch, _ in member_loader:
+            batch_scores = attacker(batch.to(device)).mean(dim=0)
+            member_scores.append((-batch_scores).detach().cpu())
+        for batch, _ in nonmember_loader:
+            batch_scores = attacker(batch.to(device)).mean(dim=0)
+            nonmember_scores.append((-batch_scores).detach().cpu())
+
+    member_score_tensor = torch.cat(member_scores)
+    nonmember_score_tensor = torch.cat(nonmember_scores)
+    metrics = {
+        "auc": round(_compute_auc(member_score_tensor, nonmember_score_tensor), 6),
+        **_compute_threshold_metrics(
+            member_score_tensor.numpy(),
+            nonmember_score_tensor.numpy(),
+        ),
+        "member_score_mean": round(float(member_score_tensor.mean().item()), 6),
+        "nonmember_score_mean": round(float(nonmember_score_tensor.mean().item()), 6),
+    }
+    scores_path = workspace_path / "scores.json"
+    scores_payload = {
+        "member_scores": [round(float(value), 6) for value in member_score_tensor.tolist()],
+        "nonmember_scores": [round(float(value), 6) for value in nonmember_score_tensor.tolist()],
+        "member_indices": member_indices,
+        "nonmember_indices": nonmember_indices,
+    }
+    scores_path.write_text(
+        json.dumps(scores_payload, indent=2, ensure_ascii=True),
+        encoding="utf-8",
+    )
+
+    result = {
+        "status": "ready",
+        "track": "gray-box",
+        "method": "pia",
+        "paper": "PIA_ICLR2024",
+        "mode": "runtime-mainline",
+        "device": device,
+        "workspace": str(workspace_path),
+        "workspace_name": workspace_path.name,
+        "contract_stage": "target",
+        "asset_grade": "single-machine-real-asset",
+        "provenance_status": provenance_status,
+        "evidence_level": "runtime-mainline",
+        "artifact_paths": {
+            "summary": str(workspace_path / "summary.json"),
+            "scores": str(scores_path),
+        },
+        "checks": {
+            **asset_summary["checks"],
+            "runtime_probe_ready": True,
+            "member_scores_generated": True,
+            "nonmember_scores_generated": True,
+        },
+        "runtime": {
+            "repo_root": str(Path(repo_root)),
+            "model_dir": runtime_context.plan.model_dir,
+            "dataset_root": runtime_context.plan.data_root,
+            "member_split_root": str(split_root),
+            "batch_size": int(batch_size),
+            "max_samples": int(selected_max_samples),
+            "num_samples": int(runtime_context.plan.num_samples),
+            "attack_num": runtime_context.plan.attack_num,
+            "interval": runtime_context.plan.interval,
+            "weights_key": weights_key,
+            "elapsed_seconds": round(time.perf_counter() - started_at, 6),
+        },
+        "defense": {
+            "name": "stochastic-dropout" if stochastic_dropout_defense else "none",
+            "enabled": bool(stochastic_dropout_defense),
+        },
+        "sample_count_per_split": int(member_score_tensor.shape[0]),
+        "metrics": metrics,
+        "notes": [
+            "Runtime mainline executes the current PIA DDPM path on canonical real assets.",
+            "Current evidence is suitable for a local baseline and must not be overstated as benchmark-ready.",
+        ],
+    }
+    (workspace_path / "summary.json").write_text(
+        json.dumps(result, indent=2, ensure_ascii=True),
+        encoding="utf-8",
+    )
     return result

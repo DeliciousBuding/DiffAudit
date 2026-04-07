@@ -14,6 +14,7 @@ class PiaPlan:
     dataset: str
     data_root: str
     model_dir: str
+    num_samples: int
     attacker_name: str
     attack_num: int
     interval: int
@@ -78,6 +79,7 @@ def build_pia_plan(config: AuditConfig) -> PiaPlan:
         dataset=dataset,
         data_root=data_root,
         model_dir=model_dir,
+        num_samples=int(config.attack.num_samples),
         attacker_name=attacker_name,
         attack_num=attack_num,
         interval=interval,
@@ -206,6 +208,7 @@ def explain_pia_assets(
     return {
         **summary,
         "model_dir": plan.model_dir,
+        "num_samples": plan.num_samples,
         "data_root": plan.data_root,
         "attacker_name": plan.attacker_name,
         "attack_num": plan.attack_num,
@@ -278,6 +281,7 @@ def probe_pia_dry_run(
             "model": str(model_path),
         },
         "dataset": plan.dataset,
+        "num_samples": plan.num_samples,
         "attacker_name": plan.attacker_name,
         "attack_num": plan.attack_num,
         "interval": plan.interval,
