@@ -192,6 +192,12 @@ python scripts/verify_env.py
 python scripts/bootstrap_research_env.py --install
 ```
 
+如果你已经填好了 `configs/assets/team.local.yaml`，可以继续生成各线 local config：
+
+```powershell
+python scripts/render_team_local_configs.py
+```
+
 如果当前 shell 没有激活 conda 环境，也可以直接用：
 
 ```powershell

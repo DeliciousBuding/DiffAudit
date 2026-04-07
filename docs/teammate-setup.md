@@ -41,6 +41,20 @@ Copy-Item configs/assets/team.local.template.yaml configs/assets/team.local.yaml
 - `configs/assets/team.local.yaml` 会被 `.gitignore` 忽略
 - `configs/assets/example.local.yaml` 和 `team.local.template.yaml` 只是模板
 
+填完后，推荐直接生成各线 local config：
+
+```powershell
+python scripts/render_team_local_configs.py
+```
+
+默认输出到：
+
+- `tmp/configs/rendered/secmi.local.yaml`
+- `tmp/configs/rendered/pia.local.yaml`
+- `tmp/configs/rendered/recon.local.yaml`
+- `tmp/configs/rendered/variation.local.yaml`
+- `tmp/configs/rendered/clid.local.yaml`
+
 ## 3. 三条线最小接仓入口
 
 ### 黑盒
