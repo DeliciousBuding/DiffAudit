@@ -1,0 +1,19 @@
+[project]
+name = "pia-next-run"
+version = "0.1.0"
+description = "PIA next-run intake gate: validate inputs and emit manifest+provenance JSON."
+requires-python = ">=3.10"
+dependencies = []
+
+[project.scripts]
+pia-next-run = "pia_next_run.cli:main"
+
+[build-system]
+requires = ["setuptools>=68"]
+build-backend = "setuptools.build_meta"
+
+[tool.setuptools]
+package-dir = {"" = "src"}
+
+[tool.setuptools.packages.find]
+where = ["src"]

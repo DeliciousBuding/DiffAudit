@@ -31,21 +31,27 @@ Exit codes:
 Reference:
 - gate README: [../tools/gsa_next_run/README.md](../tools/gsa_next_run/README.md)
 
-## PIA (gray-box) next-run runtime mainline
+## PIA (gray-box) next-run intake gate
 
 Board one-liner:
-`PIA next-run: diffaudit run-pia-runtime-mainline consumes local canonical assets and writes summary+scores into workspace.`
+`PIA next-run: tools/pia_next_run emits manifest+provenance (config + member split + git + host) before runtime mainline.`
 
-Command (existing entrypoint; local config must point at your dataset/checkpoint roots):
+Command (no install):
 
 ```powershell
-python -m diffaudit run-pia-runtime-mainline --config tmp/configs/pia-cifar10-graybox-assets.local.yaml --workspace workspaces/gray-box/runs/pia-next-run --repo-root external/PIA --member-split-root external/PIA/DDPM --device cpu
+cd Project/tools/pia_next_run
+.\run.ps1 --config ..\..\tmp\configs\pia-cifar10-graybox-assets.local.yaml --member-split-root ..\..\external\PIA\DDPM --repo-root ..\..\external\PIA --out-dir ..\..\tmp\pia_next_run_smoke
 ```
 
-Outputs (under `--workspace`):
-- `summary.json`
-- `scores.json`
+Inputs:
+- `--config <file|dir>`: PIA runtime config
+- `--member-split-root <dir>`: member split directory
+- `--repo-root <dir>`: used to record git commit (and optionally enforce clean repo via `--strict`)
+
+Outputs (under `--out-dir`):
+- `manifest.json`
+- `provenance.json`
 
 Reference:
+- gate README: [../tools/pia_next_run/README.md](../tools/pia_next_run/README.md)
 - runtime evidence note: [../workspaces/gray-box/2026-04-07-pia-runtime-mainline.md](../workspaces/gray-box/2026-04-07-pia-runtime-mainline.md)
-
