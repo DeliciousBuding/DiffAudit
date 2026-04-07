@@ -51,8 +51,8 @@ DiffAudit 是一个面向扩散模型的隐私风险审计研究仓库。
 - 配置驱动的 smoke pipeline
 - `SecMI` 的计划层、资产解析、workspace 校验、adapter 准备和 dry-run 校验
 - `PIA` 的计划层、资产解析、dry-run、runtime probe、runtime preview 和 synthetic smoke
-- `PIA` 的真实 `runtime mainline` 与最小 gray-box 防御钩子
-- `GSA` 白盒主线的 CPU gradient smoke、最小端到端执行 smoke 和 real-asset closed loop mainline
+- `PIA` 的真实 `runtime mainline` 已切换为 canonical local assets，machine-readable manifest 位于 `workspaces/gray-box/assets/pia/manifest.json`，包含 `contract_stage / asset_grade / provenance_status`
+- `GSA` 白盒主线的 CPU gradient smoke、最小端到端执行 smoke 和 real-asset closed loop mainline，machine-readable manifest 位于 `workspaces/white-box/assets/gsa/manifests/cifar10-ddpm-mainline.json` 并记录 closed-loop canonical roots
 - `CLiD` 的计划层、资产解析、dry-run、dry-run smoke 和 artifact summary
 - `recon` 纯黑盒主线的计划层、资产解析、dry-run、分阶段 smoke、统一 mainline smoke 和 artifact-driven mainline
 - `variation` API-only 黑盒线的计划层、资产解析、dry-run 和 synthetic smoke
