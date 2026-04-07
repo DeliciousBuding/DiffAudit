@@ -51,9 +51,13 @@ def main(argv: list[str] | None = None) -> int:
                     errors.append(f"entries[{i}] must be an object")
                     continue
 
-                for key in ("id", "track", "method", "manifest", "admission", "compatibility"):
+                for key in ("id", "contract_key", "track", "method", "manifest", "admission", "compatibility"):
                     if key not in entry:
                         errors.append(f"entries[{i}] missing required field: {key}")
+
+                contract_key = entry.get("contract_key")
+                if not isinstance(contract_key, str) or not contract_key:
+                    errors.append(f"entries[{i}].contract_key must be a non-empty string")
 
                 manifest_rel = entry.get("manifest")
                 if not isinstance(manifest_rel, str) or not manifest_rel:
@@ -140,4 +144,3 @@ def main(argv: list[str] | None = None) -> int:
 
 if __name__ == "__main__":
     raise SystemExit(main())
-
