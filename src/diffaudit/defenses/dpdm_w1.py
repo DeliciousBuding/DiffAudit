@@ -2,9 +2,11 @@
 
 from __future__ import annotations
 
+import gc
 import json
 import math
 import sys
+from datetime import datetime, timezone
 from pathlib import Path
 from typing import Any
 
@@ -14,6 +16,21 @@ from PIL import Image
 from omegaconf import OmegaConf
 from sklearn.linear_model import LogisticRegression
 from sklearn.metrics import roc_auc_score, roc_curve
+
+
+def _append_progress(workspace_path: Path, message: str) -> None:
+    timestamp = datetime.now(timezone.utc).isoformat()
+    with (workspace_path / "progress.log").open("a", encoding="utf-8") as handle:
+        handle.write(f"[{timestamp}] {message}\n")
+
+
+def _release_model(model: torch.nn.Module | None, device: str) -> None:
+    if model is None:
+        return
+    del model
+    gc.collect()
+    if device == "cuda" and torch.cuda.is_available():
+        torch.cuda.empty_cache()
 
 
 def _ensure_dpdm_imports(dpdm_root: str | Path) -> None:
@@ -101,8 +118,15 @@ def _score_sample(
             if parameter.grad is not None:
                 grad_norm += float(parameter.grad.norm().item())
         scores.append(grad_norm)
+        del noise
+        del noisy_image
+        del denoised
+        del loss
 
     model.zero_grad(set_to_none=True)
+    del label_tensor
+    if image.device.type == "cuda" and torch.cuda.is_available():
+        torch.cuda.empty_cache()
     return float(np.mean(scores))
 
 
@@ -130,6 +154,10 @@ def _score_dataset(
             seed=seed_base + index,
         )
         scores.append(score)
+        del image_tensor
+        if device == "cuda" and torch.cuda.is_available() and (index + 1) % 16 == 0:
+            gc.collect()
+            torch.cuda.empty_cache()
     return scores
 
 
@@ -516,14 +544,17 @@ def run_dpdm_w1_multi_shadow_comparator(
 
     workspace_path = Path(workspace)
     workspace_path.mkdir(parents=True, exist_ok=True)
+    _append_progress(workspace_path, "starting multi-shadow comparator")
 
     resolved_device = "cuda" if device == "cuda" and torch.cuda.is_available() else "cpu"
+    _append_progress(workspace_path, f"resolved_device={resolved_device}")
     target_model, config = _load_dpdm_model(
         dpdm_root=dpdm_root,
         config_path=config_path,
         checkpoint_path=target_checkpoint_path,
         device=resolved_device,
     )
+    _append_progress(workspace_path, f"loaded target checkpoint: {Path(target_checkpoint_path).resolve()}")
 
     sigma_values = _sigma_schedule(
         p_mean=float(config["loss"]["p_mean"]),
@@ -531,16 +562,22 @@ def run_dpdm_w1_multi_shadow_comparator(
         sigma_points=sigma_points,
         device=resolved_device,
     )
+    _append_progress(workspace_path, f"built sigma schedule with {sigma_points} points")
 
     shadow_member_score_groups: list[list[float]] = []
     shadow_nonmember_score_groups: list[list[float]] = []
     for index, checkpoint_path in enumerate(shadow_checkpoint_paths):
+        _append_progress(
+            workspace_path,
+            f"loading shadow checkpoint {index + 1}/{len(shadow_checkpoint_paths)}: {Path(checkpoint_path).resolve()}",
+        )
         shadow_model, _ = _load_dpdm_model(
             dpdm_root=dpdm_root,
             config_path=config_path,
             checkpoint_path=checkpoint_path,
             device=resolved_device,
         )
+        _append_progress(workspace_path, f"scoring shadow member set {index + 1}")
         shadow_member_score_groups.append(
             _score_dataset(
                 model=shadow_model,
@@ -551,6 +588,7 @@ def run_dpdm_w1_multi_shadow_comparator(
                 seed_base=20_000 * (index + 1),
             )
         )
+        _append_progress(workspace_path, f"scoring shadow nonmember set {index + 1}")
         shadow_nonmember_score_groups.append(
             _score_dataset(
                 model=shadow_model,
@@ -561,7 +599,10 @@ def run_dpdm_w1_multi_shadow_comparator(
                 seed_base=30_000 * (index + 1),
             )
         )
+        _append_progress(workspace_path, f"completed shadow scoring {index + 1}")
+        _release_model(shadow_model, resolved_device)
 
+    _append_progress(workspace_path, "scoring target member set")
     target_member_scores = _score_dataset(
         model=target_model,
         dataset_dir=target_member_dataset_dir,
@@ -570,6 +611,7 @@ def run_dpdm_w1_multi_shadow_comparator(
         max_samples=max_samples,
         seed_base=0,
     )
+    _append_progress(workspace_path, "scoring target nonmember set")
     target_nonmember_scores = _score_dataset(
         model=target_model,
         dataset_dir=target_nonmember_dataset_dir,
@@ -578,6 +620,8 @@ def run_dpdm_w1_multi_shadow_comparator(
         max_samples=max_samples,
         seed_base=10_000,
     )
+    _append_progress(workspace_path, "completed target scoring")
+    _release_model(target_model, resolved_device)
 
     metrics = _multi_shadow_target_metric_bundle(
         shadow_member_score_groups=shadow_member_score_groups,
@@ -585,6 +629,7 @@ def run_dpdm_w1_multi_shadow_comparator(
         target_member_scores=target_member_scores,
         target_nonmember_scores=target_nonmember_scores,
     )
+    _append_progress(workspace_path, "computed metrics")
 
     score_payload = {
         "shadow_member_scores": shadow_member_score_groups,
@@ -650,4 +695,5 @@ def run_dpdm_w1_multi_shadow_comparator(
         json.dumps(result, indent=2, ensure_ascii=True),
         encoding="utf-8",
     )
+    _append_progress(workspace_path, "wrote summary artifacts")
     return result
