@@ -44,6 +44,7 @@
   - `PIA` 已经不是 smoke，而是真实资产 mainline
   - `PIA GPU128 / GPU256 / GPU512` 已拿到同口径 baseline + defense 对照，且 defense 指标连续三档都低于 baseline
   - `PIA GPU512` 同档 repeat 也继续维持 defense 优于 baseline
+  - `pia_next_run` 已经产出 machine-readable `manifest + provenance`，但当前仍只能维持 `source-retained-unverified`
   - 当前最适合把防御压到这条线上做正式比较
 - 当前不能说的话：
   - 还不能说灰盒防御已经验证有效
