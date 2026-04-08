@@ -17,6 +17,7 @@ Project-side (source of truth for assets/intake):
 
 - `Project/workspaces/intake/index.json` (`diffaudit.intake.index.v1`)
 - `Project/workspaces/**/assets/**/manifest*.json` (`diffaudit.intake.manifest.v1`)
+- `Project/workspaces/implementation/artifacts/unified-attack-defense-table.json` (`diffaudit.attack_defense_table.v1`) as the admitted cross-track result table
 
 Local-API-side (source of truth for contract registry / job routing):
 
@@ -35,6 +36,13 @@ Every manifest referenced by `Project/workspaces/intake/index.json` MUST contain
 - `asset_grade`: asset completeness / locality grade
 - `provenance_status`: provenance classification for promotion decisions
 - `evidence_level`: best current evidence level (e.g. `runtime-mainline`)
+
+Current boundary note:
+
+- `Project/workspaces/intake/index.json` currently covers promoted intake contracts, not every admitted research result.
+- `PIA` has a stable promoted intake surface.
+- `GSA` currently has a legacy intake surface plus a stronger admitted result tracked in the unified table and white-box docs.
+- `recon` and `DPDM` are currently admitted through the unified table plus frozen workspace docs, not standalone intake manifests.
 
 Method-specific required fields MUST be declared in the intake index:
 

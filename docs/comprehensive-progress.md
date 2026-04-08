@@ -14,7 +14,7 @@
 | --- | --- | --- |
 | 黑盒攻击 | `较成熟` | `recon` 是当前最强证据线 |
 | 灰盒攻击 | `最成熟` | `PIA` 已进入 real-asset runtime mainline |
-| 白盒攻击 | `已拿到强结果` | `GSA` 已完成 `1k-3shadow` paper-aligned runtime，AUC 达到 `0.97514` |
+| 白盒攻击 | `已拿到强结果 + 有增强 rerun 在跑` | `GSA` 已完成 `1k-3shadow` paper-aligned runtime，AUC 达到 `0.97514`；独立资产根上的 `epoch300 rerun1` 正在后台训练 |
 | 黑盒防御 | `基本未落地` | `B-1 / B-2` 仍在设计层 |
 | 灰盒防御 | `已进入 provisional G-1` | `PIA GPU128/GPU256/GPU512` 三档与一次 `GPU512` 同档 repeat 都显示 `stochastic-dropout` 压低指标，但还没到 validated `G-1` |
 | 白盒防御 | `已有 strong-v2 主结果，strong-v3 已推进到 full-scale` | `DPDM` 已完成 stronger defended comparator，当前已拿到 stronger rung 的 full-scale GPU 结果 |
@@ -68,6 +68,7 @@
   - `DPDM` 已从环境阻塞推进到真实 CUDA checkpoint
   - 当前白盒防御的主要技术问题是评估桥接，不是训练缺失
   - `GSA` 已跑出第一版强白盒结果
+  - 一条更强配置的 `GSA epoch300 rerun1` 已在独立资产根上启动，当前仍在 `target` 训练阶段
   - `DPDM` target-only comparator 当前接近随机，方向上支持防御有效
   - `DPDM` multi-shadow comparator 当前也接近随机，方向上继续支持防御有效
   - `DPDM` 在 defended target-member checkpoint 上仍接近随机，白盒防御信号更明确
@@ -82,6 +83,7 @@
 - 当前不能说的话：
   - 还不能说白盒论文级复现成功
   - 还不能说白盒 defense 比较已经完成
+  - 还不能把 `epoch300 rerun1` 写成新的攻击结果，因为它还没有 `summary.json`
   - 还不能把 `DPDM` target-only comparator写成同口径白盒攻击结果
   - 还不能把当前 `DPDM strong-v2 defended-target multi-shadow comparator` 写成最终白盒 defense benchmark
 - 当前用途：
@@ -130,8 +132,9 @@
 1. 固定 `PIA provisional G-1`
 2. `recon` 主证据口径收口
 3. `variation / Towards` 保持 formal local secondary track，并明确 real-API assets blocked
-4. 固定白盒 defended 主结果口径
-5. 基于第一版统一总表继续补质量 / 成本列，并保持灰盒机理说明一致
+4. 低频监控白盒 `epoch300 rerun1`
+5. 固定白盒 defended 主结果口径
+6. 基于第一版统一总表继续补质量 / 成本列，并保持灰盒机理说明一致
 
 ## 申报 / PPT 应该怎么讲
 

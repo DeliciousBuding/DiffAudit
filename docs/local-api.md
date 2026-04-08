@@ -14,6 +14,12 @@
 - 路径型字段保留绝对路径，便于本机调试
 - 平台优先读取 admitted 结果，不自己重拼黑盒/灰盒/白盒口径
 
+当前 admitted 读源约束：
+
+- 跨盒统一结果只认 `workspaces/implementation/artifacts/unified-attack-defense-table.json`
+- `workspaces/intake/index.json` 只负责 promoted intake 合同，不等价于“所有 admitted 结果全集”
+- `recon` 与 `DPDM` 当前仍需要结合冻结文档口径一起解释，不能只摘数值
+
 ## 启动方式
 
 当前推荐入口是 Go 控制面：
@@ -87,6 +93,11 @@ go run ./cmd/local-api `
 
 `system_gap` 用来说明某条 live contract 目前还差什么，便于平台直接展示“还能做什么 / 还缺什么”，而不是重新硬编码解释。
 
+边界说明：
+
+- 当前 intake promoted 的重点是 `PIA` 与 `GSA` 资产合同。
+- `recon` 与 `DPDM` 的 admitted 结果当前主要通过统一总表和冻结 workspace 文档暴露，而不是通过独立 intake manifest 暴露。
+
 ### `GET /api/v1/evidence/attack-defense-table`
 
 返回研究仓当前 admitted attack-defense 总表。
@@ -94,6 +105,10 @@ go run ./cmd/local-api `
 当前读取：
 
 - `workspaces/implementation/artifacts/unified-attack-defense-table.json`
+
+不再作为系统权威读源：
+
+- `workspaces/implementation/unified-attack-defense-table.json`
 
 用途：
 

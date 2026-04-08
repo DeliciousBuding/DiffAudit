@@ -4,9 +4,9 @@
 
 - `owner`: `research_leader`
 - `scope`: 白盒成员推断、梯度级攻击、记忆定位与内部信号审计
-- `status`: `GSA 1k-3shadow paper-aligned runtime complete; W-1 strong-v3 full-scale frozen as defended main rung; strong-v2 full-scale retained as reference rung`
+- `status`: `GSA 1k-3shadow paper-aligned runtime complete; W-1 strong-v3 full-scale frozen as defended main rung; strong-v2 full-scale retained as reference rung; independent GSA epoch300 rerun1 is actively training`
 - `blocked by`: `W-1` 仍是 defended comparator 而不是最终 benchmark；`DPDM` 与 `GSA` 仍有模型结构不一致；`W-2` 仍缺稳定训练目标与实现
-- `next step`: keep `strong-v3 full-scale` as the admitted defended main rung, stop further white-box reruns for now, and focus on system-side exposure of `GSA + W-1`
+- `next step`: keep `strong-v3 full-scale` as the admitted defended main rung, low-frequency monitor `gsa-cifar10-1k-3shadow-epoch300-rerun1`, and only revisit white-box wording when the rerun produces a new `summary.json` or a stable failure mode
 - `last updated`: `2026-04-09`
 
 ## 推荐论文
@@ -43,6 +43,7 @@
 - `workspaces/white-box/2026-04-08-dpdm-w1-multi-shadow-strongv3-3shadow-full.md`
 - `workspaces/white-box/2026-04-08-whitebox-attack-defense-table.md`
 - `workspaces/white-box/2026-04-08-gsa-1k-3shadow-asset-prep.md`
+- `workspaces/white-box/2026-04-09-gsa-epoch300-rerun1-launch.md`
 - `workspaces/white-box/2026-04-07-gsa-asset-intake.md`
 - `workspaces/white-box/2026-04-07-gsa-closed-loop-smoke.md`
 - `workspaces/white-box/2026-04-06-gsa-kickoff.md`
@@ -79,5 +80,6 @@
 
 1. 固定 `W-1 strong-v3 full-scale` 为当前白盒 defended 主结果
 2. 保留 `strong-v2 full-scale` 作为参考 rung
-3. 暂不重跑 `GSA` 主攻击线
-4. 继续把系统侧优先级转回 admitted 结果接入与灰盒主讲线
+3. 低频监控 `gsa-cifar10-1k-3shadow-epoch300-rerun1`
+4. 在 rerun1 产出 `summary.json` 前，不改 admitted `GSA` 主攻击口径
+5. 继续把系统侧优先级转回 admitted 结果接入与灰盒主讲线

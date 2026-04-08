@@ -116,8 +116,9 @@
 1. 固定 `GSA 1k-3shadow` 为攻击主结果
 2. 固定 `strong-v3 full-scale` 为 defended 主 rung
 3. 保留 `strong-v2 full-scale` 为参考 rung
-4. 暂缓 `W-2`
-5. 当前不继续抢 GPU
+4. 独立资产根上的 `GSA epoch300 rerun1` 可以继续运行，但在产出新的 `summary.json` 前不改 admitted 主口径
+5. 暂缓 `W-2`
+6. 不再新开第二条白盒 GPU 长任务
 
 完成标准：
 
@@ -177,7 +178,8 @@
 1. 持续维持 admitted 口径一致
 2. 保持 `PIA` 主讲线的机理说明、成本列和状态页一致
 3. 把 `TMIA-DM` 保持为灰盒候选论文，不误写成黑盒主线
-4. 继续让 `Local-API` 读取 admitted 结果，而不是只盯 `recon`
-5. 等新的真实资产或新的研究问题出现后，再安排下一轮 GPU 任务
+4. 低频监控 `workspaces/white-box/assets/gsa-cifar10-1k-3shadow-epoch300-rerun1`
+5. 继续让 `Local-API` 读取 admitted 结果，而不是只盯 `recon`
+6. 等新的真实资产或新的研究问题出现后，再安排下一轮额外 GPU 任务
 
 综合进度入口见 [docs/comprehensive-progress.md](docs/comprehensive-progress.md)。

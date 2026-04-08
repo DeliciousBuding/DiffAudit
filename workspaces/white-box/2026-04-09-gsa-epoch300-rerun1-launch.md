@@ -59,15 +59,15 @@ This run only counts as progress if it produces one of:
 
 ## F. Current Runtime Observation
 
-Latest confirmed state after launch:
+Latest confirmed state after the latest runtime check:
 
 - launcher PID is still alive:
   - `87052`
 - current active stage:
   - `target` training
 - current visible progress in `target/train.stderr.log`:
-  - reached `Epoch 164`
-  - reached at least `step 5275`
+  - reached `Epoch 299`
+  - reached at least `step 9600`
 - current visible loss band:
   - roughly `0.015` to `0.08`
 - current checkpoint root state:
@@ -76,10 +76,13 @@ Latest confirmed state after launch:
     - `checkpoint-1601`
     - `checkpoint-3201`
     - `checkpoint-4801`
+    - `checkpoint-6401`
+    - `checkpoint-8001`
+    - `checkpoint-9600`
   - no shadow checkpoint roots have started yet
   - no new runtime summary has been produced yet
 - current GPU state during the latest check:
-  - `memory.used = 6779 MiB`
-  - `utilization = 89%`
+  - `memory.used ~= 6411 MiB`
+  - `utilization ~= 80%`
 
 So the run is still in the expected first phase and should continue without manual interruption.

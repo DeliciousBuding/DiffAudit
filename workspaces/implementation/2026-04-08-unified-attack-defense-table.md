@@ -8,6 +8,12 @@
 - gray-box main evidence: `PIA GPU512 baseline + provisional G-1`
 - white-box main evidence: `GSA 1k-3shadow + W-1 strong-v3 full-scale`
 
+## 机器读源约束
+
+- 当前唯一权威的 cross-track admitted JSON 是：
+  - `workspaces/implementation/artifacts/unified-attack-defense-table.json`
+- 根下旧文件 `workspaces/implementation/unified-attack-defense-table.json` 不再作为系统权威读源
+
 ## 当前统一总表
 
 | track | attack | defense | comparator type | AUC | ASR | TPR@1%FPR | TPR@0.1%FPR | quality/cost | evidence level | note |
