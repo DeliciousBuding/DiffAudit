@@ -17,7 +17,7 @@
 | 白盒攻击 | `已拿到强结果` | `GSA` 已完成 `1k-3shadow` paper-aligned runtime，AUC 达到 `0.97514` |
 | 黑盒防御 | `基本未落地` | `B-1 / B-2` 仍在设计层 |
 | 灰盒防御 | `有原型` | 接近 `G-1`，但还没形成正式对照 |
-| 白盒防御 | `已有 strong-v2 主结果，strong-v3 也已拿到第一条可用 GPU 结果` | `DPDM` 已完成 stronger defended comparator，但 strong-v3 的大规模 GPU 路径仍待收口 |
+| 白盒防御 | `已有 strong-v2 主结果，strong-v3 已推进到中规模 GPU 结果` | `DPDM` 已完成 stronger defended comparator，但 strong-v3 的更大规模 GPU 路径仍待收口 |
 | 统一评估表 | `缺失` | 当前最需要补的一块 |
 
 ## 攻击主线
@@ -66,6 +66,7 @@
   - `DPDM` 的 `strong-v2 3-shadow max512` comparator 为 `AUC = 0.462799`，这是当前最接近 defended `1k-3shadow` 结构的本地结果
   - `DPDM` 的 `strong-v2 3-shadow full-scale` comparator 为 `AUC = 0.490813`，仍明显弱于 `GSA` 主线
   - `DPDM` 的 `strong-v3 3-shadow max128` comparator 为 `AUC = 0.537048`，说明 stronger training rung 已经能在 GPU 上稳定出第一条 defended 结果
+  - `DPDM` 的 `strong-v3 3-shadow max256` comparator 为 `AUC = 0.522339`，说明这条更强训练 rung 已经推进到中规模 GPU defended 结果
 - 当前不能说的话：
   - 还不能说白盒论文级复现成功
   - 还不能说白盒 defense 比较已经完成
@@ -82,7 +83,7 @@
 | --- | --- | --- |
 | 黑盒 | `B-1 / B-2` | 设计方向成立，但还没有正式实现 |
 | 灰盒 | `G-1` | 已有近似原型，最值得先打穿 |
-| 白盒 | `W-1 = DPDM` | 已拿到 strong-v2 主结果，也拿到 strong-v3 的第一条 GPU defended 结果；下一步是收口 strong-v3 大规模 GPU 稳定性 |
+| 白盒 | `W-1 = DPDM` | 已拿到 strong-v2 主结果，也拿到 strong-v3 的中规模 GPU defended 结果；下一步是继续推进到 max512 |
 
 ### 当前不建议优先做
 

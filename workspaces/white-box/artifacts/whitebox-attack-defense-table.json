@@ -120,6 +120,19 @@
       "evidence_level": "runtime-smoke",
       "note": "first successful strong-v3 GPU defended comparator",
       "source": "workspaces/white-box/runs/dpdm-w1-multi-shadow-comparator-targetmember-strongv3-3shadow-max128-20260408/summary.json"
+    },
+    {
+      "track": "white-box",
+      "attack": "DPDM W-1",
+      "defense": "DPDM defended-target + defended-shadows strong-v3 x4",
+      "comparator_type": "defended-target three-shadow comparator at max_samples=256",
+      "auc": 0.522339,
+      "asr": 0.527344,
+      "tpr_at_1pct_fpr": 0.003906,
+      "tpr_at_0_1pct_fpr": 0.0,
+      "evidence_level": "runtime-smoke",
+      "note": "first medium-scale stable strong-v3 GPU defended comparator",
+      "source": "workspaces/white-box/runs/dpdm-w1-multi-shadow-comparator-targetmember-strongv3-3shadow-max256-20260408/summary.json"
     }
   ]
 }
