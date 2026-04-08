@@ -19,6 +19,7 @@
 | white-box | `DPDM W-1` | `DPDM defended-target + defended-shadows strong-v2 x3` | defended-target multi-shadow comparator at `max_samples=512` | `0.537201` | `0.530273` | `0.013672` | `0.0` | `runtime-smoke` | larger defended comparator; result stays far below `GSA` mainline |
 | white-box | `DPDM W-1` | `DPDM defended-target + defended-shadows strong-v2 x4` | defended-target three-shadow comparator at `max_samples=512` | `0.462799` | `0.47168` | `0.0` | `0.0` | `runtime-smoke` | current closest local defended comparator to `GSA 1k-3shadow` structure |
 | white-box | `DPDM W-1` | `DPDM defended-target + defended-shadows strong-v2 x4` | defended-target three-shadow full-scale comparator | `0.490813` | `0.496` | `0.006` | `0.0` | `runtime-smoke` | full-scale defended comparator; still far below `GSA` attack mainline |
+| white-box | `DPDM W-1` | `DPDM defended-target + defended-shadows strong-v3 x4` | defended-target three-shadow comparator at `max_samples=128` | `0.537048` | `0.519531` | `0.0` | `0.0` | `runtime-smoke` | first successful strong-v3 GPU defended comparator |
 
 ## 当前解释口径
 
@@ -28,6 +29,7 @@
 - `W-1 strong-v2 max512` 在更大评估规模下仍维持同一趋势，说明当前防御结果不只是 `128` 级样本偶然现象
 - `W-1 strong-v2 3-shadow max512` 进一步把 `AUC` 压到 `0.462799`，这是当前最接近 `GSA 1k-3shadow` 结构的 defended 结果
 - `W-1 strong-v2 3-shadow full-scale` 回到 `AUC = 0.490813`，但仍远低于 `GSA` 主线，说明当前 defended 结果在更大评估规模下仍可辩护
+- `W-1 strong-v3 3-shadow max128` 已经成功落盘，说明 `strong-v3` checkpoint 集合在 GPU 上可执行，但当前还没超过 `strong-v2` 最佳 defended 结果
 - 但当前 `W-1` 还不是最终 benchmark，因为结果仍是 `runtime-smoke` 级 comparator
 
 ## 关联产物
@@ -48,9 +50,11 @@
   - `workspaces/white-box/runs/dpdm-w1-multi-shadow-comparator-targetmember-strongv2-3shadow-max512-20260408/summary.json`
 - defended-target + defended-shadow three-shadow strong-v2 full-scale comparator:
   - `workspaces/white-box/runs/dpdm-w1-multi-shadow-comparator-targetmember-strongv2-3shadow-full-20260408/summary.json`
+- defended-target + defended-shadow three-shadow strong-v3 comparator at `max_samples=128`:
+  - `workspaces/white-box/runs/dpdm-w1-multi-shadow-comparator-targetmember-strongv3-3shadow-max128-20260408/summary.json`
 
 ## 下一步
 
 1. 保留这张表作为当前白盒可引用基线
-2. 当前已经完成向 defended `1k-3shadow` 结构的 full-scale 本地对齐，下一步优先提高 defended 训练强度
-3. 后续统一总表直接引用这里的七条 defense 记录
+2. `strong-v3` 已经有一条可用 GPU defended comparator，下一步先收口其大规模 GPU 稳定性，再决定是否继续提高 defended 训练强度
+3. 后续统一总表直接引用这里的八条 defense 记录

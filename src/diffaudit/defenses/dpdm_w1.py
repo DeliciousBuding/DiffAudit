@@ -6,6 +6,7 @@ import gc
 import json
 import math
 import sys
+import traceback
 from datetime import datetime, timezone
 from pathlib import Path
 from typing import Any
@@ -546,90 +547,105 @@ def run_dpdm_w1_multi_shadow_comparator(
     workspace_path.mkdir(parents=True, exist_ok=True)
     _append_progress(workspace_path, "starting multi-shadow comparator")
 
-    resolved_device = "cuda" if device == "cuda" and torch.cuda.is_available() else "cpu"
-    _append_progress(workspace_path, f"resolved_device={resolved_device}")
-    target_model, config = _load_dpdm_model(
-        dpdm_root=dpdm_root,
-        config_path=config_path,
-        checkpoint_path=target_checkpoint_path,
-        device=resolved_device,
-    )
-    _append_progress(workspace_path, f"loaded target checkpoint: {Path(target_checkpoint_path).resolve()}")
-
-    sigma_values = _sigma_schedule(
-        p_mean=float(config["loss"]["p_mean"]),
-        p_std=float(config["loss"]["p_std"]),
-        sigma_points=sigma_points,
-        device=resolved_device,
-    )
-    _append_progress(workspace_path, f"built sigma schedule with {sigma_points} points")
-
-    shadow_member_score_groups: list[list[float]] = []
-    shadow_nonmember_score_groups: list[list[float]] = []
-    for index, checkpoint_path in enumerate(shadow_checkpoint_paths):
-        _append_progress(
-            workspace_path,
-            f"loading shadow checkpoint {index + 1}/{len(shadow_checkpoint_paths)}: {Path(checkpoint_path).resolve()}",
-        )
-        shadow_model, _ = _load_dpdm_model(
+    current_stage = "initializing"
+    target_model: torch.nn.Module | None = None
+    try:
+        resolved_device = "cuda" if device == "cuda" and torch.cuda.is_available() else "cpu"
+        _append_progress(workspace_path, f"resolved_device={resolved_device}")
+        current_stage = "load_target_checkpoint"
+        target_model, config = _load_dpdm_model(
             dpdm_root=dpdm_root,
             config_path=config_path,
-            checkpoint_path=checkpoint_path,
+            checkpoint_path=target_checkpoint_path,
             device=resolved_device,
         )
-        _append_progress(workspace_path, f"scoring shadow member set {index + 1}")
-        shadow_member_score_groups.append(
-            _score_dataset(
-                model=shadow_model,
-                dataset_dir=shadow_member_dataset_dirs[index],
-                sigma_values=sigma_values,
-                device=resolved_device,
-                max_samples=max_samples,
-                seed_base=20_000 * (index + 1),
-            )
-        )
-        _append_progress(workspace_path, f"scoring shadow nonmember set {index + 1}")
-        shadow_nonmember_score_groups.append(
-            _score_dataset(
-                model=shadow_model,
-                dataset_dir=shadow_nonmember_dataset_dirs[index],
-                sigma_values=sigma_values,
-                device=resolved_device,
-                max_samples=max_samples,
-                seed_base=30_000 * (index + 1),
-            )
-        )
-        _append_progress(workspace_path, f"completed shadow scoring {index + 1}")
-        _release_model(shadow_model, resolved_device)
+        _append_progress(workspace_path, f"loaded target checkpoint: {Path(target_checkpoint_path).resolve()}")
 
-    _append_progress(workspace_path, "scoring target member set")
-    target_member_scores = _score_dataset(
-        model=target_model,
-        dataset_dir=target_member_dataset_dir,
-        sigma_values=sigma_values,
-        device=resolved_device,
-        max_samples=max_samples,
-        seed_base=0,
-    )
-    _append_progress(workspace_path, "scoring target nonmember set")
-    target_nonmember_scores = _score_dataset(
-        model=target_model,
-        dataset_dir=target_nonmember_dataset_dir,
-        sigma_values=sigma_values,
-        device=resolved_device,
-        max_samples=max_samples,
-        seed_base=10_000,
-    )
-    _append_progress(workspace_path, "completed target scoring")
-    _release_model(target_model, resolved_device)
+        current_stage = "build_sigma_schedule"
+        sigma_values = _sigma_schedule(
+            p_mean=float(config["loss"]["p_mean"]),
+            p_std=float(config["loss"]["p_std"]),
+            sigma_points=sigma_points,
+            device=resolved_device,
+        )
+        _append_progress(workspace_path, f"built sigma schedule with {sigma_points} points")
 
-    metrics = _multi_shadow_target_metric_bundle(
-        shadow_member_score_groups=shadow_member_score_groups,
-        shadow_nonmember_score_groups=shadow_nonmember_score_groups,
-        target_member_scores=target_member_scores,
-        target_nonmember_scores=target_nonmember_scores,
-    )
-    _append_progress(workspace_path, "computed metrics")
+        shadow_member_score_groups: list[list[float]] = []
+        shadow_nonmember_score_groups: list[list[float]] = []
+        for index, checkpoint_path in enumerate(shadow_checkpoint_paths):
+            current_stage = f"load_shadow_checkpoint_{index + 1}"
+            _append_progress(
+                workspace_path,
+                f"loading shadow checkpoint {index + 1}/{len(shadow_checkpoint_paths)}: {Path(checkpoint_path).resolve()}",
+            )
+            shadow_model, _ = _load_dpdm_model(
+                dpdm_root=dpdm_root,
+                config_path=config_path,
+                checkpoint_path=checkpoint_path,
+                device=resolved_device,
+            )
+            current_stage = f"score_shadow_member_{index + 1}"
+            _append_progress(workspace_path, f"scoring shadow member set {index + 1}")
+            shadow_member_score_groups.append(
+                _score_dataset(
+                    model=shadow_model,
+                    dataset_dir=shadow_member_dataset_dirs[index],
+                    sigma_values=sigma_values,
+                    device=resolved_device,
+                    max_samples=max_samples,
+                    seed_base=20_000 * (index + 1),
+                )
+            )
+            current_stage = f"score_shadow_nonmember_{index + 1}"
+            _append_progress(workspace_path, f"scoring shadow nonmember set {index + 1}")
+            shadow_nonmember_score_groups.append(
+                _score_dataset(
+                    model=shadow_model,
+                    dataset_dir=shadow_nonmember_dataset_dirs[index],
+                    sigma_values=sigma_values,
+                    device=resolved_device,
+                    max_samples=max_samples,
+                    seed_base=30_000 * (index + 1),
+                )
+            )
+            _append_progress(workspace_path, f"completed shadow scoring {index + 1}")
+            _release_model(shadow_model, resolved_device)
+
+        current_stage = "score_target_member"
+        _append_progress(workspace_path, "scoring target member set")
+        target_member_scores = _score_dataset(
+            model=target_model,
+            dataset_dir=target_member_dataset_dir,
+            sigma_values=sigma_values,
+            device=resolved_device,
+            max_samples=max_samples,
+            seed_base=0,
+        )
+        current_stage = "score_target_nonmember"
+        _append_progress(workspace_path, "scoring target nonmember set")
+        target_nonmember_scores = _score_dataset(
+            model=target_model,
+            dataset_dir=target_nonmember_dataset_dir,
+            sigma_values=sigma_values,
+            device=resolved_device,
+            max_samples=max_samples,
+            seed_base=10_000,
+        )
+        _append_progress(workspace_path, "completed target scoring")
+        _release_model(target_model, resolved_device)
+
+        current_stage = "compute_metrics"
+        metrics = _multi_shadow_target_metric_bundle(
+            shadow_member_score_groups=shadow_member_score_groups,
+            shadow_nonmember_score_groups=shadow_nonmember_score_groups,
+            target_member_scores=target_member_scores,
+            target_nonmember_scores=target_nonmember_scores,
+        )
+        _append_progress(workspace_path, "computed metrics")
+    except Exception as exc:
+        _append_progress(workspace_path, f"failed at stage={current_stage}: {exc!r}")
+        (workspace_path / "error.log").write_text(traceback.format_exc(), encoding="utf-8")
+        raise
 
     score_payload = {
         "shadow_member_scores": shadow_member_score_groups,

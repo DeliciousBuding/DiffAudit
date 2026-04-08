@@ -4,9 +4,9 @@
 
 - `owner`: `research_leader`
 - `scope`: 白盒成员推断、梯度级攻击、记忆定位与内部信号审计
-- `status`: `GSA 1k-3shadow paper-aligned runtime complete; W-1 strong-v2 defended comparator complete; strong-v3 checkpoints valid but GPU comparator still unstable`
-- `blocked by`: `W-1` 仍是 `runtime-smoke` comparator；`DPDM` 与 `GSA` 仍有模型结构不一致；`strong-v3` GPU comparator 仍不稳定；`W-2` 仍缺稳定训练目标与实现
-- `next step`: keep the CPU diagnostic as evidence, then narrow the GPU comparator instability before moving to the next defended rung
+- `status`: `GSA 1k-3shadow paper-aligned runtime complete; W-1 strong-v2 defended comparator complete; strong-v3 now has a valid GPU three-shadow max128 result`
+- `blocked by`: `W-1` 仍是 `runtime-smoke` comparator；`DPDM` 与 `GSA` 仍有模型结构不一致；`strong-v3` large-scale GPU comparator 仍不稳定；`W-2` 仍缺稳定训练目标与实现
+- `next step`: update the unified table with the successful strong-v3 max128 result, then decide whether to keep narrowing large-scale GPU instability or move to the next defended rung
 - `last updated`: `2026-04-08`
 
 ## 推荐论文
@@ -37,6 +37,7 @@
 - `workspaces/white-box/2026-04-08-dpdm-w1-multi-shadow-strongv2-3shadow-full.md`
 - `workspaces/white-box/2026-04-08-dpdm-strongv3-rung.md`
 - `workspaces/white-box/2026-04-08-dpdm-strongv3-comparator-diagnostic.md`
+- `workspaces/white-box/2026-04-08-dpdm-w1-multi-shadow-strongv3-3shadow-max128.md`
 - `workspaces/white-box/2026-04-08-whitebox-attack-defense-table.md`
 - `workspaces/white-box/2026-04-08-gsa-1k-3shadow-asset-prep.md`
 - `workspaces/white-box/2026-04-07-gsa-asset-intake.md`
@@ -69,13 +70,13 @@
 - `W-1` 已有正式 defense-vs-attack 对比，但仍是 `runtime-smoke` 级 comparator
 - `DPDM` 当前 checkpoint 既是单文件字典，又不是 `GSA` 的 `UNet2DModel` 架构，不能直接喂给当前提取器
 - 当前 `DPDM` comparator 已扩到 defended target + defended shadows strong-v2，并完成 three-shadow full-scale 比较，但仍不是最终 benchmark
-- `strong-v3` checkpoint 集合已确认可读，但 GPU comparator 路径仍不稳定
+- `strong-v3` checkpoint 集合已确认可读，并已成功跑出 three-shadow max128 GPU comparator，但更大规模 GPU comparator 路径仍不稳定
 - `Finding NeMo` 仍缺 neuron-level 分析接口与资产
 - 还缺跨黑/灰/白统一总表
 
 ## 当前最短路径
 
 1. 将 `W-1 strong-v2 3-shadow full-scale` 与 `GSA 1k-3shadow` 的白盒 attack-defense 对比接入统一总表
-2. 保留 `strong-v3` CPU diagnostic 作为资产有效性证据
-3. 收口 `strong-v3` GPU comparator 失败模式
+2. 将 `strong-v3 3-shadow max128` 加进白盒对比表
+3. 继续收口 `strong-v3` 大规模 GPU comparator 失败模式
 4. 暂不重跑 `GSA` 主攻击线

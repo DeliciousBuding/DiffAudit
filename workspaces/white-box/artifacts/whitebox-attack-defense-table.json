@@ -1,6 +1,6 @@
 {
   "schema": "diffaudit.whitebox.attack_defense_table.v1",
-  "updated_at": "2026-04-08T07:40:00+08:00",
+  "updated_at": "2026-04-08T14:55:00+08:00",
   "dataset": "CIFAR-10",
   "model_family": "DDPM",
   "rows": [
@@ -107,6 +107,19 @@
       "evidence_level": "runtime-smoke",
       "note": "full-scale defended comparator; still far below GSA attack mainline",
       "source": "workspaces/white-box/runs/dpdm-w1-multi-shadow-comparator-targetmember-strongv2-3shadow-full-20260408/summary.json"
+    },
+    {
+      "track": "white-box",
+      "attack": "DPDM W-1",
+      "defense": "DPDM defended-target + defended-shadows strong-v3 x4",
+      "comparator_type": "defended-target three-shadow comparator at max_samples=128",
+      "auc": 0.537048,
+      "asr": 0.519531,
+      "tpr_at_1pct_fpr": 0.0,
+      "tpr_at_0_1pct_fpr": 0.0,
+      "evidence_level": "runtime-smoke",
+      "note": "first successful strong-v3 GPU defended comparator",
+      "source": "workspaces/white-box/runs/dpdm-w1-multi-shadow-comparator-targetmember-strongv3-3shadow-max128-20260408/summary.json"
     }
   ]
 }
