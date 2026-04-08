@@ -27,6 +27,7 @@
 | `Carlini First Principles 2022` | `done` | 后续统一口径到 `2022` |
 | `SecMI` | `done` | 保持灰盒 baseline 身份 |
 | `PIA` | `done` | 保持灰盒主线身份 |
+| `TMIA-DM` | `done` | 已归档为灰盒候选论文，当前保持 research-ready |
 | `Matsumoto 2023 SPW` | `done` | 作为扩散 MIA 综述补充 |
 | `Dockhorn 2023` | `done` | 白盒 DP 防御参考 |
 | `Ghalebikesabi 2023` | `done` | 白盒 DP 防御参考 |
@@ -51,6 +52,7 @@
 | --- | --- | --- |
 | 以 `PIA` 作为灰盒主线 | `done` | [manifest.json](../workspaces/gray-box/assets/pia/manifest.json) 和 mainline 已存在 |
 | 将 `SecMI` 保持为灰盒 baseline | `done` | 代码与文献都已落地 |
+| 将 `TMIA-DM` 纳入灰盒候选文献池 | `done` | 当前已归档并完成威胁模型判断，但还没有执行入口 |
 | 把 `G-1` 映射为正式灰盒防御原型 | `done` | 当前已固定为 `provisional G-1 = stochastic-dropout` |
 | 把 `G-2` 蒸馏代理模型纳入灰盒路线 | `blocked` | 当前没有正式蒸馏训练链和统一评估 |
 | 把 `CFG 条件信号泄露` 变成独立实验项 | `pending` | 文档提出了问题，但仓库还没有正式实验入口 |
@@ -123,6 +125,7 @@
    - 白盒：`GSA + W-1 (DPDM)`
    - 黑盒：`recon + B-1 / B-2`
 3. 当前最不应该做的事，是把文档中不够严格的 threat-model 归类直接写回仓库状态文档或对外汇报。
+4. `TMIA-DM` 当前已经证明“中文期刊里也有可用的灰盒时间序列信号路线”，但它不能被写成当前黑盒主线。
 
 ## 7. 申报阶段附加约束
 

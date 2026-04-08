@@ -85,6 +85,7 @@
 | MIA 基础 | Shokri et al. 2017 | [2017-ieee-membership-inference-machine-learning-models.pdf](../references/materials/survey/2017-ieee-membership-inference-machine-learning-models.pdf) | [paper-index.md](../references/materials/paper-index.md) | 已落地 |
 | 灰盒基线 | SecMI | [2023-icml-secmi-membership-inference-diffusion-models.pdf](../references/materials/gray-box/2023-icml-secmi-membership-inference-diffusion-models.pdf) | [third_party/secmi](../third_party/secmi) | 代码已接入，真实资产仍待强化 |
 | 灰盒主线 | PIA | [2024-iclr-pia-proximal-initialization.pdf](../references/materials/gray-box/2024-iclr-pia-proximal-initialization.pdf) | [external/PIA](../external/PIA), [assets/pia/manifest.json](../workspaces/gray-box/assets/pia/manifest.json) | 已有 real-asset mainline |
+| 灰盒候选 | TMIA-DM | [2026-crad-temporal-membership-inference-attack-method-diffusion-models.pdf](../references/materials/gray-box/2026-crad-temporal-membership-inference-attack-method-diffusion-models.pdf) | [2026-04-09-tmia-dm-intake.md](../workspaces/gray-box/2026-04-09-tmia-dm-intake.md) | 已归档，当前仅到 research-ready |
 | 白盒主线 | GSA | [2025-popets-white-box-membership-inference-diffusion-models.pdf](../references/materials/white-box/2025-popets-white-box-membership-inference-diffusion-models.pdf) | [workspaces/white-box/external/GSA](../workspaces/white-box/external/GSA), [cifar10-ddpm-mainline.json](../workspaces/white-box/assets/gsa/manifests/cifar10-ddpm-mainline.json) | 已有 real-asset closed loop |
 | 白盒扩展 | Finding NeMo | [2024-neurips-finding-nemo-localizing-memorization-neurons-diffusion-models.pdf](../references/materials/white-box/2024-neurips-finding-nemo-localizing-memorization-neurons-diffusion-models.pdf) | [paper-index.md](../references/materials/paper-index.md) | 研究准备态 |
 | DP 防御 | Dockhorn et al. | [2023-tmlr-differentially-private-diffusion-models.pdf](../references/materials/survey/2023-tmlr-differentially-private-diffusion-models.pdf) | [external/DPDM](../external/DPDM) | 有仓库，未接成主线 |
@@ -140,8 +141,9 @@
 
 1. 黑盒继续以现有 `recon` 主线为执行主线，把文档中的 `B-1 / B-2` 视为防御 backlog，而不是把 `SecMI` 生搬进 black-box。
 2. 灰盒直接用文档推进 `PIA + SecMI + G-1/G-2` 的防御设计，其中 `PIA` 已经具备最好的仓库接入基础。
-3. 白盒直接把文档中的 `W-1 / W-2` 映射到 `GSA + DPDM` 路线，优先做 `W-1`，因为本地已经有 [external/DPDM](../external/DPDM)。
-4. 所有后续汇报都应显式区分：
+3. `TMIA-DM` 已归档后，应被视为 `PIA` 同轴的灰盒候选论文，而不是黑盒主线替代。
+4. 白盒直接把文档中的 `W-1 / W-2` 映射到 `GSA + DPDM` 路线，优先做 `W-1`，因为本地已经有 [external/DPDM](../external/DPDM)。
+5. 所有后续汇报都应显式区分：
    - `文档提出的研究路线`
    - `仓库当前已完成的真实状态`
 

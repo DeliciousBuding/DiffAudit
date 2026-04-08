@@ -16,6 +16,7 @@
 - `2024-arxiv-structural-memorization-membership-inference-text-to-image-diffusion.pdf`
 - `2025-arxiv-sima-score-based-membership-inference-diffusion-models.pdf`
 - `2025-arxiv-small-noise-injection-membership-inference-diffusion-models.pdf`
+- `2026-crad-temporal-membership-inference-attack-method-diffusion-models.pdf`
 - `2026-openreview-mofit-caption-free-membership-inference.pdf`
 
 ## 当前主线与 baseline
@@ -27,6 +28,7 @@
 
 - `PIA` 是当前最成熟、最适合作为“攻击 + 防御”主讲闭环的一条线
 - `SecMI` 是当前已明确阻塞、不能继续抢主线资源的 baseline
+- `TMIA-DM` 已归档，但当前应作为时间相关噪声信号的灰盒候选论文，而不是黑盒主线
 
 ## 当前可执行证据
 
@@ -38,6 +40,7 @@
 - `workspaces/gray-box/2026-04-08-pia-gpu256-attack-defense.md`
 - `workspaces/gray-box/2026-04-08-pia-gpu512-attack-defense.md`
 - `workspaces/gray-box/2026-04-08-pia-gpu512-rerun1.md`
+- `workspaces/gray-box/2026-04-09-tmia-dm-intake.md`
 - `workspaces/gray-box/2026-04-08-secmi-blocked.md`
 - `workspaces/gray-box/runs/pia-cifar10-runtime-mainline-20260408-gpu-128/summary.json`
 - `workspaces/gray-box/runs/pia-cifar10-runtime-mainline-dropout-defense-20260408-gpu-128/summary.json`
@@ -66,7 +69,8 @@
 2. 固定 `stochastic-dropout = provisional G-1`
 3. 复用 [2026-04-09-pia-signal-and-cost.md](2026-04-09-pia-signal-and-cost.md) 作为灰盒主讲线的机理与成本说明
 4. 保持 `SecMI = blocked baseline`
-5. 将灰盒主结果接入统一总表并持续复用
+5. 保持 `TMIA-DM` 为研究候选，不提前伪装成可执行主线
+6. 将灰盒主结果接入统一总表并持续复用
 
 ## 2026-04-08 新观察
 

@@ -49,6 +49,7 @@
 1. `recon` 固化主证据口径
 2. `variation` 保持 formal local black-box secondary track
 3. 如果真实 API 资产到位，优先把 `variation` 从 synthetic 推向真实 black-box
+4. 不把 `TMIA-DM` 误收进黑盒主线；它当前应明确归为灰盒候选论文
 
 ### 第三优先级：白盒 `GSA + W-1`
 
@@ -84,6 +85,10 @@
 - `SecMI`
   - 继续探真实资产
   - 不再长期悬空
+- `TMIA-DM`
+  - 保持为已归档候选论文
+  - 当前只做 threat-model 与方法对照
+  - 在代码路径明确前不写成执行主线
 
 ### 白盒
 

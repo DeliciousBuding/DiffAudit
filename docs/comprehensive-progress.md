@@ -49,6 +49,7 @@
   - `pia_next_run --strict` 已通过，当前 asset line 已可写成 `workspace-verified`
   - 当前 `PIA` 攻击分数可以明确解释为 `epsilon-trajectory consistency` 信号，而不是泛化的 reconstruction score
   - `stochastic-dropout` 当前最可辩护的作用机理，是在推理时打散这一致性信号
+  - 新归档的 `TMIA-DM` 说明时间相关噪声 / 梯度信号也是灰盒成员推断的正式文献方向，但它当前仍只是 research-ready 候选
   - 当前最适合把防御压到这条线上做正式比较
 - 当前不能说的话：
   - 还不能说灰盒防御已经验证有效

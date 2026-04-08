@@ -25,6 +25,7 @@
   - `PIA` 已完成 `GPU128 / GPU256 / GPU512` baseline + defense 与一次 `GPU512` repeat
   - `PIA` provenance 当前已可写成 `workspace-verified`
   - `PIA` 攻击依赖信号与灰盒成本口径现已补齐到正式说明
+  - 新归档 `TMIA-DM` 进一步补强了时间相关噪声 / 梯度信号这一灰盒文献轴
   - `SecMI` 已明确为 `blocked baseline`
 - 白盒：
   - `GSA 1k-3shadow` 已形成强攻击结果
@@ -175,7 +176,8 @@
 
 1. 持续维持 admitted 口径一致
 2. 保持 `PIA` 主讲线的机理说明、成本列和状态页一致
-3. 继续让 `Local-API` 读取 admitted 结果，而不是只盯 `recon`
-4. 等新的真实资产或新的研究问题出现后，再安排下一轮 GPU 任务
+3. 把 `TMIA-DM` 保持为灰盒候选论文，不误写成黑盒主线
+4. 继续让 `Local-API` 读取 admitted 结果，而不是只盯 `recon`
+5. 等新的真实资产或新的研究问题出现后，再安排下一轮 GPU 任务
 
 综合进度入口见 [docs/comprehensive-progress.md](docs/comprehensive-progress.md)。
