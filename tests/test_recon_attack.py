@@ -1046,6 +1046,55 @@ class ReconAttackTests(unittest.TestCase):
         self.assertEqual(payload["counts"]["shadow_member_proxy"], 2)
         self.assertTrue(payload["paths"]["mapping_note"].endswith("mapping-note.md"))
 
+    def test_cli_audits_recon_public_bundle_semantics(self) -> None:
+        from diffaudit.cli import main
+
+        with tempfile.TemporaryDirectory() as tmpdir:
+            root = Path(tmpdir)
+            bundle_root = root / "bundle"
+            create_public_recon_bundle(bundle_root, count=5)
+            for size in ("10", "25", "50", "100"):
+                prepared_root = bundle_root / f"derived-public-{size}"
+                payload = {
+                    "status": "ready",
+                    "output_dir": str(prepared_root),
+                }
+                prepared_root.mkdir(parents=True, exist_ok=True)
+                (prepared_root / "mapping-note.md").write_text(
+                    "\n".join(
+                        [
+                            "# Recon Public Subset Mapping",
+                            "",
+                            "- target_member <- source-datasets/partial-100-target/member/dataset.pkl",
+                            "- target_non_member <- source-datasets/partial-100-target/non_member/dataset.pkl",
+                            "- shadow_non_member <- source-datasets/100-shadow/non_member/dataset.pkl",
+                            "- shadow_member_proxy <- source-datasets/100-target/non_member/dataset.pkl",
+                            "",
+                            "Note: shadow_member_proxy is an engineering proxy, not a fully validated paper-equivalent shadow-member split.",
+                        ]
+                    ),
+                    encoding="utf-8",
+                )
+                _ = payload
+
+            stdout = StringIO()
+            with redirect_stdout(stdout):
+                exit_code = main(
+                    [
+                        "audit-recon-public-bundle",
+                        "--bundle-root",
+                        str(bundle_root),
+                    ]
+                )
+
+        payload = json.loads(stdout.getvalue())
+        self.assertEqual(exit_code, 0)
+        self.assertEqual(payload["status"], "ready")
+        self.assertEqual(payload["semantic_gate"]["current_state"], "proxy-shadow-member")
+        self.assertFalse(payload["semantic_gate"]["paper_aligned"])
+        self.assertEqual(len(payload["derived_public_variants"]), 4)
+        self.assertTrue(payload["checks"]["derived_public_mapping_notes_ready"])
+
     def test_cli_runs_recon_runtime_mainline_with_kandinsky_backend(self) -> None:
         from diffaudit.cli import main
 

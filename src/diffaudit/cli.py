@@ -145,6 +145,12 @@ def build_parser() -> argparse.ArgumentParser:
     recon_public_subset_parser.add_argument("--target-count", type=int, default=1)
     recon_public_subset_parser.add_argument("--shadow-count", type=int, default=1)
 
+    recon_public_bundle_audit_parser = subparsers.add_parser(
+        "audit-recon-public-bundle",
+        help="audit public recon bundle semantics and derived mapping-note consistency",
+    )
+    recon_public_bundle_audit_parser.add_argument("--bundle-root", required=True)
+
     dit_asset_probe_parser = subparsers.add_parser(
         "probe-dit-assets",
         help="inspect official DiT sampling workspace and optional checkpoint readiness",
@@ -1000,6 +1006,13 @@ def main(argv: list[str] | None = None) -> int:
             target_count=args.target_count,
             shadow_count=args.shadow_count,
         )
+        print(json.dumps(payload, indent=2, ensure_ascii=True))
+        return 0 if payload["status"] == "ready" else 1
+
+    if args.command == "audit-recon-public-bundle":
+        from diffaudit.attacks.recon import audit_recon_public_bundle
+
+        payload = audit_recon_public_bundle(bundle_root=args.bundle_root)
         print(json.dumps(payload, indent=2, ensure_ascii=True))
         return 0 if payload["status"] == "ready" else 1
 
