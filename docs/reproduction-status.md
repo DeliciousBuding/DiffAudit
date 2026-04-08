@@ -69,7 +69,7 @@
 3. 继续暂停 `Kandinsky 10/10`，直到先拿到能定位首个阶段耗时的有效日志；如果只能做一件事，优先做文档固化而不是新 GPU 任务。
 4. `PIA` 的单机真实资产已经升级成真实 `runtime-mainline`，并新增了 `GPU128 / GPU256 / GPU512` 三档 baseline + defense 对照与一次 `GPU512` 同档 repeat。下一步不是再补 runner，而是继续推进 provenance 核准与统一总表质量 / 成本列。
 5. `SecMI` 的当前真实结论已经从“继续看”收口到“blocked baseline”；后续只在真实 checkpoint root 与 `flagfile.txt` 到位后再恢复推进。
-6. 黑盒当前最值钱的动作不是再开新 run，而是固化 `recon` 主证据、最佳单指标参考、以及 `variation` 的 local secondary track + blocked real-API assets 口径。
+6. 黑盒当前最值钱的动作不是再开新 run，而是固化 `recon` 主证据、最佳单指标参考、以及 `variation` 的 local secondary track + blocked real-API assets 口径，同时保持 `TMIA-DM` 不越界进入黑盒执行层。
 7. 白盒攻击侧 `GSA` 已经站稳，当前重点不是继续重跑攻击，而是冻结 `W-1 strong-v3 full-scale` 主 defended 口径并与 `strong-v2 full-scale` 一起保留在统一总表中。
 
 更新时间：`2026-04-08 23:49:31 +08:00`

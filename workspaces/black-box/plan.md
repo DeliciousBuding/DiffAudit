@@ -25,6 +25,11 @@
 - `2025-visapp-membership-inference-face-fine-tuned-latent-diffusion-models.pdf`
 - `2026-04-09-blackbox-method-boundary.md`
 
+当前约束：
+
+- `TMIA-DM` 只作为 black-box threat-model 边界纠偏材料引用
+- 不进入黑盒主论文或黑盒执行候选层级
+
 ## 当前可执行证据
 
 - `experiments/clid-dry-run-smoke/summary.json`
