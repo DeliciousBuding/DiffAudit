@@ -56,3 +56,23 @@ This run only counts as progress if it produces one of:
 
 1. a new paper-aligned runtime summary with a complete metric set
 2. a concrete failure mode with stable logs that explains why the stronger rerun cannot proceed
+
+## F. Current Runtime Observation
+
+Latest confirmed state after launch:
+
+- launcher PID is still alive:
+  - `87052`
+- current active stage:
+  - `target` training
+- current visible progress in `target/train.stderr.log`:
+  - reached `Epoch 32`
+  - reached at least `step 1044`
+- current visible loss band:
+  - roughly `0.02` to `0.08`
+- current checkpoint root state:
+  - only `target/` exists under the new rerun root
+  - no shadow checkpoint roots have started yet
+  - no new runtime summary has been produced yet
+
+So the run is still in the expected first phase and should continue without manual interruption.
