@@ -5,7 +5,7 @@
 - `owner`: active-thread
 - `scope`: 统一黑/灰/白研究规划下的第一优先执行线，负责黑盒成员推断、数据集级审计、black-box leakage 线索整理
 - `status`: 进行中，`recon` 是当前最强 black-box evidence line；`variation` 已在本地 CPU 上再次通过 synthetic smoke 且已成为 `blackbox-status` 内的本地 secondary evidence；`DDIM public-100 step30` 仍是黑盒主证据，但当前 black-box 防御仍未正式落地
-- `blocked by`: `recon` 公开资产包（DOI: `10.5281/zenodo.13371475`）的 target/shadow/member/non-member 论文语义仍需核准；`Kandinsky 10/10` 当前本机链路仍异常慢
+- `blocked by`: `recon` 公开资产包（DOI: `10.5281/zenodo.13371475`）的 target/shadow/member/non-member 论文语义仍需核准；`variation` 真实 query image root 仍缺；`Kandinsky 10/10` 当前本机链路仍异常慢
 - `next command`: `conda run -n diffaudit-research python -m diffaudit probe-variation-assets --config tmp/configs/rendered-checks/variation.local.yaml`
 - `last updated`: 2026-04-08
 

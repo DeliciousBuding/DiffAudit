@@ -28,10 +28,12 @@ conda run -n diffaudit-research python -m diffaudit runtime-probe-secmi `
 
 ## Interpretation
 
-- The current `SecMI` local config is still placeholder-based and does not point to a real paper-aligned model root.
-- The missing `flagfile.txt` is a hard blocker for the existing runtime adapter.
-- `SecMI` should remain in the roadmap as a gray-box baseline candidate, but it should not continue to compete for GPU time in the current sprint.
+- The current repository still only has a placeholder-style local config for `SecMI`.
+- The first hard blocker is missing real `flagfile.txt` and matching model root layout.
+- This is an asset/layout blocker, not a GPU blocker.
 
-## Decision
+## Current Decision
 
-`SecMI` is now recorded as `blocked baseline` until a real checkpoint root and matching `flagfile.txt` are supplied.
+`SecMI` is retained as a `blocked baseline` for the gray-box line.
+
+It stays in the roadmap and comparison narrative, but it does not compete with `PIA` for current GPU priority until a real checkpoint root and flagfile are available.

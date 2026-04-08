@@ -39,7 +39,7 @@
 ### 灰盒
 
 - 主线：`PIA`
-- baseline：`SecMI`
+- baseline：`SecMI`（当前已判定为 `blocked baseline`）
 - 当前能说的话：
   - `PIA` 已经不是 smoke，而是真实资产 mainline
   - `PIA GPU128 / GPU256 / GPU512` 已拿到同口径 baseline + defense 对照，且 defense 指标连续三档都低于 baseline
@@ -118,7 +118,7 @@
 
 ## 当前最短执行顺序
 
-1. `SecMI` promote / block 判定
+1. 固定 `PIA provisional G-1`
 2. `recon` 主证据口径收口
 3. `variation / Towards` 保持 formal local secondary track
 4. 固定白盒 defended 主结果口径

@@ -6,7 +6,7 @@
 - `scope`: 部分中间信息、条件相关评分、噪声预测与结构特征下的成员推断
 - `status`: `PIA real-asset runtime-mainline ready; GPU128/GPU256/GPU512 baseline + defended pairs landed; provisional G-1 established`
 - `blocked by`: `PIA` provenance 尚未升级到 paper-aligned；`SecMI` 当前已判定为 blocked baseline；当前 gray-box defense 仍缺同档重复轮次确认
-- `next step`: 固定 `stochastic-dropout = provisional G-1`，然后决定是做 `GPU512` 重复确认还是继续推进 `PIA` provenance 核准
+- `next step`: 固定 `stochastic-dropout = provisional G-1`，然后决定是做 `GPU512` 重复确认还是继续推进 `PIA` provenance 核准；`SecMI` 只保留为 blocked baseline
 - `last updated`: `2026-04-08`
 
 ## 推荐论文
@@ -132,3 +132,4 @@
 2. 决定 `GPU512` 重复确认还是继续推进 `PIA` provenance 核准
 3. 保持 `SecMI = blocked baseline`
 4. 复用 [unified table](../implementation/2026-04-08-unified-attack-defense-table.md) 作为灰盒对外引用入口
+5. 只有在真实 `flagfile + checkpoint root` 到位后，才恢复 `SecMI`
