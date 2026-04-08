@@ -16,7 +16,7 @@
 | 灰盒攻击 | `最成熟` | `PIA` 已进入 real-asset runtime mainline |
 | 白盒攻击 | `已拿到强结果` | `GSA` 已完成 `1k-3shadow` paper-aligned runtime，AUC 达到 `0.97514` |
 | 黑盒防御 | `基本未落地` | `B-1 / B-2` 仍在设计层 |
-| 灰盒防御 | `已有两档可比下降信号` | `PIA GPU128/GPU256` 下的 `stochastic-dropout` 都把攻击指标压低，但还没到 validated `G-1` |
+| 灰盒防御 | `已进入 provisional G-1` | `PIA GPU128/GPU256/GPU512` 下的 `stochastic-dropout` 都把攻击指标压低，但还没到 validated `G-1` |
 | 白盒防御 | `已有 strong-v2 主结果，strong-v3 已推进到 full-scale` | `DPDM` 已完成 stronger defended comparator，当前已拿到 stronger rung 的 full-scale GPU 结果 |
 | 统一评估表 | `缺失` | 当前最需要补的一块 |
 
@@ -42,7 +42,7 @@
 - baseline：`SecMI`
 - 当前能说的话：
   - `PIA` 已经不是 smoke，而是真实资产 mainline
-  - `PIA GPU128 / GPU256` 已拿到同口径 baseline + defense 对照，且 defense 指标连续两档都低于 baseline
+  - `PIA GPU128 / GPU256 / GPU512` 已拿到同口径 baseline + defense 对照，且 defense 指标连续三档都低于 baseline
   - 当前最适合把防御压到这条线上做正式比较
 - 当前不能说的话：
   - 还不能说灰盒防御已经验证有效
@@ -85,7 +85,7 @@
 | 轨道 | 当前最合理防御路线 | 当前判断 |
 | --- | --- | --- |
 | 黑盒 | `B-1 / B-2` | 设计方向成立，但还没有正式实现 |
-| 灰盒 | `G-1` | 已有 provisional 候选，并出现两档同口径下降信号，最值得继续放大样本验证 |
+| 灰盒 | `G-1` | 已进入 provisional 形态，并出现三档同口径下降信号，下一步转向重复确认与 provenance 核准 |
 | 白盒 | `W-1 = DPDM` | 已拿到 strong-v2 主结果，也拿到 strong-v3 的 full-scale GPU defended 结果；下一步是把两者一起接入统一总表并决定主讲口径 |
 
 ### 当前不建议优先做
@@ -118,13 +118,12 @@
 
 ## 当前最短执行顺序
 
-1. `PIA baseline + defended`
+1. 固定 `PIA provisional G-1`
 2. `SecMI` promote / block 判定
 3. `recon` 主证据口径收口
-4. `GSA 1k-3shadow`
-5. `DPDM` strong-v2 full-scale 与 strong-v3 full-scale 一起接入统一总表
-6. 固定白盒 defended 主结果口径
-7. 统一 attack-defense 总表
+4. `DPDM` strong-v2 full-scale 与 strong-v3 full-scale 一起接入统一总表
+5. 固定白盒 defended 主结果口径
+6. 统一 attack-defense 总表
 
 ## 申报 / PPT 应该怎么讲
 
@@ -133,7 +132,7 @@
 1. 扩散模型存在成员泄露风险
 2. 我们已经在黑盒、灰盒、白盒三种权限下建立了攻击验证能力
 3. 当前最成熟的是灰盒 `PIA`
-4. 我们正在把一个可运行的灰盒防御打成第一版正式闭环
+4. 我们已经拿到一个 `provisional G-1` 灰盒防御闭环
 5. 白盒 `GSA + W-1` 已经进入“强攻击结果已出，strong-v2 / strong-v3 defended full-scale comparator 都已完成”的阶段
 
 ## 关联文档

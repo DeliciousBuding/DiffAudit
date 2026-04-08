@@ -4,9 +4,9 @@
 
 - `owner`: `research_leader`
 - `scope`: 部分中间信息、条件相关评分、噪声预测与结构特征下的成员推断
-- `status`: `PIA real-asset runtime-mainline ready; GPU128 and GPU256 baseline + defended pairs landed; G-1 provisional formalization ready`
-- `blocked by`: `PIA` provenance 尚未升级到 paper-aligned；`SecMI` 真实资产闭环尚未完成；当前 gray-box defense 仍缺更高样本量或重复轮次确认
-- `next step`: 把 `GPU256` 结果写入总状态与 intake，把现有 defense prototype 正式升级为 provisional `G-1`，然后继续决定是推到 `GPU512` 还是先做重复确认
+- `status`: `PIA real-asset runtime-mainline ready; GPU128/GPU256/GPU512 baseline + defended pairs landed; provisional G-1 established`
+- `blocked by`: `PIA` provenance 尚未升级到 paper-aligned；`SecMI` 真实资产闭环尚未完成；当前 gray-box defense 仍缺同档重复轮次确认
+- `next step`: 把 `GPU512` 结果写入总状态与 intake，固定 `stochastic-dropout = provisional G-1`，然后决定是做 `GPU512` 重复确认还是切到 `SecMI`
 - `last updated`: `2026-04-08`
 
 ## 推荐论文
@@ -40,10 +40,13 @@
 - `workspaces/gray-box/runs/pia-cifar10-runtime-mainline-dropout-defense-20260408-cpu-32/summary.json`
 - `workspaces/gray-box/2026-04-08-pia-gpu128-attack-defense.md`
 - `workspaces/gray-box/2026-04-08-pia-gpu256-attack-defense.md`
+- `workspaces/gray-box/2026-04-08-pia-gpu512-attack-defense.md`
 - `workspaces/gray-box/runs/pia-cifar10-runtime-mainline-20260408-gpu-128/summary.json`
 - `workspaces/gray-box/runs/pia-cifar10-runtime-mainline-dropout-defense-20260408-gpu-128/summary.json`
 - `workspaces/gray-box/runs/pia-cifar10-runtime-mainline-20260408-gpu-256/summary.json`
 - `workspaces/gray-box/runs/pia-cifar10-runtime-mainline-dropout-defense-20260408-gpu-256/summary.json`
+- `workspaces/gray-box/runs/pia-cifar10-runtime-mainline-20260408-gpu-512/summary.json`
+- `workspaces/gray-box/runs/pia-cifar10-runtime-mainline-dropout-defense-20260408-gpu-512/summary.json`
 - `experiments/pia-runtime-smoke-cpu/summary.json`
 - `experiments/pia-runtime-smoke-gpu/summary.json`
 - `experiments/pia-synth-smoke-cpu/summary.json`
@@ -106,18 +109,28 @@
   - `GPU256` 继续复现了 `GPU128` 的同方向下降
   - 当前 gray-box defense 已不只是 provisional candidate，而是本轮最合理的 provisional `G-1`
   - 仍不能写成 validated privacy win，因为还没有 `GPU512` 或重复轮次确认
+- `PIA baseline` 的 `512` 样本 GPU run 已落盘：
+  - `workspaces/gray-box/runs/pia-cifar10-runtime-mainline-20260408-gpu-512/summary.json`
+  - 结果：`auc=0.841339 / asr=0.786133 / tpr@1%fpr=0.058594 / tpr@0.1%fpr=0.011719`
+- `PIA + stochastic-dropout defense` 的 `512` 样本 GPU run 已落盘：
+  - `workspaces/gray-box/runs/pia-cifar10-runtime-mainline-dropout-defense-20260408-gpu-512/summary.json`
+  - 结果：`auc=0.82938 / asr=0.769531 / tpr@1%fpr=0.023438 / tpr@0.1%fpr=0.009766`
+- 当前结论最终补充：
+  - `GPU512` 继续复现了 `GPU128 / GPU256` 的同方向下降
+  - 当前 gray-box defense 已经可以正式写成 `provisional G-1`
+  - 仍不能写成 validated privacy win，因为还缺同档重复确认与 provenance 升级
 
 ## 当前阻塞项
 
 - `PIA` 当前仍是 `source-retained-unverified`
-- 当前 gray-box defense 已出现两档 favorable signal，但仍不是 validated privacy win
+- 当前 gray-box defense 已出现三档 favorable signal，但仍不是 validated privacy win
 - `SecMI` 仍缺真实 checkpoint、flagfile 与论文一致 layout
 - 当前还没有 gray-box attack-defense 总表
 
 ## 当前最短路径
 
-1. 将 `PIA GPU256 baseline + defended` 接入 gray-box 与全局状态页
-2. 决定 `GPU512` 还是 `GPU256` 重复确认
-3. `PIA` provenance 核准
-4. `SecMI` 真实资产闭环或降级
+1. 将 `PIA GPU512 baseline + defended` 接入 gray-box 与全局状态页
+2. 固定 `stochastic-dropout = provisional G-1`
+3. 决定 `GPU512` 重复确认还是切到 `SecMI` promote / block
+4. `PIA` provenance 核准
 5. 把 gray-box 对比结果接入统一总表
