@@ -69,4 +69,4 @@
 6. 黑盒当前最值钱的动作不是再开新 run，而是固化 `recon` 主证据、最佳单指标参考、以及 `variation` 的 local secondary track 口径。
 7. 白盒攻击侧 `GSA` 已经站稳，当前重点不是继续重跑攻击，而是冻结 `W-1 strong-v3 full-scale` 主 defended 口径并与 `strong-v2 full-scale` 一起保留在统一总表中。
 
-更新时间：`2026-04-08 23:17:22 +08:00`
+更新时间：`2026-04-08 23:49:31 +08:00`
