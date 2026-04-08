@@ -4,7 +4,7 @@
 
 - `owner`: active-thread
 - `scope`: 统一黑/灰/白研究规划下的第一优先执行线，负责黑盒成员推断、数据集级审计、black-box leakage 线索整理
-- `status`: 进行中，`recon` 的 black-box 主证据、最佳单指标参考和 `variation` 次主线口径已冻结；当前 `variation` 的真实 API 资产 probe 已正式确认 blocked
+- `status`: 进行中，`recon` 的 black-box 主证据、最佳单指标参考和 `variation` 次主线口径已冻结；当前 `variation` 的真实 API 资产 probe 已正式确认 blocked；`TMIA-DM` 已完成 intake，但被判定为灰盒候选而非黑盒主线
 - `blocked by`: `recon` 公开资产包（DOI: `10.5281/zenodo.13371475`）的 target/shadow/member/non-member 论文语义仍需核准；`variation` 真实 query image root 仍缺；`Kandinsky 10/10` 当前本机链路仍异常慢
 - `next command`: no new black-box run; keep wording consistent across `blackbox-status`, `reproduction-status`, `comprehensive-progress`, and `ROADMAP`
 - `last updated`: 2026-04-09
@@ -23,6 +23,7 @@
 - `2024-arxiv-towards-black-box-membership-inference-diffusion-models.pdf`
 - `2024-neurips-clid-membership-inference-text-to-image-diffusion.pdf`
 - `2025-visapp-membership-inference-face-fine-tuned-latent-diffusion-models.pdf`
+- `2026-04-09-blackbox-method-boundary.md`
 
 ## 当前可执行证据
 
@@ -79,9 +80,10 @@
 7. 评估 `variation` 真实 API 调用所需的凭据、预算和 query image 约束
 8. 把 `variation` 明确写成“formal local black-box secondary track”，并同步记录 real-API assets 仍 blocked
 9. 把 `main evidence / best single metric reference / secondary track` 三层口径固定到所有状态文档
-10. 评估 `CLiD` 的真实 text-to-image 资产是否可在当前机器上最小复现
-11. 维持黑盒状态文档、实验目录和主线命令说明同步，并明确这些同步属于统一三线规划下的黑盒执行层收口
-12. 把 `B-1 / B-2` 只记录为 black-box defense backlog，不提前写成已有可比较结果
+10. 保持 `TMIA-DM` 只作为灰盒候选论文，不写进黑盒执行层级
+11. 评估 `CLiD` 的真实 text-to-image 资产是否可在当前机器上最小复现
+12. 维持黑盒状态文档、实验目录和主线命令说明同步，并明确这些同步属于统一三线规划下的黑盒执行层收口
+13. 把 `B-1 / B-2` 只记录为 black-box defense backlog，不提前写成已有可比较结果
 
 ## 当前阻塞项
 
@@ -89,3 +91,4 @@
 - 仍缺与论文一致的 target/shadow/member/non-member 直接映射说明
 - 黑盒不同论文的攻击假设并不完全相同，需要统一术语
 - `variation` 当前只有本地 synthetic smoke，与正式 blocked 的真实 API 资产探针；没有 query image root 就不能继续往真实 black-box 推进
+- `TMIA-DM` 已确认不是严格黑盒，如果口径管理不严，后续汇报很容易把它误归进黑盒

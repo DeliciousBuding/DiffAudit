@@ -30,9 +30,11 @@
   - 公开资产上的 black-box 风险已经有可引用主证据
   - `variation` 已能在本地 CPU 上重复跑 synthetic smoke
   - `variation` 的真实 API 资产 probe 已确认 blocked，当前缺 query image root
+  - 新归档 `TMIA-DM` 已证明时间相关噪声 / 梯度信号也是正式文献方向，但它当前不属于严格黑盒执行面
 - 当前不能说的话：
   - 还不能把 black-box 防御讲成已有结果
   - 还不能把 `variation` 写成真实 API 闭环
+  - 还不能把 `TMIA-DM` 写成黑盒新主线
 - 当前用途：
   - 作为申报和答辩里的“风险存在”主证据
   - `variation` 适合作为第二黑盒候选线补充进申报叙事

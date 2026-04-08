@@ -35,8 +35,14 @@ Secondary black-box track:
   - `formal local secondary track`
   - `blocked real-API assets`
 
+Method boundary reminder:
+
+- newly archived `TMIA-DM` does **not** enter this hierarchy
+- `TMIA-DM` is currently a gray-box candidate paper because it depends on temporal noise / gradient information
+
 ## Interpretation
 
 - `public-100 step30` is the main evidence because its artifact chain is the current most complete and most defensible.
 - `public-50 step10` is not the main evidence; it is only the current best single AUC reference.
 - `variation` remains useful in the repo, but it must not be overstated as a runnable real black-box line until a real query image root exists.
+- `TMIA-DM` may be useful for literature comparison, but it does not change the current black-box execution ordering.
