@@ -6,7 +6,7 @@
 - `scope`: 白盒成员推断、梯度级攻击、记忆定位与内部信号审计
 - `status`: `GSA 1k-3shadow paper-aligned runtime complete; W-1 strong-v3 full-scale frozen as defended main rung; strong-v2 full-scale retained as reference rung; independent GSA epoch300 rerun1 is actively training`
 - `blocked by`: `W-1` 仍是 defended comparator 而不是最终 benchmark；`DPDM` 与 `GSA` 仍有模型结构不一致；`W-2` 仍缺稳定训练目标与实现
-- `next step`: keep `strong-v3 full-scale` as the admitted defended main rung, low-frequency monitor `gsa-cifar10-1k-3shadow-epoch300-rerun1`, and only revisit white-box wording when the rerun produces a new `summary.json` or a stable failure mode
+- `next step`: keep `strong-v3 full-scale` as the admitted defended main rung, low-frequency monitor `gsa-cifar10-1k-3shadow-epoch300-rerun1`, treat this rerun as the last attack-strengthening window, and then shift white-box work to same-protocol defense benchmarking plus utility/cost explanation
 - `last updated`: `2026-04-09`
 
 ## 推荐论文
@@ -75,6 +75,7 @@
 - 当前 `DPDM` comparator 已扩到 defended target + defended shadows strong-v2，并完成 three-shadow full-scale 比较，但仍不是最终 benchmark
 - `strong-v3` checkpoint 集合已确认可读，并已成功跑出 three-shadow `max128 / max256 / max512 / full-scale` GPU comparator，当前主口径已冻结但仍非论文最终 benchmark
 - `Finding NeMo` 仍缺 neuron-level 分析接口与资产
+- 当前白盒最大问题已不是“能不能继续把攻击跑高”，而是 `GSA` 与 `DPDM/W-1` 仍不在同一个协议面上
 
 ## 当前最短路径
 
@@ -82,4 +83,8 @@
 2. 保留 `strong-v2 full-scale` 作为参考 rung
 3. 低频监控 `gsa-cifar10-1k-3shadow-epoch300-rerun1`
 4. 在 rerun1 产出 `summary.json` 前，不改 admitted `GSA` 主攻击口径
-5. 继续把系统侧优先级转回 admitted 结果接入与灰盒主讲线
+5. rerun1 结束后，不再继续开新的 GSA 长复跑
+6. 下一轮白盒工程优先做 same-protocol benchmark bridge：
+   - 方案 A：训练/对接架构对齐的 DP-DDPM，直接进入 GSA 协议
+   - 方案 B：为 `DPDM` 实现 GSA-style gradient feature extraction
+7. 继续把系统侧优先级转回 admitted 结果接入与灰盒主讲线

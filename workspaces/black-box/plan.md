@@ -6,7 +6,7 @@
 - `scope`: 统一黑/灰/白研究规划下的第一优先执行线，负责黑盒成员推断、数据集级审计、black-box leakage 线索整理
 - `status`: 进行中，`recon` 的 black-box 主证据、最佳单指标参考和 `variation` 次主线口径已冻结；当前 `variation` 的真实 API 资产 probe 已正式确认 blocked；`TMIA-DM` 已完成 intake，但被判定为灰盒候选而非黑盒主线
 - `blocked by`: `recon` 公开资产包（DOI: `10.5281/zenodo.13371475`）的语义 gate 现已 machine-audited 到 `proxy-shadow-member`，但仍未升级到 paper-aligned；`variation` 真实 query image root 仍缺；`Kandinsky 10/10` 当前本机链路仍异常慢
-- `next command`: no new black-box run; keep wording consistent across `blackbox-status`, `reproduction-status`, `comprehensive-progress`, and `ROADMAP`
+- `next command`: no new black-box run; keep wording consistent across `blackbox-status`, `reproduction-status`, `comprehensive-progress`, and `ROADMAP`; turn `variation` recovery into an explicit asset contract instead of speculative reruns
 - `last updated`: 2026-04-09
 
 ## 统一规划定位
@@ -77,19 +77,18 @@
 
 ## 一周行动清单
 
-1. 保持 `recon` 统一 mainline smoke 可重复执行，并在拿到 score artifact 后先跑 `probe-recon-score-artifacts` 再转到 `run-recon-artifact-mainline`
+1. 把 `main evidence / best single metric reference / secondary track` 三层口径固定到所有状态文档
 2. 复用 `audit-recon-public-bundle` 与 [2026-04-09-recon-public-bundle-audit.md](2026-04-09-recon-public-bundle-audit.md) 持续跟踪本机 `recon` 公开 Zenodo 资产的 target/shadow/member/non-member 语义 gate
-3. 对比 `DDIM public-100 step10` / `step30` 指标差异，并记录运行成本
-4. 把真实 target/shadow score artifact 的命名和目录约束落实到 `recon` 主线
-5. 维持 `DiT` 官方 `sample.py` 路线可重复执行，并把本地 checkpoint 驱动的 `step50` 证据视需要继续往更高步数或更高分辨率推进
-6. `kandinsky_v22` public smoke 已通，但 `10/10` 与单样本直跑当前都异常慢；`Stable Diffusion + DDIM` 的 `100-sample public` 也已通；`DiT step50` 也已补上，下一步是解释 `DDIM step10` / `step30` 的指标差异，并在拿到有效日志前继续暂停 `Kandinsky`
-7. 评估 `variation` 真实 API 调用所需的凭据、预算和 query image 约束
-8. 把 `variation` 明确写成“formal local black-box secondary track”，并同步记录 real-API assets 仍 blocked
-9. 把 `main evidence / best single metric reference / secondary track` 三层口径固定到所有状态文档
+3. 统一 `recon DDIM public-100 step30` 的固定话术，并强制带上 `proxy-shadow-member` 限制
+4. 对比 `DDIM public-100 step10` / `step30` 指标差异，并记录运行成本
+5. 把真实 target/shadow score artifact 的命名和目录约束落实到 `recon` 主线
+6. 把 `variation` 的恢复条件写成资产契约包：`query_image_root`、query images、endpoint/proxy、query budget
+7. 在真实资产到位前，`variation` 只允许继续做 probe，不再做结果型 run
+8. `kandinsky_v22` public smoke 已通，但 `10/10` 与单样本直跑当前都异常慢；在拿到有效日志前继续暂停 `Kandinsky`
+9. 评估 `CLiD` 的真实 text-to-image 资产是否可在当前机器上最小复现
 10. 保持 `TMIA-DM` 只作为灰盒候选论文，不写进黑盒执行层级
-11. 评估 `CLiD` 的真实 text-to-image 资产是否可在当前机器上最小复现
-12. 维持黑盒状态文档、实验目录和主线命令说明同步，并明确这些同步属于统一三线规划下的黑盒执行层收口
-13. 把 `B-1 / B-2` 只记录为 black-box defense backlog，不提前写成已有可比较结果
+11. 维持黑盒状态文档、实验目录和主线命令说明同步，并明确这些同步属于统一三线规划下的黑盒执行层收口
+12. 把 `B-1 / B-2` 只记录为 black-box defense backlog，不提前写成已有可比较结果
 
 ## 当前阻塞项
 

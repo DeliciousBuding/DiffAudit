@@ -6,7 +6,7 @@
 - `scope`: 部分中间信息、条件相关评分、噪声预测与结构特征下的成员推断
 - `status`: `PIA real-asset runtime-mainline ready; GPU128/GPU256/GPU512 baseline + defended pairs landed; GPU512 rerun confirmed; provisional G-1 established; provenance now workspace-verified`
 - `blocked by`: `PIA` 仍未升级到 `paper-aligned`；`SecMI` 当前已判定为 blocked baseline
-- `next step`: 保持 `stochastic-dropout = provisional G-1 (repeat-confirmed at GPU512)`；当前攻击依赖信号说明与质量 / 成本列已写入正式说明，不再继续刷样本规模；`SecMI` 只保留为 blocked baseline
+- `next step`: 保持 `stochastic-dropout = provisional G-1 (repeat-confirmed at GPU512)`；下一轮优先补最小 utility/quality/cost 评估与单旋钮消融，把 gray-box defense 从“同向有效”推进到“可答辩”；`SecMI` 只保留为 blocked baseline
 - `last updated`: `2026-04-09`
 
 ## 推荐论文
@@ -62,15 +62,20 @@
 - `external/PIA`
 - `external/SecMI`
 - `third_party/secmi`
+- `external/PIA/DDPM/main.py`
+- `external/SecMI/score`
+- `external/DPDM/utils/util.py`
 
 ## 当前推荐执行顺序
 
-1. 读透 `PIA` 论文，把攻击依赖的核心信号写清楚
-2. 固定 `stochastic-dropout = provisional G-1`
-3. 复用 [2026-04-09-pia-signal-and-cost.md](2026-04-09-pia-signal-and-cost.md) 作为灰盒主讲线的机理与成本说明
-4. 保持 `SecMI = blocked baseline`
-5. 保持 `TMIA-DM` 为研究候选，不提前伪装成可执行主线
-6. 将灰盒主结果接入统一总表并持续复用
+1. 固定 `stochastic-dropout = provisional G-1`
+2. 以 `GPU512` 为主档，做单旋钮最小消融，不再继续扩大样本规模
+3. 为 `PIA` defense pair 补 `FID / IS / LPIPS` 中至少一项可落地 utility 指标，并把 wall-clock 写成正式成本列
+4. 复用 [2026-04-09-pia-signal-and-cost.md](2026-04-09-pia-signal-and-cost.md) 作为灰盒主讲线的机理与成本说明
+5. 补同档 repeat / 多 seed 的最小稳健性说明，而不是换数据集
+6. 保持 `SecMI = blocked baseline`
+7. 保持 `TMIA-DM` 为研究候选，不提前伪装成可执行主线
+8. 将灰盒主结果接入统一总表并持续复用
 
 ## 2026-04-08 新观察
 
@@ -119,7 +124,9 @@
 ## 当前最短路径
 
 1. 固定 `stochastic-dropout = provisional G-1 (repeat-confirmed at GPU512)`
-2. 保持 [2026-04-09-pia-signal-and-cost.md](2026-04-09-pia-signal-and-cost.md) 与状态页一致
-3. 保持 `SecMI = blocked baseline`
-4. 复用 [unified table](../implementation/2026-04-08-unified-attack-defense-table.md) 作为灰盒对外引用入口
-5. 只有在真实 `flagfile + checkpoint root` 到位后，才恢复 `SecMI`
+2. 新增最小 utility/quality 支撑，优先复用 `PIA DDPM sampler + SecMI/DPDM FID code`
+3. 用单旋钮消融解释 defense 如何削弱 `epsilon-trajectory consistency`
+4. 保持 [2026-04-09-pia-signal-and-cost.md](2026-04-09-pia-signal-and-cost.md) 与状态页一致
+5. 保持 `SecMI = blocked baseline`
+6. 复用 [unified table](../implementation/2026-04-08-unified-attack-defense-table.md) 作为灰盒对外引用入口
+7. 只有在真实 `flagfile + checkpoint root` 到位后，才恢复 `SecMI`
