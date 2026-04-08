@@ -1,6 +1,6 @@
 {
   "schema": "diffaudit.attack_defense_table.v1",
-  "updated_at": "2026-04-08T23:17:22+08:00",
+  "updated_at": "2026-04-09T00:05:00+08:00",
   "dataset": "CIFAR-10",
   "model_family": "DDPM",
   "rows": [
@@ -13,7 +13,7 @@
       "asr": 0.51,
       "tpr_at_1pct_fpr": 1.0,
       "tpr_at_0_1pct_fpr": null,
-      "quality_cost": "100 public samples; runtime-mainline",
+      "quality_cost": "100 public samples per split; DDIM step30; artifact-mainline ready; cuda runtime",
       "evidence_level": "runtime-mainline",
       "note": "current black-box main evidence",
       "source": "experiments/recon-runtime-mainline-ddim-public-100-step30/summary.json"
@@ -27,7 +27,7 @@
       "asr": 0.786133,
       "tpr_at_1pct_fpr": 0.058594,
       "tpr_at_0_1pct_fpr": 0.011719,
-      "quality_cost": "512 samples per split; 171.214752s",
+      "quality_cost": "512 samples per split; single GPU; elapsed_seconds=171.214752; rerun baseline elapsed_seconds=61.80132",
       "evidence_level": "runtime-mainline",
       "note": "current gray-box baseline reference",
       "source": "workspaces/gray-box/runs/pia-cifar10-runtime-mainline-20260408-gpu-512/summary.json"
@@ -41,7 +41,7 @@
       "asr": 0.769531,
       "tpr_at_1pct_fpr": 0.023438,
       "tpr_at_0_1pct_fpr": 0.009766,
-      "quality_cost": "512 samples per split; 131.89636s",
+      "quality_cost": "512 samples per split; single GPU; elapsed_seconds=131.89636; repeat-confirmed; rerun defense elapsed_seconds=181.768416",
       "evidence_level": "runtime-mainline",
       "note": "current gray-box defended main result",
       "source": "workspaces/gray-box/runs/pia-cifar10-runtime-mainline-dropout-defense-20260408-gpu-512/summary.json"
@@ -55,7 +55,7 @@
       "asr": 0.919,
       "tpr_at_1pct_fpr": 0.55,
       "tpr_at_0_1pct_fpr": 0.205,
-      "quality_cost": "1k target eval + 3 shadows",
+      "quality_cost": "target_eval_size=2000; shadow_train_size=4200; 3 shadows; cuda",
       "evidence_level": "runtime-mainline",
       "note": "current white-box attack main evidence",
       "source": "workspaces/white-box/runs/gsa-runtime-mainline-20260408-cifar10-1k-3shadow/summary.json"
@@ -69,7 +69,7 @@
       "asr": 0.4985,
       "tpr_at_1pct_fpr": 0.009,
       "tpr_at_0_1pct_fpr": 0.0,
-      "quality_cost": "full-scale defended comparator",
+      "quality_cost": "target_eval_size=2000; shadow_train_size=6000; classifier=logistic-regression-1d",
       "evidence_level": "runtime-smoke",
       "note": "current white-box defended main result",
       "source": "workspaces/white-box/runs/dpdm-w1-multi-shadow-comparator-targetmember-strongv3-3shadow-full-rerun8-20260408/summary.json"
@@ -83,7 +83,7 @@
       "asr": 0.496,
       "tpr_at_1pct_fpr": 0.006,
       "tpr_at_0_1pct_fpr": 0.0,
-      "quality_cost": "full-scale defended comparator",
+      "quality_cost": "target_eval_size=2000; shadow_train_size=6000; classifier=logistic-regression-1d",
       "evidence_level": "runtime-smoke",
       "note": "defended reference rung kept for comparison",
       "source": "workspaces/white-box/runs/dpdm-w1-multi-shadow-comparator-targetmember-strongv2-3shadow-full-20260408/summary.json"
