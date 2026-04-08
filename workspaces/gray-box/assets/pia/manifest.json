@@ -13,6 +13,6 @@
   "dataset_archive": "workspaces/gray-box/assets/pia/sources/cifar-10-python.tar.gz",
   "member_split_root": "external/PIA/DDPM",
   "member_split_file": "external/PIA/DDPM/CIFAR10_train_ratio0.5.npz",
-  "canonical_summary": "workspaces/gray-box/runs/pia-cifar10-runtime-mainline-20260407-cpu/summary.json",
-  "defense_summary": "workspaces/gray-box/runs/pia-cifar10-runtime-mainline-dropout-defense-20260407-cpu/summary.json"
+  "canonical_summary": "workspaces/gray-box/runs/pia-cifar10-runtime-mainline-20260408-gpu-128/summary.json",
+  "defense_summary": "workspaces/gray-box/runs/pia-cifar10-runtime-mainline-dropout-defense-20260408-gpu-128/summary.json"
 }

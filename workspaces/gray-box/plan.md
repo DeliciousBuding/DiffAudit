@@ -4,9 +4,9 @@
 
 - `owner`: `research_leader`
 - `scope`: 部分中间信息、条件相关评分、噪声预测与结构特征下的成员推断
-- `status`: `PIA real-asset runtime-mainline ready; G-1 formalization pending`
-- `blocked by`: `PIA` provenance 尚未升级到 paper-aligned；`SecMI` 真实资产闭环尚未完成；当前 gray-box defense 仍未形成正式同口径对比表
-- `next step`: 基于 `32` 样本 run 继续扩大 `PIA baseline + defended` 的样本量与重复次数，并把现有 defense prototype 正式定义成 `G-1`
+- `status`: `PIA real-asset runtime-mainline ready; GPU128 baseline + defended pair landed; G-1 formalization pending`
+- `blocked by`: `PIA` provenance 尚未升级到 paper-aligned；`SecMI` 真实资产闭环尚未完成；当前 gray-box defense 只有一轮 favorable signal，还没有形成正式同口径对比表
+- `next step`: 把 `GPU128` 结果写入总状态与 intake，然后继续扩大 `PIA baseline + defended` 的样本量与重复次数，并把现有 defense prototype 评估为 provisional `G-1`
 - `last updated`: `2026-04-08`
 
 ## 推荐论文
@@ -38,6 +38,9 @@
 - `workspaces/gray-box/runs/pia-cifar10-runtime-mainline-dropout-defense-20260407-cpu/summary.json`
 - `workspaces/gray-box/runs/pia-cifar10-runtime-mainline-20260408-cpu-32/summary.json`
 - `workspaces/gray-box/runs/pia-cifar10-runtime-mainline-dropout-defense-20260408-cpu-32/summary.json`
+- `workspaces/gray-box/2026-04-08-pia-gpu128-attack-defense.md`
+- `workspaces/gray-box/runs/pia-cifar10-runtime-mainline-20260408-gpu-128/summary.json`
+- `workspaces/gray-box/runs/pia-cifar10-runtime-mainline-dropout-defense-20260408-gpu-128/summary.json`
 - `experiments/pia-runtime-smoke-cpu/summary.json`
 - `experiments/pia-runtime-smoke-gpu/summary.json`
 - `experiments/pia-synth-smoke-cpu/summary.json`
@@ -80,17 +83,28 @@
   - 因此当前不能把它写成有效 `G-1`，只能写成“已具备正式可比接口，但尚未验证有效”
 - 本轮顺手修复了 `PIA` runtime mainline summary 的 `runtime.num_samples` 口径 bug：
   - 现在 summary 会记录实际生效样本数，而不是配置中的默认值
+- `PIA baseline` 的 `128` 样本 GPU run 已落盘：
+  - `workspaces/gray-box/runs/pia-cifar10-runtime-mainline-20260408-gpu-128/summary.json`
+  - 结果：`auc=0.817444 / asr=0.765625 / tpr@1%fpr=0.046875 / tpr@0.1%fpr=0.039062`
+- `PIA + stochastic-dropout defense` 的 `128` 样本 GPU run 已落盘：
+  - `workspaces/gray-box/runs/pia-cifar10-runtime-mainline-dropout-defense-20260408-gpu-128/summary.json`
+  - 结果：`auc=0.803955 / asr=0.757812 / tpr@1%fpr=0.03125 / tpr@0.1%fpr=0.015625`
+- 当前结论补充：
+  - `GPU128` 这对结果第一次在同口径下给出了防御优于 baseline 的方向性信号
+  - 这足以把 `stochastic-dropout` 从“只有 runnable hook”推进到“provisional G-1 candidate”
+  - 但当前仍不能写成已验证有效防御，因为还缺重复轮次或更大样本量确认
 
 ## 当前阻塞项
 
 - `PIA` 当前仍是 `source-retained-unverified`
-- 当前 gray-box defense 只是 runnable hook，不是 validated privacy win
+- 当前 gray-box defense 已出现第一条 favorable signal，但仍不是 validated privacy win
 - `SecMI` 仍缺真实 checkpoint、flagfile 与论文一致 layout
 - 当前还没有 gray-box attack-defense 总表
 
 ## 当前最短路径
 
-1. `PIA baseline + defended`
-2. `PIA` provenance 核准
-3. `SecMI` 真实资产闭环或降级
-4. 把 gray-box 对比结果接入统一总表
+1. 将 `PIA GPU128 baseline + defended` 接入 gray-box 与全局状态页
+2. 重复或扩大到 `PIA GPU256 baseline + defended`
+3. `PIA` provenance 核准
+4. `SecMI` 真实资产闭环或降级
+5. 把 gray-box 对比结果接入统一总表

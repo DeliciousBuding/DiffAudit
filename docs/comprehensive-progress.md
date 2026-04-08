@@ -16,7 +16,7 @@
 | 灰盒攻击 | `最成熟` | `PIA` 已进入 real-asset runtime mainline |
 | 白盒攻击 | `已拿到强结果` | `GSA` 已完成 `1k-3shadow` paper-aligned runtime，AUC 达到 `0.97514` |
 | 黑盒防御 | `基本未落地` | `B-1 / B-2` 仍在设计层 |
-| 灰盒防御 | `有原型` | 接近 `G-1`，但还没形成正式对照 |
+| 灰盒防御 | `已有首个可比下降信号` | `PIA GPU128` 下的 `stochastic-dropout` 已把攻击指标压低，但还没到 validated `G-1` |
 | 白盒防御 | `已有 strong-v2 主结果，strong-v3 已推进到 full-scale` | `DPDM` 已完成 stronger defended comparator，当前已拿到 stronger rung 的 full-scale GPU 结果 |
 | 统一评估表 | `缺失` | 当前最需要补的一块 |
 
@@ -42,6 +42,7 @@
 - baseline：`SecMI`
 - 当前能说的话：
   - `PIA` 已经不是 smoke，而是真实资产 mainline
+  - `PIA GPU128` 已拿到同口径 baseline + defense 对照，且 defense 指标第一次整体低于 baseline
   - 当前最适合把防御压到这条线上做正式比较
 - 当前不能说的话：
   - 还不能说灰盒防御已经验证有效
@@ -84,7 +85,7 @@
 | 轨道 | 当前最合理防御路线 | 当前判断 |
 | --- | --- | --- |
 | 黑盒 | `B-1 / B-2` | 设计方向成立，但还没有正式实现 |
-| 灰盒 | `G-1` | 已有近似原型，最值得先打穿 |
+| 灰盒 | `G-1` | 已有 provisional 候选，并出现第一条同口径下降信号，最值得继续放大样本验证 |
 | 白盒 | `W-1 = DPDM` | 已拿到 strong-v2 主结果，也拿到 strong-v3 的 full-scale GPU defended 结果；下一步是把两者一起接入统一总表并决定主讲口径 |
 
 ### 当前不建议优先做
