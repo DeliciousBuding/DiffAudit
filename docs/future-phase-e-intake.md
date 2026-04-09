@@ -41,7 +41,16 @@
 
 ### 当前定位
 
-这是白盒最自然的下一问，用来把当前 `GSA + W-1` 从“能分出来”推进到“为什么会记忆、记在哪里、为什么缓解不彻底”。
+这是白盒最自然的下一问，但当前只允许把它推进成 `decision-grade intake/eligibility artifact`。
+
+它当前回答的问题不是“已经证明了什么机制”，而是：
+
+- 是否值得申请一次最小 `validation-smoke`
+- 当前最小 hook 面、资产需求和退出条件是否已经足够清楚
+
+详细 intake 见：
+
+- `workspaces/white-box/2026-04-10-finding-nemo-mechanism-intake.md`
 
 ### 进入条件
 
@@ -52,17 +61,24 @@
   - 资产需求
   - 局部记忆诊断目标
   - 退出条件
+- 已预声明：
+  - compute budget
+  - stop conditions
+  - expected artifact
+- 首批信号访问限定在 `gradient + activations`
+- `cross-attention` 不作为首跑硬前置
 
 ### 退出条件
 
-- 至少拿到一份机制证据，回答局部记忆是否可定位、是否与当前成员分离信号一致
-- 或正式以边界说明收口
+- 形成一次 intake 级 `go / not-yet / no-go` 裁决
+- 若 `go`，最多只允许申请一次最小 `validation-smoke`
+- 若 `not-yet / no-go`，则继续停留在 intake，不进入执行态
 
 ### 预期产物
 
 - white-box mechanism intake note
-- 局部记忆诊断报告
-- 是否值得升级为正式主线的判断
+- one minimal `validation-smoke` plan
+- `go / not-yet / no-go` 裁决
 
 ## 3. DP-LoRA
 
@@ -135,6 +151,7 @@
 
 - 只要 `PIA provenance` 在窗口内解除，`PIA paper-aligned confirmation` 就保持第一优先
 - 当前 `PIA provenance dossier` 已 closed 为 `remain long-term blocker`，因此执行层默认优先推动 `Finding NeMo + local memorization + FB-Mem` 从 intake 升级
+- 这里的 `decision-grade` 只指 intake/eligibility 决策质量，不指 admitted 升级，不指 benchmark-ready，也不指 GPU 已放行
 - `DP-LoRA` 不抢第一条新问题
 - `SecMI` 与 `TMIA-DM` 继续后排
 
@@ -151,6 +168,7 @@
 
 - `PIA paper-aligned confirmation` 继续保留文档层条件性第 1 顺位
 - 但在 provenance 条件未变化前，不进入执行层
+- `Finding NeMo + local memorization + FB-Mem` 当前只是执行层默认第一候选，不构成当前 GPU release
 
 ## 当前明确不做
 

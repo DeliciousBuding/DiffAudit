@@ -18,7 +18,7 @@
 
 ## 当前固定前提
 
-- 当前唯一 active GPU 问题仍然是 `white-box same-protocol bridge`
+- 当前写回时点下，`white-box same-protocol bridge` 已 `closed-frozen`，不再是 active GPU 问题
 - admitted attack baseline 仍是：
   - `workspaces/white-box/runs/gsa-runtime-mainline-20260409-cifar10-1k-3shadow-epoch300-rerun1/summary.json`
 - defended main rung 仍是：
@@ -200,6 +200,6 @@
 - 只有当 bridge 完成正式三选一收口后，下一条 GPU 问题才允许进入准入验证
 - bridge 若保持冻结或失败收口，并不等于白盒线失败；它只说明当前 same-protocol route 到达了阶段边界
 - 下一条 GPU 候选默认顺序仍是：
-  1. `PIA paper-aligned confirmation`
-  2. `Finding NeMo / local memorization` intake 升级
+  1. 文档层条件排序仍保留 `PIA paper-aligned confirmation`
+  2. 但在 provenance 条件未变化前，执行层默认先看 `Finding NeMo / local memorization` 的 intake/eligibility 升级
   3. `DP-LoRA`

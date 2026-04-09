@@ -25,7 +25,7 @@
 - `white-box same-protocol bridge` 已完成 `保持冻结` 收口
 - 当前不再有 active 主 GPU 问题
 - 当前 `PIA provenance dossier` 已 closed 为 `remain long-term blocker`
-- 当前最值得推进的唯一目标切换为 `Finding NeMo + local memorization + FB-Mem` 的准入验证准备
+- `Finding NeMo + local memorization + FB-Mem` 的 intake/eligibility note 已建立，当前最值得推进的唯一目标变为补齐其准入件并等待 boss review
 
 ## 攻击主线
 
@@ -73,7 +73,7 @@
 ### 白盒
 
 - 主线：`GSA`
-- 扩展：`Finding NeMo`
+- 扩展：`Finding NeMo (intake-gated)`
 - 当前能说的话：
   - 白盒闭环已经打通
   - 资产根、checkpoint-*、bucket 已进入规范结构
@@ -97,12 +97,14 @@
   - 这份 batch32 comparator 当前仍是 `runtime-smoke` 级 bridge 诊断结果，不应直接写成新的 admitted 白盒防御主结果
   - 当前 same-protocol bridge 已正式以 `保持冻结` 收口；这只是治理与资源排序决策，不是新的 benchmark 结果
   - 系统侧对白盒 `GSA` 的 live intake 现在应与 admitted `1k-3shadow` 主结果对齐，而不是继续停在早期 CPU closed-loop
+  - 新的 [2026-04-10-finding-nemo-mechanism-intake](../workspaces/white-box/2026-04-10-finding-nemo-mechanism-intake.md) 已把 `Finding NeMo + local memorization + FB-Mem` 固定为 intake/eligibility-only 候选，并写死了最小 `validation-smoke` gate
 - 当前不能说的话：
   - 还不能说白盒论文级复现成功
   - 还不能说白盒 defense 比较已经完成
   - 还不能把当前 batch32 bridge diagnostic 写成 benchmark 已完成或 admitted summary 已更新
   - 还不能把 `DPDM` target-only comparator写成同口径白盒攻击结果
   - 还不能把当前 `DPDM strong-v2 defended-target multi-shadow comparator` 写成最终白盒 defense benchmark
+  - 还不能把 `Finding NeMo` 写成当前执行主线、execution-ready 或 benchmark-ready
 - 当前用途：
   - 作为技术深度补充线
 
@@ -151,7 +153,7 @@
 3. `variation / Towards` 继续保留为 formal local secondary track，并明确 real-API assets blocked
 4. 在统一表和叙事材料里补齐 `threat model / asset semantics / evidence level / external-validity boundary`
 5. 用 [future-phase-e-intake](future-phase-e-intake.md) 固定 `Phase E` 候选池排序，并只允许进入准入验证
-6. 默认把 `Finding NeMo + local memorization + FB-Mem` 作为下一条最可放行候选
+6. 用 [2026-04-10-finding-nemo-mechanism-intake](../workspaces/white-box/2026-04-10-finding-nemo-mechanism-intake.md) 固定 `Finding NeMo + local memorization + FB-Mem` 的 intake gate，并默认把它保留为下一条最可放行候选
 7. `PIA paper-aligned confirmation` 继续保留文档层条件性首位，但执行层视为 `no-go`
 8. 基于第一版统一总表继续补质量 / 成本列，并保持灰盒机理说明与 adaptive gate 一致
 

@@ -63,7 +63,7 @@
 - bridge 已完成 `保持冻结` 收口
 - 当前没有新的 active 主 GPU 问题
 - 当前最值得推进的唯一目标切换为：
-  - `Finding NeMo + local memorization + FB-Mem` 的准入验证准备
+  - `Finding NeMo + local memorization + FB-Mem` 的 intake/eligibility 完整性收口
 
 进入 `Phase E` 的 gate：
 
@@ -92,8 +92,8 @@
 
 - 当前允许主 GPU 任务
 - 但研究侧同一时段只允许一个主线 GPU 问题
-- 当前唯一 active GPU 问题：
-  - `white-box same-protocol bridge`
+- 当前 active GPU 问题：
+  - `none`
 
 本地 scheduler 边界：
 
@@ -110,6 +110,11 @@
 1. `PIA paper-aligned confirmation`
 2. `SecMI unblock`
 3. `TMIA-DM or Finding NeMo intake`
+
+补充边界：
+
+- `Finding NeMo + local memorization + FB-Mem` 当前只获得了 `eligibility-gated for one minimal validation-smoke only` 的定义
+- 在 intake 文档未补齐 `hook 点 / 资产需求 / compute budget / stop conditions / expected artifact` 前，不得申请 GPU
 
 研究侧明确不做：
 
@@ -176,7 +181,7 @@
 - 目标：
   - 让主线从“能讲”推进到更强的同协议对比面
 - 当前状态：
-  - `active`
+  - `closed-frozen`
 - 当前 owner / 固定角色：
   - `research_leader`
 - 进入条件：
@@ -196,7 +201,7 @@
 - 目标：
   - 在当前主线收口后开启真正新的问题
 - 当前状态：
-  - `not opened`
+  - `intake-only`
 - 当前 owner / 固定角色：
   - `research_leader`
   - `总管理 Agent`
