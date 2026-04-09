@@ -25,7 +25,7 @@
 - `white-box same-protocol bridge` 已完成 `保持冻结` 收口
 - 当前不再有 active 主 GPU 问题
 - 当前 `PIA provenance dossier` 已 closed 为 `remain long-term blocker`
-- `Finding NeMo + local memorization + FB-Mem` 的 intake/eligibility note 已建立，当前最值得推进的唯一目标变为补齐其 `portable observability smoke` 入口合同
+- `Finding NeMo + local memorization + FB-Mem` 的 intake/eligibility note 已建立，当前最值得推进的唯一目标变为判断是否要继续补一个 `activation-only canary` 实现草案
 
 ## 攻击主线
 
@@ -100,6 +100,7 @@
   - 新的 [2026-04-10-finding-nemo-mechanism-intake](../workspaces/white-box/2026-04-10-finding-nemo-mechanism-intake.md) 已把 `Finding NeMo + local memorization + FB-Mem` 固定为 intake/eligibility-only 候选，并写死了最小 `validation-smoke` gate
   - 新的 [2026-04-10-finding-nemo-protocol-reconciliation](../workspaces/white-box/2026-04-10-finding-nemo-protocol-reconciliation.md) 已明确：当前 admitted 白盒资产与 `Finding NeMo` 原始 `Stable Diffusion v1.4 / cross-attention value layers` 协议面不兼容；当前只允许继续做 zero-GPU 的 observability 规划
   - 新的 [2026-04-10-finding-nemo-observability-smoke-contract](../workspaces/white-box/2026-04-10-finding-nemo-observability-smoke-contract.md) 已把未来 smoke 的 `checkpoint_root / layer selector / sample binding / output schema / scheduler gate` 写成可审查合同，但当前仍未放行 run
+  - 新的 [2026-04-10-finding-nemo-activation-only-canary-sketch](../workspaces/white-box/2026-04-10-finding-nemo-activation-only-canary-sketch.md) 已把未来 `activation-only canary` 的实现形状写成草案，但当前仍未开始实现
 - 当前不能说的话：
   - 还不能说白盒论文级复现成功
   - 还不能说白盒 defense 比较已经完成
