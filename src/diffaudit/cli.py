@@ -697,6 +697,24 @@ def build_parser() -> argparse.ArgumentParser:
         help="enable stochastic dropout at inference time as a minimal gray-box defense prototype",
     )
     pia_runtime_mainline_parser.add_argument(
+        "--dropout-activation-schedule",
+        default="off",
+        choices=["off", "all_steps", "late_steps_only"],
+        help="when stochastic dropout is enabled, choose whether it stays on for all attack steps or only late steps",
+    )
+    pia_runtime_mainline_parser.add_argument(
+        "--adaptive-query-repeats",
+        type=int,
+        default=1,
+        help="repeat the same score query this many times and aggregate by mean for adaptive attacker review",
+    )
+    pia_runtime_mainline_parser.add_argument(
+        "--late-step-threshold",
+        type=int,
+        default=None,
+        help="optional timestep threshold used by late_steps_only dropout activation",
+    )
+    pia_runtime_mainline_parser.add_argument(
         "--provenance-status",
         default="source-retained-unverified",
         help="provenance label recorded in the emitted summary",
@@ -1301,6 +1319,9 @@ def main(argv: list[str] | None = None) -> int:
             max_samples=args.max_samples,
             batch_size=args.batch_size,
             stochastic_dropout_defense=args.stochastic_dropout_defense,
+            dropout_activation_schedule=args.dropout_activation_schedule,
+            adaptive_query_repeats=args.adaptive_query_repeats,
+            late_step_threshold=args.late_step_threshold,
             provenance_status=args.provenance_status,
         )
         print(json.dumps(payload, indent=2, ensure_ascii=True))

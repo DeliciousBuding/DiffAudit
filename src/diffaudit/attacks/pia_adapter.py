@@ -4,6 +4,7 @@ from __future__ import annotations
 
 import importlib.util
 import json
+import math
 import shutil
 import time
 from dataclasses import dataclass
@@ -52,6 +53,13 @@ class PiaAdapterContext:
     model_module: ModuleType
     checkpoint_path: str
     weights_key: str
+
+
+VALID_DROPOUT_ACTIVATION_SCHEDULES = {
+    "off",
+    "all_steps",
+    "late_steps_only",
+}
 
 
 def _load_module_from_path(module_name: str, module_path: Path) -> ModuleType:
@@ -146,6 +154,8 @@ def bootstrap_pia_smoke_assets(
 def _build_pia_eps_getter(
     components_module: ModuleType,
     model: torch.nn.Module,
+    dropout_activation_schedule: str = "off",
+    late_step_threshold: int | None = None,
 ):
     class RuntimeEpsGetter(components_module.EpsGetter):
         def __call__(
@@ -156,6 +166,15 @@ def _build_pia_eps_getter(
             t: int | None = None,
         ) -> torch.Tensor:
             del condition, noise_level
+            timestep_value = int(t or 0)
+            if _dropout_is_active_for_timestep(
+                dropout_activation_schedule,
+                timestep=timestep_value,
+                late_step_threshold=late_step_threshold,
+            ):
+                self.model.train()
+            else:
+                self.model.eval()
             timestep = torch.ones([xt.shape[0]], device=xt.device, dtype=torch.long) * int(t or 0)
             return self.model(xt, t=timestep)
 
@@ -169,6 +188,8 @@ def _build_pia_attacker(
     attack_num: int,
     interval: int,
     device: str,
+    dropout_activation_schedule: str = "off",
+    late_step_threshold: int | None = None,
     defaults: PiaDefaults | None = None,
 ):
     config = defaults or PiaDefaults()
@@ -176,7 +197,12 @@ def _build_pia_attacker(
     if attacker_cls is None:
         raise ValueError(f"PIA attacker class not found: {attacker_name}")
     betas = torch.linspace(config.beta_1, config.beta_T, config.T, device=device)
-    eps_getter = _build_pia_eps_getter(components_module, model)
+    eps_getter = _build_pia_eps_getter(
+        components_module,
+        model,
+        dropout_activation_schedule=dropout_activation_schedule,
+        late_step_threshold=late_step_threshold,
+    )
     return attacker_cls(
         betas,
         interval,
@@ -303,6 +329,187 @@ def probe_pia_runtime(
         "paths": summary["paths"],
         "weights_key": weights_key,
         "preview_score_shape": list(preview_scores.shape),
+    }
+
+
+def _normalize_dropout_activation_schedule(
+    dropout_activation_schedule: str,
+    stochastic_dropout_defense: bool,
+) -> str:
+    schedule = str(dropout_activation_schedule).strip().lower() or "off"
+    if schedule not in VALID_DROPOUT_ACTIVATION_SCHEDULES:
+        allowed = ", ".join(sorted(VALID_DROPOUT_ACTIVATION_SCHEDULES))
+        raise ValueError(f"Unsupported dropout activation schedule: {schedule}. Expected one of {allowed}")
+    if not stochastic_dropout_defense:
+        return "off"
+    if schedule == "off":
+        return "all_steps"
+    return schedule
+
+
+def _resolve_late_step_threshold(
+    attack_num: int,
+    interval: int,
+    late_step_threshold: int | None,
+) -> int:
+    if late_step_threshold is not None and late_step_threshold > 0:
+        return int(late_step_threshold)
+    return max(((attack_num + 1) // 2) * interval, interval)
+
+
+def _dropout_is_active_for_timestep(
+    dropout_activation_schedule: str,
+    timestep: int,
+    late_step_threshold: int | None,
+) -> bool:
+    if dropout_activation_schedule == "all_steps":
+        return True
+    if dropout_activation_schedule == "late_steps_only":
+        return timestep >= int(late_step_threshold or 0)
+    return False
+
+
+def _score_batch_once(
+    attacker,
+    batch: torch.Tensor,
+    device: str,
+) -> torch.Tensor:
+    batch_scores = attacker(batch.to(device)).mean(dim=0)
+    return (-batch_scores).detach().cpu()
+
+
+def _score_loader(
+    attacker,
+    loader,
+    device: str,
+    adaptive_query_repeats: int,
+) -> tuple[torch.Tensor, torch.Tensor, torch.Tensor]:
+    aggregated_scores: list[torch.Tensor] = []
+    std_scores: list[torch.Tensor] = []
+    single_scores: list[torch.Tensor] = []
+    with torch.no_grad():
+        for batch, _ in loader:
+            repeated_scores = [
+                _score_batch_once(attacker, batch, device=device)
+                for _ in range(max(adaptive_query_repeats, 1))
+            ]
+            stacked_scores = torch.stack(repeated_scores)
+            single_scores.append(stacked_scores[0])
+            aggregated_scores.append(stacked_scores.mean(dim=0))
+            std_scores.append(stacked_scores.std(dim=0, unbiased=False))
+    return (
+        torch.cat(single_scores),
+        torch.cat(aggregated_scores),
+        torch.cat(std_scores),
+    )
+
+
+def _collect_loader_batches(
+    loader,
+) -> torch.Tensor:
+    batches: list[torch.Tensor] = []
+    for batch, _ in loader:
+        batches.append(batch)
+    if not batches:
+        return torch.empty(0)
+    return torch.cat(batches, dim=0)
+
+
+def _predict_surrogate_images(
+    model: torch.nn.Module,
+    batches: torch.Tensor,
+    device: str,
+    dropout_activation_schedule: str,
+    late_step_threshold: int | None,
+    surrogate_batch_size: int = 64,
+) -> torch.Tensor:
+    if batches.numel() == 0:
+        return torch.empty_like(batches)
+    was_training = model.training
+    if _dropout_is_active_for_timestep(
+        dropout_activation_schedule,
+        timestep=0,
+        late_step_threshold=late_step_threshold,
+    ):
+        model.train()
+    else:
+        model.eval()
+    surrogate_chunks: list[torch.Tensor] = []
+    with torch.no_grad():
+        for start in range(0, batches.shape[0], max(surrogate_batch_size, 1)):
+            chunk = batches[start : start + max(surrogate_batch_size, 1)]
+            normalized = chunk.to(device) * 2 - 1
+            timestep = torch.zeros(normalized.shape[0], device=device, dtype=torch.long)
+            eps_prediction = model(normalized, t=timestep)
+            surrogate = torch.clamp((normalized - eps_prediction + 1.0) / 2.0, 0.0, 1.0)
+            surrogate_chunks.append(surrogate.detach().cpu())
+    model.train(was_training)
+    return torch.cat(surrogate_chunks, dim=0)
+
+
+def _frechet_distance_from_features(
+    lhs_features: np.ndarray,
+    rhs_features: np.ndarray,
+) -> float:
+    lhs_mu = lhs_features.mean(axis=0)
+    rhs_mu = rhs_features.mean(axis=0)
+    lhs_cov = np.cov(lhs_features, rowvar=False)
+    rhs_cov = np.cov(rhs_features, rowvar=False)
+    covariance_product = lhs_cov @ rhs_cov
+    eigenvalues, eigenvectors = np.linalg.eigh(covariance_product)
+    eigenvalues = np.clip(eigenvalues, a_min=0.0, a_max=None)
+    covariance_sqrt = eigenvectors @ np.diag(np.sqrt(eigenvalues)) @ eigenvectors.T
+    mean_delta = lhs_mu - rhs_mu
+    fid = mean_delta @ mean_delta + np.trace(lhs_cov + rhs_cov - 2 * covariance_sqrt)
+    return float(max(fid, 0.0))
+
+
+def _surrogate_feature_vectors(images: torch.Tensor) -> np.ndarray:
+    per_channel_mean = images.mean(dim=(2, 3))
+    per_channel_std = images.std(dim=(2, 3), unbiased=False)
+    return torch.cat([per_channel_mean, per_channel_std], dim=1).cpu().numpy()
+
+
+def _compute_surrogate_quality_metrics(
+    reference_images: torch.Tensor,
+    active_images: torch.Tensor,
+    baseline_images: torch.Tensor | None = None,
+) -> dict[str, Any]:
+    reference_name = "baseline_surrogate" if baseline_images is not None else "input_batch"
+    comparison_reference = baseline_images if baseline_images is not None else reference_images
+    comparison_reference = comparison_reference.to(active_images.dtype)
+    lpips_value = torch.sqrt(((active_images - comparison_reference) ** 2).mean(dim=(1, 2, 3))).mean()
+    fid_value = _frechet_distance_from_features(
+        _surrogate_feature_vectors(active_images),
+        _surrogate_feature_vectors(comparison_reference),
+    )
+    return {
+        "suite": "pia-runtime-surrogate-v1",
+        "official": False,
+        "reference": reference_name,
+        "metrics": {
+            "fid": {
+                "value": round(float(fid_value), 6),
+                "official": False,
+                "feature_space": "rgb-channel-moments",
+            },
+            "lpips": {
+                "value": round(float(lpips_value.item()), 6),
+                "official": False,
+                "backbone": "none",
+                "distance": "root-mean-square",
+            },
+            "inception_score": {
+                "value": None,
+                "official": False,
+                "status": "not_computed",
+                "reason": "no classifier-backed surrogate quality model is wired into the current PIA runtime path",
+            },
+        },
+        "notes": [
+            "Quality metrics are surrogate diagnostics over runtime batches, not paper-grade image generation metrics.",
+            "FID uses rgb-channel-moment features and LPIPS uses RMS image drift against the chosen reference batch.",
+        ],
     }
 
 
@@ -738,11 +945,18 @@ def run_pia_runtime_mainline(
     max_samples: int | None = None,
     batch_size: int = 8,
     stochastic_dropout_defense: bool = False,
+    dropout_activation_schedule: str = "off",
+    adaptive_query_repeats: int = 1,
+    late_step_threshold: int | None = None,
     provenance_status: str = "source-retained-unverified",
 ) -> dict[str, Any]:
     started_at = time.perf_counter()
     workspace_path = Path(workspace)
     workspace_path.mkdir(parents=True, exist_ok=True)
+    resolved_schedule = _normalize_dropout_activation_schedule(
+        dropout_activation_schedule,
+        stochastic_dropout_defense=stochastic_dropout_defense,
+    )
 
     exit_code, readiness = probe_pia_runtime(
         config,
@@ -791,10 +1005,12 @@ def run_pia_runtime_mainline(
         runtime_context.model_module,
         device=device,
     )
-    if stochastic_dropout_defense:
-        model.train()
-    else:
-        model.eval()
+    late_step_threshold = _resolve_late_step_threshold(
+        attack_num=runtime_context.plan.attack_num,
+        interval=runtime_context.plan.interval,
+        late_step_threshold=late_step_threshold,
+    )
+    model.eval()
     attacker = _build_pia_attacker(
         components_module=runtime_context.components_module,
         model=model,
@@ -802,6 +1018,8 @@ def run_pia_runtime_mainline(
         attack_num=runtime_context.plan.attack_num,
         interval=runtime_context.plan.interval,
         device=device,
+        dropout_activation_schedule=resolved_schedule,
+        late_step_threshold=late_step_threshold,
     )
 
     split_root = Path(member_split_root) if member_split_root else Path(repo_root) / "DDPM"
@@ -829,18 +1047,18 @@ def run_pia_runtime_mainline(
         membership="nonmember",
     )
 
-    member_scores: list[torch.Tensor] = []
-    nonmember_scores: list[torch.Tensor] = []
-    with torch.no_grad():
-        for batch, _ in member_loader:
-            batch_scores = attacker(batch.to(device)).mean(dim=0)
-            member_scores.append((-batch_scores).detach().cpu())
-        for batch, _ in nonmember_loader:
-            batch_scores = attacker(batch.to(device)).mean(dim=0)
-            nonmember_scores.append((-batch_scores).detach().cpu())
-
-    member_score_tensor = torch.cat(member_scores)
-    nonmember_score_tensor = torch.cat(nonmember_scores)
+    member_score_tensor, member_adaptive_tensor, member_score_std_tensor = _score_loader(
+        attacker,
+        member_loader,
+        device=device,
+        adaptive_query_repeats=adaptive_query_repeats,
+    )
+    nonmember_score_tensor, nonmember_adaptive_tensor, nonmember_score_std_tensor = _score_loader(
+        attacker,
+        nonmember_loader,
+        device=device,
+        adaptive_query_repeats=adaptive_query_repeats,
+    )
     metrics = {
         "auc": round(_compute_auc(member_score_tensor, nonmember_score_tensor), 6),
         **_compute_threshold_metrics(
@@ -850,7 +1068,27 @@ def run_pia_runtime_mainline(
         "member_score_mean": round(float(member_score_tensor.mean().item()), 6),
         "nonmember_score_mean": round(float(nonmember_score_tensor.mean().item()), 6),
     }
+    adaptive_check = {
+        "status": "completed" if adaptive_query_repeats > 1 else "not_requested",
+        "enabled": bool(adaptive_query_repeats > 1),
+        "query_repeats": int(max(adaptive_query_repeats, 1)),
+        "aggregation": "mean",
+        "metrics": {
+            "auc": round(_compute_auc(member_adaptive_tensor, nonmember_adaptive_tensor), 6),
+            **_compute_threshold_metrics(
+                member_adaptive_tensor.numpy(),
+                nonmember_adaptive_tensor.numpy(),
+            ),
+            "member_score_mean": round(float(member_adaptive_tensor.mean().item()), 6),
+            "nonmember_score_mean": round(float(nonmember_adaptive_tensor.mean().item()), 6),
+        },
+        "score_std": {
+            "member_mean": round(float(member_score_std_tensor.mean().item()), 6),
+            "nonmember_mean": round(float(nonmember_score_std_tensor.mean().item()), 6),
+        },
+    }
     scores_path = workspace_path / "scores.json"
+    adaptive_scores_path = workspace_path / "adaptive-scores.json"
     scores_payload = {
         "member_scores": [round(float(value), 6) for value in member_score_tensor.tolist()],
         "nonmember_scores": [round(float(value), 6) for value in nonmember_score_tensor.tolist()],
@@ -860,6 +1098,43 @@ def run_pia_runtime_mainline(
     scores_path.write_text(
         json.dumps(scores_payload, indent=2, ensure_ascii=True),
         encoding="utf-8",
+    )
+    adaptive_scores_payload = {
+        "query_repeats": int(max(adaptive_query_repeats, 1)),
+        "aggregation": "mean",
+        "member_scores": [round(float(value), 6) for value in member_adaptive_tensor.tolist()],
+        "nonmember_scores": [round(float(value), 6) for value in nonmember_adaptive_tensor.tolist()],
+        "member_score_std": [round(float(value), 6) for value in member_score_std_tensor.tolist()],
+        "nonmember_score_std": [round(float(value), 6) for value in nonmember_score_std_tensor.tolist()],
+        "member_indices": member_indices,
+        "nonmember_indices": nonmember_indices,
+    }
+    adaptive_scores_path.write_text(
+        json.dumps(adaptive_scores_payload, indent=2, ensure_ascii=True),
+        encoding="utf-8",
+    )
+
+    member_batches = _collect_loader_batches(member_loader)
+    nonmember_batches = _collect_loader_batches(nonmember_loader)
+    reference_batches = torch.cat([member_batches, nonmember_batches], dim=0)
+    baseline_surrogates = _predict_surrogate_images(
+        model,
+        reference_batches,
+        device=device,
+        dropout_activation_schedule="off",
+        late_step_threshold=late_step_threshold,
+    )
+    active_surrogates = _predict_surrogate_images(
+        model,
+        reference_batches,
+        device=device,
+        dropout_activation_schedule=resolved_schedule,
+        late_step_threshold=late_step_threshold,
+    )
+    quality = _compute_surrogate_quality_metrics(
+        reference_images=reference_batches,
+        active_images=active_surrogates,
+        baseline_images=baseline_surrogates if resolved_schedule != "off" else None,
     )
 
     result = {
@@ -878,12 +1153,14 @@ def run_pia_runtime_mainline(
         "artifact_paths": {
             "summary": str(workspace_path / "summary.json"),
             "scores": str(scores_path),
+            "adaptive_scores": str(adaptive_scores_path),
         },
         "checks": {
             **asset_summary["checks"],
             "runtime_probe_ready": True,
             "member_scores_generated": True,
             "nonmember_scores_generated": True,
+            "adaptive_scores_generated": True,
         },
         "runtime": {
             "repo_root": str(Path(repo_root)),
@@ -901,9 +1178,26 @@ def run_pia_runtime_mainline(
         "defense": {
             "name": "stochastic-dropout" if stochastic_dropout_defense else "none",
             "enabled": bool(stochastic_dropout_defense),
+            "dropout_activation_schedule": resolved_schedule,
+            "late_step_threshold": int(late_step_threshold),
         },
+        "defense_stage": "provisional-g1" if stochastic_dropout_defense else "baseline",
         "sample_count_per_split": int(member_score_tensor.shape[0]),
         "metrics": metrics,
+        "adaptive_check": adaptive_check,
+        "quality": quality,
+        "cost": {
+            "device": device,
+            "execution_mode": "single-device-serial",
+            "sample_count_per_split": int(member_score_tensor.shape[0]),
+            "batch_size": int(batch_size),
+            "attack_num": int(runtime_context.plan.attack_num),
+            "interval": int(runtime_context.plan.interval),
+            "queries_per_sample": int(runtime_context.plan.attack_num),
+            "model_queries_per_sample": int(runtime_context.plan.attack_num + 1),
+            "adaptive_query_repeats": int(max(adaptive_query_repeats, 1)),
+            "wall_clock_seconds": round(time.perf_counter() - started_at, 6),
+        },
         "notes": [
             "Runtime mainline executes the current PIA DDPM path on canonical real assets.",
             "Current evidence is suitable for a local baseline and must not be overstated as benchmark-ready.",

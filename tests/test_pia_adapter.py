@@ -73,10 +73,11 @@ class UNet(nn.Module):
     def __init__(self, T, ch, ch_mult, attn, num_res_blocks, dropout):
         super().__init__()
         self.scale = nn.Parameter(torch.ones(1))
+        self.dropout = nn.Dropout2d(p=dropout)
 
     def forward(self, x, t):
         del t
-        return x * self.scale
+        return self.dropout(x) * self.scale
 """.strip(),
         encoding="utf-8",
     )
@@ -379,6 +380,13 @@ class PiaAdapterTests(unittest.TestCase):
                             "4",
                             "--batch-size",
                             "2",
+                            "--stochastic-dropout-defense",
+                            "--dropout-activation-schedule",
+                            "late_steps_only",
+                            "--adaptive-query-repeats",
+                            "3",
+                            "--provenance-status",
+                            "workspace-verified",
                         ]
                     )
 
@@ -389,11 +397,24 @@ class PiaAdapterTests(unittest.TestCase):
             self.assertEqual(payload["workspace_name"], "pia-runtime-mainline")
             self.assertEqual(payload["evidence_level"], "runtime-mainline")
             self.assertEqual(payload["asset_grade"], "single-machine-real-asset")
-            self.assertEqual(payload["provenance_status"], "source-retained-unverified")
+            self.assertEqual(payload["provenance_status"], "workspace-verified")
             self.assertIn("auc", payload["metrics"])
             self.assertIn("asr", payload["metrics"])
             self.assertIn("tpr_at_1pct_fpr", payload["metrics"])
             self.assertIn("tpr_at_0_1pct_fpr", payload["metrics"])
+            self.assertEqual(payload["defense"]["name"], "stochastic-dropout")
+            self.assertEqual(payload["defense"]["dropout_activation_schedule"], "late_steps_only")
+            self.assertTrue(payload["defense"]["enabled"])
+            self.assertEqual(payload["defense_stage"], "provisional-g1")
+            self.assertEqual(payload["adaptive_check"]["query_repeats"], 3)
+            self.assertEqual(payload["adaptive_check"]["aggregation"], "mean")
+            self.assertIn("auc", payload["adaptive_check"]["metrics"])
+            self.assertIn("asr", payload["adaptive_check"]["metrics"])
+            self.assertIn("fid", payload["quality"]["metrics"])
+            self.assertIn("lpips", payload["quality"]["metrics"])
+            self.assertEqual(payload["quality"]["suite"], "pia-runtime-surrogate-v1")
+            self.assertEqual(payload["cost"]["adaptive_query_repeats"], 3)
+            self.assertEqual(payload["cost"]["queries_per_sample"], 3)
             self.assertEqual(payload["runtime"]["max_samples"], 4)
             self.assertEqual(payload["runtime"]["num_samples"], 4)
             self.assertEqual(payload["sample_count_per_split"], 4)

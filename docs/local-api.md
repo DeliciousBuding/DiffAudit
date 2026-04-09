@@ -19,6 +19,7 @@
 - 跨盒统一结果只认 `workspaces/implementation/artifacts/unified-attack-defense-table.json`
 - `workspaces/intake/index.json` 只负责 promoted intake 合同，不等价于“所有 admitted 结果全集”
 - `recon` 与 `DPDM` 当前仍需要结合冻结文档口径一起解释，不能只摘数值
+- `PIA` 的 gray-box best summary 现在优先读取 intake manifest 中的 `canonical_summary / defense_summary`，只有 manifest 缺失时才回退目录扫描
 
 ## 启动方式
 

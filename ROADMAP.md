@@ -25,6 +25,8 @@
   - `PIA` 已完成 `GPU128 / GPU256 / GPU512` baseline + defense 与一次 `GPU512` repeat
   - `PIA` provenance 当前已可写成 `workspace-verified`
   - `PIA` 攻击依赖信号与灰盒成本口径现已补齐到正式说明
+  - `PIA GPU512` 新的 `adaptive-reviewed baseline + all_steps / late_steps_only` 消融已完成
+  - 当前 defended mainline 候选仍是 `all_steps`，`late_steps_only` 保留为质量优先消融支线
   - 新归档 `TMIA-DM` 进一步补强了时间相关噪声 / 梯度信号这一灰盒文献轴
   - `SecMI` 已明确为 `blocked baseline`
 - 白盒：
@@ -33,6 +35,7 @@
   - 当前 defended 主口径冻结为 `strong-v3 full-scale`
 - 防御：
   - 灰盒 `G-1` 当前固定为 `provisional G-1 = stochastic-dropout`
+  - `G-1` 的 repeated-query adaptive review 已落地到 `GPU512`
   - 白盒 `W-1` 已进入 admitted 总表
   - `B-1`、`B-2`、`W-2`、`G-2` 仍在 backlog
 
@@ -44,7 +47,7 @@
 2. 维持 `recon` 冻结口径
 3. 维持 `variation = secondary track + blocked real-API assets`
 4. 维持 `GSA + W-1 strong-v3 full-scale` 白盒口径
-5. 继续维持统一 attack-defense 总表中的 `quality/cost` 与主讲线机理说明一致
+5. 继续维持统一 attack-defense 总表中的 `quality/cost`、`adaptive_check` 与主讲线机理说明一致
 6. 让 `Local-API` 继续消费 admitted 结果
 
 ## 主路线
@@ -89,8 +92,10 @@
 1. 维持 `PIA` 的 canonical roots、manifest、summary 口径
 2. 把当前 provenance 固定为 `workspace-verified`
 3. 把 `stochastic-dropout` 固定为 `provisional G-1`
-4. 保持 `SecMI = blocked baseline`
-5. 当前不为重复已知结论继续重跑 `PIA`
+4. 补 `adaptive repeated-query review + structured quality/cost`
+5. 当前优先保留 `all_steps` 为 defended mainline 候选，`late_steps_only` 作为质量优先消融
+6. 保持 `SecMI = blocked baseline`
+7. 当前不为重复已知结论继续重跑 `PIA`
 
 完成标准：
 

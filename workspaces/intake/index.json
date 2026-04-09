@@ -1,6 +1,6 @@
 {
   "schema": "diffaudit.intake.index.v1",
-  "updated_at": "2026-04-07",
+  "updated_at": "2026-04-09",
   "entries": [
     {
       "id": "gray-box/pia/cifar10-ddpm",

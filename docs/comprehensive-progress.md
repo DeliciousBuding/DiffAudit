@@ -16,7 +16,7 @@
 | 灰盒攻击 | `最成熟` | `PIA` 已进入 real-asset runtime mainline |
 | 白盒攻击 | `已拿到强结果 + 有增强 rerun 在跑` | `GSA` 已完成 `1k-3shadow` paper-aligned runtime，AUC 达到 `0.97514`；独立资产根上的 `epoch300 rerun1` 正在后台训练 |
 | 黑盒防御 | `基本未落地` | `B-1 / B-2` 仍在设计层 |
-| 灰盒防御 | `已进入 provisional G-1` | `PIA GPU128/GPU256/GPU512` 三档与一次 `GPU512` 同档 repeat 都显示 `stochastic-dropout` 压低指标，但还没到 validated `G-1` |
+| 灰盒防御 | `已进入 provisional G-1 + adaptive gate completed` | `PIA GPU128/GPU256/GPU512` 三档与一次 `GPU512` 同档 repeat 都显示 `stochastic-dropout` 压低指标；新的 `GPU512` adaptive-reviewed baseline + `all_steps / late_steps_only` 已落地 |
 | 白盒防御 | `已有 strong-v2 主结果，strong-v3 已推进到 full-scale` | `DPDM` 已完成 stronger defended comparator，当前已拿到 stronger rung 的 full-scale GPU 结果 |
 | 统一评估表 | `已有第一版` | 已新增 admitted main results 的跨盒总表 |
 
@@ -51,7 +51,9 @@
   - `pia_next_run --strict` 已通过，当前 asset line 已可写成 `workspace-verified`
   - 当前 `PIA` 攻击分数可以明确解释为 `epsilon-trajectory consistency` 信号，而不是泛化的 reconstruction score
   - `stochastic-dropout` 当前最可辩护的作用机理，是在推理时打散这一致性信号
+  - 当前 gray-box 新一轮重点已从“多开 run”切到 `off / all_steps / late_steps_only + repeated-query adaptive review + structured quality/cost`
   - 新归档的 `TMIA-DM` 说明时间相关噪声 / 梯度信号也是灰盒成员推断的正式文献方向，但它当前仍只是 research-ready 候选
+  - 新整理的 `PIA / TMIA-DM / SimA / MoFit` 文献轴已经统一到“时间 / 噪声 / 条件信号”叙事上
   - 当前最适合把防御压到这条线上做正式比较
 - 当前不能说的话：
   - 还不能说灰盒防御已经验证有效
@@ -96,7 +98,7 @@
 | 轨道 | 当前最合理防御路线 | 当前判断 |
 | --- | --- | --- |
 | 黑盒 | `B-1 / B-2` | 设计方向成立，但还没有正式实现 |
-| 灰盒 | `G-1` | 已进入 provisional 形态，并出现三档同口径下降信号与一次同档 repeat；当前重点转为机理说明与总表成本口径 |
+| 灰盒 | `G-1` | 已进入 provisional 形态，并出现三档同口径下降信号与一次同档 repeat；新的 adaptive review 仍支持 `all_steps`，`late_steps_only` 则保留为质量优先消融 |
 | 白盒 | `W-1 = DPDM` | 已拿到 strong-v2 主结果，也拿到 strong-v3 的 full-scale GPU defended 结果；当前主讲口径冻结为 `strong-v3 full-scale` |
 
 ### 当前不建议优先做
@@ -134,7 +136,7 @@
 3. `variation / Towards` 保持 formal local secondary track，并明确 real-API assets blocked
 4. 低频监控白盒 `epoch300 rerun1`
 5. 固定白盒 defended 主结果口径
-6. 基于第一版统一总表继续补质量 / 成本列，并保持灰盒机理说明一致
+6. 基于第一版统一总表继续补质量 / 成本列，并保持灰盒机理说明与 adaptive gate 一致
 
 ## 申报 / PPT 应该怎么讲
 
