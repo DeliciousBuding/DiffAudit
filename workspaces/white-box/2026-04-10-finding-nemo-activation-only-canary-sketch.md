@@ -26,7 +26,7 @@
 ## 当前前提
 
 - `paper-faithful NeMo on current admitted white-box assets = no-go`
-- `portable observability smoke contract = review-ready`
+- `portable observability smoke contract = review-ready + read-only contract probe implemented`
 - 当前唯一允许验证的目标：
   - sample-level `activations` 导出链是否可被 portable 地实现
 - 当前不允许的目标：
@@ -152,6 +152,8 @@
 
 1. 从 `assets_root/datasets/<split>` 扫描真实文件
 2. 构建：
+   - canonical `sample_id = <split>/<relative_file_name>`
+   - compatibility alias `<split>:<file_stem> -> canonical sample_id`
    - `sample_id -> dataset_relpath`
 3. 对 `sample_id` 做唯一解析
 4. 失败即停止，不进入模型前向

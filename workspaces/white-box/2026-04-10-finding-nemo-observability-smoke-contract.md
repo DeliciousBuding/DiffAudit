@@ -26,7 +26,7 @@
 - `candidate`: `Finding NeMo + local memorization + FB-Mem`
 - `gpu_release`: `none`
 - `admitted_change`: `none`
-- `current_verdict`: `review-ready contract only`
+- `current_verdict`: `review-ready contract + read-only probe implemented`
 
 ## 当前固定边界
 
@@ -150,12 +150,19 @@ conda run -n diffaudit-research python scripts/export_gsa_observability_smoke.py
 
 固定规则：
 
-- `sample_id = <split>/<class_name>/<relative_file_name>`
+- admitted 资产当前是 flat split layout，不存在强制的 `<class_name>/` 子目录
+- canonical `sample_id = <split>/<relative_file_name>`
+- compatibility alias 只允许作为读取时的兼容输入：
+  - `<split>:<file_stem>`
+- 任何 writeback / summary / records 都必须回写 canonical `sample_id`
 
 例子：
 
-- `target-member/3/img_00123.png`
-- `target-nonmember/7/img_00456.png`
+- `target-member/00-data_batch_1-00965.png`
+- `target-nonmember/00-data_batch_1-00467.png`
+- 兼容 alias：
+  - `target-member:00-data_batch_1-00965`
+  - `target-nonmember:00-data_batch_1-00467`
 
 ### 最小 smoke 样本策略
 

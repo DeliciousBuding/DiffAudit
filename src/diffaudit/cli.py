@@ -735,6 +735,58 @@ def build_parser() -> argparse.ArgumentParser:
         help="path to the canonical white-box GSA assets root",
     )
 
+    gsa_observability_probe_parser = subparsers.add_parser(
+        "probe-gsa-observability-contract",
+        help="validate the Finding NeMo migrated DDPM observability contract without exporting activations",
+    )
+    gsa_observability_probe_parser.add_argument(
+        "--repo-root",
+        default="workspaces/white-box/external/GSA",
+        help="path to local GSA repository root",
+    )
+    gsa_observability_probe_parser.add_argument(
+        "--assets-root",
+        default="workspaces/white-box/assets/gsa-cifar10-1k-3shadow-epoch300-rerun1",
+        help="path to the admitted GSA assets root used for observability planning",
+    )
+    gsa_observability_probe_parser.add_argument(
+        "--checkpoint-root",
+        default="workspaces/white-box/assets/gsa-cifar10-1k-3shadow-epoch300-rerun1/checkpoints/target",
+        help="path to the admitted target checkpoint root",
+    )
+    gsa_observability_probe_parser.add_argument(
+        "--split",
+        default="target-member",
+        help="dataset split to resolve the sample binding against",
+    )
+    gsa_observability_probe_parser.add_argument(
+        "--sample-id",
+        required=True,
+        help="sample id or compatibility alias resolved against the requested split",
+    )
+    gsa_observability_probe_parser.add_argument(
+        "--layer-selector",
+        default="mid_block.attentions.0.to_v",
+        help="exact GSA/DDPM module selector used by the contract",
+    )
+    gsa_observability_probe_parser.add_argument(
+        "--signal-type",
+        default="activations",
+        choices=["activations", "grad_norm"],
+        help="signal type being validated by the contract",
+    )
+    gsa_observability_probe_parser.add_argument(
+        "--resolution",
+        type=int,
+        default=32,
+        help="UNet resolution used to reconstruct the module naming graph",
+    )
+    gsa_observability_probe_parser.add_argument(
+        "--provenance-status",
+        default="workspace-verified",
+        help="provenance label recorded in the emitted payload",
+    )
+
     gsa_runtime_mainline_parser = subparsers.add_parser(
         "run-gsa-runtime-mainline",
         help="run the canonical white-box GSA DDPM closed loop against real local assets",
@@ -1056,6 +1108,23 @@ def main(argv: list[str] | None = None) -> int:
         payload = probe_gsa_assets(
             assets_root=args.assets_root,
             repo_root=args.repo_root,
+        )
+        print(json.dumps(payload, indent=2, ensure_ascii=True))
+        return 0 if payload["status"] == "ready" else 1
+
+    if args.command == "probe-gsa-observability-contract":
+        from diffaudit.attacks.gsa_observability import probe_gsa_observability_contract
+
+        payload = probe_gsa_observability_contract(
+            repo_root=args.repo_root,
+            assets_root=args.assets_root,
+            checkpoint_root=args.checkpoint_root,
+            split=args.split,
+            sample_id=args.sample_id,
+            layer_selector=args.layer_selector,
+            signal_type=args.signal_type,
+            resolution=args.resolution,
+            provenance_status=args.provenance_status,
         )
         print(json.dumps(payload, indent=2, ensure_ascii=True))
         return 0 if payload["status"] == "ready" else 1
