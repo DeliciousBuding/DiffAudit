@@ -247,6 +247,9 @@
 - `DP-LoRA` 不抢第一条新问题
 - `SecMI` 与 `TMIA-DM` 继续后排
 - `Finding NeMo` 当前虽然仍列在 intake review priority #1，但状态已固定为 `zero-GPU hold`
+- 单卡长期排程见 [2026-04-10-rtx4070-8gb-long-horizon-plan](../workspaces/implementation/2026-04-10-rtx4070-8gb-long-horizon-plan.md)
+- 上述长期排程不改变候选排序；它只额外规定：在 `Finding NeMo` 继续 `zero-GPU hold` 的前提下，它不进入实际 GPU 预排程
+- 因此当前最值得准备 release-review packet 的 GPU 候选是 `DP-LoRA comparability ladder`，而不是直接放行 `Finding NeMo`
 
 ## 当前准入验证优先顺序
 

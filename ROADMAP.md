@@ -51,12 +51,20 @@
 
 - `Phase B: Harden Mainline Read Chain And Blocker Narratives`
 
-当前 `2026-04-09` 到 `2026-06-04` 的执行顺序固定为：
+当前长期执行顺序固定为：
 
-1. `PIA provenance` dossier 与书面裁决
-2. `recon` 主证据冻结，同时吸收 `CopyMark` 现实边界与频域解释层
-3. `Phase E` 候选池 intake 与排序
-4. 下一条 GPU 问题的准入验证
+1. `PIA provenance` dossier 与书面裁决继续作为 CPU 侧长期 blocker 收口
+2. 单卡 `RTX4070 8GB` 的 GPU 默认先服务 `PIA` 当前主线支持任务：
+   - `8GB-safe portability ladder`
+   - `defense-cost frontier`
+3. `recon` 主证据冻结，同时吸收 `CopyMark` 现实边界与频域解释层
+4. `Finding NeMo` 继续保持 `adapter-complete zero-GPU hold`，只扩 observability packet 与 release-review 前置材料
+5. `Phase E` 候选池继续只做 intake 与排序；在 `Finding NeMo` 仍 hold 的前提下，首个值得准备 release-review 的 GPU 候选是 `DP-LoRA comparability ladder`
+6. `SecMI / TMIA-DM / variation real API` 在各自 blocker 解除前继续留在队列外
+
+当前长期计划工件见：
+
+- `workspaces/implementation/2026-04-10-rtx4070-8gb-long-horizon-plan.md`
 
 当前阶段判定补充：
 
