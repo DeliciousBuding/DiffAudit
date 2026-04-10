@@ -25,7 +25,8 @@
 - `white-box same-protocol bridge` 已完成 `保持冻结` 收口
 - 当前不再有 active 主 GPU 问题
 - 当前 `PIA provenance dossier` 已 closed 为 `remain long-term blocker`
-- `Finding NeMo + local memorization + FB-Mem` 的 intake/eligibility note 已建立，当前又已把 `activation export adapter` 收口成 `decision-grade zero-GPU hold`，并继续保持 `gpu_release = none`
+- `Finding NeMo + local memorization + FB-Mem` 的 intake/eligibility note 已建立，且 `activation export adapter` 已固定为 `decision-grade zero-GPU hold`
+- 当前最值得推进的唯一目标切换为：把 `recon DDIM public-100 step30` 的 explanation / boundary 写法收口成统一 artifact
 
 ## 攻击主线
 

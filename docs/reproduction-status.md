@@ -66,7 +66,7 @@
 15. 当前仓库已经不再缺“第一版统一总表”。[unified-attack-defense-table.md](../workspaces/implementation/2026-04-08-unified-attack-defense-table.md) 已经收口了 admitted main results；后续工作的重点从“有没有表”转成“是否继续补质量 / 成本列，以及是否纳入更多 admitted 行”。
 16. 当前 `white-box same-protocol bridge` 已正式以 `保持冻结` 收口；这是一条治理与资源排序决策，不是新的 benchmark 结果，也不改 admitted 合同。
 17. 截至当前，[2026-04-09-pia-provenance-dossier](../workspaces/gray-box/2026-04-09-pia-provenance-dossier.md) 已 closed 为 `remain long-term blocker`；因此当前 `PIA` 最强口径继续固定为 `workspace-verified + paper-alignment blocked by checkpoint/source provenance`。
-18. 当前最值得推进的唯一目标切换为 `Finding NeMo + local memorization + FB-Mem` 的准入验证准备，而不是继续尝试把 `PIA paper-aligned confirmation` 提前放行。
+18. 当前最值得推进的唯一目标已从 `Finding NeMo` 的 adapter 收口切回 `recon DDIM public-100 step30` 的 explanation / boundary artifact，而不是继续尝试把 `PIA paper-aligned confirmation` 提前放行。
 19. `Phase E` 当前允许进入准入验证，但不允许直接开跑。文档层固定排序仍见 [future-phase-e-intake](future-phase-e-intake.md)，但执行层默认放行顺序已改为：`Finding NeMo + local memorization + FB-Mem` > `DP-LoRA` > `SecMI unblock` > `TMIA-DM intake`。
 20. 新的 [2026-04-10-finding-nemo-mechanism-intake](../workspaces/white-box/2026-04-10-finding-nemo-mechanism-intake.md) 已把 `Finding NeMo + local memorization + FB-Mem` 固定为 `intake/eligibility only`；当前最多只允许申请一次最小 `validation-smoke`，不授权任何新长 GPU run。
 21. 新的 [2026-04-10-finding-nemo-protocol-reconciliation](../workspaces/white-box/2026-04-10-finding-nemo-protocol-reconciliation.md) 已明确当前 admitted 白盒资产与 `Finding NeMo` 原始 `Stable Diffusion v1.4 / cross-attention value layers` 面不兼容；当前只允许继续推进 zero-GPU 的 `portable observability smoke` 规划。
@@ -74,6 +74,10 @@
 23. 新增 `export_gsa_observability_canary` 与 `export-gsa-observability-canary` 后，当前 `Finding NeMo` 的 read chain 已不再停留在纯文档层；它已经能为固定 member/control pair 写出 `summary.json + records.jsonl + tensor artifacts`。
 24. 这批 activation export 仍只是一条 bounded adapter code path，不构成 validation-smoke released、run release 或 benchmark 结果。
 25. 新的 [2026-04-10-finding-nemo-activation-export-adapter-review](../workspaces/white-box/2026-04-10-finding-nemo-activation-export-adapter-review.md) 已把这批实现正式固定为 `zero-GPU hold / queue not-requestable / run not released`。
+26. 当前黑盒线最值钱的新增工作不再是新 run，而是把 [2026-04-10-recon-explanation-layer](../workspaces/black-box/2026-04-10-recon-explanation-layer.md) 升级成 `decision-grade explanation / boundary artifact`，明确：
+   - `CopyMark = boundary layer`
+   - 频域论文 = `explanation layer`
+   - `recon DDIM public-100 step30 = black-box main evidence`
 
 ## 下一步
 

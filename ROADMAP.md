@@ -63,7 +63,7 @@
 - bridge 已完成 `保持冻结` 收口
 - 当前没有新的 active 主 GPU 问题
 - 当前最值得推进的唯一目标切换为：
-  - `Finding NeMo + local memorization + FB-Mem` 的 `activation-export adapter` `zero-GPU hold` 写回
+  - `recon DDIM public-100 step30` 的 explanation / boundary artifact 写回
 
 进入 `Phase E` 的 gate：
 

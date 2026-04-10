@@ -1,5 +1,19 @@
 # 2026-04-10 Recon Explanation Layer
 
+## Status Panel
+
+- `owner`: `research_leader`
+- `track`: `black-box`
+- `artifact_type`: `decision-grade explanation / boundary artifact`
+- `decision_scope`: `writing-only, non-GPU`
+- `main_evidence_anchor`: `recon DDIM public-100 step30`
+- `best_single_metric_reference`: `recon DDIM public-50 step10`
+- `secondary_track`: `variation / Towards = formal local secondary track + blocked real-API assets`
+- `CopyMark_classification`: `boundary layer`
+- `frequency_paper_classification`: `explanation layer`
+- `gpu_release`: `none`
+- `admitted_change`: `none`
+
 ## 目的
 
 这份文档不改变黑盒 admitted 主结果。
@@ -22,6 +36,20 @@
 
 这份文档不改上面三层，只解释它们的外推边界和后续分析设计。
 
+## 当前正式裁决
+
+当前正式推荐分支固定为：
+
+- `retain recon main evidence`
+- `absorb CopyMark as external-validity boundary`
+- `absorb frequency paper as post-hoc explanation layer`
+
+当前固定不做：
+
+- 不新开黑盒 GPU 问题
+- 不把新增文献写成 admitted upgrade
+- 不把 explanation / boundary 偷换成 execution line
+
 ## 一、`CopyMark` 的使用方式
 
 ### 当前定位
@@ -40,6 +68,7 @@
 
 - 当前 `recon` 结果证明：在当前受控协议与资产条件下，成员信号确实可观测
 - `CopyMark` 提醒：既有 diffusion MIA 在更真实 benchmark 下可能明显变弱，因此当前结果不能自动外推到预训练大模型现实版权审计
+- `CopyMark` 当前作用是收紧 `external-validity boundary`，不是推翻本地主证据
 
 不允许写：
 
@@ -82,6 +111,21 @@
    - 观察 false negative 是否集中在高频样本
 3. 把频域解释写成“结果解释层”，而不是“攻击能力升级”
 
+### 当前固定写法
+
+允许写：
+
+- 频域论文为当前 `recon` 结果提供 `post-hoc explanation hypothesis`
+- 它优先解释：
+  - false negative / false positive 的 error slice
+  - member / non-member 样本复杂度与 score 分布偏移
+
+不允许写：
+
+- 我们已经得到新的 `frequency-aware black-box mainline`
+- 频域论文已经证明当前 admitted 主证据应被重排
+- 当前必须为频域分析新开 smoke 或 GPU run
+
 ### 当前不做
 
 - 不把频域论文写成新 black-box attack family
@@ -108,3 +152,21 @@
 1. 把 `CopyMark` 吸收到外推边界说明
 2. 把频域论文吸收到 post-hoc explanation design
 3. 持续保持三层黑盒口径不漂移
+
+## 五、未来触发条件
+
+只有在下面条件出现时，才允许重新讨论新的黑盒执行动作：
+
+1. 当前三层黑盒口径已经在主线文档与状态页完全一致
+2. 出现新的、明确的 black-box hypothesis，而不是解释层或边界层补丁
+3. 该 hypothesis 写清：
+   - threat model
+   - asset semantics
+   - evidence level
+   - external-validity boundary
+   - compute budget
+   - expected artifact
+
+在这些条件出现前，当前 black-box 默认推进继续固定为：
+
+- `decision-grade explanation / boundary writing only`
