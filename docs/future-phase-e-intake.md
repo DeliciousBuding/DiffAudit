@@ -241,12 +241,12 @@
 ## 当前默认规则
 
 - 只要 `PIA provenance` 在窗口内解除，`PIA paper-aligned confirmation` 就保持第一优先
-- 当前 `PIA provenance dossier` 已 closed 为 `remain long-term blocker`，因此当前优先保持 `Finding NeMo + local memorization + FB-Mem` 作为最完整的 intake dossier
+- 当前 `PIA provenance dossier` 已 closed 为 `remain long-term blocker`，因此当前只保留 `Finding NeMo + local memorization + FB-Mem` 作为最完整的 intake dossier 参考，不把它写成当前 queue 偏好
 - 在 provenance blocker 未发生实质变化前，`PIA paper-aligned confirmation` 不计入当前可释放队列，也不计入当前准入验证优先顺序
 - 这里的 `decision-grade` 只指 intake/eligibility 决策质量，不指 admitted 升级，不指 benchmark-ready，也不指 GPU 已放行
 - `DP-LoRA` 不抢第一条新问题
 - `SecMI` 与 `TMIA-DM` 继续后排
-- `Finding NeMo` 当前虽然位于准入验证优先第 1 位，但状态已固定为 `zero-GPU hold`
+- `Finding NeMo` 当前虽然仍列在 intake review priority #1，但状态已固定为 `zero-GPU hold`
 
 ## 当前准入验证优先顺序
 
@@ -261,7 +261,7 @@
 
 - `PIA paper-aligned confirmation` 继续保留文档层条件性第 1 顺位
 - 但在 provenance 条件未变化前，不进入执行层
-- `Finding NeMo + local memorization + FB-Mem` 当前只是当前最完整的 intake dossier，不构成当前 GPU release
+- `Finding NeMo + local memorization + FB-Mem` 当前只是当前最完整的 intake dossier 参考，不构成当前 GPU release，也不构成近期待申请项
 - 这份“准入验证优先顺序”不等于现在立刻执行；它只定义未来 intake review 的顺序
 
 ## 当前明确不做

@@ -264,7 +264,7 @@ conda run -n diffaudit-research python -c "... from diffaudit.cli import main ..
 
 ### 1. Scope And Entry Boundary
 
-`LocalOps/paper-resource-scheduler` is the only GPU scheduling entry for this candidate.
+Any future scheduler interaction for this candidate, if it is ever reconsidered, must be governed by a separate future review. This contract itself is not a scheduler entry.
 
 This section governs only:
 
@@ -284,7 +284,7 @@ Current fixed state:
 
 - `active_gpu_question = none`
 - `white-box same-protocol bridge = closed-frozen`
-- `Finding NeMo = zero-GPU-preferred candidate`
+- `Finding NeMo = zero-GPU hold candidate`
 - `paper-faithful NeMo on current admitted white-box assets = no-go`
 
 ### 2. Zero-GPU Default Path
@@ -305,9 +305,9 @@ Until all of the above are `review-ready`, scheduler state remains:
 - `gpu_release = none`
 - `queue_state = not-requestable`
 
-### 3. Exact Condition For A Future One-Shot Validation-Smoke Request
+### 3. Exact Boundary For Any Future Separate Reconsideration
 
-A future GPU request may be reconsidered only if all conditions below are simultaneously true:
+Any future separate reconsideration is out of scope unless all conditions below are simultaneously true:
 
 1. `Phase D` remains `closed-frozen`, and no other active main GPU question has been released.
 2. `GSA epoch300 rerun1` remains the admitted white-box attack main result.
@@ -333,51 +333,36 @@ A future GPU request may be reconsidered only if all conditions below are simult
    - `no-go`
 8. Boss / research review confirms the request is still a `new-question intake validation`, not a disguised bridge continuation or benchmark escalation.
 
-If any one condition above is false, the request is not eligible.
+If any one condition above is false, this line remains `intake-only / zero-GPU hold`.
 
-### 4. Required Queue Metadata
+### 4. No Scheduler Metadata Is Defined Here
 
-Any future eligible request must be recorded only in `LocalOps/paper-resource-scheduler/gpu-resource-requests.md`.
+This document defines no queue metadata and authorizes no scheduler-facing request shape.
 
-Scheduler-required fields remain mandatory:
+If a future separate review is ever approved, that later review must define any scheduler-facing metadata at that time.
 
-- `agent`
-- `category=model`
-- `state`
-- `resource=gpu`
-- `requested_at`
-- `note`
+Therefore this contract does not itself grant or predeclare:
 
-For this candidate, `note` must additionally encode the following contract metadata in a reviewable way:
+- any request ledger entry
+- any queue item
+- any release candidate
+- any GPU slot
 
-- `candidate=Finding NeMo + local memorization + FB-Mem`
-- `request_kind=validation-smoke`
-- `scope=one-shot single-card short-run`
-- `admitted_anchor_attack=GSA epoch300 rerun1`
-- `admitted_anchor_defense=W-1 strong-v3 full-scale`
-- `checkpoint_root=<single fixed path>`
-- `layer_selector=<single fixed selector>`
-- `sample_binding_rule=<fixed rule>`
-- `signal_type=activations|grad_norm`
-- `budget=<single short-run budget>`
-- `stop_conditions=<fixed>`
-- `expected_artifact=<fixed>`
-- `portable_entry=yes`
-- `scheduler_not_required_for_repo_repro=yes`
+### 5. No Scheduling Priority Is Granted Here
 
-Any request missing any mandatory scheduler field or any contract metadata above must be rejected as `intake incomplete`.
+This contract grants no scheduling priority and no release discipline beyond the already fixed hold state.
 
-### 5. Scheduling Priority And Release Discipline
+It only says:
 
-Scheduler priority remains:
+- `gpu_release = none`
+- `queue_state = not-requestable`
+- `default_path = zero-GPU`
 
-- `model > markdown`
+It does not say:
 
-For this candidate that means:
-
-- if a valid eligible `model` request is ever released in the future, `markdown` GPU work must yield
-- this priority does not itself grant Finding NeMo a GPU slot
-- no one may bypass the request ledger, skip `requested -> running -> released`, or leave stale `running` state behind
+- what future queue metadata should look like
+- what future scheduler priority this line would get
+- that any run should now be requested
 
 ### 6. No-Go Triggers
 
@@ -397,5 +382,5 @@ The request is automatic `no-go` if any of the following is true:
 
 - `gpu_release = none`
 - `default_path = zero-GPU`
-- `Finding NeMo = eligibility-gated for one minimal validation-smoke only`
+- `Finding NeMo = held below future separate reconsideration boundary`
 - `current action = hold at adapter-implemented, do not release any run`
