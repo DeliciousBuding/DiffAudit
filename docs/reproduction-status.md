@@ -67,7 +67,7 @@
 16. 当前 `white-box same-protocol bridge` 已正式以 `保持冻结` 收口；这是一条治理与资源排序决策，不是新的 benchmark 结果，也不改 admitted 合同。
 17. 截至当前，[2026-04-09-pia-provenance-dossier](../workspaces/gray-box/2026-04-09-pia-provenance-dossier.md) 已 closed 为 `remain long-term blocker`；因此当前 `PIA` 最强口径继续固定为 `workspace-verified + paper-alignment blocked by checkpoint/source provenance`。
 18. 当前最值得推进的唯一目标已从 `TMIA-DM` 的协议与资产拆解 intake 进一步切到 `Phase E` 候选 machine-readable 边界的高层同步，而不是继续尝试把 `PIA paper-aligned confirmation` 提前放行。
-19. `Phase E` 当前允许进入准入验证，但不允许直接开跑。文档层固定排序仍见 [future-phase-e-intake](future-phase-e-intake.md)，但执行层默认放行顺序已改为：`Finding NeMo + local memorization + FB-Mem` > `DP-LoRA` > `SecMI unblock` > `TMIA-DM intake`。
+19. `Phase E` 当前允许进入准入验证，但不允许直接开跑。文档层固定排序仍见 [future-phase-e-intake](future-phase-e-intake.md)，但当前准入验证优先顺序已改为：`Finding NeMo + local memorization + FB-Mem` > `DP-LoRA` > `SecMI unblock` > `TMIA-DM intake`。
 20. 新的 [2026-04-10-finding-nemo-mechanism-intake](../workspaces/white-box/2026-04-10-finding-nemo-mechanism-intake.md) 已把 `Finding NeMo + local memorization + FB-Mem` 固定为 `intake/eligibility only`；当前最多只允许申请一次最小 `validation-smoke`，不授权任何新长 GPU run。
 21. 新的 [2026-04-10-finding-nemo-protocol-reconciliation](../workspaces/white-box/2026-04-10-finding-nemo-protocol-reconciliation.md) 已明确当前 admitted 白盒资产与 `Finding NeMo` 原始 `Stable Diffusion v1.4 / cross-attention value layers` 面不兼容；当前只允许继续推进 zero-GPU 的 `portable observability smoke` 规划。
 22. 新的 [2026-04-10-finding-nemo-observability-smoke-contract](../workspaces/white-box/2026-04-10-finding-nemo-observability-smoke-contract.md) 已把未来 smoke 的 `checkpoint_root / layer selector / sample binding / output schema / scheduler gate` 写成 review-ready 合同；当前仓内既有 `read-only contract probe`，也有 CPU-only activation export adapter。
@@ -80,7 +80,7 @@
    - `recon DDIM public-100 step30 = black-box main evidence`
 27. 新的 [2026-04-10-phase-e-intake-ordering-review](../workspaces/intake/2026-04-10-phase-e-intake-ordering-review.md) 已把 `Phase E` 队列正式拆成：
    - 文档层条件排序：`PIA paper-aligned confirmation`
-   - 执行层默认放行顺序：`Finding NeMo > DP-LoRA > SecMI unblock > TMIA-DM intake`
+   - 准入验证优先顺序：`Finding NeMo > DP-LoRA > SecMI unblock > TMIA-DM intake`
 27.1 新的 [2026-04-10-intake-registry-phase-e-boundary-review](../workspaces/intake/2026-04-10-intake-registry-phase-e-boundary-review.md) 与 [phase-e-candidates.json](../workspaces/intake/phase-e-candidates.json) 已把 machine-readable candidate ordering 从 `index.json.entries[]` 中剥离；当前必须保持：
    - `index.json.entries[] = promoted / system-intake-ready contracts only`
    - `phase-e-candidates.json = candidate ordering / status only`

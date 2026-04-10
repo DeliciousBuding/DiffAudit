@@ -80,7 +80,7 @@ def _validate_phase_e_source_doc(
 
 def _validate_phase_e_candidate_file(errors: list[str], project_root: Path, candidate_path: Path) -> None:
     payload = _load_json(candidate_path)
-    if payload.get("schema") != "diffaudit.phase_e_candidates.v1":
+    if payload.get("schema") != "diffaudit.phase_e_candidates.v2":
         errors.append(f"unsupported phase-e candidate schema: {payload.get('schema')!r}")
         return
 
@@ -97,20 +97,20 @@ def _validate_phase_e_candidate_file(errors: list[str], project_root: Path, cand
             if not isinstance(item, dict):
                 errors.append(f"{prefix} must be an object")
                 continue
-            for field_name in ("id", "track", "record_class", "current_verdict", "current_shape", "execution_layer_status"):
+            for field_name in ("id", "track", "record_class", "current_verdict", "current_shape", "current_boundary"):
                 _validate_required_string(errors, prefix, item, field_name)
             _validate_phase_e_source_doc(errors, project_root, prefix, item)
             for forbidden in ("contract_key", "manifest", "compatibility", "admission"):
                 if forbidden in item:
                     errors.append(f"{prefix} must not define {forbidden!r}")
 
-    execution_layer = payload.get("execution_layer_default_order")
+    execution_layer = payload.get("intake_review_priority_order")
     if not isinstance(execution_layer, list) or not execution_layer:
-        errors.append("phase_e_candidates.execution_layer_default_order must be a non-empty list")
+        errors.append("phase_e_candidates.intake_review_priority_order must be a non-empty list")
     else:
         expected_order = 1
         for i, item in enumerate(execution_layer):
-            prefix = f"phase_e_candidates.execution_layer_default_order[{i}]"
+            prefix = f"phase_e_candidates.intake_review_priority_order[{i}]"
             if not isinstance(item, dict):
                 errors.append(f"{prefix} must be an object")
                 continue
@@ -120,7 +120,7 @@ def _validate_phase_e_candidate_file(errors: list[str], project_root: Path, cand
             elif order != expected_order:
                 errors.append(f"{prefix}.order must equal {expected_order}")
             expected_order += 1
-            for field_name in ("id", "track", "record_class", "current_verdict", "current_shape", "execution_release", "gpu_release"):
+            for field_name in ("id", "track", "record_class", "current_verdict", "current_shape", "current_boundary"):
                 _validate_required_string(errors, prefix, item, field_name)
             _validate_phase_e_source_doc(errors, project_root, prefix, item)
             for forbidden in ("contract_key", "manifest", "compatibility", "admission"):

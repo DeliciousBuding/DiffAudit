@@ -1,5 +1,5 @@
 {
-  "schema": "diffaudit.phase_e_candidates.v1",
+  "schema": "diffaudit.phase_e_candidates.v2",
   "updated_at": "2026-04-10",
   "status": "intake-only",
   "scope": "research-owned candidate metadata only; not a promoted contract surface, not a Local-API job routing surface, and not an admitted benchmark registry",
@@ -10,12 +10,12 @@
       "record_class": "phase-e-document-conditional",
       "current_verdict": "blocked",
       "current_shape": "document-layer conditional rank 1",
-      "execution_layer_status": "no-go",
+      "current_boundary": "document-layer only until provenance closes",
       "blocker": "checkpoint/source provenance",
       "source_doc": "workspaces/gray-box/2026-04-09-pia-provenance-dossier.md"
     }
   ],
-  "execution_layer_default_order": [
+  "intake_review_priority_order": [
     {
       "order": 1,
       "id": "white-box/finding-nemo-local-memorization-fb-mem",
@@ -23,9 +23,7 @@
       "record_class": "phase-e-candidate",
       "current_verdict": "not-yet",
       "current_shape": "adapter-complete zero-GPU hold",
-      "execution_release": "none",
-      "gpu_release": "none",
-      "queue_state": "not-requestable",
+      "current_boundary": "non-GPU only; separate release review required before any validation-smoke discussion",
       "source_doc": "workspaces/white-box/2026-04-10-finding-nemo-activation-export-adapter-review.md"
     },
     {
@@ -35,8 +33,7 @@
       "record_class": "phase-e-candidate",
       "current_verdict": "not-yet",
       "current_shape": "comparability / intake hardening only",
-      "execution_release": "none",
-      "gpu_release": "none",
+      "current_boundary": "comparability-note only; no release review until protocol overlap is decision-grade",
       "source_doc": "workspaces/intake/2026-04-10-dplora-comparability-intake.md"
     },
     {
@@ -46,8 +43,7 @@
       "record_class": "phase-e-candidate",
       "current_verdict": "not-yet",
       "current_shape": "blocked baseline",
-      "execution_release": "none",
-      "gpu_release": "none",
+      "current_boundary": "asset-blocked; no release review until real flagfile plus checkpoint root arrive",
       "source_doc": "workspaces/gray-box/2026-04-10-secmi-unblock-decision.md"
     },
     {
@@ -57,8 +53,7 @@
       "record_class": "phase-e-candidate",
       "current_verdict": "not-yet",
       "current_shape": "protocol-and-asset decomposition intake only",
-      "execution_release": "none",
-      "gpu_release": "none",
+      "current_boundary": "paper-and-asset decomposition only; no release review until a minimal executable path exists",
       "source_doc": "workspaces/gray-box/2026-04-10-tmia-dm-intake-decomposition.md"
     }
   ]

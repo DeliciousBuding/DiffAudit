@@ -50,20 +50,20 @@ class ValidateIntakeIndexTests(unittest.TestCase):
             (project_root / "workspaces" / "intake" / "phase-e-candidates.json").read_text(encoding="utf-8")
         )
 
-        self.assertEqual(payload["schema"], "diffaudit.phase_e_candidates.v1")
+        self.assertEqual(payload["schema"], "diffaudit.phase_e_candidates.v2")
         self.assertEqual(payload["status"], "intake-only")
 
         document_layer = payload["document_layer_conditional"]
         self.assertEqual(len(document_layer), 1)
         self.assertEqual(document_layer[0]["id"], "gray-box/pia/paper-aligned-confirmation")
-        self.assertEqual(document_layer[0]["execution_layer_status"], "no-go")
+        self.assertEqual(document_layer[0]["current_boundary"], "document-layer only until provenance closes")
         self.assertNotIn("contract_key", document_layer[0])
         self.assertNotIn("manifest", document_layer[0])
 
-        execution_layer = payload["execution_layer_default_order"]
+        execution_layer = payload["intake_review_priority_order"]
         self.assertEqual([item["order"] for item in execution_layer], [1, 2, 3, 4])
         self.assertEqual(execution_layer[0]["current_shape"], "adapter-complete zero-GPU hold")
-        self.assertEqual(execution_layer[0]["queue_state"], "not-requestable")
+        self.assertIn("separate release review required", execution_layer[0]["current_boundary"])
         self.assertEqual(execution_layer[1]["current_shape"], "comparability / intake hardening only")
         self.assertEqual(execution_layer[2]["current_shape"], "blocked baseline")
         self.assertEqual(execution_layer[3]["current_shape"], "protocol-and-asset decomposition intake only")
@@ -252,7 +252,7 @@ class ValidateIntakeIndexTests(unittest.TestCase):
             candidate_path.write_text(
                 json.dumps(
                     {
-                        "schema": "diffaudit.phase_e_candidates.v1",
+                        "schema": "diffaudit.phase_e_candidates.v2",
                         "updated_at": "2026-04-10",
                         "status": "intake-only",
                         "scope": "candidate ordering only",
@@ -263,11 +263,11 @@ class ValidateIntakeIndexTests(unittest.TestCase):
                                 "record_class": "phase-e-document-conditional",
                                 "current_verdict": "blocked",
                                 "current_shape": "document-layer conditional rank 1",
-                                "execution_layer_status": "no-go",
+                                "current_boundary": "document-layer only until provenance closes",
                                 "source_doc": source_doc_rel,
                             }
                         ],
-                        "execution_layer_default_order": [
+                        "intake_review_priority_order": [
                             {
                                 "order": 1,
                                 "id": "white-box/finding-nemo",
@@ -275,8 +275,7 @@ class ValidateIntakeIndexTests(unittest.TestCase):
                                 "record_class": "phase-e-candidate",
                                 "current_verdict": "not-yet",
                                 "current_shape": "adapter-complete zero-GPU hold",
-                                "execution_release": "none",
-                                "gpu_release": "none",
+                                "current_boundary": "non-GPU only; separate release review required before any validation-smoke discussion",
                                 "source_doc": source_doc_rel,
                                 "contract_key": "white-box/gsa/ddpm-cifar10",
                             }

@@ -82,7 +82,7 @@
   3. `DP-LoRA`
   4. `SecMI unblock`
   5. `TMIA-DM intake`
-- 执行层当前默认放行顺序为：
+- 当前准入验证优先顺序为：
   1. `Finding NeMo + local memorization + FB-Mem`
   2. `DP-LoRA`
   3. `SecMI unblock`

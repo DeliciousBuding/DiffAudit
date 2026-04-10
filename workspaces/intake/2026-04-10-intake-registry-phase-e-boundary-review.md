@@ -37,7 +37,7 @@
    - `TMIA-DM = protocol-and-asset decomposition intake only`
 5. `PIA paper-aligned confirmation` 仍是：
    - `document-layer conditional rank 1`
-   - `execution-layer no-go`
+   - `current_boundary = document-layer only until provenance closes`
 
 ## 风险判断
 
@@ -64,8 +64,8 @@
 `phase-e-candidates.json` 只允许承载：
 
 - 文档层条件排序
-- 执行层默认候选顺位
-- 当前 verdict / shape / release-state 快照
+- 准入验证优先顺位
+- 当前 verdict / shape / boundary 快照
 - source doc 指针
 
 `phase-e-candidates.json` 明确禁止承载：
@@ -85,24 +85,26 @@
 1. `PIA paper-aligned confirmation`
    - `current_verdict = blocked`
    - `current_shape = document-layer conditional rank 1`
-   - `execution_layer_status = no-go`
+   - `current_boundary = document-layer only until provenance closes`
 
-### 执行层默认顺位
+### 准入验证优先顺位
 
 1. `Finding NeMo`
    - `current_verdict = not-yet`
    - `current_shape = adapter-complete zero-GPU hold`
-   - `gpu_release = none`
-   - `queue_state = not-requestable`
+   - `current_boundary = non-GPU only; separate release review required before any validation-smoke discussion`
 2. `DP-LoRA`
    - `current_verdict = not-yet`
    - `current_shape = comparability / intake hardening only`
+   - `current_boundary = comparability-note only; no release review until protocol overlap is decision-grade`
 3. `SecMI unblock`
    - `current_verdict = not-yet`
    - `current_shape = blocked baseline`
+   - `current_boundary = asset-blocked; no release review until real flagfile plus checkpoint root arrive`
 4. `TMIA-DM intake`
    - `current_verdict = not-yet`
    - `current_shape = protocol-and-asset decomposition intake only`
+   - `current_boundary = paper-and-asset decomposition only; no release review until a minimal executable path exists`
 
 ## 为什么这次值得做
 

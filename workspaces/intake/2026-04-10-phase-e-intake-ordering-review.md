@@ -4,7 +4,7 @@
 
 这份文档只回答一个问题：
 
-- 在 `Phase D = closed-frozen` 且当前没有 active 主 GPU 问题的前提下，`Phase E` 候选池的排序应如何被正式固定，避免文档层条件排序与执行层默认放行顺序继续混写。
+- 在 `Phase D = closed-frozen` 且当前没有 active 主 GPU 问题的前提下，`Phase E` 候选池的排序应如何被正式固定，避免文档层条件排序与准入验证优先顺序继续混写。
 
 它不是：
 
@@ -44,10 +44,10 @@
 
 但当前同时固定：
 
-- `execution-layer status = no-go`
+- `review boundary = document-layer only until provenance closes`
 - 在 provenance 条件未变化前，它不得进入执行层。
 
-### 2. 执行层默认放行顺序
+### 2. 准入验证优先顺序
 
 这层回答：
 
@@ -66,10 +66,9 @@
 
 - `current_status = not-yet`
 - `current_shape = adapter-complete zero-GPU hold`
-- `gpu_release = none`
-- `queue_state = not-requestable`
+- `current_boundary = non-GPU only; separate release review required before any validation-smoke discussion`
 
-保留在执行层第 1 顺位的原因：
+保留在准入验证优先第 1 顺位的原因：
 
 1. intake 已最完整
 2. contract / sketch / adapter / hold review 已形成闭环
@@ -119,8 +118,8 @@
 
 - `decision_grade = decision-grade`
 - `document_layer_conditional_rank_1 = PIA paper-aligned confirmation`
-- `execution_layer_default_order = Finding NeMo > DP-LoRA > SecMI unblock > TMIA-DM intake`
-- `current_execution_release = none`
+- `intake_review_priority_order = Finding NeMo > DP-LoRA > SecMI unblock > TMIA-DM intake`
+- `current_operational_change = none`
 
 ## 为什么现在值得写这份文档
 

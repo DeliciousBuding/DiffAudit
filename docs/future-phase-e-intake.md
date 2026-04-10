@@ -41,7 +41,7 @@
 4. `SecMI unblock`
 5. `TMIA-DM intake`
 
-其中 2-5 才构成当前执行层默认放行顺序。
+其中 2-5 才构成当前准入验证优先顺序。
 
 ## 1. PIA paper-aligned confirmation
 
@@ -88,7 +88,7 @@
 
 - `activation export adapter = implemented`
 - `current verdict = zero-GPU hold`
-- `queue_state = not-requestable`
+- `current boundary = non-GPU only; separate release review required before any validation-smoke discussion`
 - 这仍不是 `go`
 
 ### 进入条件
@@ -137,8 +137,7 @@
 当前固定结论补充：
 
 - `current_verdict = not-yet`
-- `execution_release = none`
-- `gpu_release = none`
+- `current boundary = comparability-note only; no release review until protocol overlap is decision-grade`
 - 当前只允许推进 `comparability / intake hardening`
 
 ### 进入条件
@@ -176,8 +175,7 @@
 
 - `current_verdict = not-yet`
 - `current_state = blocked baseline`
-- `execution_release = none`
-- `gpu_release = none`
+- `current boundary = asset-blocked; no release review until real flagfile + checkpoint root arrive`
 
 ### 进入条件
 
@@ -215,8 +213,7 @@
 
 - `current_verdict = not-yet`
 - `current_shape = protocol-and-asset decomposition intake`
-- `execution_release = none`
-- `gpu_release = none`
+- `current boundary = paper-and-asset decomposition only; no release review until a minimal executable path exists`
 
 ### 进入条件
 
@@ -246,12 +243,12 @@
 - 这里的 `decision-grade` 只指 intake/eligibility 决策质量，不指 admitted 升级，不指 benchmark-ready，也不指 GPU 已放行
 - `DP-LoRA` 不抢第一条新问题
 - `SecMI` 与 `TMIA-DM` 继续后排
-- `Finding NeMo` 当前虽然位于执行层默认第 1 位，但状态已固定为 `zero-GPU hold`
-- `Finding NeMo` 当前虽然位于执行层默认第 1 位，但状态已固定为 `zero-GPU hold`
+- `Finding NeMo` 当前虽然位于准入验证优先第 1 位，但状态已固定为 `zero-GPU hold`
+- `Finding NeMo` 当前虽然位于准入验证优先第 1 位，但状态已固定为 `zero-GPU hold`
 
-## 当前执行层默认放行顺序
+## 当前准入验证优先顺序
 
-在真正进入下一条 GPU 题的准入验证时，当前执行层默认顺序为：
+在真正进入下一条 GPU 题的准入验证时，当前候选审查顺序为：
 
 1. `Finding NeMo + local memorization + FB-Mem`
 2. `DP-LoRA`
@@ -262,9 +259,9 @@
 
 - `PIA paper-aligned confirmation` 继续保留文档层条件性第 1 顺位
 - 但在 provenance 条件未变化前，不进入执行层
-- `Finding NeMo + local memorization + FB-Mem` 当前只是执行层默认第一候选，不构成当前 GPU release
-- 这份“默认放行顺序”不等于现在立刻执行；它只定义未来准入验证的顺序
-- 这份“默认放行顺序”不等于现在立刻执行；它只定义未来准入验证的顺序
+- `Finding NeMo + local memorization + FB-Mem` 当前只是准入验证优先第 1 候选，不构成当前 GPU release
+- 这份“准入验证优先顺序”不等于现在立刻执行；它只定义未来 intake review 的顺序
+- 这份“准入验证优先顺序”不等于现在立刻执行；它只定义未来 intake review 的顺序
 
 ## 当前明确不做
 
