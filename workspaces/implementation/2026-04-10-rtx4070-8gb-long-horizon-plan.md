@@ -12,7 +12,7 @@
 - `white-box_bridge`: `closed-frozen`
 - `current_blocker`: `PIA checkpoint/source provenance`
 - `finding_nemo_state`: `adapter-complete zero-GPU hold`
-- `updated_at`: `2026-04-10 20:05 +08:00`
+- `updated_at`: `2026-04-10 21:36 +08:00`
 
 ## 目的
 
@@ -253,6 +253,20 @@ filler 只允许以下两类：
   - one `frontier note`
 - `admission_effect`: `none`
 
+Round-26 update:
+
+- execution packet:
+  - `workspaces/gray-box/2026-04-10-pia-8gb-portability-ladder-execution-packet.md`
+- frontier note:
+  - `workspaces/gray-box/2026-04-10-pia-8gb-supporting-frontier-note.md`
+- completed rungs:
+  - `GPU128 adaptive pair`
+  - `GPU256 adaptive pair`
+- current decision:
+  - `GPU128 = quickest portable pair`
+  - `GPU256 = decision rung with cost warning`
+  - `stop before any GPU512 rerun`
+
 ### G1-B `PIA defense-cost frontier`
 
 - `track`: `gray-box`
@@ -392,6 +406,6 @@ filler 只允许以下两类：
 
 ## Immediate Next Three
 
-1. 先完成 `PIA 8GB-safe portability ladder` 的 release-free 任务定义与命名规范
+1. 把 `PIA 8GB portability` 的 packet 与 frontier note 写回主状态页，并固定 `GPU128 = quickest portable pair`、`GPU256 = decision rung with cost warning`
 2. 并行完成 `PIA provenance` CPU 补件和 `recon` explanation / boundary package
 3. 在 `Finding NeMo` 继续保持 `zero-GPU hold` 的前提下，准备 `DP-LoRA comparability ladder` 的 release-review packet

@@ -4,10 +4,10 @@
 
 - `owner`: `research_leader`
 - `scope`: 部分中间信息、条件相关评分、噪声预测与结构特征下的成员推断
-- `status`: `PIA real-asset runtime-mainline ready; GPU128/GPU256/GPU512 baseline + defended pairs landed; GPU512 rerun confirmed; provisional G-1 established; provenance now workspace-verified`
+- `status`: `PIA real-asset runtime-mainline ready; GPU128/GPU256/GPU512 baseline + defended pairs landed; GPU512 rerun confirmed; GPU128/GPU256 adaptive portability pair landed on RTX4070 8GB; provisional G-1 established; provenance now workspace-verified`
 - `blocked by`: `PIA` 仍未升级到 `paper-aligned`；`SecMI` 当前已判定为 blocked baseline
-- `next step`: 保持 `stochastic-dropout = provisional G-1 (repeat-confirmed at GPU512)`；本轮优先补 `adaptive repeated-query gate + structured quality/cost + dropout schedule ablation`，把 gray-box defense 从“同向有效”推进到“可答辩”；`SecMI` 只保留为 blocked baseline
-- `last updated`: `2026-04-09`
+- `next step`: 保持 `stochastic-dropout = provisional G-1 (repeat-confirmed at GPU512)`；当前先把 `2026-04-10-pia-8gb-portability-ladder-execution-packet.md` 与 `2026-04-10-pia-8gb-supporting-frontier-note.md` 写回主状态页，固定 `GPU128 = quickest portable pair`、`GPU256 = decision rung with cost warning`，并停止任何 `GPU512` 机械复跑；`SecMI` 只保留为 blocked baseline
+- `last updated`: `2026-04-10`
 
 ## 推荐论文
 
@@ -40,6 +40,10 @@
 - `workspaces/gray-box/2026-04-08-pia-gpu256-attack-defense.md`
 - `workspaces/gray-box/2026-04-08-pia-gpu512-attack-defense.md`
 - `workspaces/gray-box/2026-04-08-pia-gpu512-rerun1.md`
+- `workspaces/gray-box/2026-04-09-pia-signal-and-cost.md`
+- `workspaces/gray-box/2026-04-09-pia-gpu512-adaptive-ablation.md`
+- `workspaces/gray-box/2026-04-10-pia-8gb-portability-ladder-execution-packet.md`
+- `workspaces/gray-box/2026-04-10-pia-8gb-supporting-frontier-note.md`
 - `workspaces/gray-box/2026-04-09-tmia-dm-intake.md`
 - `workspaces/gray-box/2026-04-08-secmi-blocked.md`
 - `workspaces/gray-box/runs/pia-cifar10-runtime-mainline-20260408-gpu-128/summary.json`
@@ -50,6 +54,10 @@
 - `workspaces/gray-box/runs/pia-cifar10-runtime-mainline-dropout-defense-20260408-gpu-512/summary.json`
 - `workspaces/gray-box/runs/pia-cifar10-runtime-mainline-20260409-gpu-512-rerun1/summary.json`
 - `workspaces/gray-box/runs/pia-cifar10-runtime-mainline-dropout-defense-20260409-gpu-512-rerun1/summary.json`
+- `workspaces/gray-box/runs/pia-cifar10-runtime-mainline-20260410-gpu-128-adaptive/summary.json`
+- `workspaces/gray-box/runs/pia-cifar10-runtime-mainline-dropout-defense-20260410-gpu-128-allsteps-adaptive/summary.json`
+- `workspaces/gray-box/runs/pia-cifar10-runtime-mainline-20260410-gpu-256-adaptive/summary.json`
+- `workspaces/gray-box/runs/pia-cifar10-runtime-mainline-dropout-defense-20260410-gpu-256-allsteps-adaptive/summary.json`
 - `experiments/pia-runtime-smoke-cpu/summary.json`
 - `experiments/pia-runtime-smoke-gpu/summary.json`
 - `experiments/pia-synth-smoke-cpu/summary.json`
@@ -122,6 +130,20 @@
 - `PIA` 当前已是 `workspace-verified`，但仍不是 `paper-aligned`
 - 当前 gray-box defense 已出现三档 favorable signal，并完成 `GPU512` 同档重复确认，但仍不是 validated privacy win
 - `SecMI` 当前 probe 已明确缺真实 `flagfile.txt`
+
+## 2026-04-10 新观察
+
+- `runtime-probe-pia` 与 `runtime-preview-pia` 已在 `cuda:0` 上通过，说明 `RTX4070 8GB` 的真资产路径可直接进入 bounded supporting run
+- 新的 `GPU128 adaptive-reviewed` pair 已落盘：
+  - baseline `adaptive AUC = 0.817444 / ASR = 0.765625 / wall-clock = 49.544877s`
+  - defense `adaptive AUC = 0.806274 / ASR = 0.761719 / wall-clock = 50.667101s`
+- 新的 `GPU256 adaptive-reviewed` pair 已落盘：
+  - baseline `adaptive AUC = 0.841293 / ASR = 0.78125 / wall-clock = 95.934721s`
+  - defense `adaptive AUC = 0.829559 / ASR = 0.763672 / wall-clock = 213.126361s`
+- 当前最合理的 portability frontier 结论是：
+  - `GPU128 = quickest portable pair`
+  - `GPU256 = decision rung with cost warning`
+  - `GPU512` 当前不值得再做 mechanical rerun
 
 ## 当前最短路径
 

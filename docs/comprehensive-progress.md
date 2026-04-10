@@ -16,7 +16,7 @@
 | 灰盒攻击 | `最成熟` | `PIA` 已进入 real-asset runtime mainline |
 | 白盒攻击 | `已冻结 admitted 主结果` | `GSA` 的 `epoch300 rerun1` 已写回 admitted 主结果，AUC 为 `0.998192` |
 | 黑盒防御 | `基本未落地` | `B-1 / B-2` 仍在设计层 |
-| 灰盒防御 | `已进入 provisional G-1 + adaptive gate completed` | `PIA GPU128/GPU256/GPU512` 三档与一次 `GPU512` 同档 repeat 都显示 `stochastic-dropout` 压低指标；新的 `GPU512` adaptive-reviewed baseline + `all_steps / late_steps_only` 已落地 |
+| 灰盒防御 | `已进入 provisional G-1 + adaptive gate completed` | `PIA GPU128/GPU256/GPU512` 三档与一次 `GPU512` 同档 repeat 都显示 `stochastic-dropout` 压低指标；新的 `GPU512` adaptive-reviewed baseline + `all_steps / late_steps_only` 已落地；round-26 的 `GPU128/GPU256 adaptive portability pair` 又在 `RTX4070 8GB` 上给出同向结果，其中 `GPU128` 是 quickest portable pair，`GPU256` 带 cost warning |
 | 白盒防御 | `已有 full-scale 主结果，bridge diagnostic 已产生` | `DPDM` 已完成 `strong-v3 full-scale` defended comparator，并额外拿到 batch32 same-protocol diagnostic summary，但尚未进入 admitted 合同 |
 | 统一评估表 | `已有第一版` | 已新增 admitted main results 的跨盒总表 |
 
@@ -25,6 +25,7 @@
 - `white-box same-protocol bridge` 已完成 `保持冻结` 收口
 - 当前不再有 active 主 GPU 问题
 - 当前 `PIA provenance dossier` 已 closed 为 `remain long-term blocker`
+- `PIA 8GB portability ladder` 已完成 `probe + preview + GPU128/GPU256 adaptive pair`，当前 frontier 固定为 `GPU128 = quickest portable pair`、`GPU256 = decision rung with cost warning`
 - `Finding NeMo + local memorization + FB-Mem` 的 intake/eligibility note 已建立，且 `activation export adapter` 已固定为 `decision-grade zero-GPU hold`
 - 当前最值得推进的唯一目标切换为：把 `recon` 主证据冻结、`CopyMark` 边界层和频域解释层压成高层可直接复述的 decision-grade black-box package
 
@@ -62,6 +63,7 @@
   - `PIA` 已经不是 smoke，而是真实资产 mainline
   - `PIA GPU128 / GPU256 / GPU512` 已拿到同口径 baseline + defense 对照，且 defense 指标连续三档都低于 baseline
   - `PIA GPU512` 同档 repeat 也继续维持 defense 优于 baseline
+  - round-26 的 `GPU128 / GPU256 adaptive portability pair` 又在 `RTX4070 8GB` 上复现了同向下降，其中 `GPU128` 是当前 quickest portable pair，`GPU256` 则因 defense cost 升高而保留为 decision rung with cost warning
   - `pia_next_run --strict` 已通过，当前 asset line 已可写成 `workspace-verified`
   - 当前 `PIA` 攻击分数可以明确解释为 `epsilon-trajectory consistency` 信号，而不是泛化的 reconstruction score
   - `stochastic-dropout` 当前最可辩护的作用机理，是在推理时打散这一致性信号
