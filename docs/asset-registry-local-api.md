@@ -40,9 +40,18 @@ Every manifest referenced by `Project/workspaces/intake/index.json` MUST contain
 Current boundary note:
 
 - `Project/workspaces/intake/index.json` currently covers promoted intake contracts, not every admitted research result.
+- `Project/workspaces/intake/index.json.entries[]` is the only Project-side surface covered by the Local-API intake contract.
+- `Project/workspaces/intake/phase-e-candidates.json` is a research-owned Phase E candidate ordering supplement and is not part of Local-API job routing.
 - `PIA` has a stable promoted intake surface.
 - `GSA` currently has a legacy intake surface plus a stronger admitted result tracked in the unified table and white-box docs.
 - `recon` and `DPDM` are currently admitted through the unified table plus frozen workspace docs, not standalone intake manifests.
+
+Candidate-boundary hard rule:
+
+- `phase-e-candidates.json` records MUST NOT define `contract_key`.
+- `phase-e-candidates.json` records MUST NOT define `manifest`.
+- `phase-e-candidates.json` records MUST NOT define `compatibility.commands`.
+- `phase-e-candidates.json` records MUST NOT be read as admitted, benchmark-ready, or execution-ready contracts.
 
 Method-specific required fields MUST be declared in the intake index:
 
@@ -56,6 +65,7 @@ All path strings in:
 
 - `Project/workspaces/intake/index.json`
 - intake manifests referenced by that index
+- `Project/workspaces/implementation/artifacts/unified-attack-defense-table.json` row `source` fields
 
 MUST be **repo-relative paths**, so the intake registry stays portable across machines. (Untracked directories like `external/**` are allowed as long as they are still repo-relative.)
 
@@ -63,7 +73,7 @@ Local-API resolves these paths by joining them with `project_root` at runtime.
 
 ## Local-API Registry Alignment (What Must Match)
 
-For each `contract_key` that is represented in the intake index:
+For each `contract_key` that is represented in `index.json.entries[]`:
 
 1. `Services/Local-API/internal/api/registry_seed.json` MUST contain that `contract_key`.
 2. The Local-API `contracts.promoted_asset_roots_json` MUST point under the intake entry `paths.assets_root`.

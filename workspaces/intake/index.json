@@ -1,6 +1,6 @@
 {
   "schema": "diffaudit.intake.index.v1",
-  "updated_at": "2026-04-09",
+  "updated_at": "2026-04-10",
   "entries": [
     {
       "id": "gray-box/pia/cifar10-ddpm",
@@ -38,9 +38,9 @@
       "track": "white-box",
       "method": "gsa",
       "paths": {
-        "assets_root": "workspaces/white-box/assets/gsa"
+        "assets_root": "workspaces/white-box/assets/gsa-cifar10-1k-3shadow-epoch300-rerun1"
       },
-      "manifest": "workspaces/white-box/assets/gsa/manifests/cifar10-ddpm-mainline.json",
+      "manifest": "workspaces/white-box/assets/gsa-cifar10-1k-3shadow-epoch300-rerun1/manifests/cifar10-ddpm-1k-3shadow-epoch300-rerun1.json",
       "admission": {
         "status": "admitted",
         "level": "system-intake-ready",

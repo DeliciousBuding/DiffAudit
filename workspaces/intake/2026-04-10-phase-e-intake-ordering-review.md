@@ -140,7 +140,7 @@
 
 在这份排序评审写回后，下一条非 GPU 槽位建议固定为：
 
-- `DP-LoRA` 的 comparability / intake 收口
+- `intake registry / candidate indexing` 的结构边界判断与 machine-readable 写回
 
 而不是：
 

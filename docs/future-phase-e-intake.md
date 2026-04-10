@@ -9,10 +9,17 @@
 当前配套排序评审见：
 
 - `workspaces/intake/2026-04-10-phase-e-intake-ordering-review.md`
+- `workspaces/intake/2026-04-10-intake-registry-phase-e-boundary-review.md`
 
-当前配套排序评审见：
+当前 machine-readable 候选镜像见：
 
-- `workspaces/intake/2026-04-10-phase-e-intake-ordering-review.md`
+- `workspaces/intake/phase-e-candidates.json`
+
+边界约束：
+
+- `workspaces/intake/index.json.entries[]` 继续只承载 `promoted / system-intake-ready` contracts
+- `phase-e-candidates.json` 只承载 `Phase E` 候选排序与状态快照
+- `phase-e-candidates.json` 不是 run release，也不是 admitted 升级入口
 
 ## 当前固定排序
 
@@ -21,20 +28,6 @@
 3. `DP-LoRA`
 4. `SecMI unblock`
 5. `TMIA-DM intake`
-
-## 当前正式解释
-
-上面的单一列表只保留文档层可读性；真正执行时，必须按两层理解：
-
-1. `PIA paper-aligned confirmation`
-   - 文档层条件性第 1 顺位
-   - 当前执行层 `no-go`
-2. `Finding NeMo + local memorization + FB-Mem`
-3. `DP-LoRA`
-4. `SecMI unblock`
-5. `TMIA-DM intake`
-
-其中 2-5 才构成当前执行层默认放行顺序。
 
 ## 当前正式解释
 

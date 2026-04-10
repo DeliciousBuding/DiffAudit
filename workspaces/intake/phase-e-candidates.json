@@ -1,0 +1,65 @@
+{
+  "schema": "diffaudit.phase_e_candidates.v1",
+  "updated_at": "2026-04-10",
+  "status": "intake-only",
+  "scope": "research-owned candidate metadata only; not a promoted contract surface, not a Local-API job routing surface, and not an admitted benchmark registry",
+  "document_layer_conditional": [
+    {
+      "id": "gray-box/pia/paper-aligned-confirmation",
+      "track": "gray-box",
+      "record_class": "phase-e-document-conditional",
+      "current_verdict": "blocked",
+      "current_shape": "document-layer conditional rank 1",
+      "execution_layer_status": "no-go",
+      "blocker": "checkpoint/source provenance",
+      "source_doc": "workspaces/gray-box/2026-04-09-pia-provenance-dossier.md"
+    }
+  ],
+  "execution_layer_default_order": [
+    {
+      "order": 1,
+      "id": "white-box/finding-nemo-local-memorization-fb-mem",
+      "track": "white-box",
+      "record_class": "phase-e-candidate",
+      "current_verdict": "not-yet",
+      "current_shape": "adapter-complete zero-GPU hold",
+      "execution_release": "none",
+      "gpu_release": "none",
+      "queue_state": "not-requestable",
+      "source_doc": "workspaces/white-box/2026-04-10-finding-nemo-activation-export-adapter-review.md"
+    },
+    {
+      "order": 2,
+      "id": "white-box/dp-lora",
+      "track": "white-box",
+      "record_class": "phase-e-candidate",
+      "current_verdict": "not-yet",
+      "current_shape": "comparability / intake hardening only",
+      "execution_release": "none",
+      "gpu_release": "none",
+      "source_doc": "workspaces/intake/2026-04-10-dplora-comparability-intake.md"
+    },
+    {
+      "order": 3,
+      "id": "gray-box/secmi-unblock",
+      "track": "gray-box",
+      "record_class": "phase-e-candidate",
+      "current_verdict": "not-yet",
+      "current_shape": "blocked baseline",
+      "execution_release": "none",
+      "gpu_release": "none",
+      "source_doc": "workspaces/gray-box/2026-04-10-secmi-unblock-decision.md"
+    },
+    {
+      "order": 4,
+      "id": "gray-box/tmia-dm",
+      "track": "gray-box",
+      "record_class": "phase-e-candidate",
+      "current_verdict": "not-yet",
+      "current_shape": "protocol-and-asset decomposition intake only",
+      "execution_release": "none",
+      "gpu_release": "none",
+      "source_doc": "workspaces/gray-box/2026-04-10-tmia-dm-intake-decomposition.md"
+    }
+  ]
+}
