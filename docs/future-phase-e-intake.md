@@ -175,6 +175,17 @@
 
 它不是当前主讲线，也不是 bridge 后默认第一优先。
 
+当前 unblock 决策见：
+
+- `workspaces/gray-box/2026-04-10-secmi-unblock-decision.md`
+
+当前固定结论补充：
+
+- `current_verdict = not-yet`
+- `current_state = blocked baseline`
+- `execution_release = none`
+- `gpu_release = none`
+
 ### 进入条件
 
 - 真实 `flagfile + checkpoint root` 已到位
@@ -185,6 +196,11 @@
 
 - 恢复为可执行 baseline，或
 - 正式继续维持 `blocked baseline`
+
+当前已落地裁决：
+
+- `not-yet`
+- 具体形态：`remain blocked baseline until real flagfile + checkpoint root arrive`
 
 ### 预期产物
 

@@ -63,7 +63,7 @@
 - bridge 已完成 `保持冻结` 收口
 - 当前没有新的 active 主 GPU 问题
 - 当前最值得推进的唯一目标切换为：
-  - `DP-LoRA` 的 comparability / intake hardening
+  - `SecMI unblock` 的 yes/no 决策写作
 
 进入 `Phase E` 的 gate：
 

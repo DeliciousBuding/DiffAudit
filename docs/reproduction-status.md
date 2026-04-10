@@ -66,7 +66,7 @@
 15. 当前仓库已经不再缺“第一版统一总表”。[unified-attack-defense-table.md](../workspaces/implementation/2026-04-08-unified-attack-defense-table.md) 已经收口了 admitted main results；后续工作的重点从“有没有表”转成“是否继续补质量 / 成本列，以及是否纳入更多 admitted 行”。
 16. 当前 `white-box same-protocol bridge` 已正式以 `保持冻结` 收口；这是一条治理与资源排序决策，不是新的 benchmark 结果，也不改 admitted 合同。
 17. 截至当前，[2026-04-09-pia-provenance-dossier](../workspaces/gray-box/2026-04-09-pia-provenance-dossier.md) 已 closed 为 `remain long-term blocker`；因此当前 `PIA` 最强口径继续固定为 `workspace-verified + paper-alignment blocked by checkpoint/source provenance`。
-18. 当前最值得推进的唯一目标已从 `Phase E` 候选池的 decision-grade 排序收口切到 `DP-LoRA` 的 comparability / intake hardening，而不是继续尝试把 `PIA paper-aligned confirmation` 提前放行。
+18. 当前最值得推进的唯一目标已从 `DP-LoRA` 的 comparability / intake hardening 切到 `SecMI unblock` 的 yes/no 决策写作，而不是继续尝试把 `PIA paper-aligned confirmation` 提前放行。
 19. `Phase E` 当前允许进入准入验证，但不允许直接开跑。文档层固定排序仍见 [future-phase-e-intake](future-phase-e-intake.md)，但执行层默认放行顺序已改为：`Finding NeMo + local memorization + FB-Mem` > `DP-LoRA` > `SecMI unblock` > `TMIA-DM intake`。
 20. 新的 [2026-04-10-finding-nemo-mechanism-intake](../workspaces/white-box/2026-04-10-finding-nemo-mechanism-intake.md) 已把 `Finding NeMo + local memorization + FB-Mem` 固定为 `intake/eligibility only`；当前最多只允许申请一次最小 `validation-smoke`，不授权任何新长 GPU run。
 21. 新的 [2026-04-10-finding-nemo-protocol-reconciliation](../workspaces/white-box/2026-04-10-finding-nemo-protocol-reconciliation.md) 已明确当前 admitted 白盒资产与 `Finding NeMo` 原始 `Stable Diffusion v1.4 / cross-attention value layers` 面不兼容；当前只允许继续推进 zero-GPU 的 `portable observability smoke` 规划。
@@ -85,6 +85,10 @@
    - `current_verdict = not-yet`
    - `comparability / intake hardening only`
    - 不构成 execution release、GPU release 或 `W-1` 替代宣告
+29. 新的 [2026-04-10-secmi-unblock-decision](../workspaces/gray-box/2026-04-10-secmi-unblock-decision.md) 已把 `SecMI` 固定为：
+   - `current_verdict = not-yet`
+   - `current_state = blocked baseline`
+   - blocker 继续是 `real flagfile + matching checkpoint root`
 
 ## 下一步
 
