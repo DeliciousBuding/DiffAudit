@@ -19,12 +19,12 @@
 - `Current Depth Line`: `GSA + W-1 strong-v3 full-scale`
 - `Active GPU Question`: `none (bridge closed-frozen; next queue not yet released)`
 - `Blocked Candidates`: `SecMI`, `variation real API`, `W-2`, `G-2`
-- `Research-Ready Candidates`: `TMIA-DM`, `Finding NeMo`, `DP-LoRA`
+- `Intake-Ready Candidates`: `TMIA-DM`, `Finding NeMo`, `DP-LoRA`
 
 当前研究判断：
 
 - `PIA` 仍是当前最成熟、最适合打成“攻击 + 防御”主讲闭环的一条线
-- `PIA` 当前 strongest claim 仍是 `workspace-verified + adaptive-reviewed`
+- `PIA` 当前 strongest claim 仍是 `workspace-verified + adaptive-reviewed`，并且必须同时携带 `paper-aligned blocked by checkpoint/source provenance`
 - `PIA` 当前唯一 `paper-aligned` blocker 是 `checkpoint/source provenance`
 - `recon` 仍是黑盒风险证据主线，而不是当前主讲闭环
 - `GSA epoch300 rerun1` 已是当前白盒攻击主结果，并已写回 admitted 总表、intake 与系统读链
@@ -63,7 +63,7 @@
 - bridge 已完成 `保持冻结` 收口
 - 当前没有新的 active 主 GPU 问题
 - 当前最值得推进的唯一目标切换为：
-  - `Phase E` 候选口径的高层同步：`phase-e-candidates.json` 独立于 promoted intake contracts
+  - `PIA provenance dossier / checkpoint-source provenance` 的 decision-grade blocker hardening
 
 进入 `Phase E` 的 gate：
 
@@ -82,6 +82,7 @@
   3. `DP-LoRA`
   4. `SecMI unblock`
   5. `TMIA-DM intake`
+- 上述固定排序只表示文档层条件位；其中 `PIA paper-aligned confirmation` 当前不计入可释放 GPU 队列
 - 当前准入验证优先顺序为：
   1. `Finding NeMo + local memorization + FB-Mem`
   2. `DP-LoRA`
@@ -107,11 +108,17 @@
   - 提交 PR
 - 因此研究仓文档、命令、校验链都不得把 scheduler 设成硬依赖
 
-当前问题收口后的可用 GPU 问题只允许从下面三类中选一条：
+当前问题收口后，真正可进入当前准入验证排序的 GPU 候选只允许从下面四项中选一条：
 
-1. `PIA paper-aligned confirmation`
-2. `SecMI unblock`
-3. `TMIA-DM or Finding NeMo intake`
+1. `Finding NeMo + local memorization + FB-Mem`
+2. `DP-LoRA`
+3. `SecMI unblock`
+4. `TMIA-DM intake`
+
+补充条件：
+
+- `PIA paper-aligned confirmation` 继续只保留文档层条件性首位
+- 只有 `checkpoint/source provenance` blocker 发生实质变化并完成单独 release review 后，它才允许重新回到候选审查面
 
 补充边界：
 
@@ -154,7 +161,7 @@
 - 进入条件：
   - `Phase A` 基本完成
 - 完成标准：
-  - `PIA` strongest claim 固定为 `workspace-verified + adaptive-reviewed`
+  - `PIA` strongest claim 固定为 `workspace-verified + adaptive-reviewed + paper-aligned blocked by checkpoint/source provenance`
   - `all_steps` 固定为 defended mainline
   - `late_steps_only` 明确为消融，不替代主线
   - `PIA` 的 `paper-aligned` blocker 固定为 `checkpoint/source provenance`

@@ -26,7 +26,7 @@
 - 当前不再有 active 主 GPU 问题
 - 当前 `PIA provenance dossier` 已 closed 为 `remain long-term blocker`
 - `Finding NeMo + local memorization + FB-Mem` 的 intake/eligibility note 已建立，且 `activation export adapter` 已固定为 `decision-grade zero-GPU hold`
-- 当前最值得推进的唯一目标切换为：把 `Phase E` 候选池的高层口径与 machine-readable candidate registry 同步收口，而不是提前放行任何候选
+- 当前最值得推进的唯一目标切换为：把 `PIA provenance dossier` 固定成更难漂移的 decision-grade blocker，并同步高层文档里的执行层 `no-go` 口径
 
 ## 攻击主线
 
@@ -155,7 +155,7 @@
 
 ## 当前最短执行顺序
 
-1. 将 [2026-04-09-pia-provenance-dossier](../workspaces/gray-box/2026-04-09-pia-provenance-dossier.md) 固定为 `remain long-term blocker`，并保持 `workspace-verified` 口径不漂移
+1. 将 [2026-04-09-pia-provenance-dossier](../workspaces/gray-box/2026-04-09-pia-provenance-dossier.md) 固定为 `remain long-term blocker`，并保持 `workspace-verified + paper-aligned blocked by checkpoint/source provenance` 不漂移
 2. 保持 `recon` 主证据冻结，同时把 [2026-04-10-recon-explanation-layer](../workspaces/black-box/2026-04-10-recon-explanation-layer.md) 吸收到黑盒边界说明
 3. `variation / Towards` 继续保留为 formal local secondary track，并明确 real-API assets blocked
 4. 在统一表和叙事材料里补齐 `threat model / asset semantics / evidence level / external-validity boundary`

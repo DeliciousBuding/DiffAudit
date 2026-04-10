@@ -61,5 +61,6 @@ powershell -ExecutionPolicy Bypass -File tools/pia_next_run/run.ps1 `
 - The gray-box `PIA` line now has a clean machine-readable next-run provenance gate.
 - The config and member split inputs are hashed.
 - The referenced `external/PIA` repo is clean under strict validation.
-- This is enough to promote the local asset line to `workspace-verified`.
+- This is enough to lock the local asset line at `workspace-verified`.
 - It is still not enough to promote the line to `paper-aligned`, because the imported checkpoint source has not been confirmed as paper-faithful.
+- This gate is not a release signal for `PIA paper-aligned confirmation`; until provenance materially changes, execution-layer status remains `no-go`.

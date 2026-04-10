@@ -24,6 +24,7 @@
 
 - attack baseline: `pia-cifar10-runtime-mainline-20260409-gpu-512-adaptive`
 - defended mainline: `pia-cifar10-runtime-mainline-dropout-defense-20260409-gpu-512-allsteps-adaptive`
+- execution-layer status: `no-go / not in current releasable queue`
 
 ## 1) 当前已知证据（Evidence Pack）
 
@@ -177,9 +178,9 @@ strict gate 已将该文件与 split root tree hash 机器可读固定：
 
 必须全部满足：
 
-- [ ] 明确决策：该线长期只允许 `workspace-verified`
-- [ ] 明确原因（至少一项）：上游 release 无校验、链接易失、license/分发限制、或其他
-- [ ] 固化口径：任何文档/状态页必须携带 `paper-aligned blocked by checkpoint/source provenance`
+- [x] 明确决策：该线长期只允许 `workspace-verified`
+- [x] 明确原因（至少一项）：上游 release 无校验、链接易失、license/分发限制、或其他
+- [x] 固化口径：任何文档/状态页必须携带 `paper-aligned blocked by checkpoint/source provenance`
 
 ## 9) 决策记录
 
@@ -227,8 +228,9 @@ strict gate 已将该文件与 split root tree hash 机器可读固定：
 
 ### 对 Phase E 的直接影响
 
-- `PIA paper-aligned confirmation` 不再作为当前默认首个放行项
+- `PIA paper-aligned confirmation` 不计入当前可释放 GPU 队列
 - 文档层可以保留其条件性第 1 顺位
 - 但执行层当前必须视为 `no-go`
-- 在真正放行下一条 GPU 候选时，默认先推进：
+- 只有在 provenance blocker 发生实质变化并完成单独 release review 后，才允许重新回到候选审查面
+- 当前若讨论下一条 GPU 候选，只能先审查：
   - `Finding NeMo + local memorization + FB-Mem`
