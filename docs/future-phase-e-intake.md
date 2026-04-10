@@ -6,6 +6,14 @@
 
 在 `Phase D: Same-Protocol Benchmark Bridge` 正式收口前，任何候选都只能停留在 intake，不进入执行态。
 
+当前配套排序评审见：
+
+- `workspaces/intake/2026-04-10-phase-e-intake-ordering-review.md`
+
+当前配套排序评审见：
+
+- `workspaces/intake/2026-04-10-phase-e-intake-ordering-review.md`
+
 ## 当前固定排序
 
 1. `PIA paper-aligned confirmation`
@@ -13,6 +21,34 @@
 3. `DP-LoRA`
 4. `SecMI unblock`
 5. `TMIA-DM intake`
+
+## 当前正式解释
+
+上面的单一列表只保留文档层可读性；真正执行时，必须按两层理解：
+
+1. `PIA paper-aligned confirmation`
+   - 文档层条件性第 1 顺位
+   - 当前执行层 `no-go`
+2. `Finding NeMo + local memorization + FB-Mem`
+3. `DP-LoRA`
+4. `SecMI unblock`
+5. `TMIA-DM intake`
+
+其中 2-5 才构成当前执行层默认放行顺序。
+
+## 当前正式解释
+
+上面的单一列表只保留文档层可读性；真正执行时，必须按两层理解：
+
+1. `PIA paper-aligned confirmation`
+   - 文档层条件性第 1 顺位
+   - 当前执行层 `no-go`
+2. `Finding NeMo + local memorization + FB-Mem`
+3. `DP-LoRA`
+4. `SecMI unblock`
+5. `TMIA-DM intake`
+
+其中 2-5 才构成当前执行层默认放行顺序。
 
 ## 1. PIA paper-aligned confirmation
 
@@ -169,6 +205,8 @@
 - 这里的 `decision-grade` 只指 intake/eligibility 决策质量，不指 admitted 升级，不指 benchmark-ready，也不指 GPU 已放行
 - `DP-LoRA` 不抢第一条新问题
 - `SecMI` 与 `TMIA-DM` 继续后排
+- `Finding NeMo` 当前虽然位于执行层默认第 1 位，但状态已固定为 `zero-GPU hold`
+- `Finding NeMo` 当前虽然位于执行层默认第 1 位，但状态已固定为 `zero-GPU hold`
 
 ## 当前执行层默认放行顺序
 
@@ -184,6 +222,8 @@
 - `PIA paper-aligned confirmation` 继续保留文档层条件性第 1 顺位
 - 但在 provenance 条件未变化前，不进入执行层
 - `Finding NeMo + local memorization + FB-Mem` 当前只是执行层默认第一候选，不构成当前 GPU release
+- 这份“默认放行顺序”不等于现在立刻执行；它只定义未来准入验证的顺序
+- 这份“默认放行顺序”不等于现在立刻执行；它只定义未来准入验证的顺序
 
 ## 当前明确不做
 

@@ -26,7 +26,7 @@
 - 当前不再有 active 主 GPU 问题
 - 当前 `PIA provenance dossier` 已 closed 为 `remain long-term blocker`
 - `Finding NeMo + local memorization + FB-Mem` 的 intake/eligibility note 已建立，且 `activation export adapter` 已固定为 `decision-grade zero-GPU hold`
-- 当前最值得推进的唯一目标切换为：把 `recon DDIM public-100 step30` 的 explanation / boundary 写法收口成统一 artifact
+- 当前最值得推进的唯一目标切换为：把 `Phase E` 候选池的排序写成一份不会漂移的 decision-grade intake ordering artifact
 
 ## 攻击主线
 
@@ -159,7 +159,7 @@
 2. 保持 `recon` 主证据冻结，同时把 [2026-04-10-recon-explanation-layer](../workspaces/black-box/2026-04-10-recon-explanation-layer.md) 吸收到黑盒边界说明
 3. `variation / Towards` 继续保留为 formal local secondary track，并明确 real-API assets blocked
 4. 在统一表和叙事材料里补齐 `threat model / asset semantics / evidence level / external-validity boundary`
-5. 用 [future-phase-e-intake](future-phase-e-intake.md) 固定 `Phase E` 候选池排序，并只允许进入准入验证
+5. 用 [future-phase-e-intake](future-phase-e-intake.md) 与 [2026-04-10-phase-e-intake-ordering-review](../workspaces/intake/2026-04-10-phase-e-intake-ordering-review.md) 固定 `Phase E` 候选池排序，并只允许进入准入验证
 6. 用 [2026-04-10-finding-nemo-mechanism-intake](../workspaces/white-box/2026-04-10-finding-nemo-mechanism-intake.md)、[2026-04-10-finding-nemo-protocol-reconciliation](../workspaces/white-box/2026-04-10-finding-nemo-protocol-reconciliation.md) 与 [2026-04-10-finding-nemo-observability-smoke-contract](../workspaces/white-box/2026-04-10-finding-nemo-observability-smoke-contract.md) 固定 `Finding NeMo + local memorization + FB-Mem` 的 intake gate，并默认把它保留为下一条最可放行候选
 7. `PIA paper-aligned confirmation` 继续保留文档层条件性首位，但执行层视为 `no-go`
 8. 基于第一版统一总表继续补质量 / 成本列，并保持灰盒机理说明与 adaptive gate 一致
