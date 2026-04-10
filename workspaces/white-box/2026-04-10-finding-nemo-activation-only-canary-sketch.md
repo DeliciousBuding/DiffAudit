@@ -288,11 +288,11 @@
 
 为了避免误读，这里必须显式保留：
 
-1. 当前没有真实实现
-2. 当前没有新 CLI 子命令
-3. 当前没有真正的 activation hook adapter
-4. 当前没有 run
-5. 当前没有新的 summary artifact
+1. 当前没有 GPU run release
+2. 当前没有 benchmark / admitted 升级
+3. 当前没有 `cross-attention` 干预
+4. 当前没有 neuron ablation / reactivation
+5. 当前没有 mechanism claim
 
 ## Scheduler Note
 
@@ -329,10 +329,12 @@
 ## 当前 Verdict
 
 - `implementation_sketch = ready`
-- `code_change = not started`
+- `code_change = bounded adapter implemented`
 - `gpu_release = none`
-- `next_required_decision = whether to stop at sketch or draft a minimal adapter patch`
+- `next_required_decision = whether adapter-complete should remain zero-GPU hold or move into future smoke review`
+- `implementation_review`:
+  - `workspaces/white-box/2026-04-10-finding-nemo-activation-export-adapter-review.md`
 
 当前结论固定为：
 
-这份文档只把未来 `activation-only canary` 的实现草案写成 review-ready 形状，不构成 run release，也不构成实现已开始。
+这份文档最初只把未来 `activation-only canary` 的实现草案写成 review-ready 形状；截至当前，仓内已经落下一个受限的 CPU-only adapter，但它仍不构成 run release。

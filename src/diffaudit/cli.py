@@ -787,6 +787,53 @@ def build_parser() -> argparse.ArgumentParser:
         help="provenance label recorded in the emitted payload",
     )
 
+    gsa_observability_export_parser = subparsers.add_parser(
+        "export-gsa-observability-canary",
+        help="export one CPU-only sample-pair activation canary without authorizing any run release",
+    )
+    gsa_observability_export_parser.add_argument("--workspace", required=True)
+    gsa_observability_export_parser.add_argument(
+        "--repo-root",
+        default="workspaces/white-box/external/GSA",
+        help="path to local GSA repository root",
+    )
+    gsa_observability_export_parser.add_argument(
+        "--assets-root",
+        default="workspaces/white-box/assets/gsa-cifar10-1k-3shadow-epoch300-rerun1",
+        help="path to the admitted GSA assets root used for observability planning",
+    )
+    gsa_observability_export_parser.add_argument(
+        "--checkpoint-root",
+        default="workspaces/white-box/assets/gsa-cifar10-1k-3shadow-epoch300-rerun1/checkpoints/target",
+        help="path to the admitted target checkpoint root",
+    )
+    gsa_observability_export_parser.add_argument("--checkpoint-dir", default=None)
+    gsa_observability_export_parser.add_argument("--split", required=True)
+    gsa_observability_export_parser.add_argument("--sample-id", required=True)
+    gsa_observability_export_parser.add_argument("--control-split", required=True)
+    gsa_observability_export_parser.add_argument("--control-sample-id", required=True)
+    gsa_observability_export_parser.add_argument(
+        "--layer-selector",
+        default="mid_block.attentions.0.to_v",
+        help="exact GSA/DDPM module selector used by the contract",
+    )
+    gsa_observability_export_parser.add_argument(
+        "--signal-type",
+        default="activations",
+        choices=["activations"],
+        help="signal type exported by the canary",
+    )
+    gsa_observability_export_parser.add_argument("--timestep", type=int, default=999)
+    gsa_observability_export_parser.add_argument("--noise-seed", type=int, default=0)
+    gsa_observability_export_parser.add_argument("--prediction-type", default="epsilon")
+    gsa_observability_export_parser.add_argument("--device", default="cpu")
+    gsa_observability_export_parser.add_argument("--resolution", type=int, default=32)
+    gsa_observability_export_parser.add_argument(
+        "--provenance-status",
+        default="workspace-verified",
+        help="provenance label recorded in the emitted payload",
+    )
+
     gsa_runtime_mainline_parser = subparsers.add_parser(
         "run-gsa-runtime-mainline",
         help="run the canonical white-box GSA DDPM closed loop against real local assets",
@@ -1123,6 +1170,31 @@ def main(argv: list[str] | None = None) -> int:
             sample_id=args.sample_id,
             layer_selector=args.layer_selector,
             signal_type=args.signal_type,
+            resolution=args.resolution,
+            provenance_status=args.provenance_status,
+        )
+        print(json.dumps(payload, indent=2, ensure_ascii=True))
+        return 0 if payload["status"] == "ready" else 1
+
+    if args.command == "export-gsa-observability-canary":
+        from diffaudit.attacks.gsa_observability import export_gsa_observability_canary
+
+        payload = export_gsa_observability_canary(
+            workspace=args.workspace,
+            repo_root=args.repo_root,
+            assets_root=args.assets_root,
+            checkpoint_root=args.checkpoint_root,
+            checkpoint_dir=args.checkpoint_dir,
+            split=args.split,
+            sample_id=args.sample_id,
+            control_split=args.control_split,
+            control_sample_id=args.control_sample_id,
+            layer_selector=args.layer_selector,
+            signal_type=args.signal_type,
+            timestep=args.timestep,
+            noise_seed=args.noise_seed,
+            prediction_type=args.prediction_type,
+            device=args.device,
             resolution=args.resolution,
             provenance_status=args.provenance_status,
         )

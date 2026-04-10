@@ -26,7 +26,7 @@
 - `candidate`: `Finding NeMo + local memorization + FB-Mem`
 - `gpu_release`: `none`
 - `admitted_change`: `none`
-- `current_verdict`: `review-ready contract + read-only probe implemented`
+- `current_verdict`: `review-ready contract + read-only probe + cpu-only activation-export adapter implemented`
 
 ## 当前固定边界
 
@@ -65,10 +65,12 @@
 
 ### 当前状态
 
-- `status = planned-only`
-- `implementation = not yet present in repo`
+- `status = adapter-implemented`
+- `implementation = present in repo as bounded code path`
+- review note:
+  - `workspaces/white-box/2026-04-10-finding-nemo-activation-export-adapter-review.md`
 
-也就是说，下面定义的是未来入口的合同形状，不是假装当前仓库已经有现成命令。
+也就是说，当前仓库已经有受限实现，但它仍只证明 code path 存在，不授权任何 run。
 
 ### 解释器合同
 
@@ -83,24 +85,32 @@
 
 ### 计划中的命令形状
 
-保留的未来命令 ID：
+当前受限命令 ID：
 
-- `run-gsa-observability-smoke`
+- `export-gsa-observability-canary`
 
-计划中的命令形状：
+当前实现形状：
 
 ```powershell
-conda run -n diffaudit-research python scripts/export_gsa_observability_smoke.py `
+conda run -n diffaudit-research python -c "... from diffaudit.cli import main ..." `
+  export-gsa-observability-canary `
+  --workspace <workspace> `
   --assets-root workspaces/white-box/assets/gsa-cifar10-1k-3shadow-epoch300-rerun1 `
   --checkpoint-root workspaces/white-box/assets/gsa-cifar10-1k-3shadow-epoch300-rerun1/checkpoints/target `
+  --checkpoint-dir workspaces/white-box/assets/gsa-cifar10-1k-3shadow-epoch300-rerun1/checkpoints/target/checkpoint-9600 `
   --split target-member `
-  --sample-id target-member/<class>/<file> `
+  --sample-id target-member/00-data_batch_1-00965.png `
+  --control-split target-nonmember `
+  --control-sample-id target-nonmember/00-data_batch_1-00467.png `
   --layer-selector mid_block.attentions.0.to_v `
   --signal-type activations `
-  --output-dir workspaces/white-box/runs/finding-nemo-observability-smoke-planned
+  --timestep 999 `
+  --noise-seed 7 `
+  --prediction-type epsilon `
+  --device cpu
 ```
 
-这里的命令当前只作为合同保留，不代表脚本已经实现。
+这里的命令仍然只代表受限 adapter code path，不代表 smoke 已放行。
 
 ## Layer Naming Map
 
@@ -388,4 +398,4 @@ The request is automatic `no-go` if any of the following is true:
 - `gpu_release = none`
 - `default_path = zero-GPU`
 - `Finding NeMo = eligibility-gated for one minimal validation-smoke only`
-- `current action = finish contract, do not run`
+- `current action = hold at adapter-implemented, do not release any run`

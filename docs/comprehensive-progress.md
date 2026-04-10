@@ -25,7 +25,7 @@
 - `white-box same-protocol bridge` 已完成 `保持冻结` 收口
 - 当前不再有 active 主 GPU 问题
 - 当前 `PIA provenance dossier` 已 closed 为 `remain long-term blocker`
-- `Finding NeMo + local memorization + FB-Mem` 的 intake/eligibility note 已建立，当前最值得推进的唯一目标变为把 `portable observability smoke` 收口到只读 `contract-probe`，并把 `activation export` 保持为单独 blocker
+- `Finding NeMo + local memorization + FB-Mem` 的 intake/eligibility note 已建立，当前最值得推进的唯一目标变为把 `activation export adapter` 收口成 decision-grade review，同时继续保持 `gpu_release = none`
 
 ## 攻击主线
 
@@ -101,7 +101,9 @@
   - 新的 [2026-04-10-finding-nemo-protocol-reconciliation](../workspaces/white-box/2026-04-10-finding-nemo-protocol-reconciliation.md) 已明确：当前 admitted 白盒资产与 `Finding NeMo` 原始 `Stable Diffusion v1.4 / cross-attention value layers` 协议面不兼容；当前只允许继续做 zero-GPU 的 observability 规划
   - 新的 [2026-04-10-finding-nemo-observability-smoke-contract](../workspaces/white-box/2026-04-10-finding-nemo-observability-smoke-contract.md) 已把未来 smoke 的 `checkpoint_root / layer selector / sample binding / output schema / scheduler gate` 写成可审查合同；本轮又把它落实成 `read-only contract-probe`
   - `src/diffaudit/attacks/gsa_observability.py` 与 `probe-gsa-observability-contract` 已在 `Project` 内实现零 GPU 的合同解析入口，并已在真实 admitted 资产上返回 `status = ready`
-  - 新的 [2026-04-10-finding-nemo-activation-only-canary-sketch](../workspaces/white-box/2026-04-10-finding-nemo-activation-only-canary-sketch.md) 仍只保留为 `activation-only canary` 草案；当前尚未实现 activation export
+  - 本轮新增 `export-gsa-observability-canary` 与 `export_gsa_observability_canary`，已在 `Project` 内实现 CPU-only 的 sample-pair activation export，并写出 `summary.json + records.jsonl + tensor artifacts`
+  - 新的 [2026-04-10-finding-nemo-activation-export-adapter-review](../workspaces/white-box/2026-04-10-finding-nemo-activation-export-adapter-review.md) 已把这批实现固定为 `adapter implemented / run not released`
+  - [2026-04-10-finding-nemo-activation-only-canary-sketch](../workspaces/white-box/2026-04-10-finding-nemo-activation-only-canary-sketch.md) 继续保留为边界文档，但当前不再能写成“尚未开始 activation export”
 - 当前不能说的话：
   - 还不能说白盒论文级复现成功
   - 还不能说白盒 defense 比较已经完成

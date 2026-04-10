@@ -63,7 +63,7 @@
 - bridge 已完成 `保持冻结` 收口
 - 当前没有新的 active 主 GPU 问题
 - 当前最值得推进的唯一目标切换为：
-  - `Finding NeMo + local memorization + FB-Mem` 的 `portable observability smoke` 只读 `contract-probe`
+  - `Finding NeMo + local memorization + FB-Mem` 的 `activation-export adapter` 书面收口
 
 进入 `Phase E` 的 gate：
 
@@ -115,8 +115,8 @@
 
 - `Finding NeMo + local memorization + FB-Mem` 当前只获得了 `eligibility-gated for one minimal validation-smoke only` 的定义
 - 当前 `paper-faithful NeMo on admitted white-box assets = no-go`
-- 当前 `portable observability smoke` 已进入 `read-only contract-probe implemented`
-- 当前仍未实现 `activation export path`，也未获 run release
+- 当前 `portable observability smoke` 已进入 `read-only contract-probe + cpu-only activation-export adapter implemented`
+- 当前仍未获 run release
 - 在 intake 文档未补齐 `hook 点 / 资产需求 / compute budget / stop conditions / expected artifact` 前，不得申请 GPU
 
 研究侧明确不做：
