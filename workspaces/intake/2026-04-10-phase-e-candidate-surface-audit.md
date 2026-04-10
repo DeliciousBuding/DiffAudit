@@ -91,9 +91,9 @@
    - `current_verdict`
    - `current_shape`
    - `current_boundary`
-5. 相关叙事已把“默认放行顺序 / 最可放行候选”降级为：
-   - `准入验证优先顺序`
-   - `最先审查候选`
+5. 相关叙事已把“默认放行顺序 / 最可放行候选”进一步降级为：
+   - `准入验证文档排序`
+   - `当前最完整的 intake dossier`
 
 因此，这份审计的最终处置状态为：
 
@@ -113,7 +113,7 @@
 1. 新增或调整 `Phase E` 候选记录
 2. 任何文档重新描述 `Project -> Local-API -> Platform` 的系统读链
 3. 任何文档开始把 `phase-e-candidates.json` 与 `Local-API`、`job routing`、`contract registry` 同句绑定
-4. 任一候选状态从 `not-yet / blocked / hold` 进入 release review
+4. 任一候选状态从 `not-yet / blocked / hold` 进入单独的 hypothesis/budget review
 
 ## 当前明确不做
 

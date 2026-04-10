@@ -63,7 +63,7 @@ class ValidateIntakeIndexTests(unittest.TestCase):
         execution_layer = payload["intake_review_priority_order"]
         self.assertEqual([item["order"] for item in execution_layer], [1, 2, 3, 4])
         self.assertEqual(execution_layer[0]["current_shape"], "adapter-complete zero-GPU hold")
-        self.assertIn("separate release review required", execution_layer[0]["current_boundary"])
+        self.assertIn("separate hypothesis/budget review exists", execution_layer[0]["current_boundary"])
         self.assertEqual(execution_layer[1]["current_shape"], "comparability / intake hardening only")
         self.assertEqual(execution_layer[2]["current_shape"], "blocked baseline")
         self.assertEqual(execution_layer[3]["current_shape"], "protocol-and-asset decomposition intake only")

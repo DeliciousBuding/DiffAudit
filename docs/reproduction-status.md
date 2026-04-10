@@ -102,7 +102,7 @@
 
 1. 将 `PIA provenance` 的当前状态固定为 `remain long-term blocker`，保持 `workspace-verified + paper-alignment blocked by checkpoint/source provenance` 一致口径。
 2. 在 provenance 条件未变化前，不启动 `PIA paper-aligned confirmation`。
-3. 把 `Finding NeMo + local memorization + FB-Mem` 提升为执行层默认下一候选，并继续只做准入验证，不直接开跑。
+3. 把 `Finding NeMo + local memorization + FB-Mem` 保持为当前最完整的 intake dossier，并继续只做准入验证，不直接开跑。
 3.1 当前已补 `portable observability smoke` 合同、`activation-only canary` 草案、只读 `contract-probe` 和 CPU-only `activation export adapter`；当前这条线已正式固定为 `zero-GPU hold`，未来若继续推进，只能重新发起单独 release review，仍不得把 `Finding NeMo` 写成 execution-ready 或 GPU-ready。
 4. 固化 `recon` 公开资产映射与 `public-100 step10 / step30` 的解释口径，并把 `CopyMark` 写进现实边界说明，把频域论文写进解释层设计。
 5. 继续暂停 `Kandinsky 10/10` 与任何新黑盒 GPU 任务；如果只能做一件黑盒工作，优先做文档与边界固化，而不是新 run。

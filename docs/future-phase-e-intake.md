@@ -88,7 +88,7 @@
 
 - `activation export adapter = implemented`
 - `current verdict = zero-GPU hold`
-- `current boundary = non-GPU only; separate release review required before any validation-smoke discussion`
+- `current boundary = non-GPU only; remains an intake dossier until a separate hypothesis/budget review exists`
 - 这仍不是 `go`
 
 ### 进入条件
@@ -159,7 +159,7 @@
 
 - `W-2` 级候选 intake
 - comparability note
-- 是否值得进入 admitted 备选表的判断
+- 是否值得继续保留为 defended-track candidate 的判断
 
 ## 4. SecMI unblock
 
@@ -175,7 +175,7 @@
 
 - `current_verdict = not-yet`
 - `current_state = blocked baseline`
-- `current boundary = asset-blocked; no release review until real flagfile + checkpoint root arrive`
+- `current boundary = asset-blocked; real flagfile + checkpoint root remain missing`
 
 ### 进入条件
 
@@ -213,7 +213,7 @@
 
 - `current_verdict = not-yet`
 - `current_shape = protocol-and-asset decomposition intake`
-- `current boundary = paper-and-asset decomposition only; no release review until a minimal executable path exists`
+- `current boundary = paper-and-asset decomposition only; minimal executable path remains undefined`
 
 ### 进入条件
 
@@ -239,7 +239,7 @@
 ## 当前默认规则
 
 - 只要 `PIA provenance` 在窗口内解除，`PIA paper-aligned confirmation` 就保持第一优先
-- 当前 `PIA provenance dossier` 已 closed 为 `remain long-term blocker`，因此执行层默认优先推动 `Finding NeMo + local memorization + FB-Mem` 从 intake 升级
+- 当前 `PIA provenance dossier` 已 closed 为 `remain long-term blocker`，因此当前优先保持 `Finding NeMo + local memorization + FB-Mem` 作为最完整的 intake dossier
 - 这里的 `decision-grade` 只指 intake/eligibility 决策质量，不指 admitted 升级，不指 benchmark-ready，也不指 GPU 已放行
 - `DP-LoRA` 不抢第一条新问题
 - `SecMI` 与 `TMIA-DM` 继续后排
@@ -259,7 +259,7 @@
 
 - `PIA paper-aligned confirmation` 继续保留文档层条件性第 1 顺位
 - 但在 provenance 条件未变化前，不进入执行层
-- `Finding NeMo + local memorization + FB-Mem` 当前只是准入验证优先第 1 候选，不构成当前 GPU release
+- `Finding NeMo + local memorization + FB-Mem` 当前只是当前最完整的 intake dossier，不构成当前 GPU release
 - 这份“准入验证优先顺序”不等于现在立刻执行；它只定义未来 intake review 的顺序
 - 这份“准入验证优先顺序”不等于现在立刻执行；它只定义未来 intake review 的顺序
 

@@ -23,7 +23,7 @@
       "record_class": "phase-e-candidate",
       "current_verdict": "not-yet",
       "current_shape": "adapter-complete zero-GPU hold",
-      "current_boundary": "non-GPU only; separate release review required before any validation-smoke discussion",
+      "current_boundary": "non-GPU only; remains an intake dossier until a separate hypothesis/budget review exists",
       "source_doc": "workspaces/white-box/2026-04-10-finding-nemo-activation-export-adapter-review.md"
     },
     {
@@ -33,7 +33,7 @@
       "record_class": "phase-e-candidate",
       "current_verdict": "not-yet",
       "current_shape": "comparability / intake hardening only",
-      "current_boundary": "comparability-note only; no release review until protocol overlap is decision-grade",
+      "current_boundary": "comparability-note only; protocol-overlap dossier remains incomplete",
       "source_doc": "workspaces/intake/2026-04-10-dplora-comparability-intake.md"
     },
     {
@@ -43,7 +43,7 @@
       "record_class": "phase-e-candidate",
       "current_verdict": "not-yet",
       "current_shape": "blocked baseline",
-      "current_boundary": "asset-blocked; no release review until real flagfile plus checkpoint root arrive",
+      "current_boundary": "asset-blocked; real flagfile plus checkpoint root remain missing",
       "source_doc": "workspaces/gray-box/2026-04-10-secmi-unblock-decision.md"
     },
     {
@@ -53,7 +53,7 @@
       "record_class": "phase-e-candidate",
       "current_verdict": "not-yet",
       "current_shape": "protocol-and-asset decomposition intake only",
-      "current_boundary": "paper-and-asset decomposition only; no release review until a minimal executable path exists",
+      "current_boundary": "paper-and-asset decomposition only; minimal executable path remains undefined",
       "source_doc": "workspaces/gray-box/2026-04-10-tmia-dm-intake-decomposition.md"
     }
   ]
