@@ -26,7 +26,7 @@
 - 当前不再有 active 主 GPU 问题
 - 当前 `PIA provenance dossier` 已 closed 为 `remain long-term blocker`
 - `Finding NeMo + local memorization + FB-Mem` 的 intake/eligibility note 已建立，且 `activation export adapter` 已固定为 `decision-grade zero-GPU hold`
-- 当前最值得推进的唯一目标切换为：把 `PIA provenance dossier` 固定成更难漂移的 decision-grade blocker，并同步高层文档里的执行层 `no-go` 口径
+- 当前最值得推进的唯一目标切换为：把 `recon` 主证据冻结、`CopyMark` 边界层和频域解释层压成高层可直接复述的 decision-grade black-box package
 
 ## 攻击主线
 
@@ -47,6 +47,12 @@
   - 作为申报和答辩里的“风险存在”主证据
   - `variation` 适合作为第二黑盒候选线补充进申报叙事
   - 黑盒最终口径现在应区分 `main evidence`、`best single metric reference` 和 `secondary track`
+  - 当前高层固定包应同时带出：
+    - `main evidence = recon DDIM public-100 step30`
+    - `best single metric reference = recon DDIM public-50 step10`
+    - `secondary track = variation / Towards`
+    - `CopyMark = boundary only`
+    - 频域论文 = `explanation only`
 
 ### 灰盒
 

@@ -63,7 +63,7 @@
 - bridge 已完成 `保持冻结` 收口
 - 当前没有新的 active 主 GPU 问题
 - 当前最值得推进的唯一目标切换为：
-  - `PIA provenance dossier / checkpoint-source provenance` 的 decision-grade blocker hardening
+  - `recon` 主证据冻结 + `CopyMark` 边界收口 + 频域解释层固化
 
 进入 `Phase E` 的 gate：
 

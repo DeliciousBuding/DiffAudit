@@ -36,6 +36,25 @@
 
 这份文档不改上面三层，只解释它们的外推边界和后续分析设计。
 
+## 黑盒固定包（供高层文档直接复述）
+
+- `main evidence`
+  - `recon DDIM public-100 step30`
+- `best single metric reference`
+  - `recon DDIM public-50 step10`
+- `secondary track`
+  - `variation / Towards = formal local secondary track + blocked real-API assets`
+- `boundary layer`
+  - `CopyMark`
+- `explanation layer`
+  - 频域论文
+
+这五项共同构成当前黑盒 package。
+
+- 不改 admitted 主结果
+- 不触发新 black-box execution line
+- 不触发 Phase E 变更
+
 ## 当前正式裁决
 
 当前正式推荐分支固定为：
@@ -77,6 +96,18 @@
 
 ### 对外叙事边界
 
+当前对 `recon DDIM public-100 step30` 的四项边界冻结为：
+
+- `threat model`
+  - fine-tuned diffusion model 上的 black-box 成员推断
+- `asset semantics`
+  - controlled / public-subset / proxy-shadow-member 语义下的受控协议
+- `evidence level`
+  - `black-box main evidence`
+- `external-validity boundary`
+  - 结果证明成员信号在当前受控协议下可观测
+  - 不等于真实预训练模型版权取证已成立
+
 以后任何黑盒材料都建议显式带上：
 
 - `threat model`
@@ -103,7 +134,7 @@
 
 ### 当前建议分析设计
 
-未来只允许做低成本分析设计，不新增 admitted 主结果：
+当前只允许把下面内容写成低成本分析设计构想，不新增 admitted 主结果，也不触发新 run：
 
 1. 对 `recon` 结果做频率分组统计
    - 比较高频样本与低频样本的 membership score 分布

@@ -44,7 +44,7 @@
 
 ## 当前判断
 
-1. 当前仓库不是“只做黑盒”，而是“黑/灰/白三线统一规划、分层执行”；其中黑盒仍是当前第一优先执行线，灰盒维持可运行与待资产闭环状态，白盒维持研究准备态。
+1. 当前仓库不是“只做黑盒”，而是“黑/灰/白三线统一规划、分层执行”；其中灰盒 `PIA` 仍是当前第一优先主讲线，黑盒当前只推进 `recon` 主证据冻结 + `CopyMark` 边界收口 + 频域解释层固化，属于 `writing-only / non-GPU / no admitted change / no new execution line`。
 2. 黑盒主线当前不是“继续扩实验规模”，而是“固化 `recon` 公开子集的最终口径并保持文档一致”。
 3. `recon` 当前最可信主证据是 [recon-runtime-mainline-ddim-public-100-step30](../experiments/recon-runtime-mainline-ddim-public-100-step30/summary.json)，指标为 `auc=0.849 / asr=0.51 / tpr@1%fpr=1.0`；它之所以比 `step10` 更应被当作主证据，不是因为所有指标都更高，而是因为这次收口修正了 `shadow_non_member` 半成品目录被误复用的问题，并补齐了对应 artifact-mainline 证据。
 4. [recon-runtime-mainline-ddim-public-100-step10](../experiments/recon-runtime-mainline-ddim-public-100-step10/summary.json) 仍然是有价值的对照基线，指标为 `auc=0.788 / asr=0.63 / tpr@1%fpr=0.99`；`step30` 相比它提升了排序相关指标，但 `asr` 更低，因此当前只能说“修正后的 `step30` 证据更完整”，不能直接声称“更多采样步数必然更强”。
@@ -66,7 +66,7 @@
 15. 当前仓库已经不再缺“第一版统一总表”。[unified-attack-defense-table.md](../workspaces/implementation/2026-04-08-unified-attack-defense-table.md) 已经收口了 admitted main results；后续工作的重点从“有没有表”转成“是否继续补质量 / 成本列，以及是否纳入更多 admitted 行”。
 16. 当前 `white-box same-protocol bridge` 已正式以 `保持冻结` 收口；这是一条治理与资源排序决策，不是新的 benchmark 结果，也不改 admitted 合同。
 17. 截至当前，[2026-04-09-pia-provenance-dossier](../workspaces/gray-box/2026-04-09-pia-provenance-dossier.md) 已 closed 为 `remain long-term blocker`；因此当前 `PIA` 最强口径继续固定为 `workspace-verified + paper-alignment blocked by checkpoint/source provenance`。
-18. 当前最值得推进的唯一目标已从 `Phase E` 候选 machine-readable 边界同步进一步切回 `PIA provenance dossier / checkpoint-source provenance` 的 decision-grade blocker hardening，而不是继续尝试把 `PIA paper-aligned confirmation` 提前放行。
+18. 当前最值得推进的唯一目标已从 `PIA provenance dossier / checkpoint-source provenance` 的 decision-grade blocker hardening 顺延到 `recon` 主证据冻结 + `CopyMark` 边界收口 + 频域解释层固化，而不是继续尝试把任何黑盒解释层补丁写成新执行线。
 19. `Phase E` 当前允许进入准入验证，但不允许直接开跑。文档层固定排序仍见 [future-phase-e-intake](future-phase-e-intake.md)，但当前准入验证优先顺序已改为：`Finding NeMo + local memorization + FB-Mem` > `DP-LoRA` > `SecMI unblock` > `TMIA-DM intake`。
 20. 新的 [2026-04-10-finding-nemo-mechanism-intake](../workspaces/white-box/2026-04-10-finding-nemo-mechanism-intake.md) 已把 `Finding NeMo + local memorization + FB-Mem` 固定为 `intake/eligibility only`；当前最多只允许申请一次最小 `validation-smoke`，不授权任何新长 GPU run。
 21. 新的 [2026-04-10-finding-nemo-protocol-reconciliation](../workspaces/white-box/2026-04-10-finding-nemo-protocol-reconciliation.md) 已明确当前 admitted 白盒资产与 `Finding NeMo` 原始 `Stable Diffusion v1.4 / cross-attention value layers` 面不兼容；当前只允许继续推进 zero-GPU 的 `portable observability smoke` 规划。
@@ -78,6 +78,11 @@
    - `CopyMark = boundary layer`
    - 频域论文 = `explanation layer`
    - `recon DDIM public-100 step30 = black-box main evidence`
+26.1 当前黑盒 package 还必须连带固定：
+   - `recon DDIM public-50 step10 = best single metric reference`
+   - `variation / Towards = formal local secondary track + blocked real-API assets`
+   - 当前结论只成立于 `fine-tuned / controlled / public-subset / proxy-shadow-member` 语义下
+   - 不等于真实预训练模型版权取证已成立
 27. 新的 [2026-04-10-phase-e-intake-ordering-review](../workspaces/intake/2026-04-10-phase-e-intake-ordering-review.md) 已把 `Phase E` 队列正式拆成：
    - 文档层条件排序：`PIA paper-aligned confirmation`
    - 准入验证优先顺序：`Finding NeMo > DP-LoRA > SecMI unblock > TMIA-DM intake`
