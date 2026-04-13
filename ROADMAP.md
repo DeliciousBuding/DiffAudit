@@ -2,7 +2,7 @@
 
 ## 目标
 
-这份路线图只面向 `Project` 研究仓库。
+这份路线图只面向 `Research` 研究仓库。
 
 统一目标：
 
@@ -14,10 +14,10 @@
 
 截至 `2026-04-09`：
 
-- `Current Mainline`: `PIA + provisional G-1(all_steps)`
+- `Current Mainline`: `SMP-LoRA O03 epoch40 mini-run has been closed as single-run no-go after epoch40 = 0.6349; O04 seed stability mini-batch has been closed as single-seed no-go after seed7 = 0.5188; no-TF32 was already closed as mixed / not a stabilization answer; batch14 throughput remains the strongest candidate with variance note, not the default template; batch13 is now closed as no-gain; batch15 is now closed as unstable no-go; batch16 is now closed as degraded + O01 stalled-salvaged + PIA provenance sidecar`
 - `Current Risk Evidence`: `recon DDIM public-100 step30`
 - `Current Depth Line`: `GSA + W-1 strong-v3 full-scale`
-- `Active GPU Question`: `none (bridge closed-frozen; next queue not yet released)`
+- `Active GPU Question`: `none`
 - `Blocked Candidates`: `SecMI`, `variation real API`, `W-2`, `G-2`
 - `Intake-Ready Candidates`: `TMIA-DM`, `Finding NeMo`, `DP-LoRA`
 
@@ -45,7 +45,7 @@
 
 当前主阶段：
 
-- `Phase D: Same-Protocol Benchmark Bridge`
+- `Phase E: Open Next Research Question`
 
 当前尾项：
 
@@ -53,11 +53,12 @@
 
 当前长期执行顺序固定为：
 
-1. `PIA provenance` dossier 与书面裁决继续作为 CPU 侧长期 blocker 收口
-2. `PIA` 当前不再为 `8GB-safe portability ladder / defense-cost frontier` 预留新的 GPU 槽位；`G1-B` 已固定为 `no-go / not-requestable`，当前只继续 CPU 侧 provenance closure
-3. `recon` 当前已冻结为 `decision-grade black-box package`；默认只允许 read-only wording sync，不新开 black-box GPU
-4. `Finding NeMo` 继续保持 `adapter-complete zero-GPU hold`，只扩 observability packet 与 release-review 前置材料
-5. `Phase E` 候选池继续只做 intake 与排序；在 `Finding NeMo` 仍 hold 的前提下，首个值得准备 release-review 的 GPU 候选是 `DP-LoRA comparability ladder`
+1. `no-TF32` 已完成三样本复验并收口；当前保持 `active_gpu_question = none`，下一条 GPU 题必须先有单独的 next-question packet
+2. `O01 lambda=0.05` 已 closed 为 `stalled at step_10200 + salvage AUC 0.5770 > baseline 0.5565`
+3. `PIA provenance` dossier 与书面裁决继续作为 CPU 侧长期 blocker 收口，但不再阻塞 `O02`
+4. `O03/O04/O08` 继续只保留为 `SMP-LoRA` 下一批 release-review shortlist；没有单独 packet 前不放行 GPU
+4. `recon` 当前已冻结为 `decision-grade black-box package`；默认只允许 read-only wording sync，不新开 black-box GPU
+5. `Finding NeMo` 继续保持 `adapter-complete zero-GPU hold`
 6. `SecMI / TMIA-DM / variation real API` 在各自 blocker 解除前继续留在队列外
 
 当前长期计划工件见：
@@ -67,11 +68,11 @@
 当前阶段判定补充：
 
 - bridge 已完成 `保持冻结` 收口
-- 当前没有新的 active 主 GPU 问题
+- 当前没有 active 主 GPU 问题
 - 当前最值得推进的唯一目标切换为：
-  - `PIA provenance` 的 `release/source identity + split/paper mapping` CPU closure；`recon` 当前进入 frozen maintenance
+  - 固定 `O03 epoch40 = 0.6349` 的 single-run no-go 边界，并为下一条真正有信息增量的 GPU 题重新写 packet
 
-进入 `Phase E` 的 gate：
+当前阶段沿用的 gate：
 
 1. `PIA` 的 strongest claim、defended mainline、paper-alignment blocker 都已固定
 2. `GSA rerun1` 与 `W-1 strong-v3 full-scale` 的 same-protocol bridge 合同已经固定
@@ -94,8 +95,8 @@
   2. `DP-LoRA`
   3. `SecMI unblock`
   4. `TMIA-DM intake`
-- `Project/workspaces/intake/phase-e-candidates.json` 是当前唯一 machine-readable candidate ordering mirror
-- `Project/workspaces/intake/index.json.entries[]` 继续只承载 `promoted / system-intake-ready` contracts
+- `Research/workspaces/intake/phase-e-candidates.json` 是当前唯一 machine-readable candidate ordering mirror
+- `Research/workspaces/intake/index.json.entries[]` 继续只承载 `promoted / system-intake-ready` contracts
 
 ## GPU 研究规则
 
@@ -116,8 +117,8 @@
 
 当前问题收口后，真正可进入当前准入验证排序的 GPU 候选只允许从下面四项中选一条：
 
-1. `Finding NeMo + local memorization + FB-Mem`
-2. `DP-LoRA`
+1. `SMP-LoRA O03/O04/O08`
+2. `Finding NeMo + local memorization + FB-Mem`
 3. `SecMI unblock`
 4. `TMIA-DM intake`
 
@@ -139,6 +140,7 @@
 - 不继续重跑已冻结的 `PIA GPU128/256/512`
 - 不继续重跑 admitted `GSA 1k-3shadow`
 - 不在 `variation` 和 `SecMI` 资产未到位时烧 GPU
+- 不在下一条 GPU 题没有单独准入 packet 时放行新的 GPU 长任务
 
 ## Phase A: Freeze Current Admitted Mainlines
 
@@ -244,7 +246,7 @@
 
 每次阶段切换或运行态变化，至少同步：
 
-- `D:\Code\DiffAudit\Project\ROADMAP.md`
-- `D:\Code\DiffAudit\Project\docs\reproduction-status.md`
-- `D:\Code\DiffAudit\Project\docs\comprehensive-progress.md`
-- `D:\Code\DiffAudit\Project\docs\local-api.md`
+- `D:\Code\DiffAudit\Research\ROADMAP.md`
+- `D:\Code\DiffAudit\Research\docs\reproduction-status.md`
+- `D:\Code\DiffAudit\Research\docs\comprehensive-progress.md`
+- `D:\Code\DiffAudit\Research\docs\local-api.md`

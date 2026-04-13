@@ -1,12 +1,12 @@
 # Comprehensive Progress
 
-这份文档是 `Project` 研究仓库的综合进度入口。
+这份文档是 `Research` 研究仓库的综合进度入口。
 
 它不替代 [reproduction-status.md](reproduction-status.md) 的逐线细节，也不替代 [mia-defense-research-index.md](mia-defense-research-index.md) 的文献整理；它的职责是把“当前最能讲的攻击线、最缺的防御线、最短执行路径”放到一页里。
 
 ## 当前一句话
 
-当前仓库已经具备三条攻击线的基本骨架，但真正最成熟、最适合打成“攻击 + 防御”主讲闭环的，是灰盒 `PIA`。黑盒 `recon` 负责提供最强风险证据，白盒 `GSA` 负责提供深度与上界，防御线整体仍明显落后于攻击线；系统侧当前也应优先围绕 `PIA + admitted unified table` 组织读链，而不是继续以 `recon-only` 视角拼装结果。
+当前仓库已经具备三条攻击线的基本骨架；算法主讲闭环仍然是灰盒 `PIA`，而 `2026-04-13` 这一轮的最新控制已经把 `SMP-LoRA O02/O03/O04` 的三条稳定化尝试都收口了。关键变化有四条：一是 `train_smp_lora.py` 的默认 seed 合同已恢复历史 unseeded 行为，避免新的运行被 `seed=123` 污染；二是 `no-TF32` 三次结果最终落成 `0.3957 / 0.3838 / 0.5306`，说明它不是稳定化答案；三是 `O04 seed7 run1` 直接回退到 `AUC=0.5188`，使显式 seed 稳定性线停在 single-seed no-go；四是新的 `O03 epoch40 run1` 更进一步回退到 `AUC=0.6349`，把“长训可能更优”这条假设也快速证伪。当前 active GPU question 已回到 `none`。
 
 ## 进度总览
 
@@ -23,13 +23,13 @@
 当前阶段追加判断：
 
 - `white-box same-protocol bridge` 已完成 `保持冻结` 收口
-- 当前不再有 active 主 GPU 问题
+- 当前 active 主 GPU 问题已回到 `none`
 - 当前 `PIA provenance dossier` 已 closed 为 `remain long-term blocker`
 - `PIA 8GB portability ladder` 已完成 `probe + preview + GPU128/GPU256 adaptive pair`，当前 frontier 固定为 `GPU128 = quickest portable pair`、`GPU256 = decision rung with cost warning`
 - `Finding NeMo + local memorization + FB-Mem` 的 intake/eligibility note 已建立，且 `activation export adapter` 已固定为 `decision-grade zero-GPU hold`
 - [2026-04-10-recon-decision-package](../workspaces/black-box/2026-04-10-recon-decision-package.md) 已把黑盒五件套固定为 decision-grade package，本轮 [recon-artifact-mainline-public-100-step30-reverify-20260410-round28](../experiments/recon-artifact-mainline-public-100-step30-reverify-20260410-round28/summary.json) 又在 CPU 上复算到相同 headline metrics，且不改 admitted 结果
 - [2026-04-10-pia-provenance-split-protocol-delta](../workspaces/gray-box/2026-04-10-pia-provenance-split-protocol-delta.md) 已把 `split shape aligned locally / random-four-split protocol still open / strict redo currently dirty` 三点固定为新的 provenance supplement
-- 当前最值得推进的唯一目标切回：`PIA provenance` 的 `release/source identity + split/paper mapping` CPU closure；`recon` 当前进入 frozen maintenance，而不是继续扩 run
+- 当前最值得推进的唯一目标切到：守住 `O02 template decision packet`，防止 `batch14 throughput` 被误写成 `default template`；`O01` 已转为 stalled-salvaged evidence；`PIA provenance` 转为 CPU sidecar blocker；`recon` 当前进入 frozen maintenance，而不是继续扩 run
 
 ## 攻击主线
 
@@ -111,8 +111,8 @@
   - 新的 [2026-04-10-finding-nemo-mechanism-intake](../workspaces/white-box/2026-04-10-finding-nemo-mechanism-intake.md) 已把 `Finding NeMo + local memorization + FB-Mem` 固定为 intake/eligibility-only 候选，并把任何 future `validation-smoke` 压回 `separate release-review reconsideration` 的条件性上限
   - 新的 [2026-04-10-finding-nemo-protocol-reconciliation](../workspaces/white-box/2026-04-10-finding-nemo-protocol-reconciliation.md) 已明确：当前 admitted 白盒资产与 `Finding NeMo` 原始 `Stable Diffusion v1.4 / cross-attention value layers` 协议面不兼容；当前只允许继续做 zero-GPU 的 observability 规划
   - 新的 [2026-04-10-finding-nemo-observability-smoke-contract](../workspaces/white-box/2026-04-10-finding-nemo-observability-smoke-contract.md) 已把未来 smoke 的 `checkpoint_root / layer selector / sample binding / output schema / scheduler gate` 写成可审查合同；本轮又把它落实成 `read-only contract-probe`
-  - `src/diffaudit/attacks/gsa_observability.py` 与 `probe-gsa-observability-contract` 已在 `Project` 内实现零 GPU 的合同解析入口，并已在真实 admitted 资产上返回 `status = ready`
-  - 本轮新增 `export-gsa-observability-canary` 与 `export_gsa_observability_canary`，已在 `Project` 内实现 CPU-only 的 sample-pair activation export，并在 [finding-nemo-observability-canary-20260410-round24](../workspaces/white-box/runs/finding-nemo-observability-canary-20260410-round24/summary.json) 写出 `summary.json + records.jsonl + tensor artifacts`
+  - `src/diffaudit/attacks/gsa_observability.py` 与 `probe-gsa-observability-contract` 已在 `Research` 内实现零 GPU 的合同解析入口，并已在真实 admitted 资产上返回 `status = ready`
+  - 本轮新增 `export-gsa-observability-canary` 与 `export_gsa_observability_canary`，已在 `Research` 内实现 CPU-only 的 sample-pair activation export，并在 [finding-nemo-observability-canary-20260410-round24](../workspaces/white-box/runs/finding-nemo-observability-canary-20260410-round24/summary.json) 写出 `summary.json + records.jsonl + tensor artifacts`
   - 新的 [2026-04-10-finding-nemo-activation-export-adapter-review](../workspaces/white-box/2026-04-10-finding-nemo-activation-export-adapter-review.md) 已把这批实现正式固定为 `zero-GPU hold / queue not-requestable`
   - [2026-04-10-finding-nemo-activation-only-canary-sketch](../workspaces/white-box/2026-04-10-finding-nemo-activation-only-canary-sketch.md) 继续保留为边界文档，但当前不再能写成“尚未开始 activation export”
 - 当前不能说的话：
@@ -165,11 +165,12 @@
 
 ## 当前最短执行顺序
 
-1. 将 [2026-04-09-pia-provenance-dossier](../workspaces/gray-box/2026-04-09-pia-provenance-dossier.md) 固定为 `remain long-term blocker`，并保持 `workspace-verified + paper-aligned blocked by checkpoint/source provenance` 不漂移
-2. 保持 [2026-04-10-recon-decision-package](../workspaces/black-box/2026-04-10-recon-decision-package.md) 作为当前黑盒固定包，并明确它继续是 `writing-only / non-GPU / no admitted change`
-3. `variation / Towards` 继续保留为 formal local secondary track，并明确 real-API assets blocked
-4. 在统一表和叙事材料里补齐 `threat model / asset semantics / evidence level / external-validity boundary`
-5. 用 [future-phase-e-intake](future-phase-e-intake.md) 与 [2026-04-10-phase-e-intake-ordering-review](../workspaces/intake/2026-04-10-phase-e-intake-ordering-review.md) 固定 `Phase E` 候选池排序，并只允许进入准入验证
+1. 将 `SMP-LoRA O02` 固定为已封口 decision packet，并明确 `batch14 throughput` 只是 `strongest candidate with variance note`，而不是新默认模板
+2. 将 [2026-04-09-pia-provenance-dossier](../workspaces/gray-box/2026-04-09-pia-provenance-dossier.md) 固定为 CPU sidecar blocker，并保持 `workspace-verified + paper-alignment blocked by checkpoint/source provenance` 不漂移
+3. 保持 [2026-04-10-recon-decision-package](../workspaces/black-box/2026-04-10-recon-decision-package.md) 作为当前黑盒固定包，并明确它继续是 `writing-only / non-GPU / no admitted change`
+4. `variation / Towards` 继续保留为 formal local secondary track，并明确 real-API assets blocked
+5. 在统一表和叙事材料里补齐 `threat model / asset semantics / evidence level / external-validity boundary`
+6. 用 [future-phase-e-intake](future-phase-e-intake.md) 与 [2026-04-10-phase-e-intake-ordering-review](../workspaces/intake/2026-04-10-phase-e-intake-ordering-review.md) 固定 `Phase E` 候选池排序，并只允许进入准入验证
 5.1 用 [2026-04-10-intake-registry-phase-e-boundary-review](../workspaces/intake/2026-04-10-intake-registry-phase-e-boundary-review.md) 与 [phase-e-candidates.json](../workspaces/intake/phase-e-candidates.json) 把 machine-readable candidate ordering 从 `index.json.entries[]` 的 promoted contract 面里剥离出来
 6. 用 [2026-04-10-dplora-comparability-intake](../workspaces/intake/2026-04-10-dplora-comparability-intake.md) 把 `DP-LoRA` 固定为 `comparability / intake hardening only`
 7. 用 [2026-04-10-secmi-unblock-decision](../workspaces/gray-box/2026-04-10-secmi-unblock-decision.md) 把 `SecMI` 固定为 `not-yet / remain blocked baseline`
