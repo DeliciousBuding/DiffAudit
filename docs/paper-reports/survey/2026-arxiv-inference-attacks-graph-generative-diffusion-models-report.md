@@ -1,7 +1,7 @@
 # Inference Attacks Against Graph Generative Diffusion Models
 
 - Title: `Inference Attacks Against Graph Generative Diffusion Models`
-- Material Path: `D:/Code/DiffAudit/Project/references/materials/survey/2026-arxiv-inference-attacks-graph-generative-diffusion-models.pdf`
+- Material Path: `D:/Code/DiffAudit/Research/references/materials/survey/2026-arxiv-inference-attacks-graph-generative-diffusion-models.pdf`
 - Primary Track: `survey`
 - Venue / Year: `arXiv / 2026 (arXiv:2601.03701v1)`
 - Threat Model Category: `black-box privacy inference against graph generative diffusion models, covering graph reconstruction, property inference, and membership inference`
@@ -22,7 +22,7 @@
 - Title: `Inference Attacks Against Graph Generative Diffusion Models`
 - Authors: `Xiuling Wang, Xin Huang, Guibo Luo, Jianliang Xu`
 - Venue / year / version: `arXiv preprint, January 7 2026, arXiv:2601.03701v1`
-- Local PDF path: `D:/Code/DiffAudit/Project/references/materials/survey/2026-arxiv-inference-attacks-graph-generative-diffusion-models.pdf`
+- Local PDF path: `D:/Code/DiffAudit/Research/references/materials/survey/2026-arxiv-inference-attacks-graph-generative-diffusion-models.pdf`
 - Source URL: `https://arxiv.org/abs/2601.03701`
 
 ## Research Question

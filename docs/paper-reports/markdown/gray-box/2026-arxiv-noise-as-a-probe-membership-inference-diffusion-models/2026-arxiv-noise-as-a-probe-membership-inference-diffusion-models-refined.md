@@ -6,8 +6,8 @@ Noise as a Probe: Membership Inference Attacks on Diffusion Models Leveraging In
 - 作者：Puwei Lian，Yujun Cai，Songze Li，Bingkun Bao
 - 发表信息：arXiv 预印本，2026，`arXiv:2601.21628v1`
 - 威胁模型：gray-box，text-to-image diffusion membership inference with controllable initial noise
-- GitHub PDF：[2026-arxiv-noise-as-a-probe-membership-inference-diffusion-models.pdf](https://github.com/DeliciousBuding/DiffAudit/blob/main/references/materials/gray-box/2026-arxiv-noise-as-a-probe-membership-inference-diffusion-models.pdf)
-- 本地 PDF：`D:\Code\DiffAudit\Project\references\materials\gray-box\2026-arxiv-noise-as-a-probe-membership-inference-diffusion-models.pdf`
+- GitHub PDF：[2026-arxiv-noise-as-a-probe-membership-inference-diffusion-models.pdf](https://github.com/DeliciousBuding/DiffAudit-Research/blob/main/references/materials/gray-box/2026-arxiv-noise-as-a-probe-membership-inference-diffusion-models.pdf)
+- 本地 PDF：`D:\Code\DiffAudit\Research\references\materials\gray-box\2026-arxiv-noise-as-a-probe-membership-inference-diffusion-models.pdf`
 - born-digital 源稿：[2026-arxiv-noise-as-a-probe-membership-inference-diffusion-models.md](./2026-arxiv-noise-as-a-probe-membership-inference-diffusion-models.md)
 - 对应展示稿：[论文报告：Noise as a Probe: Membership Inference Attacks on Diffusion Models Leveraging Initial Noise](https://www.feishu.cn/docx/KjgqdFESSoivAlxKfjyc1JxJn8X)
 - 开源实现：论文称将公开实现，但当前 PDF 未给出仓库链接

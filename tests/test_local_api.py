@@ -184,7 +184,7 @@ class LocalApiTests(unittest.TestCase):
                     "job_type": "recon_artifact_mainline",
                     "workspace_name": "api-job-001",
                     "artifact_dir": "D:/artifacts/recon-scores",
-                    "repo_root": "D:/Code/DiffAudit/Project/external/Reconstruction-based-Attack",
+                    "repo_root": "D:/Code/DiffAudit/Research/external/Reconstruction-based-Attack",
                 },
             )
             self.assertEqual(create_response.status_code, 202)

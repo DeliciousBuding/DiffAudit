@@ -3,7 +3,7 @@ Black-box Membership Inference Attacks against Fine-tuned Diffusion Models
 
 ## 文档说明
 
-- GitHub PDF：[2025-ndss-black-box-membership-inference-fine-tuned-diffusion-models.pdf](https://github.com/DeliciousBuding/DiffAudit/blob/main/references/materials/black-box/2025-ndss-black-box-membership-inference-fine-tuned-diffusion-models.pdf)
+- GitHub PDF：[2025-ndss-black-box-membership-inference-fine-tuned-diffusion-models.pdf](https://github.com/DeliciousBuding/DiffAudit-Research/blob/main/references/materials/black-box/2025-ndss-black-box-membership-inference-fine-tuned-diffusion-models.pdf)
 - 对应报告：[论文报告：Black-box Membership Inference Attacks against Fine-tuned Diffusion Models](https://ncn24qi9j5mt.feishu.cn/docx/UJeGd68rJolI66xW7P1czimDnHb)
 - 开源实现：[py85252876/Reconstruction-based-Attack](https://github.com/py85252876/Reconstruction-based-Attack)
 - 整理说明：本稿基于 born-digital Markdown 导出结果整理，保留原论文章节主干，并尽量保留关键公式与插图引用。

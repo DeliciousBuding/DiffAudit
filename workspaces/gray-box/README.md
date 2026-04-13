@@ -11,7 +11,7 @@
 
 1. 当前灰盒主讲线是 `PIA`，先看 `2026-04-07-pia-runtime-mainline.md` 和 `assets/pia/manifest.json`
 2. 当前灰盒 baseline 是 `SecMI`，目标是尽快判定它能否进入真实资产闭环
-3. 当前最重要的新增工作不是再补 smoke，而是把现有 defense prototype 正式定义成 `G-1`
+3. 当前最重要的新增工作不是再补 smoke，而是基于 `GPU128 / GPU256 / GPU512` 三档对照把现有 defense prototype 固定成 `provisional G-1`
 4. `PIA` 论文必须自己读懂，先写清楚它依赖什么信号完成攻击，再设计为什么 `G-1` 应该有效
 5. 在 `PIA baseline + defended` 的正式对照表没出来前，不扩 `CelebA-HQ / ImageNet-64`
 6. 综合进度口径统一看 `../../docs/comprehensive-progress.md`

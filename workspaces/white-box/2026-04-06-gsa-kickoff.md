@@ -11,7 +11,7 @@
 
 ## A. Current White-Box Inventory
 
-### Papers already indexed in `Project`
+### Papers already indexed in `Research`
 
 - Main white-box paper: [2025-popets-white-box-membership-inference-diffusion-models-report.md](../../docs/paper-reports/white-box/2025-popets-white-box-membership-inference-diffusion-models-report.md)
 - Secondary white-box route: [2024-neurips-finding-nemo-localizing-memorization-neurons-diffusion-models-report.md](../../docs/paper-reports/white-box/2024-neurips-finding-nemo-localizing-memorization-neurons-diffusion-models-report.md)
@@ -29,7 +29,7 @@
   - [cli.py](../../src/diffaudit/cli.py)
   - [app.py](../../src/diffaudit/local_api/app.py)
 
-### Checkpoint / gradient / activation conditions found in `Project`
+### Checkpoint / gradient / activation conditions found in `Research`
 
 - Paper-aligned white-box checkpoints: `not found`
 - Paper-aligned white-box member/non-member dataset roots: `not found`
@@ -89,7 +89,7 @@ No GPU assets were requested or modified.
 
 ### Command actually run
 
-Run from `Project/workspaces/white-box`:
+Run from `Research/workspaces/white-box`:
 
 ```powershell
 $env:CUDA_VISIBLE_DEVICES=''

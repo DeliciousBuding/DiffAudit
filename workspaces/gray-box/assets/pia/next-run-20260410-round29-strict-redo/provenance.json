@@ -1,0 +1,21 @@
+{
+  "created_at": "2026-04-10T23:05:11+08:00",
+  "host": {
+    "cwd": "D:\\Code\\DiffAudit\\Research",
+    "hostname": "DELICIOUS233",
+    "pid": 14848,
+    "platform": "win32",
+    "python": "3.12.10 (tags/v3.12.10:0cc8128, Apr  8 2025, 12:21:36) [MSC v.1943 64 bit (AMD64)]"
+  },
+  "manifest_sha256": "de0dd68004c9ffbe5a57605adacfbb73219099cdb8fb5effc9f9121406a4d889",
+  "schema": "pia_next_run.provenance.v1",
+  "validation": {
+    "errors": [
+      "repo_root is dirty"
+    ],
+    "ok": false,
+    "warnings": [
+      "repo_root has uncommitted changes (git status not clean)"
+    ]
+  }
+}

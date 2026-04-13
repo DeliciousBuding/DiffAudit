@@ -3,9 +3,9 @@ CDI: Copyrighted Data Identification in Diffusion Models
 
 ## 文档说明
 
-- GitHub PDF：[2025-cvpr-cdi-copyrighted-data-identification-diffusion-models.pdf](https://github.com/DeliciousBuding/DiffAudit/blob/main/references/materials/gray-box/2025-cvpr-cdi-copyrighted-data-identification-diffusion-models.pdf)
+- GitHub PDF：[2025-cvpr-cdi-copyrighted-data-identification-diffusion-models.pdf](https://github.com/DeliciousBuding/DiffAudit-Research/blob/main/references/materials/gray-box/2025-cvpr-cdi-copyrighted-data-identification-diffusion-models.pdf)
 - 对应报告：[论文报告：CDI: Copyrighted Data Identification in Diffusion Models](https://www.feishu.cn/docx/QRzhdNv6NoryLIxPbz7crXbRnd5)
-- 对应展示稿：[2025-cvpr-cdi-copyrighted-data-identification-diffusion-models-report.md](https://github.com/DeliciousBuding/DiffAudit/blob/main/docs/paper-reports/gray-box/2025-cvpr-cdi-copyrighted-data-identification-diffusion-models-report.md)
+- 对应展示稿：[2025-cvpr-cdi-copyrighted-data-identification-diffusion-models-report.md](https://github.com/DeliciousBuding/DiffAudit-Research/blob/main/docs/paper-reports/gray-box/2025-cvpr-cdi-copyrighted-data-identification-diffusion-models-report.md)
 - 开源实现：[sprintml/copyrighted_data_identification](https://github.com/sprintml/copyrighted_data_identification)
 - 整理说明：本稿基于 born-digital Markdown 精修，只保留论文主线、关键公式、核心结果与对 DiffAudit 直接相关的结论，便于后续检索与引用。
 

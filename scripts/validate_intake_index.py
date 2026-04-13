@@ -34,6 +34,106 @@ def _extract_rel_paths(value: object) -> list[str]:
     return []
 
 
+def _validate_optional_summary_path(
+    errors: list[str],
+    research_root: Path,
+    entry_index: int,
+    manifest: dict,
+    field_name: str,
+) -> None:
+    value = manifest.get(field_name)
+    if value is None:
+        return
+    if not isinstance(value, str) or not value:
+        errors.append(f"entries[{entry_index}] manifest field {field_name!r} must be a non-empty string")
+        return
+    if not _is_rel_path(value):
+        errors.append(f"entries[{entry_index}] manifest field {field_name!r} must be a repo-relative path: {value!r}")
+        return
+    if not (research_root / value).resolve().exists():
+        errors.append(f"entries[{entry_index}] manifest field {field_name!r} does not exist: {value!r}")
+
+
+def _validate_required_string(errors: list[str], prefix: str, payload: dict, field_name: str) -> str | None:
+    value = payload.get(field_name)
+    if not isinstance(value, str) or not value:
+        errors.append(f"{prefix}.{field_name} must be a non-empty string")
+        return None
+    return value
+
+
+def _validate_phase_e_source_doc(
+    errors: list[str],
+    research_root: Path,
+    prefix: str,
+    payload: dict,
+) -> None:
+    source_doc = _validate_required_string(errors, prefix, payload, "source_doc")
+    if source_doc is None:
+        return
+    if not _is_rel_path(source_doc):
+        errors.append(f"{prefix}.source_doc must be a repo-relative path: {source_doc!r}")
+        return
+    if not (research_root / source_doc).resolve().exists():
+        errors.append(f"{prefix}.source_doc does not exist: {source_doc!r}")
+
+
+def _validate_phase_e_candidate_file(errors: list[str], research_root: Path, candidate_path: Path) -> None:
+    payload = _load_json(candidate_path)
+    if payload.get("schema") != "diffaudit.phase_e_candidates.v2":
+        errors.append(f"unsupported phase-e candidate schema: {payload.get('schema')!r}")
+        return
+
+    _validate_required_string(errors, "phase_e_candidates", payload, "updated_at")
+    _validate_required_string(errors, "phase_e_candidates", payload, "status")
+    _validate_required_string(errors, "phase_e_candidates", payload, "scope")
+
+    document_layer = payload.get("document_layer_conditional")
+    if not isinstance(document_layer, list) or not document_layer:
+        errors.append("phase_e_candidates.document_layer_conditional must be a non-empty list")
+    else:
+        for i, item in enumerate(document_layer):
+            prefix = f"phase_e_candidates.document_layer_conditional[{i}]"
+            if not isinstance(item, dict):
+                errors.append(f"{prefix} must be an object")
+                continue
+            for field_name in ("id", "track", "record_class", "current_verdict", "current_shape", "current_boundary"):
+                _validate_required_string(errors, prefix, item, field_name)
+            _validate_phase_e_source_doc(errors, research_root, prefix, item)
+            for forbidden in ("contract_key", "manifest", "compatibility", "admission"):
+                if forbidden in item:
+                    errors.append(f"{prefix} must not define {forbidden!r}")
+
+    execution_layer = payload.get("intake_review_priority_order")
+    if not isinstance(execution_layer, list) or not execution_layer:
+        errors.append("phase_e_candidates.intake_review_priority_order must be a non-empty list")
+    else:
+        expected_order = 1
+        for i, item in enumerate(execution_layer):
+            prefix = f"phase_e_candidates.intake_review_priority_order[{i}]"
+            if not isinstance(item, dict):
+                errors.append(f"{prefix} must be an object")
+                continue
+            order = item.get("order")
+            if not isinstance(order, int):
+                errors.append(f"{prefix}.order must be an integer")
+            elif order != expected_order:
+                errors.append(f"{prefix}.order must equal {expected_order}")
+            expected_order += 1
+            for field_name in ("id", "track", "record_class", "current_verdict", "current_shape", "current_boundary"):
+                _validate_required_string(errors, prefix, item, field_name)
+            _validate_phase_e_source_doc(errors, research_root, prefix, item)
+            for forbidden in ("contract_key", "manifest", "compatibility", "admission"):
+                if forbidden in item:
+                    errors.append(f"{prefix} must not define {forbidden!r}")
+
+
+def _derive_research_root(index_path: Path, fallback_root: Path) -> Path:
+    if index_path.parent.name == "intake" and index_path.parent.parent.name == "workspaces":
+        return index_path.parent.parent.parent
+    return index_path.parent if index_path.parent != index_path else fallback_root
+
+
 def main(argv: list[str] | None = None) -> int:
     parser = argparse.ArgumentParser(
         prog="validate_intake_index",
@@ -43,12 +143,13 @@ def main(argv: list[str] | None = None) -> int:
         "--index",
         type=Path,
         default=None,
-        help="Path to intake index JSON (default: <project_root>/workspaces/intake/index.json).",
+        help="Path to intake index JSON (default: <research_root>/workspaces/intake/index.json).",
     )
     args = parser.parse_args(argv)
 
-    project_root = Path(__file__).resolve().parents[1]
-    index_path = (args.index or (project_root / "workspaces" / "intake" / "index.json")).resolve()
+    fallback_root = Path(__file__).resolve().parents[1]
+    index_path = (args.index or (fallback_root / "workspaces" / "intake" / "index.json")).resolve()
+    research_root = _derive_research_root(index_path, fallback_root)
 
     errors: list[str] = []
     warnings: list[str] = []
@@ -85,7 +186,7 @@ def main(argv: list[str] | None = None) -> int:
                     errors.append(f"entries[{i}].manifest must be a repo-relative path: {manifest_rel!r}")
                     continue
 
-                manifest_path = (project_root / manifest_rel).resolve()
+                manifest_path = (research_root / manifest_rel).resolve()
                 if not manifest_path.exists():
                     errors.append(f"entries[{i}] manifest does not exist: {manifest_rel}")
                     continue
@@ -112,6 +213,9 @@ def main(argv: list[str] | None = None) -> int:
                 for key in ("contract_stage", "asset_grade", "provenance_status", "evidence_level"):
                     if key not in manifest:
                         errors.append(f"entries[{i}] manifest missing required field: {key}")
+
+                _validate_optional_summary_path(errors, research_root, i, manifest, "canonical_summary")
+                _validate_optional_summary_path(errors, research_root, i, manifest, "defense_summary")
 
                 admission = entry.get("admission") or {}
                 if isinstance(admission, dict):
@@ -158,11 +262,15 @@ def main(argv: list[str] | None = None) -> int:
                     if not _is_rel_path(assets_root):
                         errors.append(f"entries[{i}].paths.assets_root must be a repo-relative path: {assets_root!r}")
                     else:
-                        abs_assets_root = (project_root / assets_root).resolve()
+                        abs_assets_root = (research_root / assets_root).resolve()
                         if not abs_assets_root.exists():
                             warnings.append(
                                 f"entries[{i}] assets_root does not exist on this machine (ok if untracked): {assets_root}"
                             )
+
+        candidate_path = index_path.parent / "phase-e-candidates.json"
+        if candidate_path.exists():
+            _validate_phase_e_candidate_file(errors, research_root, candidate_path)
 
     if warnings:
         for w in warnings:

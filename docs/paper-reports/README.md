@@ -37,13 +37,13 @@ docs/paper-reports/
 
 This repo only defines the report content contract.
 
-Workspace-local Feishu publishing rules and commands now live outside `Project`:
+Workspace-local Feishu publishing rules and commands now live outside `Research`:
 
 - `D:\Code\DiffAudit\LocalOps\feishu\README.md`
 - `D:\Code\DiffAudit\LocalOps\feishu\docs\workspace-rules.md`
 - `D:\Code\DiffAudit\LocalOps\feishu\docs\source-map.md`
 
-Within `Project`, keep these expectations:
+Within `Research`, keep these expectations:
 
 - One report corresponds to one Feishu doc.
 - Each Feishu doc must be readable by anyone with the link.

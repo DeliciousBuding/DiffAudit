@@ -59,8 +59,8 @@ No direct value to the current `GSA` line.
 
 Reason:
 
-- current `GSA` repo context in `Project` only has an explicit CIFAR10 preprocessing path
-- current `PIA` Project-side integration also only names `CIFAR10` and `TINY-IN`
+- current `GSA` repo context in `Research` only has an explicit CIFAR10 preprocessing path
+- current `PIA` Research-side integration also only names `CIFAR10` and `TINY-IN`
 
 ## C. Why the DDPM Checkpoints Still Do Not Unblock GSA
 

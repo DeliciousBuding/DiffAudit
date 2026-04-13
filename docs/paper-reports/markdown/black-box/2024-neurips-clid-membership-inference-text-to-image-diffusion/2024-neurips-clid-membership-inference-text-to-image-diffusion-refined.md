@@ -3,7 +3,7 @@ Membership Inference on Text-to-image Diffusion Models via Conditional Likelihoo
 
 ## 文档说明
 
-- GitHub PDF：[2024-neurips-clid-membership-inference-text-to-image-diffusion.pdf](https://github.com/DeliciousBuding/DiffAudit/blob/main/references/materials/black-box/2024-neurips-clid-membership-inference-text-to-image-diffusion.pdf)
+- GitHub PDF：[2024-neurips-clid-membership-inference-text-to-image-diffusion.pdf](https://github.com/DeliciousBuding/DiffAudit-Research/blob/main/references/materials/black-box/2024-neurips-clid-membership-inference-text-to-image-diffusion.pdf)
 - 对应报告：[论文报告：Membership Inference on Text-to-image Diffusion Models via Conditional Likelihood Discrepancy](https://www.feishu.cn/docx/KkHfdqntFoDyrnxIjhNc2d1InZb)
 - 开源实现：[zhaisf/CLiD](https://github.com/zhaisf/CLiD)
 - 整理说明：本稿基于 born-digital Markdown 导出结果整理，保留原论文章节主干，并尽量保留关键公式与插图引用。

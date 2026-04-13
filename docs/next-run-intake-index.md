@@ -11,7 +11,7 @@ Board one-liner:
 Command (no install):
 
 ```powershell
-cd Project/tools/gsa_next_run
+cd Research/tools/gsa_next_run
 .\run.ps1 --assets-root .\examples\minimal\assets_root --repo-root .\examples\minimal\repo_root --config .\examples\minimal\config --out-dir ..\..\tmp\gsa_next_run_smoke
 ```
 
@@ -39,7 +39,7 @@ Board one-liner:
 Command (no install):
 
 ```powershell
-cd Project/tools/pia_next_run
+cd Research/tools/pia_next_run
 .\run.ps1 --config ..\..\tmp\configs\pia-cifar10-graybox-assets.local.yaml --member-split-root ..\..\external\PIA\DDPM --repo-root ..\..\external\PIA --out-dir ..\..\tmp\pia_next_run_smoke
 ```
 

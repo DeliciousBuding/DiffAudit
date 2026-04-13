@@ -1,0 +1,28 @@
+task:
+  name: variation-real-asset-probe
+  model_family: diffusion
+  access_level: black_box
+assets:
+  dataset_id: variation-query-set-v1
+  dataset_root: REPLACE_WITH_QUERY_IMAGE_ROOT
+  model_id: variation-api-target
+attack:
+  method: variation
+  num_samples: 0
+  parameters:
+    endpoint: REPLACE_WITH_VARIATION_API_OR_PROXY
+    num_averages: 10
+    distance_metric: l2
+    threshold_strategy: threshold
+report:
+  output_dir: experiments/variation-real-asset-probe
+
+# Expected real-asset layout before promoting this line:
+# <query_image_root>/
+#   member/
+#     *.png|jpg|jpeg|bmp|webp
+#   nonmember/
+#     *.png|jpg|jpeg|bmp|webp
+#
+# A flat directory may be enough for an asset probe,
+# but it is not enough for a paper-aligned evaluation claim.

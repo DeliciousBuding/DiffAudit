@@ -3,7 +3,7 @@ Are Diffusion Models Vulnerable to Membership Inference Attacks?
 
 ## 文档说明
 
-- GitHub PDF：[2023-icml-secmi-membership-inference-diffusion-models.pdf](https://github.com/DeliciousBuding/DiffAudit/blob/main/references/materials/gray-box/2023-icml-secmi-membership-inference-diffusion-models.pdf)
+- GitHub PDF：[2023-icml-secmi-membership-inference-diffusion-models.pdf](https://github.com/DeliciousBuding/DiffAudit-Research/blob/main/references/materials/gray-box/2023-icml-secmi-membership-inference-diffusion-models.pdf)
 - 对应报告：[论文报告：Are Diffusion Models Vulnerable to Membership Inference Attacks?](https://www.feishu.cn/docx/ALF5d68CpoIXePxkUUBcnJ0cnPb)
 - 开源实现：[jinhaoduan/SecMI](https://github.com/jinhaoduan/SecMI)
 - 整理说明：本稿基于 born-digital Markdown 导出结果整理，保留原论文章节主干，并尽量保留关键公式与关键图。

@@ -10,8 +10,8 @@ SIDE: Surrogate Conditional Data Extraction from Diffusion Models
 - 发表 venue / year / version：arXiv 2024；本地 PDF 对应 arXiv:2410.02467v7，日期为 2025-08-01
 - 论文主问题：在没有显式 prompt 或类别标签时，是否仍能从无条件扩散模型中定向提取训练样本
 - 威胁模型类别：主体是白盒训练数据提取；附录补充了黑盒查询式扩展与投毒微调后的后门提取扩展
-- 本地 PDF 路径：`D:\Code\DiffAudit\Project\references\materials\gray-box\2024-arxiv-side-extracting-training-data-unconditional-diffusion-models.pdf`
-- GitHub PDF 链接：[2024-arxiv-side-extracting-training-data-unconditional-diffusion-models.pdf](https://github.com/DeliciousBuding/DiffAudit/blob/main/references/materials/gray-box/2024-arxiv-side-extracting-training-data-unconditional-diffusion-models.pdf)
+- 本地 PDF 路径：`D:\Code\DiffAudit\Research\references\materials\gray-box\2024-arxiv-side-extracting-training-data-unconditional-diffusion-models.pdf`
+- GitHub PDF 链接：[2024-arxiv-side-extracting-training-data-unconditional-diffusion-models.pdf](https://github.com/DeliciousBuding/DiffAudit-Research/blob/main/references/materials/gray-box/2024-arxiv-side-extracting-training-data-unconditional-diffusion-models.pdf)
 - OCR 精修版链接：[OCR精修版：SIDE: Surrogate Conditional Data Extraction from Diffusion Models](https://www.feishu.cn/docx/RfqVdBxQfokTDzxjKsxcj9wWnJe)
 - 飞书原生 PDF：[2024-arxiv-side-extracting-training-data-unconditional-diffusion-models.pdf](https://ncn24qi9j5mt.feishu.cn/file/C1L2bJ2T9oOr6Kx1fQ7cvzlBnYx)
 - 开源实现：暂未找到官方代码

@@ -1,10 +1,10 @@
 {
-  "input": "D:\\Code\\DiffAudit\\Project\\references\\materials\\black-box\\2024-arxiv-towards-black-box-membership-inference-diffusion-models.pdf",
+  "input": "D:\\Code\\DiffAudit\\Research\\references\\materials\\black-box\\2024-arxiv-towards-black-box-membership-inference-diffusion-models.pdf",
   "apiUrl": "https://paddleocr.aistudio-app.com/api/v2/ocr/jobs",
   "model": "PaddleOCR-VL-1.5",
   "jobId": "34271855468912640",
   "jobState": "done",
-  "outputDir": "D:\\Code\\DiffAudit\\Project\\docs\\paper-reports\\ocr\\black-box\\2024-arxiv-towards-black-box-membership-inference-diffusion-models",
+  "outputDir": "D:\\Code\\DiffAudit\\Research\\docs\\paper-reports\\ocr\\black-box\\2024-arxiv-towards-black-box-membership-inference-diffusion-models",
   "mergedMarkdown": "merged.md",
   "manifestVersion": 1,
   "options": {

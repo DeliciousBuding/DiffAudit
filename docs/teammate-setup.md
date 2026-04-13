@@ -1,12 +1,12 @@
 # Teammate Setup
 
-这份文档面向刚拿到 `Project` 仓库的队友。
+这份文档面向刚拿到 `Research` 仓库的队友。
 
 目标不是解释算法，而是保证新机器能尽快进入“可跑命令、可补路径、可继续三线复现”的状态。
 
 ## 1. 拉仓后的第一步
 
-在 `Project` 根目录执行：
+在 `Research` 根目录执行：
 
 ```powershell
 conda env create -f environment.yml
@@ -63,6 +63,8 @@ python scripts/render_team_local_configs.py
 conda run -n diffaudit-research python -m diffaudit plan-recon --config configs/attacks/recon_plan.yaml
 conda run -n diffaudit-research python -m diffaudit plan-variation --config configs/attacks/variation_plan.yaml
 conda run -n diffaudit-research python -m diffaudit run-variation-synth-smoke --workspace experiments/variation-synth-smoke-local
+conda run -n diffaudit-research python -m diffaudit audit-recon-public-bundle --bundle-root external/recon-assets/ndss-2025-blackbox-membership-inference-fine-tuned-diffusion-models
+python scripts/init_variation_query_set.py --root D:/path/to/variation-query-set
 ```
 
 ### 灰盒
@@ -104,3 +106,5 @@ conda run -n diffaudit-research python -m diffaudit probe-gsa-assets --repo-root
 2. 把个人机器真实路径写进共享配置。
 3. 把 `smoke / preview / toy` 写成复现成功。
 4. 黑盒入口里误用 `SecMI`，它属于灰盒 baseline。
+5. `TMIA-DM` 已归档但属于灰盒候选，不要把它写成黑盒主线。
+6. `variation` 的真实恢复首先缺 query image set，不是先缺 API 代码。

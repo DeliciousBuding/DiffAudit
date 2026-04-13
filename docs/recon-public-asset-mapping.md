@@ -10,6 +10,13 @@
 
 - `external/recon-assets/ndss-2025-blackbox-membership-inference-fine-tuned-diffusion-models/`
 
+当前派生映射注释还存在于：
+
+- `external/recon-assets/ndss-2025-blackbox-membership-inference-fine-tuned-diffusion-models/derived-public-10/mapping-note.md`
+- `external/recon-assets/ndss-2025-blackbox-membership-inference-fine-tuned-diffusion-models/derived-public-25/mapping-note.md`
+- `external/recon-assets/ndss-2025-blackbox-membership-inference-fine-tuned-diffusion-models/derived-public-50/mapping-note.md`
+- `external/recon-assets/ndss-2025-blackbox-membership-inference-fine-tuned-diffusion-models/derived-public-100/mapping-note.md`
+
 ## 当前最稳妥的映射
 
 - `target_member`
@@ -38,9 +45,19 @@
 
 但公开数据集目录没有给出与这些 checkpoint 完全一一对应的四象限 split，所以当前只能做最保守映射，而不能声称“target/shadow/member/non-member 四元语义已完全核准”。
 
+第五，`derived-public-*` 目录下的 `mapping-note.md` 已经把当前运行链实际使用的映射显式记录成：
+
+- `target_member`
+- `target_non_member`
+- `shadow_non_member`
+- `shadow_member_proxy`
+
+这说明当前语义已经不是“临时口头约定”，而是本地派生资产的一部分；但因为它写的仍是 `shadow_member_proxy`，所以它仍然只能支撑“受约束的本地语义”，不能直接升级成论文完全核准。
+
 ## 当前结论
 
 - 可以合理声称：公开资产已经足以支撑 `Stable Diffusion + DDIM` 的 `10-sample public runtime-mainline`，以及 `kandinsky_v22` 的最小真实 `runtime-mainline`
+- 可以合理声称：当前 `derived-public-{10,25,50,100}` 都带有一致的本地映射注释，因此现有 `recon` 主证据链是“语义受约束但本地自洽”的
 - 不能合理声称：当前公开资产已经严格对齐论文里的完整 target/shadow/member/non-member 语义
 
 ## 推荐执行策略

@@ -25,6 +25,12 @@ RECON_WORKSPACE_FILES = (
 RECON_RUNTIME_DATASET_KEYS = ("text", "image")
 SUPPORTED_RECON_BACKENDS = {"stable_diffusion", "kandinsky_v22"}
 SUPPORTED_RECON_SCHEDULERS = {"default", "ddim", "dpm_solver_multistep"}
+RECON_PUBLIC_MAPPING_EXPECTED_LINES = (
+    "- target_member <- source-datasets/partial-100-target/member/dataset.pkl",
+    "- target_non_member <- source-datasets/partial-100-target/non_member/dataset.pkl",
+    "- shadow_non_member <- source-datasets/100-shadow/non_member/dataset.pkl",
+    "- shadow_member_proxy <- source-datasets/100-target/non_member/dataset.pkl",
+)
 
 
 @dataclass(frozen=True)
@@ -490,6 +496,82 @@ def prepare_recon_public_subset(
         "notes": [
             "This helper materializes a runnable public subset from the current public recon asset bundle.",
             "shadow_member_proxy remains a proxy semantic mapping until better asset evidence is found.",
+        ],
+    }
+
+
+def audit_recon_public_bundle(bundle_root: str | Path) -> dict[str, object]:
+    bundle_path = Path(bundle_root)
+    source_mapping = {
+        "target_member": bundle_path / "source-datasets" / "partial-100-target" / "member" / "dataset.pkl",
+        "target_non_member": bundle_path / "source-datasets" / "partial-100-target" / "non_member" / "dataset.pkl",
+        "shadow_member_proxy": bundle_path / "source-datasets" / "100-target" / "non_member" / "dataset.pkl",
+        "shadow_non_member": bundle_path / "source-datasets" / "100-shadow" / "non_member" / "dataset.pkl",
+    }
+    source_profiles = {
+        name: _load_recon_dataset_profile(path) for name, path in source_mapping.items()
+    }
+    source_checks = {
+        f"{name}_exists": bool(profile["exists"]) for name, profile in source_profiles.items()
+    }
+    source_checks.update(
+        {
+            f"{name}_valid_shape": "error" not in profile
+            for name, profile in source_profiles.items()
+        }
+    )
+    source_checks.update(
+        {
+            f"{name}_non_empty": bool(profile["non_empty"])
+            for name, profile in source_profiles.items()
+        }
+    )
+
+    derived_dirs = sorted(
+        path for path in bundle_path.glob("derived-public-*") if path.is_dir()
+    )
+    derived_reports: list[dict[str, object]] = []
+    derived_ready = True
+    for derived_dir in derived_dirs:
+        mapping_note = derived_dir / "mapping-note.md"
+        note_exists = mapping_note.exists()
+        note_text = mapping_note.read_text(encoding="utf-8") if note_exists else ""
+        missing_lines = [
+            line for line in RECON_PUBLIC_MAPPING_EXPECTED_LINES if line not in note_text
+        ]
+        note_has_proxy_warning = "shadow_member_proxy" in note_text and "proxy" in note_text
+        report = {
+            "name": derived_dir.name,
+            "path": str(derived_dir),
+            "mapping_note": str(mapping_note),
+            "mapping_note_exists": note_exists,
+            "mapping_lines_complete": not missing_lines,
+            "missing_mapping_lines": missing_lines,
+            "shadow_member_is_proxy": note_has_proxy_warning,
+        }
+        derived_reports.append(report)
+        if not note_exists or missing_lines or not note_has_proxy_warning:
+            derived_ready = False
+
+    status = "ready" if all(source_checks.values()) and derived_ready else "blocked"
+    return {
+        "status": status,
+        "bundle_root": str(bundle_path),
+        "source_profiles": source_profiles,
+        "checks": {
+            **source_checks,
+            "derived_public_variants_present": bool(derived_dirs),
+            "derived_public_mapping_notes_ready": derived_ready,
+        },
+        "derived_public_variants": derived_reports,
+        "semantic_gate": {
+            "current_state": "proxy-shadow-member",
+            "paper_aligned": False,
+            "allowed_claim": "local-semantic-chain-ready",
+        },
+        "notes": [
+            "The public recon bundle is locally self-consistent only if the four source datasets exist and each derived-public variant keeps the same mapping note.",
+            "shadow_member_proxy remains a proxy semantic mapping until better paper-aligned evidence appears.",
         ],
     }
 

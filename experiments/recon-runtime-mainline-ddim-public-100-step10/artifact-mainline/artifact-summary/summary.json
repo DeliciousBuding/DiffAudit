@@ -5,9 +5,9 @@
   "paper": "BlackBox_Reconstruction_ArXiv2023",
   "mode": "artifact-summary",
   "device": "cpu",
-  "workspace": "D:\\Code\\DiffAudit\\Project\\experiments\\recon-runtime-mainline-ddim-public-100-step10\\artifact-mainline\\artifact-summary",
+  "workspace": "D:\\Code\\DiffAudit\\Research\\experiments\\recon-runtime-mainline-ddim-public-100-step10\\artifact-mainline\\artifact-summary",
   "artifact_paths": {
-    "summary": "D:\\Code\\DiffAudit\\Project\\experiments\\recon-runtime-mainline-ddim-public-100-step10\\artifact-mainline\\artifact-summary\\summary.json"
+    "summary": "D:\\Code\\DiffAudit\\Research\\experiments\\recon-runtime-mainline-ddim-public-100-step10\\artifact-mainline\\artifact-summary\\summary.json"
   },
   "assets": {
     "artifact_files": [

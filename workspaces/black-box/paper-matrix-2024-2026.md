@@ -7,6 +7,7 @@
 | `2025-324-paper` | 2025 | fine-tuned diffusion 黑盒 MIA | 图像或 prompt 驱动查询 | 最终生成结果 | 微调模型访问接口 | AUC、ASR、成员判别效果 | `black-box` | 当前主复现主线 |
 | `Towards Black-Box Membership Inference Attack for Diffusion Models` | 2024 | 纯 API black-box | image variation 或等价输入 | 输出图像 | 无需内部信号 | AUC、TPR/FPR | `black-box` | 做 API-only baseline |
 | `CLiD` | 2024 | prompt-conditioned black-box / gray-box | 图文对 | 条件似然差异或等价评分 | prompt、文本条件 | AUC、TPR@FPR | `black-box` / `gray-box` | 做 text-to-image 扩展 |
+| `TMIA-DM` | 2026 | query-based gray-box | 中间时间步查询 | 时序噪声 / 噪声梯度 | 需要中间扩散输出接口 | ASR | `gray-box` | 只做边界纠偏，不并入黑盒主线 |
 | `CDI` | 2025 | 数据集级审计 / copyright identification | 一组查询样本 | 聚合成员性证据 | 数据集级候选样本集合 | 数据集级判定 | `gray-box`，次选 `black-box` | 作为审计证据链扩展 |
 | `Noise as a Probe` | 2026 | 可控初始噪声下的 MIA | 噪声 + 查询样本 | 最终生成或中间响应 | 初始噪声控制能力 | AUC、低 FPR 指标 | `gray-box` | 先做观察名单，再决定是否接主线 |
 | `SIDE` | 2024 | 训练数据提取 / 理论背景 | 无条件采样与提取流程 | 候选重构样本 | 更强攻击假设 | 提取成功率、泄露证据 | `gray-box` / `white-box` 背景 | 用作边界与泄露补充阅读 |

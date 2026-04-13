@@ -10,8 +10,8 @@ Membership Inference Attacks for Face Images Against Fine-Tuned Latent Diffusion
 - 发表信息：VISAPP 2025
 - 论文主问题：当 Stable Diffusion v1.5 被一批人脸照片微调后，黑盒攻击者能否仅凭文本查询和生成结果判断该批照片是否属于训练集
 - 威胁模型类别：`black-box`、数据集级成员推断、面向人脸域微调模型
-- 本地 PDF 路径：`D:/Code/DiffAudit/Project/references/materials/black-box/2025-visapp-membership-inference-face-fine-tuned-latent-diffusion-models.pdf`
-- GitHub PDF 链接：[2025-visapp-membership-inference-face-fine-tuned-latent-diffusion-models.pdf](https://github.com/DeliciousBuding/DiffAudit/blob/main/references/materials/black-box/2025-visapp-membership-inference-face-fine-tuned-latent-diffusion-models.pdf)
+- 本地 PDF 路径：`D:/Code/DiffAudit/Research/references/materials/black-box/2025-visapp-membership-inference-face-fine-tuned-latent-diffusion-models.pdf`
+- GitHub PDF 链接：[2025-visapp-membership-inference-face-fine-tuned-latent-diffusion-models.pdf](https://github.com/DeliciousBuding/DiffAudit-Research/blob/main/references/materials/black-box/2025-visapp-membership-inference-face-fine-tuned-latent-diffusion-models.pdf)
 - 原文 Markdown 精修版链接：[OCR精修版：Membership Inference Attacks for Face Images Against Fine-Tuned Latent Diffusion Models](https://www.feishu.cn/docx/Vmrzdsvo3oDbTHxXng1cGUJXn5d)
 - 飞书原生 PDF：[2025-visapp-membership-inference-face-fine-tuned-latent-diffusion-models.pdf](https://ncn24qi9j5mt.feishu.cn/file/FVslb3Bbzo2Nb7xDylpcF5TKn2c)
 - 开源实现：[osquera/MIA_SD](https://github.com/osquera/MIA_SD)

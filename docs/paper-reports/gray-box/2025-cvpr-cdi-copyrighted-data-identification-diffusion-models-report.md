@@ -7,8 +7,8 @@ CDI: Copyrighted Data Identification in Diffusion Models
 - 发表 venue / year / version：CVPR 2025 conference paper
 - 论文主问题：给定一组公开嫌疑作品 `P` 与一组同分布但未公开的对照作品 `U`，能否以统计显著性的形式证明 `P` 曾被用于训练目标扩散模型
 - 威胁模型类别：灰盒为主、兼容白盒的数据集级训练数据识别 / 版权审计
-- 本地 PDF 路径：`D:\Code\DiffAudit\Project\references\materials\gray-box\2025-cvpr-cdi-copyrighted-data-identification-diffusion-models.pdf`
-- GitHub PDF 链接：[2025-cvpr-cdi-copyrighted-data-identification-diffusion-models.pdf](https://github.com/DeliciousBuding/DiffAudit/blob/main/references/materials/gray-box/2025-cvpr-cdi-copyrighted-data-identification-diffusion-models.pdf)
+- 本地 PDF 路径：`D:\Code\DiffAudit\Research\references\materials\gray-box\2025-cvpr-cdi-copyrighted-data-identification-diffusion-models.pdf`
+- GitHub PDF 链接：[2025-cvpr-cdi-copyrighted-data-identification-diffusion-models.pdf](https://github.com/DeliciousBuding/DiffAudit-Research/blob/main/references/materials/gray-box/2025-cvpr-cdi-copyrighted-data-identification-diffusion-models.pdf)
 - OCR 精修版链接：[OCR精修版：CDI: Copyrighted Data Identification in Diffusion Models](https://www.feishu.cn/docx/LV94dtKqWo9PNuxtqhxcDRpNnmg)
 - 飞书原生 PDF：[2025-cvpr-cdi-copyrighted-data-identification-diffusion-models.pdf](https://ncn24qi9j5mt.feishu.cn/file/Lf4nb8TtmoFg5Dx0PffcQ5pwnXc)
 - 开源实现：[sprintml/copyrighted_data_identification](https://github.com/sprintml/copyrighted_data_identification)

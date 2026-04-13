@@ -4,7 +4,7 @@ team:
   os: windows-or-linux-or-macos
 
 repo:
-  project_root: .
+  research_root: .
 
 black_box:
   recon:

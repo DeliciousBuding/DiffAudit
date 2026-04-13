@@ -4,7 +4,7 @@ Noise Aggregation Analysis Driven by Small-Noise Injection: Efficient Membership
 
 ## 文档说明
 
-- GitHub PDF：[2025-arxiv-small-noise-injection-membership-inference-diffusion-models.pdf](https://github.com/DeliciousBuding/DiffAudit/blob/main/references/materials/gray-box/2025-arxiv-small-noise-injection-membership-inference-diffusion-models.pdf)
+- GitHub PDF：[2025-arxiv-small-noise-injection-membership-inference-diffusion-models.pdf](https://github.com/DeliciousBuding/DiffAudit-Research/blob/main/references/materials/gray-box/2025-arxiv-small-noise-injection-membership-inference-diffusion-models.pdf)
 - 对应展示稿：[Noise Aggregation Analysis Driven by Small-Noise Injection: Efficient Membership Inference for Diffusion Models](https://www.feishu.cn/docx/QswEdNkWKoHj5YxeAXKcusROnHh)
 - 开源实现：论文正文未给出公开代码仓库
 - 整理说明：本稿基于同目录 born-digital Markdown 与本地阅读报告精修，优先保留威胁模型、方法逻辑、关键数字和对 DiffAudit 的落点

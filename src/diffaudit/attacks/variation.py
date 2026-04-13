@@ -15,6 +15,7 @@ from diffaudit.config import AuditConfig
 SUPPORTED_DISTANCE_METRICS = {"l2", "cosine"}
 SUPPORTED_THRESHOLD_STRATEGIES = {"threshold", "distribution"}
 SUPPORTED_IMAGE_SUFFIXES = {".png", ".jpg", ".jpeg", ".bmp", ".webp"}
+VARIATION_SPLIT_NAMES = ("member", "nonmember")
 
 
 @dataclass(frozen=True)
@@ -72,29 +73,64 @@ def _list_query_images(query_image_root: str | Path) -> list[Path]:
     )
 
 
+def _list_split_query_images(query_image_root: str | Path) -> dict[str, list[Path]]:
+    query_root = Path(query_image_root)
+    result: dict[str, list[Path]] = {}
+    for split in VARIATION_SPLIT_NAMES:
+        split_root = query_root / split
+        if not split_root.exists():
+            result[split] = []
+            continue
+        result[split] = sorted(
+            path
+            for path in split_root.iterdir()
+            if path.is_file() and path.suffix.lower() in SUPPORTED_IMAGE_SUFFIXES
+        )
+    return result
+
+
 def probe_variation_assets(
     query_image_root: str | Path,
     endpoint: str,
 ) -> dict[str, object]:
     query_root = Path(query_image_root)
     query_images = _list_query_images(query_root)
+    split_query_images = _list_split_query_images(query_root)
+    has_member_split = bool(split_query_images["member"])
+    has_nonmember_split = bool(split_query_images["nonmember"])
     checks = {
         "query_image_root": query_root.exists(),
         "query_images_present": bool(query_images),
         "endpoint": bool(endpoint),
+        "member_split_present": has_member_split,
+        "nonmember_split_present": has_nonmember_split,
+        "paper_eval_layout": has_member_split and has_nonmember_split,
     }
-    status = "ready" if all(checks.values()) else "blocked"
+    status = (
+        "ready"
+        if checks["query_image_root"] and (checks["query_images_present"] or checks["paper_eval_layout"]) and checks["endpoint"]
+        else "blocked"
+    )
     paths = {
         "query_image_root": str(query_root),
         "endpoint": endpoint,
         "query_images": [str(path) for path in query_images],
+        "member_query_images": [str(path) for path in split_query_images["member"]],
+        "nonmember_query_images": [str(path) for path in split_query_images["nonmember"]],
     }
     labels = {
         "query_image_root": "query_image_root",
         "query_images_present": "query images",
         "endpoint": "endpoint",
+        "member_split_present": "member split",
+        "nonmember_split_present": "nonmember split",
+        "paper_eval_layout": "paper evaluation layout",
     }
-    missing_keys = [name for name, is_ready in checks.items() if not is_ready]
+    missing_keys = [
+        name
+        for name in ("query_image_root", "query_images_present", "endpoint")
+        if not checks[name]
+    ]
     missing = [
         str(query_root) if name == "query_image_root" else labels[name]
         for name in missing_keys
@@ -103,6 +139,12 @@ def probe_variation_assets(
         "status": status,
         "checks": checks,
         "paths": paths,
+        "layout": {
+            "flat_query_count": len(query_images),
+            "member_query_count": len(split_query_images["member"]),
+            "nonmember_query_count": len(split_query_images["nonmember"]),
+            "paper_eval_layout_ready": checks["paper_eval_layout"],
+        },
         "missing": missing,
         "missing_keys": missing_keys,
         "missing_items": [Path(item).name if Path(item).name else item for item in missing],
@@ -132,7 +174,9 @@ def probe_variation_dry_run(config: AuditConfig) -> tuple[int, dict[str, object]
             endpoint=plan.endpoint,
         )
         checks = {
-            **summary["checks"],
+            "query_image_root": bool(summary["checks"]["query_image_root"]),
+            "query_images_present": bool(summary["checks"]["query_images_present"]),
+            "endpoint": bool(summary["checks"]["endpoint"]),
             "distance_metric_supported": plan.distance_metric in SUPPORTED_DISTANCE_METRICS,
             "threshold_strategy_supported": plan.threshold_strategy in SUPPORTED_THRESHOLD_STRATEGIES,
             "query_count_positive": len(summary["paths"]["query_images"]) > 0,
@@ -148,6 +192,9 @@ def probe_variation_dry_run(config: AuditConfig) -> tuple[int, dict[str, object]
         "query_image_root": "query_image_root",
         "query_images_present": "query images",
         "endpoint": "endpoint",
+        "member_split_present": "member split",
+        "nonmember_split_present": "nonmember split",
+        "paper_eval_layout": "paper evaluation layout",
         "distance_metric_supported": "distance metric",
         "threshold_strategy_supported": "threshold strategy",
         "query_count_positive": "query count",
@@ -162,6 +209,12 @@ def probe_variation_dry_run(config: AuditConfig) -> tuple[int, dict[str, object]
         "status": status,
         "entrypoint": plan.entrypoint,
         "checks": checks,
+        "layout": summary.get("layout", {}),
+        "layout_checks": {
+            "member_split_present": bool(summary["checks"].get("member_split_present")),
+            "nonmember_split_present": bool(summary["checks"].get("nonmember_split_present")),
+            "paper_eval_layout": bool(summary["checks"].get("paper_eval_layout")),
+        },
         "paths": summary["paths"],
         "missing": missing,
         "missing_keys": missing_keys,

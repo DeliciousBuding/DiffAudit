@@ -4,7 +4,7 @@ SIDE: Surrogate Conditional Data Extraction from Diffusion Models
 
 ## 文档说明
 
-- GitHub PDF：[2024-arxiv-side-extracting-training-data-unconditional-diffusion-models.pdf](https://github.com/DeliciousBuding/DiffAudit/blob/main/references/materials/gray-box/2024-arxiv-side-extracting-training-data-unconditional-diffusion-models.pdf)
+- GitHub PDF：[2024-arxiv-side-extracting-training-data-unconditional-diffusion-models.pdf](https://github.com/DeliciousBuding/DiffAudit-Research/blob/main/references/materials/gray-box/2024-arxiv-side-extracting-training-data-unconditional-diffusion-models.pdf)
 - 对应展示稿：[论文报告：SIDE: Surrogate Conditional Data Extraction from Diffusion Models](https://www.feishu.cn/docx/UzXzdZMx6oeAx8xfmbrcsW1znjg)
 - 开源实现：暂未找到官方代码
 - 整理说明：本稿基于同目录 born-digital Markdown 精修，保留方法逻辑、关键公式、主实验数字和附录黑盒结论，便于后续继续压缩或写回索引
