@@ -5,6 +5,7 @@
 - `reproduction-status.md`: per-track reproduction status
 - `comprehensive-progress.md`: one-page integrated progress view for the research repo
 - `mainline-narrative.md`: current research storyline, claimable contributions, and presentation-ready framing
+- `recon-artifact-replay-guidance.md`: separation notes for Local-API recon-artifact replay directories versus admitted evidence
 - `future-phase-e-intake.md`: ordered intake queue, entry gates, and expected outputs for the next research question
 - `next-run-intake-index.md`: next-run intake gate entrypoints and contracts
 - `mia-defense-research-index.md`: route, literature, and asset mapping for the MIA defense strategy document
