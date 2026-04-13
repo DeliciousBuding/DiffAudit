@@ -6,7 +6,7 @@ param(
     [string]$OutputDir,
 
     [string]$PythonExe = "C:\Users\Ding\miniforge3\envs\diffaudit-research\python.exe",
-    [string]$TrainScript = "D:\Code\DiffAudit\Project\workspaces\white-box\external\GSA\DDPM\train_unconditional.py",
+    [string]$TrainScript = "D:\Code\DiffAudit\Research\workspaces\white-box\external\GSA\DDPM\train_unconditional.py",
     [int]$Resolution = 32,
     [int]$TrainBatchSize = 32,
     [int]$NumEpochs = 200,

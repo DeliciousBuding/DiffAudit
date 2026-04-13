@@ -21,7 +21,7 @@
         }
       ],
       "kind": "file",
-      "root": "D:\\Code\\DiffAudit\\Project\\tmp\\configs\\pia-cifar10-graybox-assets.local.yaml",
+      "root": "D:\\Code\\DiffAudit\\Research\\tmp\\configs\\pia-cifar10-graybox-assets.local.yaml",
       "tree_sha256": "57e99d0ff1834bd5f7fa64b6de8f06eb29e13e4dc23ef3ddb905d41b6007878a"
     },
     "member_split_root": {
@@ -96,14 +96,14 @@
         }
       ],
       "kind": "dir",
-      "root": "D:\\Code\\DiffAudit\\Project\\external\\PIA\\DDPM",
+      "root": "D:\\Code\\DiffAudit\\Research\\external\\PIA\\DDPM",
       "tree_sha256": "31ef17bf5f399205eee80926bad4a382b2a9fe1a300e5fa85443a2b0559b3c71"
     }
   },
   "paths": {
-    "config": "D:\\Code\\DiffAudit\\Project\\tmp\\configs\\pia-cifar10-graybox-assets.local.yaml",
-    "member_split_root": "D:\\Code\\DiffAudit\\Project\\external\\PIA\\DDPM",
-    "repo_root": "D:\\Code\\DiffAudit\\Project\\external\\PIA"
+    "config": "D:\\Code\\DiffAudit\\Research\\tmp\\configs\\pia-cifar10-graybox-assets.local.yaml",
+    "member_split_root": "D:\\Code\\DiffAudit\\Research\\external\\PIA\\DDPM",
+    "repo_root": "D:\\Code\\DiffAudit\\Research\\external\\PIA"
   },
   "schema": "pia_next_run.manifest.v1",
   "validation": {

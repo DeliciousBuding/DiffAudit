@@ -3,7 +3,7 @@ Towards Black-Box Membership Inference Attack for Diffusion Models
 
 ## 文档说明
 
-- GitHub PDF：[2024-arxiv-towards-black-box-membership-inference-diffusion-models.pdf](https://github.com/DeliciousBuding/DiffAudit/blob/main/references/materials/black-box/2024-arxiv-towards-black-box-membership-inference-diffusion-models.pdf)
+- GitHub PDF：[2024-arxiv-towards-black-box-membership-inference-diffusion-models.pdf](https://github.com/DeliciousBuding/DiffAudit-Research/blob/main/references/materials/black-box/2024-arxiv-towards-black-box-membership-inference-diffusion-models.pdf)
 - 对应报告：[论文报告：Towards Black-Box Membership Inference Attack for Diffusion Models](https://www.feishu.cn/docx/C8qcdxXjpoK3VyxMCzGcxUaOnXg)
 - 开源实现：[lijingwei0502/diffusion_mia](https://github.com/lijingwei0502/diffusion_mia)
 - 整理说明：本稿基于 born-digital Markdown 导出结果整理，保留论文主干章节、关键公式与关键图，供飞书中连续阅读与检索。

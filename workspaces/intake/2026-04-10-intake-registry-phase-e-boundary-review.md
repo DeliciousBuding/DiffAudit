@@ -13,7 +13,7 @@
 
 这份文档只回答一个问题：
 
-- `Project/workspaces/intake/index.json` 是否应该从当前的 promoted contract 目录扩展到包含 `Phase E` 候选索引。
+- `Research/workspaces/intake/index.json` 是否应该从当前的 promoted contract 目录扩展到包含 `Phase E` 候选索引。
 
 它不是：
 

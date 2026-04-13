@@ -52,10 +52,7 @@ The final runtime summary should appear at:
 
 ## E. Acceptance
 
-This run only counts as progress if it produces one of:
-
-1. a new paper-aligned runtime summary with a complete metric set
-2. a concrete failure mode with stable logs that explains why the stronger rerun cannot proceed
+This run now counts as progress because it has produced a new paper-aligned runtime summary with a complete metric set.
 
 ## F. Current Runtime Observation
 
@@ -64,7 +61,7 @@ Latest confirmed state after the latest runtime check:
 - launcher PID is still alive:
   - `87052`
 - current active stage:
-  - `shadow-01` training
+  - runtime summary produced
 - current visible progress in `target/train.stderr.log`:
   - reached `Epoch 299`
   - reached at least `step 9600`
@@ -79,10 +76,26 @@ Latest confirmed state after the latest runtime check:
     - `checkpoint-6401`
     - `checkpoint-8001`
     - `checkpoint-9600`
-  - `shadow-01` root has started and current tail has advanced to roughly `Epoch 16 / step 530`
-  - no new runtime summary has been produced yet
+  - `shadow-01` root now also exposes `checkpoint-9600`
+  - `shadow-02` root now also exposes `checkpoint-9600`
+  - `shadow-03` root now also exposes `checkpoint-9600`
+  - the rerun root initially still failed `probe_gsa_assets` because `manifests/` existed but had no manifest file
+  - that blocker has now been removed by adding a rerun manifest:
+    - `workspaces/white-box/assets/gsa-cifar10-1k-3shadow-epoch300-rerun1/manifests/cifar10-ddpm-1k-3shadow-epoch300-rerun1.json`
+  - after removing this blocker, the runtime mainline was manually relaunched against the rerun asset root
+  - the rerun runtime summary is now present at:
+    - `workspaces/white-box/runs/gsa-runtime-mainline-20260409-cifar10-1k-3shadow-epoch300-rerun1/summary.json`
+  - the resulting metrics are:
+    - `auc = 0.998192`
+    - `asr = 0.9895`
+    - `tpr@1%fpr = 0.987`
+    - `tpr@0.1%fpr = 0.432`
+  - these metrics are stronger than the old `20260408 1k-3shadow` admitted mainline under the same evaluation shape
+  - current promotion decision:
+    - this rerun should replace the old `20260408 1k-3shadow` summary as the white-box attack main evidence
 - current GPU state during the latest check:
   - `memory.used ~= 6411 MiB`
   - `utilization ~= 80%`
 
-So the run is still in the expected first phase and should continue without manual interruption.
+So the rerun is no longer blocked on checkpoint production or runtime closure.
+The current remaining task is only to sync this stronger rerun summary into the admitted white-box attack mainline and the system read chain.

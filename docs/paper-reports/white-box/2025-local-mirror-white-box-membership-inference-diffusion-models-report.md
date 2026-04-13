@@ -22,7 +22,7 @@
 - Title: White-box Membership Inference Attacks against Diffusion Models
 - Authors: Yan Pang, Tianhao Wang, Xuhui Kang, Mengdi Huai, Yang Zhang
 - Venue / year / version: arXiv:2308.06405v3, 2024-11-21
-- Local PDF path: `D:/Code/DiffAudit/Project/references/materials/white-box/2025-local-mirror-white-box-membership-inference-diffusion-models.pdf`
+- Local PDF path: `D:/Code/DiffAudit/Research/references/materials/white-box/2025-local-mirror-white-box-membership-inference-diffusion-models.pdf`
 - Source URL: `https://arxiv.org/abs/2308.06405`
 
 ## Research Question

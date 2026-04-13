@@ -11,7 +11,7 @@
 
 | track | attack | defense | comparator type | AUC | ASR | TPR@1%FPR | TPR@0.1%FPR | evidence level | note |
 | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- |
-| white-box | `GSA 1k-3shadow` | `none` | paper-aligned runtime mainline | `0.97514` | `0.919` | `0.55` | `0.205` | `runtime-mainline` | current strongest local white-box attack result |
+| white-box | `GSA 1k-3shadow` | `none` | admitted runtime mainline promoted from rerun1 | `0.998192` | `0.9895` | `0.987` | `0.432` | `runtime-mainline` | current strongest local white-box attack result after rerun1 promotion |
 | white-box | `DPDM W-1` | `DPDM eps10 smoke checkpoint` | target-only comparator | `0.493652` | `0.585938` | `0.015625` | `0.0` | `runtime-smoke` | weaker than attack baseline; target-only only |
 | white-box | `DPDM W-1` | `DPDM eps10 smoke checkpoints x3` | multi-shadow comparator | `0.493652` | `0.5` | `0.015625` | `0.0` | `runtime-smoke` | first defended multi-shadow comparator |
 | white-box | `DPDM W-1` | `DPDM defended-target + smoke checkpoints x3` | defended-target multi-shadow comparator | `0.496338` | `0.5` | `0.015625` | `0.0` | `runtime-smoke` | current most aligned local W-1 comparator |
@@ -26,22 +26,23 @@
 
 ## 当前解释口径
 
-- `GSA 1k-3shadow` 是当前白盒攻击主证据线
+- `GSA rerun1` 现在是当前白盒攻击主证据线，旧 `20260408` 结果只保留为历史参考
 - `W-1` 当前已经不是“只有 checkpoint”，而是有 target-only 和 multi-shadow 两版 comparator
-- `W-1 strong-v2` 比 smoke 版略高，但仍显著弱于 `GSA` 主线，方向上继续支持白盒防御有效
+- `W-1 strong-v2` 比 smoke 版略高，但仍显著弱于新的 `GSA rerun1` 主线，方向上继续支持白盒防御有效
 - `W-1 strong-v2 max512` 在更大评估规模下仍维持同一趋势，说明当前防御结果不只是 `128` 级样本偶然现象
 - `W-1 strong-v2 3-shadow max512` 进一步把 `AUC` 压到 `0.462799`，这是当前最接近 `GSA 1k-3shadow` 结构的 defended 结果
-- `W-1 strong-v2 3-shadow full-scale` 回到 `AUC = 0.490813`，但仍远低于 `GSA` 主线，说明当前 defended 结果在更大评估规模下仍可辩护
+- `W-1 strong-v2 3-shadow full-scale` 回到 `AUC = 0.490813`，但仍远低于新的 `GSA rerun1` 主线，说明当前 defended 结果在更大评估规模下仍可辩护
 - `W-1 strong-v3 3-shadow max128` 已经成功落盘，说明 `strong-v3` checkpoint 集合在 GPU 上可执行，但当前还没超过 `strong-v2` 最佳 defended 结果
 - `W-1 strong-v3 3-shadow max256` 也已成功落盘，说明 `strong-v3` 不是偶发成功，而是已进入稳定的中规模 GPU defended 结果阶段
 - `W-1 strong-v3 3-shadow max512` 已稳定完成，说明此前的主要问题是大规模 GPU comparator 稳定性，而不是 checkpoint 无效
 - `W-1 strong-v3 3-shadow full-scale` 已完成并取得 `AUC = 0.488783`，略优于 `strong-v2 full-scale = 0.490813`
 - 当前 `W-1` 还不是最终 benchmark，因为结果仍是 `runtime-smoke` 级 comparator；但白盒当前已经可以把 `strong-v3 full-scale` 固定为 defended 主结果，并把 `strong-v2 full-scale` 保留为参考 rung
+- 当前白盒下一步不再是继续刷攻击结果，而是把 `GSA rerun1` 与 `W-1 strong-v3 full-scale` 推进到 same-protocol bridge
 
 ## 关联产物
 
 - attack baseline:
-  - `workspaces/white-box/runs/gsa-runtime-mainline-20260408-cifar10-1k-3shadow/summary.json`
+  - `workspaces/white-box/runs/gsa-runtime-mainline-20260409-cifar10-1k-3shadow-epoch300-rerun1/summary.json`
 - target-only defense comparator:
   - `workspaces/white-box/runs/dpdm-w1-target-only-20260408/summary.json`
 - multi-shadow defense comparator:
@@ -67,7 +68,7 @@
 
 ## 下一步
 
-1. 保留这张表作为当前白盒可引用基线
+1. 保留这张表作为当前白盒 admitted attack-defense 基线
 2. 将 `strong-v3 full-scale` 固定为当前 defended 主结果
 3. 将 `strong-v2 full-scale` 保留为参考 rung
-4. 后续统一总表只引用这两条 full-scale defended 结果，而不再把全部历史 rung 混成主口径
+4. 下一步优先做 `GSA rerun1` 与 `W-1 strong-v3 full-scale` 的 same-protocol bridge，而不是继续开新的攻击强化复跑

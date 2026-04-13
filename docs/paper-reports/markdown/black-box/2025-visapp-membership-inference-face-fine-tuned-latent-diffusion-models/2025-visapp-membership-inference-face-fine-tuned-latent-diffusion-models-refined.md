@@ -3,7 +3,7 @@ Membership Inference Attacks for Face Images Against Fine-Tuned Latent Diffusion
 
 ## 文档说明
 
-- GitHub PDF：[2025-visapp-membership-inference-face-fine-tuned-latent-diffusion-models.pdf](https://github.com/DeliciousBuding/DiffAudit/blob/main/references/materials/black-box/2025-visapp-membership-inference-face-fine-tuned-latent-diffusion-models.pdf)
+- GitHub PDF：[2025-visapp-membership-inference-face-fine-tuned-latent-diffusion-models.pdf](https://github.com/DeliciousBuding/DiffAudit-Research/blob/main/references/materials/black-box/2025-visapp-membership-inference-face-fine-tuned-latent-diffusion-models.pdf)
 - 对应报告：[论文报告：Membership Inference Attacks for Face Images Against Fine-Tuned Latent Diffusion Models](https://ncn24qi9j5mt.feishu.cn/docx/A9VLdD2eioc5IcxKq9zcb0HOnxg)
 - 开源实现：[osquera/MIA_SD](https://github.com/osquera/MIA_SD)
 - 整理说明：本稿基于 born-digital Markdown 导出结果整理。为保证飞书同步稳定性，仅保留方法图与主结果图两张关键图，其余页面碎图和小图已移除。

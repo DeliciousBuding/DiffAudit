@@ -114,6 +114,6 @@
 
 在这份 intake decomposition 固定后，下一条非 GPU 槽位应回到：
 
-- `Project/workspaces/intake/index.json` 与候选索引结构的灰盒扩展判断
+- `Research/workspaces/intake/index.json` 与候选索引结构的灰盒扩展判断
 
 而不是继续为 `TMIA-DM` 编造执行口径。

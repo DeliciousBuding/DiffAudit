@@ -23,7 +23,7 @@ Exit code is `0` on success, `2` on validation failure.
 The sample auto-initializes a tiny git repo inside `examples/minimal/repo_root` so the gate can record a commit.
 
 ```powershell
-cd D:\Code\DiffAudit\Project\tools\gsa_next_run
+cd D:\Code\DiffAudit\Research\tools\gsa_next_run
 .\examples\minimal\run_example.ps1
 ```
 

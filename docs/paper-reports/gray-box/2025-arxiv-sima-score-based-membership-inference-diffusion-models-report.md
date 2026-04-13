@@ -9,8 +9,8 @@ SCORE-BASED MEMBERSHIP INFERENCE ON DIFFUSION MODELS
 - 发表 venue / year / version：arXiv preprint，2025，本文核对版本为 arXiv:2509.25003v1
 - 论文主问题：在 gray-box 条件下，攻击者是否只靠单次读取 denoiser 的预测噪声，就能判断一张图像是否属于扩散模型训练集
 - 威胁模型类别：gray-box，score-based membership inference，single-query attack
-- 本地 PDF 路径：`D:\Code\DiffAudit\Project\references\materials\gray-box\2025-arxiv-sima-score-based-membership-inference-diffusion-models.pdf`
-- GitHub PDF 链接：[2025-arxiv-sima-score-based-membership-inference-diffusion-models.pdf](https://github.com/DeliciousBuding/DiffAudit/blob/main/references/materials/gray-box/2025-arxiv-sima-score-based-membership-inference-diffusion-models.pdf)
+- 本地 PDF 路径：`D:\Code\DiffAudit\Research\references\materials\gray-box\2025-arxiv-sima-score-based-membership-inference-diffusion-models.pdf`
+- GitHub PDF 链接：[2025-arxiv-sima-score-based-membership-inference-diffusion-models.pdf](https://github.com/DeliciousBuding/DiffAudit-Research/blob/main/references/materials/gray-box/2025-arxiv-sima-score-based-membership-inference-diffusion-models.pdf)
 - 飞书原生 PDF：[2025-arxiv-sima-score-based-membership-inference-diffusion-models.pdf](https://ncn24qi9j5mt.feishu.cn/file/DxgtbkEpmo6nkkxRH94cQcEsn8d)
 - OCR 精修版链接：[OCR精修版：SCORE-BASED MEMBERSHIP INFERENCE ON DIFFUSION MODELS](https://www.feishu.cn/docx/LH2Md0AYIox0p1xHGRhc9Gn6nmz)
 - 开源实现：[mx-ethan-rao/SimA](https://github.com/mx-ethan-rao/SimA)

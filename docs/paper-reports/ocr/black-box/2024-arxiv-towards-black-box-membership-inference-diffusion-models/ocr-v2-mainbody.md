@@ -4,11 +4,11 @@
 
 **说明**：本稿基于 PaddleOCR 结果与 PDF 原文联合整理，保留正文主干、关键公式、主要实验表述与方法图，便于在飞书中连续阅读。
 
-**GitHub PDF**：https://github.com/DeliciousBuding/DiffAudit/blob/main/references/materials/black-box/2024-arxiv-towards-black-box-membership-inference-diffusion-models.pdf
+**GitHub PDF**：https://github.com/DeliciousBuding/DiffAudit-Research/blob/main/references/materials/black-box/2024-arxiv-towards-black-box-membership-inference-diffusion-models.pdf
 
 **论文报告**：待上传后补充
 
-**开源实现**：https://github.com/DeliciousBuding/DiffAudit/blob/main/src/diffaudit/attacks/variation.py
+**开源实现**：https://github.com/DeliciousBuding/DiffAudit-Research/blob/main/src/diffaudit/attacks/variation.py
 
 ---
 

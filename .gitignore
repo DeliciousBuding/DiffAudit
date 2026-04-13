@@ -33,10 +33,7 @@ Thumbs.db
 artifacts/
 runs/
 tmp/
-outputs/**
-!outputs/
-!outputs/**/
-!outputs/**/evaluation.json
+outputs/
 
 # Environment files
 .env
@@ -54,12 +51,7 @@ workspaces/gray-box/assets/**
 !workspaces/gray-box/assets/**/manifest*.json
 !workspaces/gray-box/assets/**/README.md
 !workspaces/gray-box/assets/**/HANDOFF.md
-workspaces/white-box/assets/**
-!workspaces/white-box/assets/
-!workspaces/white-box/assets/**/
-!workspaces/white-box/assets/**/manifest*.json
-!workspaces/white-box/assets/**/README.md
-!workspaces/white-box/assets/**/HANDOFF.md
+workspaces/white-box/assets/
 workspaces/white-box/assets/gsa/**
 !workspaces/white-box/assets/gsa/
 !workspaces/white-box/assets/gsa/README.md

@@ -1,6 +1,6 @@
 {
   "schema": "diffaudit.attack_defense_table.v1",
-  "updated_at": "2026-04-09T12:05:00+08:00",
+  "updated_at": "2026-04-09T17:05:00+08:00",
   "dataset": "CIFAR-10",
   "model_family": "DDPM",
   "rows": [
@@ -121,14 +121,14 @@
       "attack": "GSA 1k-3shadow",
       "defense": "none",
       "model": "CIFAR-10 DDPM",
-      "auc": 0.97514,
-      "asr": 0.919,
-      "tpr_at_1pct_fpr": 0.55,
-      "tpr_at_0_1pct_fpr": 0.205,
+      "auc": 0.998192,
+      "asr": 0.9895,
+      "tpr_at_1pct_fpr": 0.987,
+      "tpr_at_0_1pct_fpr": 0.432,
       "quality_cost": "target_eval_size=2000; shadow_train_size=4200; 3 shadows; cuda",
       "evidence_level": "runtime-mainline",
-      "note": "current white-box attack main evidence",
-      "source": "workspaces/white-box/runs/gsa-runtime-mainline-20260408-cifar10-1k-3shadow/summary.json"
+      "note": "current white-box attack main evidence promoted from epoch300 rerun1 under the same 1k-3shadow protocol",
+      "source": "workspaces/white-box/runs/gsa-runtime-mainline-20260409-cifar10-1k-3shadow-epoch300-rerun1/summary.json"
     },
     {
       "track": "white-box",

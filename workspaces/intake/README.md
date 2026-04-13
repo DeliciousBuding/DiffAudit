@@ -24,5 +24,5 @@ Boundary note:
 Validation (from repo root):
 
 ```bash
-python Project/scripts/validate_intake_index.py
+python Research/scripts/validate_intake_index.py
 ```

@@ -14,7 +14,7 @@
 - real CIFAR10 buckets under `workspaces/white-box/assets/gsa/datasets`
 - real `accelerate` checkpoint roots under `workspaces/white-box/assets/gsa/checkpoints`
 - first manifest under `workspaces/white-box/assets/gsa/manifests/cifar10-ddpm-mainline.md`
-- Project-side `probe-gsa-assets` and `run-gsa-runtime-mainline` commands
+- Research-side `probe-gsa-assets` and `run-gsa-runtime-mainline` commands
 
 ## B. Compatibility Fixes Needed
 
@@ -63,7 +63,7 @@ Closed-loop facts:
 
 - all four gradient artifacts were generated
 - both `target` and `shadow` sides resumed from real `checkpoint-2`
-- the attack classifier stage completed inside the Project-side mainline wrapper
+- the attack classifier stage completed inside the Research-side mainline wrapper
 
 Current local metrics:
 

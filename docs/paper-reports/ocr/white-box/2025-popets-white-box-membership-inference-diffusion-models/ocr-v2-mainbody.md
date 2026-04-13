@@ -4,7 +4,7 @@
 
 **说明**：本稿基于 PaddleOCR 结果与 PDF 原文联合整理，保留正文主干、关键公式、主要表格与核心插图，便于在飞书中连续阅读。
 
-**GitHub PDF**：https://github.com/DeliciousBuding/DiffAudit/blob/main/references/materials/white-box/2025-popets-white-box-membership-inference-diffusion-models.pdf
+**GitHub PDF**：https://github.com/DeliciousBuding/DiffAudit-Research/blob/main/references/materials/white-box/2025-popets-white-box-membership-inference-diffusion-models.pdf
 
 **论文报告**：https://www.feishu.cn/docx/CCgPdOGSHohFoqxRGaZcbCGWnHb
 

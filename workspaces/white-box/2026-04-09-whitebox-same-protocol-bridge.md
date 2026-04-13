@@ -78,8 +78,8 @@
 
 - `GSA rerun1` admitted attack baseline 路径存在
 - `W-1 strong-v3 full-scale` defended baseline 路径存在
-- `Project/scripts` 下的 DPDM 启动脚本已支持 portable 路径覆盖
-- `Project/scripts/README.md` 已说明 scheduler 只是可选本地治理工具
+- `Research/scripts` 下的 DPDM 启动脚本已支持 portable 路径覆盖
+- `Research/scripts/README.md` 已说明 scheduler 只是可选本地治理工具
 - `validate_attack_defense_table.py` 已通过
 - `validate_intake_index.py` 已通过
 - `validate_local_api_registry_alignment.py` 已通过
@@ -97,29 +97,29 @@
 ```powershell
 $env:DIFFAUDIT_WORKSPACE_ROOT = "D:/Code/DiffAudit"
 $env:DIFFAUDIT_RESEARCH_PYTHON = "C:/Users/Ding/miniforge3/envs/diffaudit-research/python.exe"
-powershell -ExecutionPolicy Bypass -File D:/Code/DiffAudit/Project/scripts/launch_dpdm_training.ps1 `
-  -DataPath D:/Code/DiffAudit/Project/workspaces/white-box/assets/gsa-cifar10-1k-3shadow-epoch300-rerun1/datasets/target-member `
+powershell -ExecutionPolicy Bypass -File D:/Code/DiffAudit/Research/scripts/launch_dpdm_training.ps1 `
+  -DataPath D:/Code/DiffAudit/Research/workspaces/white-box/assets/gsa-cifar10-1k-3shadow-epoch300-rerun1/datasets/target-member `
   -Workdir runs/dpdm-cifar10-targetmember-eps10-gpu-sameproto-20260409 `
   -Epochs 3 `
   -SigmaNoiseSamples 2
 
-powershell -ExecutionPolicy Bypass -File D:/Code/DiffAudit/Project/scripts/launch_dpdm_training.ps1 `
-  -DataPath D:/Code/DiffAudit/Project/workspaces/white-box/assets/gsa-cifar10-1k-3shadow-epoch300-rerun1/datasets/shadow-01-member `
+powershell -ExecutionPolicy Bypass -File D:/Code/DiffAudit/Research/scripts/launch_dpdm_training.ps1 `
+  -DataPath D:/Code/DiffAudit/Research/workspaces/white-box/assets/gsa-cifar10-1k-3shadow-epoch300-rerun1/datasets/shadow-01-member `
   -Workdir runs/dpdm-cifar10-shadow01-eps10-gpu-sameproto3shadow-r2-20260409 `
   -Epochs 3 `
   -SigmaNoiseSamples 2 `
   -MasterPort 6132
 
-powershell -ExecutionPolicy Bypass -File D:/Code/DiffAudit/Project/scripts/launch_dpdm_training.ps1 `
-  -DataPath D:/Code/DiffAudit/Project/workspaces/white-box/assets/gsa-cifar10-1k-3shadow-epoch300-rerun1/datasets/shadow-02-member `
+powershell -ExecutionPolicy Bypass -File D:/Code/DiffAudit/Research/scripts/launch_dpdm_training.ps1 `
+  -DataPath D:/Code/DiffAudit/Research/workspaces/white-box/assets/gsa-cifar10-1k-3shadow-epoch300-rerun1/datasets/shadow-02-member `
   -Workdir runs/dpdm-cifar10-shadow02-eps10-gpu-sameproto3shadow-batch32-r1-20260409 `
   -BatchSize 32 `
   -Epochs 3 `
   -SigmaNoiseSamples 2 `
   -MasterPort 6333
 
-powershell -ExecutionPolicy Bypass -File D:/Code/DiffAudit/Project/scripts/launch_dpdm_training.ps1 `
-  -DataPath D:/Code/DiffAudit/Project/workspaces/white-box/assets/gsa-cifar10-1k-3shadow-epoch300-rerun1/datasets/shadow-03-member `
+powershell -ExecutionPolicy Bypass -File D:/Code/DiffAudit/Research/scripts/launch_dpdm_training.ps1 `
+  -DataPath D:/Code/DiffAudit/Research/workspaces/white-box/assets/gsa-cifar10-1k-3shadow-epoch300-rerun1/datasets/shadow-03-member `
   -Workdir runs/dpdm-cifar10-shadow03-eps10-gpu-sameproto3shadow-batch32-r1-20260409 `
   -BatchSize 32 `
   -Epochs 3 `
@@ -154,14 +154,14 @@ conda run -n diffaudit-research python -m diffaudit run-dpdm-w1-multi-shadow-com
 预期首批产物：
 
 - target stdout/stderr:
-  - `Project/external/DPDM/runs/dpdm-cifar10-targetmember-eps10-gpu-sameproto-20260409.stdout.log`
-  - `Project/external/DPDM/runs/dpdm-cifar10-targetmember-eps10-gpu-sameproto-20260409.stderr.log`
+  - `Research/external/DPDM/runs/dpdm-cifar10-targetmember-eps10-gpu-sameproto-20260409.stdout.log`
+  - `Research/external/DPDM/runs/dpdm-cifar10-targetmember-eps10-gpu-sameproto-20260409.stderr.log`
 - shadow workdirs:
-  - `Project/external/DPDM/runs/dpdm-cifar10-shadow01-eps10-gpu-sameproto3shadow-r2-20260409`
-  - `Project/external/DPDM/runs/dpdm-cifar10-shadow02-eps10-gpu-sameproto3shadow-batch32-r1-20260409`
-  - `Project/external/DPDM/runs/dpdm-cifar10-shadow03-eps10-gpu-sameproto3shadow-batch32-r1-20260409`
+  - `Research/external/DPDM/runs/dpdm-cifar10-shadow01-eps10-gpu-sameproto3shadow-r2-20260409`
+  - `Research/external/DPDM/runs/dpdm-cifar10-shadow02-eps10-gpu-sameproto3shadow-batch32-r1-20260409`
+  - `Research/external/DPDM/runs/dpdm-cifar10-shadow03-eps10-gpu-sameproto3shadow-batch32-r1-20260409`
 - batch32 bridge diagnostic workspace:
-  - `Project/workspaces/white-box/runs/dpdm-w1-multi-shadow-comparator-targetmember-sameproto3shadow-batch32-diagnostic-20260409`
+  - `Research/workspaces/white-box/runs/dpdm-w1-multi-shadow-comparator-targetmember-sameproto3shadow-batch32-diagnostic-20260409`
 
 当前停止条件：
 
@@ -171,7 +171,7 @@ conda run -n diffaudit-research python -m diffaudit run-dpdm-w1-multi-shadow-com
 ## 当前运行态
 
 - target-member 训练已经完成：
-  - `Project/external/DPDM/runs/dpdm-cifar10-targetmember-eps10-gpu-sameproto-20260409/checkpoints/final_checkpoint.pth`
+  - `Research/external/DPDM/runs/dpdm-cifar10-targetmember-eps10-gpu-sameproto-20260409/checkpoints/final_checkpoint.pth`
 - 第一轮影子序列 `sameproto3shadow-20260409` 暴露了一个稳定 blocker：
   - `shadow-01` 在旧端口段 `6032` 上 bind 失败
   - root cause 是前一轮错误影子序列留下的端口占用
@@ -181,14 +181,14 @@ conda run -n diffaudit-research python -m diffaudit run-dpdm-w1-multi-shadow-com
   - 结果是 wrapper 不能自动推进到下一条 shadow
 - 当前已切回人工串行执行：
   - `shadow-01` 已完成：
-    - `Project/external/DPDM/runs/dpdm-cifar10-shadow01-eps10-gpu-sameproto3shadow-r2-20260409/checkpoints/final_checkpoint.pth`
+    - `Research/external/DPDM/runs/dpdm-cifar10-shadow01-eps10-gpu-sameproto3shadow-r2-20260409/checkpoints/final_checkpoint.pth`
   - `shadow-02` 第一次人工串行尝试：
-    - `Project/external/DPDM/runs/dpdm-cifar10-shadow02-eps10-gpu-sameproto3shadow-r2-20260409`
+    - `Research/external/DPDM/runs/dpdm-cifar10-shadow02-eps10-gpu-sameproto3shadow-r2-20260409`
     - 日志推进到 `step 40` 后停止更新
     - `stdout.txt` 最后更新时间停在 `2026-04-09 19:32:34 +08:00`
     - 未写出 `checkpoints/final_checkpoint.pth`
   - `shadow-02` 第二次人工串行重试：
-    - `Project/external/DPDM/runs/dpdm-cifar10-shadow02-eps10-gpu-sameproto3shadow-r3-20260409`
+    - `Research/external/DPDM/runs/dpdm-cifar10-shadow02-eps10-gpu-sameproto3shadow-r3-20260409`
     - 仅打印 `Starting training at step 0`
     - `stdout.txt` 最后更新时间停在 `2026-04-09 19:49:03 +08:00`
     - GPU 仍维持高占用，但日志不再推进
@@ -197,18 +197,18 @@ conda run -n diffaudit-research python -m diffaudit run-dpdm-w1-multi-shadow-com
     - 旧失败 run 在父训练进程退出后，残留了多个 `multiprocessing-fork` 子进程持续占用 GPU
     - 清理这些 orphan 子进程后，GPU 占用从高位回落，新的单变量诊断才能在干净状态下重启
   - `shadow-02` 第三次单变量诊断：
-    - `Project/external/DPDM/runs/dpdm-cifar10-shadow02-eps10-gpu-sameproto3shadow-batch32-r1-20260409`
+    - `Research/external/DPDM/runs/dpdm-cifar10-shadow02-eps10-gpu-sameproto3shadow-batch32-r1-20260409`
     - 唯一改动：`batch_size 64 -> 32`
     - 训练正常推进到 `step 90`
     - 写出 `checkpoints/final_checkpoint.pth`
     - 当前结论：`shadow-02` 的主阻塞更接近训练规模 / GPU 压力，而不是数据集资产损坏
   - `shadow-03` 同配置验证：
-    - `Project/external/DPDM/runs/dpdm-cifar10-shadow03-eps10-gpu-sameproto3shadow-batch32-r1-20260409`
+    - `Research/external/DPDM/runs/dpdm-cifar10-shadow03-eps10-gpu-sameproto3shadow-batch32-r1-20260409`
     - 使用同样的 `batch_size = 32`
     - 训练正常推进到 `step 90`
     - 写出 `checkpoints/final_checkpoint.pth`
   - 当前 bridge 评估 run：
-    - `Project/workspaces/white-box/runs/dpdm-w1-multi-shadow-comparator-targetmember-sameproto3shadow-batch32-diagnostic-20260409`
+    - `Research/workspaces/white-box/runs/dpdm-w1-multi-shadow-comparator-targetmember-sameproto3shadow-batch32-diagnostic-20260409`
     - 已写出 `summary.json`
     - 指标为：
       - `auc = 0.541199`

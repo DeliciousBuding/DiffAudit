@@ -5,9 +5,9 @@ param(
     [string[]]$Splits = @("target-member", "shadow-01-member", "shadow-02-member", "shadow-03-member"),
     [switch]$ShadowOnly,
     [string]$RuntimeWorkspace = "",
-    [string]$RepoRoot = "D:\Code\DiffAudit\Project\workspaces\white-box\external\GSA",
+    [string]$RepoRoot = "D:\Code\DiffAudit\Research\workspaces\white-box\external\GSA",
     [string]$PythonExe = "C:\Users\Ding\miniforge3\envs\diffaudit-research\python.exe",
-    [string]$TrainScript = "D:\Code\DiffAudit\Project\workspaces\white-box\external\GSA\DDPM\train_unconditional.py",
+    [string]$TrainScript = "D:\Code\DiffAudit\Research\workspaces\white-box\external\GSA\DDPM\train_unconditional.py",
     [int]$Resolution = 32,
     [int]$TrainBatchSize = 32,
     [int]$NumEpochs = 200,
@@ -22,7 +22,7 @@ param(
 
 $ErrorActionPreference = "Stop"
 
-$launchScript = "D:\Code\DiffAudit\Project\scripts\launch_gsa_training.ps1"
+$launchScript = "D:\Code\DiffAudit\Research\scripts\launch_gsa_training.ps1"
 
 if ($ShadowOnly) {
     $Splits = @("shadow-01-member", "shadow-02-member", "shadow-03-member")

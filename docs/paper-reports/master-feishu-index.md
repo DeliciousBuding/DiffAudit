@@ -5,7 +5,7 @@
 > 需要更新总报告时，只改这份 Markdown，再覆盖同步到：
 > `https://www.feishu.cn/docx/ITzEdcyWSoXRqKxuLe3cx4yInEe`
 
-**GitHub 仓库主页**：[DeliciousBuding/DiffAudit](https://github.com/DeliciousBuding/DiffAudit/)
+**GitHub 仓库主页**：[DeliciousBuding/DiffAudit](https://github.com/DeliciousBuding/DiffAudit-Research/)
 
 **更新时间**：
 2026-04-06 16:47:42 +08:00
@@ -44,11 +44,11 @@
 
 ## 关键入口
 
-- 复现状态总览：[docs/reproduction-status.md](https://github.com/DeliciousBuding/DiffAudit/blob/main/docs/reproduction-status.md)
-- 黑盒统一结果摘要：[experiments/blackbox-status/summary.json](https://github.com/DeliciousBuding/DiffAudit/blob/main/experiments/blackbox-status/summary.json)
-- 黑盒主线计划：[workspaces/black-box/plan.md](https://github.com/DeliciousBuding/DiffAudit/blob/main/workspaces/black-box/plan.md)
-- 论文索引源文件：[references/materials/paper-index.md](https://github.com/DeliciousBuding/DiffAudit/blob/main/references/materials/paper-index.md)
-- 飞书总报告源文件：[docs/paper-reports/master-feishu-index.md](https://github.com/DeliciousBuding/DiffAudit/blob/main/docs/paper-reports/master-feishu-index.md)
+- 复现状态总览：[docs/reproduction-status.md](https://github.com/DeliciousBuding/DiffAudit-Research/blob/main/docs/reproduction-status.md)
+- 黑盒统一结果摘要：[experiments/blackbox-status/summary.json](https://github.com/DeliciousBuding/DiffAudit-Research/blob/main/experiments/blackbox-status/summary.json)
+- 黑盒主线计划：[workspaces/black-box/plan.md](https://github.com/DeliciousBuding/DiffAudit-Research/blob/main/workspaces/black-box/plan.md)
+- 论文索引源文件：[references/materials/paper-index.md](https://github.com/DeliciousBuding/DiffAudit-Research/blob/main/references/materials/paper-index.md)
+- 飞书总报告源文件：[docs/paper-reports/master-feishu-index.md](https://github.com/DeliciousBuding/DiffAudit-Research/blob/main/docs/paper-reports/master-feishu-index.md)
 
 ## 当前判断
 

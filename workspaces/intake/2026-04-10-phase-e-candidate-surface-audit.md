@@ -28,18 +28,18 @@
 
 1. `ROADMAP.md`
 2. `Agents/GLOBAL_TASK_BOARD.md`
-3. `Project/ROADMAP.md`
-4. `Project/docs/comprehensive-progress.md`
-5. `Project/docs/reproduction-status.md`
-6. `Project/docs/mainline-narrative.md`
-7. `Project/docs/future-phase-e-intake.md`
+3. `Research/ROADMAP.md`
+4. `Research/docs/comprehensive-progress.md`
+5. `Research/docs/reproduction-status.md`
+6. `Research/docs/mainline-narrative.md`
+7. `Research/docs/future-phase-e-intake.md`
 
 ## 当前硬边界
 
 当前必须持续保持：
 
-- `Project/workspaces/intake/index.json.entries[] = promoted / system-intake-ready contracts only`
-- `Project/workspaces/intake/phase-e-candidates.json = candidate ordering / status only`
+- `Research/workspaces/intake/index.json.entries[] = promoted / system-intake-ready contracts only`
+- `Research/workspaces/intake/phase-e-candidates.json = candidate ordering / status only`
 - `phase-e-candidates.json` 不构成：
   - `Local-API` contract surface
   - promoted contract surface
@@ -62,11 +62,11 @@
 
 ### 2. 研究路线图与总览文档
 
-- `Project/ROADMAP.md`：已明确 `phase-e-candidates.json` 是唯一 machine-readable candidate ordering mirror，且 `index.json.entries[]` 继续只承载 promoted contracts。
-- `Project/docs/comprehensive-progress.md`：已把当前最值得推进的唯一目标收口到 candidate registry 的高层同步，没有把候选写成 execution-ready。
-- `Project/docs/reproduction-status.md`：已明确 `phase-e-candidates.json` 从 `index.json.entries[]` 中剥离，且不构成 `Local-API` promoted contract surface。
-- `Project/docs/mainline-narrative.md`：已把 admitted 面与候选治理面拆开叙述，没有把 candidate metadata 混进系统读链。
-- `Project/docs/future-phase-e-intake.md`：已明确 `phase-e-candidates.json` 只是排序与状态快照，不是 run release，也不是 admitted 升级入口。
+- `Research/ROADMAP.md`：已明确 `phase-e-candidates.json` 是唯一 machine-readable candidate ordering mirror，且 `index.json.entries[]` 继续只承载 promoted contracts。
+- `Research/docs/comprehensive-progress.md`：已把当前最值得推进的唯一目标收口到 candidate registry 的高层同步，没有把候选写成 execution-ready。
+- `Research/docs/reproduction-status.md`：已明确 `phase-e-candidates.json` 从 `index.json.entries[]` 中剥离，且不构成 `Local-API` promoted contract surface。
+- `Research/docs/mainline-narrative.md`：已把 admitted 面与候选治理面拆开叙述，没有把 candidate metadata 混进系统读链。
+- `Research/docs/future-phase-e-intake.md`：已明确 `phase-e-candidates.json` 只是排序与状态快照，不是 run release，也不是 admitted 升级入口。
 
 ## 正式裁决
 
@@ -111,7 +111,7 @@
 只要出现以下任一情况，就必须重新开一轮 candidate-surface audit：
 
 1. 新增或调整 `Phase E` 候选记录
-2. 任何文档重新描述 `Project -> Local-API -> Platform` 的系统读链
+2. 任何文档重新描述 `Research -> Local-API -> Platform` 的系统读链
 3. 任何文档开始把 `phase-e-candidates.json` 与 `Local-API`、`job routing`、`contract registry` 同句绑定
 4. 任一候选状态从 `not-yet / blocked / hold` 进入单独的 hypothesis/budget review
 

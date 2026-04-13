@@ -10,7 +10,7 @@
 
 ## A. What Signal PIA Uses In This Repo
 
-Current `Project` integration uses the official `external/PIA/DDPM/components.py` `PIA` attacker.
+Current `Research` integration uses the official `external/PIA/DDPM/components.py` `PIA` attacker.
 
 The actual signal is not a generic reconstruction score. It is the discrepancy between:
 
@@ -27,7 +27,7 @@ In the upstream attacker, this is implemented as:
 
 So the gray-box score in our mainline is really an `epsilon-trajectory consistency` signal.
 
-In `Project/src/diffaudit/attacks/pia_adapter.py`, we then:
+In `Research/src/diffaudit/attacks/pia_adapter.py`, we then:
 
 - average the attacker output over the attack-step dimension
 - negate the distance

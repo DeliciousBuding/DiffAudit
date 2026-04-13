@@ -6,8 +6,8 @@ No Caption, No Problem: Caption-Free Membership Inference via Model-Fitted Embed
 - 作者：Joonsung Jeon，Woo Jae Kim，Suhyeon Ha，Sooel Son，Sung-Eui Yoon
 - 发表信息：ICLR 2026 conference paper
 - 威胁模型：gray-box，caption-free text-to-image diffusion membership inference
-- GitHub PDF：[2026-openreview-mofit-caption-free-membership-inference.pdf](https://github.com/DeliciousBuding/DiffAudit/blob/main/references/materials/gray-box/2026-openreview-mofit-caption-free-membership-inference.pdf)
-- 本地 PDF：`D:\Code\DiffAudit\Project\references\materials\gray-box\2026-openreview-mofit-caption-free-membership-inference.pdf`
+- GitHub PDF：[2026-openreview-mofit-caption-free-membership-inference.pdf](https://github.com/DeliciousBuding/DiffAudit-Research/blob/main/references/materials/gray-box/2026-openreview-mofit-caption-free-membership-inference.pdf)
+- 本地 PDF：`D:\Code\DiffAudit\Research\references\materials\gray-box\2026-openreview-mofit-caption-free-membership-inference.pdf`
 - born-digital 源稿：[2026-openreview-mofit-caption-free-membership-inference.md](./2026-openreview-mofit-caption-free-membership-inference.md)
 - 对应展示稿：[论文报告：No Caption, No Problem: Caption-Free Membership Inference via Model-Fitted Embeddings](https://www.feishu.cn/docx/SuUudTKOSoakt8x9owuc1OhAnqf)
 - 开源实现：[JoonsungJeon/MoFit](https://github.com/JoonsungJeon/MoFit)

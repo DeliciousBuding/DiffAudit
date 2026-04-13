@@ -16,8 +16,8 @@ def load_validate_module():
 
 class ValidateIntakeIndexTests(unittest.TestCase):
     def test_project_intake_index_declares_contract_keys(self) -> None:
-        project_root = Path(__file__).resolve().parents[1]
-        payload = json.loads((project_root / "workspaces" / "intake" / "index.json").read_text(encoding="utf-8"))
+        research_root = Path(__file__).resolve().parents[1]
+        payload = json.loads((research_root / "workspaces" / "intake" / "index.json").read_text(encoding="utf-8"))
 
         contract_keys = {entry.get("contract_key") for entry in payload["entries"]}
 
@@ -25,8 +25,8 @@ class ValidateIntakeIndexTests(unittest.TestCase):
         self.assertIn("white-box/gsa/ddpm-cifar10", contract_keys)
 
     def test_project_gsa_intake_points_to_1k_3shadow_mainline(self) -> None:
-        project_root = Path(__file__).resolve().parents[1]
-        payload = json.loads((project_root / "workspaces" / "intake" / "index.json").read_text(encoding="utf-8"))
+        research_root = Path(__file__).resolve().parents[1]
+        payload = json.loads((research_root / "workspaces" / "intake" / "index.json").read_text(encoding="utf-8"))
 
         gsa_entry = next(entry for entry in payload["entries"] if entry.get("contract_key") == "white-box/gsa/ddpm-cifar10")
         self.assertEqual(
@@ -38,16 +38,16 @@ class ValidateIntakeIndexTests(unittest.TestCase):
             "workspaces/white-box/assets/gsa-cifar10-1k-3shadow-epoch300-rerun1/manifests/cifar10-ddpm-1k-3shadow-epoch300-rerun1.json",
         )
 
-        manifest_path = project_root / Path(gsa_entry["manifest"])
+        manifest_path = research_root / Path(gsa_entry["manifest"])
         manifest = json.loads(manifest_path.read_text(encoding="utf-8"))
         self.assertEqual(manifest["contract_key"], "white-box/gsa/ddpm-cifar10")
         self.assertEqual(manifest["canonical_summary"], "workspaces/white-box/runs/gsa-runtime-mainline-20260409-cifar10-1k-3shadow-epoch300-rerun1/summary.json")
         self.assertEqual(manifest["evidence_level"], "runtime-mainline")
 
     def test_project_phase_e_candidate_registry_preserves_candidate_boundary(self) -> None:
-        project_root = Path(__file__).resolve().parents[1]
+        research_root = Path(__file__).resolve().parents[1]
         payload = json.loads(
-            (project_root / "workspaces" / "intake" / "phase-e-candidates.json").read_text(encoding="utf-8")
+            (research_root / "workspaces" / "intake" / "phase-e-candidates.json").read_text(encoding="utf-8")
         )
 
         self.assertEqual(payload["schema"], "diffaudit.phase_e_candidates.v2")
@@ -73,7 +73,7 @@ class ValidateIntakeIndexTests(unittest.TestCase):
 
     def test_validator_rejects_entry_without_contract_key(self) -> None:
         module = load_validate_module()
-        project_root = Path(__file__).resolve().parents[1]
+        research_root = Path(__file__).resolve().parents[1]
         manifest_rel = "workspaces/gray-box/assets/pia/manifest.json"
 
         with tempfile.TemporaryDirectory() as tmpdir:
@@ -147,7 +147,7 @@ class ValidateIntakeIndexTests(unittest.TestCase):
                             "target": "workspaces/white-box/assets/gsa/checkpoints/target",
                         },
                         "checkpoint_format": "accelerate-checkpoint-dir",
-                        "canonical_summary": r"D:\Code\DiffAudit\Project\workspaces\white-box\runs\gsa-runtime-mainline-20260408-cifar10-1k-3shadow\summary.json",
+                        "canonical_summary": r"D:\Code\DiffAudit\Research\workspaces\white-box\runs\gsa-runtime-mainline-20260408-cifar10-1k-3shadow\summary.json",
                     }
                 ),
                 encoding="utf-8",
@@ -197,7 +197,7 @@ class ValidateIntakeIndexTests(unittest.TestCase):
 
     def test_validator_rejects_phase_e_candidate_with_contract_key(self) -> None:
         module = load_validate_module()
-        project_root = Path(__file__).resolve().parents[1]
+        research_root = Path(__file__).resolve().parents[1]
         manifest_rel = "workspaces/gray-box/assets/pia/manifest.json"
 
         with tempfile.TemporaryDirectory() as tmpdir:

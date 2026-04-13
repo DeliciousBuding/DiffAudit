@@ -5,9 +5,11 @@ param(
     [Parameter(Mandatory = $true)]
     [string]$Workdir,
 
-    [string]$PythonExe = "C:\Users\Ding\miniforge3\envs\diffaudit-research\python.exe",
-    [string]$DpdmRoot = "D:\Code\DiffAudit\Project\external\DPDM",
-    [string]$ConfigPath = "D:\Code\DiffAudit\Project\external\DPDM\configs\cifar10_32\train_eps_10.0.yaml",
+    [string]$WorkspaceRoot = $env:DIFFAUDIT_WORKSPACE_ROOT,
+    [string]$ResearchRoot = "",
+    [string]$PythonExe = $env:DIFFAUDIT_RESEARCH_PYTHON,
+    [string]$DpdmRoot = "",
+    [string]$ConfigPath = "",
     [int]$BatchSize = 64,
     [int]$Epochs = 1,
     [int]$SigmaNoiseSamples = 1,
@@ -17,10 +19,42 @@ param(
 
 $ErrorActionPreference = "Stop"
 
-$resolvedPythonExe = (Resolve-Path -LiteralPath $PythonExe).Path
-$resolvedDpdmRoot = (Resolve-Path -LiteralPath $DpdmRoot).Path
-$resolvedConfigPath = (Resolve-Path -LiteralPath $ConfigPath).Path
-$resolvedDataPath = (Resolve-Path -LiteralPath $DataPath).Path
+function Resolve-ExistingPath([string]$PathValue) {
+    return (Resolve-Path -LiteralPath $PathValue).Path
+}
+
+function Resolve-ExecutableCandidate([string]$Candidate) {
+    if ([string]::IsNullOrWhiteSpace($Candidate)) {
+        return "python"
+    }
+    if (Test-Path -LiteralPath $Candidate) {
+        return (Resolve-Path -LiteralPath $Candidate).Path
+    }
+    return $Candidate
+}
+
+if ([string]::IsNullOrWhiteSpace($ResearchRoot)) {
+    if (-not [string]::IsNullOrWhiteSpace($WorkspaceRoot)) {
+        $ResearchRoot = Join-Path $WorkspaceRoot "Research"
+    }
+    else {
+        $ResearchRoot = Join-Path $PSScriptRoot ".."
+    }
+}
+
+$resolvedResearchRoot = Resolve-ExistingPath $ResearchRoot
+if ([string]::IsNullOrWhiteSpace($DpdmRoot)) {
+    $DpdmRoot = Join-Path $resolvedResearchRoot "external/DPDM"
+}
+$resolvedDpdmRoot = Resolve-ExistingPath $DpdmRoot
+
+if ([string]::IsNullOrWhiteSpace($ConfigPath)) {
+    $ConfigPath = Join-Path $resolvedDpdmRoot "configs/cifar10_32/train_eps_10.0.yaml"
+}
+
+$resolvedPythonExe = Resolve-ExecutableCandidate $PythonExe
+$resolvedConfigPath = Resolve-ExistingPath $ConfigPath
+$resolvedDataPath = Resolve-ExistingPath $DataPath
 
 $stdout = Join-Path $resolvedDpdmRoot "$Workdir.stdout.log"
 $stderr = Join-Path $resolvedDpdmRoot "$Workdir.stderr.log"
@@ -72,4 +106,5 @@ $process = Start-Process `
     stderr = $stderr
     workdir = $Workdir
     data_path = $resolvedDataPath
+    research_root = $resolvedResearchRoot
 } | ConvertTo-Json -Compress

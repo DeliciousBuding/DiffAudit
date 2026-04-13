@@ -1,6 +1,6 @@
 # 2026-04-09 Claude 4.9 报告复核与后续研究判断
 
-这份文档用于复核 `D:\Code\DiffAudit\docs\ClaudeReport\4.9.md` 中提到的新增论文与路线建议，并把它们放回 `Project` 当前真实主线中理解。
+这份文档用于复核 `D:\Code\DiffAudit\docs\ClaudeReport\4.9.md` 中提到的新增论文与路线建议，并把它们放回 `Research` 当前真实主线中理解。
 
 它不是新的路线图，也不替代：
 
@@ -15,7 +15,7 @@
 
 ## 1. 当前主线约束
 
-截至 `2026-04-09`，`Project` 当前真实主线仍然是：
+截至 `2026-04-09`，`Research` 当前真实主线仍然是：
 
 - 黑盒风险证据：`recon DDIM public-100 step30`
 - 灰盒主讲线：`PIA + provisional G-1(all_steps)`
@@ -228,7 +228,7 @@
 
 ## 7. 本次补齐的原文
 
-本次已补下载以下 PDF 到 `Project` 仓库：
+本次已补下载以下 PDF 到 `Research` 仓库：
 
 - `references/materials/survey/2025-arxiv-enhancing-membership-inference-attacks-frequency-domain-perspective.pdf`
 - `references/materials/survey/2024-arxiv-real-world-benchmarks-membership-inference-attacks-fail-diffusion-models.pdf`

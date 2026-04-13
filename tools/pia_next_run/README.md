@@ -17,7 +17,7 @@ Current inputs:
 PowerShell example:
 
 ```powershell
-cd Project/tools/pia_next_run
+cd Research/tools/pia_next_run
 .\run.ps1 --config ..\..\tmp\configs\pia-cifar10-graybox-assets.local.yaml --member-split-root ..\..\external\PIA\DDPM --repo-root ..\..\external\PIA --out-dir ..\..\tmp\pia_next_run_smoke
 ```
 

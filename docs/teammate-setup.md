@@ -1,12 +1,12 @@
 # Teammate Setup
 
-这份文档面向刚拿到 `Project` 仓库的队友。
+这份文档面向刚拿到 `Research` 仓库的队友。
 
 目标不是解释算法，而是保证新机器能尽快进入“可跑命令、可补路径、可继续三线复现”的状态。
 
 ## 1. 拉仓后的第一步
 
-在 `Project` 根目录执行：
+在 `Research` 根目录执行：
 
 ```powershell
 conda env create -f environment.yml

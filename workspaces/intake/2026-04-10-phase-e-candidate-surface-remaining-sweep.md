@@ -26,9 +26,9 @@
 
 本轮额外检查了：
 
-1. `Project/docs/local-api.md`
-2. `Project/docs/mia-defense-research-index.md`
-3. `Project/docs` 与 `Project/workspaces` 内所有含下列关键词的文档命中：
+1. `Research/docs/local-api.md`
+2. `Research/docs/mia-defense-research-index.md`
+3. `Research/docs` 与 `Research/workspaces` 内所有含下列关键词的文档命中：
    - `phase-e-candidates`
    - `execution_layer_default_order`
    - `intake_review_priority_order`
@@ -43,19 +43,19 @@
 
 - `ROADMAP.md`
 - `Agents/GLOBAL_TASK_BOARD.md`
-- `Project/ROADMAP.md`
-- `Project/docs/comprehensive-progress.md`
-- `Project/docs/reproduction-status.md`
-- `Project/docs/mainline-narrative.md`
-- `Project/docs/future-phase-e-intake.md`
-- `Project/workspaces/intake/phase-e-candidates.json`
+- `Research/ROADMAP.md`
+- `Research/docs/comprehensive-progress.md`
+- `Research/docs/reproduction-status.md`
+- `Research/docs/mainline-narrative.md`
+- `Research/docs/future-phase-e-intake.md`
+- `Research/workspaces/intake/phase-e-candidates.json`
 
 ## 当前硬边界
 
 当前必须持续保持：
 
-- `Project/workspaces/intake/index.json.entries[] = promoted / system-intake-ready contracts only`
-- `Project/workspaces/intake/phase-e-candidates.json = candidate-only intake-review snapshot`
+- `Research/workspaces/intake/index.json.entries[] = promoted / system-intake-ready contracts only`
+- `Research/workspaces/intake/phase-e-candidates.json = candidate-only intake-review snapshot`
 - `phase-e-candidates.json` 不构成：
   - `Local-API` contract surface
   - promoted contract surface
@@ -70,23 +70,23 @@
 
 - `ROADMAP.md`
 - `Agents/GLOBAL_TASK_BOARD.md`
-- `Project/ROADMAP.md`
-- `Project/docs/comprehensive-progress.md`
-- `Project/docs/reproduction-status.md`
-- `Project/docs/mainline-narrative.md`
-- `Project/docs/future-phase-e-intake.md`
-- `Project/docs/local-api.md`
-- `Project/docs/mia-defense-research-index.md`
+- `Research/ROADMAP.md`
+- `Research/docs/comprehensive-progress.md`
+- `Research/docs/reproduction-status.md`
+- `Research/docs/mainline-narrative.md`
+- `Research/docs/future-phase-e-intake.md`
+- `Research/docs/local-api.md`
+- `Research/docs/mia-defense-research-index.md`
 
 ### B. 仍包含 release / queue 词汇，但属于局部 decision/intake 文档
 
 剩余命中主要集中在以下文档：
 
-- `Project/workspaces/intake/2026-04-10-dplora-comparability-intake.md`
-- `Project/workspaces/gray-box/2026-04-10-secmi-unblock-decision.md`
-- `Project/workspaces/gray-box/2026-04-10-tmia-dm-intake-decomposition.md`
-- `Project/workspaces/white-box/2026-04-10-finding-nemo-*`
-- `Project/workspaces/black-box/2026-04-10-recon-explanation-layer.md`
+- `Research/workspaces/intake/2026-04-10-dplora-comparability-intake.md`
+- `Research/workspaces/gray-box/2026-04-10-secmi-unblock-decision.md`
+- `Research/workspaces/gray-box/2026-04-10-tmia-dm-intake-decomposition.md`
+- `Research/workspaces/white-box/2026-04-10-finding-nemo-*`
+- `Research/workspaces/black-box/2026-04-10-recon-explanation-layer.md`
 
 这些命中的共同特征是：
 
@@ -121,7 +121,7 @@
 以下任一条件出现，就必须再做一次 remaining sweep：
 
 1. 新增任何引用 `phase-e-candidates.json` 的高层文档
-2. `Project/docs/local-api.md` 或其他系统读链文档开始提到 `Phase E` candidate ordering
+2. `Research/docs/local-api.md` 或其他系统读链文档开始提到 `Phase E` candidate ordering
 3. `phase-e-candidates.json` 再次新增 release / queue-like 字段
 4. 任一候选从 `not-yet / blocked / hold` 进入 release review
 

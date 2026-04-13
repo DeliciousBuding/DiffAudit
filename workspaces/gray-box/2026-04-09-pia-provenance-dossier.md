@@ -38,7 +38,7 @@
   - `workspaces/gray-box/2026-04-07-pia-real-asset-probe.md`
 - runtime mainline（证明能跑）：
   - `workspaces/gray-box/2026-04-07-pia-runtime-mainline.md`
-- next-run provenance gate（证明“输入可被机器可读固定 + external/PIA clean”）：
+- next-run provenance gate（证明“输入可被机器可读固定 + `2026-04-09` historical clean snapshot 已留痕”）：
   - `workspaces/gray-box/2026-04-09-pia-provenance-gate.md`
   - `workspaces/gray-box/assets/pia/next-run-20260409-strict/manifest.json`
   - `workspaces/gray-box/assets/pia/next-run-20260409-strict/provenance.json`
@@ -222,7 +222,7 @@ strict gate 已将该文件与 split root tree hash 机器可读固定：
    - split 语义对齐
 2. `strict next-run provenance gate passed` 只证明：
    - 本地输入可被机器可读固定
-   - `external/PIA` 当前本地快照在 strict gate 下是 clean
+   - `2026-04-09 historical snapshot` 在 strict gate 下是 clean
    - 本地 checkpoint 与本地来源包之间的字节一致性可审查
 3. 上述证据不足以证明：
    - 导入 checkpoint source 已与论文作者 release bundle 一一对齐

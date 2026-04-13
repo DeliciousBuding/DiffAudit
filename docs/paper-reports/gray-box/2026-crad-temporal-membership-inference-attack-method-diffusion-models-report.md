@@ -9,8 +9,8 @@ Temporal Membership Inference Attack Method for Diffusion Models
 - 发表 venue / year / version：计算机研究与发展，2026，Vol.63 No.1，journal version
 - 论文主问题：在扩散模型成员推断中，如何同时兼顾短时攻击和长时攻击效果，并用时间相关信号提升成员判定的稳定性
 - 威胁模型类别：灰盒查询式成员推断攻击
-- 本地 PDF 路径：`D:/Code/DiffAudit/Project/references/materials/gray-box/2026-crad-temporal-membership-inference-attack-method-diffusion-models.pdf`
-- GitHub PDF 链接：[2026-crad-temporal-membership-inference-attack-method-diffusion-models.pdf](https://github.com/DeliciousBuding/DiffAudit/blob/main/references/materials/gray-box/2026-crad-temporal-membership-inference-attack-method-diffusion-models.pdf)
+- 本地 PDF 路径：`D:/Code/DiffAudit/Research/references/materials/gray-box/2026-crad-temporal-membership-inference-attack-method-diffusion-models.pdf`
+- GitHub PDF 链接：[2026-crad-temporal-membership-inference-attack-method-diffusion-models.pdf](https://github.com/DeliciousBuding/DiffAudit-Research/blob/main/references/materials/gray-box/2026-crad-temporal-membership-inference-attack-method-diffusion-models.pdf)
 - OCR 精修版链接：待补
 - 飞书原生 PDF 获取方式：待补
 - 开源实现：暂未找到
@@ -167,7 +167,7 @@ flowchart LR
 
 - `external/PIA`
 - `external/SecMI`
-- `Project/src/diffaudit/attacks/pia_adapter.py`
+- `Research/src/diffaudit/attacks/pia_adapter.py`
 
 也就是说，如果未来要给它建执行入口，应该从 gray-box 现有资产和接口层出发，而不是从黑盒 API 路线出发。
 

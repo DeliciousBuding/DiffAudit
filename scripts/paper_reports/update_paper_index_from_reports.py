@@ -24,8 +24,8 @@ def extract_summary_paragraphs(markdown: str) -> list[str]:
     return [part.strip() for part in re.split(r"\n\s*\n", section) if part.strip()]
 
 
-def load_report_data(project_root: Path) -> dict[str, dict[str, str]]:
-    manifest_path = project_root / "docs" / "paper-reports" / "manifest.csv"
+def load_report_data(research_root: Path) -> dict[str, dict[str, str]]:
+    manifest_path = research_root / "docs" / "paper-reports" / "manifest.csv"
     data: dict[str, dict[str, str]] = {}
     with manifest_path.open("r", encoding="utf-8-sig", newline="") as handle:
         reader = csv.DictReader(handle)
@@ -34,7 +34,7 @@ def load_report_data(project_root: Path) -> dict[str, dict[str, str]]:
             if not material_path.startswith("references/materials/"):
                 continue
             relative_material = material_path.replace("references/materials/", "", 1)
-            report_path = project_root / row["report_path"]
+            report_path = research_root / row["report_path"]
             if not report_path.exists():
                 continue
             markdown = report_path.read_text(encoding="utf-8")
@@ -51,9 +51,9 @@ def load_report_data(project_root: Path) -> dict[str, dict[str, str]]:
     return data
 
 
-def update_paper_index(project_root: Path) -> None:
-    paper_index_path = project_root / "references" / "materials" / "paper-index.md"
-    report_data = load_report_data(project_root)
+def update_paper_index(research_root: Path) -> None:
+    paper_index_path = research_root / "references" / "materials" / "paper-index.md"
+    report_data = load_report_data(research_root)
     lines = paper_index_path.read_text(encoding="utf-8").splitlines()
     new_lines: list[str] = []
     current_material: str | None = None
@@ -102,8 +102,8 @@ def update_paper_index(project_root: Path) -> None:
 
 
 def main() -> None:
-    project_root = Path(__file__).resolve().parents[2]
-    update_paper_index(project_root)
+    research_root = Path(__file__).resolve().parents[2]
+    update_paper_index(research_root)
 
 
 if __name__ == "__main__":

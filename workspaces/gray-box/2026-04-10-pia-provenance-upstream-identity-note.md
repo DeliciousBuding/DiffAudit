@@ -25,7 +25,7 @@
 ### 1. 当前 upstream git 身份
 
 - local repo:
-  - `D:\Code\DiffAudit\Project\external\PIA`
+  - `D:\Code\DiffAudit\Research\external\PIA`
 - remote:
   - `origin = https://github.com/kong13661/PIA.git`
 - local branch:

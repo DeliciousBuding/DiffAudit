@@ -90,7 +90,7 @@ Current gate interpretation:
 
 ## Allowed Claims
 
-- the current checkpoint, dataset root and member split can be loaded by the Project-side `PIA` integration
+- the current checkpoint, dataset root and member split can be loaded by the Research-side `PIA` integration
 - the current line is acceptable as a local research mainline input
 - the current line is not yet acceptable as `paper-aligned` or `benchmark-ready`
 

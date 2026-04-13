@@ -3,7 +3,7 @@ SCORE-BASED MEMBERSHIP INFERENCE ON DIFFUSION MODELS
 
 ## 文档说明
 
-- GitHub PDF：[2025-arxiv-sima-score-based-membership-inference-diffusion-models.pdf](https://github.com/DeliciousBuding/DiffAudit/blob/main/references/materials/gray-box/2025-arxiv-sima-score-based-membership-inference-diffusion-models.pdf)
+- GitHub PDF：[2025-arxiv-sima-score-based-membership-inference-diffusion-models.pdf](https://github.com/DeliciousBuding/DiffAudit-Research/blob/main/references/materials/gray-box/2025-arxiv-sima-score-based-membership-inference-diffusion-models.pdf)
 - 对应展示稿：[论文报告：SCORE-BASED MEMBERSHIP INFERENCE ON DIFFUSION MODELS](https://www.feishu.cn/docx/RN4ldU8uVo3gRyxBxQPcjSZQnhg)
 - 开源实现：[mx-ethan-rao/SimA](https://github.com/mx-ethan-rao/SimA)
 - 整理说明：本稿基于 born-digital Markdown 与原 PDF 交叉精修，保留论文主问题、关键公式、核心实验与对 DiffAudit 的直接结论，作为展示稿的本地源稿。

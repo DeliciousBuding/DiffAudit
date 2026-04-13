@@ -3,8 +3,8 @@ An Efficient Membership Inference Attack for the Diffusion Model by Proximal Ini
 
 ## 文档说明
 
-- GitHub PDF：[2024-iclr-pia-proximal-initialization.pdf](https://github.com/DeliciousBuding/DiffAudit/blob/main/references/materials/gray-box/2024-iclr-pia-proximal-initialization.pdf)
-- 本地 PDF：`D:/Code/DiffAudit/Project/references/materials/gray-box/2024-iclr-pia-proximal-initialization.pdf`
+- GitHub PDF：[2024-iclr-pia-proximal-initialization.pdf](https://github.com/DeliciousBuding/DiffAudit-Research/blob/main/references/materials/gray-box/2024-iclr-pia-proximal-initialization.pdf)
+- 本地 PDF：`D:/Code/DiffAudit/Research/references/materials/gray-box/2024-iclr-pia-proximal-initialization.pdf`
 - born-digital 源稿：[2024-iclr-pia-proximal-initialization.md](./2024-iclr-pia-proximal-initialization.md)
 - 对应展示稿：[论文报告：An Efficient Membership Inference Attack for the Diffusion Model by Proximal Initialization](https://www.feishu.cn/docx/VPNhdJMryo5K86xOfE8cX3PFnDd)
 - 开源实现：[kong13661/PIA](https://github.com/kong13661/PIA)

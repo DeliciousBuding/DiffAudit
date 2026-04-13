@@ -4,9 +4,9 @@
 
 - `owner`: `research_leader`
 - `scope`: 白盒成员推断、梯度级攻击、记忆定位与内部信号审计
-- `status`: `GSA 1k-3shadow paper-aligned runtime complete; W-1 strong-v3 full-scale frozen as defended main rung; strong-v2 full-scale retained as reference rung; independent GSA epoch300 rerun1 is actively training`
+- `status`: `GSA epoch300 rerun1 admitted as white-box attack main evidence; W-1 strong-v3 full-scale frozen as defended main rung; strong-v2 full-scale retained as reference rung; same-protocol bridge is the only active white-box GPU question`
 - `blocked by`: `W-1` 仍是 defended comparator 而不是最终 benchmark；`DPDM` 与 `GSA` 仍有模型结构不一致；`W-2` 仍缺稳定训练目标与实现
-- `next step`: keep `strong-v3 full-scale` as the admitted defended main rung, low-frequency monitor `gsa-cifar10-1k-3shadow-epoch300-rerun1`, treat this rerun as the last attack-strengthening window, and then shift white-box work to same-protocol defense benchmarking plus utility/cost explanation
+- `next step`: keep `strong-v3 full-scale` as the admitted defended main rung, treat rerun1 promotion as completed, and shift white-box work to same-protocol bridge plus portable execution entry`
 - `last updated`: `2026-04-09`
 
 ## 推荐论文
@@ -42,12 +42,14 @@
 - `workspaces/white-box/2026-04-08-dpdm-w1-multi-shadow-strongv3-3shadow-max512.md`
 - `workspaces/white-box/2026-04-08-dpdm-w1-multi-shadow-strongv3-3shadow-full.md`
 - `workspaces/white-box/2026-04-08-whitebox-attack-defense-table.md`
+- `workspaces/white-box/2026-04-09-whitebox-same-protocol-bridge.md`
 - `workspaces/white-box/2026-04-08-gsa-1k-3shadow-asset-prep.md`
 - `workspaces/white-box/2026-04-09-gsa-epoch300-rerun1-launch.md`
 - `workspaces/white-box/2026-04-07-gsa-asset-intake.md`
 - `workspaces/white-box/2026-04-07-gsa-closed-loop-smoke.md`
 - `workspaces/white-box/2026-04-06-gsa-kickoff.md`
-- `workspaces/white-box/assets/gsa/manifests/cifar10-ddpm-mainline.json`
+- `workspaces/white-box/assets/gsa-cifar10-1k-3shadow-epoch300-rerun1/manifests/cifar10-ddpm-1k-3shadow-epoch300-rerun1.json`
+- `workspaces/white-box/runs/gsa-runtime-mainline-20260409-cifar10-1k-3shadow-epoch300-rerun1/summary.json`
 - `workspaces/white-box/runs/gsa-runtime-mainline-20260407-cpu/summary.json`
 - `workspaces/white-box/assets/gsa-gpu-128/manifests/cifar10-ddpm-gpu-128.json`
 - `workspaces/white-box/runs/gsa-runtime-mainline-20260408-gpu-128/summary.json`
@@ -60,11 +62,11 @@
 
 ## 当前推荐执行顺序
 
-1. 起 `GSA` 的 `target + shadow-01/02/03` 训练，先拿到第一批 `checkpoint-*`
-2. 将 `DPDM` 从 `loss.n_noise_samples=1` 逐步恢复到论文更接近的训练口径
-3. 用上游更强口径提升 `checkpoint-*` 训练强度与 epochs
-4. 用上游更接近论文的梯度提取与攻击评估配置重跑 `GSA`
-5. 用 `DPDM` checkpoint 做第一版 `W-1` 白盒防御比较
+1. 固定 `GSA rerun1` 为 admitted 白盒攻击主结果
+2. 固定 `W-1 strong-v3 full-scale` 为 defended 主 rung，并保留 `strong-v2 full-scale` 作为参考 rung
+3. 建立 `GSA rerun1` 与 `W-1 strong-v3 full-scale` 的 same-protocol bridge 合同
+4. 收口 `DPDM` 启动入口可移植性，不让本地 scheduler 成为外部协作者前置条件
+5. 只启动同一个白盒主 GPU 问题：same-protocol bridge
 6. 暂不优先做 `W-2`
 
 ## 当前阻塞项
@@ -79,12 +81,11 @@
 
 ## 当前最短路径
 
-1. 固定 `W-1 strong-v3 full-scale` 为当前白盒 defended 主结果
-2. 保留 `strong-v2 full-scale` 作为参考 rung
-3. 低频监控 `gsa-cifar10-1k-3shadow-epoch300-rerun1`
-4. 在 rerun1 产出 `summary.json` 前，不改 admitted `GSA` 主攻击口径
-5. rerun1 结束后，不再继续开新的 GSA 长复跑
-6. 下一轮白盒工程优先做 same-protocol benchmark bridge：
+1. 固定 `GSA rerun1` 为 admitted 白盒攻击主结果
+2. 固定 `W-1 strong-v3 full-scale` 为当前白盒 defended 主结果
+3. 保留 `strong-v2 full-scale` 作为参考 rung
+4. 当前唯一 active GPU 问题是 same-protocol benchmark bridge：
    - 方案 A：训练/对接架构对齐的 DP-DDPM，直接进入 GSA 协议
    - 方案 B：为 `DPDM` 实现 GSA-style gradient feature extraction
-7. 继续把系统侧优先级转回 admitted 结果接入与灰盒主讲线
+5. bridge 入口必须 portable，且不依赖本地 scheduler
+6. 继续把系统侧优先级转回 admitted 结果接入与灰盒主讲线

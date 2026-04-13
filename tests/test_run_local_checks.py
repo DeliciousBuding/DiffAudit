@@ -16,9 +16,11 @@ class RunLocalChecksTests(unittest.TestCase):
         with patch.object(run_local_checks, "run", side_effect=fake_run):
             run_local_checks.main(["--fast", "--python", "/portable/python"])
 
-        self.assertGreaterEqual(len(recorded), 4)
+        self.assertGreaterEqual(len(recorded), 5)
         for cmd, _ in recorded:
             self.assertEqual(cmd[0], "/portable/python")
+        commands = [cmd for cmd, _ in recorded]
+        self.assertIn(["/portable/python", "scripts/validate_attack_defense_table.py"], commands)
 
     def test_main_uses_environment_python_when_not_explicit(self) -> None:
         recorded: list[tuple[list[str], Path]] = []
@@ -30,9 +32,11 @@ class RunLocalChecksTests(unittest.TestCase):
             with patch.dict("os.environ", {"DIFFAUDIT_RESEARCH_PYTHON": "/env/python"}, clear=False):
                 run_local_checks.main(["--fast"])
 
-        self.assertGreaterEqual(len(recorded), 4)
+        self.assertGreaterEqual(len(recorded), 5)
         for cmd, _ in recorded:
             self.assertEqual(cmd[0], "/env/python")
+        commands = [cmd for cmd, _ in recorded]
+        self.assertIn(["/env/python", "scripts/validate_attack_defense_table.py"], commands)
 
     def test_main_uses_repo_root_from_script_location(self) -> None:
         recorded: list[tuple[list[str], Path]] = []

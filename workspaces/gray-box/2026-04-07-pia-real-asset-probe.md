@@ -12,17 +12,17 @@
 ## Timeline Note
 
 - `2026-04-07 17:55 +08:00`: [2026-04-07-pia-followup.md](2026-04-07-pia-followup.md) reported the template config finished planning but `probe-pia-assets` was still `blocked` because the shared plan pointed at placeholder checkpoints/datasets.
-- Assets were staged next inside `Project/workspaces/gray-box/assets/pia`, so the `tmp/configs/pia-cifar10-graybox-assets.local.yaml` configuration could reference canonical dataset/model locations.
+- Assets were staged next inside `Research/workspaces/gray-box/assets/pia`, so the `tmp/configs/pia-cifar10-graybox-assets.local.yaml` configuration could reference canonical dataset/model locations.
 - `2026-04-07 19:05 +08:00`: single-machine `probe-pia-assets`, `dry-run-pia`, `runtime-probe-pia`, and `runtime-preview-pia` all returned `ready` for the canonical assets (see `runs/pia-cifar10-graybox-assets-probe-20260407`), resolving the earlier block for this workspace-level track.
 
 ## A. Local Asset Placement
 
 This intake is now staged under the gray-box workspace so the path semantics stay explicit:
 
-- dataset root: `Project/workspaces/gray-box/assets/pia/datasets/cifar10`
-- model dir: `Project/workspaces/gray-box/assets/pia/checkpoints/cifar10_ddpm`
-- source bundle stash: `Project/workspaces/gray-box/assets/pia/sources`
-- local-only config: `Project/tmp/configs/pia-cifar10-graybox-assets.local.yaml`
+- dataset root: `Research/workspaces/gray-box/assets/pia/datasets/cifar10`
+- model dir: `Research/workspaces/gray-box/assets/pia/checkpoints/cifar10_ddpm`
+- source bundle stash: `Research/workspaces/gray-box/assets/pia/sources`
+- local-only config: `Research/tmp/configs/pia-cifar10-graybox-assets.local.yaml`
 
 The original source archives remain in `D:/Code/DiffAudit/tmp/data`.
 
@@ -119,6 +119,6 @@ This is not yet a benchmark result.
 
 Current remaining gaps:
 
-1. `Project` still has no real `PIA` runtime mainline command beyond `runtime-probe`
+1. `Research` still has no real `PIA` runtime mainline command beyond `runtime-probe`
 2. the current DDPM checkpoint source has not yet been confirmed as paper-aligned provenance
 3. no GPU was needed for this phase, so no scheduler request was made

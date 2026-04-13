@@ -4,7 +4,7 @@
 
 这份文档只记录一个事实：
 
-- `Finding NeMo migrated DDPM observability route` 现在已经在 `Project` 内获得了一个受限的 `activation export adapter`
+- `Finding NeMo migrated DDPM observability route` 现在已经在 `Research` 内获得了一个受限的 `activation export adapter`
 
 它不是：
 
@@ -15,7 +15,7 @@
 
 ## 当前裁决
 
-- `decision_scope`: `Project-only bounded adapter implementation`
+- `decision_scope`: `Research-only bounded adapter implementation`
 - `decision_grade`: `decision-grade`
 - `recommended_branch`: `zero-GPU hold`
 - `implementation_status`: `implemented`
@@ -65,7 +65,7 @@
 
 代码级验证：
 
-- `conda run -n diffaudit-research python -m pytest D:\Code\DiffAudit\Project\tests\test_gsa_observability_adapter.py -q`
+- `conda run -n diffaudit-research python -m pytest D:\Code\DiffAudit\Research\tests\test_gsa_observability_adapter.py -q`
   - `5 passed`
 
 真实 admitted 资产验证：

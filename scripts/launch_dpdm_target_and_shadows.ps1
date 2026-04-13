@@ -8,10 +8,12 @@ param(
     [Parameter(Mandatory = $true)]
     [string]$Workdir,
 
+    [string]$WorkspaceRoot = $env:DIFFAUDIT_WORKSPACE_ROOT,
+    [string]$ResearchRoot = "",
     [string]$RunSuffix = "strong-v2",
-    [string]$PythonExe = "C:\Users\Ding\miniforge3\envs\diffaudit-research\python.exe",
-    [string]$DpdmRoot = "D:\Code\DiffAudit\Project\external\DPDM",
-    [string]$ConfigPath = "D:\Code\DiffAudit\Project\external\DPDM\configs\cifar10_32\train_eps_10.0.yaml",
+    [string]$PythonExe = $env:DIFFAUDIT_RESEARCH_PYTHON,
+    [string]$DpdmRoot = "",
+    [string]$ConfigPath = "",
     [int]$BatchSize = 64,
     [int]$Epochs = 3,
     [int]$SigmaNoiseSamples = 2,
@@ -22,44 +24,96 @@ param(
 
 $ErrorActionPreference = "Stop"
 
-$launchTargetScript = "D:\Code\DiffAudit\Project\scripts\launch_dpdm_training.ps1"
-$launchShadowScript = "D:\Code\DiffAudit\Project\scripts\launch_dpdm_shadow_sequence_after_pid.ps1"
+if ([string]::IsNullOrWhiteSpace($ResearchRoot)) {
+    if (-not [string]::IsNullOrWhiteSpace($WorkspaceRoot)) {
+        $ResearchRoot = Join-Path $WorkspaceRoot "Research"
+    }
+    else {
+        $ResearchRoot = Join-Path $PSScriptRoot ".."
+    }
+}
 
-$targetLaunchJson = powershell -ExecutionPolicy Bypass -File $launchTargetScript `
-    -DataPath $DataPath `
-    -Workdir $Workdir `
-    -PythonExe $PythonExe `
-    -DpdmRoot $DpdmRoot `
-    -ConfigPath $ConfigPath `
-    -BatchSize $BatchSize `
-    -Epochs $Epochs `
-    -SigmaNoiseSamples $SigmaNoiseSamples `
-    -DeviceBackend $DeviceBackend `
-    -MasterPort $MasterPort
+$resolvedResearchRoot = (Resolve-Path -LiteralPath $ResearchRoot).Path
+$resolvedAssetsRoot = (Resolve-Path -LiteralPath $AssetsRoot).Path
+$launchTargetScript = Join-Path $PSScriptRoot "launch_dpdm_training.ps1"
+$launchShadowScript = Join-Path $PSScriptRoot "launch_dpdm_shadow_sequence_after_pid.ps1"
+
+$targetArgs = @(
+    "-ExecutionPolicy",
+    "Bypass",
+    "-File",
+    $launchTargetScript,
+    "-DataPath",
+    $DataPath,
+    "-Workdir",
+    $Workdir,
+    "-ResearchRoot",
+    $resolvedResearchRoot,
+    "-BatchSize",
+    $BatchSize,
+    "-Epochs",
+    $Epochs,
+    "-SigmaNoiseSamples",
+    $SigmaNoiseSamples,
+    "-DeviceBackend",
+    $DeviceBackend,
+    "-MasterPort",
+    $MasterPort
+)
+if (-not [string]::IsNullOrWhiteSpace($WorkspaceRoot)) {
+    $targetArgs += @("-WorkspaceRoot", $WorkspaceRoot)
+}
+if (-not [string]::IsNullOrWhiteSpace($PythonExe)) {
+    $targetArgs += @("-PythonExe", $PythonExe)
+}
+if (-not [string]::IsNullOrWhiteSpace($DpdmRoot)) {
+    $targetArgs += @("-DpdmRoot", $DpdmRoot)
+}
+if (-not [string]::IsNullOrWhiteSpace($ConfigPath)) {
+    $targetArgs += @("-ConfigPath", $ConfigPath)
+}
+
+$targetLaunchJson = powershell @targetArgs
 
 $targetLaunch = $targetLaunchJson | ConvertFrom-Json
 $targetPid = [int]$targetLaunch.pid
 
+$shadowArgs = @(
+    "-ExecutionPolicy",
+    "Bypass",
+    "-File",
+    $launchShadowScript,
+    "-WaitPid",
+    $targetPid,
+    "-AssetsRoot",
+    $resolvedAssetsRoot,
+    "-ResearchRoot",
+    $resolvedResearchRoot,
+    "-RunSuffix",
+    $RunSuffix,
+    "-Epochs",
+    $Epochs,
+    "-SigmaNoiseSamples",
+    $SigmaNoiseSamples,
+    "-BasePort",
+    $BasePort
+)
+if (-not [string]::IsNullOrWhiteSpace($WorkspaceRoot)) {
+    $shadowArgs += @("-WorkspaceRoot", $WorkspaceRoot)
+}
+if (-not [string]::IsNullOrWhiteSpace($PythonExe)) {
+    $shadowArgs += @("-PythonExe", $PythonExe)
+}
+if (-not [string]::IsNullOrWhiteSpace($DpdmRoot)) {
+    $shadowArgs += @("-DpdmRoot", $DpdmRoot)
+}
+if (-not [string]::IsNullOrWhiteSpace($ConfigPath)) {
+    $shadowArgs += @("-ConfigPath", $ConfigPath)
+}
+
 $shadowWatcher = Start-Process `
     -FilePath "powershell.exe" `
-    -ArgumentList @(
-        "-ExecutionPolicy",
-        "Bypass",
-        "-File",
-        $launchShadowScript,
-        "-WaitPid",
-        $targetPid,
-        "-AssetsRoot",
-        $AssetsRoot,
-        "-RunSuffix",
-        $RunSuffix,
-        "-Epochs",
-        $Epochs,
-        "-SigmaNoiseSamples",
-        $SigmaNoiseSamples,
-        "-BasePort",
-        $BasePort
-    ) `
+    -ArgumentList $shadowArgs `
     -WindowStyle Hidden `
     -PassThru
 
@@ -70,4 +124,5 @@ $shadowWatcher = Start-Process `
     target_workdir = $targetLaunch.workdir
     shadow_watcher_pid = $shadowWatcher.Id
     run_suffix = $RunSuffix
+    research_root = $resolvedResearchRoot
 } | ConvertTo-Json -Compress
