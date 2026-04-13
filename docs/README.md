@@ -4,6 +4,8 @@
 - `asset-registry-local-api.md`: minimal asset registry intake contract for Local-API
 - `reproduction-status.md`: per-track reproduction status
 - `comprehensive-progress.md`: one-page integrated progress view for the research repo
+- `mainline-narrative.md`: current research storyline, claimable contributions, and presentation-ready framing
+- `future-phase-e-intake.md`: ordered intake queue, entry gates, and expected outputs for the next research question
 - `next-run-intake-index.md`: next-run intake gate entrypoints and contracts
 - `mia-defense-research-index.md`: route, literature, and asset mapping for the MIA defense strategy document
 - `mia-defense-execution-checklist.md`: actionable execution checklist derived from the MIA defense strategy document
@@ -26,6 +28,8 @@
 
 - [reproduction-status.md](reproduction-status.md)：当前各条方法线的真实推进状态
 - [comprehensive-progress.md](comprehensive-progress.md)：研究仓库的综合进度入口
+- [mainline-narrative.md](mainline-narrative.md)：当前主线叙事、可主张创新点与答辩/PPT 素材入口
+- [future-phase-e-intake.md](future-phase-e-intake.md)：`Phase E` 候选池排序、进入条件与退出条件
 - [next-run-intake-index.md](next-run-intake-index.md)：可运行 next-run 入口索引（用于挂任务板的一句话口径）
 - [repo-map.md](repo-map.md)：仓库目录地图和代码职责说明
 - [environment.md](environment.md)：环境与依赖说明

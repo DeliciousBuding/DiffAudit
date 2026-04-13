@@ -1,11 +1,11 @@
-# Project AGENTS
+# Research AGENTS
 
-这是 `Project/` 研究仓库的仓库级协作文件。
+这是 `Research/` 研究仓库的仓库级协作文件。
 
 它面向两类协作者：
 
 - 人类队友
-- 在 `Project/` 内工作的 AGENT / Codex / Claude / 其他自动化代理
+- 在 `Research/` 内工作的 AGENT / Codex / Claude / 其他自动化代理
 
 目标只有一个：
 
@@ -15,7 +15,7 @@
 
 ## 1. 仓库边界
 
-`Project` 是纯研究仓库。
+`Research` 是纯研究仓库。
 
 它负责：
 
@@ -38,13 +38,13 @@
 - 平台页面
 - 服务发布
 
-那就应该切去 `Platform/` 或 `Services/Local-API/`，不要继续在 `Project/` 里扩。
+那就应该切去 `Platform/` 或 `Services/Local-API/`，不要继续在 `Research/` 里扩。
 
 ---
 
 ## 2. 当前总判断
 
-截至当前，`Project` 的算法线应该这样理解：
+截至当前，`Research` 的算法线应该这样理解：
 
 - `recon`
   - 当前最强 black-box 证据线

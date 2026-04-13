@@ -2,7 +2,9 @@
 
 ## Goal
 
-This handoff is for the next worker who needs to move `GSA` from:
+This handoff is for the next worker who needs to understand the old `assets/gsa` root that predates the admitted `1k-3shadow` line.
+
+It describes how this root moved `GSA` from:
 
 - toy end-to-end executable
 
@@ -57,7 +59,12 @@ or:
 3. Run gradient extraction against those `checkpoint-*` directories.
 4. Run `test_attack_accuracy.py` on the resulting gradient tensors.
 
-Until step 2 exists, the white-box line should stay in:
+Historical note:
+
+- the current admitted live intake no longer points here
+- the live `GSA` contract now reads from `assets/gsa-cifar10-1k-3shadow`
+
+Until step 2 exists, the old root should stay in:
 
 - `toy end-to-end executable`
 

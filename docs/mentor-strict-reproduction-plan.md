@@ -1,6 +1,6 @@
 # Mentor Strict Reproduction Plan
 
-这份文档把师兄口头方案收口成当前 `Project` 仓库的严格执行面。
+这份文档把师兄口头方案收口成当前 `Research` 仓库的严格执行面。
 
 依据来源：
 
@@ -49,6 +49,7 @@
 1. `recon` 固化主证据口径
 2. `variation` 保持 formal local black-box secondary track
 3. 如果真实 API 资产到位，优先把 `variation` 从 synthetic 推向真实 black-box
+4. 不把 `TMIA-DM` 误收进黑盒主线；它当前应明确归为灰盒候选论文
 
 ### 第三优先级：白盒 `GSA + W-1`
 
@@ -59,8 +60,8 @@
 
 当前目标：
 
-1. `GSA` 扩样本、提训练强度
-2. `DPDM` 接成 `W-1`
+1. `GSA` 扩到 `1k-3shadow` 并按更接近上游的口径重跑
+2. `DPDM` 从 smoke checkpoint 推进到第一版 `W-1` baseline
 
 ## 当前按线执行清单
 
@@ -84,15 +85,20 @@
 - `SecMI`
   - 继续探真实资产
   - 不再长期悬空
+- `TMIA-DM`
+  - 保持为已归档候选论文
+  - 当前只做 threat-model 与方法对照
+  - 在代码路径明确前不写成执行主线
 
 ### 白盒
 
 - `GSA`
-  - 扩 bucket
+  - 从 `128` 级 bucket 升到 `1000 + 3 shadow`
   - 提高训练强度
-  - 再跑 closed loop
+  - 改用更接近上游的梯度提取与攻击评估配置
 - `W-1`
-  - 接入 `DPDM`
+  - 基于现有 smoke checkpoint 接入白盒攻击评估
+  - 再逐步恢复更强训练设置
 
 ## 统一交付要求
 
@@ -114,6 +120,6 @@
 1. `PIA baseline + defended`
 2. `variation` 真实资产模板
 3. `recon` 主证据口径收口
-4. `GSA` 扩 bucket / 提强度
+4. `GSA 1k-3shadow`
 5. `DPDM -> W-1`
 6. 统一 attack-defense 总表

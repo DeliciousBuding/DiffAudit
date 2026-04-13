@@ -1,0 +1,114 @@
+{
+  "created_at": "2026-04-09T00:13:46+08:00",
+  "git": {
+    "available": true,
+    "commit": "0d7e08a5a07f44931692d52d54d0ce41aff8f54c",
+    "describe": "0d7e08a",
+    "dirty": false,
+    "error": null,
+    "is_repo": true
+  },
+  "inputs": {
+    "config": {
+      "algorithm": "sha256",
+      "file_count": 1,
+      "files": [
+        {
+          "mtime_ns": 1775495537441655900,
+          "path": "pia-cifar10-graybox-assets.local.yaml",
+          "sha256": "57e99d0ff1834bd5f7fa64b6de8f06eb29e13e4dc23ef3ddb905d41b6007878a",
+          "size": 622
+        }
+      ],
+      "kind": "file",
+      "root": "D:\\Code\\DiffAudit\\Research\\tmp\\configs\\pia-cifar10-graybox-assets.local.yaml",
+      "tree_sha256": "57e99d0ff1834bd5f7fa64b6de8f06eb29e13e4dc23ef3ddb905d41b6007878a"
+    },
+    "member_split_root": {
+      "algorithm": "sha256",
+      "file_count": 11,
+      "files": [
+        {
+          "mtime_ns": 1775334500868760500,
+          "path": "__pycache__/components.cpython-38.pyc",
+          "sha256": "6e1f3b11aacc1172d24a882dc5fe4341ba56ee830f01e9a9badf9bf525fe4fbc",
+          "size": 7744
+        },
+        {
+          "mtime_ns": 1775334500869871000,
+          "path": "__pycache__/dataset_utils.cpython-38.pyc",
+          "sha256": "3f8e05c40a9b4cec6716aaf3836d658d9304e575b72ef3065fef5255a3e2b771",
+          "size": 2698
+        },
+        {
+          "mtime_ns": 1775334500869871000,
+          "path": "__pycache__/model.cpython-38.pyc",
+          "sha256": "d49d2bcc82419a4238e54500da3f651e7eec36489694bc189594ab8a413671a4",
+          "size": 7811
+        },
+        {
+          "mtime_ns": 1775334500869871000,
+          "path": "attack.py",
+          "sha256": "362a58e30fe7a123edd107d2dda3716874d84e98001611ec9159006b7eb4da61",
+          "size": 4439
+        },
+        {
+          "mtime_ns": 1775334500864196100,
+          "path": "CIFAR10_train_ratio0.5.npz",
+          "sha256": "aca922ecee25ef00dc6b6377ebaf7875dfcc77c2cdfe27c873b26a65134aa0c0",
+          "size": 400790
+        },
+        {
+          "mtime_ns": 1775334500869871000,
+          "path": "components.py",
+          "sha256": "d61ebadb4643741116e2b08f61a4db7f4805dd84efdc15d6e0447cc357b4871a",
+          "size": 7430
+        },
+        {
+          "mtime_ns": 1775334500870904300,
+          "path": "dataset_utils.py",
+          "sha256": "7766a985246ce868e861a751a651d3740419456106ea1277a357fdf1b6a9ce82",
+          "size": 3050
+        },
+        {
+          "mtime_ns": 1775334500872882800,
+          "path": "diffusion.py",
+          "sha256": "fd215046d834d38cdffd5478e0e38a2c70d8236126e7caf516bb3682fd3f8fc3",
+          "size": 12149
+        },
+        {
+          "mtime_ns": 1775334500873881900,
+          "path": "main.py",
+          "sha256": "b91ba50fc36d341abb3011554f06085b9fed26e44b2f8a1dc34f4f26d761044e",
+          "size": 8136
+        },
+        {
+          "mtime_ns": 1775334500873881900,
+          "path": "model.py",
+          "sha256": "b8714f85649dadc9223c0e77d63ee24515be4a87dba25a796c8d611f0cff17ed",
+          "size": 7917
+        },
+        {
+          "mtime_ns": 1775334500868760500,
+          "path": "TINY-IN_train_ratio0.5.npz",
+          "sha256": "14a06133f36c74e7d3cb97dbe74385fb42c22335a7cb955fd9944ca503baca52",
+          "size": 800790
+        }
+      ],
+      "kind": "dir",
+      "root": "D:\\Code\\DiffAudit\\Research\\external\\PIA\\DDPM",
+      "tree_sha256": "31ef17bf5f399205eee80926bad4a382b2a9fe1a300e5fa85443a2b0559b3c71"
+    }
+  },
+  "paths": {
+    "config": "D:\\Code\\DiffAudit\\Research\\tmp\\configs\\pia-cifar10-graybox-assets.local.yaml",
+    "member_split_root": "D:\\Code\\DiffAudit\\Research\\external\\PIA\\DDPM",
+    "repo_root": "D:\\Code\\DiffAudit\\Research\\external\\PIA"
+  },
+  "schema": "pia_next_run.manifest.v1",
+  "validation": {
+    "errors": [],
+    "ok": true,
+    "warnings": []
+  }
+}

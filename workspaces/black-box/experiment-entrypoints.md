@@ -12,6 +12,9 @@
   - `python -m diffaudit dry-run-recon --config configs/attacks/recon_plan.yaml --repo-root external/Reconstruction-based-Attack`
   - `python -m diffaudit run-recon-mainline-smoke --workspace experiments/recon-mainline-smoke --repo-root external/Reconstruction-based-Attack --method threshold`
 - 产出：black-box 主证据、对照基线和 artifact mainline 入口。
+- 当前额外约束：
+  - 见 [2026-04-09-recon-semantic-gate.md](2026-04-09-recon-semantic-gate.md)
+  - 当前真正阻塞不是“还能不能跑”，而是 `shadow_member` 语义仍是代理映射
 
 ## 入口二：`variation-track`
 
@@ -28,6 +31,9 @@
 - 产出：
   - local synthetic-smoke verified
   - real API blocked / ready 的显式判定
+- 真实恢复模板：
+  - 见 [2026-04-09-variation-real-asset-template.md](2026-04-09-variation-real-asset-template.md)
+  - 对应仓库模板：[configs/attacks/variation_real_asset.template.yaml](../../configs/attacks/variation_real_asset.template.yaml)
 
 ## 入口三：`clid-track`
 
@@ -59,5 +65,6 @@
 
 - `SecMI`
 - `PIA`
+- `TMIA-DM`
 
 它们属于灰盒路线，不应继续作为黑盒入口文档的一部分。

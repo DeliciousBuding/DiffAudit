@@ -1,6 +1,6 @@
 # GSA Assets Root
 
-This directory is the formal local asset root for the white-box `GSA` line.
+This directory is the early local asset root for the white-box `GSA` line.
 
 It exists to keep three concerns separate:
 
@@ -48,10 +48,17 @@ Those belong elsewhere:
 
 ## Current Status
 
-This root is now official, but it does not yet contain paper-aligned `GSA` assets.
+This root is now legacy for admitted-system purposes.
 
-Current blocker remains:
+Current admitted `GSA` live intake has moved to:
 
-- no `GSA`-compatible `checkpoint-*` directory state
+- `workspaces/white-box/assets/gsa-cifar10-1k-3shadow`
+
+This older root is still useful as:
+
+- a record of the early CPU closed-loop path
+- a local compatibility/debugging stash
+
+But it should no longer be treated as the live admitted asset root for `catalog` or `contracts/best`.
 
 For operational next steps, read [HANDOFF.md](HANDOFF.md).

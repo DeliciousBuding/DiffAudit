@@ -4,10 +4,10 @@
   "method": "dit",
   "paper": "Scalable_Diffusion_Transformers_2022",
   "mode": "sample-smoke",
-  "workspace": "D:\\Code\\DiffAudit\\Project\\experiments\\dit-sample-smoke",
+  "workspace": "D:\\Code\\DiffAudit\\Research\\experiments\\dit-sample-smoke",
   "artifact_paths": {
-    "summary": "D:\\Code\\DiffAudit\\Project\\experiments\\dit-sample-smoke\\summary.json",
-    "sample_image": "D:\\Code\\DiffAudit\\Project\\experiments\\dit-sample-smoke\\sample.png"
+    "summary": "D:\\Code\\DiffAudit\\Research\\experiments\\dit-sample-smoke\\summary.json",
+    "sample_image": "D:\\Code\\DiffAudit\\Research\\experiments\\dit-sample-smoke\\sample.png"
   },
   "checks": {
     "asset_probe_ready": true,
@@ -15,7 +15,7 @@
     "sample_image_created": true
   },
   "runtime": {
-    "repo_root": "D:\\Code\\DiffAudit\\Project\\external\\DiT",
+    "repo_root": "D:\\Code\\DiffAudit\\Research\\external\\DiT",
     "model": "DiT-XL/2",
     "image_size": 256,
     "num_sampling_steps": 2,

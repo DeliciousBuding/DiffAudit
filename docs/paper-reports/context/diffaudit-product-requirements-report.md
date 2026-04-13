@@ -22,7 +22,7 @@
 - Title: DiffAudit —— 基于成员推断的扩散模型隐私风险检测与安全审计系统（产品需求文档 PRD）
 - Authors: 文档未署名
 - Venue / year / version: 内部 PRD，生成时间为 2026-04-04，版本号未标注
-- Local PDF path: `D:/Code/DiffAudit/Project/references/materials/context/diffaudit-product-requirements.pdf`
+- Local PDF path: `D:/Code/DiffAudit/Research/references/materials/context/diffaudit-product-requirements.pdf`
 - Source URL: 文档未提供
 
 ## Research Question

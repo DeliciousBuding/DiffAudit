@@ -9,7 +9,7 @@ from scripts.render_team_local_configs import render_all
 
 TEAM_LOCAL = {
     "team": {"owner": "tester", "machine": "ci", "os": "windows"},
-    "repo": {"project_root": "."},
+    "repo": {"research_root": "."},
     "black_box": {
         "recon": {
             "query_dataset_pt": "D:/datasets/recon/query.pt",

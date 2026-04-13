@@ -4,7 +4,7 @@
 
 根级 GitHub 设置基线见：
 
-- [github-settings-baseline.md](D:\Code\DiffAudit\Project\docs\github-settings-baseline.md)
+- [github-settings-baseline.md](D:\Code\DiffAudit\Research\docs\github-settings-baseline.md)
 
 ## 一、怎么让队友可以 push
 
@@ -106,5 +106,5 @@ git config user.email "你在GitHub已验证的邮箱"
 
 补充：
 
-- 仓库级 Copilot review 指令见 `Project/.github/copilot-instructions.md`
+- 仓库级 Copilot review 指令见 `Research/.github/copilot-instructions.md`
 - 研究仓库不把 Copilot 当最终 reviewer，而是当第一轮静态检查

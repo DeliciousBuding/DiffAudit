@@ -84,6 +84,43 @@ class VariationAttackTests(unittest.TestCase):
         self.assertEqual(payload["status"], "ready")
         self.assertTrue(payload["checks"]["query_image_root"])
         self.assertTrue(payload["checks"]["query_images_present"])
+        self.assertFalse(payload["checks"]["paper_eval_layout"])
+        self.assertEqual(payload["layout"]["flat_query_count"], 1)
+
+    def test_cli_probes_variation_assets_with_member_nonmember_layout(self) -> None:
+        from diffaudit.cli import main
+
+        with tempfile.TemporaryDirectory() as tmpdir:
+            root = Path(tmpdir)
+            query_root = root / "queries"
+            member_root = query_root / "member"
+            nonmember_root = query_root / "nonmember"
+            member_root.mkdir(parents=True)
+            nonmember_root.mkdir(parents=True)
+            (member_root / "m1.png").write_bytes(b"png")
+            (nonmember_root / "n1.png").write_bytes(b"png")
+
+            config_path = root / "audit.yaml"
+            config_path.write_text(
+                VARIATION_CONFIG_TEMPLATE.replace(
+                    "PLACEHOLDER_QUERY_ROOT",
+                    str(query_root).replace("\\", "/"),
+                ),
+                encoding="utf-8",
+            )
+
+            stdout = StringIO()
+            with redirect_stdout(stdout):
+                exit_code = main(["probe-variation-assets", "--config", str(config_path)])
+
+        payload = json.loads(stdout.getvalue())
+        self.assertEqual(exit_code, 0)
+        self.assertEqual(payload["status"], "ready")
+        self.assertTrue(payload["checks"]["member_split_present"])
+        self.assertTrue(payload["checks"]["nonmember_split_present"])
+        self.assertTrue(payload["checks"]["paper_eval_layout"])
+        self.assertEqual(payload["layout"]["member_query_count"], 1)
+        self.assertEqual(payload["layout"]["nonmember_query_count"], 1)
 
     def test_cli_runs_variation_dry_run(self) -> None:
         from diffaudit.cli import main

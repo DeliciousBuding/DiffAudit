@@ -5,7 +5,7 @@
   "method": "pia",
   "contract_stage": "target",
   "asset_grade": "single-machine-real-asset",
-  "provenance_status": "source-retained-unverified",
+  "provenance_status": "workspace-verified",
   "evidence_level": "runtime-mainline",
   "checkpoint_root": "workspaces/gray-box/assets/pia/checkpoints/cifar10_ddpm",
   "dataset_root": "workspaces/gray-box/assets/pia/datasets/cifar10",
@@ -13,6 +13,6 @@
   "dataset_archive": "workspaces/gray-box/assets/pia/sources/cifar-10-python.tar.gz",
   "member_split_root": "external/PIA/DDPM",
   "member_split_file": "external/PIA/DDPM/CIFAR10_train_ratio0.5.npz",
-  "canonical_summary": "workspaces/gray-box/runs/pia-cifar10-runtime-mainline-20260407-cpu/summary.json",
-  "defense_summary": "workspaces/gray-box/runs/pia-cifar10-runtime-mainline-dropout-defense-20260407-cpu/summary.json"
+  "canonical_summary": "workspaces/gray-box/runs/pia-cifar10-runtime-mainline-20260409-gpu-512-adaptive/summary.json",
+  "defense_summary": "workspaces/gray-box/runs/pia-cifar10-runtime-mainline-dropout-defense-20260409-gpu-512-allsteps-adaptive/summary.json"
 }

@@ -16,13 +16,13 @@ def _norm_rel(p: str) -> str:
 def main(argv: list[str] | None = None) -> int:
     parser = argparse.ArgumentParser(
         prog="validate_local_api_registry_alignment",
-        description="Validate Project intake index alignment with Services/Local-API SQLite registry seed.",
+        description="Validate Research intake index alignment with Services/Local-API SQLite registry seed.",
     )
     parser.add_argument(
         "--intake-index",
         type=Path,
         default=None,
-        help="Path to Project workspaces/intake/index.json.",
+        help="Path to Research workspaces/intake/index.json.",
     )
     parser.add_argument(
         "--registry-seed",
@@ -32,10 +32,10 @@ def main(argv: list[str] | None = None) -> int:
     )
     args = parser.parse_args(argv)
 
-    project_root = Path(__file__).resolve().parents[1]
-    workspace_root = project_root.parent
+    research_root = Path(__file__).resolve().parents[1]
+    workspace_root = research_root.parent
 
-    intake_index_path = (args.intake_index or (project_root / "workspaces" / "intake" / "index.json")).resolve()
+    intake_index_path = (args.intake_index or (research_root / "workspaces" / "intake" / "index.json")).resolve()
     registry_seed_path = (
         args.registry_seed
         or (workspace_root / "Services" / "Local-API" / "internal" / "api" / "registry_seed.json")
@@ -122,8 +122,8 @@ def main(argv: list[str] | None = None) -> int:
                     )
                     continue
                 promoted_norm = _norm_rel(promoted_root)
-                if promoted_norm.startswith("Project/"):
-                    promoted_norm = promoted_norm[len("Project/") :]
+                if promoted_norm.startswith("Research/"):
+                    promoted_norm = promoted_norm[len("Research/") :]
                 if promoted_norm == assets_root_norm:
                     continue
                 if promoted_norm.startswith(assets_root_norm.rstrip("/") + "/"):

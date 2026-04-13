@@ -1,7 +1,7 @@
 # Noise Aggregation Analysis Driven by Small-Noise Injection: Efficient Membership Inference for Diffusion Models
 
 - Title: Noise Aggregation Analysis Driven by Small-Noise Injection: Efficient Membership Inference for Diffusion Models
-- Material Path: `D:/Code/DiffAudit/Project/references/materials/gray-box/2025-arxiv-small-noise-injection-membership-inference-diffusion-models.pdf`
+- Material Path: `D:/Code/DiffAudit/Research/references/materials/gray-box/2025-arxiv-small-noise-injection-membership-inference-diffusion-models.pdf`
 - Primary Track: gray-box
 - Venue / Year: arXiv / 2025
 - Threat Model Category: Gray-box membership inference against diffusion models
@@ -22,7 +22,7 @@
 - Title: Noise Aggregation Analysis Driven by Small-Noise Injection: Efficient Membership Inference for Diffusion Models
 - Authors: Guo Li, Yuyang Yu, Xuemiao Xu
 - Venue / year / version: arXiv, 2025, arXiv:2510.21783v1
-- Local PDF path: `D:/Code/DiffAudit/Project/references/materials/gray-box/2025-arxiv-small-noise-injection-membership-inference-diffusion-models.pdf`
+- Local PDF path: `D:/Code/DiffAudit/Research/references/materials/gray-box/2025-arxiv-small-noise-injection-membership-inference-diffusion-models.pdf`
 - Source URL if known: `https://arxiv.org/abs/2510.21783`
 
 ## Research Question

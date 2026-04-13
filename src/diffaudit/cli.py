@@ -145,6 +145,12 @@ def build_parser() -> argparse.ArgumentParser:
     recon_public_subset_parser.add_argument("--target-count", type=int, default=1)
     recon_public_subset_parser.add_argument("--shadow-count", type=int, default=1)
 
+    recon_public_bundle_audit_parser = subparsers.add_parser(
+        "audit-recon-public-bundle",
+        help="audit public recon bundle semantics and derived mapping-note consistency",
+    )
+    recon_public_bundle_audit_parser.add_argument("--bundle-root", required=True)
+
     dit_asset_probe_parser = subparsers.add_parser(
         "probe-dit-assets",
         help="inspect official DiT sampling workspace and optional checkpoint readiness",
@@ -691,6 +697,24 @@ def build_parser() -> argparse.ArgumentParser:
         help="enable stochastic dropout at inference time as a minimal gray-box defense prototype",
     )
     pia_runtime_mainline_parser.add_argument(
+        "--dropout-activation-schedule",
+        default="off",
+        choices=["off", "all_steps", "late_steps_only"],
+        help="when stochastic dropout is enabled, choose whether it stays on for all attack steps or only late steps",
+    )
+    pia_runtime_mainline_parser.add_argument(
+        "--adaptive-query-repeats",
+        type=int,
+        default=1,
+        help="repeat the same score query this many times and aggregate by mean for adaptive attacker review",
+    )
+    pia_runtime_mainline_parser.add_argument(
+        "--late-step-threshold",
+        type=int,
+        default=None,
+        help="optional timestep threshold used by late_steps_only dropout activation",
+    )
+    pia_runtime_mainline_parser.add_argument(
         "--provenance-status",
         default="source-retained-unverified",
         help="provenance label recorded in the emitted summary",
@@ -709,6 +733,105 @@ def build_parser() -> argparse.ArgumentParser:
         "--assets-root",
         default="workspaces/white-box/assets/gsa",
         help="path to the canonical white-box GSA assets root",
+    )
+
+    gsa_observability_probe_parser = subparsers.add_parser(
+        "probe-gsa-observability-contract",
+        help="validate the Finding NeMo migrated DDPM observability contract without exporting activations",
+    )
+    gsa_observability_probe_parser.add_argument(
+        "--repo-root",
+        default="workspaces/white-box/external/GSA",
+        help="path to local GSA repository root",
+    )
+    gsa_observability_probe_parser.add_argument(
+        "--assets-root",
+        default="workspaces/white-box/assets/gsa-cifar10-1k-3shadow-epoch300-rerun1",
+        help="path to the admitted GSA assets root used for observability planning",
+    )
+    gsa_observability_probe_parser.add_argument(
+        "--checkpoint-root",
+        default="workspaces/white-box/assets/gsa-cifar10-1k-3shadow-epoch300-rerun1/checkpoints/target",
+        help="path to the admitted target checkpoint root",
+    )
+    gsa_observability_probe_parser.add_argument(
+        "--split",
+        default="target-member",
+        help="dataset split to resolve the sample binding against",
+    )
+    gsa_observability_probe_parser.add_argument(
+        "--sample-id",
+        required=True,
+        help="sample id or compatibility alias resolved against the requested split",
+    )
+    gsa_observability_probe_parser.add_argument(
+        "--layer-selector",
+        default="mid_block.attentions.0.to_v",
+        help="exact GSA/DDPM module selector used by the contract",
+    )
+    gsa_observability_probe_parser.add_argument(
+        "--signal-type",
+        default="activations",
+        choices=["activations", "grad_norm"],
+        help="signal type being validated by the contract",
+    )
+    gsa_observability_probe_parser.add_argument(
+        "--resolution",
+        type=int,
+        default=32,
+        help="UNet resolution used to reconstruct the module naming graph",
+    )
+    gsa_observability_probe_parser.add_argument(
+        "--provenance-status",
+        default="workspace-verified",
+        help="provenance label recorded in the emitted payload",
+    )
+
+    gsa_observability_export_parser = subparsers.add_parser(
+        "export-gsa-observability-canary",
+        help="export one CPU-only sample-pair activation canary without authorizing any run release",
+    )
+    gsa_observability_export_parser.add_argument("--workspace", required=True)
+    gsa_observability_export_parser.add_argument(
+        "--repo-root",
+        default="workspaces/white-box/external/GSA",
+        help="path to local GSA repository root",
+    )
+    gsa_observability_export_parser.add_argument(
+        "--assets-root",
+        default="workspaces/white-box/assets/gsa-cifar10-1k-3shadow-epoch300-rerun1",
+        help="path to the admitted GSA assets root used for observability planning",
+    )
+    gsa_observability_export_parser.add_argument(
+        "--checkpoint-root",
+        default="workspaces/white-box/assets/gsa-cifar10-1k-3shadow-epoch300-rerun1/checkpoints/target",
+        help="path to the admitted target checkpoint root",
+    )
+    gsa_observability_export_parser.add_argument("--checkpoint-dir", default=None)
+    gsa_observability_export_parser.add_argument("--split", required=True)
+    gsa_observability_export_parser.add_argument("--sample-id", required=True)
+    gsa_observability_export_parser.add_argument("--control-split", required=True)
+    gsa_observability_export_parser.add_argument("--control-sample-id", required=True)
+    gsa_observability_export_parser.add_argument(
+        "--layer-selector",
+        default="mid_block.attentions.0.to_v",
+        help="exact GSA/DDPM module selector used by the contract",
+    )
+    gsa_observability_export_parser.add_argument(
+        "--signal-type",
+        default="activations",
+        choices=["activations"],
+        help="signal type exported by the canary",
+    )
+    gsa_observability_export_parser.add_argument("--timestep", type=int, default=999)
+    gsa_observability_export_parser.add_argument("--noise-seed", type=int, default=0)
+    gsa_observability_export_parser.add_argument("--prediction-type", default="epsilon")
+    gsa_observability_export_parser.add_argument("--device", default="cpu")
+    gsa_observability_export_parser.add_argument("--resolution", type=int, default=32)
+    gsa_observability_export_parser.add_argument(
+        "--provenance-status",
+        default="workspace-verified",
+        help="provenance label recorded in the emitted payload",
     )
 
     gsa_runtime_mainline_parser = subparsers.add_parser(
@@ -760,10 +883,121 @@ def build_parser() -> argparse.ArgumentParser:
         help="prediction type passed to the official GSA DDPM gradient extractor",
     )
     gsa_runtime_mainline_parser.add_argument(
+        "--paper-aligned",
+        action="store_true",
+        help="use stronger GSA defaults closer to the upstream paper path",
+    )
+    gsa_runtime_mainline_parser.add_argument(
+        "--device",
+        default="auto",
+        choices=["auto", "cpu", "cuda"],
+        help="device hint for GSA gradient extraction subprocesses",
+    )
+    gsa_runtime_mainline_parser.add_argument(
         "--provenance-status",
         default="workspace-verified",
         help="provenance label recorded in the emitted summary",
     )
+
+    dpdm_w1_target_only_parser = subparsers.add_parser(
+        "run-dpdm-w1-target-only",
+        help="run a defense-native target-only white-box comparator for a DPDM W-1 checkpoint",
+    )
+    dpdm_w1_target_only_parser.add_argument(
+        "--workspace",
+        required=True,
+        help="workspace directory for DPDM W-1 comparator artifacts",
+    )
+    dpdm_w1_target_only_parser.add_argument(
+        "--checkpoint-path",
+        required=True,
+        help="path to the DPDM checkpoint file",
+    )
+    dpdm_w1_target_only_parser.add_argument(
+        "--member-dataset-dir",
+        required=True,
+        help="path to member images used for target-only comparison",
+    )
+    dpdm_w1_target_only_parser.add_argument(
+        "--nonmember-dataset-dir",
+        required=True,
+        help="path to non-member images used for target-only comparison",
+    )
+    dpdm_w1_target_only_parser.add_argument(
+        "--dpdm-root",
+        default="external/DPDM",
+        help="path to the local DPDM repository root",
+    )
+    dpdm_w1_target_only_parser.add_argument(
+        "--config-path",
+        default="external/DPDM/configs/cifar10_32/train_eps_10.0.yaml",
+        help="path to the DPDM config used to instantiate the model",
+    )
+    dpdm_w1_target_only_parser.add_argument(
+        "--device",
+        default="cuda",
+        choices=["cpu", "cuda"],
+        help="device used for DPDM target-only comparison",
+    )
+    dpdm_w1_target_only_parser.add_argument(
+        "--sigma-points",
+        type=int,
+        default=8,
+        help="number of deterministic sigma points used per sample",
+    )
+    dpdm_w1_target_only_parser.add_argument(
+        "--max-samples",
+        type=int,
+        default=128,
+        help="optional cap on member and non-member sample counts",
+    )
+    dpdm_w1_target_only_parser.add_argument(
+        "--provenance-status",
+        default="workspace-verified",
+        help="provenance label recorded in the emitted summary",
+    )
+
+    dpdm_w1_shadow_parser = subparsers.add_parser(
+        "run-dpdm-w1-shadow-comparator",
+        help="run a defended shadow-trained white-box comparator for DPDM W-1 checkpoints",
+    )
+    dpdm_w1_shadow_parser.add_argument("--workspace", required=True)
+    dpdm_w1_shadow_parser.add_argument("--target-checkpoint-path", required=True)
+    dpdm_w1_shadow_parser.add_argument("--shadow-checkpoint-path", required=True)
+    dpdm_w1_shadow_parser.add_argument("--target-member-dataset-dir", required=True)
+    dpdm_w1_shadow_parser.add_argument("--target-nonmember-dataset-dir", required=True)
+    dpdm_w1_shadow_parser.add_argument("--shadow-member-dataset-dir", required=True)
+    dpdm_w1_shadow_parser.add_argument("--shadow-nonmember-dataset-dir", required=True)
+    dpdm_w1_shadow_parser.add_argument("--dpdm-root", default="external/DPDM")
+    dpdm_w1_shadow_parser.add_argument(
+        "--config-path",
+        default="external/DPDM/configs/cifar10_32/train_eps_10.0.yaml",
+    )
+    dpdm_w1_shadow_parser.add_argument("--device", default="cuda", choices=["cpu", "cuda"])
+    dpdm_w1_shadow_parser.add_argument("--sigma-points", type=int, default=8)
+    dpdm_w1_shadow_parser.add_argument("--max-samples", type=int, default=128)
+    dpdm_w1_shadow_parser.add_argument("--provenance-status", default="workspace-verified")
+
+    dpdm_w1_multi_shadow_parser = subparsers.add_parser(
+        "run-dpdm-w1-multi-shadow-comparator",
+        help="run a defended multi-shadow white-box comparator for DPDM W-1 checkpoints",
+    )
+    dpdm_w1_multi_shadow_parser.add_argument("--workspace", required=True)
+    dpdm_w1_multi_shadow_parser.add_argument("--target-checkpoint-path", required=True)
+    dpdm_w1_multi_shadow_parser.add_argument("--shadow-checkpoint-paths", nargs="+", required=True)
+    dpdm_w1_multi_shadow_parser.add_argument("--target-member-dataset-dir", required=True)
+    dpdm_w1_multi_shadow_parser.add_argument("--target-nonmember-dataset-dir", required=True)
+    dpdm_w1_multi_shadow_parser.add_argument("--shadow-member-dataset-dirs", nargs="+", required=True)
+    dpdm_w1_multi_shadow_parser.add_argument("--shadow-nonmember-dataset-dirs", nargs="+", required=True)
+    dpdm_w1_multi_shadow_parser.add_argument("--dpdm-root", default="external/DPDM")
+    dpdm_w1_multi_shadow_parser.add_argument(
+        "--config-path",
+        default="external/DPDM/configs/cifar10_32/train_eps_10.0.yaml",
+    )
+    dpdm_w1_multi_shadow_parser.add_argument("--device", default="cuda", choices=["cpu", "cuda"])
+    dpdm_w1_multi_shadow_parser.add_argument("--sigma-points", type=int, default=8)
+    dpdm_w1_multi_shadow_parser.add_argument("--max-samples", type=int, default=128)
+    dpdm_w1_multi_shadow_parser.add_argument("--provenance-status", default="workspace-verified")
 
     local_api_parser = subparsers.add_parser(
         "serve-local-api",
@@ -892,6 +1126,13 @@ def main(argv: list[str] | None = None) -> int:
         print(json.dumps(payload, indent=2, ensure_ascii=True))
         return 0 if payload["status"] == "ready" else 1
 
+    if args.command == "audit-recon-public-bundle":
+        from diffaudit.attacks.recon import audit_recon_public_bundle
+
+        payload = audit_recon_public_bundle(bundle_root=args.bundle_root)
+        print(json.dumps(payload, indent=2, ensure_ascii=True))
+        return 0 if payload["status"] == "ready" else 1
+
     if args.command == "probe-dit-assets":
         payload = probe_dit_assets(
             repo_root=args.repo_root,
@@ -914,6 +1155,48 @@ def main(argv: list[str] | None = None) -> int:
         payload = probe_gsa_assets(
             assets_root=args.assets_root,
             repo_root=args.repo_root,
+        )
+        print(json.dumps(payload, indent=2, ensure_ascii=True))
+        return 0 if payload["status"] == "ready" else 1
+
+    if args.command == "probe-gsa-observability-contract":
+        from diffaudit.attacks.gsa_observability import probe_gsa_observability_contract
+
+        payload = probe_gsa_observability_contract(
+            repo_root=args.repo_root,
+            assets_root=args.assets_root,
+            checkpoint_root=args.checkpoint_root,
+            split=args.split,
+            sample_id=args.sample_id,
+            layer_selector=args.layer_selector,
+            signal_type=args.signal_type,
+            resolution=args.resolution,
+            provenance_status=args.provenance_status,
+        )
+        print(json.dumps(payload, indent=2, ensure_ascii=True))
+        return 0 if payload["status"] == "ready" else 1
+
+    if args.command == "export-gsa-observability-canary":
+        from diffaudit.attacks.gsa_observability import export_gsa_observability_canary
+
+        payload = export_gsa_observability_canary(
+            workspace=args.workspace,
+            repo_root=args.repo_root,
+            assets_root=args.assets_root,
+            checkpoint_root=args.checkpoint_root,
+            checkpoint_dir=args.checkpoint_dir,
+            split=args.split,
+            sample_id=args.sample_id,
+            control_split=args.control_split,
+            control_sample_id=args.control_sample_id,
+            layer_selector=args.layer_selector,
+            signal_type=args.signal_type,
+            timestep=args.timestep,
+            noise_seed=args.noise_seed,
+            prediction_type=args.prediction_type,
+            device=args.device,
+            resolution=args.resolution,
+            provenance_status=args.provenance_status,
         )
         print(json.dumps(payload, indent=2, ensure_ascii=True))
         return 0 if payload["status"] == "ready" else 1
@@ -1177,6 +1460,9 @@ def main(argv: list[str] | None = None) -> int:
             max_samples=args.max_samples,
             batch_size=args.batch_size,
             stochastic_dropout_defense=args.stochastic_dropout_defense,
+            dropout_activation_schedule=args.dropout_activation_schedule,
+            adaptive_query_repeats=args.adaptive_query_repeats,
+            late_step_threshold=args.late_step_threshold,
             provenance_status=args.provenance_status,
         )
         print(json.dumps(payload, indent=2, ensure_ascii=True))
@@ -1185,15 +1471,81 @@ def main(argv: list[str] | None = None) -> int:
     if args.command == "run-gsa-runtime-mainline":
         from diffaudit.attacks.gsa import run_gsa_runtime_mainline
 
+        ddpm_num_steps = args.ddpm_num_steps
+        sampling_frequency = args.sampling_frequency
+        if args.paper_aligned:
+            ddpm_num_steps = 1000
+            sampling_frequency = 10
         payload = run_gsa_runtime_mainline(
             workspace=args.workspace,
             assets_root=args.assets_root,
             repo_root=args.repo_root,
             resolution=args.resolution,
-            ddpm_num_steps=args.ddpm_num_steps,
-            sampling_frequency=args.sampling_frequency,
+            ddpm_num_steps=ddpm_num_steps,
+            sampling_frequency=sampling_frequency,
             attack_method=args.attack_method,
             prediction_type=args.prediction_type,
+            device=args.device,
+            provenance_status=args.provenance_status,
+        )
+        print(json.dumps(payload, indent=2, ensure_ascii=True))
+        return 0 if payload["status"] == "ready" else 1
+
+    if args.command == "run-dpdm-w1-target-only":
+        from diffaudit.defenses.dpdm_w1 import run_dpdm_w1_target_only_comparator
+
+        payload = run_dpdm_w1_target_only_comparator(
+            workspace=args.workspace,
+            checkpoint_path=args.checkpoint_path,
+            member_dataset_dir=args.member_dataset_dir,
+            nonmember_dataset_dir=args.nonmember_dataset_dir,
+            dpdm_root=args.dpdm_root,
+            config_path=args.config_path,
+            device=args.device,
+            sigma_points=args.sigma_points,
+            max_samples=args.max_samples,
+            provenance_status=args.provenance_status,
+        )
+        print(json.dumps(payload, indent=2, ensure_ascii=True))
+        return 0 if payload["status"] == "ready" else 1
+
+    if args.command == "run-dpdm-w1-shadow-comparator":
+        from diffaudit.defenses.dpdm_w1 import run_dpdm_w1_shadow_comparator
+
+        payload = run_dpdm_w1_shadow_comparator(
+            workspace=args.workspace,
+            target_checkpoint_path=args.target_checkpoint_path,
+            shadow_checkpoint_path=args.shadow_checkpoint_path,
+            target_member_dataset_dir=args.target_member_dataset_dir,
+            target_nonmember_dataset_dir=args.target_nonmember_dataset_dir,
+            shadow_member_dataset_dir=args.shadow_member_dataset_dir,
+            shadow_nonmember_dataset_dir=args.shadow_nonmember_dataset_dir,
+            dpdm_root=args.dpdm_root,
+            config_path=args.config_path,
+            device=args.device,
+            sigma_points=args.sigma_points,
+            max_samples=args.max_samples,
+            provenance_status=args.provenance_status,
+        )
+        print(json.dumps(payload, indent=2, ensure_ascii=True))
+        return 0 if payload["status"] == "ready" else 1
+
+    if args.command == "run-dpdm-w1-multi-shadow-comparator":
+        from diffaudit.defenses.dpdm_w1 import run_dpdm_w1_multi_shadow_comparator
+
+        payload = run_dpdm_w1_multi_shadow_comparator(
+            workspace=args.workspace,
+            target_checkpoint_path=args.target_checkpoint_path,
+            shadow_checkpoint_paths=args.shadow_checkpoint_paths,
+            target_member_dataset_dir=args.target_member_dataset_dir,
+            target_nonmember_dataset_dir=args.target_nonmember_dataset_dir,
+            shadow_member_dataset_dirs=args.shadow_member_dataset_dirs,
+            shadow_nonmember_dataset_dirs=args.shadow_nonmember_dataset_dirs,
+            dpdm_root=args.dpdm_root,
+            config_path=args.config_path,
+            device=args.device,
+            sigma_points=args.sigma_points,
+            max_samples=args.max_samples,
             provenance_status=args.provenance_status,
         )
         print(json.dumps(payload, indent=2, ensure_ascii=True))

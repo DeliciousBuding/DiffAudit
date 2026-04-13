@@ -9,8 +9,8 @@ from pathlib import Path
 
 class PiaNextRunTests(unittest.TestCase):
     def test_pia_next_run_emits_manifest_and_provenance(self) -> None:
-        project_root = Path(__file__).resolve().parents[1]
-        tool_src = project_root / "tools" / "pia_next_run" / "src"
+        research_root = Path(__file__).resolve().parents[1]
+        tool_src = research_root / "tools" / "pia_next_run" / "src"
 
         with tempfile.TemporaryDirectory() as tmpdir:
             root = Path(tmpdir)
@@ -48,7 +48,7 @@ class PiaNextRunTests(unittest.TestCase):
                     "--out-dir",
                     str(out_dir),
                 ],
-                cwd=project_root,
+                cwd=research_root,
                 env=env,
                 capture_output=True,
                 text=True,

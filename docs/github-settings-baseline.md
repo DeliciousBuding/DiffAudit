@@ -1,10 +1,10 @@
 # GitHub Settings Baseline
 
-这份文档定义 `Project` 研究仓库的 GitHub 后台设置基线。
+这份文档定义 `Research` 研究仓库的 GitHub 后台设置基线。
 
 ## 一、仓库定位
 
-- 仓库：`Project`
+- 仓库：`Research`
 - 类型：研究与实验主仓库
 - 当前可见性：`public`
 - 目标：保证研究资产、实验代码、论文复现与状态文档可协作，同时避免把研究仓库按产品仓库方式管理

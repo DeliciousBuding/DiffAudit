@@ -87,6 +87,15 @@
 - 开源仓库：[kong13661/PIA](https://github.com/kong13661/PIA)
 - 阅读报告：[An Efficient Membership Inference Attack for the Diffusion Model by Proximal Initialization](https://www.feishu.cn/docx/VPNhdJMryo5K86xOfE8cX3PFnDd)
 
+### Temporal Membership Inference Attack Method for Diffusion Models
+
+- 文件：[2026-crad-temporal-membership-inference-attack-method-diffusion-models.pdf](gray-box/2026-crad-temporal-membership-inference-attack-method-diffusion-models.pdf)
+- 内容简介：这篇论文研究扩散模型上的时序成员推断问题，强调现有方法在短时攻击与长时攻击之间存在效果平衡困难。论文把目标放在扩散时间相关信号上，希望同时提升短时和长时成员推断的攻击成功率。
+- 核心方法 / 结论：作者提出 `TMIA-DM`，摘要里给出的核心做法是：短时攻击使用噪声梯度信息保证攻击成功率，长时攻击使用时序噪声信息提升长期攻击效果。摘要报告在常见扩散模型上，短时攻击 `ASR` 约提升 `5` 个百分点，长时攻击 `ASR` 约提升 `1` 个百分点。
+- 和 DiffAudit 的关系：它对 DiffAudit 的价值不在于替换当前黑盒主线，而在于补强灰盒时间步 / 噪声信号这一研究轴。结合当前仓库的 `PIA` 主线，这篇论文说明“成员信号可能稳定存在于扩散过程的时间相关噪声行为中”，因此更适合作为 `PIA` 的比较论文或下一轮 gray-box 候选，而不是严格黑盒路线。
+- 开源仓库：暂未找到
+- 阅读报告：[本地阅读报告：Temporal Membership Inference Attack Method for Diffusion Models](../../docs/paper-reports/gray-box/2026-crad-temporal-membership-inference-attack-method-diffusion-models-report.md)
+
 ### Score-based Membership Inference on Diffusion Models
 
 - 文件：[2025-arxiv-sima-score-based-membership-inference-diffusion-models.pdf](gray-box/2025-arxiv-sima-score-based-membership-inference-diffusion-models.pdf)
@@ -169,7 +178,7 @@
 - 内容简介：这份材料讨论的不是单点算法改进，而是如何把扩散模型成员推断、隐私泄露识别和合规证据输出组织成一个完整产品。它关注的核心问题是：面对可能记忆训练图像的扩散模型，审计方如何在不同访问权限下稳定发现风险，并把结果转化为业务和法规可理解的交付物。
 - 核心方法 / 结论：文档提出的产品方案由三类检测信号组成：白盒 `DDIM Inversion` 重建误差、灰盒 `Cross-Attention` 热力图溯源和黑盒 `Likelihood/Loss` 判别；同时配套风险仪表盘、可视化溯源界面、模型加载器与标准合规报告模块。它的核心贡献不是证明新方法优于现有论文，而是把已有研究信号重组为一套可执行的工程路线图和产品闭环。
 - 和 DiffAudit 的关系：对 DiffAudit 而言，这份 PRD 的价值在于把仓库中已经存在的黑盒、灰盒、白盒研究主线，统一编排成产品需求、里程碑和交付语言。它适合作为团队后续 UI 原型、报告生成器和审计演示系统的需求基线，但不能替代正式实验论文或复现实证材料。
-- 开源仓库：[DeliciousBuding/DiffAudit](https://github.com/DeliciousBuding/DiffAudit/)
+- 开源仓库：[DeliciousBuding/DiffAudit](https://github.com/DeliciousBuding/DiffAudit-Research/)
 - 阅读报告：[DiffAudit 产品需求文档（PRD）阅读报告](https://www.feishu.cn/docx/PxuMd5asFolFMXxqRCNcroaindb)
 
 ### DiffAudit 团队入门扫盲文档
@@ -178,7 +187,7 @@
 - 内容简介：这份文档面向第一次接触扩散模型隐私审计的新成员，核心任务是解释 DiffAudit 到底在研究什么。它把问题收束为“扩散模型会不会记住训练样本并因此暴露成员信息”，并进一步说明项目目标不是提升图像生成质量，而是构建一套能够识别、解释和展示隐私风险的审计系统。
 - 核心方法 / 结论：文档给出的核心方法不是新攻击算法，而是一条白盒优先的最小闭环：选择一个模型，准备成员与非成员样本，对图像做 DDIM 反演与重建，计算重建误差，比较两组差异，并把结果整理成可视化证据或报告。它还系统整理了成员推断、记忆、白盒/灰盒/黑盒、潜空间、注意力热力图等术语，用于统一团队内部的基础语言。
 - 和 DiffAudit 的关系：它对 DiffAudit 的意义在于统一项目叙事和启动顺序。文档明确要求团队先打穿一个可展示的审计闭环，再逐步扩展黑盒、灰盒与防御建议，这对新成员 onboarding、申报材料撰写和后续报告产出都有直接价值；同时，它也提醒团队当前仓库的黑盒优先现实与文档中的白盒优先设想之间仍需做明确对齐。
-- 开源仓库：[DeliciousBuding/DiffAudit](https://github.com/DeliciousBuding/DiffAudit/)
+- 开源仓库：[DeliciousBuding/DiffAudit](https://github.com/DeliciousBuding/DiffAudit-Research/)
 - 阅读报告：[DiffAudit 团队入门扫盲文档](https://www.feishu.cn/docx/HIY8dWNPjooAgHxjSuMc5UmCnTh)
 
 ## 综述与归档

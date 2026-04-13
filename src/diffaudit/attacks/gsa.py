@@ -3,6 +3,7 @@
 from __future__ import annotations
 
 import json
+import os
 import subprocess
 import sys
 from pathlib import Path
@@ -47,11 +48,52 @@ def _latest_checkpoint_dir(checkpoint_root: str | Path) -> Path:
     return candidates[-1]
 
 
+def _safe_latest_checkpoint_dir(checkpoint_root: str | Path) -> Path | None:
+    try:
+        return _latest_checkpoint_dir(checkpoint_root)
+    except FileNotFoundError:
+        return None
+
+
 def _dataset_has_files(dataset_dir: str | Path) -> bool:
     dataset_path = Path(dataset_dir)
     if not dataset_path.exists():
         return False
     return any(path.is_file() for path in dataset_path.rglob("*"))
+
+
+def _discover_shadow_specs(
+    dataset_root: str | Path,
+    checkpoint_root: str | Path,
+) -> list[dict[str, str]]:
+    dataset_path = Path(dataset_root)
+    checkpoint_path = Path(checkpoint_root)
+
+    legacy_member = dataset_path / "shadow-member"
+    legacy_nonmember = dataset_path / "shadow-nonmember"
+    legacy_checkpoint = checkpoint_path / "shadow"
+    if legacy_member.exists() and legacy_nonmember.exists() and legacy_checkpoint.exists():
+        return [
+            {
+                "name": "shadow",
+                "member_dataset": str(legacy_member),
+                "nonmember_dataset": str(legacy_nonmember),
+                "checkpoint_dir": str(legacy_checkpoint),
+            }
+        ]
+
+    discovered: list[dict[str, str]] = []
+    for member_dir in sorted(dataset_path.glob("shadow-*-member")):
+        prefix = member_dir.name[: -len("-member")]
+        discovered.append(
+            {
+                "name": prefix,
+                "member_dataset": str(member_dir),
+                "nonmember_dataset": str(dataset_path / f"{prefix}-nonmember"),
+                "checkpoint_dir": str(checkpoint_path / prefix),
+            }
+        )
+    return discovered
 
 
 def probe_gsa_assets(
@@ -64,22 +106,32 @@ def probe_gsa_assets(
     checkpoint_root = assets_path / "checkpoints"
     manifest_root = assets_path / "manifests"
     source_root = assets_path / "sources"
+    shadow_specs = _discover_shadow_specs(dataset_root, checkpoint_root)
 
     target_checkpoint = checkpoint_root / "target"
-    shadow_checkpoint = checkpoint_root / "shadow"
-    target_latest = _latest_checkpoint_dir(target_checkpoint) if target_checkpoint.exists() else None
-    shadow_latest = _latest_checkpoint_dir(shadow_checkpoint) if shadow_checkpoint.exists() else None
+    target_latest = _safe_latest_checkpoint_dir(target_checkpoint) if target_checkpoint.exists() else None
     manifest_files = [path for path in manifest_root.iterdir()] if manifest_root.exists() else []
+    shadow_latest_dirs: list[str] = []
+    for spec in shadow_specs:
+        checkpoint_dir = Path(spec["checkpoint_dir"])
+        latest = _safe_latest_checkpoint_dir(checkpoint_dir) if checkpoint_dir.exists() else None
+        if latest is not None:
+            shadow_latest_dirs.append(str(latest))
 
     checks = {
         "workspace_files": True,
         "assets_root": assets_path.exists(),
         "target_member_dataset": _dataset_has_files(dataset_root / "target-member"),
         "target_nonmember_dataset": _dataset_has_files(dataset_root / "target-nonmember"),
-        "shadow_member_dataset": _dataset_has_files(dataset_root / "shadow-member"),
-        "shadow_nonmember_dataset": _dataset_has_files(dataset_root / "shadow-nonmember"),
         "target_checkpoint": bool(target_latest and target_latest.exists()),
-        "shadow_checkpoint": bool(shadow_latest and shadow_latest.exists()),
+        "shadow_assets": bool(shadow_specs),
+        "shadow_datasets": bool(shadow_specs)
+        and all(
+            _dataset_has_files(spec["member_dataset"]) and _dataset_has_files(spec["nonmember_dataset"])
+            for spec in shadow_specs
+        ),
+        "shadow_checkpoints": bool(shadow_specs)
+        and len(shadow_latest_dirs) == len(shadow_specs),
         "manifest_dir": manifest_root.exists(),
         "manifest_file": bool(manifest_files),
         "sources_dir": source_root.exists(),
@@ -89,10 +141,10 @@ def probe_gsa_assets(
         "assets_root": "assets root",
         "target_member_dataset": "target-member dataset",
         "target_nonmember_dataset": "target-nonmember dataset",
-        "shadow_member_dataset": "shadow-member dataset",
-        "shadow_nonmember_dataset": "shadow-nonmember dataset",
         "target_checkpoint": "target checkpoint-*",
-        "shadow_checkpoint": "shadow checkpoint-*",
+        "shadow_assets": "shadow asset specs",
+        "shadow_datasets": "shadow datasets",
+        "shadow_checkpoints": "shadow checkpoint-*",
         "manifest_dir": "manifests dir",
         "manifest_file": "manifest file",
         "sources_dir": "sources dir",
@@ -102,15 +154,23 @@ def probe_gsa_assets(
         "assets_root": str(assets_path),
         "target_member_dataset": str(dataset_root / "target-member"),
         "target_nonmember_dataset": str(dataset_root / "target-nonmember"),
-        "shadow_member_dataset": str(dataset_root / "shadow-member"),
-        "shadow_nonmember_dataset": str(dataset_root / "shadow-nonmember"),
         "target_checkpoint": str(target_latest) if target_latest else str(target_checkpoint),
-        "shadow_checkpoint": str(shadow_latest) if shadow_latest else str(shadow_checkpoint),
+        "shadow_specs": shadow_specs,
+        "shadow_checkpoints": shadow_latest_dirs,
         "manifests": str(manifest_root),
         "sources": str(source_root),
     }
     missing_keys = [name for name, ready in checks.items() if not ready]
-    missing = [paths.get(name, labels[name]) for name in missing_keys]
+    missing: list[str] = []
+    for name in missing_keys:
+        value = paths.get(name, labels[name])
+        if isinstance(value, list):
+            if value:
+                missing.extend(str(item) for item in value)
+            else:
+                missing.append(labels[name])
+        else:
+            missing.append(str(value))
     return {
         "status": "ready" if all(checks.values()) else "blocked",
         "checks": checks,
@@ -123,13 +183,14 @@ def probe_gsa_assets(
     }
 
 
-def _run_subprocess(command: list[str], cwd: str | Path) -> dict[str, Any]:
+def _run_subprocess(command: list[str], cwd: str | Path, env: dict[str, str] | None = None) -> dict[str, Any]:
     completed = subprocess.run(
         command,
         cwd=str(Path(cwd)),
         capture_output=True,
         text=True,
         check=False,
+        env=env,
     )
     return {
         "returncode": completed.returncode,
@@ -187,7 +248,7 @@ def _evaluate_gsa_closed_loop(
         stratify=shadow_y,
     )
     xgb = XGBClassifier(
-        n_estimators=50,
+        n_estimators=200,
         random_state=0,
         eval_metric="logloss",
     )
@@ -217,6 +278,7 @@ def run_gsa_runtime_mainline(
     sampling_frequency: int = 2,
     attack_method: int = 1,
     prediction_type: str = "epsilon",
+    device: str = "auto",
     provenance_status: str = "workspace-verified",
 ) -> dict[str, Any]:
     workspace_path = Path(workspace)
@@ -253,8 +315,16 @@ def run_gsa_runtime_mainline(
         return result
 
     repo_path = Path(repo_root).resolve()
+    requested_device = device.lower()
+    if requested_device not in {"auto", "cpu", "cuda"}:
+        raise ValueError(f"Unsupported GSA runtime device: {device}")
+    resolved_device = "cuda" if requested_device == "cuda" else "cpu"
+    if requested_device == "auto":
+        resolved_device = "cuda" if torch.cuda.is_available() else "cpu"
+
     gradients_root = workspace_path / "gradients"
     gradients_root.mkdir(parents=True, exist_ok=True)
+    shadow_specs = asset_probe["paths"]["shadow_specs"]
     jobs = {
         "target_member": {
             "dataset_dir": asset_probe["paths"]["target_member_dataset"],
@@ -266,17 +336,19 @@ def run_gsa_runtime_mainline(
             "model_dir": str(Path(asset_probe["paths"]["target_checkpoint"]).parent),
             "output_name": gradients_root / "target_non_member-gradients.pt",
         },
-        "shadow_member": {
-            "dataset_dir": asset_probe["paths"]["shadow_member_dataset"],
-            "model_dir": str(Path(asset_probe["paths"]["shadow_checkpoint"]).parent),
-            "output_name": gradients_root / "shadow_member-gradients.pt",
-        },
-        "shadow_non_member": {
-            "dataset_dir": asset_probe["paths"]["shadow_nonmember_dataset"],
-            "model_dir": str(Path(asset_probe["paths"]["shadow_checkpoint"]).parent),
-            "output_name": gradients_root / "shadow_non_member-gradients.pt",
-        },
     }
+    for spec in shadow_specs:
+        job_prefix = spec["name"].replace("-", "_")
+        jobs[f"{job_prefix}_member"] = {
+            "dataset_dir": spec["member_dataset"],
+            "model_dir": spec["checkpoint_dir"],
+            "output_name": gradients_root / f"{spec['name']}_member-gradients.pt",
+        }
+        jobs[f"{job_prefix}_non_member"] = {
+            "dataset_dir": spec["nonmember_dataset"],
+            "model_dir": spec["checkpoint_dir"],
+            "output_name": gradients_root / f"{spec['name']}_non_member-gradients.pt",
+        }
 
     command_results: dict[str, Any] = {}
     all_gradients_ready = True
@@ -303,17 +375,26 @@ def run_gsa_runtime_mainline(
             "--output_name",
             str(Path(spec["output_name"]).resolve()),
         ]
-        command_result = _run_subprocess(command, cwd=repo_path)
+        command_env = dict(**os.environ)
+        if resolved_device == "cpu":
+            command_env["CUDA_VISIBLE_DEVICES"] = "-1"
+        command_result = _run_subprocess(command, cwd=repo_path, env=command_env)
         command_results[job_name] = command_result
         if command_result["returncode"] != 0 or not Path(spec["output_name"]).exists():
             all_gradients_ready = False
 
     if all_gradients_ready:
+        shadow_member_paths = [
+            jobs[f"{spec['name'].replace('-', '_')}_member"]["output_name"] for spec in shadow_specs
+        ]
+        shadow_nonmember_paths = [
+            jobs[f"{spec['name'].replace('-', '_')}_non_member"]["output_name"] for spec in shadow_specs
+        ]
         metrics = _evaluate_gsa_closed_loop(
             target_member_path=jobs["target_member"]["output_name"],
             target_nonmember_path=jobs["target_non_member"]["output_name"],
-            shadow_member_paths=[jobs["shadow_member"]["output_name"]],
-            shadow_nonmember_paths=[jobs["shadow_non_member"]["output_name"]],
+            shadow_member_paths=shadow_member_paths,
+            shadow_nonmember_paths=shadow_nonmember_paths,
         )
         attack_output = workspace_path / "attack-output.txt"
         attack_output.write_text(
@@ -336,8 +417,11 @@ def run_gsa_runtime_mainline(
         "asset_probe_ready": True,
         "target_member_gradients": Path(jobs["target_member"]["output_name"]).exists(),
         "target_nonmember_gradients": Path(jobs["target_non_member"]["output_name"]).exists(),
-        "shadow_member_gradients": Path(jobs["shadow_member"]["output_name"]).exists(),
-        "shadow_nonmember_gradients": Path(jobs["shadow_non_member"]["output_name"]).exists(),
+        "shadow_gradients": all(
+            Path(jobs[f"{spec['name'].replace('-', '_')}_member"]["output_name"]).exists()
+            and Path(jobs[f"{spec['name'].replace('-', '_')}_non_member"]["output_name"]).exists()
+            for spec in shadow_specs
+        ),
         "closed_loop_metrics_ready": bool(metrics),
     }
     result = {
@@ -348,7 +432,7 @@ def run_gsa_runtime_mainline(
         "mode": "runtime-mainline",
         "workspace": str(workspace_path),
         "workspace_name": workspace_path.name,
-        "device": "cpu",
+        "device": resolved_device,
         "contract_stage": "target",
         "asset_grade": "real-asset-closed-loop",
         "provenance_status": provenance_status,
@@ -358,18 +442,19 @@ def run_gsa_runtime_mainline(
             "attack_output": str(attack_output),
             "target_member_gradients": str(jobs["target_member"]["output_name"]),
             "target_nonmember_gradients": str(jobs["target_non_member"]["output_name"]),
-            "shadow_member_gradients": str(jobs["shadow_member"]["output_name"]),
-            "shadow_nonmember_gradients": str(jobs["shadow_non_member"]["output_name"]),
+            "shadow_specs": shadow_specs,
         },
         "checks": checks,
         "runtime": {
             "repo_root": str(repo_path),
             "assets_root": str(Path(assets_root).resolve()),
+            "requested_device": requested_device,
             "resolution": int(resolution),
             "ddpm_num_steps": int(ddpm_num_steps),
             "sampling_frequency": int(sampling_frequency),
             "attack_method": int(attack_method),
             "prediction_type": prediction_type,
+            "shadow_count": len(shadow_specs),
         },
         "commands": command_results,
         "metrics": metrics,

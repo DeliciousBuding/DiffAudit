@@ -7,7 +7,7 @@
 - 作者：Yan Pang, Tianhao Wang, Xuhui Kang, Mengdi Huai, Yang Zhang
 - 发表信息：Proceedings on Privacy Enhancing Technologies, 2025(2)
 - 本地 PDF：`references/materials/white-box/2025-popets-white-box-membership-inference-diffusion-models.pdf`
-- GitHub PDF 链接：<https://github.com/DeliciousBuding/DiffAudit/blob/main/references/materials/white-box/2025-popets-white-box-membership-inference-diffusion-models.pdf>
+- GitHub PDF 链接：<https://github.com/DeliciousBuding/DiffAudit-Research/blob/main/references/materials/white-box/2025-popets-white-box-membership-inference-diffusion-models.pdf>
 - 飞书原生 PDF：见文末附件
 - 开源实现：<https://github.com/py85252876/GSA>
 - 报告状态：sample-review-v3
