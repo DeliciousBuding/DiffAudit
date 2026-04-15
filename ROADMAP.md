@@ -383,7 +383,7 @@ Tasks:
 
 Value: ⭐⭐
 
-#### ⬜ `BB-3` CLiD boundary-quality upgrade
+#### ✅ `BB-3` CLiD boundary-quality upgrade
 
 Goal: improve the honesty and strength of the CLiD boundary claim
 
@@ -399,13 +399,14 @@ Current read:
 Tasks:
 
 - [x] `BB-3.1` review remaining boundary gaps
-- [ ] `BB-3.2` perform one minimum honest upgrade
-- [ ] `BB-3.3` update verdict wording and evidence note
+- [x] `BB-3.2` perform one minimum honest upgrade
+- [x] `BB-3.3` update verdict wording and evidence note
 
 Canonical evidence anchor:
 
 - `workspaces/black-box/2026-04-15-clid-paper-alignment-audit.md`
 - `workspaces/black-box/2026-04-16-clid-threshold-evaluator-compatibility-verdict.md`
+- `workspaces/black-box/runs/clid-threshold-compatibility-20260416-r1/summary.json`
 
 Value: ⭐⭐
 
@@ -893,6 +894,7 @@ If that happens, the agent must add new branches and continue.
 | 2026-04-16 07:10 | Scaled `TMIA-DM temporal-striding(stride=2)` to `GPU256` and repeated it with `seed1`; the defense held at `AUC = 0.733322 / 0.7173`, so the branch is now repeat-confirmed through scale and should move to defended operating-point comparison plus system-sync review |
 | 2026-04-16 07:20 | Completed the defended comparison and system-layer sync: `TMIA + temporal-striding(stride=2)` now supersedes `TMIA + dropout` as the strongest defended gray-box challenger in comparison artifacts and the unified attack-defense table |
 | 2026-04-16 07:30 | Tightened the `CLiD` black-box boundary from generic local bridge wording to `evaluator-near local clip-only corroboration`: current target-side outputs are `100 x 5` numeric matrices after header-skip, but full `cal_clid_th.py` alignment remains blocked on missing shadow-side files and cache-root leakage in the executed rung header |
+| 2026-04-16 07:40 | Added a reusable zero-GPU `CLiD` threshold-compatibility audit tool and ran it on the current target100 rung; the result is now machine-readable (`target_pair.ready=true`, `shadow_pair.ready=false`) and closes the current `BB-3` boundary-tightening step without pretending to have a paper-aligned benchmark |
 | 2026-04-16 01:55 | Fixed `WB-2` path selection on `GSA2 comparator`; target-side `attack_method=2` canaries succeeded on both member and non-member splits |
 | 2026-04-16 02:05 | Extended `WB-2` canary truth onto shadow-side: `shadow-01-member` succeeded under the same direct `GSA2` extraction contract, narrowing the next gate to `shadow-01-nonmember` |
 | 2026-04-16 02:12 | Completed the first `WB-2` shadow pair: `shadow-01-nonmember` succeeded, so `WB-2.2` is done and the next gate is a bounded `GSA2` comparator verdict |
