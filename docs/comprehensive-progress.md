@@ -41,6 +41,9 @@
   - 公开资产上的 black-box 风险已经有可引用主证据
   - `variation` 已能在本地 CPU 上重复跑 synthetic smoke
   - `variation` 的真实 API 资产 probe 已确认 blocked，当前缺 query image root
+  - `CLiD` 当前边界已从泛化的“local bridge”进一步收紧到 `evaluator-near local clip-only corroboration`：
+    - 目标侧本地 rung 的两个输出文件在跳过首行后可解析成 `100 x 5` 数值矩阵，接近 released `cal_clid_th.py` 的输入形状
+    - 但 full threshold-evaluator 仍缺 shadow train/test pair，且已执行 rung 的文件头仍暴露旧 user-cache `diff_path`
   - 新归档 `TMIA-DM` 已证明时间相关噪声 / 梯度信号也是正式文献方向，但它当前不属于严格黑盒执行面
 - 当前不能说的话：
   - 还不能把 black-box 防御讲成已有结果
