@@ -538,7 +538,7 @@ Canonical evidence anchor:
 
 Value: ⭐⭐
 
-#### ⬜ `BB-6` Same-protocol cross-method score package
+#### ✅ `BB-6` Same-protocol cross-method score package
 
 Goal: test whether the current black-box headline and challenger can form a bounded package that improves actionability without pretending to be a new family
 
@@ -561,8 +561,8 @@ Current read:
 Tasks:
 
 - [x] `BB-6.1` align `Recon` and `semantic-aux` score artifacts under one same-protocol comparison contract
-- [ ] `BB-6.2` test one bounded score package against the best single method
-- [ ] `BB-6.3` record whether the package changes actionability or only calibration
+- [x] `BB-6.2` test one bounded score package against the best single method
+- [x] `BB-6.3` record whether the package changes actionability or only calibration
 
 Canonical evidence anchor:
 
@@ -570,6 +570,7 @@ Canonical evidence anchor:
 - `workspaces/black-box/2026-04-16-blackbox-score-package-alignment-verdict.md`
 - `workspaces/black-box/2026-04-16-blackbox-score-package-contract-selection-verdict.md`
 - `workspaces/black-box/2026-04-16-blackbox-score-package-aligned-comparator-verdict.md`
+- `workspaces/black-box/2026-04-16-blackbox-score-package-verdict.md`
 
 Updated verdict:
 
@@ -578,12 +579,14 @@ Updated verdict:
 - one aligned semantic-aux comparator on the selected contract surface is now `execution-positive`:
   - `public-50 step10 / celeba_partial_target / 16 / 16`
   - `AUC = 0.859375`, `ASR = 0.8125`, `TPR@1%FPR = 0.625`
-- this keeps `BB-6` alive, but does not yet complete `BB-6.2 / BB-6.3`
-- the next bounded step, if this lane continues, is one aligned semantic-aux comparator on:
-  - `Recon DDIM public-50 step10`
-  - same `celeba_partial_target/checkpoint-25000` contract surface
-  - keep `public-100 step30` untouched as the headline package during first alignment
-  - then extract the matching `Recon` scalar surface on the same aligned split and test one simple package rule
+- first same-protocol package test is now `positive but bounded` on the aligned `16 / 16` split:
+  - `Recon dim0 AUC = 0.820312`
+  - `semantic-aux mean_cos AUC = 0.902344`
+  - `z-score sum AUC = 0.933594`
+  - `z-score max ASR = 0.875`
+- current honest reading is:
+  - bounded same-protocol black-box packaging can improve actionability
+  - but the result is still too small and too local to replace the frozen `Recon` headline package
 
 Value: ⭐⭐⭐
 
@@ -1097,10 +1100,11 @@ This is a preference order, not a prison.
 
 ### Top now
 
-1. ⬜ `BB-6` same-protocol cross-method score package
+No currently open top-priority lane is execution-ready without a fresh candidate-generation or confirmation decision.
 
 ### Next
 
+1. ✅ `BB-6` same-protocol cross-method score package
 2. ✅ `WB-3` white-box defense breadth
 3. ✅ `GB-1` second gray-box defense
 4. ✅ `BB-1` second-signal black-box expansion
