@@ -317,7 +317,7 @@ Artifact rule for `X-*`, `INF-*`, `intake`, or other non-run tasks:
 - but they must leave one canonical evidence anchor under the appropriate workspace lane
 - the main agent must explicitly name that anchor in its update
 
-#### ⬜ `X-4` Cross-box exploration lane
+#### ✅ `X-4` Cross-box exploration lane
 
 Goal: allow work that spans boxes instead of forcing every idea into one bucket
 
@@ -326,7 +326,33 @@ Candidate directions:
 - [ ] `X-4.1` cross-box agreement analysis
 - [ ] `X-4.2` score calibration or fusion with bounded hypothesis
 - [ ] `X-4.3` transfer or portability probe when assets permit
-- [ ] `X-4.4` visualization or decision-quality analysis that changes project understanding
+- [x] `X-4.4` visualization or decision-quality analysis that changes project understanding
+
+Status:
+
+- completed for the current cross-box handoff-sync round
+- canonical evidence anchor:
+  - `workspaces/implementation/2026-04-16-crossbox-handoff-review.md`
+
+Verdict:
+
+- admitted headline remains unchanged across all three boxes
+- but the system-consumable challenger and boundary layer changed enough to require immediate summary-level sync:
+  - gray-box strongest defended challenger is now `TMIA + temporal-striding(stride=2)`
+  - black-box `CLiD` wording should be fixed to `evaluator-near local clip-only corroboration`
+  - black-box `variation` should be fixed to `contract-ready blocked`
+  - black-box `served-image-sanitization` is an explicit `no-go`
+  - white-box should now be described as having no second executable defended family beyond `W-1 = DPDM`
+
+Handoff decision:
+
+- sync `Leader` and competition-material wording now
+- no mandatory `Platform` or `Runtime` schema change is required in this round
+
+Carry-forward rule:
+
+- keep `X-4` open for future agreement / calibration / portability work
+- do not reopen this exact handoff audit unless a new verdict changes higher-layer wording again
 
 Value: ⭐⭐⭐
 Budget: bounded CPU-first, GPU only if justified
@@ -874,7 +900,7 @@ This is a preference order, not a prison.
 1. ⬜ `GB-1` second gray-box defense
 2. ✅ `X-3` system-consumable sync
 3. ✅ `BB-3` CLiD boundary-quality upgrade
-4. ⬜ `X-4` cross-box exploration lane
+4. ✅ `X-4` cross-box exploration lane
 5. ✅ `WB-2` second white-box verdict
 
 ### Next
