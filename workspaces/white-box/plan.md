@@ -5,8 +5,8 @@
 - `owner`: `research_leader`
 - `scope`: 白盒成员推断、梯度级攻击、记忆定位与内部信号审计
 - `status`: `GSA epoch300 rerun1 admitted as white-box attack main evidence; W-1 strong-v3 full-scale frozen as defended main rung; strong-v2 full-scale retained as reference rung; direct GSA gradient extraction verified on admitted assets`
-- `blocked by`: `W-1` 仍是 defended comparator 而不是最终 benchmark；`DPDM` 与 `GSA` 仍有模型结构不一致；第二白盒线仍未形成 distinct verdict`
-- `next step`: keep `strong-v3 full-scale` as the admitted defended main rung, stop treating gradient extraction as the main blocker, and shift white-box work to second-line verdict plus bridge-contract hygiene`
+- `blocked by`: `W-1` 仍是 defended comparator 而不是最终 benchmark；`DPDM` 与 `GSA` 仍有模型结构不一致；第二白盒线虽已形成 `GSA2` bounded corroboration，但 distinct 新家族仍未形成`
+- `next step`: keep `strong-v3 full-scale` as the admitted defended main rung, keep `GSA2` as a bounded corroboration line, and shift white-box work to defense breadth plus bridge-contract hygiene`
 - `last updated`: `2026-04-09`
 
 ## 推荐论文
@@ -79,7 +79,7 @@
 - `Finding NeMo` 仍缺 neuron-level 分析接口与资产
 - 当前白盒最大问题已不是“能不能继续把攻击跑高”，而是 `GSA` 与 `DPDM/W-1` 仍不在同一个协议面上
 - 直接 upstream `gen_l2_gradients_DDPM.py` 在 admitted target-member assets 上已被重新验证为可跑；当前执行层问题已缩到 dataset-mode 与 output-path hygiene，而不是梯度提取本身
-- 当前 `WB-2` 的 live path 已固定为 `GSA2 comparator`；target-member 与 target-nonmember 两侧的 `attack_method = 2` canary 都已成功落盘，但 full comparator verdict 仍未完成
+- 当前 `WB-2` 已收口为 `positive secondary line`：`GSA2 comparator` 在 admitted target pair + first shadow pair 上完成 bounded comparator，`AUC = 0.922498`，但仍低于 admitted `GSA1` 主线，因此只保留为 corroboration，不升级为新 headline
 
 ## 当前最短路径
 

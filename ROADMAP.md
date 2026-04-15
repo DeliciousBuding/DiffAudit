@@ -1,6 +1,6 @@
 # DiffAudit Research ROADMAP — Continuous Autonomous Mainline
 
-> Last updated: 2026-04-16 02:12
+> Last updated: 2026-04-16 02:28
 > Mode: continuous autonomous research
 > Owner: `Researcher`
 > Rule: one active GPU task at a time, every task must end in a concrete verdict
@@ -511,7 +511,7 @@ Carry-forward rule:
 
 Value: ⭐⭐⭐
 
-#### ⬜ `WB-2` Second white-box line verdict
+#### ✅ `WB-2` Second white-box line verdict
 
 Goal: land or reject a second white-box line with evidence
 
@@ -525,21 +525,27 @@ Current live path:
 
 - `GSA2 comparator`
 - canonical evidence anchor:
-  - `workspaces/white-box/2026-04-16-whitebox-gsa2-comparator-canary-progress.md`
+  - `workspaces/white-box/2026-04-16-whitebox-gsa2-bounded-comparator-verdict.md`
 
 Current read:
 
 - `Finding NeMo` is already closed negatively for the current wave
 - `Local Mirror` still collapses back into the admitted `GSA` family
-- `GSA2 attack_method=2` target-side extraction now works on both member and non-member target splits, so this is the only bounded second-line branch that remains execution-eligible right now
-- the first shadow-side pair now also succeeds under the same direct extraction contract (`shadow-01-member` and `shadow-01-nonmember`)
-- the next gating step is no longer canary completion, but a bounded comparator verdict on whether `GSA2` adds real value versus admitted `GSA1`
+- the bounded `GSA2` comparator now completes on the admitted target pair plus the first shadow pair
+- `GSA2` is strong (`AUC = 0.922498`) but still below admitted `GSA1 1k-3shadow` (`AUC = 0.998192`)
+- the correct promotion level is `positive secondary line / corroboration`, not new headline and not new family
 
 Tasks:
 
 - [x] `WB-2.1` choose path based on `WB-1`
 - [x] `WB-2.2` implement and test
-- [ ] `WB-2.3` record verdict
+- [x] `WB-2.3` record verdict
+
+Carry-forward rule:
+
+- stop spending white-box budget on more blind `GSA2` canaries
+- only reopen for a specific bounded reason such as cost-vs-strength comparison or multi-shadow expansion
+- keep the next white-box budget on `WB-3` or system-consumable packaging
 
 Value: ⭐⭐
 
@@ -674,6 +680,7 @@ If that happens, the agent must add new branches and continue.
 | 2026-04-16 01:55 | Fixed `WB-2` path selection on `GSA2 comparator`; target-side `attack_method=2` canaries succeeded on both member and non-member splits |
 | 2026-04-16 02:05 | Extended `WB-2` canary truth onto shadow-side: `shadow-01-member` succeeded under the same direct `GSA2` extraction contract, narrowing the next gate to `shadow-01-nonmember` |
 | 2026-04-16 02:12 | Completed the first `WB-2` shadow pair: `shadow-01-nonmember` succeeded, so `WB-2.2` is done and the next gate is a bounded `GSA2` comparator verdict |
+| 2026-04-16 02:28 | Closed `WB-2` as `positive secondary line`: bounded `GSA2` comparator completed with `AUC = 0.922498`, strong enough for corroboration but still below admitted `GSA1` mainline |
 
 ---
 
