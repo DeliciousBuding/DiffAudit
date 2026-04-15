@@ -1,6 +1,6 @@
 # DiffAudit Research ROADMAP — Continuous Autonomous Mainline
 
-> Last updated: 2026-04-16 03:05
+> Last updated: 2026-04-16 06:35
 > Mode: continuous autonomous research
 > Owner: `Researcher`
 > Rule: one active GPU task at a time, every task must end in a concrete verdict
@@ -423,7 +423,11 @@ Current read:
 - new bounded candidate `epsilon-output-noise (std = 0.1)` also landed negative on `cpu-32`, so it should not be released to GPU
 - `input-gaussian-blur (sigma = 1.0)` landed even more negatively on `cpu-32`, strengthening rather than weakening the attack
 - the cheap perturbation-style `GB-1` frontier is effectively exhausted for now
-- the next `GB-1` step should be either a `G-2 distillation` unblock/design review or a pivot to `GB-3` new-family exploration
+- new challenger-specific hypothesis `TMIA-DM late-window temporal-striding(stride=2)` is now repeat-positive on `cpu-32`:
+  - `seed0`: `AUC = 0.697266` versus undefended `0.823242`
+  - `seed1`: `AUC = 0.696289` versus undefended `0.760742`
+- this is the first post-dropout `TMIA-DM` defense candidate that looks directionally strong enough for a minimal GPU gate
+- the next `GB-1` step should now be one exact-contract `GPU128` rung for `temporal-striding`, not another broad shortlist search
 
 Tasks:
 
@@ -438,6 +442,7 @@ Canonical evidence anchors:
 - `workspaces/gray-box/2026-04-15-graybox-epsilon-output-noise-defense-verdict.md`
 - `workspaces/gray-box/2026-04-15-graybox-input-blur-defense-verdict.md`
 - `workspaces/gray-box/2026-04-16-graybox-second-defense-shortlist-review.md`
+- `workspaces/gray-box/2026-04-16-tmiadm-temporal-striding-defense-verdict.md`
 
 Value: ⭐⭐⭐
 
@@ -544,6 +549,10 @@ Current read:
 - challenger-specific `timestep-jitter(radius=10)` defense is now rejected:
   - on `TMIA-DM late-window GPU128`, it raised `AUC` from `0.825317` to `0.850098`
   - it strengthens the challenger and should not receive more budget in its current form
+- challenger-specific `temporal-striding(stride=2)` defense is now the next credible gate:
+  - on `TMIA-DM late-window CPU32`, it reduced `AUC` from `0.823242` to `0.697266` on `seed0`
+  - on the paired `seed1` repeat, it again reduced `AUC` from `0.760742` to `0.696289`
+  - this is repeat-positive on CPU and justifies one minimal `GPU128` rung before any wider defense search reopens
 
 Tasks:
 
@@ -587,6 +596,8 @@ Canonical evidence anchor:
   - `workspaces/gray-box/2026-04-16-tmiadm-latesteps-dropout-defense-verdict.md`
 - timestep-jitter defense verdict:
   - `workspaces/gray-box/2026-04-16-tmiadm-timestep-jitter-defense-verdict.md`
+- temporal-striding defense verdict:
+  - `workspaces/gray-box/2026-04-16-tmiadm-temporal-striding-defense-verdict.md`
 
 Value: ⭐⭐
 
@@ -849,6 +860,7 @@ If that happens, the agent must add new branches and continue.
 | 2026-04-16 06:00 | Synchronized the unified attack-defense artifacts to the new gray-box reality: `PIA` remains headline, `TMIA-DM late-window` is now the strongest challenger, and defended gray-box stays multi-family |
 | 2026-04-16 06:10 | Tested a `late_steps_only` dropout ablation targeted at `TMIA-DM late-window`; it was weaker than `all_steps`, so the defended headline stays on `all_steps` and the new result is recorded as a narrow ablation only |
 | 2026-04-16 06:20 | Tested a `timestep-jitter(radius=10)` defense targeted at `TMIA-DM late-window`; it increased the challenger signal (`AUC = 0.850098`), so the hypothesis is rejected as a counterproductive defense |
+| 2026-04-16 06:35 | Added `TMIA-DM temporal-striding(stride=2)` as a new defense family, verified it with a failing test first, and got two repeat-positive `cpu-32` rungs (`AUC = 0.697266 / 0.696289`), so the next gate is one minimal `GPU128` rung rather than another wide defense search |
 | 2026-04-16 01:55 | Fixed `WB-2` path selection on `GSA2 comparator`; target-side `attack_method=2` canaries succeeded on both member and non-member splits |
 | 2026-04-16 02:05 | Extended `WB-2` canary truth onto shadow-side: `shadow-01-member` succeeded under the same direct `GSA2` extraction contract, narrowing the next gate to `shadow-01-nonmember` |
 | 2026-04-16 02:12 | Completed the first `WB-2` shadow pair: `shadow-01-nonmember` succeeded, so `WB-2.2` is done and the next gate is a bounded `GSA2` comparator verdict |

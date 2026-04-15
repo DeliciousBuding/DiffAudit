@@ -5,8 +5,8 @@
 - `owner`: `research_leader`
 - `scope`: 部分中间信息、条件相关评分、噪声预测与结构特征下的成员推断
 - `status`: `PIA real-asset runtime-mainline ready; GPU128/GPU256/GPU512 baseline + defended pairs landed; GPU512 rerun confirmed; GPU128/GPU256 adaptive portability pair landed on RTX4070 8GB; provisional G-1 established; SecMI full-split corroboration landed; PIA-vs-SecMI disagreement verdict landed`
-- `blocked by`: `PIA` 仍未升级到 `paper-aligned`；灰盒当前仍缺第二条 defended comparator；`PIA + SecMI` 还没有 promotion-worthy 的 fusion story；三个低成本候选 `epsilon-precision-throttling / epsilon-output-noise / input-gaussian-blur` 都已被 bounded smoke 否掉；当前 `SimA` feasibility 虽可执行但强度过弱`
-- `next step`: 保持 `stochastic-dropout = provisional G-1 (repeat-confirmed at GPU512)`；把 `SecMI` 固定为独立 corroboration line 而不是 blocked baseline；不再为 naive `PIA + SecMI` fusion 消耗预算；`SimA` 当前不放 GPU；`TMIA-DM` 的 `late_steps_only` 与 `timestep-jitter` 两个 challenger-specific 防御假设都已证伪为弱解，当前最短下一步应转向新的 defense hypothesis 或材料化总表，而不是继续追这两条、重开 `short_window`/naive fusion，或直接跳到 `MoFit`
+- `blocked by`: `PIA` 仍未升级到 `paper-aligned`；灰盒当前仍缺第二条 defended comparator 的 GPU verdict；`PIA + SecMI` 还没有 promotion-worthy 的 fusion story；三个低成本候选 `epsilon-precision-throttling / epsilon-output-noise / input-gaussian-blur` 都已被 bounded smoke 否掉；当前 `SimA` feasibility 虽可执行但强度过弱`
+- `next step`: 保持 `stochastic-dropout = provisional G-1 (repeat-confirmed at GPU512)`；把 `SecMI` 固定为独立 corroboration line 而不是 blocked baseline；不再为 naive `PIA + SecMI` fusion 消耗预算；`SimA` 当前不放 GPU；`TMIA-DM` 的 `late_steps_only` 与 `timestep-jitter` 两个 challenger-specific 防御假设都已证伪为弱解，而新的 `temporal-striding(stride=2)` 已在 `cpu-32` 两次压低 `TMIA-DM late-window`，当前最短下一步应是单个 `GPU128` gate，而不是继续广撒防御 shortlist、重开 `short_window`/naive fusion，或直接跳到 `MoFit`
 - `last updated`: `2026-04-16`
 
 ## 推荐论文
@@ -191,3 +191,4 @@
 10. 若 `G-2 distillation` 仍无正式训练/评估链，则灰盒下一活跃任务应先转到 `GB-3` 新 family 选择，而不是继续机械扩第二防御小 smoke
 11. 当前 `GB-3 / SimA` 已完成 bounded CPU feasibility，但结论是 strength-negative；下一灰盒活跃任务已重选为 `TMIA-DM protocol / asset decomposition`
 12. 当前 `TMIA-DM` 已完成最小 `protocol probe`、一次 repeat、same-split 比较、late-window refine、两次正向 `GPU128` rung，以及两次正向 `GPU256` rung；结论是该线已成为稳定 GPU challenger，且 `late_steps_only` 与 `timestep-jitter` defense ablation 都已证伪为弱解，下一条任务应是材料化总表或新的 defense hypothesis
+13. 新的 `TMIA-DM late-window temporal-striding(stride=2)` 已完成两个 `cpu-32` repeat，`AUC` 从 `0.823242 / 0.760742` 降到 `0.697266 / 0.696289`；结论是它成为当前最值得过 `GPU128` gate 的 challenger-specific 新防御假设，但还不能直接写成第二 defended comparator

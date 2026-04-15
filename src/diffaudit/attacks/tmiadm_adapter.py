@@ -131,6 +131,16 @@ def _resolve_effective_timesteps(
     return effective
 
 
+def _apply_timestep_stride(
+    timesteps: list[int],
+    timestep_stride: int = 1,
+) -> list[int]:
+    stride = max(int(timestep_stride), 1)
+    if stride <= 1:
+        return [int(timestep) for timestep in timesteps]
+    return [int(timestep) for index, timestep in enumerate(timesteps) if index % stride == 0]
+
+
 def _zscore(scores: torch.Tensor) -> torch.Tensor:
     mean = scores.mean()
     std = scores.std(unbiased=False)
@@ -218,6 +228,7 @@ def run_tmiadm_protocol_probe(
     dropout_activation_schedule: str = "off",
     late_step_threshold: int | None = None,
     timestep_jitter_radius: int = 0,
+    timestep_stride: int = 1,
     provenance_status: str = "workspace-verified",
 ) -> dict[str, Any]:
     started_at = time.perf_counter()
@@ -278,6 +289,12 @@ def run_tmiadm_protocol_probe(
         timestep_jitter_radius=timestep_jitter_radius,
         noise_seed=noise_seed,
     )
+    effective_timesteps = _apply_timestep_stride(
+        effective_timesteps,
+        timestep_stride=timestep_stride,
+    )
+    if len(effective_timesteps) < 2:
+        raise ValueError("TMIA-DM protocol probe requires at least two effective timesteps")
     alpha_bars = _alpha_bar_schedule()
     member_predictions = _collect_eps_predictions_for_timesteps(
         model=model,
@@ -374,12 +391,19 @@ def run_tmiadm_protocol_probe(
                 if stochastic_dropout_defense
                 else "timestep-jitter"
                 if int(timestep_jitter_radius) > 0
+                else "temporal-striding"
+                if int(timestep_stride) > 1
                 else "none"
             ),
-            "enabled": bool(stochastic_dropout_defense or int(timestep_jitter_radius) > 0),
+            "enabled": bool(
+                stochastic_dropout_defense
+                or int(timestep_jitter_radius) > 0
+                or int(timestep_stride) > 1
+            ),
             "dropout_activation_schedule": resolved_schedule,
             "late_step_threshold": int(resolved_late_step_threshold),
             "timestep_jitter_radius": int(timestep_jitter_radius),
+            "timestep_stride": max(int(timestep_stride), 1),
         },
         "sample_count_per_split": int(len(member_indices)),
         "family_metrics": family_metrics,
