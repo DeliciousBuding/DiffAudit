@@ -1,0 +1,36 @@
+name: diffaudit-research
+channels:
+  - conda-forge
+dependencies:
+  - python=3.11
+  - pip
+  - pip:
+      - --extra-index-url=https://download.pytorch.org/whl/cu128
+      - -e .
+      - ipykernel
+      - jupyterlab
+      - matplotlib
+      - numpy
+      - pandas
+      - pillow
+      - pre-commit
+      - pytest
+      - pyyaml
+      - scikit-learn
+      - scipy
+      - xgboost==1.7.3
+      - seaborn
+      - tqdm
+      - accelerate
+      - absl-py
+      - datasets
+      - diffusers
+      - fastapi
+      - huggingface-hub
+      - httpx
+      - safetensors
+      - torch==2.11.0+cu128
+      - torchaudio==2.11.0+cu128
+      - torchvision==0.26.0+cu128
+      - transformers
+      - uvicorn

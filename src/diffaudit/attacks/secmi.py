@@ -4,6 +4,7 @@ from __future__ import annotations
 
 from dataclasses import dataclass
 from pathlib import Path
+from typing import Any
 
 from diffaudit.config import AuditConfig
 
@@ -22,7 +23,7 @@ class SecmiPlan:
 @dataclass(frozen=True)
 class SecmiArtifacts:
     checkpoint_path: str
-    flagfile_path: str
+    flagfile_path: str | None
 
 
 @dataclass(frozen=True)
@@ -31,7 +32,7 @@ class SecmiRunnerSpec:
     entrypoint_path: str
     python_module: str
     checkpoint_path: str
-    flagfile_path: str
+    flagfile_path: str | None
     dataset: str
     data_root: str
     t_sec: int
@@ -51,6 +52,36 @@ SECMI_MEMBER_SPLIT_FILENAMES = {
     "CIFAR100": "CIFAR100_train_ratio0.5.npz",
     "STL10-U": "STL10_Unlabeled_train_ratio0.5.npz",
     "TINY-IN": "TINY-IN_train_ratio0.5.npz",
+}
+
+SECMI_DEFAULT_FLAG_VALUES: dict[str, Any] = {
+    "T": 1000,
+    "attn": [1],
+    "batch_size": 128,
+    "beta_1": 1e-4,
+    "beta_T": 0.02,
+    "ch": 128,
+    "ch_mult": [1, 2, 2, 2],
+    "dropout": 0.1,
+    "img_size": 32,
+    "num_res_blocks": 2,
+    "mean_type": "epsilon",
+    "var_type": "fixedlarge",
+    "lr": 2e-4,
+    "grad_clip": 1.0,
+    "total_steps": 800000,
+    "warmup": 5000,
+    "num_workers": 4,
+    "ema_decay": 0.9999,
+    "parallel": False,
+    "logdir": "./logs/DDPM_CIFAR10_EPS",
+    "sample_size": 64,
+    "sample_step": 1000,
+    "save_step": 80000,
+    "eval_step": 0,
+    "num_images": 50000,
+    "fid_use_torch": False,
+    "fid_cache": "./stats/cifar10.train.npz",
 }
 
 
@@ -88,9 +119,6 @@ def build_secmi_plan(config: AuditConfig) -> SecmiPlan:
 def resolve_secmi_artifacts(model_dir: str | Path) -> SecmiArtifacts:
     model_path = Path(model_dir)
     flagfile_path = model_path / "flagfile.txt"
-    if not flagfile_path.exists():
-        raise FileNotFoundError(f"Missing SecMI flagfile: {flagfile_path}")
-
     checkpoint_path = model_path / "checkpoint.pt"
     if not checkpoint_path.exists():
         candidates = sorted(model_path.glob("ckpt-step*.pt"))
@@ -100,7 +128,7 @@ def resolve_secmi_artifacts(model_dir: str | Path) -> SecmiArtifacts:
 
     return SecmiArtifacts(
         checkpoint_path=str(checkpoint_path),
-        flagfile_path=str(flagfile_path),
+        flagfile_path=str(flagfile_path) if flagfile_path.exists() else None,
     )
 
 
@@ -161,7 +189,12 @@ def probe_secmi_assets(
         "dataset_root": dataset_root_exists,
         "member_split": member_split_exists,
     }
-    status = "ready" if all(checks.values()) else "blocked"
+    required_checks = {
+        "checkpoint": checkpoint_exists,
+        "dataset_root": dataset_root_exists,
+        "member_split": member_split_exists,
+    }
+    status = "ready" if all(required_checks.values()) else "blocked"
     paths = {
         "model_dir": str(model_dir_path),
         "dataset_root": str(dataset_root_path),
@@ -176,13 +209,17 @@ def probe_secmi_assets(
         "dataset_root": "dataset_root",
         "member_split": "member split",
     }
-    missing_keys = [name for name, is_ready in checks.items() if not is_ready]
+    missing_keys = [name for name, is_ready in required_checks.items() if not is_ready]
     missing = [paths[name] or labels[name] for name in missing_keys]
 
     return {
         "status": status,
         "dataset": dataset,
         "checks": checks,
+        "optional_checks": {
+            "flagfile": flagfile_exists,
+        },
+        "fallback_defaults_ready": checkpoint_exists,
         "paths": paths,
         "missing": missing,
         "missing_keys": missing_keys,

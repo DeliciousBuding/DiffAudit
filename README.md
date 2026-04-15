@@ -76,7 +76,7 @@ DiffAudit 是一个面向扩散模型的隐私风险审计研究仓库。
 当前方法线的最新状态见 [docs/reproduction-status.md](docs/reproduction-status.md)。
 研究仓库的一页综合进度见 [docs/comprehensive-progress.md](docs/comprehensive-progress.md)。
 黑盒结果的统一机读汇总见 `experiments/blackbox-status/summary.json`。
-本地 HTTP API 说明见 [docs/local-api.md](docs/local-api.md)。
+执行控制面说明见 `D:\Code\DiffAudit\Runtime-Server\README.md`。`Research` 只保留研究代码、资产与 admitted 结果，不再承载活跃 HTTP 服务入口。
 
 ## 仓库结构
 
@@ -176,6 +176,8 @@ conda env create -f environment.yml
 conda activate diffaudit-research
 python -m ipykernel install --user --name diffaudit-research --display-name "Python (diffaudit-research)"
 ```
+
+默认入口使用 `environment.yml`。如果你在较新的 NVIDIA GPU 上已经遇到 `no kernel image is available for execution on the device`，请改看 [docs/environment.md](docs/environment.md) 里的可选 `environment.gpu-cu128.yml` 方案，不要直接把默认环境文件改成面向单机 GPU 的版本。
 
 环境说明见 [docs/environment.md](docs/environment.md)。
 队友接仓指南见 [docs/teammate-setup.md](docs/teammate-setup.md)。
@@ -466,11 +468,11 @@ python -m diffaudit dry-run-variation --config configs/attacks/variation_plan.ya
 python -m diffaudit run-variation-synth-smoke --workspace experiments/variation-synth-smoke
 ```
 
-启动本地 API 服务（Go 控制面，推荐）：
+启动本地 Runtime Server 服务（Go 控制面，推荐）：
 
 ```powershell
-cd ..\Services\Local-API
-go run ./cmd/local-api --host 127.0.0.1 --port 8765
+cd ..\Runtime-Server
+go run ./cmd/runtime --host 127.0.0.1 --port 8765
 ```
 
 Python FastAPI 入口当前仅保留为临时兼容层，不再作为默认控制面入口。

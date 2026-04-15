@@ -8,6 +8,7 @@
 - `gpu_release`: `none`
 - `admission`: `single-item provisional runtime release granted (2026-04-12 override)`
 - `active_gpu_question`: `none`
+- `next_question_packet`: `T06 optimizer/lr frontier`
 - `current_mainline_not_changed`: `SMP-LoRA O02 no-TF32 replicate is now closed after repairing the default seed contract; no-TF32 rerun1/rerun2/rerun3 produced 0.3957 / 0.3838 / 0.5306, which is mixed and not a stabilization answer; batch14 throughput still remains the strongest candidate with variance note, not the default template; PIA provenance remains CPU-side blocker`
 - `program_goal`: `preserve the no-TF32 mixed-result verdict and force the next GPU question to earn a new admission packet`
 

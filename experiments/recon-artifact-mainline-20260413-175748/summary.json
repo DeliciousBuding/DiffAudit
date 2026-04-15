@@ -1,0 +1,17 @@
+{
+  "contract_key": "black-box/recon/sd15-ddim",
+  "job_type": "recon_artifact_mainline",
+  "method": "threshold",
+  "artifact_dir": "D:\\Code\\DiffAudit\\Research\\experiments\\recon-runtime-mainline-ddim-public-100-step30\\score-artifacts",
+  "repo_root": "D:\\Code\\DiffAudit\\Research\\external\\Reconstruction-based-Attack",
+  "metrics": {
+    "num_artifacts": 4,
+    "sample_hashes": [
+      "shadow_member.pt:5c185de381dae3ef",
+      "shadow_non_member.pt:dbbf6804037d3991",
+      "target_member.pt:ac9689122ba76cf2",
+      "target_non_member.pt:9583b14d5806c76e"
+    ]
+  },
+  "created_at": "2026-04-13T17:57:48.438687+00:00"
+}

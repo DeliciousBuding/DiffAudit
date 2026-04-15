@@ -109,6 +109,25 @@ def _mp_lora_objective(
     return adaptation_loss + lambda_coeff * mi_gain
 
 
+def _build_optimizer(
+    optimizer_name: str,
+    params: list[torch.nn.Parameter] | Any,
+    lr: float,
+    sgd_momentum: float,
+) -> torch.optim.Optimizer:
+    """Build a supported optimizer for the SMP-LoRA train loop."""
+    normalized = optimizer_name.lower()
+    if normalized == "adam":
+        return torch.optim.Adam(params, lr=lr)
+    if normalized == "adamw":
+        return torch.optim.AdamW(params, lr=lr)
+    if normalized == "sgd":
+        return torch.optim.SGD(params, lr=lr, momentum=sgd_momentum)
+    raise ValueError(
+        f"optimizer must be one of ['adam', 'adamw', 'sgd'], got '{optimizer_name}'"
+    )
+
+
 class SMPLoRATrainer:
     """SMP-LoRA training loop for DDPM.
 
@@ -130,6 +149,8 @@ class SMPLoRATrainer:
         delta: float = 1e-4,
         lora_lr: float = 1e-4,
         proxy_lr: float = 1e-3,
+        optimizer: str = "adam",
+        sgd_momentum: float = 0.9,
         proxy_hidden_dim: int = 256,
         proxy_steps: int = 5,
         method: str = "smp",
@@ -145,6 +166,8 @@ class SMPLoRATrainer:
         self.method = method
         self.proxy_steps = proxy_steps
         self.device = device
+        self.optimizer_name = optimizer.lower()
+        self.sgd_momentum = sgd_momentum
 
         self.scheduler = DDPMScheduler(
             num_train_timesteps=ddpm_num_train_timesteps,
@@ -166,9 +189,17 @@ class SMPLoRATrainer:
         ).to(device)
 
         self.lora_params = get_lora_parameters(model)
-        self.lora_optimizer = torch.optim.Adam(self.lora_params, lr=lora_lr)
-        self.proxy_optimizer = torch.optim.Adam(
-            self.proxy_model.parameters(), lr=proxy_lr
+        self.lora_optimizer = _build_optimizer(
+            self.optimizer_name,
+            self.lora_params,
+            lr=lora_lr,
+            sgd_momentum=self.sgd_momentum,
+        )
+        self.proxy_optimizer = _build_optimizer(
+            self.optimizer_name,
+            self.proxy_model.parameters(),
+            lr=proxy_lr,
+            sgd_momentum=self.sgd_momentum,
         )
 
         self.log: list[dict[str, Any]] = []
@@ -338,6 +369,8 @@ class SMPLoRATrainer:
             "method": self.method,
             "lambda": self.lambda_coeff,
             "delta": self.delta,
+            "optimizer": getattr(self, "optimizer_name", "adam"),
+            "sgd_momentum": getattr(self, "sgd_momentum", 0.9),
             "num_lora_layers": summary["num_lora_layers"],
             "total_lora_params": summary["total_lora_params"],
             "ddpm_num_train_timesteps": self.scheduler.config["num_train_timesteps"],

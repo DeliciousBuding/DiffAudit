@@ -27,6 +27,7 @@
 ## 第一轮建议任务
 
 1. 先整理两篇论文的攻击假设、输入输出、指标和资产要求
-2. 当前黑盒次主线 `variation/Towards` 已在本地 CPU 上重复跑过 synthetic smoke，可以作为“本地可讲的第二黑盒路线”继续保留
-3. 先补黑盒方向阅读笔记和复现计划，不要把 `SecMI` 混进黑盒入口
-4. 真实 API 资产到位后再把 `variation` 从 synthetic-smoke 推向真实 black-box mainline
+2. `semantic-auxiliary-classifier` 已落成当前 leading new-family challenger；先看 `2026-04-15-blackbox-second-signal-semantic-aux-verdict.md`
+3. `variation/Towards` 继续保留为 formal local secondary track，不与当前 challenger 混层
+4. 先补黑盒方向阅读笔记和复现计划，不要把 `SecMI` 混进黑盒入口
+5. 真实 API 资产到位后再把 `variation` 从 synthetic-smoke 推向真实 black-box mainline

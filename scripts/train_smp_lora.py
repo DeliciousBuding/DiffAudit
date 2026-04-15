@@ -209,6 +209,19 @@ def parse_args():
     parser.add_argument("--delta", type=float, default=1e-4)
     parser.add_argument("--lora_lr", type=float, default=1e-4)
     parser.add_argument("--proxy_lr", type=float, default=1e-3)
+    parser.add_argument(
+        "--optimizer",
+        type=str,
+        default="adam",
+        choices=["adam", "adamw", "sgd"],
+        help="Optimizer applied to both LoRA and proxy updates",
+    )
+    parser.add_argument(
+        "--sgd_momentum",
+        type=float,
+        default=0.9,
+        help="Momentum used when --optimizer=sgd",
+    )
     parser.add_argument("--proxy_hidden_dim", type=int, default=256)
     parser.add_argument("--proxy_steps", type=int, default=5)
     parser.add_argument("--num_epochs", type=int, default=10)
@@ -389,7 +402,11 @@ def main():
     print(f"Initializing SMP-LoRA trainer:")
     print(f"  rank={args.rank}, alpha={args.alpha}, lambda={args.lambda_coeff}")
     print(f"  method={args.method}, proxy_steps={args.proxy_steps}")
-    print(f"  lora_lr={args.lora_lr}, proxy_lr={args.proxy_lr}")
+    print(
+        f"  optimizer={args.optimizer}, lora_lr={args.lora_lr}, proxy_lr={args.proxy_lr}"
+    )
+    if args.optimizer == "sgd":
+        print(f"  sgd_momentum={args.sgd_momentum}")
 
     trainer = SMPLoRATrainer(
         model=model,
@@ -399,6 +416,8 @@ def main():
         delta=args.delta,
         lora_lr=args.lora_lr,
         proxy_lr=args.proxy_lr,
+        optimizer=args.optimizer,
+        sgd_momentum=args.sgd_momentum,
         proxy_hidden_dim=args.proxy_hidden_dim,
         proxy_steps=args.proxy_steps,
         method=args.method,

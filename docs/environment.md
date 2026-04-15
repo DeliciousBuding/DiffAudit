@@ -28,6 +28,8 @@
 
 ## 创建环境
 
+默认情况下，请先使用团队共享的 `environment.yml`：
+
 ```powershell
 conda env create -f environment.yml
 conda activate diffaudit-research
@@ -52,6 +54,34 @@ python scripts/bootstrap_research_env.py --install
 ```powershell
 python scripts/render_team_local_configs.py
 ```
+
+## 可选：较新 NVIDIA GPU 的 cu128 环境
+
+`environment.yml` 仍然是 CI 和新同学接仓的默认入口，不要把它当作“只要能点亮本机 GPU 就直接全员替换”的文件。
+
+如果你用的是较新的 NVIDIA GPU，并且在默认环境里已经出现下面这种真实 CUDA 算子错误：
+
+```text
+RuntimeError: CUDA error: no kernel image is available for execution on the device
+```
+
+可以改用仓库里的可选环境文件：
+
+```powershell
+conda env create -f environment.gpu-cu128.yml
+conda activate diffaudit-research
+python -m ipykernel install --user --name diffaudit-research --display-name "Python (diffaudit-research)"
+```
+
+如果你已经创建过默认环境，想直接切到这套栈，改用：
+
+```powershell
+conda env update -f environment.gpu-cu128.yml --prune
+conda activate diffaudit-research
+python scripts/bootstrap_research_env.py --install
+```
+
+这套可选环境当前用于较新的 GPU 兼容性补充，已在 `RTX 5070 Laptop GPU` 上通过真实 CUDA `matmul` smoke。
 
 ## 如果当前 shell 没有激活 conda
 
@@ -88,9 +118,17 @@ conda run -n diffaudit-research python -m diffaudit probe-secmi-assets --config 
 
 ## 当前已验证的 GPU 栈
 
+默认入口 / CI：
+
 - `torch==2.5.1+cu121`
 - `torchvision==0.20.1+cu121`
 - `torchaudio==2.5.1+cu121`
+
+可选较新 GPU 栈：
+
+- `torch==2.11.0+cu128`
+- `torchvision==0.26.0+cu128`
+- `torchaudio==2.11.0+cu128`
 
 ## 验证环境
 

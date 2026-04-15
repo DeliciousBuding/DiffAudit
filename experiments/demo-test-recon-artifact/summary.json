@@ -1,0 +1,52 @@
+{
+  "status": "error",
+  "track": "black-box",
+  "method": "recon",
+  "paper": "BlackBox_Reconstruction_ArXiv2023",
+  "mode": "artifact-mainline",
+  "device": "cpu",
+  "workspace": "D:\\Code\\DiffAudit\\Research\\experiments\\demo-test-recon-artifact",
+  "artifact_paths": {
+    "summary": "D:\\Code\\DiffAudit\\Research\\experiments\\demo-test-recon-artifact\\summary.json",
+    "artifact_summary": "D:\\Code\\DiffAudit\\Research\\experiments\\demo-test-recon-artifact\\artifact-summary\\summary.json",
+    "upstream_eval_summary": "D:\\Code\\DiffAudit\\Research\\experiments\\demo-test-recon-artifact\\upstream-eval\\summary.json"
+  },
+  "asset_source_dir": "D:\\Code\\DiffAudit\\Research\\experiments\\recon-runtime-mainline-ddim-public-100-step30\\score-artifacts",
+  "checks": {
+    "artifact_summary_ready": true,
+    "upstream_eval_ready": false,
+    "all_stages_ready": false
+  },
+  "evaluation_method": "threshold",
+  "metrics": {
+    "auc": null,
+    "asr": null,
+    "tpr_at_1pct_fpr": 1.0
+  },
+  "stages": {
+    "artifact_summary": {
+      "status": "ready",
+      "mode": "artifact-summary",
+      "summary_path": "D:\\Code\\DiffAudit\\Research\\experiments\\demo-test-recon-artifact\\artifact-summary\\summary.json",
+      "headline_metrics": {
+        "auc": 0.6897,
+        "asr": null,
+        "tpr_at_1pct_fpr": 1.0
+      }
+    },
+    "upstream_eval": {
+      "status": "error",
+      "mode": "upstream-eval",
+      "summary_path": "D:\\Code\\DiffAudit\\Research\\experiments\\demo-test-recon-artifact\\upstream-eval\\summary.json",
+      "headline_metrics": {
+        "auc": null,
+        "asr": null,
+        "tpr_at_1pct_fpr": null
+      }
+    }
+  },
+  "notes": [
+    "Artifact mainline consumes provided target/shadow reconstruction score artifacts.",
+    "This path is intended as the shortest bridge from repository smoke workflows to real black-box evidence."
+  ]
+}

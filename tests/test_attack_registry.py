@@ -228,7 +228,7 @@ report:
         payload = json.loads(stdout.getvalue())
         self.assertEqual(exit_code, 1)
         self.assertEqual(payload["status"], "blocked")
-        self.assertIn("flagfile", payload["error"])
+        self.assertIn("checkpoint", payload["error"])
 
     def test_cli_probes_secmi_assets(self) -> None:
         from diffaudit.cli import main
@@ -340,8 +340,70 @@ report:
         payload = json.loads(stdout.getvalue())
         self.assertEqual(exit_code, 1)
         self.assertEqual(payload["status"], "blocked")
-        self.assertIn("flagfile.txt", payload["missing_items"])
         self.assertIn("checkpoint", payload["missing_description"])
+
+    def test_cli_probe_secmi_assets_allows_missing_flagfile(self) -> None:
+        from diffaudit.cli import main
+
+        config_text = """
+task:
+  name: secmi-asset-probe
+  model_family: diffusion
+  access_level: black_box
+assets:
+  dataset_id: cifar10-half
+  dataset_name: cifar10
+  dataset_root: PLACEHOLDER_DATASET
+  model_id: cifar10-ddpm
+  model_dir: PLACEHOLDER_MODEL
+attack:
+  method: secmi
+  num_samples: 8
+  parameters:
+    t_sec: 100
+    k: 10
+report:
+  output_dir: experiments/secmi-asset-probe
+"""
+
+        with tempfile.TemporaryDirectory() as tmpdir:
+            root = Path(tmpdir)
+            dataset_root = root / "dataset"
+            dataset_root.mkdir()
+
+            model_dir = root / "model"
+            model_dir.mkdir()
+            (model_dir / "checkpoint.pt").write_text("checkpoint", encoding="utf-8")
+
+            member_split_root = root / "member_splits"
+            member_split_root.mkdir()
+            (member_split_root / "CIFAR10_train_ratio0.5.npz").write_bytes(b"split")
+
+            config_path = root / "audit.yaml"
+            config_path.write_text(
+                config_text
+                .replace("PLACEHOLDER_DATASET", str(dataset_root).replace("\\", "/"))
+                .replace("PLACEHOLDER_MODEL", str(model_dir).replace("\\", "/")),
+                encoding="utf-8",
+            )
+
+            stdout = StringIO()
+            with redirect_stdout(stdout):
+                exit_code = main(
+                    [
+                        "probe-secmi-assets",
+                        "--config",
+                        str(config_path),
+                        "--member-split-root",
+                        str(member_split_root),
+                    ]
+                )
+
+        payload = json.loads(stdout.getvalue())
+        self.assertEqual(exit_code, 0)
+        self.assertEqual(payload["status"], "ready")
+        self.assertFalse(payload["checks"]["flagfile"])
+        self.assertTrue(payload["checks"]["checkpoint"])
 
     def test_cli_plans_pia(self) -> None:
         from diffaudit.cli import main

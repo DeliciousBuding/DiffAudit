@@ -1,0 +1,40 @@
+{
+  "status": "error",
+  "track": "black-box",
+  "method": "recon",
+  "paper": "BlackBox_Reconstruction_ArXiv2023",
+  "mode": "upstream-eval",
+  "device": "cpu",
+  "workspace": "D:\\Code\\DiffAudit\\Research\\experiments\\demo-test-recon-artifact\\upstream-eval",
+  "artifact_paths": {
+    "summary": "D:\\Code\\DiffAudit\\Research\\experiments\\demo-test-recon-artifact\\upstream-eval\\summary.json"
+  },
+  "assets": {
+    "artifact_files": [
+      "shadow_member",
+      "shadow_non_member",
+      "target_member",
+      "target_non_member"
+    ]
+  },
+  "checks": {
+    "artifact_files_found": true,
+    "upstream_script_found": true,
+    "upstream_script_succeeded": false
+  },
+  "evaluation_method": "threshold",
+  "metrics": {
+    "reported_accuracy": null,
+    "reported_auc": null
+  },
+  "notes": [
+    "Evaluation executes the upstream reconstruction accuracy script with provided score artifacts."
+  ],
+  "stdout_tail": [],
+  "stderr_tail": [
+    "Traceback (most recent call last):",
+    "  File \"D:\\Code\\DiffAudit\\Research\\external\\Reconstruction-based-Attack\\test_accuracy.py\", line 1, in <module>",
+    "    from sklearn.svm import SVC",
+    "ModuleNotFoundError: No module named 'sklearn'"
+  ]
+}

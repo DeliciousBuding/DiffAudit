@@ -1,252 +1,647 @@
-# DiffAudit Research Roadmap
+# DiffAudit Research ROADMAP — Continuous Autonomous Mainline
 
-## 目标
+> Last updated: 2026-04-15 23:10
+> Mode: continuous autonomous research
+> Owner: `Researcher`
+> Rule: one active GPU task at a time, every task must end in a concrete verdict
 
-这份路线图只面向 `Research` 研究仓库。
+## 0. Positioning
 
-统一目标：
+This roadmap is not a one-shot sprint checklist.
 
-- 让黑盒、灰盒、白盒三条攻击线进入同一套研究与证据规划
-- 让攻击、资产、manifest、summary、防御结果都能被统一记录
-- 在当前阶段形成“至少一条可辩护攻击主线 + 至少一条可比较防御原型 + 一张 admitted 统一总表”
+It is the operating backlog for a long-running `ResearcherAgent` that should keep pushing:
 
-## 当前研究快照
+- model mainline
+- innovation funnel
+- system-consumable evidence
+- GPU utilization quality
+- long-horizon research depth
 
-截至 `2026-04-09`：
+`2026-04-19` remains a real 4C deadline, but it is **not** a stop condition and it is **not** a reason to freeze research.
 
-- `Current Mainline`: `SMP-LoRA O03 epoch40 mini-run has been closed as single-run no-go after epoch40 = 0.6349; O04 seed stability mini-batch has been closed as single-seed no-go after seed7 = 0.5188; no-TF32 was already closed as mixed / not a stabilization answer; batch14 throughput remains the strongest candidate with variance note, not the default template; batch13 is now closed as no-gain; batch15 is now closed as unstable no-go; batch16 is now closed as degraded + O01 stalled-salvaged + PIA provenance sidecar`
-- `Current Risk Evidence`: `recon DDIM public-100 step30`
-- `Current Depth Line`: `GSA + W-1 strong-v3 full-scale`
-- `Active GPU Question`: `none`
-- `Blocked Candidates`: `SecMI`, `variation real API`, `W-2`, `G-2`
-- `Intake-Ready Candidates`: `TMIA-DM`, `Finding NeMo`, `DP-LoRA`
+The correct reading is:
 
-当前研究判断：
+- before `2026-04-19`, the agent should bias toward work that can also improve 4C narrative, material quality, and system-consumable structure;
+- after `2026-04-19`, the agent continues without reset and expands toward National Innovation work;
+- if this roadmap is exhausted, the agent must expand it instead of declaring idle completion.
 
-- `PIA` 仍是当前最成熟、最适合打成“攻击 + 防御”主讲闭环的一条线
-- `PIA` 当前 strongest claim 仍是 `workspace-verified + adaptive-reviewed`，并且必须同时携带 `paper-aligned blocked by checkpoint/source provenance`
-- `PIA` 当前唯一 `paper-aligned` blocker 是 `checkpoint/source provenance`
-- `recon` 仍是黑盒风险证据主线，而不是当前主讲闭环
-- `GSA epoch300 rerun1` 已是当前白盒攻击主结果，并已写回 admitted 总表、intake 与系统读链
-- `batch_size = 32` 已让 `shadow-02 / shadow-03` checkpoint 恢复可运行
-- 当前 same-protocol bridge 已完成 `保持冻结` 收口
-- 当前 `batch32 diagnostic comparator` 仍停留在 `runtime-smoke / diagnostic` 级别，未改 admitted 合同
-- `PIA provenance dossier` 当前已 closed 为 `remain long-term blocker`
+---
 
-## 当前阶段与 Gate
+## 1. Operating Contract
 
-默认研究顺序：
+### 1.1 Root alignment
 
-1. `Phase A: Freeze Current Admitted Mainlines`
-2. `Phase B: Harden Mainline Read Chain And Blocker Narratives`
-3. `Phase C: Close Active GPU Strengthening Run`
-4. `Phase D: Same-Protocol Benchmark Bridge`
-5. `Phase E: Open Next Research Question`
+This roadmap must stay aligned with root-level `D:\Code\DiffAudit\ROADMAP.md`, but it is not limited to "4C sprint mode".
 
-当前主阶段：
+For `Research`, root alignment means:
 
-- `Phase E: Open Next Research Question`
+- respect near-term delivery pressure;
+- keep generating research outcomes that can change project-level story;
+- continue building the post-4C mainline instead of pausing;
+- keep `Research -> Runtime -> Platform` consumption path healthy.
 
-当前尾项：
+### 1.2 What the agent is optimizing
 
-- `Phase B: Harden Mainline Read Chain And Blocker Narratives`
+The `ResearcherAgent` should optimize for all of the following together:
 
-当前长期执行顺序固定为：
+1. stronger method diversity
+2. stronger defense diversity
+3. better research truth-to-system read path
+4. higher GPU utilization quality
+5. lower wasted GPU hours
+6. less operator babysitting
+7. more innovation density per week
 
-1. `no-TF32` 已完成三样本复验并收口；当前保持 `active_gpu_question = none`，下一条 GPU 题必须先有单独的 next-question packet
-2. `O01 lambda=0.05` 已 closed 为 `stalled at step_10200 + salvage AUC 0.5770 > baseline 0.5565`
-3. `PIA provenance` dossier 与书面裁决继续作为 CPU 侧长期 blocker 收口，但不再阻塞 `O02`
-4. `O03/O04/O08` 继续只保留为 `SMP-LoRA` 下一批 release-review shortlist；没有单独 packet 前不放行 GPU
-4. `recon` 当前已冻结为 `decision-grade black-box package`；默认只允许 read-only wording sync，不新开 black-box GPU
-5. `Finding NeMo` 继续保持 `adapter-complete zero-GPU hold`
-6. `SecMI / TMIA-DM / variation real API` 在各自 blocker 解除前继续留在队列外
+### 1.3 Hard constraints
 
-当前长期计划工件见：
+- only one active GPU task at a time
+- every task must have a bounded hypothesis
+- every task must have a bounded budget
+- every task must end as one of:
+  - `positive`
+  - `negative`
+  - `no-go`
+  - `blocked`
+  - `needs-assets`
+- no repeated sweep without a new reason
+- no "looks promising" without recorded evidence
+- if a task stalls, skip it, document it, and move to the next highest-value task
 
-- `workspaces/implementation/2026-04-10-rtx4070-8gb-long-horizon-plan.md`
+### 1.4 Broad exploration policy
 
-当前阶段判定补充：
+Research is explicitly allowed to try multiple directions in parallel over time.
 
-- bridge 已完成 `保持冻结` 收口
-- 当前没有 active 主 GPU 问题
-- 当前最值得推进的唯一目标切换为：
-  - 固定 `O03 epoch40 = 0.6349` 的 single-run no-go 边界，并为下一条真正有信息增量的 GPU 题重新写 packet
+Not only:
 
-当前阶段沿用的 gate：
+- black-box mainline
+- gray-box mainline
+- white-box mainline
 
-1. `PIA` 的 strongest claim、defended mainline、paper-alignment blocker 都已固定
-2. `GSA rerun1` 与 `W-1 strong-v3 full-scale` 的 same-protocol bridge 合同已经固定
-3. bridge 启动入口已 portable，且不依赖本地 scheduler
-4. bridge 已产出第一份 decisive artifact，并已形成“继续扩大、保持冻结、或收口失败模式”的书面决策
+Also:
 
-补充 gate 解释：
+- cross-box analysis
+- fusion and calibration
+- feature-space or caption-space signals
+- transfer or portability probes
+- mitigation-aware evaluation
+- quality-cost analysis
+- system-consumable schema and comparison work
+- any new paper-backed or original idea that can be tested with bounded cost
 
-- 当前 `batch32 diagnostic comparator` 仍是 `runtime-smoke / diagnostic`
-- `Phase D` 已完成 frozen-closed 收口
-- `Phase E` 当前固定排序为：
-  1. `PIA paper-aligned confirmation`
-  2. `Finding NeMo + local memorization + FB-Mem`
-  3. `DP-LoRA`
-  4. `SecMI unblock`
-  5. `TMIA-DM intake`
-- 上述固定排序只表示文档层条件位；其中 `PIA paper-aligned confirmation` 当前不计入可释放 GPU 队列
-- 当前准入验证优先顺序为：
-  1. `Finding NeMo + local memorization + FB-Mem`
-  2. `DP-LoRA`
-  3. `SecMI unblock`
-  4. `TMIA-DM intake`
-- `Research/workspaces/intake/phase-e-candidates.json` 是当前唯一 machine-readable candidate ordering mirror
-- `Research/workspaces/intake/index.json.entries[]` 继续只承载 `promoted / system-intake-ready` contracts
+### 1.5 Canonical startup contract
 
-## GPU 研究规则
+Fresh sessions should always read in this order:
 
-- 当前允许主 GPU 任务
-- 但研究侧同一时段只允许一个主线 GPU 问题
-- 当前 active GPU 问题：
-  - `none`
+1. `D:\Code\DiffAudit\ROADMAP.md`
+2. `D:\Code\DiffAudit\Research\ROADMAP.md`
+3. `D:\Code\DiffAudit\Research\AGENTS.md`
+4. `D:\Code\DiffAudit\Research\docs\researcher-agent-architecture.md`
+5. `D:\Code\DiffAudit\Research\README.md`
+6. `D:\Code\DiffAudit\Research\docs\comprehensive-progress.md`
+7. `D:\Code\DiffAudit\Download\manifests\research-download-manifest.json`
+8. lane-specific workspace docs only after the task is narrowed
 
-本地 scheduler 边界：
+---
 
-- `LocalOps/paper-resource-scheduler` 是本地治理工具，不是研究仓合同
-- 外部协作者必须可以在没有 scheduler 的前提下：
-  - 建环境
-  - 跑 `probe / dry-run / smoke / mainline`
-  - 在自己的 CPU/GPU 上复现
-  - 提交 PR
-- 因此研究仓文档、命令、校验链都不得把 scheduler 设成硬依赖
+## 2. Self-Cycling Loop
 
-当前问题收口后，真正可进入当前准入验证排序的 GPU 候选只允许从下面四项中选一条：
+Every long-running session should execute this loop:
 
-1. `SMP-LoRA O03/O04/O08`
-2. `Finding NeMo + local memorization + FB-Mem`
-3. `SecMI unblock`
-4. `TMIA-DM intake`
+1. `Sense`
+   - read root roadmap
+   - read this roadmap
+   - inspect latest runs, blockers, challenger queue, comparison artifacts
+2. `Select`
+   - choose the highest-value task, not merely the first unchecked box
+3. `Delegate` (optional)
+   - open subagents only if they create real leverage
+4. `Execute`
+   - probe -> smoke -> mainline, or blocker diagnosis, or CPU-side integration
+5. `Review`
+   - critique the result, critique the direction, critique the next step
+6. `Sync`
+   - update `summary.json`, roadmap, notes, and any system-consumable artifact
+7. `Expand`
+   - if the current roadmap is insufficient, add new tasks and continue
 
-补充条件：
+This loop never stops at "the listed tasks are done for now" if new high-value work is visible.
 
-- `PIA paper-aligned confirmation` 继续只保留文档层条件性首位
-- 只有 `checkpoint/source provenance` blocker 发生实质变化并完成单独 release review 后，它才允许重新回到候选审查面
+---
 
-补充边界：
+## 3. Optional Subagent Policy
 
-- `Finding NeMo + local memorization + FB-Mem` 当前只保留 `future separate release-review reconsideration` 的条件性上限
-- 当前 `paper-faithful NeMo on admitted white-box assets = no-go`
-- 当前 `portable observability smoke` 已进入 `read-only contract-probe + cpu-only activation-export adapter implemented`
-- 当前已固定为 `adapter-complete zero-GPU hold / queue not-requestable`
-- 在 intake 文档未补齐 `hook 点 / 资产需求 / compute budget / stop conditions / expected artifact` 前，不得申请 GPU
+The `ResearcherAgent` is allowed to open subagents, but should not do so mechanically every turn.
 
-研究侧明确不做：
+Use subagents when they create real parallel leverage:
 
-- 不继续重跑已冻结的 `PIA GPU128/256/512`
-- 不继续重跑 admitted `GSA 1k-3shadow`
-- 不在 `variation` 和 `SecMI` 资产未到位时烧 GPU
-- 不在下一条 GPU 题没有单独准入 packet 时放行新的 GPU 长任务
+### 3.1 Good subagent use cases
 
-## Phase A: Freeze Current Admitted Mainlines
+- `paper scout`
+  - survey a paper family, extract the shortest feasible implementation path
+- `code reviewer`
+  - inspect current implementation for hidden bugs, weak assumptions, or drift from the method hypothesis
+- `experiment auditor`
+  - review a finished run and challenge whether the verdict is honest
+- `platform handoff reviewer`
+  - identify what fields, boundaries, or summaries should be exposed to Platform or Runtime
+- `backlog critic`
+  - challenge whether current roadmap priorities are still correct
 
-- 目标：
-  - 固定 `recon / PIA / GSA / W-1` 的 admitted 主结果
-- 当前状态：
-  - `mostly complete`
-- 当前 owner / 固定角色：
-  - `research_leader`
-- 进入条件：
-  - 三条攻击线都已形成至少一份可辩护结果
-- 完成标准：
-  - admitted 主结果在总表、manifest、研究文档里不互相冲突
-- 本阶段不做：
-  - 不扩新论文
-  - 不把 `blocked / smoke / secondary` 写成主结果
+### 3.2 Subagent defaults
 
-## Phase B: Harden Mainline Read Chain And Blocker Narratives
+- prefer background execution, not blocking the main loop
+- prefer `gpt-5.4` with `high` reasoning effort
+- wait less often, but when waiting is necessary, wait longer instead of busy-polling
+- use subagents for focused, bounded questions
+- do not spawn subagents for work the main agent can do faster directly
 
-- 目标：
-  - 把当前主讲线写成“可讲、可读、可阻塞解释”一致的正式主线
-- 当前状态：
-  - `closure completed`
-- 当前 owner / 固定角色：
-  - `research_leader`
-- 进入条件：
-  - `Phase A` 基本完成
-- 完成标准：
-  - `PIA` strongest claim 固定为 `workspace-verified + adaptive-reviewed + paper-aligned blocked by checkpoint/source provenance`
-  - `all_steps` 固定为 defended mainline
-  - `late_steps_only` 明确为消融，不替代主线
-  - `PIA` 的 `paper-aligned` blocker 固定为 `checkpoint/source provenance`
-  - `GSA` 的 live intake/canonical summary 与 admitted `1k-3shadow` 主结果一致
-- 本阶段不做：
-  - 不因为 GPU 已放开就重跑 `PIA`
-  - 不把 blocker narrative 混成 benchmark 已完成
+### 3.3 Subagent output contract
 
-## Phase C: Close Active GPU Strengthening Run
+Default assumption:
 
-- 目标：
-  - 收口当前已经启动的 `GSA epoch300 rerun1`，并完成 admitted 决策
-- 当前状态：
-  - `closure completed`
-- 当前 owner / 固定角色：
-  - `research_leader`
-- 进入条件：
-  - 已存在 active GPU 长任务
-- 完成标准：
-  - 形成新的 rerun runtime `summary.json`
-  - 并完成当前 admitted `GSA` 主结果的决策与回写
-  - 当前不再以 rerun promotion 作为 active GPU 问题
-- 本阶段不做：
-  - 不并行再开第二条白盒长任务
-  - 不在 admission review 未完成时改 admitted 主结果
+- subagents are read-only unless a write scope is explicitly assigned
 
-## Phase D: Same-Protocol Benchmark Bridge
+Every subagent should return:
 
-- 目标：
-  - 让主线从“能讲”推进到更强的同协议对比面
-- 当前状态：
-  - `closed-frozen`
-- 当前 owner / 固定角色：
-  - `research_leader`
-- 进入条件：
-  - `GSA rerun1` 已稳定成为 admitted 白盒攻击主结果
-- 完成标准：
-  - 白盒 `GSA rerun1` 与 `W-1 strong-v3 full-scale` 的 same-protocol 路线明确
-  - bridge 启动入口已 portable
-  - batch32 训练链已证明可以恢复 `shadow-02 / shadow-03` checkpoint
-  - bridge 已产出第一份 diagnostic comparator summary，并明确它是否继续扩大或保持冻结
-  - 灰盒 `PIA` 是否值得做 `paper-aligned` 确认有清晰 gate
-- 本阶段不做：
-  - 不把 same-protocol bridge 写成 benchmark 已完成
-  - 不把新研究问题提前塞进这阶段
+- exact question answered
+- evidence or files inspected
+- verdict
+- exact files needing changes, if any
+- next action recommendation
 
-## Phase E: Open Next Research Question
+Truth integration rule:
 
-- 目标：
-  - 在当前主线收口后开启真正新的问题
-- 当前状态：
-  - `intake-only`
-- 当前 owner / 固定角色：
-  - `research_leader`
-  - `总管理 Agent`
-- 进入条件：
-  - `Phase D` 完成
-- 完成标准：
-  - 新问题有明确资产条件、评价指标、退出条件
-  - 同时只允许一条新主 GPU 问题
-- 本阶段不做：
-  - 不为了“GPU 空着”就机械复跑旧结论
-  - 不同时开启两条新主线
+- subagent output is advisory until the main agent reviews it
+- only the main agent can promote output into roadmap truth, artifact truth, or mainline wording
 
-## 研究执行纪律
+### 3.4 Required review cadence
 
-- admitted 结果优先写 machine-readable `manifest / summary / table`
-- `PIA` 是当前算法主讲线，不是灰盒补充线
-- `recon` 是当前风险证据线，不是当前主讲防御闭环
-- 白盒 `GSA + W-1` 当前价值在深度与上界，不是申报阶段唯一主讲成果
-- 只要 `LocalOps` scheduler 不存在，研究仓也必须能被别人用来跑实验、提 PR
+At meaningful checkpoints, the main agent should trigger at least one self-review action:
 
-## 需要同步的研究文档
+- before starting a costly GPU run
+- after a surprising result
+- after a blocker diagnosis
+- before promoting a challenger into a more official line
+- when the roadmap begins to feel stale
 
-每次阶段切换或运行态变化，至少同步：
+---
 
-- `D:\Code\DiffAudit\Research\ROADMAP.md`
-- `D:\Code\DiffAudit\Research\docs\reproduction-status.md`
-- `D:\Code\DiffAudit\Research\docs\comprehensive-progress.md`
-- `D:\Code\DiffAudit\Research\docs\local-api.md`
+## 4. Current Strategic Picture
+
+### 4.1 Black-box
+
+Current truth:
+
+- `recon` is the strongest main evidence line
+- `CLiD` provides strong local corroboration but still has boundary-quality work left
+- a second truly different black-box family is still not firmly landed
+
+Current need:
+
+- new signal family
+- mitigation-aware evaluation
+- better boundary quality
+
+### 4.2 Gray-box
+
+Current truth:
+
+- `PIA` is the strongest mainline
+- `stochastic-dropout(all_steps)` is the current defended story
+- `SecMI` exists, but diversity is not yet sufficient
+
+Current need:
+
+- second defense mechanism
+- ranking-sensitive variable
+- another truly different family or a stronger disagreement story
+
+### 4.3 White-box
+
+Current truth:
+
+- `GSA` is a very strong white-box line
+- `W-1 = DPDM` gives a meaningful defended comparator
+- second white-box line is still unresolved
+
+Current need:
+
+- blocker resolution or decisive blocker classification
+- second-line verdict
+- stronger defense comparison breadth
+
+### 4.4 Cross-box and system-consumable layer
+
+Current truth:
+
+- comparison table exists
+- challenger queue exists
+- evidence chain is already more structured than before
+
+Current need:
+
+- keep all new outcomes consumable by higher layers
+- keep narrative and machine-readable structure aligned
+- keep expanding cross-box reasoning, not just per-box silos
+
+---
+
+## 5. Task Selection Heuristic
+
+When multiple unchecked tasks are available, choose in this order:
+
+1. the task with the strongest blocker leverage
+2. the task most likely to change a project-level story soon
+3. the task most likely to create a new attack or defense verdict
+4. the task most likely to improve system-consumable structure
+5. the task most likely to open a new high-value branch
+6. only then same-family optimization
+
+If two tasks are similar, prefer:
+
+- lower setup cost
+- lower GPU cost
+- higher interpretability
+- higher reuse by future work
+- lower risk of locking the machine for too long
+
+---
+
+## 6. Active Backlog
+
+### 6.1 Cross-box integration and system sync
+
+#### ✅ `X-1` Unified cross-box comparison table
+
+- status: completed
+- keep maintained, do not treat as frozen forever
+
+#### ✅ `X-2` Live challenger queue
+
+- status: completed
+- must be updated when new verdicts or new ideas appear
+
+#### ⬜ `X-3` Keep system-consumable structure in sync
+
+Goal:
+
+- keep admitted/mainline/challenger boundaries readable
+- keep comparison artifacts current
+- keep higher-layer consumers able to interpret new outcomes
+
+Tasks:
+
+- [ ] `X-3.1` audit whether latest verdicts are reflected in comparison artifacts
+- [ ] `X-3.2` audit whether latest verdicts change project narrative
+- [ ] `X-3.3` mark any Platform/Runtime-facing field additions or boundary changes
+
+Value: ⭐⭐⭐
+Budget: CPU-only
+
+Artifact rule for `X-*`, `INF-*`, `intake`, or other non-run tasks:
+
+- they do not need to force a fake `runs/` directory
+- but they must leave one canonical evidence anchor under the appropriate workspace lane
+- the main agent must explicitly name that anchor in its update
+
+#### ⬜ `X-4` Cross-box exploration lane
+
+Goal: allow work that spans boxes instead of forcing every idea into one bucket
+
+Candidate directions:
+
+- [ ] `X-4.1` cross-box agreement analysis
+- [ ] `X-4.2` score calibration or fusion with bounded hypothesis
+- [ ] `X-4.3` transfer or portability probe when assets permit
+- [ ] `X-4.4` visualization or decision-quality analysis that changes project understanding
+
+Value: ⭐⭐⭐
+Budget: bounded CPU-first, GPU only if justified
+
+---
+
+### 6.2 Black-box expansion
+
+#### ✅ `BB-1` Second-signal black-box expansion
+
+Goal: land a second black-box direction that is not just a mild variant of current image-similarity lines
+
+Tasks:
+
+- [x] `BB-1.1` caption-space probe
+- [x] `BB-1.2` feature-space probe
+- [ ] `BB-1.3` timestep-selective reconstruction probe
+- [ ] `BB-1.4` prompt-response consistency probe
+
+Status:
+
+- completed for the current leading challenger branch
+- canonical evidence anchor:
+  - `workspaces/black-box/2026-04-15-blackbox-second-signal-semantic-aux-verdict.md`
+
+Verdict:
+
+- the returned-image `semantic-auxiliary-classifier` landed as a real black-box challenger
+- bounded local comparator metrics (`AUC = 0.910156`, `ASR = 0.875`) are strong enough for promotion into challenger status
+- scaled follow-up run `semantic-aux-classifier-comparator-20260416-r2` stayed stable at `AUC = 0.90918`, confirming the signal survives a `32 / 32` comparator
+- this branch adds real method-family diversity, but it does not replace the frozen `Recon` headline
+
+Carry-forward rule:
+
+- keep this line in challenger status
+- only escalate with a new bounded hypothesis; do not spend budget on aimless scale-up
+
+Promotion standard:
+
+- must produce a verdict
+- if positive, must be stronger than "interesting but noisy"
+
+Value: ⭐⭐⭐
+
+#### ⬜ `BB-2` Scoring and calibration upgrades
+
+Goal: improve black-box signal quality without pretending every scoring tweak is a new method family
+
+Tasks:
+
+- [ ] `BB-2.1` MSE-weighted or multi-score challenger
+- [ ] `BB-2.2` bounded fusion experiments
+- [ ] `BB-2.3` document whether calibration changes ranking or only threshold
+
+Value: ⭐⭐
+
+#### ⬜ `BB-3` CLiD boundary-quality upgrade
+
+Goal: improve the honesty and strength of the CLiD boundary claim
+
+Tasks:
+
+- [ ] `BB-3.1` review remaining boundary gaps
+- [ ] `BB-3.2` perform one minimum honest upgrade
+- [ ] `BB-3.3` update verdict wording and evidence note
+
+Value: ⭐⭐
+
+#### ⬜ `BB-4` Mitigation-aware evaluation
+
+Goal: test black-box methods under at least one more realistic mitigation condition
+
+Tasks:
+
+- [ ] `BB-4.1` design protocol
+- [ ] `BB-4.2` select mitigation
+- [ ] `BB-4.3` evaluate recon + CLiD or new challenger
+- [ ] `BB-4.4` record quality-cost-utility trade-off
+
+Value: ⭐⭐
+
+---
+
+### 6.3 Gray-box expansion
+
+#### ⬜ `GB-1` Second gray-box defense
+
+Goal: avoid a single defended story dominating gray-box forever
+
+Tasks:
+
+- [ ] `GB-1.1` shortlist materially different defense mechanisms
+- [ ] `GB-1.2` pick one bounded candidate
+- [ ] `GB-1.3` test against PIA + SecMI when possible
+- [ ] `GB-1.4` record defended verdict
+
+Value: ⭐⭐⭐
+
+#### ✅ `GB-2` Ranking-sensitive variable
+
+Goal: find something that changes ranking, not just score scale
+
+Tasks:
+
+- [x] `GB-2.1` analyze disagreement patterns
+- [x] `GB-2.2` propose bounded variable
+- [x] `GB-2.3` probe with minimal budget
+- [x] `GB-2.4` record verdict
+
+Status:
+
+- completed on the current `PIA vs SecMI` branch
+- canonical evidence anchor:
+  - `workspaces/gray-box/2026-04-15-graybox-ranking-sensitive-disagreement-verdict.md`
+
+Verdict:
+
+- same-split `PIA` and `SecMI` scores are highly correlated (`Spearman = 0.907588`)
+- disagreement exists (`12.2559%`), but simple score averaging does not beat the better single method
+- current gray-box ranking-sensitive branch is therefore `negative but useful`, not promotion-worthy for naive fusion
+
+Reopen rule:
+
+- only reopen with a new bounded hypothesis such as class-conditional disagreement or confidence-gated switching
+- do not spend more budget on another naive score ensemble
+
+Value: ⭐⭐⭐
+
+#### ⬜ `GB-3` New gray-box family
+
+Goal: test whether another family is worth joining the long-term mainline
+
+Candidate directions:
+
+- SIMA
+- MoFit
+- noise-as-probe
+- SIDe
+- another paper-backed gray-box mechanism
+
+Tasks:
+
+- [ ] `GB-3.1` choose one family
+- [ ] `GB-3.2` write feasibility note
+- [ ] `GB-3.3` implement probe or smoke
+- [ ] `GB-3.4` record verdict
+
+Value: ⭐⭐
+
+#### ⬜ `GB-4` Disagreement exploitation
+
+Goal: if a second family lands, determine whether disagreement is useful or redundant
+
+Tasks:
+
+- [ ] `GB-4.1` compare on aligned split
+- [ ] `GB-4.2` measure correlation and disagreement
+- [ ] `GB-4.3` test whether disagreement improves actionability
+
+Value: ⭐⭐
+
+---
+
+### 6.4 White-box expansion
+
+#### ⬜ `WB-1` Gradient extraction blocker resolution
+
+Goal: decide whether the current white-box blocker is solvable or should become a hard no-go for now
+
+Tasks:
+
+- [ ] `WB-1.1` run gradient extraction directly
+- [ ] `WB-1.2` capture root cause
+- [ ] `WB-1.3` fix or classify blocker
+- [ ] `WB-1.4` verify with one minimal job
+
+Value: ⭐⭐⭐
+
+#### ⬜ `WB-2` Second white-box line verdict
+
+Goal: land or reject a second white-box line with evidence
+
+Possible branches:
+
+- GSA2 comparator
+- NeMo if blocker removed
+- another non-GSA family
+
+Tasks:
+
+- [ ] `WB-2.1` choose path based on `WB-1`
+- [ ] `WB-2.2` implement and test
+- [ ] `WB-2.3` record verdict
+
+Value: ⭐⭐
+
+#### ⬜ `WB-3` White-box defense breadth
+
+Goal: broaden white-box defense comparison beyond the current single defended comparator
+
+Tasks:
+
+- [ ] `WB-3.1` survey alternatives beyond DPDM
+- [ ] `WB-3.2` pick one bounded defense
+- [ ] `WB-3.3` test against GSA
+- [ ] `WB-3.4` record attack degradation verdict
+
+Value: ⭐⭐
+
+#### ⬜ `WB-4` White-box feature/trajectory upgrade
+
+Goal: revisit deeper white-box analysis if and only if blocker cost becomes reasonable
+
+Tasks:
+
+- [ ] `WB-4.1` write hypothesis first
+- [ ] `WB-4.2` run lightweight probe
+- [ ] `WB-4.3` record whether it changes story
+
+Value: ⭐
+
+---
+
+### 6.5 Infrastructure, automation, and agent leverage
+
+#### ✅ `INF-1` CLIP/BLIP loading fixes
+
+- status: completed
+- keep documented and reusable
+
+#### ⬜ `INF-2` Research automation health
+
+Goal: make the repository easier for a long-running autonomous agent to operate
+
+Tasks:
+
+- [ ] `INF-2.1` identify friction points in current run/update workflow
+- [ ] `INF-2.2` add bounded automation where it reduces repeated human babysitting
+- [ ] `INF-2.3` improve run artifact consistency or summary templates if needed
+
+Value: ⭐⭐⭐
+
+#### ⬜ `INF-3` Subagent leverage experiments
+
+Goal: determine when optional subagents actually improve research throughput
+
+Tasks:
+
+- [ ] `INF-3.1` test paper-scout subagent workflow
+- [ ] `INF-3.2` test code-review subagent workflow
+- [ ] `INF-3.3` test backlog-critic or experiment-auditor workflow
+- [ ] `INF-3.4` record what should become standard and what should stay optional
+
+Value: ⭐⭐
+
+---
+
+## 7. Near-Term Priority Ladder
+
+This is a preference order, not a prison.
+
+### Top now
+
+1. ⬜ `WB-1` gradient extraction blocker resolution
+2. ⬜ `GB-1` second gray-box defense
+3. ⬜ `X-3` system-consumable sync
+4. ⬜ `BB-3` CLiD boundary-quality upgrade
+5. ⬜ `X-4` cross-box exploration lane
+
+### Next
+
+6. ⬜ `WB-2` second white-box verdict
+7. ⬜ `INF-2` research automation health
+8. ⬜ `GB-3` new gray-box family
+9. ⬜ `BB-4` mitigation-aware black-box evaluation
+
+### Then
+
+10. ⬜ `WB-3` white-box defense breadth
+11. ⬜ `INF-3` subagent leverage experiments
+
+---
+
+## 8. Success Conditions
+
+### Near-term health
+
+- at least one more high-value verdict lands
+- GPU is not idle without a stated reason
+- GPU is not wasted on low-value repeats
+- latest outcomes remain consumable by higher layers
+
+### Long-term health
+
+- each threat model has at least two meaningfully different lines
+- each threat model has more than one defense story or explicit reason why not
+- blocker-heavy areas are either unblocked or honestly frozen
+- roadmap keeps expanding rather than stalling
+
+### Never-call-it-done rule
+
+This roadmap is not "done" when the current boxes are checked.
+
+It is only in a temporary resting state if:
+
+- the current backlog has no high-value unchecked work;
+- the challenger queue has been mined;
+- blockers are honestly documented;
+- and no obvious next branch is available.
+
+If that happens, the agent must add new branches and continue.
+
+---
+
+## 9. Changelog
+
+| Date | Change |
+|------|--------|
+| 2026-04-15 19:30 | Archived earlier P0-P3 roadmap and opened long-horizon mainline phase |
+| 2026-04-15 22:30 | Added root alignment and broad exploration rules |
+| 2026-04-15 23:10 | Reorganized roadmap into continuous autonomous research system with self-cycling loop, optional subagent policy, and long-running backlog expansion rules |
+| 2026-04-15 23:55 | Closed `GB-2` with the `PIA vs SecMI` disagreement verdict; promoted `SecMI` to corroboration line and rejected naive gray-box fusion |
+| 2026-04-16 00:15 | Closed the current `BB-1` branch as a positive `semantic-auxiliary-classifier` challenger and kept `Recon` as the black-box headline |
+| 2026-04-16 00:45 | Re-ran the semantic auxiliary challenger at `32 / 32`; metrics stayed stable and the challenger remained promotion-worthy |
+
+---
+
+## 10. Archived Roadmaps
+
+- `legacy/2026-04-15-P0-P3-completed-roadmap.md`
+- `legacy/2026-04-15-competition-sprint-roadmap-archived.md`

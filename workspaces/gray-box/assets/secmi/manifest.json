@@ -1,0 +1,18 @@
+{
+  "schema": "diffaudit.intake.manifest.v1",
+  "contract_key": "gray-box/secmi/cifar10-ddpm",
+  "track": "gray-box",
+  "method": "secmi",
+  "contract_stage": "target",
+  "asset_grade": "single-machine-real-asset",
+  "provenance_status": "workspace-verified",
+  "evidence_level": "gpu-full-mainline",
+  "checkpoint_root": "workspaces/gray-box/assets/secmi/checkpoints/CIFAR10",
+  "dataset_root": "workspaces/gray-box/assets/pia/datasets/cifar10",
+  "source_bundle": "workspaces/gray-box/assets/secmi/sources/OneDrive_1_2026-4-15.zip",
+  "member_split_root": "external/SecMI/mia_evals/member_splits",
+  "member_split_file": "external/SecMI/mia_evals/member_splits/CIFAR10_train_ratio0.5.npz",
+  "canonical_summary": "workspaces/gray-box/runs/secmi-cifar10-gpu-full-stat-20260415-r2/summary.json",
+  "scaled_summary": "workspaces/gray-box/runs/secmi-cifar10-gpu-4096-20260415-r1/summary.json",
+  "smoke_summary": "workspaces/gray-box/runs/secmi-cifar10-gpu-20260415-r1/summary.json"
+}
