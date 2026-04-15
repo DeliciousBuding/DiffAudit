@@ -867,6 +867,36 @@ Verdict:
 
 Value: ⭐⭐
 
+#### ⬜ `GB-5` Genuinely-new-family selector
+
+Goal: reopen gray-box innovation without wasting GPU on already-packaged `TMIA-DM` branches
+
+Current read:
+
+- current gray-box headline and defended challenger packaging are already strong for this round
+- the gray-box plan explicitly says the next shortest step should be another lane or a truly new mechanism
+- current black-box plan still says `no immediate black-box rerun`
+- white-box just completed one bounded candidate-generation round on `DP-LoRA`
+
+Tasks:
+
+- [ ] `GB-5.1` shortlist the next real gray-box family candidates
+- [ ] `GB-5.2` reject the near-miss alternatives for now
+- [ ] `GB-5.3` define one first bounded smoke and future `gpu_release` conditions
+
+Canonical evidence anchor:
+
+- `workspaces/gray-box/2026-04-16-graybox-new-family-selector-verdict.md`
+
+Selection verdict:
+
+- current reselection round is `positive`
+- `GB-5` becomes the next live CPU-first lane
+- `gpu_release = none`
+
+Value: ⭐⭐⭐
+Budget: CPU-only
+
 ---
 
 ### 6.4 White-box expansion
@@ -1150,7 +1180,7 @@ This is a preference order, not a prison.
 
 ### Top now
 
-No currently open top-priority lane is execution-ready without a fresh candidate-generation or confirmation decision.
+`GB-5 genuinely-new-family selector` is now the current top-priority CPU-first lane.
 
 Current release posture:
 
@@ -1159,23 +1189,24 @@ Current release posture:
 
 ### Next
 
-1. ⬜ `WB-5` DP-LoRA comparability dossier
-2. ✅ `BB-6` same-protocol cross-method score package
-3. ✅ `WB-3` white-box defense breadth
-4. ✅ `GB-1` second gray-box defense
-5. ✅ `BB-1` second-signal black-box expansion
-6. ✅ `INF-2` research automation health
-7. ✅ `INF-3` subagent leverage experiments
-8. ✅ `WB-4` white-box feature/trajectory upgrade
-9. ✅ `X-3` system-consumable sync
-10. ✅ `BB-3` CLiD boundary-quality upgrade
-11. ✅ `X-4` cross-box exploration lane
+1. ⬜ `GB-5` genuinely-new-family selector
+2. ✅ `WB-5` DP-LoRA comparability dossier
+3. ✅ `BB-6` same-protocol cross-method score package
+4. ✅ `WB-3` white-box defense breadth
+5. ✅ `GB-1` second gray-box defense
+6. ✅ `BB-1` second-signal black-box expansion
+7. ✅ `INF-2` research automation health
+8. ✅ `INF-3` subagent leverage experiments
+9. ✅ `WB-4` white-box feature/trajectory upgrade
+10. ✅ `X-3` system-consumable sync
+11. ✅ `BB-3` CLiD boundary-quality upgrade
+12. ✅ `X-4` cross-box exploration lane
 
 ### Then
 
-12. ✅ `WB-2` second white-box verdict
-13. ✅ `GB-3` new gray-box family
-14. ✅ `BB-4` mitigation-aware black-box evaluation
+13. ✅ `WB-2` second white-box verdict
+14. ✅ `GB-3` new gray-box family
+15. ✅ `BB-4` mitigation-aware black-box evaluation
 
 ---
 
@@ -1256,6 +1287,7 @@ If that happens, the agent must add new branches and continue.
 | 2026-04-16 08:20 | Closed `WB-5.1` as `positive but bounded`: `DP-LoRA` has real white-box defense-family overlap and a local `SMP-LoRA under DDPM/CIFAR10` bridge hint, but the current relation to admitted `GSA/W-1` remains `partial-overlap only`, so `gpu_release` still stays `none` and the next gate is the minimal local config candidate |
 | 2026-04-16 08:35 | Closed `WB-5.2` as `positive but bounded`: the minimal local translation candidate is now frozen to `lambda=0.1 / rank=4 / epochs=10` on the local `DDPM/CIFAR10 + GSA` bridge, while `gpu_release` still stays `none` and the next gate becomes explicit no-go / future gpu-release triggers |
 | 2026-04-16 08:45 | Closed `WB-5.3` and the current `WB-5` lane as `positive but bounded`: `DP-LoRA` now has explicit no-go and future GPU-release triggers, so the successor lane is governance-ready but still below release and below admitted upgrade |
+| 2026-04-16 08:55 | Re-opened the next live CPU-first lane as `GB-5 genuinely-new-family selector`: current gray-box packaging is strong enough for now, black-box remains in `no immediate rerun`, and the next research value lies in selecting one truly new gray-box family plus its first bounded smoke |
 | 2026-04-16 01:55 | Fixed `WB-2` path selection on `GSA2 comparator`; target-side `attack_method=2` canaries succeeded on both member and non-member splits |
 | 2026-04-16 02:05 | Extended `WB-2` canary truth onto shadow-side: `shadow-01-member` succeeded under the same direct `GSA2` extraction contract, narrowing the next gate to `shadow-01-nonmember` |
 | 2026-04-16 02:12 | Completed the first `WB-2` shadow pair: `shadow-01-nonmember` succeeded, so `WB-2.2` is done and the next gate is a bounded `GSA2` comparator verdict |
