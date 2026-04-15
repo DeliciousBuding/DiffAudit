@@ -1,0 +1,44 @@
+# Leader Research Delivery Snapshot
+更新日期：`2026-04-14`
+
+## 1. Leader 一页主讲表
+
+| 线索 | 模型 | 攻击 | 防御 | AUC | ASR | 能说的话 | 不能说的话 |
+| --- | --- | --- | --- | --- | --- | --- | --- |
+| 黑盒 | `Stable Diffusion v1.5 + DDIM` | `recon DDIM public-100 step30` | `none` | `0.849` | `0.51` | 最弱权限下风险已可观测，当前黑盒主证据成立 | 不说成最终 exploit，不外推到完整真实世界 benchmark |
+| 灰盒 | `CIFAR-10 DDPM` | `PIA GPU512 baseline` | `stochastic-dropout(all_steps)` | `0.841339 -> 0.828075` | `0.786133 -> 0.767578` | 当前最成熟的攻击-防御闭环，攻击信号与 defended pairing 都已 admitted | 不说成已 paper-faithful fully reproduced，不说 provenance blocker 已解除 |
+| 白盒 | `CIFAR-10 DDPM / DPDM` | `GSA 1k-3shadow` | `W-1 strong-v3 full-scale` | `0.998192 / 0.488783` | `0.9895 / 0.4985` | 展示高权限风险上界与 defended contrast | 不说成 final paper benchmark，不把 closed-frozen bridge 写成新执行线 |
+
+## 2. 已 admit 的主线成果（可直接拿到 4C 材料）
+
+- **黑盒 risk evidence（`recon DDIM public-100 step30`）**：AUC 0.849、ASR 0.51、TPR@1%FPR 1.0，在 controlled/public-subset/proxy-shadow-member 数据上运行，是当前最弱权限下观测成员泄露的 admitted 证据。对外侧重“risk exists”而非“终极 benchmark”。  
+- **灰盒 PIA 基线与 defended（GPU512 baseline，G-1 stochastic-dropout all_steps defended）**：baseline AUC 0.841339 / ASR 0.786133，defended AUC 0.828075 / ASR 0.767578，从 workspace-verified + adaptive-reviewed 的流水线出来，且所有口径都加上 “paper-alignment blocked by checkpoint/source provenance” 以防止误读为“已复现论文版本”。  
+- **白盒 GSA + W-1 bridge**：GSA 1k-3shadow 攻击跑出 AUC 0.998192 / ASR 0.9895，W-1 strong-v3 full-scale defended run AUC 0.488783 / ASR 0.4985，放在 same-protocol “closed-frozen” comparator 上，用于展示高权限下的风险上界与 defended contrast，而不是声称已完成 benchmark。
+
+每条主线都应配上 `track/attack/defense/auc/asr/evidence_level` 字段以及 `boundary`（如 recon = fine-tuned+controlled, PIA = workspace-verified + blocked provenance, GSA/W-1 = admitted bridge but not final paper benchmark），此结构已写在 `Research/workspaces/implementation/artifacts/unified-attack-defense-table.json`，Platform/Local-API 可以直接取用。
+
+## 3. 创新/差异化亮点（直接可在 4C 材料中提及）
+
+1. Recon 证据线不是孤立 payload，而是可反复 eyeball 的 evidence chain：主证据 + best single metric reference + metadata 全部写进 unified table，能说明“我们用一条可复现流程在证明风险存在”。  
+2. PIA 用 adaptive reviewer + stochastic-dropout 交付攻防三件套（attack signal 解释 + defended prototype + provenance boundary），比单纯复现论文更有 narrative depth。  
+3. GSA/W-1 white-box bridge 提供 “admitted comparator + defended contrast”，展示研究深度；同一份 evidence table 里也在记录 expected comparator gating。  
+4. SMP-LoRA 当前只剩 “baseline vs SMP-LoRA vs W-1 comparator” 这个 future gate，说明我们在 admitted boundary 里保持对比主义的思路，而不是“再开新最重 GPU run”。
+
+## 4. Replay / comparator 资产绝不可冒充 admitted
+
+- 任何 replay/artifact（如 recon replay/demo traces、`Research/experiments/*` 中的复查脚本）只能在 Local-API 里标记为 “debug/replay/comparator trace”，不得用来支撑 admitted claim。  
+- 与 SMP-LoRA 相关的 optimizer/lr frontier（`2026-04-13-smp-lora-t06-optimizer-lr-frontier-admission-packet`）已经被定为 `closed-mixed-no-go`，对应的 AdamW/SGD evaluation 结果都低于 baseline anchor，属于 comparator-only hypothesis。  
+- `2026-04-14-baseline-smp-lora-w1-comparator-admission-packet` 明确要求 “no new GPU question” 直到 comparator verdict；SMP-LoRA 只能说是 comparator candidate，不能写成 admitted run、放 GPU 释放，或者主讲线。  
+- `SecMI / Finding NeMo / TMIA-DM / 外来 zip 或 checkpoint` 当前都只能停在 `blocked baseline / hold / intake only / reference-only` 语义，不能与 admitted 三线并列。
+
+## 5. 如果评委追问 SMP-LoRA
+
+1. 明确说：当前 GPU 状态是 “none”，T06 optimizer/lr frontier 已判 closed-mixed-no-go，后续行动已经 pivot 到 comparator 设计。  
+2. 讲述我们在做的只是 “baseline vs SMP-LoRA vs W-1 comparator”，目的是要么打穿 W-1 防线，要么把 SMP-LoRA 归入 no-go narrative；任何 comparator output 都要附加 `boundary` 字段说明 “comparison-only / requires separate hypothesis review”。  
+3. 解释为什么 Leader 现阶段只讲 recon/PIA/GSA-W1：它们有 admitted 指标、统一的 evidence table 和 definitive boundary，在 4C 材料里能形成完整 narrative；SMP-LoRA 目前还只是在 comparator gate 里打磨，等 verdict 出来之后再决定是否可以转为 admitted。
+
+## 6. 交付给 Leader 的下一步
+
+- 已经可以把上面三条主线的关键指标、boundary 语句、innovation bullet 直接迁入 4C 材料（例如 PPT/答辩提纲、材料页、口播词）。  
+- 任何提到 SMP-LoRA 时都附上 “comparator gate / planning mode / no new GPU question” 的限定语。  
+- 需要 Developer/Leader 复查 `Research/workspaces/implementation/artifacts/unified-attack-defense-table.json`、`Research/docs/competition-evidence-pack.md`、`Research/docs/research-boundary-card.md`，确认 metrics/boundary 字段能无缝对接平台展示与答辩口径。

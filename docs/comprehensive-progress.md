@@ -6,7 +6,7 @@
 
 ## 当前一句话
 
-当前仓库已经具备三条攻击线的基本骨架；算法主讲闭环仍然是灰盒 `PIA`，而 `2026-04-13` 这一轮的最新控制已经把 `SMP-LoRA O02/O03/O04` 的三条稳定化尝试都收口了。关键变化有四条：一是 `train_smp_lora.py` 的默认 seed 合同已恢复历史 unseeded 行为，避免新的运行被 `seed=123` 污染；二是 `no-TF32` 三次结果最终落成 `0.3957 / 0.3838 / 0.5306`，说明它不是稳定化答案；三是 `O04 seed7 run1` 直接回退到 `AUC=0.5188`，使显式 seed 稳定性线停在 single-seed no-go；四是新的 `O03 epoch40 run1` 更进一步回退到 `AUC=0.6349`，把“长训可能更优”这条假设也快速证伪。当前 active GPU question 已回到 `none`。
+当前仓库已经具备三条攻击线的基本骨架；而 `2026-04-13` 这一轮的最新控制进一步把算法主线固定成双线并列：成熟主线是 `PIA + GSA/W-1`，探索主线是 `SMP-LoRA`。后者已经把 `O02/O03/O04` 的三条稳定化尝试全部收口：`no-TF32` 三次结果最终落成 `0.3957 / 0.3838 / 0.5306`，`O04 seed7 run1` 回退到 `AUC=0.5188`，新的 `O03 epoch40 run1` 更进一步回退到 `AUC=0.6349`。因此下一条唯一值得放行的 GPU 问题已收敛为 `T06 optimizer/lr frontier`，而当前 active GPU question 仍保持 `none`，直到 admission packet 被单独放行。
 
 ## 进度总览
 
@@ -29,7 +29,7 @@
 - `Finding NeMo + local memorization + FB-Mem` 的 intake/eligibility note 已建立，且 `activation export adapter` 已固定为 `decision-grade zero-GPU hold`
 - [2026-04-10-recon-decision-package](../workspaces/black-box/2026-04-10-recon-decision-package.md) 已把黑盒五件套固定为 decision-grade package，本轮 [recon-artifact-mainline-public-100-step30-reverify-20260410-round28](../experiments/recon-artifact-mainline-public-100-step30-reverify-20260410-round28/summary.json) 又在 CPU 上复算到相同 headline metrics，且不改 admitted 结果
 - [2026-04-10-pia-provenance-split-protocol-delta](../workspaces/gray-box/2026-04-10-pia-provenance-split-protocol-delta.md) 已把 `split shape aligned locally / random-four-split protocol still open / strict redo currently dirty` 三点固定为新的 provenance supplement
-- 当前最值得推进的唯一目标切到：守住 `O02 template decision packet`，防止 `batch14 throughput` 被误写成 `default template`；`O01` 已转为 stalled-salvaged evidence；`PIA provenance` 转为 CPU sidecar blocker；`recon` 当前进入 frozen maintenance，而不是继续扩 run
+- 当前最值得推进的唯一目标切到：把双主线口径压实，并把 `SMP-LoRA` 的下一题固定成 `T06 optimizer/lr frontier`；`PIA provenance` 继续作为 CPU sidecar blocker；`recon` 当前进入 frozen maintenance，而不是继续扩 run
 
 ## 攻击主线
 
@@ -165,14 +165,14 @@
 
 ## 当前最短执行顺序
 
-1. 将 `SMP-LoRA O02` 固定为已封口 decision packet，并明确 `batch14 throughput` 只是 `strongest candidate with variance note`，而不是新默认模板
-2. 将 [2026-04-09-pia-provenance-dossier](../workspaces/gray-box/2026-04-09-pia-provenance-dossier.md) 固定为 CPU sidecar blocker，并保持 `workspace-verified + paper-alignment blocked by checkpoint/source provenance` 不漂移
-3. 保持 [2026-04-10-recon-decision-package](../workspaces/black-box/2026-04-10-recon-decision-package.md) 作为当前黑盒固定包，并明确它继续是 `writing-only / non-GPU / no admitted change`
+1. 继续把 `PIA + GSA/W-1` 固定为成熟主线，并保持 admitted/system narrative 不漂移
+2. 将 [2026-04-13-smp-lora-t06-optimizer-lr-frontier-admission-packet](../workspaces/intake/2026-04-13-smp-lora-t06-optimizer-lr-frontier-admission-packet.md) 固定为 `SMP-LoRA` 的唯一下一题 packet
+3. 将 [2026-04-09-pia-provenance-dossier](../workspaces/gray-box/2026-04-09-pia-provenance-dossier.md) 固定为 CPU sidecar blocker，并保持 `workspace-verified + paper-alignment blocked by checkpoint/source provenance` 不漂移
+4. 保持 [2026-04-10-recon-decision-package](../workspaces/black-box/2026-04-10-recon-decision-package.md) 作为当前黑盒固定包，并明确它继续是 `writing-only / non-GPU / no admitted change`
 4. `variation / Towards` 继续保留为 formal local secondary track，并明确 real-API assets blocked
 5. 在统一表和叙事材料里补齐 `threat model / asset semantics / evidence level / external-validity boundary`
 6. 用 [future-phase-e-intake](future-phase-e-intake.md) 与 [2026-04-10-phase-e-intake-ordering-review](../workspaces/intake/2026-04-10-phase-e-intake-ordering-review.md) 固定 `Phase E` 候选池排序，并只允许进入准入验证
 5.1 用 [2026-04-10-intake-registry-phase-e-boundary-review](../workspaces/intake/2026-04-10-intake-registry-phase-e-boundary-review.md) 与 [phase-e-candidates.json](../workspaces/intake/phase-e-candidates.json) 把 machine-readable candidate ordering 从 `index.json.entries[]` 的 promoted contract 面里剥离出来
-6. 用 [2026-04-10-dplora-comparability-intake](../workspaces/intake/2026-04-10-dplora-comparability-intake.md) 把 `DP-LoRA` 固定为 `comparability / intake hardening only`
 7. 用 [2026-04-10-secmi-unblock-decision](../workspaces/gray-box/2026-04-10-secmi-unblock-decision.md) 把 `SecMI` 固定为 `not-yet / remain blocked baseline`
 8. 用 [2026-04-10-tmia-dm-intake-decomposition](../workspaces/gray-box/2026-04-10-tmia-dm-intake-decomposition.md) 把 `TMIA-DM` 固定为 `gray-box protocol / asset decomposition intake only`
 9. 用 [2026-04-10-finding-nemo-mechanism-intake](../workspaces/white-box/2026-04-10-finding-nemo-mechanism-intake.md)、[2026-04-10-finding-nemo-protocol-reconciliation](../workspaces/white-box/2026-04-10-finding-nemo-protocol-reconciliation.md) 与 [2026-04-10-finding-nemo-observability-smoke-contract](../workspaces/white-box/2026-04-10-finding-nemo-observability-smoke-contract.md) 固定 `Finding NeMo + local memorization + FB-Mem` 的 intake gate，并把它保留为当前最完整的 intake dossier

@@ -24,6 +24,36 @@ Local-API-side (source of truth for contract registry / job routing):
 - `Services/Local-API/internal/api/registry_seed.json` (seed payload)
 - `Services/Local-API/internal/api/registry_store.go` (SQLite schema for `contracts` + `jobs`)
 
+## Admitted Display Contract
+
+Platform / Local-API consuming the admitted results surface MUST treat:
+
+- `Research/workspaces/implementation/artifacts/unified-attack-defense-table.json`
+
+as the only machine-readable headline table for admitted cross-track results.
+
+Every admitted row exposed to downstream consumers MUST carry:
+
+- `track`
+- `attack`
+- `defense`
+- `model`
+- `auc`
+- `asr`
+- `evidence_level`
+- `note`
+- `source`
+- `boundary`
+
+If a UI or API wants to expose non-admitted directions, it MUST label them as exactly one of:
+
+- `comparator`
+- `blocked baseline`
+- `hold`
+- `intake only`
+
+and MUST NOT render them at the same headline level as admitted rows.
+
 ## Minimal Intake Manifest Fields (Required)
 
 Every manifest referenced by `Research/workspaces/intake/index.json` MUST contain:
@@ -45,6 +75,7 @@ Current boundary note:
 - `PIA` has a stable promoted intake surface.
 - `GSA` currently has a legacy intake surface plus a stronger admitted result tracked in the unified table and white-box docs.
 - `recon` and `DPDM` are currently admitted through the unified table plus frozen workspace docs, not standalone intake manifests.
+- New external zip / checkpoint inputs are quarantine-first assets: they require a Research admission judgment before they can be referenced anywhere outside intake or reference-only records.
 
 Candidate-boundary hard rule:
 

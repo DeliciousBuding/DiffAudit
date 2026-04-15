@@ -4,7 +4,6 @@ from __future__ import annotations
 
 import argparse
 import json
-import os
 from dataclasses import asdict
 from pathlib import Path
 
@@ -27,6 +26,7 @@ from diffaudit.attacks.variation import (
 from diffaudit.config import load_audit_config
 from diffaudit.pipelines.smoke import run_smoke_pipeline
 from diffaudit.reports.blackbox_status import build_blackbox_status_report
+from diffaudit.reports.mainline_audit import build_mainline_audit_report
 
 
 def build_parser() -> argparse.ArgumentParser:
@@ -508,6 +508,26 @@ def build_parser() -> argparse.ArgumentParser:
         "--workspace",
         required=True,
         help="workspace directory for the aggregated black-box status report",
+    )
+
+    mainline_audit_parser = subparsers.add_parser(
+        "summarize-mainline-audit",
+        help="build a mainline attack-defense audit report with actionable suggestions and next GPU guidance",
+    )
+    mainline_audit_parser.add_argument(
+        "--research-root",
+        default=".",
+        help="root directory of the Research workspace",
+    )
+    mainline_audit_parser.add_argument(
+        "--workspace",
+        required=True,
+        help="workspace directory for the aggregated mainline audit report",
+    )
+    mainline_audit_parser.add_argument(
+        "--attack-defense-table",
+        default=None,
+        help="optional path to the admitted unified attack-defense table JSON",
     )
 
     pia_runtime_probe_parser = subparsers.add_parser(
@@ -999,23 +1019,6 @@ def build_parser() -> argparse.ArgumentParser:
     dpdm_w1_multi_shadow_parser.add_argument("--max-samples", type=int, default=128)
     dpdm_w1_multi_shadow_parser.add_argument("--provenance-status", default="workspace-verified")
 
-    local_api_parser = subparsers.add_parser(
-        "serve-local-api",
-        help="serve the local DiffAudit API over HTTP",
-    )
-    local_api_parser.add_argument("--host", default="127.0.0.1")
-    local_api_parser.add_argument("--port", type=int, default=8765)
-    local_api_parser.add_argument(
-        "--experiments-root",
-        default="experiments",
-        help="root directory containing experiment workspaces and summaries",
-    )
-    local_api_parser.add_argument(
-        "--jobs-root",
-        default="workspaces/local-api/jobs",
-        help="directory used to persist local API job records",
-    )
-    local_api_parser.add_argument("--log-level", default="info")
     return parser
 
 
@@ -1369,6 +1372,15 @@ def main(argv: list[str] | None = None) -> int:
         print(json.dumps(payload, indent=2, ensure_ascii=True))
         return 0
 
+    if args.command == "summarize-mainline-audit":
+        payload = build_mainline_audit_report(
+            research_root=args.research_root,
+            workspace=args.workspace,
+            attack_defense_table_path=args.attack_defense_table,
+        )
+        print(json.dumps(payload, indent=2, ensure_ascii=True))
+        return 0
+
     if args.command == "runtime-probe-pia":
         from diffaudit.attacks.pia_adapter import probe_pia_runtime
 
@@ -1550,22 +1562,6 @@ def main(argv: list[str] | None = None) -> int:
         )
         print(json.dumps(payload, indent=2, ensure_ascii=True))
         return 0 if payload["status"] == "ready" else 1
-
-    if args.command == "serve-local-api":
-        import uvicorn
-
-        os.environ["DIFFAUDIT_EXPERIMENTS_ROOT"] = str(Path(args.experiments_root).resolve())
-        os.environ["DIFFAUDIT_JOBS_ROOT"] = str(Path(args.jobs_root).resolve())
-        uvicorn.run(
-            "diffaudit.local_api.app:create_app",
-            host=args.host,
-            port=args.port,
-            factory=True,
-            reload=False,
-            env_file=None,
-            log_level=args.log_level,
-        )
-        return 0
 
     parser.error(f"Unsupported command: {args.command}")
     return 2

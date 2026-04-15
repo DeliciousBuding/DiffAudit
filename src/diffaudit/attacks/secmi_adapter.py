@@ -11,6 +11,7 @@ from types import ModuleType
 from typing import Any
 
 from diffaudit.attacks.secmi import (
+    SECMI_DEFAULT_FLAG_VALUES,
     SecmiArtifacts,
     SecmiPlan,
     SecmiRunnerSpec,
@@ -53,9 +54,22 @@ def summarize_secmi_adapter(context: SecmiAdapterContext) -> dict[str, Any]:
         "model_dir": context.plan.model_dir,
         "checkpoint_path": context.artifacts.checkpoint_path,
         "flagfile_path": context.artifacts.flagfile_path,
+        "flag_config_source": "flagfile" if context.artifacts.flagfile_path else "upstream-defaults",
         "entrypoint_path": context.runner.entrypoint_path,
         "python_module": context.runner.python_module,
     }
+
+
+def build_secmi_flags_from_defaults(plan: SecmiPlan) -> SimpleNamespace:
+    values = dict(SECMI_DEFAULT_FLAG_VALUES)
+    values["batch_size"] = plan.batch_size
+    return SimpleNamespace(**values)
+
+
+def resolve_secmi_flags(plan: SecmiPlan, artifacts: SecmiArtifacts) -> SimpleNamespace:
+    if artifacts.flagfile_path:
+        return parse_secmi_flagfile(artifacts.flagfile_path)
+    return build_secmi_flags_from_defaults(plan)
 
 
 def run_secmi_dry_run(context: SecmiAdapterContext) -> dict[str, Any]:
@@ -252,7 +266,7 @@ def run_synthetic_secmi_stat_smoke(workspace: str | Path, device: str = "cpu") -
 def probe_secmi_runtime(config: AuditConfig, repo_root: str) -> tuple[int, dict[str, Any]]:
     try:
         context = prepare_secmi_adapter(config, repo_root)
-        flags_obj = parse_secmi_flagfile(context.artifacts.flagfile_path)
+        flags_obj = resolve_secmi_flags(context.plan, context.artifacts)
     except FileNotFoundError as exc:
         return 1, {
             "status": "blocked",
@@ -275,6 +289,7 @@ def probe_secmi_runtime(config: AuditConfig, repo_root: str) -> tuple[int, dict[
             "attack_functions_available",
         ],
         "model_T": flags_obj.T,
+        "flag_config_source": "flagfile" if context.artifacts.flagfile_path else "upstream-defaults",
         **summarize_secmi_adapter(context),
     }
 

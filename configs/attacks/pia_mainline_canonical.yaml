@@ -1,0 +1,20 @@
+task:
+  name: pia-mainline-canonical
+  model_family: diffusion
+  access_level: semi_white_box
+assets:
+  dataset_id: pia-cifar10-canonical
+  dataset_name: cifar10
+  dataset_root: workspaces/gray-box/assets/pia/datasets
+  model_id: pia-cifar10-ddpm-canonical
+  model_dir: workspaces/gray-box/assets/pia/checkpoints/cifar10_ddpm
+attack:
+  method: pia
+  num_samples: 128
+  parameters:
+    attacker_name: PIA
+    attack_num: 30
+    interval: 10
+    batch_size: 8
+report:
+  output_dir: workspaces/gray-box/runs

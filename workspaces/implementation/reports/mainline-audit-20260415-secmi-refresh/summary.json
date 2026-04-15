@@ -1,0 +1,496 @@
+{
+  "status": "ready",
+  "mode": "mainline-audit-report",
+  "schema": "diffaudit.mainline_audit_report.v2",
+  "research_root": "D:\\Code\\DiffAudit\\Research",
+  "artifact_paths": {
+    "summary": "D:\\Code\\DiffAudit\\Research\\workspaces\\implementation\\reports\\mainline-audit-20260415-secmi-refresh\\summary.json",
+    "next_gpu_action": "D:\\Code\\DiffAudit\\Research\\workspaces\\implementation\\reports\\mainline-audit-20260415-secmi-refresh\\next_gpu_action.json",
+    "attack_defense_table": "D:\\Code\\DiffAudit\\Research\\workspaces\\implementation\\artifacts\\unified-attack-defense-table.json"
+  },
+  "system_posture": {
+    "overall_risk_level": "critical",
+    "deployment_readiness": "research-preview",
+    "mainline": "recon / PIA + stochastic-dropout(all_steps) / GSA + W-1",
+    "summary": "Current admitted evidence is strong enough to drive risk auditing and action prioritization, but boundary and provenance limits still block benchmark-level claims."
+  },
+  "mainline": {
+    "black_box": {
+      "track": "black-box",
+      "attack": "recon DDIM public-100 step30",
+      "defense": "none",
+      "model": "Stable Diffusion v1.5 + DDIM",
+      "auc": 0.849,
+      "asr": 0.51,
+      "tpr_at_1pct_fpr": 1.0,
+      "tpr_at_0_1pct_fpr": null,
+      "quality_cost": "100 public samples per split; DDIM step30; artifact-mainline ready; cuda runtime",
+      "evidence_level": "runtime-mainline",
+      "note": "current black-box main evidence",
+      "boundary": "controlled / public-subset / proxy-shadow-member / risk-exists; not a final exploit or full real-world benchmark",
+      "source": "experiments/recon-runtime-mainline-ddim-public-100-step30/summary.json",
+      "risk_level": "high",
+      "source_exists": true
+    },
+    "gray_box_baseline": {
+      "track": "gray-box",
+      "attack": "PIA GPU512 baseline",
+      "defense": "none",
+      "model": "CIFAR-10 DDPM",
+      "auc": 0.841339,
+      "asr": 0.786133,
+      "tpr_at_1pct_fpr": 0.058594,
+      "tpr_at_0_1pct_fpr": 0.011719,
+      "quality_cost": "attack_num=30; interval=10; batch_size=8; 512 samples per split; single GPU serial; adaptive repeats=3; wall-clock=212.993833s",
+      "quality": {
+        "suite": "pia-runtime-surrogate-v1",
+        "official": false,
+        "reference": "input_batch",
+        "metrics": {
+          "fid": 0.014127,
+          "lpips": 0.188377,
+          "inception_score": null
+        }
+      },
+      "cost": {
+        "device": "cuda:0",
+        "execution_mode": "single-device-serial",
+        "sample_count_per_split": 512,
+        "batch_size": 8,
+        "attack_num": 30,
+        "interval": 10,
+        "queries_per_sample": 30,
+        "model_queries_per_sample": 31,
+        "adaptive_query_repeats": 3,
+        "wall_clock_seconds": 212.993833
+      },
+      "adaptive_check": {
+        "status": "completed",
+        "query_repeats": 3,
+        "aggregation": "mean",
+        "metrics": {
+          "auc": 0.841339,
+          "asr": 0.786133,
+          "tpr_at_1pct_fpr": 0.058594,
+          "tpr_at_0_1pct_fpr": 0.011719
+        }
+      },
+      "provenance_status": "workspace-verified",
+      "defense_stage": "baseline",
+      "evidence_level": "runtime-mainline",
+      "note": "current gray-box baseline reference; score is derived from epsilon-trajectory consistency under the official PIA DDPM attacker",
+      "boundary": "workspace-verified + adaptive-reviewed + paper-alignment blocked by checkpoint/source provenance",
+      "source": "workspaces/gray-box/runs/pia-cifar10-runtime-mainline-20260409-gpu-512-adaptive/summary.json",
+      "risk_level": "high",
+      "source_exists": true
+    },
+    "gray_box_defended": {
+      "track": "gray-box",
+      "attack": "PIA GPU512 baseline",
+      "defense": "provisional G-1 = stochastic-dropout (all_steps)",
+      "model": "CIFAR-10 DDPM",
+      "auc": 0.828075,
+      "asr": 0.767578,
+      "tpr_at_1pct_fpr": 0.052734,
+      "tpr_at_0_1pct_fpr": 0.009766,
+      "quality_cost": "attack_num=30; interval=10; batch_size=8; 512 samples per split; single GPU serial; adaptive repeats=3; wall-clock=223.128438s",
+      "quality": {
+        "suite": "pia-runtime-surrogate-v1",
+        "official": false,
+        "reference": "baseline_surrogate",
+        "metrics": {
+          "fid": 0.000266,
+          "lpips": 0.035881,
+          "inception_score": null
+        }
+      },
+      "cost": {
+        "device": "cuda:0",
+        "execution_mode": "single-device-serial",
+        "sample_count_per_split": 512,
+        "batch_size": 8,
+        "attack_num": 30,
+        "interval": 10,
+        "queries_per_sample": 30,
+        "model_queries_per_sample": 31,
+        "adaptive_query_repeats": 3,
+        "wall_clock_seconds": 223.128438
+      },
+      "adaptive_check": {
+        "status": "completed",
+        "query_repeats": 3,
+        "aggregation": "mean",
+        "metrics": {
+          "auc": 0.828075,
+          "asr": 0.767578,
+          "tpr_at_1pct_fpr": 0.052734,
+          "tpr_at_0_1pct_fpr": 0.009766
+        }
+      },
+      "provenance_status": "workspace-verified",
+      "defense_stage": "adaptive-reviewed-provisional-g1",
+      "evidence_level": "runtime-mainline",
+      "note": "current gray-box defended main result after repeated-query review; all_steps remains stronger than late_steps_only while keeping surrogate quality drift small",
+      "boundary": "workspace-verified + adaptive-reviewed + paper-alignment blocked by checkpoint/source provenance",
+      "source": "workspaces/gray-box/runs/pia-cifar10-runtime-mainline-dropout-defense-20260409-gpu-512-allsteps-adaptive/summary.json",
+      "risk_level": "high",
+      "source_exists": true
+    },
+    "white_box_attack": {
+      "track": "white-box",
+      "attack": "GSA 1k-3shadow",
+      "defense": "none",
+      "model": "CIFAR-10 DDPM",
+      "auc": 0.998192,
+      "asr": 0.9895,
+      "tpr_at_1pct_fpr": 0.987,
+      "tpr_at_0_1pct_fpr": 0.432,
+      "quality_cost": "target_eval_size=2000; shadow_train_size=4200; 3 shadows; cuda",
+      "evidence_level": "runtime-mainline",
+      "note": "current white-box attack main evidence promoted from epoch300 rerun1 under the same 1k-3shadow protocol",
+      "boundary": "admitted white-box bridge / risk upper-bound; not a final paper-level benchmark",
+      "source": "workspaces/white-box/runs/gsa-runtime-mainline-20260409-cifar10-1k-3shadow-epoch300-rerun1/summary.json",
+      "risk_level": "critical",
+      "source_exists": true
+    },
+    "white_box_defended": {
+      "track": "white-box",
+      "attack": "GSA 1k-3shadow",
+      "defense": "W-1 strong-v3 full-scale",
+      "model": "DPDM / Diffusion-DP",
+      "auc": 0.488783,
+      "asr": 0.4985,
+      "tpr_at_1pct_fpr": 0.009,
+      "tpr_at_0_1pct_fpr": 0.0,
+      "quality_cost": "target_eval_size=2000; shadow_train_size=6000; classifier=logistic-regression-1d",
+      "evidence_level": "runtime-smoke",
+      "note": "current white-box defended main result",
+      "boundary": "admitted white-box bridge / defended comparator; not a final paper-level benchmark",
+      "source": "workspaces/white-box/runs/dpdm-w1-multi-shadow-comparator-targetmember-strongv3-3shadow-full-rerun8-20260408/summary.json",
+      "risk_level": "low",
+      "source_exists": true
+    }
+  },
+  "corroborating_evidence": {
+    "gray-box": [
+      {
+        "track": "gray-box",
+        "attack": "SecMI GPU full split",
+        "defense": "none",
+        "model": "CIFAR-10 DDPM",
+        "auc": 0.885833,
+        "asr": 0.8154,
+        "tpr_at_1pct_fpr": 0.09396,
+        "tpr_at_0_1pct_fpr": 0.00772,
+        "quality_cost": "t_sec=100; k=10; batch_size=64; 25000 samples per split; single GPU serial; stat line plus NNS auxiliary head",
+        "evidence_level": "gpu-full-mainline",
+        "note": "real SecMI full-split GPU run on imported CIFAR10 checkpoint bundle; NNS auxiliary head reaches AUC 0.946286 on the same rung",
+        "boundary": "workspace-verified + full local split execution; still not automatically a paper-faithful benchmark claim",
+        "source": "workspaces/gray-box/runs/secmi-cifar10-gpu-full-stat-20260415-r2/summary.json",
+        "risk_level": "high",
+        "source_exists": true
+      }
+    ],
+    "white-box": [
+      {
+        "track": "white-box",
+        "attack": "GSA 1k-3shadow",
+        "defense": "W-1 strong-v2 full-scale",
+        "model": "DPDM / Diffusion-DP",
+        "auc": 0.490813,
+        "asr": 0.496,
+        "tpr_at_1pct_fpr": 0.006,
+        "tpr_at_0_1pct_fpr": 0.0,
+        "quality_cost": "target_eval_size=2000; shadow_train_size=6000; classifier=logistic-regression-1d",
+        "evidence_level": "runtime-smoke",
+        "note": "defended reference rung kept for comparison",
+        "boundary": "admitted white-box bridge / defended comparator; not a final paper-level benchmark",
+        "source": "workspaces/white-box/runs/dpdm-w1-multi-shadow-comparator-targetmember-strongv2-3shadow-full-20260408/summary.json",
+        "risk_level": "low",
+        "source_exists": true
+      }
+    ]
+  },
+  "suggestions": [
+    {
+      "scope": "white-box",
+      "priority": "critical",
+      "risk_level": "critical",
+      "title": "Assume privileged access remains catastrophic",
+      "why": "GSA 1k-3shadow reaches auc=0.998192 / asr=0.9895, which is a white-box upper-bound failure signal.",
+      "action": "Keep high-privilege model access behind explicit review and use white-box results as the upper-bound audit line rather than a product-facing KPI.",
+      "boundary": "admitted white-box bridge / risk upper-bound; not a final paper-level benchmark"
+    },
+    {
+      "scope": "gray-box",
+      "priority": "critical",
+      "risk_level": "high",
+      "title": "Treat PIA baseline as the main optimization pressure",
+      "why": "PIA GPU512 baseline remains the strongest attack-defense mainline with auc=0.841339 / asr=0.786133.",
+      "action": "Use this baseline as the canonical attack target for further GPU tuning and compare every candidate defense against the same adaptive-reviewed PIA path.",
+      "boundary": "workspace-verified + adaptive-reviewed + paper-alignment blocked by checkpoint/source provenance"
+    },
+    {
+      "scope": "gray-box",
+      "priority": "critical",
+      "risk_level": "high",
+      "title": "Keep stochastic-dropout on the defended critical path",
+      "why": "provisional G-1 = stochastic-dropout (all_steps) lowers the admitted gray-box metrics while preserving the current runtime path.",
+      "action": "Continue tuning inference-time stochastic dropout against the admitted PIA baseline and reject candidates that do not beat the current defended pairing on both effect and cost.",
+      "boundary": "workspace-verified + adaptive-reviewed + paper-alignment blocked by checkpoint/source provenance"
+    },
+    {
+      "scope": "black-box",
+      "priority": "high",
+      "risk_level": "high",
+      "title": "Keep recon as the ingress risk probe",
+      "why": "recon DDIM public-100 step30 still shows externally observable leakage risk at auc=0.849 / asr=0.51.",
+      "action": "Keep black-box auditing live on controlled/public-subset bundles and attach rate-limit, logging, and review hooks before claiming deployment readiness.",
+      "boundary": "controlled / public-subset / proxy-shadow-member / risk-exists; not a final exploit or full real-world benchmark"
+    },
+    {
+      "scope": "white-box",
+      "priority": "high",
+      "risk_level": "low",
+      "title": "Use W-1 as the defended comparator, not the final answer",
+      "why": "W-1 strong-v3 full-scale is currently the best defended white-box comparator in the admitted table.",
+      "action": "Use this defended rung as the current white-box reduction reference while keeping benchmark claims frozen at the bridge level.",
+      "boundary": "admitted white-box bridge / defended comparator; not a final paper-level benchmark"
+    }
+  ],
+  "deployment_blockers": [
+    {
+      "scope": "gray-box",
+      "severity": "high",
+      "type": "provenance-boundary",
+      "title": "Gray-box mainline remains bounded by provenance",
+      "detail": "workspace-verified + adaptive-reviewed + paper-alignment blocked by checkpoint/source provenance",
+      "required_before_promotion": "Do not describe PIA as paper-faithful or benchmark-ready until checkpoint/source provenance closes."
+    },
+    {
+      "scope": "white-box",
+      "severity": "medium",
+      "type": "upper-bound-only",
+      "title": "White-box attack is an upper-bound audit line",
+      "detail": "admitted white-box bridge / risk upper-bound; not a final paper-level benchmark",
+      "required_before_promotion": "Use GSA as privileged-risk evidence only; do not present it as a normal deployment KPI."
+    },
+    {
+      "scope": "white-box",
+      "severity": "medium",
+      "type": "comparator-boundary",
+      "title": "W-1 remains a defended comparator, not a final benchmark",
+      "detail": "admitted white-box bridge / defended comparator; not a final paper-level benchmark",
+      "required_before_promotion": "Keep W-1 as the current defended bridge until a stronger admitted white-box defense path exists."
+    },
+    {
+      "scope": "black-box",
+      "severity": "medium",
+      "type": "coverage-boundary",
+      "title": "Black-box recon evidence is still subset-bounded",
+      "detail": "controlled / public-subset / proxy-shadow-member / risk-exists; not a final exploit or full real-world benchmark",
+      "required_before_promotion": "Keep claims limited to controlled public-subset leakage risk, not generalized internet exploitability."
+    }
+  ],
+  "gpu_next_action": {
+    "status": "recommended",
+    "focus_track": "gray-box",
+    "focus_method": "pia",
+    "recommended_rung": "GPU512 all_steps adaptive",
+    "why": "This rung gives the best positive defense movement per unit wall clock among the currently paired PIA summaries.",
+    "auc_drop": 0.013264,
+    "asr_drop": 0.018555,
+    "defense_wall_clock_seconds": 223.128438,
+    "baseline_summary": "workspaces\\gray-box\\runs\\pia-cifar10-runtime-mainline-20260409-gpu-512-rerun1\\summary.json",
+    "defense_summary": "workspaces\\gray-box\\runs\\pia-cifar10-runtime-mainline-dropout-defense-20260409-gpu-512-allsteps-adaptive\\summary.json",
+    "command": [
+      "python",
+      "-m",
+      "diffaudit",
+      "run-pia-runtime-mainline",
+      "--config",
+      "configs/attacks/pia_mainline_canonical.yaml",
+      "--workspace",
+      "workspaces/gray-box/runs/pia-cifar10-runtime-mainline-dropout-defense-next-gpu-512-adaptive",
+      "--repo-root",
+      "external/PIA",
+      "--member-split-root",
+      "external/PIA/DDPM",
+      "--device",
+      "cuda:0",
+      "--max-samples",
+      "512",
+      "--batch-size",
+      "8",
+      "--stochastic-dropout-defense",
+      "--dropout-activation-schedule",
+      "all_steps",
+      "--adaptive-query-repeats",
+      "3",
+      "--provenance-status",
+      "workspace-verified"
+    ]
+  },
+  "dropout_schedule_recommendation": {
+    "status": "ready",
+    "sample_count_per_split": 512,
+    "recommended_schedule": "all_steps",
+    "runner_up_schedule": "late_steps_only",
+    "why": "all_steps still delivers the stronger privacy drop on the freshest same-rung ablation trio.",
+    "all_steps": {
+      "summary": "workspaces\\gray-box\\runs\\pia-cifar10-runtime-mainline-dropout-defense-20260409-gpu-512-allsteps-adaptive\\summary.json",
+      "auc": 0.828075,
+      "asr": 0.767578,
+      "auc_drop": 0.013264,
+      "asr_drop": 0.018555,
+      "wall_clock_seconds": 223.128438
+    },
+    "late_steps_only": {
+      "summary": "workspaces\\gray-box\\runs\\pia-cifar10-runtime-mainline-dropout-defense-20260409-gpu-512-latesteps-adaptive\\summary.json",
+      "auc": 0.836945,
+      "asr": 0.77832,
+      "auc_drop": 0.004394,
+      "asr_drop": 0.007813,
+      "wall_clock_seconds": 214.868897
+    }
+  },
+  "gray_box_runtime_health": {
+    "status": "ready",
+    "sample_count_per_split": 512,
+    "recommended_schedule": "all_steps",
+    "schedule_stability": {
+      "off": {
+        "status": "ready",
+        "run_count": 3,
+        "latest_workspace": "pia-cifar10-runtime-mainline-20260409-gpu-512-rerun1",
+        "latest_summary": "workspaces\\gray-box\\runs\\pia-cifar10-runtime-mainline-20260409-gpu-512-rerun1\\summary.json",
+        "latest_auc": 0.841339,
+        "latest_asr": 0.786133,
+        "auc_range": 0.0,
+        "asr_range": 0.0,
+        "wall_clock_range_seconds": 212.993833,
+        "mean_member_score_std": 0.0,
+        "mean_nonmember_score_std": 0.0,
+        "stability_judgement": "stable"
+      },
+      "all_steps": {
+        "status": "ready",
+        "run_count": 1,
+        "latest_workspace": "pia-cifar10-runtime-mainline-dropout-defense-20260409-gpu-512-allsteps-adaptive",
+        "latest_summary": "workspaces\\gray-box\\runs\\pia-cifar10-runtime-mainline-dropout-defense-20260409-gpu-512-allsteps-adaptive\\summary.json",
+        "latest_auc": 0.828075,
+        "latest_asr": 0.767578,
+        "auc_range": 0.0,
+        "asr_range": 0.0,
+        "wall_clock_range_seconds": 0.0,
+        "mean_member_score_std": 0.230049,
+        "mean_nonmember_score_std": 0.574338,
+        "stability_judgement": "single-run"
+      },
+      "late_steps_only": {
+        "status": "ready",
+        "run_count": 1,
+        "latest_workspace": "pia-cifar10-runtime-mainline-dropout-defense-20260409-gpu-512-latesteps-adaptive",
+        "latest_summary": "workspaces\\gray-box\\runs\\pia-cifar10-runtime-mainline-dropout-defense-20260409-gpu-512-latesteps-adaptive\\summary.json",
+        "latest_auc": 0.836945,
+        "latest_asr": 0.77832,
+        "auc_range": 0.0,
+        "asr_range": 0.0,
+        "wall_clock_range_seconds": 0.0,
+        "mean_member_score_std": 0.047646,
+        "mean_nonmember_score_std": 0.236998,
+        "stability_judgement": "single-run"
+      }
+    },
+    "freshest_same_rung_ablation": {
+      "sample_count_per_split": 512,
+      "baseline_summary": "workspaces\\gray-box\\runs\\pia-cifar10-runtime-mainline-20260409-gpu-512-rerun1\\summary.json",
+      "baseline_auc": 0.841339,
+      "baseline_asr": 0.786133,
+      "baseline_wall_clock_seconds": 0.0,
+      "all_steps": {
+        "summary": "workspaces\\gray-box\\runs\\pia-cifar10-runtime-mainline-dropout-defense-20260409-gpu-512-allsteps-adaptive\\summary.json",
+        "auc": 0.828075,
+        "asr": 0.767578,
+        "auc_drop": 0.013264,
+        "asr_drop": 0.018555,
+        "wall_clock_seconds": 223.128438
+      },
+      "late_steps_only": {
+        "summary": "workspaces\\gray-box\\runs\\pia-cifar10-runtime-mainline-dropout-defense-20260409-gpu-512-latesteps-adaptive\\summary.json",
+        "auc": 0.836945,
+        "asr": 0.77832,
+        "auc_drop": 0.004394,
+        "asr_drop": 0.007813,
+        "wall_clock_seconds": 214.868897
+      }
+    },
+    "paired_tradeoffs": [
+      {
+        "sample_count_per_split": 512,
+        "baseline_summary": "workspaces\\gray-box\\runs\\pia-cifar10-runtime-mainline-20260409-gpu-512-rerun1\\summary.json",
+        "defense_summary": "workspaces\\gray-box\\runs\\pia-cifar10-runtime-mainline-dropout-defense-20260409-gpu-512-allsteps-adaptive\\summary.json",
+        "baseline_auc": 0.841339,
+        "defense_auc": 0.828075,
+        "auc_drop": 0.013264,
+        "baseline_asr": 0.786133,
+        "defense_asr": 0.767578,
+        "asr_drop": 0.018555,
+        "baseline_wall_clock_seconds": 0.0,
+        "defense_wall_clock_seconds": 223.128438,
+        "execution_device": "cuda:0",
+        "efficiency_score": 0.000142604
+      }
+    ]
+  },
+  "consumer_views": {
+    "auditor": {
+      "primary_focus": "Confirm risk exists, keep boundary language intact, and escalate high-risk tracks before deployment language appears.",
+      "use_sources": [
+        "experiments/recon-runtime-mainline-ddim-public-100-step30/summary.json",
+        "workspaces/gray-box/runs/pia-cifar10-runtime-mainline-dropout-defense-20260409-gpu-512-allsteps-adaptive/summary.json",
+        "workspaces/white-box/runs/gsa-runtime-mainline-20260409-cifar10-1k-3shadow-epoch300-rerun1/summary.json",
+        "workspaces/gray-box/runs/secmi-cifar10-gpu-full-stat-20260415-r2/summary.json"
+      ]
+    },
+    "operator": {
+      "primary_focus": "Treat recon as ingress detection, keep privileged access gated, and prefer stochastic-dropout on the gray-box defended path.",
+      "recommended_gray_box_schedule": "all_steps",
+      "next_gpu_rung": "GPU512 all_steps adaptive"
+    },
+    "research": {
+      "primary_focus": "Keep tuning on the admitted PIA defended line without reopening the frozen mainline.",
+      "next_gpu_command": [
+        "python",
+        "-m",
+        "diffaudit",
+        "run-pia-runtime-mainline",
+        "--config",
+        "configs/attacks/pia_mainline_canonical.yaml",
+        "--workspace",
+        "workspaces/gray-box/runs/pia-cifar10-runtime-mainline-dropout-defense-next-gpu-512-adaptive",
+        "--repo-root",
+        "external/PIA",
+        "--member-split-root",
+        "external/PIA/DDPM",
+        "--device",
+        "cuda:0",
+        "--max-samples",
+        "512",
+        "--batch-size",
+        "8",
+        "--stochastic-dropout-defense",
+        "--dropout-activation-schedule",
+        "all_steps",
+        "--adaptive-query-repeats",
+        "3",
+        "--provenance-status",
+        "workspace-verified"
+      ]
+    }
+  },
+  "notes": [
+    "This report is built from the admitted attack-defense table plus current PIA paired runtime summaries.",
+    "Suggestions are machine-generated heuristics for audit and tuning prioritization; they do not override provenance or benchmark boundaries."
+  ]
+}

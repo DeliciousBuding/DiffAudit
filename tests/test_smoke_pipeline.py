@@ -213,6 +213,19 @@ report:
 
         self.assertTrue(artifacts.checkpoint_path.endswith("checkpoint.pt"))
 
+    def test_resolves_secmi_artifacts_without_flagfile(self) -> None:
+        from diffaudit.attacks.secmi import resolve_secmi_artifacts
+
+        with tempfile.TemporaryDirectory() as tmpdir:
+            model_dir = Path(tmpdir) / "model"
+            model_dir.mkdir()
+            (model_dir / "checkpoint.pt").write_text("best", encoding="utf-8")
+
+            artifacts = resolve_secmi_artifacts(model_dir)
+
+        self.assertTrue(artifacts.checkpoint_path.endswith("checkpoint.pt"))
+        self.assertIsNone(artifacts.flagfile_path)
+
     def test_builds_secmi_runner_spec_from_local_vendor_repo(self) -> None:
         from diffaudit.attacks.secmi import (
             build_secmi_plan,
@@ -317,7 +330,6 @@ report:
             summary = explain_secmi_assets(config)
 
         self.assertEqual(summary["status"], "blocked")
-        self.assertIn("flagfile.txt", summary["missing_items"])
         self.assertIn("checkpoint", summary["missing_description"])
 
 

@@ -5,7 +5,7 @@
 - `owner`: `boss + research_leader + gpu_scheduler_leader`
 - `hardware`: `RTX4070 laptop 8GB only`
 - `execution_mode`: `single-mainline single-gpu + cpu sidecars`
-- `current_mainline`: `PIA + provisional G-1(all_steps)`
+- `current_mainline`: `dual-track mainline = mature PIA + GSA/W-1; exploratory SMP-LoRA T06 optimizer/lr frontier`
 - `current_risk_evidence`: `recon DDIM public-100 step30`
 - `current_depth_line`: `GSA + W-1 strong-v3 full-scale`
 - `active_gpu_question`: `none`
@@ -167,19 +167,21 @@ Round-28 update:
 
 当前建议：
 
-- `DP-LoRA comparability ladder`
+- `SMP-LoRA T06 optimizer/lr frontier`
 
 理由：
 
-1. `Finding NeMo` 仍是 `zero-GPU hold`
-2. `SecMI` 仍缺真实资产
-3. `TMIA-DM` 还没有最小可执行路径
-4. `DP-LoRA` 最适合在 8GB 上先做 `comparability`，不是直接替代 `W-1`
+1. `SMP-LoRA` 已经通过 `O03/O04/no-TF32` 三条失败路径证明：
+   - 继续做 runtime/seed/epoch tweak 只是在重复低信息增量问题
+2. `T06` 直接回答“当前收益是否只是 optimizer/lr 偶然值”这个唯一还值得占 GPU 的问题
+3. 它比 `Finding NeMo / SecMI / TMIA-DM` 更接近现有资产，也更容易保持 comparability
+4. 若 `T06` 失败，就可以直接把 `SMP-LoRA` 转到 comparator/no-go，而不是继续空耗 GPU
 
 预期产物：
 
-- 一份 `DP-LoRA release-review / budget-review packet`
-- 一份 `comparability yes/no` 裁决
+- 一份 `T06 optimizer/lr admission packet`
+- 一张 optimizer/LR ablation 表
+- 一条明确裁决：`continue to capacity frontier / pivot to comparator / direct no-go`
 
 ### B. 系统消费面继续加固
 
@@ -306,18 +308,19 @@ Round-27 update:
 
 ## Stage 2: 条件性下一题 GPU 候选
 
-### G2-A `DP-LoRA comparability ladder`
+### G2-A `SMP-LoRA T06 optimizer/lr frontier`
 
-- `track`: `white-box defended-track candidate`
-- `command`: `run-dpdm-w1-target-only` / `run-dpdm-w1-shadow-comparator` / `run-dpdm-w1-multi-shadow-comparator`
-- `question`: `DP-LoRA` 是否值得保留为 `W-2` comparability candidate
-- `budget`: `max128 -> max256 -> max512`, 逐 rung 决策
+- `track`: `exploratory defense-track candidate`
+- `command`: `train_smp_lora.py --optimizer ... --lora_lr ... --proxy_lr ...`
+- `question`: `batch14 throughput` 的波动究竟来自 optimizer/lr 错位，还是方法 ceiling 已到
+- `budget`: `3-4 serial runs`, total `<= 16 GPUh`
 - `stop_condition`:
-  - 一旦确认协议不可比或信号过弱，立即停止
-  - 只有前一 rung 有明确增量，才进下一 rung
+  - 全部组合都落在当前失败区间附近
+  - 没有任何组合接近 `batch14 legacy / seed42` 一类高点
+  - comparability 因实现差异被破坏
 - `expected_artifact`:
-  - `comparability yes/no/unclear`
-  - minimal comparable configuration
+  - optimizer/LR ablation table
+  - one `rescueable / unclear / no-go` verdict
 - `admission_effect`: `none`
 
 ## Stage 3: 默认 blocked 的 GPU 候选
@@ -441,4 +444,4 @@ Round-29 update:
 
 1. 继续补 `PIA provenance` 的 `release/source identity + split provenance + paper protocol mapping` CPU 闭环
 2. 保持 `recon decision package` 冻结，并把外围主文档、状态页和控制态全部对齐；不新开黑盒 run
-3. 在 `Finding NeMo` 继续保持 `zero-GPU hold` 的前提下，准备 `DP-LoRA comparability ladder` 的 release-review packet，形成下一次 GPU 准入审查包
+3. 在不改变 `rank / lambda / epochs / batch / seed contract / throughput_mode` 的前提下，准备并单独放行 `SMP-LoRA T06 optimizer/lr frontier`，形成下一次 GPU 准入审查包

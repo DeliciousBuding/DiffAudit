@@ -1,10 +1,10 @@
-# 本地 API
+# Runtime（Legacy 文档）
 
-这份文档说明如何在 `DiffAudit` 研究仓库内启动本地 HTTP API，并把当前 admitted 研究结果和受控任务入口暴露给平台或本机脚本调用。
+这份文档保留旧时代的运行说明，供旧 trace 和历史交接参考。当前活跃执行层主称已经切换为 `Runtime`，入口位于 `Runtime-Server`（目录名待迁移）。
 
 ## 目标
 
-当前本地 API 的目标不是替代研究 CLI，而是为平台联调提供一个稳定、可查询、可提交受控任务的本地服务层。
+当前本地 Runtime Server 的目标不是替代研究 CLI，而是为平台联调提供一个稳定、可查询、可提交受控任务的本地服务层。
 
 原则：
 
@@ -25,22 +25,22 @@
 
 ## 启动方式
 
-当前推荐入口是 Go 控制面：
+当前推荐入口是 Go Runtime 控制面：
 
 ```powershell
-cd D:\Code\DiffAudit\Services\Local-API
-go run ./cmd/local-api --host 127.0.0.1 --port 8765
+cd D:\Code\DiffAudit\Runtime-Server
+go run ./cmd/runtime --host 127.0.0.1 --port 8765
 ```
 
 覆盖本机目录：
 
 ```powershell
-cd D:\Code\DiffAudit\Services\Local-API
-go run ./cmd/local-api `
+cd D:\Code\DiffAudit\Runtime-Server
+go run ./cmd/runtime `
   --host 127.0.0.1 `
   --port 8765 `
   --experiments-root D:\Code\DiffAudit\Research\experiments `
-  --jobs-root D:\Code\DiffAudit\Research\workspaces\local-api\jobs `
+  --jobs-root D:\Code\DiffAudit\Research\workspaces\runtime\jobs `
   --project-root D:\Code\DiffAudit\Research
 ```
 
@@ -59,7 +59,7 @@ go run ./cmd/local-api `
 {
   "status": "ok",
   "experiments_root": "D:\\Code\\DiffAudit\\Research\\experiments",
-  "jobs_root": "D:\\Code\\DiffAudit\\Research\\workspaces\\local-api\\jobs"
+  "jobs_root": "D:\\Code\\DiffAudit\\Research\\workspaces\\runtime\\jobs"
 }
 ```
 
@@ -177,7 +177,7 @@ curl http://127.0.0.1:8765/api/v1/experiments/recon-runtime-mainline-ddim-public
 2. `gray-box/pia/cifar10-ddpm`
 3. `white-box/gsa/ddpm-cifar10`
 
-`workspace_name` 会映射到研究仓或本地 API 工作目录下对应的运行产物目录。
+`workspace_name` 会映射到研究仓或本地 Runtime Server 工作目录下对应的运行产物目录。
 
 job 元数据会写到：
 

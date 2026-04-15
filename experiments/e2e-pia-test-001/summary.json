@@ -1,0 +1,50 @@
+{
+  "status": "blocked",
+  "track": "gray-box",
+  "method": "pia",
+  "paper": "PIA_ICLR2024",
+  "mode": "runtime-mainline",
+  "workspace": "D:\\Code\\DiffAudit\\Research\\experiments\\e2e-pia-test-001",
+  "workspace_name": "e2e-pia-test-001",
+  "contract_stage": "target",
+  "asset_grade": "single-machine-real-asset",
+  "provenance_status": "source-retained-unverified",
+  "evidence_level": "runtime-mainline",
+  "checks": {
+    "runtime_probe_ready": false
+  },
+  "runtime_probe": {
+    "status": "blocked",
+    "repo_root": "D:\\Code\\DiffAudit\\Research\\external\\PIA",
+    "checks": {
+      "checkpoint": true,
+      "dataset_root": true,
+      "dataset_layout": true,
+      "member_split": false
+    },
+    "paths": {
+      "model_dir": "workspaces\\gray-box\\assets\\pia\\checkpoints\\cifar10_ddpm",
+      "dataset_root": "workspaces\\gray-box\\assets\\pia\\datasets",
+      "dataset_dir": "workspaces\\gray-box\\assets\\pia\\datasets\\cifar10",
+      "member_split_root": "D:\\Code\\DiffAudit\\Research\\workspaces\\gray-box\\assets\\pia",
+      "checkpoint": "workspaces\\gray-box\\assets\\pia\\checkpoints\\cifar10_ddpm\\checkpoint.pt",
+      "member_split": "D:\\Code\\DiffAudit\\Research\\workspaces\\gray-box\\assets\\pia\\CIFAR10_train_ratio0.5.npz"
+    },
+    "missing": [
+      "D:\\Code\\DiffAudit\\Research\\workspaces\\gray-box\\assets\\pia\\CIFAR10_train_ratio0.5.npz"
+    ],
+    "missing_keys": [
+      "member_split"
+    ],
+    "missing_items": [
+      "CIFAR10_train_ratio0.5.npz"
+    ],
+    "missing_description": "member split"
+  },
+  "artifact_paths": {
+    "summary": "D:\\Code\\DiffAudit\\Research\\experiments\\e2e-pia-test-001\\summary.json"
+  },
+  "notes": [
+    "Runtime mainline requires the canonical checkpoint, dataset root, and member split to be ready."
+  ]
+}

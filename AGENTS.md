@@ -30,7 +30,7 @@
 - 本机飞书运维
 - 服务器部署细节
 - 平台前端展示逻辑
-- Local-API 服务端发布规则
+- Runtime 服务端发布规则
 
 如果任务已经变成：
 
@@ -38,7 +38,7 @@
 - 平台页面
 - 服务发布
 
-那就应该切去 `Platform/` 或 `Services/Local-API/`，不要继续在 `Research/` 里扩。
+那就应该切去 `Platform/` 或 `Runtime-Server/`（Runtime），不要继续在 `Research/` 里扩。
 
 ---
 
