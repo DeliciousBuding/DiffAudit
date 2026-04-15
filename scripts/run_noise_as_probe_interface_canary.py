@@ -41,17 +41,28 @@ def parse_args() -> argparse.Namespace:
     parser.add_argument("--inversion-guidance-scale", type=float, default=1.0)
     parser.add_argument("--generation-guidance-scale", type=float, default=3.5)
     parser.add_argument("--distance-metric", choices=["mse", "ssim"], default="mse")
+    parser.add_argument("--member-limit", type=int, default=1)
+    parser.add_argument("--member-offset", type=int, default=0)
+    parser.add_argument("--nonmember-limit", type=int, default=1)
+    parser.add_argument("--nonmember-offset", type=int, default=0)
+    parser.add_argument("--calibration-limit", type=int, default=0)
+    parser.add_argument("--calibration-offset", type=int, default=0)
     parser.add_argument("--device", type=str, default="cuda" if torch.cuda.is_available() else "cpu")
     return parser.parse_args()
 
 
-def load_rows(split_dir: Path, subset_limit: int = 1) -> list[dict]:
+def load_rows(split_dir: Path, subset_limit: int, offset: int = 0) -> list[dict]:
     rows: list[dict] = []
     metadata_path = split_dir / "metadata.jsonl"
+    loaded = 0
     for raw_line in metadata_path.read_text(encoding="utf-8").splitlines():
         if not raw_line.strip():
             continue
+        if loaded < offset:
+            loaded += 1
+            continue
         rows.append(json.loads(raw_line))
+        loaded += 1
         if len(rows) >= subset_limit:
             break
     return rows
@@ -262,6 +273,39 @@ class NoiseAsProbeCanaryRunner:
         }
 
 
+def threshold_from_calibration(records: list[dict]) -> float | None:
+    if not records:
+        return None
+    scores = np.asarray([float(item["primary_distance"]) for item in records], dtype=float)
+    return float(np.percentile(scores, 15.0))
+
+
+def evaluate_threshold(
+    member_records: list[dict],
+    nonmember_records: list[dict],
+    threshold: float | None,
+) -> dict[str, float] | None:
+    if threshold is None:
+        return None
+    member_scores = np.asarray([float(item["primary_distance"]) for item in member_records], dtype=float)
+    nonmember_scores = np.asarray([float(item["primary_distance"]) for item in nonmember_records], dtype=float)
+    tp = float((member_scores <= threshold).sum())
+    fn = float((member_scores > threshold).sum())
+    fp = float((nonmember_scores <= threshold).sum())
+    tn = float((nonmember_scores > threshold).sum())
+    total = tp + fn + fp + tn
+    return {
+        "threshold": float(threshold),
+        "tp": tp,
+        "fn": fn,
+        "fp": fp,
+        "tn": tn,
+        "accuracy": float((tp + tn) / total) if total else 0.0,
+        "tpr": float(tp / (tp + fn)) if tp + fn else 0.0,
+        "fpr": float(fp / (fp + tn)) if fp + tn else 0.0,
+    }
+
+
 def main() -> int:
     args = parse_args()
     args.run_root.mkdir(parents=True, exist_ok=True)
@@ -269,33 +313,60 @@ def main() -> int:
     output_dir.mkdir(parents=True, exist_ok=True)
 
     start_time = time.perf_counter()
-    member_rows = load_rows(args.member_dir, subset_limit=1)
-    nonmember_rows = load_rows(args.nonmember_dir, subset_limit=1)
+    member_rows = load_rows(args.member_dir, subset_limit=args.member_limit, offset=args.member_offset)
+    nonmember_rows = load_rows(args.nonmember_dir, subset_limit=args.nonmember_limit, offset=args.nonmember_offset)
+    calibration_rows = load_rows(
+        args.nonmember_dir,
+        subset_limit=args.calibration_limit,
+        offset=args.calibration_offset,
+    )
     if not member_rows or not nonmember_rows:
         raise ValueError("Both member-dir and nonmember-dir need at least one metadata row.")
 
     runner = NoiseAsProbeCanaryRunner(args)
-    records = [
-        runner.canary_row("member", args.member_dir, member_rows[0], output_dir),
-        runner.canary_row("nonmember", args.nonmember_dir, nonmember_rows[0], output_dir),
+    member_records = [
+        runner.canary_row(f"member_{idx:03d}", args.member_dir, row, output_dir)
+        for idx, row in enumerate(member_rows)
     ]
+    nonmember_records = [
+        runner.canary_row(f"nonmember_{idx:03d}", args.nonmember_dir, row, output_dir)
+        for idx, row in enumerate(nonmember_rows)
+    ]
+    calibration_records = [
+        runner.canary_row(f"calibration_nonmember_{idx:03d}", args.nonmember_dir, row, output_dir)
+        for idx, row in enumerate(calibration_rows)
+    ]
+    threshold = threshold_from_calibration(calibration_records)
+    threshold_eval = evaluate_threshold(member_records, nonmember_records, threshold)
+    records = member_records + nonmember_records
 
     summary = {
-        "status": "interface-canary-only",
+        "status": "interface-canary-only" if args.member_limit == 1 and args.nonmember_limit == 1 else "bounded-expansion-rung",
         "family": "noise-as-a-probe",
         "target_family": "sd15-plus-celeba_partial_target-checkpoint-25000",
         "first_smoke_contract": "one-member-one-nonmember-interface-canary",
         "distance_metric": args.distance_metric,
+        "distance_direction": "lower-is-more-member-like",
         "inversion_steps": args.inversion_steps,
         "generation_steps": args.generation_steps,
         "generation_guidance_scale": args.generation_guidance_scale,
         "inversion_guidance_scale": args.inversion_guidance_scale,
+        "member_limit": args.member_limit,
+        "nonmember_limit": args.nonmember_limit,
+        "calibration_limit": args.calibration_limit,
         "gpu_release": "none",
         "records": records,
+        "calibration_records": calibration_records,
+        "threshold_candidate": threshold_eval,
         "duration_seconds": round(time.perf_counter() - start_time, 3),
     }
     (args.run_root / "summary.json").write_text(json.dumps(summary, indent=2, ensure_ascii=False), encoding="utf-8")
     (args.run_root / "records.json").write_text(json.dumps(records, indent=2, ensure_ascii=False), encoding="utf-8")
+    if calibration_records:
+        (args.run_root / "calibration_records.json").write_text(
+            json.dumps(calibration_records, indent=2, ensure_ascii=False),
+            encoding="utf-8",
+        )
     return 0
 
 
