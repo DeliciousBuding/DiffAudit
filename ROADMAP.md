@@ -482,6 +482,10 @@ Current read:
 - `TMIA-DM` is now protocol-ready in the repo sense:
   - signal surface, access assumption, local-fit path, and minimal smoke entry are now concrete
   - execution release and GPU release remain `none`
+- bounded local `TMIA-DM protocol probe` is now execution-positive but family-mixed:
+  - `long_window` shows the only credible positive branch so far (`AUC = 0.702148`, `ASR = 0.703125`)
+  - `short_window` is negative and naive fusion adds no value
+  - GPU release and challenger promotion remain `none`
 
 Tasks:
 
@@ -497,6 +501,8 @@ Canonical evidence anchor:
   - `workspaces/gray-box/2026-04-16-graybox-next-family-reselection.md`
 - protocol-ready follow-up note:
   - `workspaces/gray-box/2026-04-16-tmiadm-protocol-and-asset-note.md`
+- protocol-probe verdict:
+  - `workspaces/gray-box/2026-04-16-tmiadm-protocol-probe-verdict.md`
 
 Value: ⭐⭐
 
@@ -721,6 +727,7 @@ If that happens, the agent must add new branches and continue.
 | 2026-04-16 02:00 | Closed the current `GB-3 / SimA` branch as `negative but useful`: local CPU feasibility is real, but strength is too weak for challenger promotion or GPU release |
 | 2026-04-16 02:10 | Reselected the next gray-box family branch onto `TMIA-DM protocol / asset decomposition`, preferring a DDPM-local time/noise path over immediate `SimA` reopen or a larger `MoFit` jump |
 | 2026-04-16 02:20 | Upgraded `TMIA-DM` from generic intake to `protocol-ready but not execution-released`: local signal surface, access assumption, asset fit, and minimal smoke entry are now explicit |
+| 2026-04-16 03:05 | Ran the first bounded `TMIA-DM` CPU-32 protocol probe: `long_window` is locally positive (`AUC = 0.702148`) while `short_window` is negative and naive fusion is not useful, so the family is promising but still not GPU-released |
 | 2026-04-16 01:55 | Fixed `WB-2` path selection on `GSA2 comparator`; target-side `attack_method=2` canaries succeeded on both member and non-member splits |
 | 2026-04-16 02:05 | Extended `WB-2` canary truth onto shadow-side: `shadow-01-member` succeeded under the same direct `GSA2` extraction contract, narrowing the next gate to `shadow-01-nonmember` |
 | 2026-04-16 02:12 | Completed the first `WB-2` shadow pair: `shadow-01-nonmember` succeeded, so `WB-2.2` is done and the next gate is a bounded `GSA2` comparator verdict |
