@@ -569,6 +569,9 @@ Current read:
 - GPU-level operating-point comparison is now also explicit:
   - `PIA` remains the safest single headline on global-ranking metrics
   - `TMIA-DM late-window` is now the strongest challenger line, with credible low-FPR advantages
+- defended operating-point comparison is now explicit too:
+  - `stochastic-dropout(all_steps)` weakens both families
+  - but `TMIA-DM late-window` remains the strongest defended challenger, not a collapsed side branch
 - `GB-4` should stay narrow until either `TMIA-DM` strengthens further or a different second family lands
   - current best reading is `headline plus challenger`, not `single-family gray-box story`
 
@@ -582,6 +585,7 @@ Canonical evidence anchor:
 
 - `workspaces/gray-box/2026-04-16-pia-vs-tmiadm-long-window-comparison.md`
 - `workspaces/gray-box/2026-04-16-pia-vs-tmiadm-operating-point-comparison.md`
+- `workspaces/gray-box/2026-04-16-pia-vs-tmiadm-defended-operating-point-comparison.md`
 
 Value: ⭐⭐
 
@@ -806,6 +810,7 @@ If that happens, the agent must add new branches and continue.
 | 2026-04-16 05:00 | Wrote the gray-box operating-point comparison: `PIA` remains the safest headline on global metrics, while `TMIA-DM late-window` has become the strongest low-FPR challenger line |
 | 2026-04-16 05:15 | Ran the first `TMIA-DM late-window` defense interaction on `GPU128`: `stochastic-dropout(all_steps)` weakened the line but did not neutralize it, leaving `TMIA-DM` stronger than current defended `PIA` on `AUC` and `TPR@1%FPR` |
 | 2026-04-16 05:25 | Repeated the defended `TMIA-DM late-window GPU128` rung with `seed1`; the line held at `AUC = 0.819397`, confirming that the current dropout defense weakens but does not eliminate the challenger |
+| 2026-04-16 05:35 | Wrote the defended gray-box operating-point comparison: `PIA` stays the defended headline by continuity, but `TMIA-DM late-window` remains the strongest defended challenger rather than being neutralized by dropout |
 | 2026-04-16 01:55 | Fixed `WB-2` path selection on `GSA2 comparator`; target-side `attack_method=2` canaries succeeded on both member and non-member splits |
 | 2026-04-16 02:05 | Extended `WB-2` canary truth onto shadow-side: `shadow-01-member` succeeded under the same direct `GSA2` extraction contract, narrowing the next gate to `shadow-01-nonmember` |
 | 2026-04-16 02:12 | Completed the first `WB-2` shadow pair: `shadow-01-nonmember` succeeded, so `WB-2.2` is done and the next gate is a bounded `GSA2` comparator verdict |
