@@ -513,6 +513,9 @@ Current read:
 - second `TMIA-DM late-window GPU256` rung confirmed scale stability:
   - `AUC = 0.837814`, `ASR = 0.787109`
   - the line is now repeat-confirmed at both `GPU128` and `GPU256`
+- first `TMIA-DM` defense interaction is now explicit:
+  - `stochastic-dropout(all_steps)` weakened the line from `AUC = 0.825317` to `0.809326`
+  - but the challenger remained stronger than current defended `PIA` on `AUC` and low-FPR behavior
 
 Tasks:
 
@@ -544,6 +547,8 @@ Canonical evidence anchor:
   - `workspaces/gray-box/2026-04-16-tmiadm-gpu256-rung-verdict.md`
 - gpu256 repeat verdict:
   - `workspaces/gray-box/2026-04-16-tmiadm-gpu256-repeat-verdict.md`
+- dropout-defense verdict:
+  - `workspaces/gray-box/2026-04-16-tmiadm-dropout-defense-verdict.md`
 
 Value: ⭐⭐
 
@@ -794,6 +799,7 @@ If that happens, the agent must add new branches and continue.
 | 2026-04-16 04:40 | Scaled `TMIA-DM late-window` to `GPU256`: the line stayed strong at `AUC = 0.839554 / ASR = 0.765625`, reaching near-parity with `PIA GPU256` while improving low-FPR detection |
 | 2026-04-16 04:50 | Repeated `TMIA-DM late-window GPU256` with `seed1`; the line held at `AUC = 0.837814 / ASR = 0.787109`, confirming that the challenger remains stable at the higher rung |
 | 2026-04-16 05:00 | Wrote the gray-box operating-point comparison: `PIA` remains the safest headline on global metrics, while `TMIA-DM late-window` has become the strongest low-FPR challenger line |
+| 2026-04-16 05:15 | Ran the first `TMIA-DM late-window` defense interaction on `GPU128`: `stochastic-dropout(all_steps)` weakened the line but did not neutralize it, leaving `TMIA-DM` stronger than current defended `PIA` on `AUC` and `TPR@1%FPR` |
 | 2026-04-16 01:55 | Fixed `WB-2` path selection on `GSA2 comparator`; target-side `attack_method=2` canaries succeeded on both member and non-member splits |
 | 2026-04-16 02:05 | Extended `WB-2` canary truth onto shadow-side: `shadow-01-member` succeeded under the same direct `GSA2` extraction contract, narrowing the next gate to `shadow-01-nonmember` |
 | 2026-04-16 02:12 | Completed the first `WB-2` shadow pair: `shadow-01-nonmember` succeeded, so `WB-2.2` is done and the next gate is a bounded `GSA2` comparator verdict |
