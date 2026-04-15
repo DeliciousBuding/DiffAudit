@@ -568,13 +568,17 @@ Canonical evidence anchor:
 
 - `workspaces/black-box/2026-04-16-blackbox-next-lane-score-package-selection-verdict.md`
 - `workspaces/black-box/2026-04-16-blackbox-score-package-alignment-verdict.md`
+- `workspaces/black-box/2026-04-16-blackbox-score-package-contract-selection-verdict.md`
 
 Updated verdict:
 
 - `BB-6.1` closes as `negative but useful`
 - current blocker is protocol/asset mismatch, not missing score logic
 - `BB-6.2 / BB-6.3` are not yet requestable on the mixed current artifact set
-- the next bounded step, if this lane continues, is one aligned semantic-aux comparator on the same `Recon` contract surface
+- the next bounded step, if this lane continues, is one aligned semantic-aux comparator on:
+  - `Recon DDIM public-50 step10`
+  - same `celeba_partial_target/checkpoint-25000` contract surface
+  - keep `public-100 step30` untouched as the headline package during first alignment
 
 Value: ⭐⭐⭐
 
