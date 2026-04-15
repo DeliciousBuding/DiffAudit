@@ -845,9 +845,9 @@ This is a preference order, not a prison.
 
 1. ⬜ `GB-1` second gray-box defense
 2. ✅ `X-3` system-consumable sync
-3. ⬜ `BB-3` CLiD boundary-quality upgrade
+3. ✅ `BB-3` CLiD boundary-quality upgrade
 4. ⬜ `X-4` cross-box exploration lane
-5. ⬜ `WB-2` second white-box verdict
+5. ✅ `WB-2` second white-box verdict
 
 ### Next
 
