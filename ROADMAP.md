@@ -961,8 +961,23 @@ Tasks:
 
 - [ ] `INF-3.1` test paper-scout subagent workflow
 - [ ] `INF-3.2` test code-review subagent workflow
-- [ ] `INF-3.3` test backlog-critic or experiment-auditor workflow
+- [x] `INF-3.3` test backlog-critic or experiment-auditor workflow
 - [ ] `INF-3.4` record what should become standard and what should stay optional
+
+Status:
+
+- first backlog-critic experiment completed
+- canonical evidence anchor:
+  - `workspaces/implementation/2026-04-16-subagent-backlog-critic-verdict.md`
+
+Verdict:
+
+- the read-only backlog-critic workflow is `positive` in the current repo state
+- it created real leverage precisely because many recent box-local branches had just closed
+- it independently selected `X-4.1 cross-box agreement analysis` as the highest-value next live task
+- current standardization rule:
+  - use backlog-critic after multiple closures or when the priority ladder may have drifted
+  - keep it optional for trivial or obviously single-path loops
 
 Value: ⭐⭐
 
