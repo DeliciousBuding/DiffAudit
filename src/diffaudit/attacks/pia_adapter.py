@@ -375,12 +375,32 @@ def _dropout_is_active_for_timestep(
     return False
 
 
+def _apply_input_defense(
+    batch: torch.Tensor,
+    input_gaussian_blur_sigma: float = 0.0,
+) -> torch.Tensor:
+    if batch.numel() == 0:
+        return batch
+    if float(input_gaussian_blur_sigma) > 0.0:
+        return tv_transforms.functional.gaussian_blur(
+            batch,
+            kernel_size=[3, 3],
+            sigma=float(input_gaussian_blur_sigma),
+        )
+    return batch
+
+
 def _score_batch_once(
     attacker,
     batch: torch.Tensor,
     device: str,
+    input_gaussian_blur_sigma: float = 0.0,
 ) -> torch.Tensor:
-    batch_scores = attacker(batch.to(device)).mean(dim=0)
+    defended_batch = _apply_input_defense(
+        batch,
+        input_gaussian_blur_sigma=input_gaussian_blur_sigma,
+    )
+    batch_scores = attacker(defended_batch.to(device)).mean(dim=0)
     return (-batch_scores).detach().cpu()
 
 
@@ -389,6 +409,7 @@ def _score_loader(
     loader,
     device: str,
     adaptive_query_repeats: int,
+    input_gaussian_blur_sigma: float = 0.0,
 ) -> tuple[torch.Tensor, torch.Tensor, torch.Tensor]:
     aggregated_scores: list[torch.Tensor] = []
     std_scores: list[torch.Tensor] = []
@@ -396,7 +417,12 @@ def _score_loader(
     with torch.no_grad():
         for batch, _ in loader:
             repeated_scores = [
-                _score_batch_once(attacker, batch, device=device)
+                _score_batch_once(
+                    attacker,
+                    batch,
+                    device=device,
+                    input_gaussian_blur_sigma=input_gaussian_blur_sigma,
+                )
                 for _ in range(max(adaptive_query_repeats, 1))
             ]
             stacked_scores = torch.stack(repeated_scores)
@@ -428,6 +454,7 @@ def _predict_surrogate_images(
     dropout_activation_schedule: str,
     late_step_threshold: int | None,
     epsilon_output_noise_std: float = 0.0,
+    input_gaussian_blur_sigma: float = 0.0,
     surrogate_batch_size: int = 64,
 ) -> torch.Tensor:
     if batches.numel() == 0:
@@ -445,7 +472,11 @@ def _predict_surrogate_images(
     with torch.no_grad():
         for start in range(0, batches.shape[0], max(surrogate_batch_size, 1)):
             chunk = batches[start : start + max(surrogate_batch_size, 1)]
-            normalized = chunk.to(device) * 2 - 1
+            defended_chunk = _apply_input_defense(
+                chunk,
+                input_gaussian_blur_sigma=input_gaussian_blur_sigma,
+            )
+            normalized = defended_chunk.to(device) * 2 - 1
             timestep = torch.zeros(normalized.shape[0], device=device, dtype=torch.long)
             eps_prediction = model(normalized, t=timestep)
             if float(epsilon_output_noise_std) > 0.0:
@@ -956,6 +987,7 @@ def run_pia_runtime_mainline(
     stochastic_dropout_defense: bool = False,
     dropout_activation_schedule: str = "off",
     epsilon_output_noise_std: float = 0.0,
+    input_gaussian_blur_sigma: float = 0.0,
     adaptive_query_repeats: int = 1,
     late_step_threshold: int | None = None,
     provenance_status: str = "source-retained-unverified",
@@ -1063,12 +1095,14 @@ def run_pia_runtime_mainline(
         member_loader,
         device=device,
         adaptive_query_repeats=adaptive_query_repeats,
+        input_gaussian_blur_sigma=input_gaussian_blur_sigma,
     )
     nonmember_score_tensor, nonmember_adaptive_tensor, nonmember_score_std_tensor = _score_loader(
         attacker,
         nonmember_loader,
         device=device,
         adaptive_query_repeats=adaptive_query_repeats,
+        input_gaussian_blur_sigma=input_gaussian_blur_sigma,
     )
     metrics = {
         "auc": round(_compute_auc(member_score_tensor, nonmember_score_tensor), 6),
@@ -1135,6 +1169,7 @@ def run_pia_runtime_mainline(
         dropout_activation_schedule="off",
         late_step_threshold=late_step_threshold,
         epsilon_output_noise_std=0.0,
+        input_gaussian_blur_sigma=0.0,
     )
     active_surrogates = _predict_surrogate_images(
         model,
@@ -1143,17 +1178,24 @@ def run_pia_runtime_mainline(
         dropout_activation_schedule=resolved_schedule,
         late_step_threshold=late_step_threshold,
         epsilon_output_noise_std=epsilon_output_noise_std,
+        input_gaussian_blur_sigma=input_gaussian_blur_sigma,
     )
     quality = _compute_surrogate_quality_metrics(
         reference_images=reference_batches,
         active_images=active_surrogates,
-        baseline_images=baseline_surrogates if (resolved_schedule != "off" or float(epsilon_output_noise_std) > 0.0) else None,
+        baseline_images=baseline_surrogates if (resolved_schedule != "off" or float(epsilon_output_noise_std) > 0.0 or float(input_gaussian_blur_sigma) > 0.0) else None,
     )
 
     defense_name = "none"
     defense_stage = "baseline"
     if stochastic_dropout_defense and float(epsilon_output_noise_std) > 0.0:
         defense_name = "stochastic-dropout+epsilon-output-noise"
+        defense_stage = "candidate-g2"
+    elif float(input_gaussian_blur_sigma) > 0.0 and stochastic_dropout_defense:
+        defense_name = "stochastic-dropout+input-gaussian-blur"
+        defense_stage = "candidate-g2"
+    elif float(input_gaussian_blur_sigma) > 0.0:
+        defense_name = "input-gaussian-blur"
         defense_stage = "candidate-g2"
     elif stochastic_dropout_defense:
         defense_name = "stochastic-dropout"
@@ -1202,10 +1244,11 @@ def run_pia_runtime_mainline(
         },
         "defense": {
             "name": defense_name,
-            "enabled": bool(stochastic_dropout_defense or float(epsilon_output_noise_std) > 0.0),
+            "enabled": bool(stochastic_dropout_defense or float(epsilon_output_noise_std) > 0.0 or float(input_gaussian_blur_sigma) > 0.0),
             "dropout_activation_schedule": resolved_schedule,
             "late_step_threshold": int(late_step_threshold),
             "epsilon_output_noise_std": float(epsilon_output_noise_std),
+            "input_gaussian_blur_sigma": float(input_gaussian_blur_sigma),
         },
         "defense_stage": defense_stage,
         "sample_count_per_split": int(member_score_tensor.shape[0]),
