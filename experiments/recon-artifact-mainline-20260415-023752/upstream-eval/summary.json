@@ -1,0 +1,39 @@
+{
+  "status": "ready",
+  "track": "black-box",
+  "method": "recon",
+  "paper": "BlackBox_Reconstruction_ArXiv2023",
+  "mode": "upstream-eval",
+  "device": "cpu",
+  "workspace": "D:\\Code\\DiffAudit\\Research\\experiments\\recon-artifact-mainline-20260415-023752\\upstream-eval",
+  "artifact_paths": {
+    "summary": "D:\\Code\\DiffAudit\\Research\\experiments\\recon-artifact-mainline-20260415-023752\\upstream-eval\\summary.json"
+  },
+  "assets": {
+    "artifact_files": [
+      "shadow_member",
+      "shadow_non_member",
+      "target_member",
+      "target_non_member"
+    ]
+  },
+  "checks": {
+    "artifact_files_found": true,
+    "upstream_script_found": true,
+    "upstream_script_succeeded": true
+  },
+  "evaluation_method": "threshold",
+  "metrics": {
+    "reported_accuracy": 0.51,
+    "reported_auc": 0.849
+  },
+  "notes": [
+    "Evaluation executes the upstream reconstruction accuracy script with provided score artifacts."
+  ],
+  "stdout_tail": [
+    "Best Threshold: 1.8367270105057873",
+    "Accuracy with Best Threshold: 0.51",
+    "AUC-ROC: 0.849",
+    "TPR at FPR 0.01: 0.33"
+  ]
+}

@@ -50,6 +50,19 @@ class ValidateAttackDefenseTableTests(unittest.TestCase):
         self.assertEqual(gsa_row["asr"], 0.9895)
         self.assertEqual(gsa_row["tpr_at_1pct_fpr"], 0.987)
         self.assertEqual(gsa_row["tpr_at_0_1pct_fpr"], 0.432)
+        self.assertIn("not a final paper-level benchmark", gsa_row["boundary"])
+
+    def test_project_table_rows_expose_boundary(self) -> None:
+        research_root = Path(__file__).resolve().parents[1]
+        payload = json.loads(
+            (research_root / "workspaces" / "implementation" / "artifacts" / "unified-attack-defense-table.json").read_text(
+                encoding="utf-8"
+            )
+        )
+
+        for row in payload["rows"]:
+            self.assertIn("boundary", row)
+            self.assertTrue(row["boundary"])
 
     def test_validator_rejects_row_missing_required_field(self) -> None:
         module = load_validate_module()
@@ -68,6 +81,7 @@ class ValidateAttackDefenseTableTests(unittest.TestCase):
                                 "defense": "none",
                                 "model": "Stable Diffusion v1.5 + DDIM",
                                 "evidence_level": "runtime-mainline",
+                                "boundary": "controlled / public-subset / risk-exists",
                             }
                         ],
                     }
@@ -96,6 +110,7 @@ class ValidateAttackDefenseTableTests(unittest.TestCase):
                                 "defense": "none",
                                 "model": "Stable Diffusion v1.5 + DDIM",
                                 "evidence_level": "runtime-mainline",
+                                "boundary": "controlled / public-subset / risk-exists",
                                 "source": r"D:\Code\DiffAudit\Research\experiments\recon\summary.json",
                             }
                         ],
@@ -125,6 +140,7 @@ class ValidateAttackDefenseTableTests(unittest.TestCase):
                                 "defense": "none",
                                 "model": "CIFAR-10 DDPM",
                                 "evidence_level": "runtime-mainline",
+                                "boundary": "workspace-verified + adaptive-reviewed + paper-alignment blocked by checkpoint/source provenance",
                                 "source": "workspaces/gray-box/runs/pia/summary.json",
                                 "quality": {"suite": "pia-runtime-surrogate-v1"},
                                 "cost": {"device": "cuda:0"},
@@ -157,6 +173,7 @@ class ValidateAttackDefenseTableTests(unittest.TestCase):
                                 "defense": "none",
                                 "model": "CIFAR-10 DDPM",
                                 "evidence_level": "runtime-mainline",
+                                "boundary": "workspace-verified + adaptive-reviewed + paper-alignment blocked by checkpoint/source provenance",
                                 "source": "workspaces/gray-box/runs/pia/summary.json",
                                 "quality": {"suite": "pia-runtime-surrogate-v1"},
                                 "cost": {"device": "cuda:0"},

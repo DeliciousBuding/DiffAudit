@@ -1,6 +1,6 @@
 {
   "schema": "diffaudit.attack_defense_table.v1",
-  "updated_at": "2026-04-09T17:05:00+08:00",
+  "updated_at": "2026-04-15T04:00:00+08:00",
   "dataset": "CIFAR-10",
   "model_family": "DDPM",
   "rows": [
@@ -16,7 +16,53 @@
       "quality_cost": "100 public samples per split; DDIM step30; artifact-mainline ready; cuda runtime",
       "evidence_level": "runtime-mainline",
       "note": "current black-box main evidence",
+      "boundary": "controlled / public-subset / proxy-shadow-member / risk-exists; not a final exploit or full real-world benchmark",
       "source": "experiments/recon-runtime-mainline-ddim-public-100-step30/summary.json"
+    },
+    {
+      "track": "black-box",
+      "attack": "recon DDIM public-50 step10",
+      "defense": "none",
+      "model": "Stable Diffusion v1.5 + DDIM",
+      "auc": 0.866,
+      "asr": 0.51,
+      "tpr_at_1pct_fpr": 1.0,
+      "tpr_at_0_1pct_fpr": null,
+      "quality_cost": "50 public samples per split; DDIM step10; runtime-mainline ready; cuda runtime",
+      "evidence_level": "runtime-candidate",
+      "note": "best current single-metric black-box rung; stronger AUC than the admitted public-100 headline but narrower subset",
+      "boundary": "controlled / public-subset / proxy-shadow-member / risk-exists; stronger single-metric rung, still not a generalized real-world exploit claim",
+      "source": "experiments/recon-runtime-mainline-ddim-public-50-step10/summary.json"
+    },
+    {
+      "track": "black-box",
+      "attack": "CLiD clip local target100",
+      "defense": "none",
+      "model": "Stable Diffusion v1.5 + Recon target LoRA",
+      "auc": 1.0,
+      "asr": 1.0,
+      "tpr_at_1pct_fpr": 1.0,
+      "tpr_at_0_1pct_fpr": null,
+      "quality_cost": "100 member + 100 non-member target samples; base SD1.5 local snapshot; UNet attention-processor LoRA bridge; batch_size=1; max_n_samples=1",
+      "evidence_level": "runtime-candidate",
+      "note": "local CLiD clip candidate rung on Recon CelebA assets; target-side bridge validation has now been scaled beyond smoke",
+      "boundary": "workspace-verified + local bridge execution; target-side only, not yet a shadow-validated or paper-faithful CLiD benchmark",
+      "source": "workspaces/black-box/runs/clid-recon-clip-target100-20260415-r1/summary.json"
+    },
+    {
+      "track": "black-box",
+      "attack": "CLiD clip local partial-target100",
+      "defense": "none",
+      "model": "Stable Diffusion v1.5 + Recon partial-target LoRA",
+      "auc": 1.0,
+      "asr": 1.0,
+      "tpr_at_1pct_fpr": 1.0,
+      "tpr_at_0_1pct_fpr": null,
+      "quality_cost": "100 member + 100 non-member partial-target samples; base SD1.5 local snapshot; UNet attention-processor LoRA bridge; batch_size=1; max_n_samples=1",
+      "evidence_level": "runtime-candidate",
+      "note": "cross-check rung showing the local CLiD clip signal persists on the partial-target Recon checkpoint family",
+      "boundary": "workspace-verified + local bridge execution; target-side only, not yet a shadow-validated or paper-faithful CLiD benchmark",
+      "source": "workspaces/black-box/runs/clid-recon-clip-partial-target100-20260415-r1/summary.json"
     },
     {
       "track": "gray-box",
@@ -65,7 +111,38 @@
       "defense_stage": "baseline",
       "evidence_level": "runtime-mainline",
       "note": "current gray-box baseline reference; score is derived from epsilon-trajectory consistency under the official PIA DDPM attacker",
+      "boundary": "workspace-verified + adaptive-reviewed + paper-alignment blocked by checkpoint/source provenance",
       "source": "workspaces/gray-box/runs/pia-cifar10-runtime-mainline-20260409-gpu-512-adaptive/summary.json"
+    },
+    {
+      "track": "gray-box",
+      "attack": "PIA GPU1024 baseline",
+      "defense": "none",
+      "model": "CIFAR-10 DDPM",
+      "auc": 0.83863,
+      "asr": 0.782715,
+      "tpr_at_1pct_fpr": 0.048828,
+      "tpr_at_0_1pct_fpr": 0.013672,
+      "quality_cost": "attack_num=30; interval=10; batch_size=8; 1024 samples per split; single GPU serial; adaptive repeats=3; wall-clock=494.968358s",
+      "evidence_level": "runtime-candidate",
+      "note": "scale-up validation rung showing the current PIA local signal remains stable beyond the earlier 512-sample baseline",
+      "boundary": "workspace-verified + adaptive-reviewed; local scale-up evidence, not yet the promoted headline gray-box rung",
+      "source": "workspaces/gray-box/runs/pia-cifar10-runtime-mainline-20260415-gpu-1024-adaptive/summary.json"
+    },
+    {
+      "track": "gray-box",
+      "attack": "PIA GPU1024 baseline",
+      "defense": "stochastic-dropout (all_steps)",
+      "model": "CIFAR-10 DDPM",
+      "auc": 0.825402,
+      "asr": 0.770996,
+      "tpr_at_1pct_fpr": 0.037109,
+      "tpr_at_0_1pct_fpr": 0.011719,
+      "quality_cost": "attack_num=30; interval=10; batch_size=8; 1024 samples per split; single GPU serial; adaptive repeats=3; wall-clock=511.095233s",
+      "evidence_level": "runtime-candidate",
+      "note": "same-scale defended comparator for the new GPU1024 PIA rung; confirms all_steps dropout weakens but does not neutralize the local gray-box signal",
+      "boundary": "workspace-verified + adaptive-reviewed; local defense comparator, not yet the promoted headline defended rung",
+      "source": "workspaces/gray-box/runs/pia-cifar10-runtime-mainline-dropout-defense-20260415-gpu-1024-allsteps-adaptive/summary.json"
     },
     {
       "track": "gray-box",
@@ -114,7 +191,23 @@
       "defense_stage": "adaptive-reviewed-provisional-g1",
       "evidence_level": "runtime-mainline",
       "note": "current gray-box defended main result after repeated-query review; all_steps remains stronger than late_steps_only while keeping surrogate quality drift small",
+      "boundary": "workspace-verified + adaptive-reviewed + paper-alignment blocked by checkpoint/source provenance",
       "source": "workspaces/gray-box/runs/pia-cifar10-runtime-mainline-dropout-defense-20260409-gpu-512-allsteps-adaptive/summary.json"
+    },
+    {
+      "track": "gray-box",
+      "attack": "SecMI GPU full split",
+      "defense": "none",
+      "model": "CIFAR-10 DDPM",
+      "auc": 0.885833,
+      "asr": 0.8154,
+      "tpr_at_1pct_fpr": 0.09396,
+      "tpr_at_0_1pct_fpr": 0.00772,
+      "quality_cost": "t_sec=100; k=10; batch_size=64; 25000 samples per split; single GPU serial; stat line plus NNS auxiliary head",
+      "evidence_level": "gpu-full-mainline",
+      "note": "real SecMI full-split GPU run on imported CIFAR10 checkpoint bundle; NNS auxiliary head reaches AUC 0.946286 on the same rung",
+      "boundary": "workspace-verified + full local split execution; still not automatically a paper-faithful benchmark claim",
+      "source": "workspaces/gray-box/runs/secmi-cifar10-gpu-full-stat-20260415-r2/summary.json"
     },
     {
       "track": "white-box",
@@ -128,6 +221,7 @@
       "quality_cost": "target_eval_size=2000; shadow_train_size=4200; 3 shadows; cuda",
       "evidence_level": "runtime-mainline",
       "note": "current white-box attack main evidence promoted from epoch300 rerun1 under the same 1k-3shadow protocol",
+      "boundary": "admitted white-box bridge / risk upper-bound; not a final paper-level benchmark",
       "source": "workspaces/white-box/runs/gsa-runtime-mainline-20260409-cifar10-1k-3shadow-epoch300-rerun1/summary.json"
     },
     {
@@ -142,6 +236,7 @@
       "quality_cost": "target_eval_size=2000; shadow_train_size=6000; classifier=logistic-regression-1d",
       "evidence_level": "runtime-smoke",
       "note": "current white-box defended main result",
+      "boundary": "admitted white-box bridge / defended comparator; not a final paper-level benchmark",
       "source": "workspaces/white-box/runs/dpdm-w1-multi-shadow-comparator-targetmember-strongv3-3shadow-full-rerun8-20260408/summary.json"
     },
     {
@@ -156,6 +251,7 @@
       "quality_cost": "target_eval_size=2000; shadow_train_size=6000; classifier=logistic-regression-1d",
       "evidence_level": "runtime-smoke",
       "note": "defended reference rung kept for comparison",
+      "boundary": "admitted white-box bridge / defended comparator; not a final paper-level benchmark",
       "source": "workspaces/white-box/runs/dpdm-w1-multi-shadow-comparator-targetmember-strongv2-3shadow-full-20260408/summary.json"
     }
   ]

@@ -63,7 +63,7 @@ def main(argv: list[str] | None = None) -> int:
                     errors,
                     f"rows[{idx}]",
                     row,
-                    ("track", "attack", "defense", "model", "evidence_level", "source"),
+                    ("track", "attack", "defense", "model", "evidence_level", "source", "boundary"),
                 )
 
                 source = row.get("source")

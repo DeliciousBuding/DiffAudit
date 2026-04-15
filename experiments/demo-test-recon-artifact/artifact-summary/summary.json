@@ -1,0 +1,41 @@
+{
+  "status": "ready",
+  "track": "black-box",
+  "method": "recon",
+  "paper": "BlackBox_Reconstruction_ArXiv2023",
+  "mode": "artifact-summary",
+  "device": "cpu",
+  "workspace": "D:\\Code\\DiffAudit\\Research\\experiments\\demo-test-recon-artifact\\artifact-summary",
+  "artifact_paths": {
+    "summary": "D:\\Code\\DiffAudit\\Research\\experiments\\demo-test-recon-artifact\\artifact-summary\\summary.json"
+  },
+  "assets": {
+    "artifact_files": [
+      "shadow_member",
+      "shadow_non_member",
+      "target_member",
+      "target_non_member"
+    ]
+  },
+  "checks": {
+    "target_member_loaded": true,
+    "target_non_member_loaded": true,
+    "shadow_member_loaded": true,
+    "shadow_non_member_loaded": true,
+    "threshold_metrics_computed": true
+  },
+  "metrics": {
+    "shadow_auc": 0.4754,
+    "shadow_asr": 0.495,
+    "shadow_threshold": -0.211589,
+    "target_auc": 0.6897,
+    "target_asr": 0.505,
+    "target_threshold": -0.073566,
+    "tpr_at_1pct_fpr": 1.0,
+    "auc": 0.6897
+  },
+  "notes": [
+    "Summary is recomputed from reconstruction score artifacts compatible with the upstream accuracy script.",
+    "Current implementation reproduces the threshold-style path, not the neural classifier training loop."
+  ]
+}

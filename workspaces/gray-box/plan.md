@@ -4,10 +4,10 @@
 
 - `owner`: `research_leader`
 - `scope`: 部分中间信息、条件相关评分、噪声预测与结构特征下的成员推断
-- `status`: `PIA real-asset runtime-mainline ready; GPU128/GPU256/GPU512 baseline + defended pairs landed; GPU512 rerun confirmed; GPU128/GPU256 adaptive portability pair landed on RTX4070 8GB; provisional G-1 established; provenance now workspace-verified`
-- `blocked by`: `PIA` 仍未升级到 `paper-aligned`；`SecMI` 当前已判定为 blocked baseline
-- `next step`: 保持 `stochastic-dropout = provisional G-1 (repeat-confirmed at GPU512)`；当前已将 `2026-04-10-pia-defense-cost-frontier-stop-decision.md` 固定为 `G1-B = no-go / queue_state = not-requestable`，并转回 `2026-04-10-pia-provenance-upstream-identity-note.md` 的 CPU 补件；`SecMI` 只保留为 blocked baseline
-- `last updated`: `2026-04-10`
+- `status`: `PIA real-asset runtime-mainline ready; GPU128/GPU256/GPU512 baseline + defended pairs landed; GPU512 rerun confirmed; GPU128/GPU256 adaptive portability pair landed on RTX4070 8GB; provisional G-1 established; SecMI full-split corroboration landed; PIA-vs-SecMI disagreement verdict landed`
+- `blocked by`: `PIA` 仍未升级到 `paper-aligned`；灰盒当前仍缺第二条 defended comparator；`PIA + SecMI` 还没有 promotion-worthy 的 fusion story
+- `next step`: 保持 `stochastic-dropout = provisional G-1 (repeat-confirmed at GPU512)`；把 `SecMI` 固定为独立 corroboration line 而不是 blocked baseline；不再为 naive `PIA + SecMI` fusion 消耗预算；若再动 GPU，优先材料不同的 gray-box defense 或新 family
+- `last updated`: `2026-04-15`
 
 ## 推荐论文
 
@@ -27,7 +27,7 @@
 当前判断：
 
 - `PIA` 是当前最成熟、最适合作为“攻击 + 防御”主讲闭环的一条线
-- `SecMI` 是当前已明确阻塞、不能继续抢主线资源的 baseline
+- `SecMI` 已完成 full-split local execution，当前更适合作为独立 corroboration line，而不是 blocked placeholder
 - `TMIA-DM` 已归档，但当前应作为时间相关噪声信号的灰盒候选论文，而不是黑盒主线
 
 ## 当前可执行证据
@@ -48,6 +48,8 @@
 - `workspaces/gray-box/2026-04-10-pia-provenance-upstream-identity-note.md`
 - `workspaces/gray-box/2026-04-09-tmia-dm-intake.md`
 - `workspaces/gray-box/2026-04-08-secmi-blocked.md`
+- `workspaces/gray-box/2026-04-15-pia-vs-secmi-graybox-comparison.md`
+- `workspaces/gray-box/2026-04-15-graybox-ranking-sensitive-disagreement-verdict.md`
 - `workspaces/gray-box/runs/pia-cifar10-runtime-mainline-20260408-gpu-128/summary.json`
 - `workspaces/gray-box/runs/pia-cifar10-runtime-mainline-dropout-defense-20260408-gpu-128/summary.json`
 - `workspaces/gray-box/runs/pia-cifar10-runtime-mainline-20260408-gpu-256/summary.json`
@@ -60,6 +62,10 @@
 - `workspaces/gray-box/runs/pia-cifar10-runtime-mainline-dropout-defense-20260410-gpu-128-allsteps-adaptive/summary.json`
 - `workspaces/gray-box/runs/pia-cifar10-runtime-mainline-20260410-gpu-256-adaptive/summary.json`
 - `workspaces/gray-box/runs/pia-cifar10-runtime-mainline-dropout-defense-20260410-gpu-256-allsteps-adaptive/summary.json`
+- `workspaces/gray-box/runs/pia-cifar10-runtime-mainline-20260415-gpu-1024-adaptive/summary.json`
+- `workspaces/gray-box/runs/pia-cifar10-runtime-mainline-dropout-defense-20260415-gpu-1024-allsteps-adaptive/summary.json`
+- `workspaces/gray-box/runs/secmi-cifar10-gpu-full-stat-20260415-r2/summary.json`
+- `workspaces/gray-box/runs/secmi-pia-disagreement-20260415-r1/summary.json`
 - `experiments/pia-runtime-smoke-cpu/summary.json`
 - `experiments/pia-runtime-smoke-gpu/summary.json`
 - `experiments/pia-synth-smoke-cpu/summary.json`
@@ -84,10 +90,11 @@
 4. 复用 [2026-04-09-pia-signal-and-cost.md](2026-04-09-pia-signal-and-cost.md) 作为灰盒主讲线的机理与成本说明
 5. 把 repeated-query adaptive review 设成硬门槛，并比较 `off / all_steps / late_steps_only`
 6. 补同档 repeat / 多 seed 的最小稳健性说明，而不是换数据集
-7. 保持 `SecMI = blocked baseline`
-8. 保持 `TMIA-DM` 为研究候选，不提前伪装成可执行主线
-9. 复用 [2026-04-09-graybox-signal-axis-note.md](2026-04-09-graybox-signal-axis-note.md) 统一 `PIA / TMIA-DM / SimA / MoFit` 的信号轴叙事
-10. 将灰盒主结果接入统一总表并持续复用
+7. 把 `SecMI` 固定为 `independent corroboration line`，不要再写成 `blocked baseline`
+8. 将 `PIA vs SecMI` disagreement verdict 固定为 `naive fusion = no-go`
+9. 保持 `TMIA-DM` 为研究候选，不提前伪装成可执行主线
+10. 复用 [2026-04-09-graybox-signal-axis-note.md](2026-04-09-graybox-signal-axis-note.md) 统一 `PIA / TMIA-DM / SimA / MoFit` 的信号轴叙事
+11. 将灰盒主结果接入统一总表并持续复用
 
 ## 2026-04-08 新观察
 
@@ -131,7 +138,23 @@
 
 - `PIA` 当前已是 `workspace-verified`，但仍不是 `paper-aligned`
 - 当前 gray-box defense 已出现三档 favorable signal，并完成 `GPU512` 同档重复确认，但仍不是 validated privacy win
-- `SecMI` 当前 probe 已明确缺真实 `flagfile.txt`
+- `SecMI` 不再是资产 blocker，但当前仍没有 defended comparator，也不值得直接和 `PIA` 做 naive fusion 升级
+
+## 2026-04-15 新观察
+
+- `SecMI` 的 full-split local rung 已落盘：
+  - `workspaces/gray-box/runs/secmi-cifar10-gpu-full-stat-20260415-r2/summary.json`
+  - `stat AUC = 0.885833 / NNS AUC = 0.946286`
+- `PIA` 的 `1024 / 1024` adaptive-reviewed pair 已落盘：
+  - baseline `AUC = 0.838630 / ASR = 0.782715`
+  - defense `AUC = 0.825966 / ASR = 0.770508`
+- 新的 `PIA vs SecMI` disagreement run 已落盘：
+  - `workspaces/gray-box/runs/secmi-pia-disagreement-20260415-r1/summary.json`
+  - `Spearman = 0.907588 / disagreement = 0.122559 / ensemble AUC = 0.868736`
+- 当前结论：
+  - `SecMI` 已升级为灰盒独立 corroboration line
+  - `PIA` 仍是 defended gray-box mainline
+  - `PIA + SecMI` 的简单融合不值得升格为当前 gray-box 新分支
 
 ## 2026-04-10 新观察
 
@@ -158,6 +181,6 @@
 3. 用单旋钮消融解释 defense 如何削弱 `epsilon-trajectory consistency`
 4. 保持 [2026-04-09-pia-signal-and-cost.md](2026-04-09-pia-signal-and-cost.md) 与状态页一致
 5. 用 [2026-04-09-graybox-signal-axis-note.md](2026-04-09-graybox-signal-axis-note.md) 统一灰盒文献叙事
-6. 保持 `SecMI = blocked baseline`
+6. 保持 `SecMI = corroboration line`，不回退到 blocked wording
 7. 复用 [unified table](../implementation/2026-04-08-unified-attack-defense-table.md) 作为灰盒对外引用入口
-8. 只有在真实 `flagfile + checkpoint root` 到位后，才恢复 `SecMI`
+8. 不再为 naive `PIA + SecMI` ensemble 追加预算，除非先写出新的 gating hypothesis

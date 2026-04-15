@@ -46,6 +46,45 @@ def test_parse_args_defaults_to_no_explicit_seed(monkeypatch):
     assert args.seed is None
 
 
+def test_parse_args_defaults_to_adam_optimizer(monkeypatch):
+    monkeypatch.setattr(
+        "sys.argv",
+        [
+            "train_smp_lora.py",
+            "--random_init",
+            "--member_dir",
+            "member",
+            "--nonmember_dir",
+            "nonmember",
+        ],
+    )
+
+    args = train_smp_lora.parse_args()
+
+    assert args.optimizer == "adam"
+    assert args.sgd_momentum == 0.9
+
+
+def test_parse_args_accepts_optimizer_choice(monkeypatch):
+    monkeypatch.setattr(
+        "sys.argv",
+        [
+            "train_smp_lora.py",
+            "--random_init",
+            "--member_dir",
+            "member",
+            "--nonmember_dir",
+            "nonmember",
+            "--optimizer",
+            "adamw",
+        ],
+    )
+
+    args = train_smp_lora.parse_args()
+
+    assert args.optimizer == "adamw"
+
+
 def test_set_global_seed_makes_torch_draws_reproducible():
     train_smp_lora.set_global_seed(123)
     first = torch.rand(4)
@@ -190,3 +229,33 @@ def test_save_checkpoint_can_skip_training_log(tmp_path, monkeypatch):
 
     assert not (tmp_path / "step_100" / "training_log.json").exists()
     assert (tmp_path / "final" / "training_log.json").exists()
+
+
+def test_smp_lora_trainer_uses_requested_adamw_optimizer(monkeypatch):
+    monkeypatch.setattr(smp_module, "inject_lora_into_unet", lambda *args, **kwargs: {})
+    monkeypatch.setattr(smp_module, "get_lora_parameters", lambda model: [model.weight])
+
+    trainer = SMPLoRATrainer(
+        model=nn.Linear(1, 1),
+        optimizer="adamw",
+        device="cpu",
+    )
+
+    assert isinstance(trainer.lora_optimizer, torch.optim.AdamW)
+    assert isinstance(trainer.proxy_optimizer, torch.optim.AdamW)
+
+
+def test_smp_lora_trainer_uses_requested_sgd_optimizer(monkeypatch):
+    monkeypatch.setattr(smp_module, "inject_lora_into_unet", lambda *args, **kwargs: {})
+    monkeypatch.setattr(smp_module, "get_lora_parameters", lambda model: [model.weight])
+
+    trainer = SMPLoRATrainer(
+        model=nn.Linear(1, 1),
+        optimizer="sgd",
+        sgd_momentum=0.9,
+        device="cpu",
+    )
+
+    assert isinstance(trainer.lora_optimizer, torch.optim.SGD)
+    assert isinstance(trainer.proxy_optimizer, torch.optim.SGD)
+    assert trainer.lora_optimizer.param_groups[0]["momentum"] == 0.9
