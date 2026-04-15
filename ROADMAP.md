@@ -510,6 +510,9 @@ Current read:
 - first `TMIA-DM late-window GPU256` rung kept the line alive:
   - `AUC = 0.839554`, `ASR = 0.765625`
   - it is near-parity with `PIA GPU256` on headline metrics and stronger on low-FPR behavior
+- second `TMIA-DM late-window GPU256` rung confirmed scale stability:
+  - `AUC = 0.837814`, `ASR = 0.787109`
+  - the line is now repeat-confirmed at both `GPU128` and `GPU256`
 
 Tasks:
 
@@ -539,6 +542,8 @@ Canonical evidence anchor:
   - `workspaces/gray-box/2026-04-16-tmiadm-gpu-repeat-verdict.md`
 - gpu256 rung verdict:
   - `workspaces/gray-box/2026-04-16-tmiadm-gpu256-rung-verdict.md`
+- gpu256 repeat verdict:
+  - `workspaces/gray-box/2026-04-16-tmiadm-gpu256-repeat-verdict.md`
 
 Value: ⭐⭐
 
@@ -783,6 +788,7 @@ If that happens, the agent must add new branches and continue.
 | 2026-04-16 04:20 | Resolved the local `Research` CUDA blocker by switching back to `conda` env `diffaudit-research` and repairing the editable install; the first `TMIA-DM late-window GPU128` rung then landed positive at `AUC = 0.825317`, strong enough to keep the challenger line active |
 | 2026-04-16 04:30 | Repeated `TMIA-DM late-window GPU128` with `seed1`; the line stayed strong at `AUC = 0.836975`, upgrading it from a first positive GPU rung to a repeat-confirmed gray-box challenger |
 | 2026-04-16 04:40 | Scaled `TMIA-DM late-window` to `GPU256`: the line stayed strong at `AUC = 0.839554 / ASR = 0.765625`, reaching near-parity with `PIA GPU256` while improving low-FPR detection |
+| 2026-04-16 04:50 | Repeated `TMIA-DM late-window GPU256` with `seed1`; the line held at `AUC = 0.837814 / ASR = 0.787109`, confirming that the challenger remains stable at the higher rung |
 | 2026-04-16 01:55 | Fixed `WB-2` path selection on `GSA2 comparator`; target-side `attack_method=2` canaries succeeded on both member and non-member splits |
 | 2026-04-16 02:05 | Extended `WB-2` canary truth onto shadow-side: `shadow-01-member` succeeded under the same direct `GSA2` extraction contract, narrowing the next gate to `shadow-01-nonmember` |
 | 2026-04-16 02:12 | Completed the first `WB-2` shadow pair: `shadow-01-nonmember` succeeded, so `WB-2.2` is done and the next gate is a bounded `GSA2` comparator verdict |
