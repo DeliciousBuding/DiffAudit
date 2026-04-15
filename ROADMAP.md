@@ -1024,13 +1024,14 @@ Tasks:
 
 - [x] `WB-5.1` write the `DP-LoRA` protocol-overlap note against the current admitted `DDPM/CIFAR-10 + GSA/W-1` line
 - [x] `WB-5.2` define one minimal local config candidate instead of a vague future defense idea
-- [ ] `WB-5.3` define explicit `no-go` and future `gpu_release` triggers
+- [x] `WB-5.3` define explicit `no-go` and future `gpu_release` triggers
 
 Canonical evidence anchor:
 
 - `workspaces/intake/2026-04-16-phase-e-registry-refresh-and-dplora-selection-verdict.md`
 - `workspaces/white-box/2026-04-16-dplora-protocol-overlap-note.md`
 - `workspaces/white-box/2026-04-16-dplora-minimal-local-config-candidate.md`
+- `workspaces/white-box/2026-04-16-dplora-no-go-and-gpu-release-triggers.md`
 
 Selection verdict:
 
@@ -1045,6 +1046,12 @@ Selection verdict:
 - `WB-5.2` now closes as `positive but bounded`:
   - the frozen local translation candidate is `lambda=0.1 / rank=4 / epochs=10`
   - it is a local `DDPM/CIFAR10` bridge candidate, not a paper-faithful `DP-LoRA` release packet
+- `WB-5.3` now closes as `positive`
+  - no-go and future gpu-release triggers are explicit
+  - current `gpu_release` still remains `none`
+- `WB-5` current lane closes as `positive but bounded`
+  - the white-box successor candidate is now more honest and more execution-disciplined
+  - but it still remains below release and below admitted upgrade
 
 Value: ⭐⭐⭐
 Budget: CPU-only
@@ -1143,12 +1150,12 @@ This is a preference order, not a prison.
 
 ### Top now
 
-`WB-5 DP-LoRA comparability dossier` is now the current top-priority CPU-first lane.
+No currently open top-priority lane is execution-ready without a fresh candidate-generation or confirmation decision.
 
 Current release posture:
 
 - `gpu_release = none`
-- `next_gpu_candidate = none until WB-5 writes no-go and future gpu_release triggers`
+- `next_gpu_candidate = none`
 
 ### Next
 
@@ -1248,6 +1255,7 @@ If that happens, the agent must add new branches and continue.
 | 2026-04-16 08:05 | Refreshed the `Phase E` candidate registry after recent lane promotions and selected `WB-5 DP-LoRA comparability dossier` as the next live CPU-first lane; `Finding NeMo` remains `zero-GPU hold`, `TMIA-DM` is removed from intake-only candidate ordering, and `gpu_release` stays `none` |
 | 2026-04-16 08:20 | Closed `WB-5.1` as `positive but bounded`: `DP-LoRA` has real white-box defense-family overlap and a local `SMP-LoRA under DDPM/CIFAR10` bridge hint, but the current relation to admitted `GSA/W-1` remains `partial-overlap only`, so `gpu_release` still stays `none` and the next gate is the minimal local config candidate |
 | 2026-04-16 08:35 | Closed `WB-5.2` as `positive but bounded`: the minimal local translation candidate is now frozen to `lambda=0.1 / rank=4 / epochs=10` on the local `DDPM/CIFAR10 + GSA` bridge, while `gpu_release` still stays `none` and the next gate becomes explicit no-go / future gpu-release triggers |
+| 2026-04-16 08:45 | Closed `WB-5.3` and the current `WB-5` lane as `positive but bounded`: `DP-LoRA` now has explicit no-go and future GPU-release triggers, so the successor lane is governance-ready but still below release and below admitted upgrade |
 | 2026-04-16 01:55 | Fixed `WB-2` path selection on `GSA2 comparator`; target-side `attack_method=2` canaries succeeded on both member and non-member splits |
 | 2026-04-16 02:05 | Extended `WB-2` canary truth onto shadow-side: `shadow-01-member` succeeded under the same direct `GSA2` extraction contract, narrowing the next gate to `shadow-01-nonmember` |
 | 2026-04-16 02:12 | Completed the first `WB-2` shadow pair: `shadow-01-nonmember` succeeded, so `WB-2.2` is done and the next gate is a bounded `GSA2` comparator verdict |
