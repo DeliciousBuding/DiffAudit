@@ -1,6 +1,6 @@
 # DiffAudit Research ROADMAP — Continuous Autonomous Mainline
 
-> Last updated: 2026-04-15 23:10
+> Last updated: 2026-04-16 02:05
 > Mode: continuous autonomous research
 > Owner: `Researcher`
 > Rule: one active GPU task at a time, every task must end in a concrete verdict
@@ -525,13 +525,15 @@ Current live path:
 
 - `GSA2 comparator`
 - canonical evidence anchor:
-  - `workspaces/white-box/2026-04-16-whitebox-gsa2-target-side-canary.md`
+  - `workspaces/white-box/2026-04-16-whitebox-gsa2-comparator-canary-progress.md`
 
 Current read:
 
 - `Finding NeMo` is already closed negatively for the current wave
 - `Local Mirror` still collapses back into the admitted `GSA` family
 - `GSA2 attack_method=2` target-side extraction now works on both member and non-member target splits, so this is the only bounded second-line branch that remains execution-eligible right now
+- first shadow-side extension also succeeded on `shadow-01-member` under the same direct extraction contract
+- the next gating step is `shadow-01-nonmember`; until that lands, `WB-2` stays in bounded canary/comparator-progress mode rather than a promoted second-line verdict
 
 Tasks:
 
@@ -670,6 +672,7 @@ If that happens, the agent must add new branches and continue.
 | 2026-04-16 00:45 | Re-ran the semantic auxiliary challenger at `32 / 32`; metrics stayed stable and the challenger remained promotion-worthy |
 | 2026-04-16 01:35 | Closed `WB-1` positively: direct GSA gradient extraction works, and the blocker reduced to dataset-mode mismatch plus missing output-directory hygiene |
 | 2026-04-16 01:55 | Fixed `WB-2` path selection on `GSA2 comparator`; target-side `attack_method=2` canaries succeeded on both member and non-member splits |
+| 2026-04-16 02:05 | Extended `WB-2` canary truth onto shadow-side: `shadow-01-member` succeeded under the same direct `GSA2` extraction contract, narrowing the next gate to `shadow-01-nonmember` |
 
 ---
 
