@@ -764,7 +764,7 @@ Canonical evidence anchor:
 
 Value: ⭐⭐
 
-#### ⬜ `GB-4` Disagreement exploitation
+#### ✅ `GB-4` Disagreement exploitation
 
 Goal: if a second family lands, determine whether disagreement is useful or redundant
 
@@ -788,8 +788,8 @@ Current read:
 Tasks:
 
 - [x] `GB-4.1` compare on aligned split
-- [ ] `GB-4.2` measure correlation and disagreement
-- [ ] `GB-4.3` test whether disagreement improves actionability
+- [x] `GB-4.2` measure correlation and disagreement
+- [x] `GB-4.3` test whether disagreement improves actionability
 
 Canonical evidence anchor:
 
@@ -797,6 +797,21 @@ Canonical evidence anchor:
 - `workspaces/gray-box/2026-04-16-pia-vs-tmiadm-operating-point-comparison.md`
 - `workspaces/gray-box/2026-04-16-pia-vs-tmiadm-defended-operating-point-comparison.md`
 - `workspaces/gray-box/2026-04-16-pia-vs-tmiadm-temporal-striding-defended-comparison.md`
+- `workspaces/gray-box/2026-04-16-pia-vs-tmiadm-disagreement-exploitation-verdict.md`
+
+Verdict:
+
+- current `GB-4` round is `positive but bounded`
+- `PIA` and `TMIA-DM` are not rank-identical:
+  - undefended `Spearman = 0.604766 / 0.651955`
+  - defended `GPU256 Spearman = 0.302501`
+- top-rank overlap remains partial rather than collapsed:
+  - undefended `top-32 overlap = 0.3125 / 0.21875`
+  - defended `GPU256 top-32 overlap = 0.0`
+- bounded same-split actionability is now positive:
+  - z-scored sum beats the best single method on both undefended aligned checks
+  - it also slightly beats defended `PIA` on the defended `GPU256` check
+- keep the result at `offline same-split actionability gain`, not immediate headline replacement and not GPU-release evidence
 
 Value: ⭐⭐
 
