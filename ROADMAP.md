@@ -541,6 +541,9 @@ Current read:
 - challenger-specific `late_steps_only` dropout ablation is now classified:
   - on `TMIA-DM late-window GPU128`, it only reduced `AUC` from `0.825317` to `0.820984`
   - it is weaker than `all_steps` and should remain an ablation, not a new defended mainline
+- challenger-specific `timestep-jitter(radius=10)` defense is now rejected:
+  - on `TMIA-DM late-window GPU128`, it raised `AUC` from `0.825317` to `0.850098`
+  - it strengthens the challenger and should not receive more budget in its current form
 
 Tasks:
 
@@ -582,6 +585,8 @@ Canonical evidence anchor:
   - `workspaces/gray-box/2026-04-16-tmiadm-dropout-defense-gpu256-repeat-verdict.md`
 - late-steps dropout defense verdict:
   - `workspaces/gray-box/2026-04-16-tmiadm-latesteps-dropout-defense-verdict.md`
+- timestep-jitter defense verdict:
+  - `workspaces/gray-box/2026-04-16-tmiadm-timestep-jitter-defense-verdict.md`
 
 Value: ⭐⭐
 
@@ -841,8 +846,9 @@ If that happens, the agent must add new branches and continue.
 | 2026-04-16 05:35 | Wrote the defended gray-box operating-point comparison: `PIA` stays the defended headline by continuity, but `TMIA-DM late-window` remains the strongest defended challenger rather than being neutralized by dropout |
 | 2026-04-16 05:45 | Scaled defended `TMIA-DM late-window` to `GPU256`: the line stayed positive at `AUC = 0.825867`, slightly trailing defended `PIA` on headline metrics but remaining much stronger on low-FPR behavior |
 | 2026-04-16 05:55 | Repeated defended `TMIA-DM late-window GPU256` with `seed1`; the line held at `AUC = 0.82164 / ASR = 0.765625`, confirming that the defended challenger also remains stable at the higher rung |
-| 2026-04-16 06:10 | Tested a `late_steps_only` dropout ablation targeted at `TMIA-DM late-window`; it was weaker than `all_steps`, so the defended headline stays on `all_steps` and the new result is recorded as a narrow ablation only |
 | 2026-04-16 06:00 | Synchronized the unified attack-defense artifacts to the new gray-box reality: `PIA` remains headline, `TMIA-DM late-window` is now the strongest challenger, and defended gray-box stays multi-family |
+| 2026-04-16 06:10 | Tested a `late_steps_only` dropout ablation targeted at `TMIA-DM late-window`; it was weaker than `all_steps`, so the defended headline stays on `all_steps` and the new result is recorded as a narrow ablation only |
+| 2026-04-16 06:20 | Tested a `timestep-jitter(radius=10)` defense targeted at `TMIA-DM late-window`; it increased the challenger signal (`AUC = 0.850098`), so the hypothesis is rejected as a counterproductive defense |
 | 2026-04-16 01:55 | Fixed `WB-2` path selection on `GSA2 comparator`; target-side `attack_method=2` canaries succeeded on both member and non-member splits |
 | 2026-04-16 02:05 | Extended `WB-2` canary truth onto shadow-side: `shadow-01-member` succeeded under the same direct `GSA2` extraction contract, narrowing the next gate to `shadow-01-nonmember` |
 | 2026-04-16 02:12 | Completed the first `WB-2` shadow pair: `shadow-01-nonmember` succeeded, so `WB-2.2` is done and the next gate is a bounded `GSA2` comparator verdict |
