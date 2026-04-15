@@ -1,213 +1,613 @@
-# DiffAudit Research ROADMAP — P0-P3 Reopened Queue
+# DiffAudit Research ROADMAP — Continuous Autonomous Mainline
 
-> Last updated: 2026-04-15
-> Mode: reopened research after frozen competition package
-> Rule: one GPU task at a time, every task must produce a concrete verdict
+> Last updated: 2026-04-15 23:10
+> Mode: continuous autonomous research
+> Owner: `Researcher`
+> Rule: one active GPU task at a time, every task must end in a concrete verdict
 
----
+## 0. Positioning
 
-## 0. How To Use This Roadmap
+This roadmap is not a one-shot sprint checklist.
 
-- Checked items are already done.
-- Unchecked items are active backlog.
-- Always pick the highest-priority unchecked item unless the user explicitly reprioritizes.
-- New experiments must compare against the frozen baseline package instead of silently replacing it.
-- When a task finishes, update this file and the relevant `workspaces/<track>/runs/` artifacts immediately.
+It is the operating backlog for a long-running `ResearcherAgent` that should keep pushing:
 
-Frozen reference package:
+- model mainline
+- innovation funnel
+- system-consumable evidence
+- GPU utilization quality
+- long-horizon research depth
 
-- human index: `workspaces/implementation/2026-04-15-final-delivery-index.md`
-- machine index: `workspaces/implementation/artifacts/final-delivery-index.json`
-- archived competition sprint roadmap:
-  - `legacy/2026-04-15-competition-sprint-roadmap-archived.md`
-- download master list:
-  - `docs/research-download-master-list.md`
-- download manifest:
-  - `D:\Code\DiffAudit\Download\manifests\research-download-manifest.json`
+`2026-04-19` remains a real 4C deadline, but it is **not** a stop condition and it is **not** a reason to freeze research.
 
----
+The correct reading is:
 
-## 1. Frozen Baseline Completed
-
-- [x] Black-box admitted headline exists: `Recon DDIM public-100 step30`, `AUC 0.849`
-- [x] Black-box best single-metric rung exists: `Recon public-50 step10`, `AUC 0.866`
-- [x] Black-box corroboration exists: `CLiD` local `100 / 100` target-family rungs
-- [x] Gray-box runtime mainline exists: `PIA 512 / 512` and `1024 / 1024`
-- [x] Gray-box defended comparator exists: stochastic dropout `all_steps`
-- [x] Gray-box corroboration exists: `SecMI stat 0.885833`, `NNS 0.946286`
-- [x] White-box upper bound exists: `GSA 0.998192`
-- [x] White-box defended comparator exists: `DPDM W-1 strong-v3 0.488783`
-- [x] Unified evidence table exists
-- [x] Attack-defense matrix exists
-- [x] Threat-model comparison exists
-- [x] Competition answer pack / brief / FAQ / speaker notes exist
-- [x] Presentation manifest / checksums / signoff / handoff exist
+- before `2026-04-19`, the agent should bias toward work that can also improve 4C narrative, material quality, and system-consumable structure;
+- after `2026-04-19`, the agent continues without reset and expands toward National Innovation work;
+- if this roadmap is exhausted, the agent must expand it instead of declaring idle completion.
 
 ---
 
-## 2. P0 — Highest-Value Reopen Tasks
+## 1. Operating Contract
 
-### Download and staging
+### 1.1 Root alignment
 
-- [ ] `P0-DL-1` Verify all first-wave assets from `docs/research-download-master-list.md` are present in `D:\Code\DiffAudit\Download\...`
-- [ ] `P0-DL-2` Ingest any newly downloaded assets into repo-consumable locations or config pointers
-- [ ] `P0-DL-3` Record exact asset provenance / path mapping for anything newly staged
+This roadmap must stay aligned with root-level `D:\Code\DiffAudit\ROADMAP.md`, but it is not limited to "4C sprint mode".
 
-### Gray-box defense diversification
+For `Research`, root alignment means:
 
-Dependencies:
+- respect near-term delivery pressure;
+- keep generating research outcomes that can change project-level story;
+- continue building the post-4C mainline instead of pausing;
+- keep `Research -> Runtime -> Platform` consumption path healthy.
 
-- `SH-DS-01`
-- `GB-WT-01` preferred if a SecMI-linked defense route is used
+### 1.2 What the agent is optimizing
 
-- [ ] `P0-GD-1` Choose one gray-box defense mechanism that is materially different from stochastic dropout
-- [ ] `P0-GD-2` Write a short hypothesis note explaining why this defense might change ranking structure, not just threshold
-- [ ] `P0-GD-3` Implement a smoke/probe run on existing CIFAR-10 gray-box assets
-- [ ] `P0-GD-4` If smoke is promising, run a mainline comparator and write `summary.json`
-- [ ] `P0-GD-5` Update gray-box comparison note and attack-defense matrix with the verdict
+The `ResearcherAgent` should optimize for all of the following together:
 
-### Black-box mitigation line
+1. stronger method diversity
+2. stronger defense diversity
+3. better research truth-to-system read path
+4. higher GPU utilization quality
+5. lower wasted GPU hours
+6. less operator babysitting
+7. more innovation density per week
 
-Dependencies:
+### 1.3 Hard constraints
 
-- `SH-DS-02`
-- `SH-DS-03`
-- `SH-WT-01`
-- `SH-WT-02`
+- only one active GPU task at a time
+- every task must have a bounded hypothesis
+- every task must have a bounded budget
+- every task must end as one of:
+  - `positive`
+  - `negative`
+  - `no-go`
+  - `blocked`
+  - `needs-assets`
+- no repeated sweep without a new reason
+- no "looks promising" without recorded evidence
+- if a task stalls, skip it, document it, and move to the next highest-value task
 
-- [ ] `P0-BM-1` Choose one realistic black-box mitigation direction
-- [ ] `P0-BM-2` Define the black-box threat model and utility constraints before implementation
-- [ ] `P0-BM-3` Implement a minimal probe against the current `Recon / CLiD` asset stack
-- [ ] `P0-BM-4` If the mitigation is viable, run a comparator and record attack degradation
-- [ ] `P0-BM-5` Write a short note explaining whether this is competition-usable or only exploratory
+### 1.4 Broad exploration policy
 
-### CLiD paper-faithful upgrade
+Research is explicitly allowed to try multiple directions in parallel over time.
 
-Dependencies:
+Not only:
 
-- `SH-WT-01`
-- `SH-WT-02`
-- `BB-SUP-02` if obtainable
+- black-box mainline
+- gray-box mainline
+- white-box mainline
 
-- [ ] `P0-CL-1` Audit the current local `CLiD` bridge against the paper protocol
-- [ ] `P0-CL-2` List the minimum missing pieces needed to honestly tighten the boundary
-- [ ] `P0-CL-3` Execute one paper-alignment upgrade step instead of another same-family target rung
-- [ ] `P0-CL-4` Decide whether `CLiD` stays “local corroboration” or can be promoted toward “paper-aligned local benchmark”
+Also:
 
----
+- cross-box analysis
+- fusion and calibration
+- feature-space or caption-space signals
+- transfer or portability probes
+- mitigation-aware evaluation
+- quality-cost analysis
+- system-consumable schema and comparison work
+- any new paper-backed or original idea that can be tested with bounded cost
 
-## 3. P1 — New Attack Families
+### 1.5 Canonical startup contract
 
-### Gray-box new family
+Fresh sessions should always read in this order:
 
-Dependencies:
-
-- relevant `GB-PAP-*` asset for the chosen family
-
-- [ ] `P1-GA-1` Pick exactly one of `SIMA / MoFit / Noise-as-a-probe / SIDe / structural memorization`
-- [ ] `P1-GA-2` Produce a paper-to-code feasibility note
-- [ ] `P1-GA-3` Implement a minimal prototype
-- [ ] `P1-GA-4` Run a smoke/probe and record either signal or negative result
-- [ ] `P1-GA-5` Decide whether the line deserves a mainline GPU run
-
-### Black-box new family
-
-Dependencies:
-
-- `SH-DS-02`
-- `SH-WT-01`
-- `SH-WT-02`
-- `SH-WT-03` if caption-side black-box probing is used
-
-- [ ] `P1-BA-1` Pick one black-box direction beyond `Recon + CLiD`
-- [ ] `P1-BA-2` Define assets, access assumptions, and scoring rule
-- [ ] `P1-BA-3` Implement a small-sample probe
-- [ ] `P1-BA-4` If signal exists, run a proper comparator against current black-box baselines
-
-### White-box second line
-
-Dependencies:
-
-- `WB-SUP-01` preferred for `NeMo`
-- `WB-PAP-01` if falling through to `Local Mirror`
-
-- [ ] `P1-WA-1` Turn `NeMo` from adapter-ready into a real executed verdict
-- [ ] `P1-WA-2` If `NeMo` blocks, document the blocker precisely and move to `Local Mirror`
-- [ ] `P1-WA-3` Produce one real “2nd white-box line” verdict, positive or negative
+1. `D:\Code\DiffAudit\ROADMAP.md`
+2. `D:\Code\DiffAudit\Research\ROADMAP.md`
+3. `D:\Code\DiffAudit\Research\AGENTS.md`
+4. `D:\Code\DiffAudit\Research\docs\researcher-agent-architecture.md`
+5. `D:\Code\DiffAudit\Research\README.md`
+6. `D:\Code\DiffAudit\Research\docs\comprehensive-progress.md`
+7. `D:\Code\DiffAudit\Download\manifests\research-download-manifest.json`
+8. lane-specific workspace docs only after the task is narrowed
 
 ---
 
-## 4. P2 — Deepening Existing Lines
+## 2. Self-Cycling Loop
 
-### PIA / SecMI deepening
+Every long-running session should execute this loop:
 
-- [ ] `P2-GS-1` Extend `SecMI` beyond corroboration by testing defended or disagreement-analysis variants
-- [ ] `P2-GS-2` Reopen `PIA` only if the new variable is genuinely different from scale-only reruns
-- [ ] `P2-GS-3` If reopened, document the hypothesis before the run
+1. `Sense`
+   - read root roadmap
+   - read this roadmap
+   - inspect latest runs, blockers, challenger queue, comparison artifacts
+2. `Select`
+   - choose the highest-value task, not merely the first unchecked box
+3. `Delegate` (optional)
+   - open subagents only if they create real leverage
+4. `Execute`
+   - probe -> smoke -> mainline, or blocker diagnosis, or CPU-side integration
+5. `Review`
+   - critique the result, critique the direction, critique the next step
+6. `Sync`
+   - update `summary.json`, roadmap, notes, and any system-consumable artifact
+7. `Expand`
+   - if the current roadmap is insufficient, add new tasks and continue
 
-### GSA deepening
-
-- [ ] `P2-WG-1` Test one meaningful `GSA` feature upgrade
-- [ ] `P2-WG-2` Compare the upgraded feature against current `GSA` baseline
-- [ ] `P2-WG-3` Keep or reject the upgrade with a written verdict
-
-### Recon optimization
-
-- [ ] `P2-BR-1` Reopen `Recon` only with a concrete hypothesis (`eta`, fusion, loss, or timestep logic)
-- [ ] `P2-BR-2` Run one bounded probe
-- [ ] `P2-BR-3` Promote only if it changes the black-box story materially
-
----
-
-## 5. P3 — Cross-Cutting / Stretch
-
-- [ ] `P3-X-1` Try one cross-method ensemble that still preserves an honest threat model
-- [ ] `P3-X-2` Try one transfer/generalization question across model families or datasets
-- [ ] `P3-X-3` Try one temporal or training-trajectory analysis question
-- [ ] `P3-X-4` Produce at least one judge-friendly visualization from any successful reopened line
+This loop never stops at "the listed tasks are done for now" if new high-value work is visible.
 
 ---
 
-## 6. Reopen Guardrails
+## 3. Optional Subagent Policy
 
-- [ ] Do not run two GPU jobs at once
-- [ ] Do not rerun another same-family `PIA` sweep without a new hypothesis
-- [ ] Do not rerun another target-side `CLiD` rung just to increase count
-- [ ] Do not spend GPU on cosmetic scale-up that does not change the narrative
-- [ ] Do not overwrite frozen baseline package semantics with exploratory results
+The `ResearcherAgent` is allowed to open subagents, but should not do so mechanically every turn.
 
-These are process rules, not deliverables. Keep them checked unless you explicitly violate one and explain why.
+Use subagents when they create real parallel leverage:
+
+### 3.1 Good subagent use cases
+
+- `paper scout`
+  - survey a paper family, extract the shortest feasible implementation path
+- `code reviewer`
+  - inspect current implementation for hidden bugs, weak assumptions, or drift from the method hypothesis
+- `experiment auditor`
+  - review a finished run and challenge whether the verdict is honest
+- `platform handoff reviewer`
+  - identify what fields, boundaries, or summaries should be exposed to Platform or Runtime
+- `backlog critic`
+  - challenge whether current roadmap priorities are still correct
+
+### 3.2 Subagent defaults
+
+- prefer background execution, not blocking the main loop
+- prefer `gpt-5.4` with `high` reasoning effort
+- wait less often, but when waiting is necessary, wait longer instead of busy-polling
+- use subagents for focused, bounded questions
+- do not spawn subagents for work the main agent can do faster directly
+
+### 3.3 Subagent output contract
+
+Default assumption:
+
+- subagents are read-only unless a write scope is explicitly assigned
+
+Every subagent should return:
+
+- exact question answered
+- evidence or files inspected
+- verdict
+- exact files needing changes, if any
+- next action recommendation
+
+Truth integration rule:
+
+- subagent output is advisory until the main agent reviews it
+- only the main agent can promote output into roadmap truth, artifact truth, or mainline wording
+
+### 3.4 Required review cadence
+
+At meaningful checkpoints, the main agent should trigger at least one self-review action:
+
+- before starting a costly GPU run
+- after a surprising result
+- after a blocker diagnosis
+- before promoting a challenger into a more official line
+- when the roadmap begins to feel stale
 
 ---
 
-## 7. Promotion Criteria
+## 4. Current Strategic Picture
 
-A reopened result is worth promoting only if it changes at least one of:
+### 4.1 Black-box
 
-1. attack strength
-2. defense story
-3. boundary quality
-4. paper-faithful alignment
-5. cross-method diversity
+Current truth:
 
-If it changes none of the above, log it as:
+- `recon` is the strongest main evidence line
+- `CLiD` provides strong local corroboration but still has boundary-quality work left
+- a second truly different black-box family is still not firmly landed
 
-- `failed`
-- `no-go`
-- or `negative but useful`
+Current need:
+
+- new signal family
+- mitigation-aware evaluation
+- better boundary quality
+
+### 4.2 Gray-box
+
+Current truth:
+
+- `PIA` is the strongest mainline
+- `stochastic-dropout(all_steps)` is the current defended story
+- `SecMI` exists, but diversity is not yet sufficient
+
+Current need:
+
+- second defense mechanism
+- ranking-sensitive variable
+- another truly different family or a stronger disagreement story
+
+### 4.3 White-box
+
+Current truth:
+
+- `GSA` is a very strong white-box line
+- `W-1 = DPDM` gives a meaningful defended comparator
+- second white-box line is still unresolved
+
+Current need:
+
+- blocker resolution or decisive blocker classification
+- second-line verdict
+- stronger defense comparison breadth
+
+### 4.4 Cross-box and system-consumable layer
+
+Current truth:
+
+- comparison table exists
+- challenger queue exists
+- evidence chain is already more structured than before
+
+Current need:
+
+- keep all new outcomes consumable by higher layers
+- keep narrative and machine-readable structure aligned
+- keep expanding cross-box reasoning, not just per-box silos
 
 ---
 
-## 8. Completion Rule For This Reopened Roadmap
+## 5. Task Selection Heuristic
 
-This reopened roadmap is complete only when all of the following are true:
+When multiple unchecked tasks are available, choose in this order:
 
-- [ ] At least one materially different new gray-box defense line has a verdict
-- [ ] At least one credible black-box mitigation line has a verdict
-- [ ] At least one paper-faithful upgrade attempt has a verdict
-- [ ] At least one newly implemented attack family beyond the frozen package has a verdict
-- [ ] At least one second white-box line (`NeMo` or equivalent) has a real verdict
-- [ ] Cross-cutting section has at least one useful result or negative result
+1. the task with the strongest blocker leverage
+2. the task most likely to change a project-level story soon
+3. the task most likely to create a new attack or defense verdict
+4. the task most likely to improve system-consumable structure
+5. the task most likely to open a new high-value branch
+6. only then same-family optimization
+
+If two tasks are similar, prefer:
+
+- lower setup cost
+- lower GPU cost
+- higher interpretability
+- higher reuse by future work
+- lower risk of locking the machine for too long
+
+---
+
+## 6. Active Backlog
+
+### 6.1 Cross-box integration and system sync
+
+#### ✅ `X-1` Unified cross-box comparison table
+
+- status: completed
+- keep maintained, do not treat as frozen forever
+
+#### ✅ `X-2` Live challenger queue
+
+- status: completed
+- must be updated when new verdicts or new ideas appear
+
+#### ⬜ `X-3` Keep system-consumable structure in sync
+
+Goal:
+
+- keep admitted/mainline/challenger boundaries readable
+- keep comparison artifacts current
+- keep higher-layer consumers able to interpret new outcomes
+
+Tasks:
+
+- [ ] `X-3.1` audit whether latest verdicts are reflected in comparison artifacts
+- [ ] `X-3.2` audit whether latest verdicts change project narrative
+- [ ] `X-3.3` mark any Platform/Runtime-facing field additions or boundary changes
+
+Value: ⭐⭐⭐
+Budget: CPU-only
+
+Artifact rule for `X-*`, `INF-*`, `intake`, or other non-run tasks:
+
+- they do not need to force a fake `runs/` directory
+- but they must leave one canonical evidence anchor under the appropriate workspace lane
+- the main agent must explicitly name that anchor in its update
+
+#### ⬜ `X-4` Cross-box exploration lane
+
+Goal: allow work that spans boxes instead of forcing every idea into one bucket
+
+Candidate directions:
+
+- [ ] `X-4.1` cross-box agreement analysis
+- [ ] `X-4.2` score calibration or fusion with bounded hypothesis
+- [ ] `X-4.3` transfer or portability probe when assets permit
+- [ ] `X-4.4` visualization or decision-quality analysis that changes project understanding
+
+Value: ⭐⭐⭐
+Budget: bounded CPU-first, GPU only if justified
+
+---
+
+### 6.2 Black-box expansion
+
+#### ⬜ `BB-1` Second-signal black-box expansion
+
+Goal: land a second black-box direction that is not just a mild variant of current image-similarity lines
+
+Tasks:
+
+- [ ] `BB-1.1` caption-space probe
+- [ ] `BB-1.2` feature-space probe
+- [ ] `BB-1.3` timestep-selective reconstruction probe
+- [ ] `BB-1.4` prompt-response consistency probe
+
+Promotion standard:
+
+- must produce a verdict
+- if positive, must be stronger than "interesting but noisy"
+
+Value: ⭐⭐⭐
+
+#### ⬜ `BB-2` Scoring and calibration upgrades
+
+Goal: improve black-box signal quality without pretending every scoring tweak is a new method family
+
+Tasks:
+
+- [ ] `BB-2.1` MSE-weighted or multi-score challenger
+- [ ] `BB-2.2` bounded fusion experiments
+- [ ] `BB-2.3` document whether calibration changes ranking or only threshold
+
+Value: ⭐⭐
+
+#### ⬜ `BB-3` CLiD boundary-quality upgrade
+
+Goal: improve the honesty and strength of the CLiD boundary claim
+
+Tasks:
+
+- [ ] `BB-3.1` review remaining boundary gaps
+- [ ] `BB-3.2` perform one minimum honest upgrade
+- [ ] `BB-3.3` update verdict wording and evidence note
+
+Value: ⭐⭐
+
+#### ⬜ `BB-4` Mitigation-aware evaluation
+
+Goal: test black-box methods under at least one more realistic mitigation condition
+
+Tasks:
+
+- [ ] `BB-4.1` design protocol
+- [ ] `BB-4.2` select mitigation
+- [ ] `BB-4.3` evaluate recon + CLiD or new challenger
+- [ ] `BB-4.4` record quality-cost-utility trade-off
+
+Value: ⭐⭐
+
+---
+
+### 6.3 Gray-box expansion
+
+#### ⬜ `GB-1` Second gray-box defense
+
+Goal: avoid a single defended story dominating gray-box forever
+
+Tasks:
+
+- [ ] `GB-1.1` shortlist materially different defense mechanisms
+- [ ] `GB-1.2` pick one bounded candidate
+- [ ] `GB-1.3` test against PIA + SecMI when possible
+- [ ] `GB-1.4` record defended verdict
+
+Value: ⭐⭐⭐
+
+#### ✅ `GB-2` Ranking-sensitive variable
+
+Goal: find something that changes ranking, not just score scale
+
+Tasks:
+
+- [x] `GB-2.1` analyze disagreement patterns
+- [x] `GB-2.2` propose bounded variable
+- [x] `GB-2.3` probe with minimal budget
+- [x] `GB-2.4` record verdict
+
+Status:
+
+- completed on the current `PIA vs SecMI` branch
+- canonical evidence anchor:
+  - `workspaces/gray-box/2026-04-15-graybox-ranking-sensitive-disagreement-verdict.md`
+
+Verdict:
+
+- same-split `PIA` and `SecMI` scores are highly correlated (`Spearman = 0.907588`)
+- disagreement exists (`12.2559%`), but simple score averaging does not beat the better single method
+- current gray-box ranking-sensitive branch is therefore `negative but useful`, not promotion-worthy for naive fusion
+
+Reopen rule:
+
+- only reopen with a new bounded hypothesis such as class-conditional disagreement or confidence-gated switching
+- do not spend more budget on another naive score ensemble
+
+Value: ⭐⭐⭐
+
+#### ⬜ `GB-3` New gray-box family
+
+Goal: test whether another family is worth joining the long-term mainline
+
+Candidate directions:
+
+- SIMA
+- MoFit
+- noise-as-probe
+- SIDe
+- another paper-backed gray-box mechanism
+
+Tasks:
+
+- [ ] `GB-3.1` choose one family
+- [ ] `GB-3.2` write feasibility note
+- [ ] `GB-3.3` implement probe or smoke
+- [ ] `GB-3.4` record verdict
+
+Value: ⭐⭐
+
+#### ⬜ `GB-4` Disagreement exploitation
+
+Goal: if a second family lands, determine whether disagreement is useful or redundant
+
+Tasks:
+
+- [ ] `GB-4.1` compare on aligned split
+- [ ] `GB-4.2` measure correlation and disagreement
+- [ ] `GB-4.3` test whether disagreement improves actionability
+
+Value: ⭐⭐
+
+---
+
+### 6.4 White-box expansion
+
+#### ⬜ `WB-1` Gradient extraction blocker resolution
+
+Goal: decide whether the current white-box blocker is solvable or should become a hard no-go for now
+
+Tasks:
+
+- [ ] `WB-1.1` run gradient extraction directly
+- [ ] `WB-1.2` capture root cause
+- [ ] `WB-1.3` fix or classify blocker
+- [ ] `WB-1.4` verify with one minimal job
+
+Value: ⭐⭐⭐
+
+#### ⬜ `WB-2` Second white-box line verdict
+
+Goal: land or reject a second white-box line with evidence
+
+Possible branches:
+
+- GSA2 comparator
+- NeMo if blocker removed
+- another non-GSA family
+
+Tasks:
+
+- [ ] `WB-2.1` choose path based on `WB-1`
+- [ ] `WB-2.2` implement and test
+- [ ] `WB-2.3` record verdict
+
+Value: ⭐⭐
+
+#### ⬜ `WB-3` White-box defense breadth
+
+Goal: broaden white-box defense comparison beyond the current single defended comparator
+
+Tasks:
+
+- [ ] `WB-3.1` survey alternatives beyond DPDM
+- [ ] `WB-3.2` pick one bounded defense
+- [ ] `WB-3.3` test against GSA
+- [ ] `WB-3.4` record attack degradation verdict
+
+Value: ⭐⭐
+
+#### ⬜ `WB-4` White-box feature/trajectory upgrade
+
+Goal: revisit deeper white-box analysis if and only if blocker cost becomes reasonable
+
+Tasks:
+
+- [ ] `WB-4.1` write hypothesis first
+- [ ] `WB-4.2` run lightweight probe
+- [ ] `WB-4.3` record whether it changes story
+
+Value: ⭐
+
+---
+
+### 6.5 Infrastructure, automation, and agent leverage
+
+#### ✅ `INF-1` CLIP/BLIP loading fixes
+
+- status: completed
+- keep documented and reusable
+
+#### ⬜ `INF-2` Research automation health
+
+Goal: make the repository easier for a long-running autonomous agent to operate
+
+Tasks:
+
+- [ ] `INF-2.1` identify friction points in current run/update workflow
+- [ ] `INF-2.2` add bounded automation where it reduces repeated human babysitting
+- [ ] `INF-2.3` improve run artifact consistency or summary templates if needed
+
+Value: ⭐⭐⭐
+
+#### ⬜ `INF-3` Subagent leverage experiments
+
+Goal: determine when optional subagents actually improve research throughput
+
+Tasks:
+
+- [ ] `INF-3.1` test paper-scout subagent workflow
+- [ ] `INF-3.2` test code-review subagent workflow
+- [ ] `INF-3.3` test backlog-critic or experiment-auditor workflow
+- [ ] `INF-3.4` record what should become standard and what should stay optional
+
+Value: ⭐⭐
+
+---
+
+## 7. Near-Term Priority Ladder
+
+This is a preference order, not a prison.
+
+### Top now
+
+1. ⬜ `WB-1` gradient extraction blocker resolution
+2. ⬜ `BB-1` second-signal black-box expansion
+3. ⬜ `GB-1` second gray-box defense
+4. ⬜ `X-3` system-consumable sync
+5. ⬜ `BB-3` CLiD boundary-quality upgrade
+
+### Next
+
+6. ⬜ `X-4` cross-box exploration lane
+7. ⬜ `WB-2` second white-box verdict
+8. ⬜ `INF-2` research automation health
+9. ⬜ `GB-3` new gray-box family
+
+### Then
+
+10. ⬜ `BB-4` mitigation-aware black-box evaluation
+11. ⬜ `WB-3` white-box defense breadth
+12. ⬜ `INF-3` subagent leverage experiments
+
+---
+
+## 8. Success Conditions
+
+### Near-term health
+
+- at least one more high-value verdict lands
+- GPU is not idle without a stated reason
+- GPU is not wasted on low-value repeats
+- latest outcomes remain consumable by higher layers
+
+### Long-term health
+
+- each threat model has at least two meaningfully different lines
+- each threat model has more than one defense story or explicit reason why not
+- blocker-heavy areas are either unblocked or honestly frozen
+- roadmap keeps expanding rather than stalling
+
+### Never-call-it-done rule
+
+This roadmap is not "done" when the current boxes are checked.
+
+It is only in a temporary resting state if:
+
+- the current backlog has no high-value unchecked work;
+- the challenger queue has been mined;
+- blockers are honestly documented;
+- and no obvious next branch is available.
+
+If that happens, the agent must add new branches and continue.
 
 ---
 
@@ -215,6 +615,14 @@ This reopened roadmap is complete only when all of the following are true:
 
 | Date | Change |
 |------|--------|
-| 2026-04-15 | Archived the previous competition-sprint roadmap to `legacy/2026-04-15-competition-sprint-roadmap-archived.md` |
-| 2026-04-15 | Replaced the root roadmap with a P0-P3 checkbox-based reopened full-exploration roadmap |
-| 2026-04-15 | Added a download master list, machine-readable download manifest, and explicit asset dependencies for reopened tasks |
+| 2026-04-15 19:30 | Archived earlier P0-P3 roadmap and opened long-horizon mainline phase |
+| 2026-04-15 22:30 | Added root alignment and broad exploration rules |
+| 2026-04-15 23:10 | Reorganized roadmap into continuous autonomous research system with self-cycling loop, optional subagent policy, and long-running backlog expansion rules |
+| 2026-04-15 23:55 | Closed `GB-2` with the `PIA vs SecMI` disagreement verdict; promoted `SecMI` to corroboration line and rejected naive gray-box fusion |
+
+---
+
+## 10. Archived Roadmaps
+
+- `legacy/2026-04-15-P0-P3-completed-roadmap.md`
+- `legacy/2026-04-15-competition-sprint-roadmap-archived.md`
