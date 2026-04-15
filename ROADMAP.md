@@ -375,11 +375,26 @@ Value: ⭐⭐⭐
 
 Goal: improve black-box signal quality without pretending every scoring tweak is a new method family
 
+Current read:
+
+- inside the current `semantic-auxiliary-classifier` challenger, the multi-feature logistic score is not beating the simplest single score:
+  - on `16 / 16`, logistic `AUC = 0.910156` while `mean_cos = 0.945312`
+  - on `32 / 32`, logistic `AUC = 0.90625` while `mean_cos = 0.916992`
+- rank agreement is also very high:
+  - `Spearman(logistic, mean_cos) = 0.973607 / 0.978709`
+- the current black-box scoring result is therefore `negative but useful`:
+  - the present calibration stack mostly smooths or rescales the same ordering
+  - it does not yet justify a new scoring-based challenger promotion
+
 Tasks:
 
-- [ ] `BB-2.1` MSE-weighted or multi-score challenger
+- [x] `BB-2.1` MSE-weighted or multi-score challenger
 - [ ] `BB-2.2` bounded fusion experiments
-- [ ] `BB-2.3` document whether calibration changes ranking or only threshold
+- [x] `BB-2.3` document whether calibration changes ranking or only threshold
+
+Canonical evidence anchor:
+
+- `workspaces/black-box/2026-04-16-blackbox-semantic-aux-scoring-verdict.md`
 
 Value: ⭐⭐
 

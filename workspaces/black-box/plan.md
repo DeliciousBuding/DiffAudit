@@ -7,6 +7,7 @@
 - `status`: 进行中，`recon` 的 black-box 主证据、最佳单指标参考和 `variation` 次主线口径已冻结；`semantic-auxiliary-classifier` 已落成当前 leading new-family challenger；当前 `variation` 的真实 API 资产 probe 已正式确认 blocked；`TMIA-DM` 已完成 intake，但被判定为灰盒候选而非黑盒主线
 - `blocked by`: `recon` 公开资产包（DOI: `10.5281/zenodo.13371475`）的语义 gate 现已 machine-audited 到 `proxy-shadow-member`，但仍未升级到 paper-aligned；`variation` 真实 query image root 仍缺；`Kandinsky 10/10` 当前本机链路仍异常慢
 - `next command`: no immediate black-box rerun; keep `Recon / CLiD / semantic-auxiliary-classifier` wording consistent across `blackbox-status`, `reproduction-status`, `comprehensive-progress`, and `ROADMAP`; turn `variation` recovery into an explicit asset contract instead of speculative reruns
+- `next command`: no immediate black-box rerun; keep `Recon / CLiD / semantic-auxiliary-classifier` wording consistent across `blackbox-status`, `reproduction-status`, `comprehensive-progress`, and `ROADMAP`; treat `semantic-aux` multi-feature scoring as `negative but useful` unless a new feature family appears; turn `variation` recovery into an explicit asset contract instead of speculative reruns
 - `last updated`: 2026-04-16
 
 ## 统一规划定位
@@ -101,9 +102,14 @@
   - `AUC = 0.90918`
   - `ASR = 0.84375`
   - `TPR@1%FPR = 0.25`
+- 对现有 `semantic-auxiliary-classifier` 的评分层又做了 bounded review：
+  - `16 / 16` 上 logistic `AUC = 0.910156`，但单一 `mean_cos = 0.945312`
+  - `32 / 32` 上 logistic `AUC = 0.90625`，但单一 `mean_cos = 0.916992`
+  - `Spearman(logistic, mean_cos) = 0.973607 / 0.978709`
 - 该结果与上一档 `16 / 16` comparator (`AUC = 0.910156`) 基本同向稳定，没有出现放大后信号塌缩
 - 当前结论：
   - `semantic-auxiliary-classifier` 仍是 black-box leading challenger
+  - 当前多特征 logistic 校准没有带来新的排序信息，`mean_cos` 已经捕获了这条线的大部分黑盒信号
   - 这条线适合继续做 bounded hypothesis，而不是机械扩样本
 
 ## 当前阻塞项
