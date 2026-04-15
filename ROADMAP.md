@@ -605,6 +605,10 @@ Current read:
 - after repeated negative `GB-1` perturbation candidates, gray-box expansion should favor new-family diversity
 - `SimA` is the current best next family because it is materially different from `PIA` yet still fits the current CIFAR-10 DDPM asset line
 - `TMIA-DM` and `MoFit` remain valid future branches, but not the shortest next execution path
+- local `structural memorization` has now been reviewed as a separate gray-box family candidate on the current CelebA target-family approximation:
+  - bounded smoke landed `AUC = 0.375 / ASR = 0.53125`
+  - member mean structure score stayed below non-member mean (`0.730527 < 0.75017`)
+  - the branch is therefore `negative but useful` under the current local threat model and should not receive more GPU in its present form
 - bounded local `SimA` feasibility is now execution-positive but strength-negative:
   - it runs
   - it does not currently merit challenger promotion or GPU release
@@ -678,6 +682,7 @@ Tasks:
 Canonical evidence anchor:
 
 - `workspaces/gray-box/2026-04-16-graybox-sima-feasibility-verdict.md`
+- `workspaces/gray-box/2026-04-16-graybox-structural-memorization-verdict.md`
 - follow-up branch selector:
   - `workspaces/gray-box/2026-04-16-graybox-next-family-reselection.md`
 - protocol-ready follow-up note:

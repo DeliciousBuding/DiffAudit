@@ -5,8 +5,8 @@
 - `owner`: `research_leader`
 - `scope`: 部分中间信息、条件相关评分、噪声预测与结构特征下的成员推断
 - `status`: `PIA real-asset runtime-mainline ready; GPU128/GPU256/GPU512 baseline + defended pairs landed; GPU512 rerun confirmed; GPU128/GPU256 adaptive portability pair landed on RTX4070 8GB; provisional G-1 established; SecMI full-split corroboration landed; PIA-vs-SecMI disagreement verdict landed`
-- `blocked by`: `PIA` 仍未升级到 `paper-aligned`；灰盒当前仍缺把新 defended challenger 写进更高层摘要的比较与消费层同步；`PIA + SecMI` 还没有 promotion-worthy 的 fusion story；三个低成本候选 `epsilon-precision-throttling / epsilon-output-noise / input-gaussian-blur` 都已被 bounded smoke 否掉；当前 `SimA` feasibility 虽可执行但强度过弱`
-- `next step`: 保持 `stochastic-dropout = provisional G-1 (repeat-confirmed at GPU512)`；把 `SecMI` 固定为独立 corroboration line 而不是 blocked baseline；不再为 naive `PIA + SecMI` fusion 消耗预算；`SimA` 当前不放 GPU；`TMIA-DM` 的 `late_steps_only` 与 `timestep-jitter` 两个 challenger-specific 防御假设都已证伪为弱解，而新的 `temporal-striding(stride=2)` 已在 `cpu-32 / GPU128 / GPU256` 上重复压低 `TMIA-DM late-window`，且 defended comparison + system sync 已落地；当前最短下一步应是更高层 handoff review 或切去别的 lane，而不是继续在 gray-box 内机械加 rung、重开 `short_window`/naive fusion，或直接跳到 `MoFit`
+- `blocked by`: `PIA` 仍未升级到 `paper-aligned`；灰盒当前仍缺把新 defended challenger 写进更高层摘要的比较与消费层同步；`PIA + SecMI` 还没有 promotion-worthy 的 fusion story；三个低成本候选 `epsilon-precision-throttling / epsilon-output-noise / input-gaussian-blur` 都已被 bounded smoke 否掉；当前 `SimA` feasibility 虽可执行但强度过弱；`structural memorization` 当前 local faithful approximation 也已落成 `negative but useful`
+- `next step`: 保持 `stochastic-dropout = provisional G-1 (repeat-confirmed at GPU512)`；把 `SecMI` 固定为独立 corroboration line 而不是 blocked baseline；不再为 naive `PIA + SecMI` fusion 消耗预算；`SimA` 当前不放 GPU；`structural memorization` 在当前 local CelebA target-family approximation 下也不放 GPU；`TMIA-DM` 的 `late_steps_only` 与 `timestep-jitter` 两个 challenger-specific 防御假设都已证伪为弱解，而新的 `temporal-striding(stride=2)` 已在 `cpu-32 / GPU128 / GPU256` 上重复压低 `TMIA-DM late-window`，且 defended comparison + system sync 已落地；当前最短下一步应是切去别的 lane 或提出真正新机制的 gray-box family，而不是继续在 gray-box 内机械加 rung、重开 `short_window`/naive fusion，或直接跳到 `MoFit`
 - `last updated`: `2026-04-16`
 
 ## 推荐论文
@@ -157,7 +157,11 @@
   - `PIA + SecMI` 的简单融合不值得升格为当前 gray-box 新分支
   - `epsilon-output-noise (std = 0.1)` 在 `cpu-32` bounded smoke 上也未能压低攻击，因此不应作为下一个 GPU defended candidate
   - `input-gaussian-blur (sigma = 1.0)` 在 `cpu-32` bounded smoke 上进一步放大了攻击，因此也不应作为下一个 GPU defended candidate
-  - `SimA` 已在当前 DDPM asset line 上完成 bounded CPU feasibility，但最优 `AUC = 0.542969`，不足以升级为 challenger 或 GPU 题
+- `SimA` 已在当前 DDPM asset line 上完成 bounded CPU feasibility，但最优 `AUC = 0.542969`，不足以升级为 challenger 或 GPU 题
+- `structural memorization` 已在当前 CelebA target-family faithful approximation 上完成 bounded smoke，但结果方向为负：
+  - `AUC = 0.375 / ASR = 0.53125`
+  - member mean `SSIM = 0.730527` 低于 non-member mean `0.750170`
+  - 当前不应升级为 active gray-box family 或下一条 GPU 题
 
 ## 2026-04-10 新观察
 
@@ -189,7 +193,7 @@
 8. 不再为 naive `PIA + SecMI` ensemble 追加预算，除非先写出新的 gating hypothesis
 9. 不把 `epsilon-output-noise` 或 `input-gaussian-blur` 重开成 GPU 题；下一候选必须明显区别于小幅输入/输出扰动
 10. 若 `G-2 distillation` 仍无正式训练/评估链，则灰盒下一活跃任务应先转到 `GB-3` 新 family 选择，而不是继续机械扩第二防御小 smoke
-11. 当前 `GB-3 / SimA` 已完成 bounded CPU feasibility，但结论是 strength-negative；下一灰盒活跃任务已重选为 `TMIA-DM protocol / asset decomposition`
+11. 当前 `GB-3 / SimA` 已完成 bounded CPU feasibility，但结论是 strength-negative；`structural memorization` 也已完成 local faithful-approximation smoke，但结论是 direction-negative；下一灰盒活跃任务已重选为 `TMIA-DM protocol / asset decomposition`
 12. 当前 `TMIA-DM` 已完成最小 `protocol probe`、一次 repeat、same-split 比较、late-window refine、两次正向 `GPU128` rung，以及两次正向 `GPU256` rung；结论是该线已成为稳定 GPU challenger，且 `late_steps_only` 与 `timestep-jitter` defense ablation 都已证伪为弱解，下一条任务应是材料化总表或新的 defense hypothesis
 13. 新的 `TMIA-DM late-window temporal-striding(stride=2)` 已完成两个 `cpu-32` repeat，`AUC` 从 `0.823242 / 0.760742` 降到 `0.697266 / 0.696289`；结论是它成为当前最值得过 `GPU128` gate 的 challenger-specific 新防御假设，但还不能直接写成第二 defended comparator
 14. `TMIA-DM late-window temporal-striding(stride=2)` 已完成两个 `GPU128` repeat，`AUC` 进一步压到 `0.727234 / 0.711609`；结论是它已成为当前最强的 `TMIA-DM`-specific defended candidate，下一门槛是单个 `GPU256` scale rung，而不是重新回到 defense shortlist
