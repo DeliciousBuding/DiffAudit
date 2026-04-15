@@ -551,19 +551,30 @@ Current read:
   - a same-protocol cross-method score package appears
 - the shortest honest reopen path is therefore:
   - align existing `Recon` and `semantic-aux` score artifacts under one bounded comparison contract
+- current alignment check now says the existing artifacts do **not** yet share one clean same-protocol surface:
+  - admitted `Recon` is frozen on `public-* / proxy-shadow-member / celeba_partial_target`
+  - current `semantic-aux` challenger is frozen on the local CelebA target-family stack with `celeba_target/checkpoint-25000`
 - current release posture:
   - `gpu_release = none`
   - first pass should stay CPU-only
 
 Tasks:
 
-- [ ] `BB-6.1` align `Recon` and `semantic-aux` score artifacts under one same-protocol comparison contract
+- [x] `BB-6.1` align `Recon` and `semantic-aux` score artifacts under one same-protocol comparison contract
 - [ ] `BB-6.2` test one bounded score package against the best single method
 - [ ] `BB-6.3` record whether the package changes actionability or only calibration
 
 Canonical evidence anchor:
 
 - `workspaces/black-box/2026-04-16-blackbox-next-lane-score-package-selection-verdict.md`
+- `workspaces/black-box/2026-04-16-blackbox-score-package-alignment-verdict.md`
+
+Updated verdict:
+
+- `BB-6.1` closes as `negative but useful`
+- current blocker is protocol/asset mismatch, not missing score logic
+- `BB-6.2 / BB-6.3` are not yet requestable on the mixed current artifact set
+- the next bounded step, if this lane continues, is one aligned semantic-aux comparator on the same `Recon` contract surface
 
 Value: ⭐⭐⭐
 
