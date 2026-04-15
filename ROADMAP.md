@@ -795,12 +795,25 @@ Value: ⭐⭐
 
 Goal: broaden white-box defense comparison beyond the current single defended comparator
 
+Current read:
+
+- the current repo still has only one executable defended white-box family:
+  - `DPDM / W-1`
+- `Finding NeMo` remains a mechanism / observability extension on `zero-GPU hold`, not a released defense comparator
+- `Local Mirror` is not a defense candidate and does not create breadth
+- `DPDM` strong-v2 / strong-v3 / same-protocol variants widen comparator depth, not family diversity
+- current `WB-3.1` verdict is therefore `negative but useful`: there is no second distinct executable white-box defense family in the repo yet
+
 Tasks:
 
-- [ ] `WB-3.1` survey alternatives beyond DPDM
+- [x] `WB-3.1` survey alternatives beyond DPDM
 - [ ] `WB-3.2` pick one bounded defense
 - [ ] `WB-3.3` test against GSA
 - [ ] `WB-3.4` record attack degradation verdict
+
+Canonical evidence anchor:
+
+- `workspaces/white-box/2026-04-16-whitebox-defense-breadth-shortlist-verdict.md`
 
 Value: ⭐⭐
 

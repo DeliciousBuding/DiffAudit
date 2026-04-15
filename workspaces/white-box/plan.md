@@ -80,6 +80,10 @@
 - 当前白盒最大问题已不是“能不能继续把攻击跑高”，而是 `GSA` 与 `DPDM/W-1` 仍不在同一个协议面上
 - 直接 upstream `gen_l2_gradients_DDPM.py` 在 admitted target-member assets 上已被重新验证为可跑；当前执行层问题已缩到 dataset-mode 与 output-path hygiene，而不是梯度提取本身
 - 当前 `WB-2` 已收口为 `positive secondary line`：`GSA2 comparator` 在 admitted target pair + first shadow pair 上完成 bounded comparator，`AUC = 0.922498`，但仍低于 admitted `GSA1` 主线，因此只保留为 corroboration，不升级为新 headline
+- 白盒 breadth shortlist 已完成第一轮负筛选：
+  - `Finding NeMo` 当前仍是 observability / mechanism 路线，不是可执行 defended comparator
+  - `Local Mirror` 不是 defense family
+  - `DPDM` 的各个 strong-v2/strong-v3 变体仍只是在扩 `W-1`，不是第二防御家族
 
 ## 当前最短路径
 

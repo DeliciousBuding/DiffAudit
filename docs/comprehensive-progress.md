@@ -27,6 +27,10 @@
 - 当前 `PIA provenance dossier` 已 closed 为 `remain long-term blocker`
 - `PIA 8GB portability ladder` 已完成 `probe + preview + GPU128/GPU256 adaptive pair`，当前 frontier 固定为 `GPU128 = quickest portable pair`、`GPU256 = decision rung with cost warning`
 - `Finding NeMo + local memorization + FB-Mem` 的 intake/eligibility note 已建立，且 `activation export adapter` 已固定为 `decision-grade zero-GPU hold`
+- 白盒 defense breadth 的第一轮 shortlist 也已经收口为负结论：
+  - 当前 repo 只有 `DPDM / W-1` 这一条可执行 defended family
+  - `Finding NeMo` 仍是 observability 路线
+  - `Local Mirror` 不提供第二防御家族
 - [2026-04-10-recon-decision-package](../workspaces/black-box/2026-04-10-recon-decision-package.md) 已把黑盒五件套固定为 decision-grade package，本轮 [recon-artifact-mainline-public-100-step30-reverify-20260410-round28](../experiments/recon-artifact-mainline-public-100-step30-reverify-20260410-round28/summary.json) 又在 CPU 上复算到相同 headline metrics，且不改 admitted 结果
 - [2026-04-10-pia-provenance-split-protocol-delta](../workspaces/gray-box/2026-04-10-pia-provenance-split-protocol-delta.md) 已把 `split shape aligned locally / random-four-split protocol still open / strict redo currently dirty` 三点固定为新的 provenance supplement
 - 当前最值得推进的唯一目标切到：把双主线口径压实，并把 `SMP-LoRA` 的下一题固定成 `T06 optimizer/lr frontier`；`PIA provenance` 继续作为 CPU sidecar blocker；`recon` 当前进入 frozen maintenance，而不是继续扩 run
