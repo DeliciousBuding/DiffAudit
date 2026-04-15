@@ -498,6 +498,12 @@ Current read:
   - the default `Research` interpreter is `torch 2.11.0+cpu`
   - `torch.cuda.is_available()` is false
   - this is an environment blocker, not a negative method verdict
+- the local GPU blocker has now been resolved:
+  - `conda` env `diffaudit-research` is CUDA-capable and is the admitted runtime
+  - repairing the editable package target restored `diffaudit` imports inside that env
+- first `TMIA-DM late-window GPU128` rung landed positive:
+  - `AUC = 0.825317`, `ASR = 0.769531`, `TPR@1%FPR = 0.085938`
+  - this is enough for challenger status, but not yet for headline promotion
 
 Tasks:
 
@@ -521,6 +527,8 @@ Canonical evidence anchor:
   - `workspaces/gray-box/2026-04-16-tmiadm-late-window-refine-verdict.md`
 - gpu pilot blocker:
   - `workspaces/gray-box/2026-04-16-tmiadm-gpu-pilot-blocker.md`
+- gpu pilot verdict:
+  - `workspaces/gray-box/2026-04-16-tmiadm-gpu-pilot-verdict.md`
 
 Value: ⭐⭐
 
@@ -762,6 +770,7 @@ If that happens, the agent must add new branches and continue.
 | 2026-04-16 03:35 | Compared `PIA` against `TMIA-DM long_window` on the same local `cpu-32` split: `PIA` stayed clearly ahead, so `TMIA-DM` remains a secondary refinement/corroboration branch rather than the gray-box headline |
 | 2026-04-16 03:50 | Refined `TMIA-DM long_window` onto late timesteps `[80,100,120]`: two bounded `cpu-32` runs landed at `AUC = 0.823242` and `0.760742`, upgrading the branch from CPU-only refinement to GPU-eligible challenger candidate |
 | 2026-04-16 04:05 | Attempted the first `TMIA-DM late-window GPU128` pilot and hit an execution blocker: the current `Research` Python runtime is `torch 2.11.0+cpu`, so `cuda:0` is unavailable locally despite the machine having a visible NVIDIA GPU |
+| 2026-04-16 04:20 | Resolved the local `Research` CUDA blocker by switching back to `conda` env `diffaudit-research` and repairing the editable install; the first `TMIA-DM late-window GPU128` rung then landed positive at `AUC = 0.825317`, strong enough to keep the challenger line active |
 | 2026-04-16 01:55 | Fixed `WB-2` path selection on `GSA2 comparator`; target-side `attack_method=2` canaries succeeded on both member and non-member splits |
 | 2026-04-16 02:05 | Extended `WB-2` canary truth onto shadow-side: `shadow-01-member` succeeded under the same direct `GSA2` extraction contract, narrowing the next gate to `shadow-01-nonmember` |
 | 2026-04-16 02:12 | Completed the first `WB-2` shadow pair: `shadow-01-nonmember` succeeded, so `WB-2.2` is done and the next gate is a bounded `GSA2` comparator verdict |
