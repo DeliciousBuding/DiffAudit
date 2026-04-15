@@ -634,6 +634,10 @@ Current read:
 - bounded local `SimA` feasibility is now execution-positive but strength-negative:
   - it runs
   - it does not currently merit challenger promotion or GPU release
+- bounded later-timestep `SimA` rescan also completes:
+  - best timestep shifts from `120` to `160`
+  - `AUC` improves from `0.542969` to `0.584961`
+  - but the family still remains below challenger quality and below GPU-release threshold
 - after the weak `SimA` result, the next active gray-box family branch should pivot to `TMIA-DM protocol / asset decomposition`, not immediate `SimA` reopen and not a large `MoFit` jump
 - `TMIA-DM` is now protocol-ready in the repo sense:
   - signal surface, access assumption, local-fit path, and minimal smoke entry are now concrete
@@ -704,6 +708,7 @@ Tasks:
 Canonical evidence anchor:
 
 - `workspaces/gray-box/2026-04-16-graybox-sima-feasibility-verdict.md`
+- `workspaces/gray-box/2026-04-16-graybox-sima-rescan-verdict.md`
 - `workspaces/gray-box/2026-04-16-graybox-structural-memorization-verdict.md`
 - follow-up branch selector:
   - `workspaces/gray-box/2026-04-16-graybox-next-family-reselection.md`

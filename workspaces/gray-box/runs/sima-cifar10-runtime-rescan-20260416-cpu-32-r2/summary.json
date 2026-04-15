@@ -1,0 +1,110 @@
+{
+  "status": "ready",
+  "track": "gray-box",
+  "method": "sima",
+  "paper": "SimA_arXiv2025",
+  "mode": "runtime-feasibility",
+  "device": "cpu",
+  "workspace": "D:\\Code\\DiffAudit\\Research\\workspaces\\gray-box\\runs\\sima-cifar10-runtime-rescan-20260416-cpu-32-r2",
+  "workspace_name": "sima-cifar10-runtime-rescan-20260416-cpu-32-r2",
+  "contract_stage": "target",
+  "asset_grade": "single-machine-real-asset",
+  "provenance_status": "workspace-verified",
+  "evidence_level": "feasibility",
+  "artifact_paths": {
+    "summary": "D:\\Code\\DiffAudit\\Research\\workspaces\\gray-box\\runs\\sima-cifar10-runtime-rescan-20260416-cpu-32-r2\\summary.json",
+    "scan_results": "D:\\Code\\DiffAudit\\Research\\workspaces\\gray-box\\runs\\sima-cifar10-runtime-rescan-20260416-cpu-32-r2\\scan-results.json"
+  },
+  "checks": {
+    "checkpoint": true,
+    "dataset_root": true,
+    "dataset_layout": true,
+    "member_split": true,
+    "runtime_probe_ready": true,
+    "scan_completed": true
+  },
+  "runtime": {
+    "repo_root": "D:\\Code\\DiffAudit\\Research\\external\\PIA",
+    "model_dir": "workspaces/gray-box/assets/pia/checkpoints/cifar10_ddpm",
+    "dataset_root": "workspaces/gray-box/assets/pia/datasets",
+    "member_split_root": "D:\\Code\\DiffAudit\\Research\\external\\PIA\\DDPM",
+    "batch_size": 8,
+    "max_samples": 32,
+    "num_samples": 32,
+    "weights_key": "ema_model",
+    "scan_timesteps": [
+      120,
+      160,
+      200,
+      240
+    ],
+    "p_norm": 4.0,
+    "noise_seed": 0,
+    "elapsed_seconds": 21.162179
+  },
+  "sample_count_per_split": 32,
+  "best_timestep": 160,
+  "metrics": {
+    "auc": 0.584961,
+    "asr": 0.609375,
+    "threshold": -9.390721,
+    "tpr_at_1pct_fpr": 0.03125,
+    "tpr_at_0_1pct_fpr": 0.03125,
+    "member_score_mean": -9.433872,
+    "nonmember_score_mean": -9.475127
+  },
+  "scan_results": [
+    {
+      "timestep": 120,
+      "metrics": {
+        "auc": 0.542969,
+        "asr": 0.625,
+        "threshold": -9.247842,
+        "tpr_at_1pct_fpr": 0.0625,
+        "tpr_at_0_1pct_fpr": 0.0625,
+        "member_score_mean": -9.337887,
+        "nonmember_score_mean": -9.365579
+      }
+    },
+    {
+      "timestep": 160,
+      "metrics": {
+        "auc": 0.584961,
+        "asr": 0.609375,
+        "threshold": -9.390721,
+        "tpr_at_1pct_fpr": 0.03125,
+        "tpr_at_0_1pct_fpr": 0.03125,
+        "member_score_mean": -9.433872,
+        "nonmember_score_mean": -9.475127
+      }
+    },
+    {
+      "timestep": 200,
+      "metrics": {
+        "auc": 0.578125,
+        "asr": 0.59375,
+        "threshold": -9.547771,
+        "tpr_at_1pct_fpr": 0.0625,
+        "tpr_at_0_1pct_fpr": 0.0625,
+        "member_score_mean": -9.605907,
+        "nonmember_score_mean": -9.64531
+      }
+    },
+    {
+      "timestep": 240,
+      "metrics": {
+        "auc": 0.542969,
+        "asr": 0.5625,
+        "threshold": -9.372543,
+        "tpr_at_1pct_fpr": 0.125,
+        "tpr_at_0_1pct_fpr": 0.125,
+        "member_score_mean": -9.588223,
+        "nonmember_score_mean": -9.617585
+      }
+    }
+  ],
+  "notes": [
+    "SimA feasibility uses a single-query score-norm statistic over DDPM denoiser outputs.",
+    "This is a bounded local feasibility result, not yet a promoted gray-box challenger verdict."
+  ]
+}
