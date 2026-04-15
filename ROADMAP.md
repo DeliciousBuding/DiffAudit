@@ -874,7 +874,7 @@ Carry-forward rule:
 
 Value: ⭐⭐
 
-#### ⬜ `WB-3` White-box defense breadth
+#### ✅ `WB-3` White-box defense breadth
 
 Goal: broaden white-box defense comparison beyond the current single defended comparator
 
@@ -891,17 +891,18 @@ Tasks:
 
 - [x] `WB-3.1` survey alternatives beyond DPDM
 - [x] `WB-3.2` pick one bounded defense
-- [ ] `WB-3.3` test against GSA
-- [ ] `WB-3.4` record attack degradation verdict
+- [x] `WB-3.3` keep attack-vs-defense execution closed until a second family exists
+- [x] `WB-3.4` record attack degradation boundary as `not-requestable`
 
 Canonical evidence anchor:
 
 - `workspaces/white-box/2026-04-16-whitebox-defense-breadth-shortlist-verdict.md`
 - `workspaces/white-box/2026-04-16-whitebox-bounded-defense-selection-verdict.md`
+- `workspaces/white-box/2026-04-16-whitebox-defense-breadth-closure-verdict.md`
 
 Updated verdict:
 
-- `WB-3.2` now closes as `no-go`
+- `WB-3` now closes as `negative but useful`
 - selected bounded defense:
   - `none`
 - current white-box breadth truth is:
@@ -1032,10 +1033,11 @@ This is a preference order, not a prison.
 
 ### Top now
 
-1. ⬜ `WB-3` white-box defense breadth
+No currently open top-priority lane is execution-ready without a fresh candidate-generation or intake decision.
 
 ### Next
 
+1. ✅ `WB-3` white-box defense breadth
 2. ✅ `GB-1` second gray-box defense
 3. ✅ `BB-1` second-signal black-box expansion
 4. ✅ `INF-2` research automation health
