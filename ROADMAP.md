@@ -479,6 +479,9 @@ Current read:
   - it runs
   - it does not currently merit challenger promotion or GPU release
 - after the weak `SimA` result, the next active gray-box family branch should pivot to `TMIA-DM protocol / asset decomposition`, not immediate `SimA` reopen and not a large `MoFit` jump
+- `TMIA-DM` is now protocol-ready in the repo sense:
+  - signal surface, access assumption, local-fit path, and minimal smoke entry are now concrete
+  - execution release and GPU release remain `none`
 
 Tasks:
 
@@ -492,6 +495,8 @@ Canonical evidence anchor:
 - `workspaces/gray-box/2026-04-16-graybox-sima-feasibility-verdict.md`
 - follow-up branch selector:
   - `workspaces/gray-box/2026-04-16-graybox-next-family-reselection.md`
+- protocol-ready follow-up note:
+  - `workspaces/gray-box/2026-04-16-tmiadm-protocol-and-asset-note.md`
 
 Value: ⭐⭐
 
@@ -715,6 +720,7 @@ If that happens, the agent must add new branches and continue.
 | 2026-04-16 01:40 | Selected `SimA` as the next gray-box family (`GB-3`), with a bounded CPU feasibility path on the current CIFAR-10 DDPM asset line |
 | 2026-04-16 02:00 | Closed the current `GB-3 / SimA` branch as `negative but useful`: local CPU feasibility is real, but strength is too weak for challenger promotion or GPU release |
 | 2026-04-16 02:10 | Reselected the next gray-box family branch onto `TMIA-DM protocol / asset decomposition`, preferring a DDPM-local time/noise path over immediate `SimA` reopen or a larger `MoFit` jump |
+| 2026-04-16 02:20 | Upgraded `TMIA-DM` from generic intake to `protocol-ready but not execution-released`: local signal surface, access assumption, asset fit, and minimal smoke entry are now explicit |
 | 2026-04-16 01:55 | Fixed `WB-2` path selection on `GSA2 comparator`; target-side `attack_method=2` canaries succeeded on both member and non-member splits |
 | 2026-04-16 02:05 | Extended `WB-2` canary truth onto shadow-side: `shadow-01-member` succeeded under the same direct `GSA2` extraction contract, narrowing the next gate to `shadow-01-nonmember` |
 | 2026-04-16 02:12 | Completed the first `WB-2` shadow pair: `shadow-01-nonmember` succeeded, so `WB-2.2` is done and the next gate is a bounded `GSA2` comparator verdict |
