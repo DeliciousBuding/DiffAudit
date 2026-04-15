@@ -5,9 +5,9 @@
 - `owner`: `research_leader`
 - `scope`: 白盒成员推断、梯度级攻击、记忆定位与内部信号审计
 - `status`: `GSA epoch300 rerun1 admitted as white-box attack main evidence; W-1 strong-v3 full-scale frozen as defended main rung; strong-v2 full-scale retained as reference rung; direct GSA gradient extraction verified on admitted assets`
-- `blocked by`: `W-1` 仍是 defended comparator 而不是最终 benchmark；`DPDM` 与 `GSA` 仍有模型结构不一致；第二白盒线虽已形成 `GSA2` bounded corroboration，但 distinct 新家族仍未形成`
-- `next step`: keep `strong-v3 full-scale` as the admitted defended main rung, keep `GSA2` as a bounded corroboration line, and shift white-box work to defense breadth plus bridge-contract hygiene`
-- `last updated`: `2026-04-09`
+- `blocked by`: `W-1` 仍是 defended comparator 而不是最终 benchmark；`DPDM` 与 `GSA` 仍有模型结构不一致；第二白盒线虽已形成 `GSA2` bounded corroboration，但 distinct 新家族仍未形成；`WB-3.2` 已正式收口为 `none selected / not-requestable``
+- `next step`: keep `strong-v3 full-scale` as the admitted defended main rung, keep `GSA2` as a bounded corroboration line, and keep white-box breadth frozen below execution until a genuinely new defended family appears; near-term white-box work should bias to bridge-contract hygiene or candidate generation, not fake breadth execution`
+- `last updated`: `2026-04-16`
 
 ## 推荐论文
 
@@ -84,6 +84,9 @@
   - `Finding NeMo` 当前仍是 observability / mechanism 路线，不是可执行 defended comparator
   - `Local Mirror` 不是 defense family
   - `DPDM` 的各个 strong-v2/strong-v3 变体仍只是在扩 `W-1`，不是第二防御家族
+- `WB-3.2` 也已完成正式 selection decision：
+  - 当前没有 candidate 值得进入 `WB-3.3`
+  - `WB-3.3 / WB-3.4` 在现有候选集上应视为 `not-requestable`
 
 ## 当前最短路径
 

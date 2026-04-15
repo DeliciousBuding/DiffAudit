@@ -850,13 +850,24 @@ Current read:
 Tasks:
 
 - [x] `WB-3.1` survey alternatives beyond DPDM
-- [ ] `WB-3.2` pick one bounded defense
+- [x] `WB-3.2` pick one bounded defense
 - [ ] `WB-3.3` test against GSA
 - [ ] `WB-3.4` record attack degradation verdict
 
 Canonical evidence anchor:
 
 - `workspaces/white-box/2026-04-16-whitebox-defense-breadth-shortlist-verdict.md`
+- `workspaces/white-box/2026-04-16-whitebox-bounded-defense-selection-verdict.md`
+
+Updated verdict:
+
+- `WB-3.2` now closes as `no-go`
+- selected bounded defense:
+  - `none`
+- current white-box breadth truth is:
+  - there is still no second distinct executable defended family on the admitted asset line
+  - `WB-3.3` and `WB-3.4` are therefore `not-requestable` until a genuinely new family appears
+  - current white-box budget should stay off breadth execution and move to candidate generation, import, or another lane
 
 Value: ⭐⭐
 
