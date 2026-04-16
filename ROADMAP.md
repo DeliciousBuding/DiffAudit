@@ -2417,6 +2417,45 @@ Selection verdict:
 Value: ⭐⭐⭐
 Budget: CPU-only
 
+#### ⬜ `GB-44` CDI internal canary execution
+
+Goal: execute the frozen first bounded `CDI` canary on existing gray-box score artifacts and decide whether the current repo can already produce one honest internal `audit_summary` object
+
+Current read:
+
+- `GB-43` already froze the first canary shape to:
+  - shared local `CIFAR-10 DDPM` surface
+  - deterministic `512 / 512` control-test partition
+  - `SecMI stat only`
+- the next honest question is now execution truth, not more contract prose
+
+Tasks:
+
+- [x] `GB-44.1` add a bounded internal `CDI` canary entrypoint plus tests
+- [x] `GB-44.2` execute one real canary on current `SecMI` score artifacts
+- [x] `GB-44.3` decide whether the resulting `audit_summary` is good enough to keep the lane alive
+
+Canonical evidence anchor:
+
+- `workspaces/gray-box/runs/cdi-internal-canary-20260416-r1/audit_summary.json`
+- `workspaces/gray-box/2026-04-16-cdi-internal-canary-verdict.md`
+
+Selection verdict:
+
+- `GB-44` now closes as `positive but bounded`
+- the repo can now execute one real internal `CDI`-shape canary on already-landed gray-box score artifacts
+- the first canary stays:
+  - `SecMI stat only`
+  - internal audit-shape check only
+- one real implementation gap was also closed honestly:
+  - raw `SecMI` score direction needed memberness normalization before the one-sided Welch test
+- `gpu_release = none` for this canary itself
+- the active GPU follow-up remains:
+  - `PIA 2048 shared-score surface refresh for CDI paired follow-up`
+
+Value: ⭐⭐⭐
+Budget: CPU-only
+
 ---
 
 ### 6.4 White-box expansion
@@ -3105,23 +3144,24 @@ This is a preference order, not a prison.
 
 ### Top now
 
-`GB-43` CDI feature / collection-surface review is now closed.
+`GB-44` CDI internal canary execution is now closed.
 
 No immediate GPU lane should be opened until a new bounded comparison or defended-extension question is selected.
 
 Current release posture:
 
 - `gpu_release = none`
-- `next_gpu_candidate = larger PIA shared-score surface refresh for CDI paired follow-up`
-- `next_live_cpu_lane = CDI internal audit canary design / execution packet`
+- `next_gpu_candidate = active PIA 2048 shared-score surface refresh for CDI paired follow-up`
+- `next_live_cpu_lane = CDI paired-feature extension review after the active GPU rung closes`
 
 ### Next
 
-1. ✅ `GB-43` CDI feature / collection-surface review
-2. ✅ `GB-42` CDI protocol / asset contract
-3. ✅ `GB-41` Post-MoFit gray-box next-family reselection
-4. ✅ `WB-18` DP-LoRA post-harmonized lane-status review
-4. ✅ `WB-17` DP-LoRA harmonized local board verdict
+1. ✅ `GB-44` CDI internal canary execution
+2. ✅ `GB-43` CDI feature / collection-surface review
+3. ✅ `GB-42` CDI protocol / asset contract
+4. ✅ `GB-41` Post-MoFit gray-box next-family reselection
+5. ✅ `WB-18` DP-LoRA post-harmonized lane-status review
+6. ✅ `WB-17` DP-LoRA harmonized local board verdict
 5. ✅ `WB-16` DP-LoRA local evaluator hardening
 6. ✅ `WB-15` DP-LoRA secondary-metric harmonization audit
 7. ✅ `WB-14` DP-LoRA next-question review
@@ -3267,6 +3307,7 @@ If that happens, the agent must add new branches and continue.
 | 2026-04-16 20:35 | Closed `GB-41` positively: after `MoFit` moved to `current-contract hold` and black-box / white-box still remained at `gpu_release = none`, the next honest live lane is not a reopen of old branches but a new gray-box extension; `CDI` wins because it can reuse current `PIA / SecMI` score surfaces to open a collection-level audit direction without new GPU cost |
 | 2026-04-16 20:50 | Closed `GB-42` as `positive but bounded`: the repo is now judged ready for a real `CDI` contract-first lane on the shared local `CIFAR-10 DDPM` score surface, but only as a CPU-only collection-level audit extension; the next live task should freeze reusable per-sample score inputs and the first honest `P/U` collection contract before any execution claim |
 | 2026-04-16 21:10 | Closed `GB-43` as `positive but bounded`: the current repo already supports one bounded internal `CDI` canary on the existing `1024 / 1024` shared local surface; the first canary should stay `SecMI stat only` with a deterministic `512 / 512` control-test partition, while paired `PIA + SecMI` is pushed to the next extension and the most useful GPU follow-up becomes a larger `PIA` shared-score surface refresh |
+| 2026-04-16 21:40 | Closed `GB-44` as `positive but bounded`: the first real internal `CDI` canary now runs on existing `SecMI` score artifacts and emits `collections.json + sample_scores.jsonl + audit_summary.json`; the resulting Welch test is strongly same-directional after explicit memberness normalization, so the lane now has execution truth rather than only a contract note |
 | 2026-04-16 14:25 | Closed `BB-7` as `negative but stabilizing`: after the second-signal challenger, scoring review, `CLiD` boundary tightening, mitigation no-go, and `variation` asset-contract clarification, black-box currently has no honest new GPU-worthy question; keep `Recon` as headline, `semantic-auxiliary-classifier` as leading challenger, `CLiD` as corroboration-only, and `variation` as contract-ready blocked until a genuinely new feature family or real asset change appears |
 | 2026-04-16 08:05 | Refreshed the `Phase E` candidate registry after recent lane promotions and selected `WB-5 DP-LoRA comparability dossier` as the next live CPU-first lane; `Finding NeMo` remains `zero-GPU hold`, `TMIA-DM` is removed from intake-only candidate ordering, and `gpu_release` stays `none` |
 | 2026-04-16 08:20 | Closed `WB-5.1` as `positive but bounded`: `DP-LoRA` has real white-box defense-family overlap and a local `SMP-LoRA under DDPM/CIFAR10` bridge hint, but the current relation to admitted `GSA/W-1` remains `partial-overlap only`, so `gpu_release` still stays `none` and the next gate is the minimal local config candidate |
