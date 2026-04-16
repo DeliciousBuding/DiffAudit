@@ -1157,6 +1157,37 @@ Selection verdict:
 Value: ⭐⭐⭐⭐
 Budget: single bounded GPU rung
 
+#### ⬜ `GB-14` Noise-as-a-Probe larger-rung repeat
+
+Goal: decide whether the first strong `16 / 16 / 16` rung survives one disjoint same-scale repeat, and whether the frozen conservative threshold story still stays cleaner than newly re-fit thresholds
+
+Current read:
+
+- `GB-13` materially strengthened the branch
+- the remaining highest-value uncertainty is now same-scale repeatability, not simple threshold viability
+- a second same-scale rung is cheaper and more honest than jumping straight to packaging promotion
+
+Tasks:
+
+- [x] `GB-14.1` run one disjoint repeat at the same `16 / 16 / 16` scale
+- [x] `GB-14.2` compare self-threshold versus frozen-threshold behavior
+- [x] `GB-14.3` decide whether the branch is now a strengthened bounded challenger candidate or still just one strong rung
+
+Canonical evidence anchor:
+
+- `workspaces/gray-box/2026-04-16-noise-as-probe-larger-rung-repeat-verdict.md`
+
+Selection verdict:
+
+- `GB-14` now closes as `positive`
+- the branch is now same-scale `repeat-positive` at `16 / 16 / 16`
+- the frozen conservative threshold story remains stronger than the new self-fit `r4` threshold
+- the line is now a `strengthened bounded challenger candidate`
+- `gpu_release = none`
+
+Value: ⭐⭐⭐⭐
+Budget: single bounded GPU rung
+
 ---
 
 ### 6.4 White-box expansion
@@ -1440,37 +1471,38 @@ This is a preference order, not a prison.
 
 ### Top now
 
-`GB-13` larger bounded rung is now closed.
+`GB-14` larger-rung repeat is now closed.
 
-The next top-priority lane should be one disjoint repeat at the same `16 / 16 / 16` scale before any promotion or packaging upgrade.
+The next top-priority lane should be a CPU-side challenger-boundary review before any further GPU expansion or packaging upgrade.
 
 Current release posture:
 
 - `gpu_release = none`
-- `next_gpu_candidate = GB-14 Noise-as-a-Probe larger-rung repeat`
+- `next_gpu_candidate = none`
 
 ### Next
 
-1. ✅ `GB-13` Noise-as-a-Probe larger bounded rung
-2. ✅ `GB-12` Noise-as-a-Probe threshold hardening
-3. ✅ `GB-11` Noise-as-a-Probe expansion repeat
-4. ✅ `GB-10` Noise-as-a-Probe first expansion rung
-5. ✅ `GB-9` Noise-as-a-Probe calibration / expansion policy
-6. ✅ `GB-8` Noise-as-a-Probe canary scaffold
-7. ✅ `GB-7` Noise-as-a-Probe implementation-surface review
-8. ✅ `GB-6` Noise-as-a-Probe protocol / asset contract
-9. ✅ `GB-5` genuinely-new-family selector
-10. ✅ `WB-5` DP-LoRA comparability dossier
-11. ✅ `BB-6` same-protocol cross-method score package
-12. ✅ `WB-3` white-box defense breadth
-13. ✅ `GB-1` second gray-box defense
-14. ✅ `BB-1` second-signal black-box expansion
-15. ✅ `INF-2` research automation health
-16. ✅ `INF-3` subagent leverage experiments
-17. ✅ `WB-4` white-box feature/trajectory upgrade
-18. ✅ `X-3` system-consumable sync
-19. ✅ `BB-3` CLiD boundary-quality upgrade
-20. ✅ `X-4` cross-box exploration lane
+1. ✅ `GB-14` Noise-as-a-Probe larger-rung repeat
+2. ✅ `GB-13` Noise-as-a-Probe larger bounded rung
+3. ✅ `GB-12` Noise-as-a-Probe threshold hardening
+4. ✅ `GB-11` Noise-as-a-Probe expansion repeat
+5. ✅ `GB-10` Noise-as-a-Probe first expansion rung
+6. ✅ `GB-9` Noise-as-a-Probe calibration / expansion policy
+7. ✅ `GB-8` Noise-as-a-Probe canary scaffold
+8. ✅ `GB-7` Noise-as-a-Probe implementation-surface review
+9. ✅ `GB-6` Noise-as-a-Probe protocol / asset contract
+10. ✅ `GB-5` genuinely-new-family selector
+11. ✅ `WB-5` DP-LoRA comparability dossier
+12. ✅ `BB-6` same-protocol cross-method score package
+13. ✅ `WB-3` white-box defense breadth
+14. ✅ `GB-1` second gray-box defense
+15. ✅ `BB-1` second-signal black-box expansion
+16. ✅ `INF-2` research automation health
+17. ✅ `INF-3` subagent leverage experiments
+18. ✅ `WB-4` white-box feature/trajectory upgrade
+19. ✅ `X-3` system-consumable sync
+20. ✅ `BB-3` CLiD boundary-quality upgrade
+21. ✅ `X-4` cross-box exploration lane
 
 ### Then
 
@@ -1569,6 +1601,7 @@ If that happens, the agent must add new branches and continue.
 | 2026-04-16 10:55 | Closed `GB-11` as `positive but bounded`: a disjoint repeat of the `8 / 8 / 8` `Noise as a Probe` rung remained same-directional with member mean `MSE` still below non-member mean `MSE`, so the branch is now `repeat-positive` rather than a one-split fluke, while `gpu_release` still remains `none` |
 | 2026-04-16 11:15 | Closed `GB-12` as `positive but bounded`: the implemented calibration-only `15th percentile` rule remains locally coherent across `r1/r2`, a conservative frozen threshold band now sits at `1304.8905 .. 1308.7131`, but release-grade thresholding is still `no-go` and the next gate should be one larger bounded rung rather than promotion |
 | 2026-04-16 11:35 | Closed `GB-13` positively: a disjoint `16 / 16 / 16` `Noise as a Probe` rung landed at `accuracy = 0.90625 / TPR = 0.8125 / FPR = 0.0`, and the frozen `GB-12` thresholds transfer cleanly onto the larger split, so the branch is materially strengthened but still needs one same-scale repeat before any promotion |
+| 2026-04-16 11:55 | Closed `GB-14` positively: the disjoint same-scale `16 / 16 / 16` repeat also stayed strong, and the frozen `GB-12/GB-13` threshold story (`1308.7131` / `1326.5686`) remained cleaner than the new `r4` self-threshold, so `Noise as a Probe` is now a strengthened bounded challenger candidate and the next gate should move to CPU-side challenger-boundary review |
 | 2026-04-16 01:55 | Fixed `WB-2` path selection on `GSA2 comparator`; target-side `attack_method=2` canaries succeeded on both member and non-member splits |
 | 2026-04-16 02:05 | Extended `WB-2` canary truth onto shadow-side: `shadow-01-member` succeeded under the same direct `GSA2` extraction contract, narrowing the next gate to `shadow-01-nonmember` |
 | 2026-04-16 02:12 | Completed the first `WB-2` shadow pair: `shadow-01-nonmember` succeeded, so `WB-2.2` is done and the next gate is a bounded `GSA2` comparator verdict |
