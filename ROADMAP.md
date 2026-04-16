@@ -1495,6 +1495,74 @@ Selection verdict:
 Value: ⭐⭐⭐
 Budget: CPU-only
 
+#### ⬜ `GB-19` Post-noise next-family reselection
+
+Goal: decide what should become the next live CPU-first research lane after `Noise as a Probe` finished its bounded branch and current black-box / gray-box / white-box live questions all contracted
+
+Current read:
+
+- black-box is currently `no-new-gpu-question`
+- white-box breadth is still below release and `Finding NeMo` remains `zero-GPU hold`
+- gray-box remains the strongest narrative box, but both `TMIA` and `Noise as a Probe` are already packaged for the current round
+- the next honest move is therefore a new bounded candidate-generation selection, not another same-family rerun
+
+Tasks:
+
+- [x] `GB-19.1` compare whether the next live lane should come from black-box reopen, white-box reconsideration, or a new gray-box family
+- [x] `GB-19.2` choose one next lane and reject the weaker alternatives for now
+- [x] `GB-19.3` define the immediate task shape for that selected lane
+
+Canonical evidence anchor:
+
+- `workspaces/gray-box/2026-04-16-post-noise-next-family-reselection.md`
+
+Selection verdict:
+
+- `GB-19` now closes as `positive`
+- the selected next live lane is `GB-20 MoFit protocol / asset contract`
+- current reason is not that `MoFit` is already executable, but that it is now the cleanest remaining genuinely new gray-box mechanism with a bounded CPU-first entry
+- `gpu_release = none`
+
+Value: ⭐⭐⭐
+Budget: CPU-only
+
+#### ⬜ `GB-20` MoFit protocol / asset contract
+
+Goal: decide whether the current repo can support one honest first `MoFit`-style gray-box smoke on a local latent-diffusion target family, or whether the branch is still too under-specified even for a CPU-first live lane
+
+Current read:
+
+- `GB-19` already selected `MoFit` as the next live lane
+- the repo already has one workable latent-diffusion target-family surface:
+  - `SD1.5 + celeba_partial_target/checkpoint-25000`
+- local caption/bootstrap assumptions and latent-diffusion loading pieces already exist
+- but surrogate optimization, fitted-embedding optimization, and MoFit-specific artifact schema are still not frozen
+
+Tasks:
+
+- [x] `GB-20.1` lock one honest local target family and caption bootstrap source
+- [x] `GB-20.2` decide what implementation pieces already exist and what still blocks a first smoke
+- [x] `GB-20.3` define one bounded next step and keep `gpu_release` honest
+
+Canonical evidence anchor:
+
+- `workspaces/gray-box/2026-04-16-mofit-protocol-asset-contract.md`
+
+Selection verdict:
+
+- `GB-20` now closes as `positive but bounded`
+- current repo is ready for a real `MoFit` contract-first lane
+- current repo is not yet ready for an honest first smoke
+- selected first contract:
+  - `target_family = SD1.5 + celeba_partial_target/checkpoint-25000`
+  - `caption_source = local BLIP bootstrap or cached local caption fallback`
+- next step:
+  - `MoFit implementation-surface review / scaffold decision`
+- `gpu_release = none`
+
+Value: ⭐⭐⭐
+Budget: CPU-only
+
 ---
 
 ### 6.4 White-box expansion
@@ -2316,6 +2384,8 @@ If that happens, the agent must add new branches and continue.
 | 2026-04-16 14:45 | Closed `X-6` positively: `phase-e-candidates.json` had become stale again after recent lane-status closures, so the registry is now refreshed into a sparse-hold posture; `DP-LoRA` is removed because it is no longer intake-only, `SecMI unblock` is removed because it no longer matches repo truth, and `Finding NeMo` remains the only intake-only candidate while `PIA paper-aligned confirmation` stays document-layer conditional only |
 | 2026-04-16 15:00 | Closed `X-7` positively: the highest-value `Phase E` summary docs are now aligned to the sparse-hold registry; `PIA paper-aligned confirmation` remains document-layer conditional only, `Finding NeMo` is the only remaining intake-only candidate under zero-GPU hold, and the old `DP-LoRA / SecMI unblock / TMIA-DM intake` candidate-ordering wording has been removed in favor of current lane truth |
 | 2026-04-16 15:10 | Closed `X-8` as `negative but stabilizing`: the sparse registry does not by itself justify opening the separate `Finding NeMo` hypothesis/budget review; `Finding NeMo` remains `adapter-complete zero-GPU hold`, and the next honest live-lane search should prefer new bounded candidate generation or another lane rather than automatic reopen |
+| 2026-04-16 15:25 | Closed `GB-19` positively: after current live branches all contracted, the next honest live CPU-first lane is `GB-20 MoFit protocol / asset contract`; black-box reopen remains too blocked, `Finding NeMo` remains on zero-GPU hold, and `MoFit` is now the cleanest remaining genuinely new gray-box mechanism to evaluate next |
+| 2026-04-16 15:35 | Closed `GB-20` as `positive but bounded`: `MoFit` now has an honest first local contract on `SD1.5 + celeba_partial_target/checkpoint-25000` with `BLIP`/cached-caption bootstrap, but the repo still lacks frozen surrogate optimization, fitted-embedding optimization, and artifact schema; the next live CPU-first step is implementation-surface review, and `gpu_release` remains `none` |
 | 2026-04-16 14:25 | Closed `BB-7` as `negative but stabilizing`: after the second-signal challenger, scoring review, `CLiD` boundary tightening, mitigation no-go, and `variation` asset-contract clarification, black-box currently has no honest new GPU-worthy question; keep `Recon` as headline, `semantic-auxiliary-classifier` as leading challenger, `CLiD` as corroboration-only, and `variation` as contract-ready blocked until a genuinely new feature family or real asset change appears |
 | 2026-04-16 08:05 | Refreshed the `Phase E` candidate registry after recent lane promotions and selected `WB-5 DP-LoRA comparability dossier` as the next live CPU-first lane; `Finding NeMo` remains `zero-GPU hold`, `TMIA-DM` is removed from intake-only candidate ordering, and `gpu_release` stays `none` |
 | 2026-04-16 08:20 | Closed `WB-5.1` as `positive but bounded`: `DP-LoRA` has real white-box defense-family overlap and a local `SMP-LoRA under DDPM/CIFAR10` bridge hint, but the current relation to admitted `GSA/W-1` remains `partial-overlap only`, so `gpu_release` still stays `none` and the next gate is the minimal local config candidate |
