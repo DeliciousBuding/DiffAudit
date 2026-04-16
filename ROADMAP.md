@@ -408,6 +408,37 @@ Verdict:
 Value: ⭐⭐⭐
 Budget: CPU-only
 
+#### ✅ `X-6` Phase E sparse-registry refresh
+
+Goal:
+
+- refresh the machine-readable `Phase E` candidate registry after recent lane-status closures made multiple candidate records stale
+
+Tasks:
+
+- [x] `X-6.1` review whether current `phase-e-candidates.json` still matches lane truth after `WB-18`, `GB-18`, and `BB-7`
+- [x] `X-6.2` remove records that are no longer intake-only candidate surface items
+- [x] `X-6.3` record whether higher-layer intake docs now need follow-up sync
+
+Status:
+
+- current sparse-registry refresh completed
+- canonical evidence anchor:
+  - `workspaces/intake/2026-04-16-phase-e-sparse-registry-refresh-verdict.md`
+
+Verdict:
+
+- `phase-e-candidates.json` was stale again
+- `DP-LoRA` no longer belongs on the intake-only candidate surface because it has already consumed a full executed white-box exploration lane and now sits at `bounded exploration branch + no-new-gpu-question`
+- `SecMI unblock` no longer matches repository truth because gray-box now treats `SecMI` as an independent corroboration line rather than an asset-blocked baseline reopen
+- current honest machine-readable posture is therefore a `sparse-hold` registry:
+  - `Finding NeMo = the only remaining intake-only candidate`
+  - `PIA paper-aligned confirmation = document-layer conditional only`
+- `docs/future-phase-e-intake.md` and `docs/reproduction-status.md` now need follow-up sync
+
+Value: ⭐⭐⭐
+Budget: CPU-only
+
 ---
 
 ### 6.2 Black-box expansion
@@ -2222,6 +2253,7 @@ If that happens, the agent must add new branches and continue.
 | 2026-04-16 07:20 | Completed the defended comparison and system-layer sync: `TMIA + temporal-striding(stride=2)` now supersedes `TMIA + dropout` as the strongest defended gray-box challenger in comparison artifacts and the unified attack-defense table |
 | 2026-04-16 07:30 | Tightened the `CLiD` black-box boundary from generic local bridge wording to `evaluator-near local clip-only corroboration`: current target-side outputs are `100 x 5` numeric matrices after header-skip, but full `cal_clid_th.py` alignment remains blocked on missing shadow-side files and cache-root leakage in the executed rung header |
 | 2026-04-16 07:40 | Added a reusable zero-GPU `CLiD` threshold-compatibility audit tool and ran it on the current target100 rung; the result is now machine-readable (`target_pair.ready=true`, `shadow_pair.ready=false`) and closes the current `BB-3` boundary-tightening step without pretending to have a paper-aligned benchmark |
+| 2026-04-16 14:45 | Closed `X-6` positively: `phase-e-candidates.json` had become stale again after recent lane-status closures, so the registry is now refreshed into a sparse-hold posture; `DP-LoRA` is removed because it is no longer intake-only, `SecMI unblock` is removed because it no longer matches repo truth, and `Finding NeMo` remains the only intake-only candidate while `PIA paper-aligned confirmation` stays document-layer conditional only |
 | 2026-04-16 14:25 | Closed `BB-7` as `negative but stabilizing`: after the second-signal challenger, scoring review, `CLiD` boundary tightening, mitigation no-go, and `variation` asset-contract clarification, black-box currently has no honest new GPU-worthy question; keep `Recon` as headline, `semantic-auxiliary-classifier` as leading challenger, `CLiD` as corroboration-only, and `variation` as contract-ready blocked until a genuinely new feature family or real asset change appears |
 | 2026-04-16 08:05 | Refreshed the `Phase E` candidate registry after recent lane promotions and selected `WB-5 DP-LoRA comparability dossier` as the next live CPU-first lane; `Finding NeMo` remains `zero-GPU hold`, `TMIA-DM` is removed from intake-only candidate ordering, and `gpu_release` stays `none` |
 | 2026-04-16 08:20 | Closed `WB-5.1` as `positive but bounded`: `DP-LoRA` has real white-box defense-family overlap and a local `SMP-LoRA under DDPM/CIFAR10` bridge hint, but the current relation to admitted `GSA/W-1` remains `partial-overlap only`, so `gpu_release` still stays `none` and the next gate is the minimal local config candidate |
