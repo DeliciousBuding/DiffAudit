@@ -20,9 +20,12 @@ def parse_args() -> argparse.Namespace:
     parser.add_argument("--pia-scores", type=Path, default=None)
     parser.add_argument(
         "--paired-scorer",
-        choices=("none", "control-z-linear"),
-        default="none",
-        help="Optional paired scorer fitted only on the control split and applied to the test split.",
+        choices=("auto", "none", "control-z-linear"),
+        default="auto",
+        help=(
+            "Paired scorer policy. 'auto' enables the default internal paired scorer when paired inputs are present; "
+            "'none' keeps component-only reporting; 'control-z-linear' forces the current paired scorer explicitly."
+        ),
     )
     parser.add_argument("--control-size", type=int, default=512)
     parser.add_argument("--test-size", type=int, default=512)
@@ -258,13 +261,17 @@ def run_internal_canary(args: argparse.Namespace) -> dict[str, Any]:
         test_size=args.test_size,
     )
 
+    effective_paired_policy = args.paired_scorer
     paired_scorer = None
-    if pia_payload is not None and args.paired_scorer == "control-z-linear":
+    if pia_payload is not None and args.paired_scorer in {"auto", "control-z-linear"}:
+        effective_paired_policy = "control-z-linear"
         paired_scorer = build_control_z_linear_paired_scorer(
             collections=collections,
             secmi_payload=secmi_payload,
             pia_payload=pia_payload,
         )
+    elif pia_payload is None and args.paired_scorer == "auto":
+        effective_paired_policy = "none"
 
     rows = build_sample_rows(
         collections=collections,
@@ -301,6 +308,8 @@ def run_internal_canary(args: argparse.Namespace) -> dict[str, Any]:
         "analysis": {
             "secmi_memberness_orientation": secmi_payload["memberness_orientation"],
             "paired_scorer": paired_scorer["name"] if paired_scorer is not None else "none",
+            "paired_scorer_policy_requested": args.paired_scorer,
+            "paired_scorer_policy_effective": effective_paired_policy,
         },
         "artifacts": {
             "collections": str((args.run_root / "collections.json").as_posix()),

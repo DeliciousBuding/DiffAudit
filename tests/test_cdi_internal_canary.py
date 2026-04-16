@@ -66,7 +66,7 @@ class CdiInternalCanaryTests(unittest.TestCase):
                 secmi_scores=secmi_scores,
                 secmi_run_root=None,
                 pia_scores=None,
-                paired_scorer="none",
+                paired_scorer="auto",
                 control_size=2,
                 test_size=2,
                 resamples=1,
@@ -78,6 +78,7 @@ class CdiInternalCanaryTests(unittest.TestCase):
             self.assertEqual(summary["feature_mode"], "secmi-stat-only")
             self.assertEqual(summary["collection_counts"]["P_ctrl"], 2)
             self.assertEqual(summary["analysis"]["secmi_memberness_orientation"], "identity")
+            self.assertEqual(summary["analysis"]["paired_scorer_policy_effective"], "none")
             self.assertAlmostEqual(summary["metrics"]["secmi_p_test_mean"], 0.65)
             self.assertAlmostEqual(summary["metrics"]["secmi_u_test_mean"], 0.35)
 
@@ -151,6 +152,51 @@ class CdiInternalCanaryTests(unittest.TestCase):
             ]
             self.assertIn("pia_score", rows[0])
             self.assertEqual(rows[0]["source_index"], 10)
+
+    def test_run_internal_canary_auto_policy_enables_default_paired_scorer(self) -> None:
+        module = _load_script_module()
+
+        with tempfile.TemporaryDirectory() as tmpdir:
+            root = Path(tmpdir)
+            secmi_scores = root / "secmi_scores.json"
+            pia_scores = root / "pia_scores.json"
+            secmi_scores.write_text(
+                json.dumps(
+                    {
+                        "member_scores": [0.95, 0.85, 0.75, 0.65],
+                        "nonmember_scores": [0.05, 0.15, 0.25, 0.35],
+                    }
+                ),
+                encoding="utf-8",
+            )
+            pia_scores.write_text(
+                json.dumps(
+                    {
+                        "member_scores": [10.0, 9.0, 8.0, 7.0],
+                        "nonmember_scores": [1.0, 2.0, 3.0, 4.0],
+                    }
+                ),
+                encoding="utf-8",
+            )
+
+            args = module.argparse.Namespace(
+                run_root=root / "run",
+                secmi_scores=secmi_scores,
+                secmi_run_root=None,
+                pia_scores=pia_scores,
+                paired_scorer="auto",
+                control_size=2,
+                test_size=2,
+                resamples=1,
+                seed=0,
+            )
+
+            summary = module.run_internal_canary(args)
+
+            self.assertEqual(summary["feature_mode"], "paired-pia-secmi-control-z-linear")
+            self.assertEqual(summary["analysis"]["paired_scorer_policy_requested"], "auto")
+            self.assertEqual(summary["analysis"]["paired_scorer_policy_effective"], "control-z-linear")
+            self.assertIn("paired_p_test_mean", summary["metrics"])
 
     def test_run_internal_canary_emits_control_z_linear_paired_scores(self) -> None:
         module = _load_script_module()
