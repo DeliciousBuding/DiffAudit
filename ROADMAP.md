@@ -1566,6 +1566,38 @@ Selection verdict:
 Value: ⭐⭐⭐
 Budget: CPU-only
 
+#### ⬜ `WB-9` DP-LoRA comparator schema-alignment contract
+
+Goal: lock the minimum honest release-review schema for `baseline vs frozen SMP-LoRA vs W-1`, and decide whether one bounded alignment refresh is now mandatory
+
+Current read:
+
+- `WB-8` proved the board is conceptually right but not yet release-review-valid
+- the remaining blocker is no longer row identity, but comparator schema
+- the next honest CPU task is therefore to lock the release board contract, not to improvise a GPU ask
+
+Tasks:
+
+- [x] `WB-9.1` define the shared release-review fields that all three rows must expose
+- [x] `WB-9.2` decide whether the current board is valid only for queue truth or also for release review
+- [x] `WB-9.3` decide whether one bounded alignment refresh is now required, and on which side
+
+Canonical evidence anchor:
+
+- `workspaces/white-box/2026-04-16-dplora-comparator-schema-alignment-contract.md`
+
+Selection verdict:
+
+- `WB-9` now closes as `negative but useful`
+- the current board is valid for queue truth only, not for release review
+- a release-review board must lock one shared primary metric and one shared evaluation surface
+- one bounded alignment refresh is now required
+- the cleanest next move is a bounded `W-1` local-surface refresh
+- `gpu_release = none`
+
+Value: ⭐⭐⭐
+Budget: CPU-only
+
 ---
 
 ### 6.5 Infrastructure, automation, and agent leverage
@@ -1660,7 +1692,7 @@ This is a preference order, not a prison.
 
 ### Top now
 
-`WB-8` DP-LoRA comparator artifact-board preflight is now closed.
+`WB-9` DP-LoRA comparator schema-alignment contract is now closed.
 
 No immediate GPU lane should be opened until a new bounded comparison or defended-extension question is selected.
 
@@ -1671,33 +1703,34 @@ Current release posture:
 
 ### Next
 
-1. ✅ `WB-8` DP-LoRA comparator artifact-board preflight
-2. ✅ `WB-7` DP-LoRA comparator contract reconciliation
-3. ✅ `WB-6` DP-LoRA comparator release review
-4. ✅ `GB-17` Noise-as-a-Probe defended-extension feasibility review
-5. ✅ `GB-16` Noise-as-a-Probe summary-layer sync
-6. ✅ `GB-15` Noise-as-a-Probe challenger-boundary review
-7. ✅ `GB-14` Noise-as-a-Probe larger-rung repeat
-8. ✅ `GB-13` Noise-as-a-Probe larger bounded rung
-9. ✅ `GB-12` Noise-as-a-Probe threshold hardening
-10. ✅ `GB-11` Noise-as-a-Probe expansion repeat
-11. ✅ `GB-10` Noise-as-a-Probe first expansion rung
-12. ✅ `GB-9` Noise-as-a-Probe calibration / expansion policy
-13. ✅ `GB-8` Noise-as-a-Probe canary scaffold
-14. ✅ `GB-7` Noise-as-a-Probe implementation-surface review
-15. ✅ `GB-6` Noise-as-a-Probe protocol / asset contract
-16. ✅ `GB-5` genuinely-new-family selector
-17. ✅ `WB-5` DP-LoRA comparability dossier
-18. ✅ `BB-6` same-protocol cross-method score package
-19. ✅ `WB-3` white-box defense breadth
-20. ✅ `GB-1` second gray-box defense
-21. ✅ `BB-1` second-signal black-box expansion
-22. ✅ `INF-2` research automation health
-23. ✅ `INF-3` subagent leverage experiments
-24. ✅ `WB-4` white-box feature/trajectory upgrade
-25. ✅ `X-3` system-consumable sync
-26. ✅ `BB-3` CLiD boundary-quality upgrade
-27. ✅ `X-4` cross-box exploration lane
+1. ✅ `WB-9` DP-LoRA comparator schema-alignment contract
+2. ✅ `WB-8` DP-LoRA comparator artifact-board preflight
+3. ✅ `WB-7` DP-LoRA comparator contract reconciliation
+4. ✅ `WB-6` DP-LoRA comparator release review
+5. ✅ `GB-17` Noise-as-a-Probe defended-extension feasibility review
+6. ✅ `GB-16` Noise-as-a-Probe summary-layer sync
+7. ✅ `GB-15` Noise-as-a-Probe challenger-boundary review
+8. ✅ `GB-14` Noise-as-a-Probe larger-rung repeat
+9. ✅ `GB-13` Noise-as-a-Probe larger bounded rung
+10. ✅ `GB-12` Noise-as-a-Probe threshold hardening
+11. ✅ `GB-11` Noise-as-a-Probe expansion repeat
+12. ✅ `GB-10` Noise-as-a-Probe first expansion rung
+13. ✅ `GB-9` Noise-as-a-Probe calibration / expansion policy
+14. ✅ `GB-8` Noise-as-a-Probe canary scaffold
+15. ✅ `GB-7` Noise-as-a-Probe implementation-surface review
+16. ✅ `GB-6` Noise-as-a-Probe protocol / asset contract
+17. ✅ `GB-5` genuinely-new-family selector
+18. ✅ `WB-5` DP-LoRA comparability dossier
+19. ✅ `BB-6` same-protocol cross-method score package
+20. ✅ `WB-3` white-box defense breadth
+21. ✅ `GB-1` second gray-box defense
+22. ✅ `BB-1` second-signal black-box expansion
+23. ✅ `INF-2` research automation health
+24. ✅ `INF-3` subagent leverage experiments
+25. ✅ `WB-4` white-box feature/trajectory upgrade
+26. ✅ `X-3` system-consumable sync
+27. ✅ `BB-3` CLiD boundary-quality upgrade
+28. ✅ `X-4` cross-box exploration lane
 
 ### Then
 
@@ -1803,6 +1836,7 @@ If that happens, the agent must add new branches and continue.
 | 2026-04-16 12:50 | Closed `WB-6` positively: the `DP-LoRA` successor lane should stay alive, but the next honest white-box question is still the frozen `baseline vs SMP-LoRA vs W-1` comparator review rather than immediate GPU validation, because current local SMP-LoRA evidence is bridge-positive yet still lacks a fresh comparator verdict against `W-1` |
 | 2026-04-16 13:00 | Closed `WB-7` positively: the existing comparator packet is still directionally right but contract-stale, because it points at older `T06 batch14 throughput` artifacts instead of the newly frozen `lambda=0.1 / rank=4 / epochs=10` local candidate; future release review should therefore use only the reconciled `baseline vs frozen SMP-LoRA vs W-1` board |
 | 2026-04-16 13:10 | Closed `WB-8` as `negative but useful`: the reconciled `baseline vs frozen SMP-LoRA vs W-1` board is conceptually right but not yet release-review-ready, because baseline/SMP-LoRA live on a local `63 / 63` evaluation surface while `W-1 strong-v3 full-scale` is still reported on a larger `target_eval_size = 2000` surface with a different metric schema |
+| 2026-04-16 13:20 | Closed `WB-9` as `negative but useful`: the current `baseline vs frozen SMP-LoRA vs W-1` board is valid only for queue truth, not release review, because a release-review board must lock one shared primary metric and one shared evaluation surface; one bounded `W-1` local-surface refresh is now the cleanest next alignment step |
 | 2026-04-16 01:55 | Fixed `WB-2` path selection on `GSA2 comparator`; target-side `attack_method=2` canaries succeeded on both member and non-member splits |
 | 2026-04-16 02:05 | Extended `WB-2` canary truth onto shadow-side: `shadow-01-member` succeeded under the same direct `GSA2` extraction contract, narrowing the next gate to `shadow-01-nonmember` |
 | 2026-04-16 02:12 | Completed the first `WB-2` shadow pair: `shadow-01-nonmember` succeeded, so `WB-2.2` is done and the next gate is a bounded `GSA2` comparator verdict |
