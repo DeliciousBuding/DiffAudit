@@ -950,6 +950,42 @@ Selection verdict:
 Value: ⭐⭐⭐
 Budget: CPU-only
 
+#### ✅ `GB-65` PIA vs TMIA-DM confidence-gated switching design review
+
+Goal: freeze the smallest honest next design for a ranking-sensitive `PIA/TMIA-DM` switching rule after `GB-64` selected this branch
+
+Current read:
+
+- bounded same-split `z-score sum` is already positive
+- another fixed fusion rerun would add little
+- the next step should test a real gating variable using only attack-side scores
+
+Tasks:
+
+- [x] `GB-65.1` reject supervision-heavy or class-conditional designs that current repo truth cannot support honestly
+- [x] `GB-65.2` freeze one bounded confidence-gated rule family
+- [x] `GB-65.3` set the next live CPU-first lane after the design review
+
+Canonical evidence anchor:
+
+- `workspaces/gray-box/2026-04-17-pia-tmiadm-confidence-gated-switching-design-review.md`
+
+Selection verdict:
+
+- `GB-65` now closes as `positive but bounded`
+- freeze the next bounded design as:
+  - normalized-score dominant-method identity
+  - margin-gap threshold
+  - fallback to bounded `z-score sum`
+- `next_live_cpu_lane` is now:
+  - `PIA vs TMIA-DM confidence-gated switching offline packet`
+- keep:
+  - `gpu_release = none`
+  - `next_gpu_candidate = none`
+
+Value: ⭐⭐⭐
+Budget: CPU-only
+
 ---
 
 ### 6.3 Gray-box expansion
@@ -4046,7 +4082,7 @@ This is a preference order, not a prison.
 
 ### Top now
 
-`GB-64` ranking-sensitive variable search review is now closed.
+`GB-65` PIA vs TMIA-DM confidence-gated switching design review is now closed.
 
 No immediate GPU lane should be opened until a new bounded comparison or defended-extension question is selected.
 
@@ -4054,20 +4090,20 @@ Current release posture:
 
 - `gpu_release = none`
 - `next_gpu_candidate = none`
-- `next_live_cpu_lane = PIA vs TMIA-DM confidence-gated switching design review`
+- `next_live_cpu_lane = PIA vs TMIA-DM confidence-gated switching offline packet`
 
 ### Next
 
-1. ✅ `GB-64` ranking-sensitive variable search review
-2. ✅ `WB-20` distinct white-box defended-family import / selection review
-3. ✅ `GB-63` second gray-box defense mechanism selection review
-4. ✅ `BB-8` black-box next-family candidate-generation refresh review
-5. ✅ `X-9` cross-box closure-round system sync review
-6. ✅ `WB-19` white-box post-breadth next-hypothesis selection review
-7. ✅ `GB-62` gray-box post-noise contract-shift reselection review
-8. ✅ `GB-61` Noise as a Probe contract-shift review
-9. ✅ `GB-60` Noise as a Probe promotion-gap review
-10. ✅ `GB-59` gray-box post-CDI lane reselection review
+1. ✅ `GB-65` PIA vs TMIA-DM confidence-gated switching design review
+2. ✅ `GB-64` ranking-sensitive variable search review
+3. ✅ `WB-20` distinct white-box defended-family import / selection review
+4. ✅ `GB-63` second gray-box defense mechanism selection review
+5. ✅ `BB-8` black-box next-family candidate-generation refresh review
+6. ✅ `X-9` cross-box closure-round system sync review
+7. ✅ `WB-19` white-box post-breadth next-hypothesis selection review
+8. ✅ `GB-62` gray-box post-noise contract-shift reselection review
+9. ✅ `GB-61` Noise as a Probe contract-shift review
+10. ✅ `GB-60` Noise as a Probe promotion-gap review
 10. ✅ `GB-49` CDI paired-surface mismatch review
 11. ✅ `GB-48` CDI paired-feature extension review
 12. ✅ `GB-47` SecMI-PIA 2048 paired-surface verdict
@@ -4248,6 +4284,7 @@ If that happens, the agent must add new branches and continue.
 | 2026-04-17 02:20 | Closed `GB-63` as `positive but bounded`: after black-box candidate refresh yielded the near-term slot back, gray-box second-defense selection could now be frozen cleanly; `TMIA-DM late-window + temporal-striding(stride=2)` is the only materially different defense mechanism with repeat/scale support, while cheap perturbations are already negative, `Noise as a Probe` has no defended-extension gate, and `MoFit` remains hold, so keep `gpu_release = none`, keep `next_gpu_candidate = none`, and move the next live CPU-first slot to `distinct white-box defended-family import / selection` |
 | 2026-04-17 02:35 | Closed `WB-20` as `negative but clarifying`: white-box still does not expose a distinct defended-family import-ready lane, because the visible options are either same-family corroboration (`GSA2`), bounded branch continuation (`DP-LoRA`), observability hold (`Finding NeMo`), or family-alias collapse (`Local Mirror`); keep `gpu_release = none`, keep `next_gpu_candidate = none`, and move the next live CPU-first slot to `ranking-sensitive variable search` |
 | 2026-04-17 02:50 | Closed `GB-64` as `positive but bounded`: among current ranking-sensitive directions, `PIA vs SecMI` still only supports a negative naive-fusion verdict, while `PIA vs TMIA-DM` already shows bounded-positive same-split actionability gain; therefore the next honest gray-box CPU-first lane is `PIA vs TMIA-DM confidence-gated switching design review`, while `gpu_release` and `next_gpu_candidate` remain `none` |
+| 2026-04-17 03:05 | Closed `GB-65` as `positive but bounded`: the next `PIA/TMIA-DM` step should not be another static fusion rerun but a confidence-gated switching design that uses only attack-side normalized scores, dominant-method identity, and a frozen margin-gap threshold with `z-score sum` fallback; keep `gpu_release = none`, keep `next_gpu_candidate = none`, and move the next live CPU-first slot to `PIA vs TMIA-DM confidence-gated switching offline packet` |
 | 2026-04-16 14:25 | Closed `BB-7` as `negative but stabilizing`: after the second-signal challenger, scoring review, `CLiD` boundary tightening, mitigation no-go, and `variation` asset-contract clarification, black-box currently has no honest new GPU-worthy question; keep `Recon` as headline, `semantic-auxiliary-classifier` as leading challenger, `CLiD` as corroboration-only, and `variation` as contract-ready blocked until a genuinely new feature family or real asset change appears |
 | 2026-04-16 08:05 | Refreshed the `Phase E` candidate registry after recent lane promotions and selected `WB-5 DP-LoRA comparability dossier` as the next live CPU-first lane; `Finding NeMo` remains `zero-GPU hold`, `TMIA-DM` is removed from intake-only candidate ordering, and `gpu_release` stays `none` |
 | 2026-04-16 08:20 | Closed `WB-5.1` as `positive but bounded`: `DP-LoRA` has real white-box defense-family overlap and a local `SMP-LoRA under DDPM/CIFAR10` bridge hint, but the current relation to admitted `GSA/W-1` remains `partial-overlap only`, so `gpu_release` still stays `none` and the next gate is the minimal local config candidate |

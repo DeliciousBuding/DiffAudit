@@ -12,7 +12,7 @@
 - gray-box currently has no immediate next-family execution lane
 - white-box currently has no immediate next-hypothesis execution lane
 - the next live CPU-first priority should therefore move to:
-  - `PIA vs TMIA-DM confidence-gated switching design review`
+  - `PIA vs TMIA-DM confidence-gated switching offline packet`
 
 This queue should now be read with three distinctions:
 
@@ -35,7 +35,7 @@ This queue should now be read with three distinctions:
 - `why now`:
   - it stays within gray-box without reopening dead latent-diffusion branches
   - it can still generate a bounded disagreement question without forcing GPU first
-  - current selected next step is `PIA vs TMIA-DM confidence-gated switching design review`
+  - current selected next step is `PIA vs TMIA-DM confidence-gated switching offline packet`
 
 ### 2. `XB-CH-2` Transfer / portability probes
 
