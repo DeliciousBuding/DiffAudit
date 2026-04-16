@@ -6,7 +6,7 @@
 - `scope`: 白盒成员推断、梯度级攻击、记忆定位与内部信号审计
 - `status`: `GSA epoch300 rerun1 admitted as white-box attack main evidence; W-1 strong-v3 full-scale frozen as defended main rung; strong-v2 full-scale retained as reference rung; direct GSA gradient extraction verified on admitted assets; DP-LoRA successor lane now reduced to a bounded metric-split local comparator branch`
 - `blocked by`: `W-1` 仍是 defended comparator 而不是最终 benchmark；`DPDM` 与 `GSA` 仍有模型结构不一致；第二白盒线虽已形成 `GSA2` bounded corroboration，但 distinct 新家族仍未形成；`WB-3.2` 已正式收口为 `none selected / not-requestable``; `DP-LoRA` 当前也没有新的 GPU-worthy 问题，只有一个已完成的 harmonized local board，其结果是 `metric-split` 而不是 clean local dominance`
-- `next step`: keep `strong-v3 full-scale` as the admitted defended main rung, keep `GSA2` as a bounded corroboration line, keep white-box breadth frozen below execution until a genuinely new defended family appears, and treat observability/feature routes as `ready below release threshold`; near-term white-box work should bias to queue-truth sync and new-hypothesis selection, not `DP-LoRA` reruns or fake breadth execution`
+- `next step`: keep `strong-v3 full-scale` as the admitted defended main rung, keep `GSA2` as a bounded corroboration line, keep white-box breadth frozen below execution until a genuinely new defended family appears, and treat observability/feature routes as `ready below release threshold`; current white-box round no longer claims the next live CPU-first slot, and active priority should move to `cross-box closure-round system sync review` rather than `DP-LoRA` reruns or fake breadth execution`
 - `last updated`: `2026-04-16`
 
 ## 推荐论文

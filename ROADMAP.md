@@ -3273,6 +3273,43 @@ Verdict:
 
 Value: ⭐
 
+#### ⬜ `WB-19` White-box post-breadth next-hypothesis selection review
+
+Goal: decide whether white-box still contains one honest next-hypothesis lane worth taking the next live CPU-first slot after breadth closed and `DP-LoRA` stabilized as a bounded branch
+
+Current read:
+
+- `WB-3` already closed as `none selected / not-requestable`
+- `Finding NeMo` remains `zero-GPU hold`
+- `GSA2` remains same-family corroboration rather than a distinct second line
+- `DP-LoRA` remains alive but already entered `no-new-gpu-question`
+
+Tasks:
+
+- [x] `WB-19.1` compare `DP-LoRA`, `Finding NeMo`, and `GSA2` against current white-box needs
+- [x] `WB-19.2` decide whether white-box still owns the next live CPU-first slot
+- [x] `WB-19.3` freeze the next lane and GPU posture
+
+Canonical evidence anchor:
+
+- `workspaces/white-box/2026-04-17-whitebox-post-breadth-next-hypothesis-selection-review.md`
+
+Selection verdict:
+
+- `WB-19` now closes as `negative but clarifying`
+- white-box currently has no honest immediate next-hypothesis execution lane
+- reason:
+  - `DP-LoRA` is bounded but not newly opened
+  - `Finding NeMo` remains not-requestable
+  - `GSA2` remains same-family corroboration only
+- `gpu_release = none`
+- `next_gpu_candidate = none`
+- the next live task is:
+  - `cross-box closure-round system sync review`
+
+Value: ⭐⭐
+Budget: CPU-only selection review
+
 #### ⬜ `WB-5` DP-LoRA comparability dossier
 
 Goal: open the next honest white-box successor lane without pretending execution readiness or benchmark comparability too early
@@ -3822,7 +3859,7 @@ This is a preference order, not a prison.
 
 ### Top now
 
-`GB-62` gray-box post-noise contract-shift reselection review is now closed.
+`WB-19` white-box post-breadth next-hypothesis selection review is now closed.
 
 No immediate GPU lane should be opened until a new bounded comparison or defended-extension question is selected.
 
@@ -3830,17 +3867,17 @@ Current release posture:
 
 - `gpu_release = none`
 - `next_gpu_candidate = none`
-- `next_live_cpu_lane = white-box post-breadth next-hypothesis selection review`
+- `next_live_cpu_lane = cross-box closure-round system sync review`
 
 ### Next
 
-1. ✅ `GB-62` gray-box post-noise contract-shift reselection review
-2. ✅ `GB-61` Noise as a Probe contract-shift review
-3. ✅ `GB-60` Noise as a Probe promotion-gap review
-4. ✅ `GB-59` gray-box post-CDI lane reselection review
-5. ✅ `GB-58` CDI paired-scorer consumer handoff note
-6. ✅ `GB-57` CDI paired-scorer machine-readable contract note
-7. ✅ `GB-56` CDI paired-scorer default-run policy note
+1. ✅ `WB-19` white-box post-breadth next-hypothesis selection review
+2. ✅ `GB-62` gray-box post-noise contract-shift reselection review
+3. ✅ `GB-61` Noise as a Probe contract-shift review
+4. ✅ `GB-60` Noise as a Probe promotion-gap review
+5. ✅ `GB-59` gray-box post-CDI lane reselection review
+6. ✅ `GB-58` CDI paired-scorer consumer handoff note
+7. ✅ `GB-57` CDI paired-scorer machine-readable contract note
 8. ✅ `GB-50` SecMI paired-surface repair contract review
 9. ✅ `GB-49` CDI paired-surface mismatch review
 10. ✅ `GB-48` CDI paired-feature extension review
@@ -4017,6 +4054,7 @@ If that happens, the agent must add new branches and continue.
 | 2026-04-17 00:50 | Closed `GB-60` as `negative but clarifying`: `Noise as a Probe` is no longer blocked on execution truth, but it still has no honest direct promotion path because the packaged gray-box challenger board remains anchored on the shared `DDPM/CIFAR10` surface while this branch lives on a separate `SD1.5 + target-family LoRA` latent-diffusion contract; defended extension is also already a `no-go`, so the next CPU-side question becomes `Noise as a Probe contract-shift review`, with `gpu_release` and `next_gpu_candidate` still fixed at `none` |
 | 2026-04-17 01:05 | Closed `GB-61` as `negative but clarifying`: even after widening the question to a latent-diffusion same-surface board, the current evidence still does not justify building one, because `Noise as a Probe` is the only repeat-positive branch there while `MoFit` remains hold and `structural memorization` remains direction-negative; the board would add pseudo-comparability rather than stronger truth, so `gpu_release` and `next_gpu_candidate` remain `none`, and the next live CPU lane becomes `gray-box post-noise contract-shift reselection review` |
 | 2026-04-17 01:20 | Closed `GB-62` as `negative but clarifying`: after both latent-diffusion follow-up questions closed, gray-box no longer exposes a high-value immediate next-family lane; its headline, challenger, corroboration, and internal `CDI` extension are all already stable, so the next live CPU-first slot should now move to `white-box post-breadth next-hypothesis selection review`, while `gpu_release` and `next_gpu_candidate` stay at `none` |
+| 2026-04-17 01:35 | Closed `WB-19` as `negative but clarifying`: white-box also no longer exposes an honest immediate next-hypothesis execution lane, because `DP-LoRA` is already frozen as a bounded metric-split branch, `Finding NeMo` remains not-requestable, and `GSA2` is only same-family corroboration; therefore the next live CPU-first slot should now move to `cross-box closure-round system sync review`, while `gpu_release` and `next_gpu_candidate` remain `none` |
 | 2026-04-16 14:25 | Closed `BB-7` as `negative but stabilizing`: after the second-signal challenger, scoring review, `CLiD` boundary tightening, mitigation no-go, and `variation` asset-contract clarification, black-box currently has no honest new GPU-worthy question; keep `Recon` as headline, `semantic-auxiliary-classifier` as leading challenger, `CLiD` as corroboration-only, and `variation` as contract-ready blocked until a genuinely new feature family or real asset change appears |
 | 2026-04-16 08:05 | Refreshed the `Phase E` candidate registry after recent lane promotions and selected `WB-5 DP-LoRA comparability dossier` as the next live CPU-first lane; `Finding NeMo` remains `zero-GPU hold`, `TMIA-DM` is removed from intake-only candidate ordering, and `gpu_release` stays `none` |
 | 2026-04-16 08:20 | Closed `WB-5.1` as `positive but bounded`: `DP-LoRA` has real white-box defense-family overlap and a local `SMP-LoRA under DDPM/CIFAR10` bridge hint, but the current relation to admitted `GSA/W-1` remains `partial-overlap only`, so `gpu_release` still stays `none` and the next gate is the minimal local config candidate |
