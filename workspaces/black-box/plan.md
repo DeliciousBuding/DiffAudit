@@ -6,8 +6,8 @@
 - `scope`: 统一黑/灰/白研究规划下的第一优先执行线，负责黑盒成员推断、数据集级审计、black-box leakage 线索整理
 - `status`: 进行中，`recon` 的 black-box 主证据、最佳单指标参考和 `variation` 次主线口径已冻结；`semantic-auxiliary-classifier` 已落成当前 leading new-family challenger；`CLiD` 已收紧到 `evaluator-near local clip-only corroboration`；`served-image-sanitization` 已记为 mitigation `no-go`；黑盒当前 `gpu question = none`
 - `blocked by`: `recon` 公开资产包（DOI: `10.5281/zenodo.13371475`）的语义 gate 现已 machine-audited 到 `proxy-shadow-member`，但仍未升级到 paper-aligned；`CLiD` 仍缺 shadow-side evaluator assets；`variation` 真实 `query_image_root` 仍缺；`semantic-auxiliary-classifier` 当前也还没有 genuinely new feature family；`Kandinsky 10/10` 当前本机链路仍异常慢
-- `next command`: no immediate black-box rerun; keep `Recon / CLiD / semantic-auxiliary-classifier / variation` wording consistent across `blackbox-status`, `reproduction-status`, `comprehensive-progress`, and `ROADMAP`; keep `semantic-aux` scoring/fusion as `negative but useful` unless a new feature family appears; keep `variation` blocked unless the explicit asset contract is filled with real `query_image_root + endpoint + budget`; keep `served-image-sanitization` recorded as a first black-box mitigation no-go; reopen black-box only for a genuinely new family or a real asset/boundary change
-- `last updated`: 2026-04-16
+- `next command`: no immediate black-box rerun; current next live CPU-first lane should be `black-box next-family candidate-generation refresh review`; keep `Recon / CLiD / semantic-auxiliary-classifier / variation` wording consistent across `blackbox-status`, `reproduction-status`, `comprehensive-progress`, and `ROADMAP`; keep `semantic-aux` scoring/fusion as `negative but useful` unless a new feature family appears; keep `variation` blocked unless the explicit asset contract is filled with real `query_image_root + endpoint + budget`; keep `served-image-sanitization` recorded as a first black-box mitigation no-go
+- `last updated`: 2026-04-17
 
 ## 统一规划定位
 

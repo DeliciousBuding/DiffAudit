@@ -499,6 +499,40 @@ Verdict:
 Value: ⭐⭐⭐
 Budget: CPU-only
 
+#### ✅ `X-9` Cross-box closure-round system sync review
+
+Goal:
+
+- synchronize the summary layer after both gray-box and white-box closed their immediate next-lane reviews, and make sure the repository no longer points at stale box-local priorities
+
+Tasks:
+
+- [x] `X-9.1` audit whether current summary-layer entry points reflect the new closure-round truth
+- [x] `X-9.2` update any stale system-facing queue or summary entry that still points at old blockers or outdated next-lane assumptions
+- [x] `X-9.3` freeze the next live CPU-first lane after the closure round
+
+Status:
+
+- completed for the current closure-round sync
+- canonical evidence anchor:
+  - `workspaces/implementation/2026-04-17-crossbox-closure-round-system-sync-review.md`
+
+Verdict:
+
+- summary-layer sync was required
+- `docs/comprehensive-progress.md` now reflects that:
+  - `active GPU question = none`
+  - gray-box and white-box immediate execution lanes are both currently closed
+  - current priority should move to cross-box sync plus black-box candidate-generation refresh
+- `workspaces/implementation/challenger-queue.md` was stale and is now refreshed around current repo truth
+- `workspaces/black-box/plan.md` now points at:
+  - `black-box next-family candidate-generation refresh review`
+- `next_live_cpu_lane` is now:
+  - `black-box next-family candidate-generation refresh review`
+
+Value: ⭐⭐⭐
+Budget: CPU-only
+
 ---
 
 ### 6.2 Black-box expansion
@@ -3859,7 +3893,7 @@ This is a preference order, not a prison.
 
 ### Top now
 
-`WB-19` white-box post-breadth next-hypothesis selection review is now closed.
+`X-9` cross-box closure-round system sync review is now closed.
 
 No immediate GPU lane should be opened until a new bounded comparison or defended-extension question is selected.
 
@@ -3867,17 +3901,17 @@ Current release posture:
 
 - `gpu_release = none`
 - `next_gpu_candidate = none`
-- `next_live_cpu_lane = cross-box closure-round system sync review`
+- `next_live_cpu_lane = black-box next-family candidate-generation refresh review`
 
 ### Next
 
-1. ✅ `WB-19` white-box post-breadth next-hypothesis selection review
-2. ✅ `GB-62` gray-box post-noise contract-shift reselection review
-3. ✅ `GB-61` Noise as a Probe contract-shift review
-4. ✅ `GB-60` Noise as a Probe promotion-gap review
-5. ✅ `GB-59` gray-box post-CDI lane reselection review
-6. ✅ `GB-58` CDI paired-scorer consumer handoff note
-7. ✅ `GB-57` CDI paired-scorer machine-readable contract note
+1. ✅ `X-9` cross-box closure-round system sync review
+2. ✅ `WB-19` white-box post-breadth next-hypothesis selection review
+3. ✅ `GB-62` gray-box post-noise contract-shift reselection review
+4. ✅ `GB-61` Noise as a Probe contract-shift review
+5. ✅ `GB-60` Noise as a Probe promotion-gap review
+6. ✅ `GB-59` gray-box post-CDI lane reselection review
+7. ✅ `GB-58` CDI paired-scorer consumer handoff note
 8. ✅ `GB-50` SecMI paired-surface repair contract review
 9. ✅ `GB-49` CDI paired-surface mismatch review
 10. ✅ `GB-48` CDI paired-feature extension review
@@ -4055,6 +4089,7 @@ If that happens, the agent must add new branches and continue.
 | 2026-04-17 01:05 | Closed `GB-61` as `negative but clarifying`: even after widening the question to a latent-diffusion same-surface board, the current evidence still does not justify building one, because `Noise as a Probe` is the only repeat-positive branch there while `MoFit` remains hold and `structural memorization` remains direction-negative; the board would add pseudo-comparability rather than stronger truth, so `gpu_release` and `next_gpu_candidate` remain `none`, and the next live CPU lane becomes `gray-box post-noise contract-shift reselection review` |
 | 2026-04-17 01:20 | Closed `GB-62` as `negative but clarifying`: after both latent-diffusion follow-up questions closed, gray-box no longer exposes a high-value immediate next-family lane; its headline, challenger, corroboration, and internal `CDI` extension are all already stable, so the next live CPU-first slot should now move to `white-box post-breadth next-hypothesis selection review`, while `gpu_release` and `next_gpu_candidate` stay at `none` |
 | 2026-04-17 01:35 | Closed `WB-19` as `negative but clarifying`: white-box also no longer exposes an honest immediate next-hypothesis execution lane, because `DP-LoRA` is already frozen as a bounded metric-split branch, `Finding NeMo` remains not-requestable, and `GSA2` is only same-family corroboration; therefore the next live CPU-first slot should now move to `cross-box closure-round system sync review`, while `gpu_release` and `next_gpu_candidate` remain `none` |
+| 2026-04-17 01:50 | Closed `X-9` as `positive`: after the gray-box and white-box closure round, the summary layer and challenger queue were partially stale; they now reflect the current repo truth that `active GPU question = none`, box-local immediate execution lanes are closed, and the next live CPU-first slot should move to `black-box next-family candidate-generation refresh review` |
 | 2026-04-16 14:25 | Closed `BB-7` as `negative but stabilizing`: after the second-signal challenger, scoring review, `CLiD` boundary tightening, mitigation no-go, and `variation` asset-contract clarification, black-box currently has no honest new GPU-worthy question; keep `Recon` as headline, `semantic-auxiliary-classifier` as leading challenger, `CLiD` as corroboration-only, and `variation` as contract-ready blocked until a genuinely new feature family or real asset change appears |
 | 2026-04-16 08:05 | Refreshed the `Phase E` candidate registry after recent lane promotions and selected `WB-5 DP-LoRA comparability dossier` as the next live CPU-first lane; `Finding NeMo` remains `zero-GPU hold`, `TMIA-DM` is removed from intake-only candidate ordering, and `gpu_release` stays `none` |
 | 2026-04-16 08:20 | Closed `WB-5.1` as `positive but bounded`: `DP-LoRA` has real white-box defense-family overlap and a local `SMP-LoRA under DDPM/CIFAR10` bridge hint, but the current relation to admitted `GSA/W-1` remains `partial-overlap only`, so `gpu_release` still stays `none` and the next gate is the minimal local config candidate |

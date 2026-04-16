@@ -6,7 +6,7 @@
 
 ## 当前一句话
 
-当前仓库已经具备三条攻击线的基本骨架；而白盒/灰盒主讲线现在固定为成熟主线 `PIA + GSA/W-1` 加一条保留中的探索主线 `SMP-LoRA / DP-LoRA`。但后者已不再处于“等待 optimizer/lr frontier 放行”的阶段：它已经拿到一张 bounded harmonized local comparator board，并因此从早前的 clean local-win 叙事收缩为 `metric-split bounded exploration branch`。当前 active GPU question 仍保持 `none`。
+当前仓库已经具备三条攻击线的基本骨架；白盒/灰盒主讲线现在固定为成熟主线 `PIA + GSA/W-1` 加一条保留中的探索主线 `SMP-LoRA / DP-LoRA`。但后者已不再处于“等待 optimizer/lr frontier 放行”的阶段：它已经拿到一张 bounded harmonized local comparator board，并因此从早前的 clean local-win 叙事收缩为 `metric-split bounded exploration branch`。当前 `active GPU question = none`，而 gray-box / white-box 的 immediate next-family execution lanes 也都已在本轮 closure-review 中收口，所以当前优先级应转向 cross-box summary/queue sync 与 black-box 候选刷新。
 
 ## 进度总览
 
@@ -33,7 +33,7 @@
   - `Local Mirror` 不提供第二防御家族
 - [2026-04-10-recon-decision-package](../workspaces/black-box/2026-04-10-recon-decision-package.md) 已把黑盒五件套固定为 decision-grade package，本轮 [recon-artifact-mainline-public-100-step30-reverify-20260410-round28](../experiments/recon-artifact-mainline-public-100-step30-reverify-20260410-round28/summary.json) 又在 CPU 上复算到相同 headline metrics，且不改 admitted 结果
 - [2026-04-10-pia-provenance-split-protocol-delta](../workspaces/gray-box/2026-04-10-pia-provenance-split-protocol-delta.md) 已把 `split shape aligned locally / random-four-split protocol still open / strict redo currently dirty` 三点固定为新的 provenance supplement
-- 当前最值得推进的唯一目标切到：把双主线口径压实，并把 `SMP-LoRA / DP-LoRA` 明确固定为 `bounded exploration branch + no-new-gpu-question`；`PIA provenance` 继续作为 CPU sidecar blocker；`recon` 当前进入 frozen maintenance，而不是继续扩 run
+- 当前最值得推进的唯一目标切到：把三盒 closure-round 后的口径、summary layer 和 challenger queue 一起压实，并把 `SMP-LoRA / DP-LoRA` 继续固定为 `bounded exploration branch + no-new-gpu-question`；`PIA provenance` 继续作为 CPU sidecar blocker；`recon` 当前进入 frozen maintenance，而 black-box 下一步应优先转向 genuinely new family 的 candidate-generation refresh，而不是直接扩 run
 
 ## 攻击主线
 
