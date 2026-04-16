@@ -4,9 +4,9 @@
 
 - `owner`: `research_leader`
 - `scope`: 部分中间信息、条件相关评分、噪声预测与结构特征下的成员推断
-- `status`: `PIA real-asset runtime-mainline ready; GPU128/GPU256/GPU512 baseline + defended pairs landed; GPU512 rerun confirmed; GPU128/GPU256 adaptive portability pair landed on RTX4070 8GB; provisional G-1 established; SecMI full-split corroboration landed; PIA-vs-SecMI disagreement verdict landed`
-- `blocked by`: `PIA` 仍未升级到 `paper-aligned`；灰盒当前仍缺把新 defended challenger 写进更高层摘要的比较与消费层同步；`PIA + SecMI` 还没有 promotion-worthy 的 fusion story；三个低成本候选 `epsilon-precision-throttling / epsilon-output-noise / input-gaussian-blur` 都已被 bounded smoke 否掉；当前 `SimA` feasibility 与 later-timestep rescan 虽都可执行但仍明显偏弱；`structural memorization` 当前 local faithful approximation 也已落成 `negative but useful`
-- `next step`: 保持 `stochastic-dropout = provisional G-1 (repeat-confirmed at GPU512)`；把 `SecMI` 固定为独立 corroboration line 而不是 blocked baseline；不再为 naive `PIA + SecMI` fusion 消耗预算；`SimA` 在 later-timestep rescan 后仍不放 GPU；`structural memorization` 在当前 local CelebA target-family approximation 下也不放 GPU；`TMIA-DM` 的 `late_steps_only` 与 `timestep-jitter` 两个 challenger-specific 防御假设都已证伪为弱解，而新的 `temporal-striding(stride=2)` 已在 `cpu-32 / GPU128 / GPU256` 上重复压低 `TMIA-DM late-window`，且 defended comparison + system sync 已落地；当前最短下一步应是切去别的 lane 或提出真正新机制的 gray-box family，而不是继续在 gray-box 内机械加 rung、重开 `short_window`/naive fusion，或直接跳到 `MoFit`
+- `status`: `PIA real-asset runtime-mainline ready; GPU128/GPU256/GPU512 baseline + defended pairs landed; GPU512 rerun confirmed; GPU128/GPU256 adaptive portability pair landed on RTX4070 8GB; provisional G-1 established; SecMI full-split corroboration landed; PIA-vs-SecMI disagreement verdict landed; TMIA-DM late-window + temporal-striding(stride=2) is now the strongest defended gray-box challenger reference; Noise as a Probe is a strengthened bounded challenger candidate; gray-box current gpu question = none`
+- `blocked by`: `PIA` 仍未升级到 `paper-aligned`；`PIA + SecMI` 还没有 promotion-worthy 的 fusion story；当前 `SimA` feasibility 与 later-timestep rescan 虽都可执行但仍明显偏弱；`structural memorization` 当前 local faithful approximation 也已落成 `negative but useful`；`Noise as a Probe` 在当前 local `SD1.5` 合同上没有 honest defended-extension gate；灰盒当前缺的是 genuinely new mechanism 或 contract shift，而不是更多机械加 rung`
+- `next step`: 保持 `PIA + stochastic-dropout(all_steps)` 为 admitted defended headline；保持 `TMIA-DM late-window + temporal-striding(stride=2)` 为 strongest defended challenger reference；保持 `Noise as a Probe` 为 strengthened bounded challenger candidate；灰盒当前明确进入 `no-new-gpu-question`，不再继续追加 `TMIA temporal-striding` 重复 rung、naive fusion retries、或当前合同下的 `Noise as a Probe` defended-extension 尝试；若继续在灰盒推进，下一步应是 genuinely new mechanism、真实 contract change，或转去别的 lane 处理更高价值问题`
 - `last updated`: `2026-04-16`
 
 ## 推荐论文
@@ -28,7 +28,7 @@
 
 - `PIA` 是当前最成熟、最适合作为“攻击 + 防御”主讲闭环的一条线
 - `SecMI` 已完成 full-split local execution，当前更适合作为独立 corroboration line，而不是 blocked placeholder
-- `TMIA-DM` 已归档，但当前应作为时间相关噪声信号的灰盒候选论文，而不是黑盒主线
+- `TMIA-DM` 当前已升级为 strongest packaged gray-box challenger，应写成灰盒时间相关噪声信号主候选，而不是 intake-only 占位或黑盒主线
 
 ## 当前可执行证据
 
@@ -50,6 +50,11 @@
 - `workspaces/gray-box/2026-04-08-secmi-blocked.md`
 - `workspaces/gray-box/2026-04-15-pia-vs-secmi-graybox-comparison.md`
 - `workspaces/gray-box/2026-04-15-graybox-ranking-sensitive-disagreement-verdict.md`
+- `workspaces/gray-box/2026-04-16-tmiadm-temporal-striding-defense-verdict.md`
+- `workspaces/gray-box/2026-04-16-pia-vs-tmiadm-temporal-striding-defended-comparison.md`
+- `workspaces/gray-box/2026-04-16-noise-as-probe-challenger-boundary-review.md`
+- `workspaces/gray-box/2026-04-16-noise-as-probe-defended-extension-feasibility-review.md`
+- `workspaces/gray-box/2026-04-16-post-temporal-striding-graybox-next-question-review.md`
 - `workspaces/gray-box/runs/pia-cifar10-runtime-mainline-20260408-gpu-128/summary.json`
 - `workspaces/gray-box/runs/pia-cifar10-runtime-mainline-dropout-defense-20260408-gpu-128/summary.json`
 - `workspaces/gray-box/runs/pia-cifar10-runtime-mainline-20260408-gpu-256/summary.json`
@@ -84,17 +89,13 @@
 
 ## 当前推荐执行顺序
 
-1. 固定 `stochastic-dropout = provisional G-1`
-2. 以 `GPU512` 为主档，做单旋钮最小消融，不再继续扩大样本规模
-3. 为 `PIA` defense pair 补 `FID / IS / LPIPS` 中至少一项可落地 utility 指标，并把 wall-clock 写成正式成本列
-4. 复用 [2026-04-09-pia-signal-and-cost.md](2026-04-09-pia-signal-and-cost.md) 作为灰盒主讲线的机理与成本说明
-5. 把 repeated-query adaptive review 设成硬门槛，并比较 `off / all_steps / late_steps_only`
-6. 补同档 repeat / 多 seed 的最小稳健性说明，而不是换数据集
-7. 把 `SecMI` 固定为 `independent corroboration line`，不要再写成 `blocked baseline`
-8. 将 `PIA vs SecMI` disagreement verdict 固定为 `naive fusion = no-go`
-9. 保持 `TMIA-DM` 为研究候选，不提前伪装成可执行主线
-10. 复用 [2026-04-09-graybox-signal-axis-note.md](2026-04-09-graybox-signal-axis-note.md) 统一 `PIA / TMIA-DM / SimA / MoFit` 的信号轴叙事
-11. 将灰盒主结果接入统一总表并持续复用
+1. 固定 `PIA + stochastic-dropout(all_steps)` 为 admitted defended headline，不再回退成单纯“provisional but unstable”
+2. 固定 `TMIA-DM late-window + temporal-striding(stride=2)` 为 strongest defended gray-box challenger reference，不再继续机械补 rung
+3. 固定 `Noise as a Probe` 为 `strengthened bounded challenger candidate`，但不把它提前包装成 active challenger
+4. 将灰盒当前状态明确写成 `no-new-gpu-question`，直到出现 genuinely new mechanism 或真实 contract shift
+5. 把 `SecMI` 固定为 `independent corroboration line`，把 `PIA vs SecMI` 固定为 `naive fusion = no-go`
+6. 复用 [2026-04-09-pia-signal-and-cost.md](2026-04-09-pia-signal-and-cost.md) 与 [2026-04-09-graybox-signal-axis-note.md](2026-04-09-graybox-signal-axis-note.md) 维持灰盒主讲线机理与信号轴叙事
+7. 如果继续在灰盒推进，优先找 genuinely new family / contract change；否则切去别的 lane 处理更高价值问题
 
 ## 2026-04-08 新观察
 

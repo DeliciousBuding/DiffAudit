@@ -1327,6 +1327,44 @@ Selection verdict:
 Value: ⭐⭐⭐
 Budget: CPU-only
 
+#### ⬜ `GB-18` Post-temporal-striding gray-box next-question review
+
+Goal: decide whether gray-box currently still contains any honest new GPU-worthy question, after `TMIA-DM + temporal-striding(stride=2)` closed as the strongest defended challenger reference and `Noise as a Probe` finished its boundary review
+
+Current read:
+
+- defended gray-box packaging is now stable:
+  - `PIA + stochastic-dropout(all_steps)` remains the admitted defended headline
+  - `TMIA-DM late-window + temporal-striding(stride=2)` is the strongest defended challenger reference
+- `Noise as a Probe` is now a strengthened bounded challenger candidate
+- but `GB-17` already showed that the current local `SD1.5` contract does not expose an honest minimal defended-extension path for `Noise as a Probe`
+- the remaining question is therefore lane status and GPU release, not more same-family execution
+
+Tasks:
+
+- [x] `GB-18.1` review whether any current gray-box branch still exposes a real new GPU-worthy question
+- [x] `GB-18.2` decide whether current TMIA / Noise-as-a-Probe branches justify more bounded rungs or should now be frozen
+- [x] `GB-18.3` record the carry-forward rule for future gray-box reopen conditions
+
+Canonical evidence anchor:
+
+- `workspaces/gray-box/2026-04-16-post-temporal-striding-graybox-next-question-review.md`
+
+Selection verdict:
+
+- `GB-18` now closes as `negative but stabilizing`
+- gray-box currently has `no-new-gpu-question`
+- current stable hierarchy is:
+  - `PIA = admitted headline`
+  - `TMIA + temporal-striding(stride=2) = strongest defended challenger reference`
+  - `Noise as a Probe = strengthened bounded challenger candidate`
+- future gray-box reopen should require a genuinely new mechanism or real contract change, not more same-family rungs or fusion retries
+- `gpu_release = none`
+- `next_gpu_candidate = none`
+
+Value: ⭐⭐⭐
+Budget: CPU-only
+
 ---
 
 ### 6.4 White-box expansion
@@ -2165,6 +2203,7 @@ If that happens, the agent must add new branches and continue.
 | 2026-04-16 12:10 | Closed `GB-15` positively: `Noise as a Probe` is now strong enough to count as a strengthened bounded challenger candidate, but it still should not replace `TMIA-DM` as the strongest packaged gray-box challenger because it lacks same-protocol comparability, defended evidence, and higher-layer operating-point comparison |
 | 2026-04-16 12:20 | Closed `GB-16` positively: the higher-layer gray-box summary is now synchronized to current truth, replacing stale `SecMI blocked / TMIA intake-only` wording with `SecMI corroboration / TMIA packaged challenger / Noise as a Probe strengthened bounded challenger candidate` while preserving `PIA` as the headline |
 | 2026-04-16 12:35 | Closed `GB-17` as `negative but useful`: `Noise as a Probe` still has no honest minimal defended-extension gate on the current local `SD1.5` contract, because direct `stochastic-dropout` port is not real on a U-Net whose dropout modules all sit at `p=0.0`, and direct `temporal-striding` would redefine the attack rather than add a bounded defense |
+| 2026-04-16 14:05 | Closed `GB-18` as `negative but stabilizing`: after the `TMIA + temporal-striding` challenger closure and the `Noise as a Probe` boundary review, gray-box currently has no honest new GPU-worthy question; keep `PIA` as headline, `TMIA + temporal-striding` as defended challenger reference, `Noise as a Probe` as strengthened bounded challenger candidate, and require a genuinely new mechanism or contract shift before reopening GPU |
 | 2026-04-16 12:50 | Closed `WB-6` positively: the `DP-LoRA` successor lane should stay alive, but the next honest white-box question is still the frozen `baseline vs SMP-LoRA vs W-1` comparator review rather than immediate GPU validation, because current local SMP-LoRA evidence is bridge-positive yet still lacks a fresh comparator verdict against `W-1` |
 | 2026-04-16 13:00 | Closed `WB-7` positively: the existing comparator packet is still directionally right but contract-stale, because it points at older `T06 batch14 throughput` artifacts instead of the newly frozen `lambda=0.1 / rank=4 / epochs=10` local candidate; future release review should therefore use only the reconciled `baseline vs frozen SMP-LoRA vs W-1` board |
 | 2026-04-16 13:10 | Closed `WB-8` as `negative but useful`: the reconciled `baseline vs frozen SMP-LoRA vs W-1` board is conceptually right but not yet release-review-ready, because baseline/SMP-LoRA live on a local `63 / 63` evaluation surface while `W-1 strong-v3 full-scale` is still reported on a larger `target_eval_size = 2000` surface with a different metric schema |
