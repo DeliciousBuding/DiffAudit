@@ -4,9 +4,9 @@
 
 - `owner`: `research_leader`
 - `scope`: 部分中间信息、条件相关评分、噪声预测与结构特征下的成员推断
-- `status`: `PIA real-asset runtime-mainline ready; GPU128/GPU256/GPU512 baseline + defended pairs landed; GPU512 rerun confirmed; GPU128/GPU256 adaptive portability pair landed on RTX4070 8GB; provisional G-1 established; SecMI full-split corroboration landed; PIA-vs-SecMI disagreement verdict landed; TMIA-DM late-window + temporal-striding(stride=2) is now the strongest defended gray-box challenger reference; Noise as a Probe is a strengthened bounded challenger candidate; MoFit is now current-contract hold; CDI contract review and first internal canary both landed; PIA 2048 shared-score surface landed; repaired SecMI 2048 paired surface now also landed and recovers the old strong paired regime; CDI paired-feature scorer design now also landed; gray-box current gpu question = none`
-- `blocked by`: `PIA` 仍未升级到 `paper-aligned`；`PIA + SecMI` 虽已落成第一个有界 paired scorer，但还没有完成 `CDI` paired scorer 的 boundary review 与更高层口径冻结；当前 `SimA` feasibility 与 later-timestep rescan 虽都可执行但仍明显偏弱；`structural memorization` 当前 local faithful approximation 也已落成 `negative but useful`；`Noise as a Probe` 在当前 local `SD1.5` 合同上没有 honest defended-extension gate；`MoFit` 在当前 local contract 下只给出 tiny weak-positive gap`
-- `next step`: 保持 `PIA + stochastic-dropout(all_steps)` 为 admitted defended headline；保持 `TMIA-DM late-window + temporal-striding(stride=2)` 为 strongest defended challenger reference；保持 `Noise as a Probe` 为 strengthened bounded challenger candidate；保持 `MoFit` 为 `current-contract hold`；当前下一步转到 `CDI paired-scorer boundary review`，判断新 paired scorer 应该停留在 internal paired canary、升级为默认内部 paired scorer，还是仍需额外防过拟合边界约束`
+- `status`: `PIA real-asset runtime-mainline ready; GPU128/GPU256/GPU512 baseline + defended pairs landed; GPU512 rerun confirmed; GPU128/GPU256 adaptive portability pair landed on RTX4070 8GB; provisional G-1 established; SecMI full-split corroboration landed; PIA-vs-SecMI disagreement verdict landed; TMIA-DM late-window + temporal-striding(stride=2) is now the strongest defended gray-box challenger reference; Noise as a Probe is a strengthened bounded challenger candidate; MoFit is now current-contract hold; CDI contract review and first internal canary both landed; PIA 2048 shared-score surface landed; repaired SecMI 2048 paired surface now also landed and recovers the old strong paired regime; CDI paired-feature scorer design now also landed; CDI paired scorer boundary is now frozen to default-internal-only; gray-box current gpu question = none`
+- `blocked by`: `PIA` 仍未升级到 `paper-aligned`；`CDI` paired scorer 虽已通过 boundary review，但还没有完成 summary-layer sync 与更高层材料口径冻结；当前 `SimA` feasibility 与 later-timestep rescan 虽都可执行但仍明显偏弱；`structural memorization` 当前 local faithful approximation 也已落成 `negative but useful`；`Noise as a Probe` 在当前 local `SD1.5` 合同上没有 honest defended-extension gate；`MoFit` 在当前 local contract 下只给出 tiny weak-positive gap`
+- `next step`: 保持 `PIA + stochastic-dropout(all_steps)` 为 admitted defended headline；保持 `TMIA-DM late-window + temporal-striding(stride=2)` 为 strongest defended challenger reference；保持 `Noise as a Probe` 为 strengthened bounded challenger candidate；保持 `MoFit` 为 `current-contract hold`；当前下一步转到 `CDI paired-scorer summary-layer sync`，把 `default internal paired scorer` 口径同步进 lane 摘要与后续内部执行默认值说明`
 - `last updated`: `2026-04-16`
 
 ## 推荐论文
@@ -91,6 +91,7 @@
 - `workspaces/gray-box/2026-04-16-secmi-pia-2048-repaired-paired-surface-verdict.md`
 - `workspaces/gray-box/2026-04-16-cdi-paired-feature-repromotion-review.md`
 - `workspaces/gray-box/2026-04-16-cdi-paired-feature-scorer-design.md`
+- `workspaces/gray-box/2026-04-16-cdi-paired-scorer-boundary-review.md`
 - `workspaces/gray-box/runs/cdi-internal-canary-20260416-r1/audit_summary.json`
 - `workspaces/gray-box/runs/pia-cifar10-runtime-mainline-20260416-gpu-2048-cdi-r1/summary.json`
 - `workspaces/gray-box/runs/secmi-pia-disagreement-20260416-r2/summary.json`
@@ -151,6 +152,7 @@
 21. `SecMI paired-surface repair contract review` 已完成并放行一个有界 GPU 问题：修复后的 paired export 必须回到 admitted `SecMI stat` 合同（`t_sec = 100 / timestep = 10 / batch_size = 64 / canonical split root = external/SecMI/mia_evals/member_splits`），而且 `SecMI` 与 `PIA` 的 CIFAR-10 half-split 文件已验证为字节级一致，因此下一步可以诚实地重跑一次 `2048` paired surface
 22. 修复合同后的 `SecMI 2048` paired rerun 已真实落盘，并把 paired surface 拉回到旧强 `1024` 的同一量级（`AUC = 0.876912 / combined Spearman = 0.906879 / disagreement = 0.121582`）；因此旧弱 `r2` packet 只保留为 drift-history，而 paired `PIA + SecMI` feature promotion 现在可以重新打开，但下一步应先做 scorer design 而不是继续烧 GPU
 23. `CDI paired-feature scorer design` 已完成并在 repaired `2048` surface 上给出正向 bounded canary：当前冻结 scorer 为 control-fitted `control-z-linear`（`SecMI stat` 权重 `0.526839`，`PIA` 权重 `0.473161`），paired `t = 30.027926` 略高于单独 `SecMI` 的 `29.637878`；因此下一步不是新 GPU，而是 paired scorer 的 boundary review
+24. `CDI paired-scorer boundary review` 已完成：paired scorer 在反向 half-split 上仍然强正向，且权重稳定在 `SecMI ~0.52 / PIA ~0.48`；但它并不稳定压过 `SecMI`，所以当前最诚实的边界是 `default internal paired scorer on the repaired 2048 surface`，而不是 headline scorer 或外部证据
 
 ## 2026-04-08 新观察
 
