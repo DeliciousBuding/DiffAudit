@@ -1987,6 +1987,38 @@ Selection verdict:
 Value: ⭐⭐⭐
 Budget: CPU-only
 
+#### ⬜ `GB-32` MoFit real-asset canary launch gate review
+
+Goal: decide whether the new script-level `MoFit` canary should be launched immediately on the admitted local CPU stack, or whether the first-launch budget should be tightened first
+
+Current read:
+
+- `GB-31` already made the canary entry executable
+- the next honest missing piece is now launch discipline:
+  - current CPU defaults still imply repeated gradient-bearing `UNet` calls
+  - the first admitted local launch should avoid spending unnecessary CPU on an over-wide budget
+- before a fresh real-asset launch, the repo should decide whether the current budget is narrow enough
+
+Tasks:
+
+- [x] `GB-32.1` inspect the current launch defaults
+- [x] `GB-32.2` assess whether the first admitted CPU launch should be delayed pending budget tightening
+- [x] `GB-32.3` freeze the next task as budget tightening or direct launch
+
+Canonical evidence anchor:
+
+- `workspaces/gray-box/2026-04-16-mofit-real-asset-canary-launch-gate-review.md`
+
+Selection verdict:
+
+- `GB-32` now closes as `hold-before-launch`
+- the current script is runnable, but the first real local CPU launch should not fire yet under the present budget
+- the next honest live task is launch-budget tightening rather than immediate execution
+- `gpu_release = none`
+
+Value: ⭐⭐
+Budget: CPU-only
+
 ---
 
 ### 6.4 White-box expansion
@@ -2821,6 +2853,7 @@ If that happens, the agent must add new branches and continue.
 | 2026-04-16 17:20 | Closed `GB-29` as `positive but bounded`: the `MoFit` lane now has a real sample-level helper path that resolves prompts from metadata or bounded fallback, appends/finalizes records, runs surrogate and embedding optimization, and writes traces plus `L_cond / L_uncond / mofit_score` back into schema; the lane still remains below smoke because this helper is not yet mounted into a script-level run over actual local assets and model-loading substrate |
 | 2026-04-16 17:30 | Closed `GB-30` as `positive but bounded`: the script-level execution surface is now frozen; the next honest path is to extend `run_mofit_interface_canary.py` rather than create another `MoFit` script, and to reuse the structural-memorization substrate for row loading, caption bootstrap, prompt encoding, image-to-latent encoding, and `UNet` target-path calls |
 | 2026-04-16 17:45 | Closed `GB-31` as `positive but bounded`: `run_mofit_interface_canary.py` now owns bounded row loading, split execution, runner-side mounting of the sample-level helper, and summary-state upgrade from `scaffold_only` to `canary_executed`, all verified by fresh script-level TDD plus a full `MoFit` regression sweep; the lane still remains below smoke because this path has not yet been freshly launched on the admitted local asset stack |
+| 2026-04-16 17:55 | Closed `GB-32` as `hold-before-launch`: after the script-level canary became executable, the launch gate review concluded that the current first-run CPU budget is still too wide for an honest first admitted local launch; the next live task should tighten launch defaults or add an explicit bounded launch profile before spending real local runtime |
 | 2026-04-16 14:25 | Closed `BB-7` as `negative but stabilizing`: after the second-signal challenger, scoring review, `CLiD` boundary tightening, mitigation no-go, and `variation` asset-contract clarification, black-box currently has no honest new GPU-worthy question; keep `Recon` as headline, `semantic-auxiliary-classifier` as leading challenger, `CLiD` as corroboration-only, and `variation` as contract-ready blocked until a genuinely new feature family or real asset change appears |
 | 2026-04-16 08:05 | Refreshed the `Phase E` candidate registry after recent lane promotions and selected `WB-5 DP-LoRA comparability dossier` as the next live CPU-first lane; `Finding NeMo` remains `zero-GPU hold`, `TMIA-DM` is removed from intake-only candidate ordering, and `gpu_release` stays `none` |
 | 2026-04-16 08:20 | Closed `WB-5.1` as `positive but bounded`: `DP-LoRA` has real white-box defense-family overlap and a local `SMP-LoRA under DDPM/CIFAR10` bridge hint, but the current relation to admitted `GSA/W-1` remains `partial-overlap only`, so `gpu_release` still stays `none` and the next gate is the minimal local config candidate |

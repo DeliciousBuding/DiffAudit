@@ -5,8 +5,8 @@
 - `owner`: `research_leader`
 - `scope`: 部分中间信息、条件相关评分、噪声预测与结构特征下的成员推断
 - `status`: `PIA real-asset runtime-mainline ready; GPU128/GPU256/GPU512 baseline + defended pairs landed; GPU512 rerun confirmed; GPU128/GPU256 adaptive portability pair landed on RTX4070 8GB; provisional G-1 established; SecMI full-split corroboration landed; PIA-vs-SecMI disagreement verdict landed; TMIA-DM late-window + temporal-striding(stride=2) is now the strongest defended gray-box challenger reference; Noise as a Probe is a strengthened bounded challenger candidate; gray-box current gpu question = none`
-- `blocked by`: `PIA` 仍未升级到 `paper-aligned`；`PIA + SecMI` 还没有 promotion-worthy 的 fusion story；当前 `SimA` feasibility 与 later-timestep rescan 虽都可执行但仍明显偏弱；`structural memorization` 当前 local faithful approximation 也已落成 `negative but useful`；`Noise as a Probe` 在当前 local `SD1.5` 合同上没有 honest defended-extension gate；新的 `MoFit` lane 已具备 real scaffold、record append、score/trace update path、optimization helper、latent-loss contract、真实 `UNet`-style target-path helper bridge、sample-level execution helper 与 script-level canary implementation，但尚未 fresh launch 到 admitted local asset stack`
-- `next step`: 保持 `PIA + stochastic-dropout(all_steps)` 为 admitted defended headline；保持 `TMIA-DM late-window + temporal-striding(stride=2)` 为 strongest defended challenger reference；保持 `Noise as a Probe` 为 strengthened bounded challenger candidate；灰盒当前 live CPU-first lane 已推进到 `MoFit real-asset canary launch gate`；下一步应判断是否先 tightening 默认参数再做单次 real local CPU canary，避免无谓 CPU 浪费`
+- `blocked by`: `PIA` 仍未升级到 `paper-aligned`；`PIA + SecMI` 还没有 promotion-worthy 的 fusion story；当前 `SimA` feasibility 与 later-timestep rescan 虽都可执行但仍明显偏弱；`structural memorization` 当前 local faithful approximation 也已落成 `negative but useful`；`Noise as a Probe` 在当前 local `SD1.5` 合同上没有 honest defended-extension gate；新的 `MoFit` lane 已具备 real scaffold、record append、score/trace update path、optimization helper、latent-loss contract、真实 `UNet`-style target-path helper bridge、sample-level execution helper 与 script-level canary implementation，但当前 real-asset canary 默认预算仍偏宽，不适合直接作为第一条 admitted local CPU launch`
+- `next step`: 保持 `PIA + stochastic-dropout(all_steps)` 为 admitted defended headline；保持 `TMIA-DM late-window + temporal-striding(stride=2)` 为 strongest defended challenger reference；保持 `Noise as a Probe` 为 strengthened bounded challenger candidate；灰盒当前 live CPU-first lane 已推进到 `MoFit launch-budget tightening`；下一步应先把 `run_mofit_interface_canary.py` 的 first-launch CPU budget 收紧，再决定是否执行单次 real local canary`
 - `last updated`: `2026-04-16`
 
 ## 推荐论文
@@ -68,6 +68,7 @@
 - `workspaces/gray-box/2026-04-16-mofit-sample-level-execution-assembly-verdict.md`
 - `workspaces/gray-box/2026-04-16-mofit-script-level-canary-execution-review.md`
 - `workspaces/gray-box/2026-04-16-mofit-script-level-canary-implementation-verdict.md`
+- `workspaces/gray-box/2026-04-16-mofit-real-asset-canary-launch-gate-review.md`
 - `workspaces/gray-box/runs/pia-cifar10-runtime-mainline-20260408-gpu-128/summary.json`
 - `workspaces/gray-box/runs/pia-cifar10-runtime-mainline-dropout-defense-20260408-gpu-128/summary.json`
 - `workspaces/gray-box/runs/pia-cifar10-runtime-mainline-20260408-gpu-256/summary.json`
@@ -120,8 +121,9 @@
 16. sample-level execution helper 已落地，当前 helper 层现在可以完成 prompt bootstrap、record append/finalize、trace 写回与最终 score writeback
 17. 脚本级实现面已收敛：下一步应扩展现有 `run_mofit_interface_canary.py`，而不是再开第二个 `MoFit` 脚本
 18. script-level canary implementation 已落地，当前 `run_mofit_interface_canary.py` 已能做 bounded orchestration，而不再只是初始化 scaffold
-19. 在 fresh real-asset canary、真实 latent surrogate path、fitted-embedding path 与真实 `L_MoFit` score 完整接入前，继续保持 `gpu_release = none`
-20. 如果 `MoFit` 也被证明不具备 honest bounded entry，再切去别的 lane 处理更高价值问题
+19. fresh real-asset canary 目前仍处于 hold-before-launch：先 tightening first-launch CPU budget，再决定是否执行
+20. 在 fresh real-asset canary、真实 latent surrogate path、fitted-embedding path 与真实 `L_MoFit` score 完整接入前，继续保持 `gpu_release = none`
+21. 如果 `MoFit` 也被证明不具备 honest bounded entry，再切去别的 lane 处理更高价值问题
 
 ## 2026-04-08 新观察
 
