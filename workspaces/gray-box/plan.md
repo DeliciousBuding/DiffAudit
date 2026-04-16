@@ -5,8 +5,8 @@
 - `owner`: `research_leader`
 - `scope`: 部分中间信息、条件相关评分、噪声预测与结构特征下的成员推断
 - `status`: `PIA real-asset runtime-mainline ready; GPU128/GPU256/GPU512 baseline + defended pairs landed; GPU512 rerun confirmed; GPU128/GPU256 adaptive portability pair landed on RTX4070 8GB; provisional G-1 established; SecMI full-split corroboration landed; PIA-vs-SecMI disagreement verdict landed; TMIA-DM late-window + temporal-striding(stride=2) is now the strongest defended gray-box challenger reference; Noise as a Probe is a strengthened bounded challenger candidate; gray-box current gpu question = none`
-- `blocked by`: `PIA` 仍未升级到 `paper-aligned`；`PIA + SecMI` 还没有 promotion-worthy 的 fusion story；当前 `SimA` feasibility 与 later-timestep rescan 虽都可执行但仍明显偏弱；`structural memorization` 当前 local faithful approximation 也已落成 `negative but useful`；`Noise as a Probe` 在当前 local `SD1.5` 合同上没有 honest defended-extension gate；新的 `MoFit` lane 已具备 real scaffold、record append、score/trace update path、optimization helper、latent-loss contract 与真实 `UNet`-style target-path helper bridge，但 caption bootstrap + sample-level execution path 仍未装配为 end-to-end bounded run`
-- `next step`: 保持 `PIA + stochastic-dropout(all_steps)` 为 admitted defended headline；保持 `TMIA-DM late-window + temporal-striding(stride=2)` 为 strongest defended challenger reference；保持 `Noise as a Probe` 为 strengthened bounded challenger candidate；灰盒当前 live CPU-first lane 已推进到 `MoFit sample-level execution assembly`；下一步应把新的 real target-path helper bridge 接入 caption bootstrap、单样本 record append/finalize 与真实 `UNet` loss execution`
+- `blocked by`: `PIA` 仍未升级到 `paper-aligned`；`PIA + SecMI` 还没有 promotion-worthy 的 fusion story；当前 `SimA` feasibility 与 later-timestep rescan 虽都可执行但仍明显偏弱；`structural memorization` 当前 local faithful approximation 也已落成 `negative but useful`；`Noise as a Probe` 在当前 local `SD1.5` 合同上没有 honest defended-extension gate；新的 `MoFit` lane 已具备 real scaffold、record append、score/trace update path、optimization helper、latent-loss contract、真实 `UNet`-style target-path helper bridge 与 sample-level execution helper，但脚本级真实资产执行路径仍未装配`
+- `next step`: 保持 `PIA + stochastic-dropout(all_steps)` 为 admitted defended headline；保持 `TMIA-DM late-window + temporal-striding(stride=2)` 为 strongest defended challenger reference；保持 `Noise as a Probe` 为 strengthened bounded challenger candidate；灰盒当前 live CPU-first lane 已推进到 `MoFit script-level canary execution`；下一步应把新的 sample-level helper 接入真实 row loading、latent/embedding 准备与单次 bounded canary run`
 - `last updated`: `2026-04-16`
 
 ## 推荐论文
@@ -65,6 +65,7 @@
 - `workspaces/gray-box/2026-04-16-mofit-optimization-helper-verdict.md`
 - `workspaces/gray-box/2026-04-16-mofit-latent-loss-contract-verdict.md`
 - `workspaces/gray-box/2026-04-16-mofit-real-target-path-wiring-verdict.md`
+- `workspaces/gray-box/2026-04-16-mofit-sample-level-execution-assembly-verdict.md`
 - `workspaces/gray-box/runs/pia-cifar10-runtime-mainline-20260408-gpu-128/summary.json`
 - `workspaces/gray-box/runs/pia-cifar10-runtime-mainline-dropout-defense-20260408-gpu-128/summary.json`
 - `workspaces/gray-box/runs/pia-cifar10-runtime-mainline-20260408-gpu-256/summary.json`
@@ -114,8 +115,9 @@
 13. 最小 optimization helper 已接入，当前可在 toy loss 上验证 surrogate/embedding trace 收敛
 14. latent-path loss contract 已接入，当前 helper、record schema 与 `mofit_score` 语义已经统一
 15. 真实 `UNet`-style target-path helper bridge 已落地，当前 helper 层现在可以接 `UNet(...).sample` 输出并生成 guided target noise
-16. 在 caption bootstrap、sample-level execution loop、真实 latent surrogate path、fitted-embedding path 与真实 `L_MoFit` score 完整接入前，继续保持 `gpu_release = none`
-17. 如果 `MoFit` 也被证明不具备 honest bounded entry，再切去别的 lane 处理更高价值问题
+16. sample-level execution helper 已落地，当前 helper 层现在可以完成 prompt bootstrap、record append/finalize、trace 写回与最终 score writeback
+17. 在脚本级真实资产执行、真实 latent surrogate path、fitted-embedding path 与真实 `L_MoFit` score 完整接入前，继续保持 `gpu_release = none`
+18. 如果 `MoFit` 也被证明不具备 honest bounded entry，再切去别的 lane 处理更高价值问题
 
 ## 2026-04-08 新观察
 

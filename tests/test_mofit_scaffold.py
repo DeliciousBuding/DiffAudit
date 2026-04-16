@@ -357,6 +357,118 @@ class MoFitScaffoldTests(unittest.TestCase):
         self.assertAlmostEqual(float(surrogate_loss_fn(latent).item()), 2.25)
         self.assertAlmostEqual(float(embedding_loss_fn(cond_embedding).item()), 0.0)
 
+    def test_execute_mofit_sample_assembles_metadata_prompt_and_record_flow(self) -> None:
+        from diffaudit.attacks.mofit_scaffold import execute_mofit_sample, initialize_mofit_scaffold
+
+        def unet_forward(
+            latent_value: torch.Tensor,
+            timestep_value: torch.Tensor,
+            embedding_value: torch.Tensor,
+        ) -> SimpleNamespace:
+            del timestep_value
+            embed_scalar = embedding_value.mean(dim=-1, keepdim=True).to(dtype=latent_value.dtype)
+            return SimpleNamespace(sample=latent_value + embed_scalar)
+
+        with tempfile.TemporaryDirectory() as tmpdir:
+            run_root = Path(tmpdir) / "mofit-scaffold"
+            initialize_mofit_scaffold(
+                run_root=run_root,
+                target_family="sd15-plus-celeba_partial_target-checkpoint-25000",
+                caption_source="metadata-with-blip-fallback",
+                surrogate_steps=5,
+                embedding_steps=25,
+                member_count=1,
+                nonmember_count=1,
+            )
+
+            finalized = execute_mofit_sample(
+                run_root=run_root,
+                split="member",
+                row={"file_name": "sample.png", "text": "face portrait"},
+                latent=torch.tensor([[1.0]], dtype=torch.float32),
+                timestep=10,
+                cond_embedding=torch.tensor([[2.0]], dtype=torch.float32),
+                uncond_embedding=torch.tensor([[0.5]], dtype=torch.float32),
+                unet_forward_fn=unet_forward,
+                guidance_scale=1.0,
+                surrogate_steps=5,
+                surrogate_lr=0.5,
+                embedding_steps=25,
+                embedding_lr=0.1,
+                initial_surrogate_latent=torch.tensor([[0.0]], dtype=torch.float32),
+                initial_embedding=torch.tensor([[0.0]], dtype=torch.float32),
+            )
+
+            self.assertEqual(finalized["split"], "member")
+            self.assertEqual(finalized["file_name"], "sample.png")
+            self.assertEqual(finalized["prompt_source"], "metadata")
+            self.assertEqual(finalized["prompt_text"], "face portrait")
+            self.assertLess(finalized["l_cond"], 0.1)
+            self.assertLess(finalized["l_uncond"], 0.1)
+            self.assertLess(abs(finalized["mofit_score"]), 0.1)
+
+            surrogate_trace = json.loads(
+                (run_root / "traces" / "surrogate" / "member-sample.json").read_text(encoding="utf-8")
+            )
+            embedding_trace = json.loads(
+                (run_root / "traces" / "embedding" / "member-sample.json").read_text(encoding="utf-8")
+            )
+            self.assertEqual(len(surrogate_trace), 5)
+            self.assertEqual(len(embedding_trace), 25)
+
+    def test_execute_mofit_sample_uses_caption_fallback_when_metadata_missing(self) -> None:
+        from diffaudit.attacks.mofit_scaffold import execute_mofit_sample, initialize_mofit_scaffold
+
+        def unet_forward(
+            latent_value: torch.Tensor,
+            timestep_value: torch.Tensor,
+            embedding_value: torch.Tensor,
+        ) -> SimpleNamespace:
+            del timestep_value
+            embed_scalar = embedding_value.mean(dim=-1, keepdim=True).to(dtype=latent_value.dtype)
+            return SimpleNamespace(sample=latent_value + embed_scalar)
+
+        def caption_fallback(row: dict) -> str:
+            self.assertEqual(row["file_name"], "fallback.png")
+            return "blip caption"
+
+        with tempfile.TemporaryDirectory() as tmpdir:
+            run_root = Path(tmpdir) / "mofit-scaffold"
+            initialize_mofit_scaffold(
+                run_root=run_root,
+                target_family="sd15-plus-celeba_partial_target-checkpoint-25000",
+                caption_source="metadata-with-blip-fallback",
+                surrogate_steps=0,
+                embedding_steps=0,
+                member_count=1,
+                nonmember_count=1,
+            )
+
+            finalized = execute_mofit_sample(
+                run_root=run_root,
+                split="nonmember",
+                row={"file_name": "fallback.png", "text": "   "},
+                latent=torch.tensor([[1.0]], dtype=torch.float32),
+                timestep=10,
+                cond_embedding=torch.tensor([[0.5]], dtype=torch.float32),
+                uncond_embedding=torch.tensor([[0.5]], dtype=torch.float32),
+                unet_forward_fn=unet_forward,
+                guidance_scale=1.0,
+                surrogate_steps=0,
+                surrogate_lr=0.5,
+                embedding_steps=0,
+                embedding_lr=0.1,
+                initial_surrogate_latent=torch.tensor([[1.0]], dtype=torch.float32),
+                initial_embedding=torch.tensor([[0.5]], dtype=torch.float32),
+                caption_fallback_fn=caption_fallback,
+            )
+
+            self.assertEqual(finalized["prompt_source"], "blip-fallback")
+            self.assertEqual(finalized["prompt_text"], "blip caption")
+            self.assertAlmostEqual(finalized["l_cond"], 0.0)
+            self.assertAlmostEqual(finalized["l_uncond"], 0.0)
+            self.assertAlmostEqual(finalized["mofit_score"], 0.0)
+
 
 if __name__ == "__main__":
     unittest.main()

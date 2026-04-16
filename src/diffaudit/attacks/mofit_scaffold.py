@@ -247,6 +247,111 @@ def compute_guided_target_noise(
     return uncond_prediction + float(guidance_scale) * (cond_prediction - uncond_prediction)
 
 
+def resolve_mofit_prompt(*, row: dict, caption_fallback_fn=None) -> tuple[str, str]:
+    prompt_text = row.get("text")
+    if isinstance(prompt_text, str) and prompt_text.strip():
+        prompt_source = row.get("prompt_source")
+        if not isinstance(prompt_source, str) or not prompt_source.strip():
+            prompt_source = "metadata"
+        return prompt_source.strip(), prompt_text.strip()
+
+    if caption_fallback_fn is None:
+        raise ValueError("MoFit sample is missing prompt text and no caption fallback is configured.")
+
+    fallback_prompt = caption_fallback_fn(row)
+    if not isinstance(fallback_prompt, str) or not fallback_prompt.strip():
+        raise ValueError("Caption fallback must return a non-empty prompt string.")
+    return "blip-fallback", fallback_prompt.strip()
+
+
+def execute_mofit_sample(
+    *,
+    run_root: Path,
+    split: str,
+    row: dict,
+    latent: torch.Tensor,
+    timestep: int,
+    cond_embedding: torch.Tensor,
+    uncond_embedding: torch.Tensor,
+    unet_forward_fn,
+    guidance_scale: float,
+    surrogate_steps: int,
+    surrogate_lr: float,
+    embedding_steps: int,
+    embedding_lr: float,
+    initial_surrogate_latent: torch.Tensor | None = None,
+    initial_embedding: torch.Tensor | None = None,
+    caption_fallback_fn=None,
+) -> dict:
+    file_name = row["file_name"]
+    prompt_source, prompt_text = resolve_mofit_prompt(
+        row=row,
+        caption_fallback_fn=caption_fallback_fn,
+    )
+    append_mofit_record(
+        run_root=run_root,
+        split=split,
+        file_name=file_name,
+        prompt_source=prompt_source,
+        prompt_text=prompt_text,
+    )
+
+    predict_noise_fn = build_unet_noise_predictor(unet_forward_fn)
+    target_noise = compute_guided_target_noise(
+        latent=latent,
+        timestep=timestep,
+        cond_embedding=cond_embedding,
+        uncond_embedding=uncond_embedding,
+        guidance_scale=guidance_scale,
+        predict_noise_fn=predict_noise_fn,
+    )
+
+    surrogate_start = initial_surrogate_latent if initial_surrogate_latent is not None else latent
+    optimized_surrogate, surrogate_trace = run_surrogate_optimization(
+        initial_value=surrogate_start,
+        loss_fn=build_surrogate_loss_fn(
+            timestep=timestep,
+            target_noise=target_noise,
+            uncond_embedding=uncond_embedding,
+            predict_noise_fn=predict_noise_fn,
+        ),
+        steps=surrogate_steps,
+        lr=surrogate_lr,
+    )
+
+    embedding_start = initial_embedding if initial_embedding is not None else cond_embedding
+    optimized_embedding, embedding_trace = run_embedding_optimization(
+        initial_value=embedding_start,
+        loss_fn=build_embedding_loss_fn(
+            latent=optimized_surrogate,
+            timestep=timestep,
+            target_noise=target_noise,
+            predict_noise_fn=predict_noise_fn,
+        ),
+        steps=embedding_steps,
+        lr=embedding_lr,
+    )
+
+    losses = compute_mofit_loss_terms(
+        latent=optimized_surrogate,
+        timestep=timestep,
+        target_noise=target_noise,
+        cond_embedding=optimized_embedding,
+        uncond_embedding=uncond_embedding,
+        predict_noise_fn=predict_noise_fn,
+    )
+    return finalize_mofit_record(
+        run_root=run_root,
+        file_name=file_name,
+        split=split,
+        l_cond=losses["l_cond"],
+        l_uncond=losses["l_uncond"],
+        mofit_score=losses["mofit_score"],
+        surrogate_trace=surrogate_trace,
+        embedding_trace=embedding_trace,
+    )
+
+
 def build_surrogate_loss_fn(
     *,
     timestep: int,
