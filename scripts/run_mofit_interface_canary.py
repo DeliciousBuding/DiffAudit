@@ -35,7 +35,14 @@ def parse_args() -> argparse.Namespace:
     parser.add_argument("--embedding-lr", type=float, default=5e-3)
     parser.add_argument("--guidance-scale", type=float, default=3.5)
     parser.add_argument("--max-timestep", type=int, default=140)
+    parser.add_argument("--resolution", type=int, default=512)
     parser.add_argument("--record-trace", action="store_true")
+    parser.add_argument(
+        "--launch-profile",
+        type=str,
+        choices=["bounded-cpu-first", "full-canary"],
+        default="bounded-cpu-first",
+    )
     return parser.parse_args()
 
 
@@ -56,6 +63,28 @@ def load_rows(split_dir: Path, subset_limit: int, offset: int = 0) -> list[dict]
     return rows
 
 
+def apply_launch_profile(args: argparse.Namespace) -> argparse.Namespace:
+    effective = argparse.Namespace(**vars(args))
+    if effective.launch_profile == "bounded-cpu-first":
+        effective.member_limit = min(int(effective.member_limit), 1)
+        effective.nonmember_limit = min(int(effective.nonmember_limit), 1)
+        effective.surrogate_steps = min(int(effective.surrogate_steps), 1)
+        effective.embedding_steps = min(int(effective.embedding_steps), 2)
+        effective.device = "cpu"
+    return effective
+
+
+def prepare_runner_args(args: argparse.Namespace) -> argparse.Namespace:
+    prepared = argparse.Namespace(**vars(args))
+    if not hasattr(prepared, "resolution"):
+        prepared.resolution = 512
+    return prepared
+
+
+def materialize_tensor(tensor: torch.Tensor) -> torch.Tensor:
+    return tensor.detach().clone()
+
+
 class MoFitCanaryRunner(StructuralMemorizationRunner):
     def execute_row(
         self,
@@ -70,6 +99,9 @@ class MoFitCanaryRunner(StructuralMemorizationRunner):
         prompt_text = self.caption_for_image(row, image)
         _, latent = self.encode_image(image)
         cond_embedding, uncond_embedding = self.encode_prompt(prompt_text)
+        latent = materialize_tensor(latent)
+        cond_embedding = materialize_tensor(cond_embedding)
+        uncond_embedding = materialize_tensor(uncond_embedding)
 
         def caption_fallback_fn(current_row: dict) -> str:
             del current_row
@@ -94,10 +126,10 @@ class MoFitCanaryRunner(StructuralMemorizationRunner):
             run_root=run_root,
             split=split_name,
             row=row,
-            latent=latent.detach(),
+            latent=latent,
             timestep=args.max_timestep,
-            cond_embedding=cond_embedding.detach(),
-            uncond_embedding=uncond_embedding.detach(),
+            cond_embedding=cond_embedding,
+            uncond_embedding=uncond_embedding,
             unet_forward_fn=unet_forward_fn,
             guidance_scale=args.guidance_scale,
             surrogate_steps=args.surrogate_steps,
@@ -139,52 +171,63 @@ def run_split(
 
 
 def run_canary(args: argparse.Namespace, runner=None) -> dict:
+    effective_args = apply_launch_profile(args)
     payload = initialize_mofit_scaffold(
-        run_root=args.run_root,
+        run_root=effective_args.run_root,
         target_family="sd15-plus-celeba_partial_target-checkpoint-25000",
         caption_source="metadata-with-blip-fallback",
-        surrogate_steps=args.surrogate_steps,
-        embedding_steps=args.embedding_steps,
-        member_count=args.member_limit,
-        nonmember_count=args.nonmember_limit,
+        surrogate_steps=effective_args.surrogate_steps,
+        embedding_steps=effective_args.embedding_steps,
+        member_count=effective_args.member_limit,
+        nonmember_count=effective_args.nonmember_limit,
     )
     payload.update(
         {
             "status": "scaffold_only",
-            "member_dir": args.member_dir.as_posix(),
-            "nonmember_dir": args.nonmember_dir.as_posix(),
-            "model_dir": args.model_dir.as_posix(),
-            "lora_dir": args.lora_dir.as_posix(),
-            "blip_dir": args.blip_dir.as_posix(),
-            "device": args.device,
-            "surrogate_lr": args.surrogate_lr,
-            "embedding_lr": args.embedding_lr,
-            "guidance_scale": args.guidance_scale,
-            "max_timestep": args.max_timestep,
-            "record_trace": args.record_trace,
+            "member_dir": effective_args.member_dir.as_posix(),
+            "nonmember_dir": effective_args.nonmember_dir.as_posix(),
+            "model_dir": effective_args.model_dir.as_posix(),
+            "lora_dir": effective_args.lora_dir.as_posix(),
+            "blip_dir": effective_args.blip_dir.as_posix(),
+            "device": effective_args.device,
+            "surrogate_lr": effective_args.surrogate_lr,
+            "embedding_lr": effective_args.embedding_lr,
+            "guidance_scale": effective_args.guidance_scale,
+            "max_timestep": effective_args.max_timestep,
+            "record_trace": effective_args.record_trace,
+            "launch_profile": effective_args.launch_profile,
         }
     )
-    member_rows = load_rows(args.member_dir, subset_limit=args.member_limit, offset=args.member_offset)
-    nonmember_rows = load_rows(args.nonmember_dir, subset_limit=args.nonmember_limit, offset=args.nonmember_offset)
-    active_runner = runner if runner is not None else MoFitCanaryRunner(args)
+    member_rows = load_rows(
+        effective_args.member_dir,
+        subset_limit=effective_args.member_limit,
+        offset=effective_args.member_offset,
+    )
+    nonmember_rows = load_rows(
+        effective_args.nonmember_dir,
+        subset_limit=effective_args.nonmember_limit,
+        offset=effective_args.nonmember_offset,
+    )
+    runner_args = prepare_runner_args(effective_args)
+    active_runner = runner if runner is not None else MoFitCanaryRunner(runner_args)
     member_records = run_split(
         runner=active_runner,
         split_name="member",
-        split_dir=args.member_dir,
+        split_dir=effective_args.member_dir,
         rows=member_rows,
-        run_root=args.run_root,
-        args=args,
+        run_root=effective_args.run_root,
+        args=effective_args,
     )
     nonmember_records = run_split(
         runner=active_runner,
         split_name="nonmember",
-        split_dir=args.nonmember_dir,
+        split_dir=effective_args.nonmember_dir,
         rows=nonmember_rows,
-        run_root=args.run_root,
-        args=args,
+        run_root=effective_args.run_root,
+        args=effective_args,
     )
 
-    summary_path = args.run_root / "summary.json"
+    summary_path = effective_args.run_root / "summary.json"
     summary = json.loads(summary_path.read_text(encoding="utf-8"))
     summary.update(
         {
@@ -194,17 +237,20 @@ def run_canary(args: argparse.Namespace, runner=None) -> dict:
                 "This remains a CPU-first canary and not yet a promoted smoke."
             ),
             "next_step": "evaluate whether the current canary is stable enough for a bounded real-asset smoke gate",
-            "member_dir": args.member_dir.as_posix(),
-            "nonmember_dir": args.nonmember_dir.as_posix(),
-            "model_dir": args.model_dir.as_posix(),
-            "lora_dir": args.lora_dir.as_posix(),
-            "blip_dir": args.blip_dir.as_posix(),
-            "device": args.device,
-            "surrogate_lr": args.surrogate_lr,
-            "embedding_lr": args.embedding_lr,
-            "guidance_scale": args.guidance_scale,
-            "max_timestep": args.max_timestep,
-            "record_trace": args.record_trace,
+            "member_dir": effective_args.member_dir.as_posix(),
+            "nonmember_dir": effective_args.nonmember_dir.as_posix(),
+            "model_dir": effective_args.model_dir.as_posix(),
+            "lora_dir": effective_args.lora_dir.as_posix(),
+            "blip_dir": effective_args.blip_dir.as_posix(),
+            "device": effective_args.device,
+            "surrogate_steps": effective_args.surrogate_steps,
+            "embedding_steps": effective_args.embedding_steps,
+            "surrogate_lr": effective_args.surrogate_lr,
+            "embedding_lr": effective_args.embedding_lr,
+            "guidance_scale": effective_args.guidance_scale,
+            "max_timestep": effective_args.max_timestep,
+            "record_trace": effective_args.record_trace,
+            "launch_profile": effective_args.launch_profile,
             "executed_member_count": len(member_records),
             "executed_nonmember_count": len(nonmember_records),
         }
@@ -213,6 +259,7 @@ def run_canary(args: argparse.Namespace, runner=None) -> dict:
     payload.update(
         {
             "status": "canary_executed",
+            "launch_profile": effective_args.launch_profile,
             "executed_member_count": len(member_records),
             "executed_nonmember_count": len(nonmember_records),
             "member_rows": member_rows,

@@ -469,6 +469,58 @@ class MoFitScaffoldTests(unittest.TestCase):
             self.assertAlmostEqual(finalized["l_uncond"], 0.0)
             self.assertAlmostEqual(finalized["mofit_score"], 0.0)
 
+    def test_execute_mofit_sample_freezes_target_noise_for_repeated_embedding_steps(self) -> None:
+        from diffaudit.attacks.mofit_scaffold import execute_mofit_sample, initialize_mofit_scaffold
+
+        projection = torch.nn.Linear(1, 1, bias=False)
+        with torch.no_grad():
+            projection.weight.fill_(1.0)
+
+        def unet_forward(
+            latent_value: torch.Tensor,
+            timestep_value: torch.Tensor,
+            embedding_value: torch.Tensor,
+        ) -> SimpleNamespace:
+            del timestep_value
+            embed_scalar = embedding_value.mean(dim=-1, keepdim=True).to(dtype=latent_value.dtype)
+            return SimpleNamespace(sample=projection(latent_value + embed_scalar))
+
+        with tempfile.TemporaryDirectory() as tmpdir:
+            run_root = Path(tmpdir) / "mofit-scaffold"
+            initialize_mofit_scaffold(
+                run_root=run_root,
+                target_family="sd15-plus-celeba_partial_target-checkpoint-25000",
+                caption_source="metadata-with-blip-fallback",
+                surrogate_steps=1,
+                embedding_steps=3,
+                member_count=1,
+                nonmember_count=1,
+            )
+
+            finalized = execute_mofit_sample(
+                run_root=run_root,
+                split="member",
+                row={"file_name": "graph.png", "text": "graph prompt"},
+                latent=torch.tensor([[1.0]], dtype=torch.float32),
+                timestep=10,
+                cond_embedding=torch.tensor([[2.0]], dtype=torch.float32),
+                uncond_embedding=torch.tensor([[0.5]], dtype=torch.float32),
+                unet_forward_fn=unet_forward,
+                guidance_scale=1.0,
+                surrogate_steps=1,
+                surrogate_lr=0.5,
+                embedding_steps=3,
+                embedding_lr=0.1,
+                initial_surrogate_latent=torch.tensor([[0.0]], dtype=torch.float32),
+                initial_embedding=torch.tensor([[0.0]], dtype=torch.float32),
+            )
+
+            self.assertEqual(finalized["file_name"], "graph.png")
+            embedding_trace = json.loads(
+                (run_root / "traces" / "embedding" / "member-graph.json").read_text(encoding="utf-8")
+            )
+            self.assertEqual(len(embedding_trace), 3)
+
 
 if __name__ == "__main__":
     unittest.main()

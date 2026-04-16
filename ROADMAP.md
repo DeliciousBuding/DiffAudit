@@ -2019,6 +2019,112 @@ Selection verdict:
 Value: ⭐⭐
 Budget: CPU-only
 
+#### ⬜ `GB-33` MoFit launch-budget tightening
+
+Goal: tighten the first-launch budget in code so the default `MoFit` canary path is safe for one future admitted local CPU launch
+
+Current read:
+
+- `GB-32` held the launch because the default budget was still too wide
+- the next honest missing piece is now explicit default-budget tightening:
+  - `member_limit = 1`
+  - `nonmember_limit = 1`
+  - `surrogate_steps = 1`
+  - `embedding_steps = 2`
+  - `device = cpu`
+- this should land in code and be test-verified before any fresh real-asset launch
+
+Tasks:
+
+- [x] `GB-33.1` write failing tests for launch-profile tightening
+- [x] `GB-33.2` implement the bounded CPU-first launch profile and propagate it through `run_canary`
+- [x] `GB-33.3` rerun `MoFit` regression sweeps and confirm the tightened profile is now default behavior
+
+Canonical evidence anchor:
+
+- `workspaces/gray-box/2026-04-16-mofit-launch-budget-tightening-verdict.md`
+
+Selection verdict:
+
+- `GB-33` now closes as `positive`
+- the script now exposes `apply_launch_profile(...)`
+- the default first-launch behavior is now `bounded-cpu-first`
+- the next honest live step is a fresh real local CPU canary under the tightened profile
+- `gpu_release = none`
+
+Value: ⭐⭐⭐
+Budget: CPU-only
+
+#### ⬜ `GB-34` MoFit fresh real-asset canary
+
+Goal: execute one fresh bounded local CPU `MoFit` canary on the admitted `SD1.5 + celeba_partial_target/checkpoint-25000` stack
+
+Current read:
+
+- `GB-33` already tightened the first-launch profile in code
+- the next honest missing piece is now a fresh real execution on the admitted local stack
+- this should stay strictly bounded:
+  - `member_limit = 1`
+  - `nonmember_limit = 1`
+  - `surrogate_steps = 1`
+  - `embedding_steps = 2`
+  - `device = cpu`
+
+Tasks:
+
+- [x] `GB-34.1` verify admitted local asset paths
+- [x] `GB-34.2` execute one fresh bounded local CPU canary
+- [x] `GB-34.3` record outcome and decide whether execution feasibility is now closed
+
+Canonical evidence anchor:
+
+- `workspaces/gray-box/2026-04-16-mofit-fresh-real-asset-canary-verdict.md`
+
+Selection verdict:
+
+- `GB-34` now closes as `positive but bounded`
+- the first fresh admitted local CPU canary now exists at:
+  - `workspaces/gray-box/runs/mofit-sd15-celeba-canary-20260416-cpu-r4`
+- this closes the remaining “can it run at all on the real local stack?” question
+- the observed score gap is still tiny, so execution success does not yet justify direct scale-up
+- `gpu_release = none`
+
+Value: ⭐⭐⭐
+Budget: CPU-only
+
+#### ⬜ `GB-35` MoFit canary score-shape review
+
+Goal: decide whether the first fresh `MoFit` canary shows enough score directionality to justify immediate rung expansion
+
+Current read:
+
+- `GB-34` already proved fresh real local execution
+- the next honest question is now score shape, not execution feasibility
+- before spending more CPU, the repo should decide whether the current canary is:
+  - scale-positive
+  - scale-negative
+  - or still inconclusive under too-small budget
+
+Tasks:
+
+- [x] `GB-35.1` inspect `records.jsonl` and trace artifacts
+- [x] `GB-35.2` classify current canary as scale-positive, scale-negative, or inconclusive
+- [x] `GB-35.3` freeze the next task as scale-up, no-go, or micro-rung design
+
+Canonical evidence anchor:
+
+- `workspaces/gray-box/2026-04-16-mofit-canary-score-shape-review.md`
+
+Selection verdict:
+
+- `GB-35` now closes as `inconclusive but still alive`
+- the canary is execution-positive, but the current member/nonmember score gap is too small to justify direct rung expansion
+- the next honest live task is a bounded CPU micro-rung design/review
+- `gpu_release = none`
+
+Value: ⭐⭐
+Budget: CPU-only
+
 ---
 
 ### 6.4 White-box expansion
@@ -2854,6 +2960,9 @@ If that happens, the agent must add new branches and continue.
 | 2026-04-16 17:30 | Closed `GB-30` as `positive but bounded`: the script-level execution surface is now frozen; the next honest path is to extend `run_mofit_interface_canary.py` rather than create another `MoFit` script, and to reuse the structural-memorization substrate for row loading, caption bootstrap, prompt encoding, image-to-latent encoding, and `UNet` target-path calls |
 | 2026-04-16 17:45 | Closed `GB-31` as `positive but bounded`: `run_mofit_interface_canary.py` now owns bounded row loading, split execution, runner-side mounting of the sample-level helper, and summary-state upgrade from `scaffold_only` to `canary_executed`, all verified by fresh script-level TDD plus a full `MoFit` regression sweep; the lane still remains below smoke because this path has not yet been freshly launched on the admitted local asset stack |
 | 2026-04-16 17:55 | Closed `GB-32` as `hold-before-launch`: after the script-level canary became executable, the launch gate review concluded that the current first-run CPU budget is still too wide for an honest first admitted local launch; the next live task should tighten launch defaults or add an explicit bounded launch profile before spending real local runtime |
+| 2026-04-16 18:10 | Closed `GB-33` positively: the `MoFit` canary now defaults to a bounded CPU-first launch profile (`member=1 / nonmember=1 / surrogate=1 / embedding=2 / cpu`), with the effective profile propagated through `run_canary` and `summary.json`, verified by fresh script-level TDD plus full `MoFit` regression sweep; the next honest live step is now one fresh real local CPU canary under that tightened profile |
+| 2026-04-16 18:35 | Closed `GB-34` as `positive but bounded`: the first fresh admitted local CPU `MoFit` canary now exists on `SD1.5 + celeba_partial_target/checkpoint-25000` under the bounded CPU-first profile, after resolving two real execution blockers (`resolution` propagation and inference-tensor graph freezing); execution feasibility is now closed, but the observed score gap is still tiny |
+| 2026-04-16 18:40 | Closed `GB-35` as `inconclusive but still alive`: the first fresh canary shows monotonic optimization traces but only tiny negative `mofit_score` gaps for both member and nonmember, so the family is not execution-dead but also not ready for direct rung expansion; the next live task should be a bounded CPU micro-rung design/review |
 | 2026-04-16 14:25 | Closed `BB-7` as `negative but stabilizing`: after the second-signal challenger, scoring review, `CLiD` boundary tightening, mitigation no-go, and `variation` asset-contract clarification, black-box currently has no honest new GPU-worthy question; keep `Recon` as headline, `semantic-auxiliary-classifier` as leading challenger, `CLiD` as corroboration-only, and `variation` as contract-ready blocked until a genuinely new feature family or real asset change appears |
 | 2026-04-16 08:05 | Refreshed the `Phase E` candidate registry after recent lane promotions and selected `WB-5 DP-LoRA comparability dossier` as the next live CPU-first lane; `Finding NeMo` remains `zero-GPU hold`, `TMIA-DM` is removed from intake-only candidate ordering, and `gpu_release` stays `none` |
 | 2026-04-16 08:20 | Closed `WB-5.1` as `positive but bounded`: `DP-LoRA` has real white-box defense-family overlap and a local `SMP-LoRA under DDPM/CIFAR10` bridge hint, but the current relation to admitted `GSA/W-1` remains `partial-overlap only`, so `gpu_release` still stays `none` and the next gate is the minimal local config candidate |

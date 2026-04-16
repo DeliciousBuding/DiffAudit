@@ -21,6 +21,69 @@ def _load_script_module():
 
 
 class MoFitInterfaceCanaryTests(unittest.TestCase):
+    def test_apply_launch_profile_tightens_cpu_first_budget(self) -> None:
+        module = _load_script_module()
+
+        args = argparse.Namespace(
+            member_limit=3,
+            nonmember_limit=4,
+            member_offset=0,
+            nonmember_offset=0,
+            surrogate_steps=8,
+            embedding_steps=12,
+            surrogate_lr=1e-2,
+            embedding_lr=5e-3,
+            guidance_scale=3.5,
+            max_timestep=140,
+            device="cuda",
+            launch_profile="bounded-cpu-first",
+        )
+
+        effective = module.apply_launch_profile(args)
+
+        self.assertEqual(effective.launch_profile, "bounded-cpu-first")
+        self.assertEqual(effective.member_limit, 1)
+        self.assertEqual(effective.nonmember_limit, 1)
+        self.assertEqual(effective.surrogate_steps, 1)
+        self.assertEqual(effective.embedding_steps, 2)
+        self.assertEqual(effective.device, "cpu")
+
+    def test_prepare_runner_args_adds_missing_resolution_default(self) -> None:
+        module = _load_script_module()
+
+        args = argparse.Namespace(
+            member_limit=1,
+            nonmember_limit=1,
+            member_offset=0,
+            nonmember_offset=0,
+            surrogate_steps=1,
+            embedding_steps=2,
+            surrogate_lr=1e-2,
+            embedding_lr=5e-3,
+            guidance_scale=3.5,
+            max_timestep=140,
+            device="cpu",
+            launch_profile="bounded-cpu-first",
+        )
+
+        prepared = module.prepare_runner_args(args)
+
+        self.assertEqual(prepared.resolution, 512)
+
+    def test_materialize_tensor_converts_inference_tensor_for_backward_use(self) -> None:
+        module = _load_script_module()
+
+        with torch.inference_mode():
+            inference_tensor = torch.ones((1, 2), dtype=torch.float32)
+
+        materialized = module.materialize_tensor(inference_tensor)
+        weight = torch.nn.Parameter(torch.ones((2, 1), dtype=torch.float32))
+        loss = (materialized @ weight).sum()
+        loss.backward()
+
+        self.assertIsNotNone(weight.grad)
+        self.assertTrue(torch.allclose(weight.grad, torch.ones_like(weight.grad)))
+
     def test_load_rows_honors_offset_and_limit(self) -> None:
         module = _load_script_module()
 
@@ -70,9 +133,9 @@ class MoFitInterfaceCanaryTests(unittest.TestCase):
                     uncond_embedding=torch.tensor([[0.5]], dtype=torch.float32),
                     unet_forward_fn=unet_forward,
                     guidance_scale=1.0,
-                    surrogate_steps=2,
+                    surrogate_steps=args.surrogate_steps,
                     surrogate_lr=0.5,
-                    embedding_steps=4,
+                    embedding_steps=args.embedding_steps,
                     embedding_lr=0.1,
                     initial_surrogate_latent=torch.tensor([[0.0]], dtype=torch.float32),
                     initial_embedding=torch.tensor([[0.0]], dtype=torch.float32),
@@ -123,11 +186,13 @@ class MoFitInterfaceCanaryTests(unittest.TestCase):
                 guidance_scale=1.0,
                 max_timestep=10,
                 record_trace=True,
+                launch_profile="bounded-cpu-first",
             )
 
             payload = module.run_canary(args, runner=FakeRunner())
 
             self.assertEqual(payload["status"], "canary_executed")
+            self.assertEqual(payload["launch_profile"], "bounded-cpu-first")
             self.assertEqual(payload["executed_member_count"], 1)
             self.assertEqual(payload["executed_nonmember_count"], 1)
             self.assertEqual(payload["member_rows"][0]["file_name"], "m1.png")
@@ -135,6 +200,10 @@ class MoFitInterfaceCanaryTests(unittest.TestCase):
 
             summary = json.loads((args.run_root / "summary.json").read_text(encoding="utf-8"))
             self.assertEqual(summary["status"], "canary_executed")
+            self.assertEqual(summary["launch_profile"], "bounded-cpu-first")
+            self.assertEqual(summary["surrogate_steps"], 1)
+            self.assertEqual(summary["embedding_steps"], 2)
+            self.assertEqual(summary["device"], "cpu")
             self.assertEqual(summary["executed_member_count"], 1)
             self.assertEqual(summary["executed_nonmember_count"], 1)
 
@@ -146,6 +215,11 @@ class MoFitInterfaceCanaryTests(unittest.TestCase):
             self.assertEqual(len(records), 2)
             self.assertEqual(records[0]["file_name"], "m1.png")
             self.assertEqual(records[1]["prompt_source"], "blip-fallback")
+
+            surrogate_trace = json.loads((args.run_root / "traces" / "surrogate" / "member-m1.json").read_text(encoding="utf-8"))
+            embedding_trace = json.loads((args.run_root / "traces" / "embedding" / "member-m1.json").read_text(encoding="utf-8"))
+            self.assertEqual(len(surrogate_trace), 1)
+            self.assertEqual(len(embedding_trace), 2)
 
 
 if __name__ == "__main__":

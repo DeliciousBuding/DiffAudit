@@ -304,7 +304,7 @@ def execute_mofit_sample(
         uncond_embedding=uncond_embedding,
         guidance_scale=guidance_scale,
         predict_noise_fn=predict_noise_fn,
-    )
+    ).detach().clone()
 
     surrogate_start = initial_surrogate_latent if initial_surrogate_latent is not None else latent
     optimized_surrogate, surrogate_trace = run_surrogate_optimization(
