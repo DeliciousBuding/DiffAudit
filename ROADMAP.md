@@ -1600,6 +1600,44 @@ Selection verdict:
 Value: ⭐⭐⭐
 Budget: CPU-only
 
+#### ⬜ `GB-22` MoFit scaffold / schema decision
+
+Goal: freeze the first dedicated `MoFit` scaffold shape and minimum artifact schema before any honest smoke is allowed
+
+Current read:
+
+- `GB-21` already fixed that `MoFit` must use a dedicated scaffold
+- the repo already has reusable latent-diffusion substrate and caption bootstrap
+- the remaining ambiguity is now:
+  - exact script surface
+  - exact minimum output schema
+
+Tasks:
+
+- [x] `GB-22.1` choose the dedicated scaffold form
+- [x] `GB-22.2` freeze one minimum artifact schema
+- [x] `GB-22.3` define the next bounded implementation step
+
+Canonical evidence anchor:
+
+- `workspaces/gray-box/2026-04-16-mofit-scaffold-schema-decision.md`
+
+Selection verdict:
+
+- `GB-22` now closes as `positive`
+- dedicated scaffold:
+  - `scripts/run_mofit_interface_canary.py`
+- minimum schema:
+  - `summary.json`
+  - `records.jsonl`
+  - surrogate / embedding trace artifacts
+- next step:
+  - implement the dedicated scaffold script under the frozen schema
+- `gpu_release = none`
+
+Value: ⭐⭐⭐
+Budget: CPU-only
+
 ---
 
 ### 6.4 White-box expansion
@@ -2424,6 +2462,7 @@ If that happens, the agent must add new branches and continue.
 | 2026-04-16 15:25 | Closed `GB-19` positively: after current live branches all contracted, the next honest live CPU-first lane is `GB-20 MoFit protocol / asset contract`; black-box reopen remains too blocked, `Finding NeMo` remains on zero-GPU hold, and `MoFit` is now the cleanest remaining genuinely new gray-box mechanism to evaluate next |
 | 2026-04-16 15:35 | Closed `GB-20` as `positive but bounded`: `MoFit` now has an honest first local contract on `SD1.5 + celeba_partial_target/checkpoint-25000` with `BLIP`/cached-caption bootstrap, but the repo still lacks frozen surrogate optimization, fitted-embedding optimization, and artifact schema; the next live CPU-first step is implementation-surface review, and `gpu_release` remains `none` |
 | 2026-04-16 15:45 | Closed `GB-21` as `positive but bounded`: `MoFit` should start from a dedicated scaffold rather than overloading `structural memorization` or `semantic-aux`; the repo already has caption bootstrap and latent-diffusion substrate, but still lacks surrogate optimization, fitted-embedding optimization, and `L_MoFit`-style schema, so `gpu_release` remains `none` |
+| 2026-04-16 15:55 | Closed `GB-22` positively: `MoFit` now has a frozen dedicated scaffold choice (`scripts/run_mofit_interface_canary.py`) plus a minimum artifact schema (`summary.json`, `records.jsonl`, surrogate/embedding traces); the next live CPU-first step is to implement that script, and `gpu_release` remains `none` |
 | 2026-04-16 14:25 | Closed `BB-7` as `negative but stabilizing`: after the second-signal challenger, scoring review, `CLiD` boundary tightening, mitigation no-go, and `variation` asset-contract clarification, black-box currently has no honest new GPU-worthy question; keep `Recon` as headline, `semantic-auxiliary-classifier` as leading challenger, `CLiD` as corroboration-only, and `variation` as contract-ready blocked until a genuinely new feature family or real asset change appears |
 | 2026-04-16 08:05 | Refreshed the `Phase E` candidate registry after recent lane promotions and selected `WB-5 DP-LoRA comparability dossier` as the next live CPU-first lane; `Finding NeMo` remains `zero-GPU hold`, `TMIA-DM` is removed from intake-only candidate ordering, and `gpu_release` stays `none` |
 | 2026-04-16 08:20 | Closed `WB-5.1` as `positive but bounded`: `DP-LoRA` has real white-box defense-family overlap and a local `SMP-LoRA under DDPM/CIFAR10` bridge hint, but the current relation to admitted `GSA/W-1` remains `partial-overlap only`, so `gpu_release` still stays `none` and the next gate is the minimal local config candidate |
