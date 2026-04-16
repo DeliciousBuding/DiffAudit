@@ -100,6 +100,33 @@ class MoFitInterfaceCanaryTests(unittest.TestCase):
         self.assertEqual(effective.surrogate_steps, 2)
         self.assertEqual(effective.embedding_steps, 4)
 
+    def test_apply_launch_profile_sets_cpu_review_rung_budget(self) -> None:
+        module = _load_script_module()
+
+        args = argparse.Namespace(
+            member_limit=99,
+            nonmember_limit=99,
+            member_offset=0,
+            nonmember_offset=0,
+            surrogate_steps=99,
+            embedding_steps=99,
+            surrogate_lr=1e-2,
+            embedding_lr=5e-3,
+            guidance_scale=3.5,
+            max_timestep=140,
+            device="cuda",
+            launch_profile="cpu-review-rung",
+        )
+
+        effective = module.apply_launch_profile(args)
+
+        self.assertEqual(effective.launch_profile, "cpu-review-rung")
+        self.assertEqual(effective.member_limit, 2)
+        self.assertEqual(effective.nonmember_limit, 2)
+        self.assertEqual(effective.surrogate_steps, 3)
+        self.assertEqual(effective.embedding_steps, 6)
+        self.assertEqual(effective.device, "cpu")
+
     def test_prepare_runner_args_adds_missing_resolution_default(self) -> None:
         module = _load_script_module()
 
@@ -240,13 +267,13 @@ class MoFitInterfaceCanaryTests(unittest.TestCase):
                 guidance_scale=1.0,
                 max_timestep=10,
                 record_trace=True,
-                launch_profile="cpu-micro-rung",
+                launch_profile="cpu-review-rung",
             )
 
             payload = module.run_canary(args, runner=FakeRunner())
 
             self.assertEqual(payload["status"], "canary_executed")
-            self.assertEqual(payload["launch_profile"], "cpu-micro-rung")
+            self.assertEqual(payload["launch_profile"], "cpu-review-rung")
             self.assertEqual(payload["executed_member_count"], 2)
             self.assertEqual(payload["executed_nonmember_count"], 2)
             self.assertEqual(payload["member_rows"][0]["file_name"], "m1.png")
@@ -254,9 +281,9 @@ class MoFitInterfaceCanaryTests(unittest.TestCase):
 
             summary = json.loads((args.run_root / "summary.json").read_text(encoding="utf-8"))
             self.assertEqual(summary["status"], "canary_executed")
-            self.assertEqual(summary["launch_profile"], "cpu-micro-rung")
-            self.assertEqual(summary["surrogate_steps"], 2)
-            self.assertEqual(summary["embedding_steps"], 4)
+            self.assertEqual(summary["launch_profile"], "cpu-review-rung")
+            self.assertEqual(summary["surrogate_steps"], 3)
+            self.assertEqual(summary["embedding_steps"], 6)
             self.assertEqual(summary["device"], "cpu")
             self.assertEqual(summary["executed_member_count"], 2)
             self.assertEqual(summary["executed_nonmember_count"], 2)
@@ -272,8 +299,8 @@ class MoFitInterfaceCanaryTests(unittest.TestCase):
 
             surrogate_trace = json.loads((args.run_root / "traces" / "surrogate" / "member-m1.json").read_text(encoding="utf-8"))
             embedding_trace = json.loads((args.run_root / "traces" / "embedding" / "member-m1.json").read_text(encoding="utf-8"))
-            self.assertEqual(len(surrogate_trace), 2)
-            self.assertEqual(len(embedding_trace), 4)
+            self.assertEqual(len(surrogate_trace), 3)
+            self.assertEqual(len(embedding_trace), 6)
 
 
 if __name__ == "__main__":
