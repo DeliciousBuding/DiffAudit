@@ -40,7 +40,7 @@ def parse_args() -> argparse.Namespace:
     parser.add_argument(
         "--launch-profile",
         type=str,
-        choices=["bounded-cpu-first", "full-canary"],
+        choices=["bounded-cpu-first", "cpu-micro-rung", "full-canary"],
         default="bounded-cpu-first",
     )
     return parser.parse_args()
@@ -70,6 +70,12 @@ def apply_launch_profile(args: argparse.Namespace) -> argparse.Namespace:
         effective.nonmember_limit = min(int(effective.nonmember_limit), 1)
         effective.surrogate_steps = min(int(effective.surrogate_steps), 1)
         effective.embedding_steps = min(int(effective.embedding_steps), 2)
+        effective.device = "cpu"
+    elif effective.launch_profile == "cpu-micro-rung":
+        effective.member_limit = 2
+        effective.nonmember_limit = 2
+        effective.surrogate_steps = 2
+        effective.embedding_steps = 4
         effective.device = "cpu"
     return effective
 
