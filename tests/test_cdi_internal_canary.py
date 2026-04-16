@@ -76,6 +76,8 @@ class CdiInternalCanaryTests(unittest.TestCase):
             summary = module.run_internal_canary(args)
 
             self.assertEqual(summary["feature_mode"], "secmi-stat-only")
+            self.assertEqual(summary["contract"]["paired_scorer_policy_effective"], "none")
+            self.assertFalse(summary["contract"]["component_reporting_required"])
             self.assertEqual(summary["collection_counts"]["P_ctrl"], 2)
             self.assertEqual(summary["analysis"]["secmi_memberness_orientation"], "identity")
             self.assertEqual(summary["analysis"]["paired_scorer_policy_effective"], "none")
@@ -196,6 +198,8 @@ class CdiInternalCanaryTests(unittest.TestCase):
             self.assertEqual(summary["feature_mode"], "paired-pia-secmi-control-z-linear")
             self.assertEqual(summary["analysis"]["paired_scorer_policy_requested"], "auto")
             self.assertEqual(summary["analysis"]["paired_scorer_policy_effective"], "control-z-linear")
+            self.assertEqual(summary["contract"]["paired_scorer_policy_effective"], "control-z-linear")
+            self.assertTrue(summary["contract"]["component_reporting_required"])
             self.assertIn("paired_p_test_mean", summary["metrics"])
 
     def test_run_internal_canary_emits_control_z_linear_paired_scores(self) -> None:

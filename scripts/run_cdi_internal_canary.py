@@ -299,6 +299,20 @@ def run_internal_canary(args: argparse.Namespace) -> dict[str, Any]:
         "resamples": args.resamples,
         "seed": args.seed,
         "collection_counts": {key: len(value) for key, value in collections.items()},
+        "contract": {
+            "name": "cdi-internal-canary-summary",
+            "version": "2026-04-16-paired-policy-v1",
+            "feature_mode": (
+                "secmi-stat-only"
+                if pia_payload is None
+                else ("paired-pia-secmi-control-z-linear" if paired_scorer is not None else "paired-pia-secmi")
+            ),
+            "paired_scorer_policy_requested": args.paired_scorer,
+            "paired_scorer_policy_effective": effective_paired_policy,
+            "component_reporting_required": bool(paired_scorer is not None),
+            "headline_use_allowed": False,
+            "external_evidence_allowed": False,
+        },
         "metrics": {
             "secmi_p_test_mean": float(secmi_p_test.mean()),
             "secmi_u_test_mean": float(secmi_u_test.mean()),
