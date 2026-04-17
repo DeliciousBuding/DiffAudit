@@ -40,7 +40,7 @@
   - `Local Mirror` 不提供第二防御家族
 - [2026-04-10-recon-decision-package](../workspaces/black-box/2026-04-10-recon-decision-package.md) 已把黑盒五件套固定为 decision-grade package，本轮 [recon-artifact-mainline-public-100-step30-reverify-20260410-round28](../experiments/recon-artifact-mainline-public-100-step30-reverify-20260410-round28/summary.json) 又在 CPU 上复算到相同 headline metrics，且不改 admitted 结果
 - [2026-04-10-pia-provenance-split-protocol-delta](../workspaces/gray-box/2026-04-10-pia-provenance-split-protocol-delta.md) 已把 `split shape aligned locally / random-four-split protocol still open / strict redo currently dirty` 三点固定为新的 provenance supplement
-- 当前最值得推进的目标已经变成：执行 `X-86 non-graybox next-lane reselection after X-85 admitted-summary sync review`，因为 `X-85` 已经把 admitted summary 读链强化成可直接消费的 cross-box 表；下一步应重新判断，在 stale-entry sync 与 admitted-summary sync 都完成之后，哪条 non-graybox lane 还值得拿下一个 CPU-first 槽位。 
+- `X-86→X-89` 序列已完成：`X-86` 识别 G1-A blocker resolution，`X-87` 把 G1-A/X-90 deferred 为 `needs-assets`（TMIA-DM 512-sample gap），`X-88` 重定向到 root ROADMAP B-M0 Candidate A（bounded shadow-LR white-box loss-score follow-up），B-M0 Candidate A bounded GPU review 决策为 `hold-review-only`（CPU-bound 离线评估），`X-89` 在 B-M0 window 关闭后（两条候选均 CPU-bound，无 GPU release）返回 I-A CPU sidecar。当前 `active_gpu_question = none`，`next_gpu_candidate = none`，继续 I-A higher-layer boundary maintenance。 
 
 ## 攻击主线
 
