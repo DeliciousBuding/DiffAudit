@@ -3,6 +3,7 @@
 > Root download directory: `D:\Code\DiffAudit\Download`
 > Principle: top-level only grouped by `black-box / gray-box / white-box / shared`
 > GitHub repositories are intentionally excluded because the agent can fetch those itself.
+> Current local/manual status snapshot: `D:\Code\DiffAudit\Research\docs\research-download-current-status.md`
 
 ---
 

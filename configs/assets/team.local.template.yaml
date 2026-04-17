@@ -6,6 +6,14 @@ team:
 repo:
   research_root: .
 
+shared:
+  cifar10_archive: REPLACE_WITH_CIFAR10_ARCHIVE
+  celeba_root: REPLACE_WITH_CELEBA_ROOT_OR_ARCHIVE_PARENT
+  sd15_model_dir: REPLACE_WITH_SD15_DIFFUSERS_DIR
+  clip_model_dir: REPLACE_WITH_CLIP_MODEL_DIR
+  blip_model_dir: REPLACE_WITH_BLIP_MODEL_DIR
+  ddpm_cifar10_model_dir: REPLACE_WITH_DDPM_CIFAR10_MODEL_DIR
+
 black_box:
   recon:
     query_dataset_pt: REPLACE_WITH_QUERY_DATASET_PT
@@ -17,6 +25,8 @@ black_box:
     dataset_train_ref: REPLACE_WITH_TRAIN_DATASET_REF
     dataset_test_ref: REPLACE_WITH_TEST_DATASET_REF
     model_dir: REPLACE_WITH_DIFFUSERS_MODEL_DIR
+    clip_model_dir: REPLACE_WITH_CLIP_MODEL_DIR
+    supplementary_root: REPLACE_WITH_CLID_SUPPLEMENTARY_ROOT
 
 gray_box:
   pia:
@@ -37,4 +47,4 @@ white_box:
 
 notes:
   warning: do-not-commit personal local paths
-  purpose: teammate-local asset binding template for black-box gray-box white-box lines
+  purpose: teammate-local asset binding template for shared plus black-box gray-box white-box lines

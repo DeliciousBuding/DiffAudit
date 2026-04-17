@@ -69,15 +69,46 @@ import torch
 from torch import nn
 
 
+class FakeAttn(nn.Module):
+    def __init__(self):
+        super().__init__()
+        self.proj_v = nn.Conv2d(3, 3, kernel_size=1, bias=False)
+        self.proj = nn.Conv2d(3, 3, kernel_size=1, bias=False)
+        with torch.no_grad():
+            self.proj_v.weight.zero_()
+            self.proj.weight.zero_()
+            for channel in range(3):
+                self.proj_v.weight[channel, channel, 0, 0] = 1.0
+                self.proj.weight[channel, channel, 0, 0] = 1.0
+
+    def forward(self, x):
+        return self.proj(torch.relu(self.proj_v(x)))
+
+
+class FakeMiddleBlock(nn.Module):
+    def __init__(self):
+        super().__init__()
+        self.attn = FakeAttn()
+
+    def forward(self, x, temb=None):
+        del temb
+        return x + self.attn(x)
+
+
 class UNet(nn.Module):
     def __init__(self, T, ch, ch_mult, attn, num_res_blocks, dropout):
+        del T, ch, ch_mult, attn, num_res_blocks
         super().__init__()
         self.scale = nn.Parameter(torch.ones(1))
         self.dropout = nn.Dropout2d(p=dropout)
+        self.middleblocks = nn.ModuleList([FakeMiddleBlock()])
 
     def forward(self, x, t):
         del t
-        return self.dropout(x) * self.scale
+        h = self.dropout(x) * self.scale
+        for block in self.middleblocks:
+            h = block(h)
+        return h
 """.strip(),
         encoding="utf-8",
     )
@@ -419,6 +450,197 @@ class PiaAdapterTests(unittest.TestCase):
             self.assertEqual(payload["runtime"]["num_samples"], 4)
             self.assertEqual(payload["sample_count_per_split"], 4)
             self.assertTrue(Path(payload["artifact_paths"]["summary"]).exists())
+
+    def test_cli_runs_pia_runtime_mainline_with_precision_throttling_defense(self) -> None:
+        from PIL import Image
+        import numpy as np
+
+        from diffaudit.attacks.pia_adapter import bootstrap_pia_smoke_assets
+        from diffaudit.cli import main
+
+        class FakeCIFAR10:
+            def __init__(self, root, train, transform=None, download=False):
+                del root, train, download
+                self.transform = transform
+                self.images = [
+                    np.full((32, 32, 3), fill_value=value, dtype=np.uint8)
+                    for value in (16, 24, 32, 40, 180, 188, 196, 204)
+                ]
+
+            def __len__(self) -> int:
+                return len(self.images)
+
+            def __getitem__(self, index: int):
+                image = Image.fromarray(self.images[index])
+                tensor = self.transform(image) if self.transform is not None else image
+                return tensor, index
+
+        with tempfile.TemporaryDirectory() as tmpdir:
+            root = Path(tmpdir)
+            repo_root = root / "PIA"
+            create_minimal_pia_repo(repo_root)
+
+            dataset_root = root / "datasets"
+            (dataset_root / "cifar10").mkdir(parents=True)
+
+            member_split_root = root / "member_splits"
+            member_split_root.mkdir()
+            np.savez(
+                member_split_root / "CIFAR10_train_ratio0.5.npz",
+                mia_train_idxs=np.array([0, 1, 2, 3]),
+                mia_eval_idxs=np.array([4, 5, 6, 7]),
+            )
+
+            model_dir = root / "model"
+            bootstrap_pia_smoke_assets(target_dir=model_dir, repo_root=repo_root)
+
+            config_path = root / "audit.yaml"
+            config_path.write_text(
+                PIA_CONFIG_TEMPLATE
+                .replace("PLACEHOLDER_DATASET", str(dataset_root).replace("\\", "/"))
+                .replace("PLACEHOLDER_MODEL", str(model_dir).replace("\\", "/")),
+                encoding="utf-8",
+            )
+
+            stdout = StringIO()
+            with patch("torchvision.datasets.CIFAR10", FakeCIFAR10):
+                with redirect_stdout(stdout):
+                    exit_code = main(
+                        [
+                            "run-pia-runtime-mainline",
+                            "--config",
+                            str(config_path),
+                            "--workspace",
+                            str(root / "pia-runtime-mainline-precision"),
+                            "--repo-root",
+                            str(repo_root),
+                            "--member-split-root",
+                            str(member_split_root),
+                            "--device",
+                            "cpu",
+                            "--max-samples",
+                            "4",
+                            "--batch-size",
+                            "2",
+                            "--epsilon-precision-bins",
+                            "32",
+                            "--provenance-status",
+                            "workspace-verified",
+                        ]
+                    )
+
+            payload = json.loads(stdout.getvalue())
+            self.assertEqual(exit_code, 0)
+            self.assertEqual(payload["status"], "ready")
+            self.assertEqual(payload["defense"]["name"], "epsilon-precision-throttling")
+            self.assertEqual(payload["defense"]["epsilon_precision_bins"], 32)
+            self.assertFalse(payload["defense"]["enabled"] is False)
+            self.assertEqual(payload["defense_stage"], "candidate-g2")
+
+    def test_cli_exports_pia_translated_alias_probe(self) -> None:
+        from PIL import Image
+        import numpy as np
+
+        from diffaudit.attacks.pia_adapter import bootstrap_pia_smoke_assets
+        from diffaudit.cli import main
+
+        class FakeCIFAR10:
+            def __init__(self, root, train, transform=None, download=False):
+                del root, train, download
+                self.transform = transform
+                self.images = [
+                    np.full((32, 32, 3), fill_value=value, dtype=np.uint8)
+                    for value in (24, 208)
+                ]
+
+            def __len__(self) -> int:
+                return len(self.images)
+
+            def __getitem__(self, index: int):
+                image = Image.fromarray(self.images[index])
+                tensor = self.transform(image) if self.transform is not None else image
+                return tensor, index
+
+        with tempfile.TemporaryDirectory() as tmpdir:
+            root = Path(tmpdir)
+            repo_root = root / "PIA"
+            create_minimal_pia_repo(repo_root)
+
+            dataset_root = root / "datasets"
+            (dataset_root / "cifar10").mkdir(parents=True)
+
+            member_split_root = root / "member_splits"
+            member_split_root.mkdir()
+            np.savez(
+                member_split_root / "CIFAR10_train_ratio0.5.npz",
+                mia_train_idxs=np.array([0]),
+                mia_eval_idxs=np.array([1]),
+            )
+
+            model_dir = root / "model"
+            bootstrap_pia_smoke_assets(target_dir=model_dir, repo_root=repo_root)
+
+            config_path = root / "audit.yaml"
+            config_path.write_text(
+                PIA_CONFIG_TEMPLATE
+                .replace("PLACEHOLDER_DATASET", str(dataset_root).replace("\\", "/"))
+                .replace("PLACEHOLDER_MODEL", str(model_dir).replace("\\", "/")),
+                encoding="utf-8",
+            )
+
+            stdout = StringIO()
+            with patch("torchvision.datasets.CIFAR10", FakeCIFAR10):
+                with redirect_stdout(stdout):
+                    exit_code = main(
+                        [
+                            "export-pia-translated-alias-probe",
+                            "--config",
+                            str(config_path),
+                            "--workspace",
+                            str(root / "pia-translated-alias-probe"),
+                            "--repo-root",
+                            str(repo_root),
+                            "--member-split-root",
+                            str(member_split_root),
+                            "--device",
+                            "cpu",
+                            "--member-index",
+                            "0",
+                            "--nonmember-index",
+                            "1",
+                            "--batch-size",
+                            "1",
+                            "--adaptive-query-repeats",
+                            "2",
+                        ]
+                    )
+
+            payload = json.loads(stdout.getvalue())
+            sample_scores_path = Path(payload["artifact_paths"]["sample_scores"])
+            self.assertTrue(sample_scores_path.exists())
+            records = [
+                json.loads(line)
+                for line in sample_scores_path.read_text(encoding="utf-8").splitlines()
+                if line.strip()
+            ]
+            self.assertEqual(len(records), 2)
+            self.assertTrue(any(abs(float(record["score_delta"])) > 0.0 for record in records))
+
+        payload = json.loads(stdout.getvalue())
+        self.assertEqual(exit_code, 0)
+        self.assertEqual(payload["status"], "ready")
+        self.assertEqual(payload["mode"], "translated-alias-probe")
+        self.assertEqual(payload["translation"]["alias_selector"], "middleblocks.0.attn.proj_v")
+        self.assertEqual(payload["translation"]["translated_from"], "mid_block.attentions.0.to_v")
+        self.assertEqual(payload["translation"]["translation_kind"], "translated-contract")
+        self.assertTrue(payload["translation"]["translation_not_same_spec"])
+        self.assertEqual(payload["translation"]["channel_dim"], 1)
+        self.assertEqual(payload["translation"]["tensor_layout"], "BCHW")
+        self.assertGreater(payload["translation"]["hook_hits"]["baseline_score_path"], 0)
+        self.assertGreater(payload["translation"]["hook_hits"]["intervened_score_path"], 0)
+        self.assertEqual(payload["packet"]["member_indices"], [0])
+        self.assertEqual(payload["packet"]["nonmember_indices"], [1])
+        self.assertIn("sample_scores", payload["artifact_paths"])
 
 
 if __name__ == "__main__":

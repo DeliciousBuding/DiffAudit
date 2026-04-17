@@ -4,9 +4,9 @@
 
 - `owner`: active-thread
 - `scope`: 统一黑/灰/白研究规划下的第一优先执行线，负责黑盒成员推断、数据集级审计、black-box leakage 线索整理
-- `status`: 进行中，`recon` 的 black-box 主证据、最佳单指标参考和 `variation` 次主线口径已冻结；`semantic-auxiliary-classifier` 已落成当前 leading new-family challenger；`CLiD` 已收紧到 `evaluator-near local clip-only corroboration`；`served-image-sanitization` 已记为 mitigation `no-go`；黑盒当前 `gpu question = none`
-- `blocked by`: `recon` 公开资产包（DOI: `10.5281/zenodo.13371475`）的语义 gate 现已 machine-audited 到 `proxy-shadow-member`，但仍未升级到 paper-aligned；`CLiD` 仍缺 shadow-side evaluator assets；`variation` 真实 `query_image_root` 仍缺；`semantic-auxiliary-classifier` 当前也还没有 genuinely new feature family；`Kandinsky 10/10` 当前本机链路仍异常慢
-- `next command`: no immediate black-box rerun or candidate promotion; the `black-box next-family candidate-generation refresh review` closed negative, so black-box should now keep `Recon / CLiD / semantic-auxiliary-classifier / variation` wording fixed across `blackbox-status`, `reproduction-status`, `comprehensive-progress`, and `ROADMAP`; keep `semantic-aux` scoring/fusion as `negative but useful` unless a genuinely new feature family appears; keep `variation` blocked unless the explicit asset contract is filled with real `query_image_root + endpoint + budget`; keep `served-image-sanitization` recorded as a first black-box mitigation no-go; the next live CPU-first lane is now `second gray-box defense mechanism selection`
+- `status`: 进行中，`recon` 的 black-box 主证据、最佳单指标参考和 `variation` 次主线口径已冻结；`semantic-auxiliary-classifier` 已落成当前 leading new-family challenger；`CLiD` 已收紧到 `evaluator-near local clip-only corroboration`；`served-image-sanitization` 已记为 mitigation `no-go`；`X-61` 又进一步确认 paper-backed backlog 里没有新的 promotable family，因此黑盒当前重新回到 `stable but not innovation-leading`
+- `blocked by`: `recon` 公开资产包（DOI: `10.5281/zenodo.13371475`）的语义 gate 现已 machine-audited 到 `proxy-shadow-member`，但仍未升级到 paper-aligned；`CLiD` 仍缺 shadow-side evaluator assets；`variation` 真实 `query_image_root` 仍缺；`semantic-auxiliary-classifier` 当前也还没有 genuinely new feature family；`Kandinsky 10/10` 当前本机链路仍异常慢；剩余 face-image LDM 论文路线当前又落在 domain-specific collection-level risk note，且缺 bounded local execution contract
+- `next command`: keep black-box wording fixed to `Recon / semantic-auxiliary-classifier / CLiD / variation` and do not promote a GPU question; `X-61` already closed the remaining paper-backed scouting surface as `negative but useful`, so black-box should now yield the live slot back to the cross-box control plane while only reopening on a genuinely distinct bounded family or real asset/boundary shift
 - `last updated`: 2026-04-17
 
 ## 统一规划定位
@@ -124,3 +124,7 @@
 - `2026-04-17` 的 black-box candidate refresh review 也已收口：
   - 当前看得到的候选要么还是 `semantic-aux` 同家族延展，要么是 `CLiD` 边界升级、`variation` 资产复开，或者已被 gray-box `CDI` 吸收的集合审计方向
   - 因此黑盒当前仍没有 honest ready next-family promotion candidate
+- `2026-04-17` 的 `X-61` paper-backed scoping review 又进一步确认：
+  - 剩余的 `face-image LDM` 论文路线更像 domain-specific collection-level proxy-distribution audit
+  - 它与 `semantic-auxiliary-classifier` 和 gray-box `CDI` 都存在结构重叠
+  - 当前不能作为新的 black-box live family promotion

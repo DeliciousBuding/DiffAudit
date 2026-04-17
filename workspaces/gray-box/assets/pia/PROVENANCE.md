@@ -1,6 +1,6 @@
 # PIA Provenance Record
 
-更新时间：`2026-04-09`
+更新时间：`2026-04-17`
 
 这份记录用于固定当前 gray-box `PIA` 主线的 canonical 资产来源、哈希和状态口径。
 
@@ -88,6 +88,19 @@ Current gate interpretation:
 - `repeat confirmation`: `GPU512 repeat-confirmed`
 - `paper alignment`: `not confirmed`
 
+## Frozen Paper-Alignment Boundary
+
+Current blocker tuple:
+
+1. `release/source identity unresolved`
+2. `CIFAR10 random-four-split / four-model tau-transfer protocol mismatch vs current single fixed ratio0.5 split`
+
+Current hygiene caveat:
+
+- `2026-04-09` strict next-run gate passed under a historical clean snapshot
+- this does **not** prove that the current repo state is still clean
+- this does **not** prove immutable upstream release identity
+
 ## Allowed Claims
 
 - the current checkpoint, dataset root and member split can be loaded by the Research-side `PIA` integration
@@ -104,3 +117,23 @@ Any new `PIA` summary or system-level record must carry:
 - `asset_grade = single-machine-real-asset`
 - `provenance_status = workspace-verified`
 - `evidence_level` matching the actual command that produced the result
+
+## Consumer Rule
+
+Downstream intake or display consumers may safely read this line as:
+
+- `system-intake-ready`
+- `workspace-verified`
+
+They must **not** collapse it into:
+
+- `paper-aligned`
+- `benchmark-ready`
+
+## Reopen Trigger
+
+This provenance blocker should reopen only if at least one of the following changes materially:
+
+1. a stable upstream release identity / immutable source-bundle proof appears
+2. protocol-aligned random-four-split / four-model assets become available
+3. a new strict review is re-run under a newly cleaned and explicitly re-checked upstream state

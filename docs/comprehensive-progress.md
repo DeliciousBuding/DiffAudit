@@ -6,7 +6,7 @@
 
 ## 当前一句话
 
-当前仓库已经具备三条攻击线的基本骨架；白盒/灰盒主讲线现在固定为成熟主线 `PIA + GSA/W-1` 加一条保留中的探索主线 `SMP-LoRA / DP-LoRA`。但后者已不再处于“等待 optimizer/lr frontier 放行”的阶段：它已经拿到一张 bounded harmonized local comparator board，并因此从早前的 clean local-win 叙事收缩为 `metric-split bounded exploration branch`。当前 `active GPU question = none`；black-box 的 next-family refresh、gray-box 的 second-defense selection，以及 white-box 的 distinct defended-family import review 都已收口，而 `GB-64` 又把下一条 gray-box 变量搜索具体收敛到 `PIA vs TMIA-DM confidence-gated switching design review`。
+当前仓库已经具备三条攻击线的基本骨架；白盒/灰盒主讲线现在固定为成熟主线 `PIA + GSA/W-1` 加一条保留中的探索主线 `SMP-LoRA / DP-LoRA`。但后者已不再处于“等待 optimizer/lr frontier 放行”的阶段：它已经拿到一张 bounded harmonized local comparator board，并因此从早前的 clean local-win 叙事收缩为 `metric-split bounded exploration branch`。当前 `active GPU question = none`；`PIA vs TMIA-DM confidence-gated switching` 已完成首个真实 offline packet，但结论是 `negative but useful`，所以 gray-box 已让出下一个 `CPU-first` 槽位。当前最诚实状态因此更新为：GPU 继续空闲，`next_gpu_candidate = none`；`X-66` 已确认 broadened `I-B` stack 仍没有 genuinely new bounded successor hypothesis，因为这些附加材料要么只是历史 intake / observability plumbing，要么仍然绑定在 paper-faithful `SD1.4 / LAION / memorized prompts / SSCD` 协议面上，而不是当前 admitted `DDPM/CIFAR10` 表面；`X-67` 把主槽位重新收敛回 `I-A` 后，`X-68` 又确认 `I-A` 只剩一条真实但很窄的 carry-forward 残余，即 `Leader` 顶层一页表仍会诱导 `AUC / ASR` 优先读取；该残余现已清掉。随后 `X-70` 恢复出一条新的非灰盒候选面：`WB-CH-4 white-box loss-feature challenger family`，`X-71` 确认当前唯一诚实的近端入口是 bounded `LSA*`-style same-asset lane，`X-72` 冻结出“合同成立但当前没有 loss-score artifact”，`X-73` 把 export path 收紧到独立的 in-repo internal helper / CLI surface，`X-74` 把这条 surface 真正落成并完成一轮 bounded real-asset smoke，`X-75` 又把第一条 honest packet 固定为 `threshold-style + shadow-oriented + shadow-threshold-transfer + extraction_max_samples = 64`，`X-76` 则把 evaluator surface 真正落成并在真实 bounded smoke 上验证出 `shadow-only transfer` 与 `target self-board diagnostic-only` 的 honesty boundary，`X-77` 又把第一条 real bounded actual packet 真正落成并给出 `AUC = 0.699463 / ASR = 0.632812 / TPR@1%FPR = 0.03125 / TPR@0.1%FPR = 0.03125` 的 transferred target board，`X-78` 则把这条 branch 冻结为 `bounded auxiliary white-box evidence / below release-grade low-FPR honesty / below immediate same-family follow-up`，`X-79` 又把 repo-level 主槽位重新收回到 `I-A`，`X-80` 清掉了 `mainline-narrative.md` 的 active residue，`X-81` 确认下一步应先做 stale-entry sync，`X-82` 则把活跃 higher-layer 读链重新拉齐，`X-83` 又确认 stale sync 清掉之后仍没有 blocked/hold branch honest reopen，因此应恢复一条新的 non-graybox candidate surface，`X-84` 又把这条 surface 真正恢复成 `cross-box admitted-summary quality/cost read-path hardening`；现在 `X-85` 已经把 admitted summary 明确升级为 `metrics + evidence level + quality/cost + boundary` 的可消费读链，因此当前 live lane 已前推到 `X-86 non-graybox next-lane reselection after X-85 admitted-summary sync review`，CPU sidecar 继续保持为 `I-A higher-layer boundary maintenance`。
 
 ## 进度总览
 
@@ -26,14 +26,21 @@
 - 当前 active 主 GPU 问题已回到 `none`
 - 当前 `PIA provenance dossier` 已 closed 为 `remain long-term blocker`
 - `PIA 8GB portability ladder` 已完成 `probe + preview + GPU128/GPU256 adaptive pair`，当前 frontier 固定为 `GPU128 = quickest portable pair`、`GPU256 = decision rung with cost warning`
-- `Finding NeMo + local memorization + FB-Mem` 的 intake/eligibility note 已建立，且 `activation export adapter` 已固定为 `decision-grade zero-GPU hold`
+- `Finding NeMo + local memorization + FB-Mem` 不再是 `decision-grade zero-GPU hold`：
+  - 当前已经有一个 real bounded admitted packet
+  - 当前最诚实口径是 `actual bounded falsifier`
+  - same-family GPU rescue rerun 继续低于 release
 - 白盒 defense breadth 的第一轮 shortlist 也已经收口为负结论：
   - 当前 repo 只有 `DPDM / W-1` 这一条可执行 defended family
   - `Finding NeMo` 仍是 observability 路线
+- `I-D` 当前也已收口到更硬边界：
+  - `local conditional canary contract + bounded CFG packet + negative actual runner-level defense rerun`
+  - 当前没有 honest bounded successor lane
+  - 只有 genuinely new bounded hypothesis 出现时才允许重开
   - `Local Mirror` 不提供第二防御家族
 - [2026-04-10-recon-decision-package](../workspaces/black-box/2026-04-10-recon-decision-package.md) 已把黑盒五件套固定为 decision-grade package，本轮 [recon-artifact-mainline-public-100-step30-reverify-20260410-round28](../experiments/recon-artifact-mainline-public-100-step30-reverify-20260410-round28/summary.json) 又在 CPU 上复算到相同 headline metrics，且不改 admitted 结果
 - [2026-04-10-pia-provenance-split-protocol-delta](../workspaces/gray-box/2026-04-10-pia-provenance-split-protocol-delta.md) 已把 `split shape aligned locally / random-four-split protocol still open / strict redo currently dirty` 三点固定为新的 provenance supplement
-- 当前最值得推进的唯一目标切到：在 black-box candidate refresh、gray-box second-defense selection 与 white-box distinct-family import review 都收口之后，把近端创新压力转向 `PIA vs TMIA-DM confidence-gated switching design review`；`SMP-LoRA / DP-LoRA` 继续固定为 `bounded exploration branch + no-new-gpu-question`，gray-box 当前保持 `PIA + stochastic-dropout` headline 与 `TMIA-DM + temporal-striding` second-mechanism 结构，white-box 当前仍只有一个真实 defended family，而 black-box 只在 genuinely new family 或真实 asset/boundary change 出现后再复开
+- 当前最值得推进的目标已经变成：执行 `X-86 non-graybox next-lane reselection after X-85 admitted-summary sync review`，因为 `X-85` 已经把 admitted summary 读链强化成可直接消费的 cross-box 表；下一步应重新判断，在 stale-entry sync 与 admitted-summary sync 都完成之后，哪条 non-graybox lane 还值得拿下一个 CPU-first 槽位。 
 
 ## 攻击主线
 
@@ -112,7 +119,7 @@
 ### 白盒
 
 - 主线：`GSA`
-- 扩展：`Finding NeMo (intake-gated)`
+- 扩展：`Finding NeMo (executed bounded packet -> non-admitted actual bounded falsifier)`
 - 当前能说的话：
   - 白盒闭环已经打通
   - 资产根、checkpoint-*、bucket 已进入规范结构
@@ -146,12 +153,16 @@
   - 这份 batch32 comparator 当前仍是 `runtime-smoke` 级 bridge 诊断结果，不应直接写成新的 admitted 白盒防御主结果
   - 当前 same-protocol bridge 已正式以 `保持冻结` 收口；这只是治理与资源排序决策，不是新的 benchmark 结果
   - 系统侧对白盒 `GSA` 的 live intake 现在应与 admitted `1k-3shadow` 主结果对齐，而不是继续停在早期 CPU closed-loop
-  - 新的 [2026-04-10-finding-nemo-mechanism-intake](../workspaces/white-box/2026-04-10-finding-nemo-mechanism-intake.md) 已把 `Finding NeMo + local memorization + FB-Mem` 固定为 intake/eligibility-only 候选，并把任何 future `validation-smoke` 压回 `separate release-review reconsideration` 的条件性上限
-  - 新的 [2026-04-10-finding-nemo-protocol-reconciliation](../workspaces/white-box/2026-04-10-finding-nemo-protocol-reconciliation.md) 已明确：当前 admitted 白盒资产与 `Finding NeMo` 原始 `Stable Diffusion v1.4 / cross-attention value layers` 协议面不兼容；当前只允许继续做 zero-GPU 的 observability 规划
+  - 新的 [2026-04-10-finding-nemo-mechanism-intake](../workspaces/white-box/2026-04-10-finding-nemo-mechanism-intake.md) 现在只应被读作历史 intake gate；当前 branch 已经越过 intake-only 阶段，不能再把它当作当前 `Phase E` 候选
+  - 新的 [2026-04-10-finding-nemo-protocol-reconciliation](../workspaces/white-box/2026-04-10-finding-nemo-protocol-reconciliation.md) 已明确：当前 admitted 白盒资产与 `Finding NeMo` 原始 `Stable Diffusion v1.4 / cross-attention value layers` 协议面不兼容；这条边界仍然有效，但它现在约束的是 future reconsideration，而不是“当前仍只允许 observability / zero-GPU hold”
   - 新的 [2026-04-10-finding-nemo-observability-smoke-contract](../workspaces/white-box/2026-04-10-finding-nemo-observability-smoke-contract.md) 已把未来 smoke 的 `checkpoint_root / layer selector / sample binding / output schema / scheduler gate` 写成可审查合同；本轮又把它落实成 `read-only contract-probe`
   - `src/diffaudit/attacks/gsa_observability.py` 与 `probe-gsa-observability-contract` 已在 `Research` 内实现零 GPU 的合同解析入口，并已在真实 admitted 资产上返回 `status = ready`
   - 本轮新增 `export-gsa-observability-canary` 与 `export_gsa_observability_canary`，已在 `Research` 内实现 CPU-only 的 sample-pair activation export，并在 [finding-nemo-observability-canary-20260410-round24](../workspaces/white-box/runs/finding-nemo-observability-canary-20260410-round24/summary.json) 写出 `summary.json + records.jsonl + tensor artifacts`
-  - 新的 [2026-04-10-finding-nemo-activation-export-adapter-review](../workspaces/white-box/2026-04-10-finding-nemo-activation-export-adapter-review.md) 已把这批实现正式固定为 `zero-GPU hold / queue not-requestable`
+  - 新的 [2026-04-10-finding-nemo-activation-export-adapter-review](../workspaces/white-box/2026-04-10-finding-nemo-activation-export-adapter-review.md) 现在只应被读作历史 adapter boundary；当前 branch 的更强 truth 已经是“一条真实 bounded admitted packet exists”
+  - 新的 [2026-04-17-finding-nemo-first-truly-bounded-admitted-intervention-review-verdict](../workspaces/white-box/2026-04-17-finding-nemo-first-truly-bounded-admitted-intervention-review-verdict.md) 与 [2026-04-17-finding-nemo-post-first-actual-packet-boundary-review](../workspaces/white-box/2026-04-17-finding-nemo-post-first-actual-packet-boundary-review.md) 已把 `Finding NeMo` 当前最强诚实口径冻结为 `non-admitted actual bounded falsifier`：
+    - one actual bounded admitted packet now exists
+    - current branch is not `zero-GPU hold`
+    - current branch is not defense-positive
   - [2026-04-10-finding-nemo-activation-only-canary-sketch](../workspaces/white-box/2026-04-10-finding-nemo-activation-only-canary-sketch.md) 继续保留为边界文档，但当前不再能写成“尚未开始 activation export”
 - 当前不能说的话：
   - 还不能说白盒论文级复现成功
@@ -213,17 +224,23 @@
 1. 继续把 `PIA + GSA/W-1` 固定为成熟主线，并保持 admitted/system narrative 不漂移
 2. 将 `SMP-LoRA / DP-LoRA` 固定为当前 `bounded exploration branch`，并明确当前 `no-new-gpu-question`；只有在出现 genuinely new bounded hypothesis 时才重新放行
 3. 将 [2026-04-09-pia-provenance-dossier](../workspaces/gray-box/2026-04-09-pia-provenance-dossier.md) 固定为 CPU sidecar blocker，并保持 `workspace-verified + paper-alignment blocked by checkpoint/source provenance` 不漂移
-4. 保持 [2026-04-10-recon-decision-package](../workspaces/black-box/2026-04-10-recon-decision-package.md) 作为当前黑盒固定包，并明确它继续是 `writing-only / non-GPU / no admitted change`
-4. `variation / Towards` 继续保留为 formal local secondary track，并明确 real-API assets blocked
-5. 在统一表和叙事材料里补齐 `threat model / asset semantics / evidence level / external-validity boundary`
-6. 用 [future-phase-e-intake](future-phase-e-intake.md) 与 [2026-04-10-phase-e-intake-ordering-review](../workspaces/intake/2026-04-10-phase-e-intake-ordering-review.md) 固定 `Phase E` 候选池排序，并只允许进入准入验证
-5.1 用 [2026-04-10-intake-registry-phase-e-boundary-review](../workspaces/intake/2026-04-10-intake-registry-phase-e-boundary-review.md) 与 [phase-e-candidates.json](../workspaces/intake/phase-e-candidates.json) 把 machine-readable candidate ordering 从 `index.json.entries[]` 的 promoted contract 面里剥离出来
-7. 保持 `SecMI = independent corroboration line`，不要再回退成 `blocked baseline`
-8. 保持 `TMIA-DM = strongest packaged gray-box challenger`，并继续复用 defended challenger 比较口径
-9. 将 `Noise as a Probe` 固定为 `new latent-diffusion challenger candidate with repeat-positive bounded local evidence`
-10. 用 [2026-04-10-finding-nemo-mechanism-intake](../workspaces/white-box/2026-04-10-finding-nemo-mechanism-intake.md)、[2026-04-10-finding-nemo-protocol-reconciliation](../workspaces/white-box/2026-04-10-finding-nemo-protocol-reconciliation.md) 与 [2026-04-10-finding-nemo-observability-smoke-contract](../workspaces/white-box/2026-04-10-finding-nemo-observability-smoke-contract.md) 固定 `Finding NeMo + local memorization + FB-Mem` 的 intake gate，并把它保留为当前最完整的 intake dossier
-11. `PIA paper-aligned confirmation` 继续保留文档层条件性首位，但执行层视为 `no-go`
-12. 基于第一版统一总表继续补质量 / 成本列，并保持灰盒机理说明与 adaptive gate 一致
+4. 已完成一轮非灰盒 `CPU-first` lane reselection，并已将 `PIA provenance dossier` 的 higher-layer boundary sync、`I-B.1 minimum honest protocol bridge`、`I-B.2 bounded localization observable selection`、`I-B.3 bounded local intervention proposal`、`I-B.4 quality-vs-defense metric contract`、`I-B.5 first bounded localization/intervention packet selection`、`I-B.6` first executable localization/intervention packet、`I-B.7` bounded attack-side evaluation packet selection、`I-B.8` bounded attack-side evaluation packet control、`I-B.9` first honest intervention-on/off bounded review contract selection、`I-B.10` intervention-on/off bounded review surface implementation、`I-B.11` execution-budget review、`I-B.12` extraction-side bounded cap implementation、`I-B.13` launch review、`I-B.14` first actual bounded admitted packet、`I-B.15` boundary review、`X-16` next-lane reselection、`X-17` higher-layer sync、本轮 `I-A refresh after negative actual I-B packet`、`X-18` next-lane reselection、`XB-CH-2` blocker refresh、`X-19` 真实 lane 选择、`X-20` stale-entry sync、`X-21` reselection、`X-22` residue audit、`X-23` reselection、`X-24` residual cleanup、`X-25` reselection、`X-26` provenance maintenance review、`X-27` reselection、`X-28` shared-surface contract freeze review、`X-29` reselection、`X-30` carry-forward audit、`X-31` stale-entry sync、`X-32` reselection、`X-33` stale intake sync、`X-34` reselection、`X-35` candidate-surface expansion、`X-36` successor freeze、`X-37` reselection、`X-38` stale-surface sync、`X-39` reselection、`X-40` candidate-surface expansion、`X-41` hypothesis generation、`X-42` contract review、`X-43` pairboard identity freeze、`X-44` agreement-board contract review、`X-45` scalar contract freeze、`X-46` agreement-board read、`X-47` reselection、`X-48` stale-entry sync、`X-49` reselection、`X-50` `I-A` higher-layer boundary maintenance audit、`X-51` reselection、`X-52` materials stale-entry sync、`X-53` reselection、`X-54` `I-B` successor freeze、`X-55` reselection、`X-56` `I-C` successor freeze、`X-57` reselection、`X-58` stale-entry sync、`X-59` reselection、`X-60` candidate-surface expansion、`X-61` black-box paper-backed scoping、`X-62` reselection、`X-63` `I-A` residue audit、`X-64` reselection、`X-65` `I-B` candidate-surface expansion、`X-66` broadened `I-B` scoping、`X-67` reselection、`X-68` `I-A` carry-forward audit、`X-69` reselection、`X-70` non-graybox candidate-surface expansion、`X-71` white-box loss-feature scoping、`X-72` same-asset contract review、`X-73` export-surface review、`X-74` export-surface implementation、`X-75` first-packet selection 与 `X-76` evaluator implementation 都收口；当前执行项已前推为 `X-77 white-box bounded loss-score first actual packet after X-76 evaluator implementation`，`next_gpu_candidate = none`，CPU sidecar 为 `I-A higher-layer boundary maintenance`
+5. 继续维持 `I-A` 的更硬技术创新合同：
+   - formal statement
+   - adaptive attacker
+   - `AUC / ASR / TPR@1%FPR / TPR@0.1%FPR`
+6. 保持 [2026-04-10-recon-decision-package](../workspaces/black-box/2026-04-10-recon-decision-package.md) 作为当前黑盒固定包，并明确它继续是 `writing-only / non-GPU / no admitted change`
+7. `variation / Towards` 继续保留为 formal local secondary track，并明确 real-API assets blocked
+8. 在统一表和叙事材料里补齐 `threat model / asset semantics / evidence level / external-validity boundary`
+9. 用 [future-phase-e-intake](future-phase-e-intake.md) 与 [2026-04-10-phase-e-intake-ordering-review](../workspaces/intake/2026-04-10-phase-e-intake-ordering-review.md) 固定 `Phase E` 候选池排序，并只允许进入准入验证
+10. 用 [2026-04-10-intake-registry-phase-e-boundary-review](../workspaces/intake/2026-04-10-intake-registry-phase-e-boundary-review.md) 与 [phase-e-candidates.json](../workspaces/intake/phase-e-candidates.json) 把 machine-readable candidate ordering 从 `index.json.entries[]` 的 promoted contract 面里剥离出来
+11. 保持 `SecMI = independent corroboration line`，不要再回退成 `blocked baseline`
+12. 保持 `TMIA-DM = strongest packaged gray-box challenger`，并继续复用 defended challenger 比较口径
+13. 将 `Noise as a Probe` 固定为 `new latent-diffusion challenger candidate with repeat-positive bounded local evidence`
+14. 用 [2026-04-10-finding-nemo-mechanism-intake](../workspaces/white-box/2026-04-10-finding-nemo-mechanism-intake.md)、[2026-04-10-finding-nemo-protocol-reconciliation](../workspaces/white-box/2026-04-10-finding-nemo-protocol-reconciliation.md) 与 [2026-04-10-finding-nemo-observability-smoke-contract](../workspaces/white-box/2026-04-10-finding-nemo-observability-smoke-contract.md) 保留 `Finding NeMo + local memorization + FB-Mem` 的历史 intake gate，但当前 branch 应以 `I-B` packet 与 post-packet boundary review 为准，而不是继续把它当作活跃 intake dossier
+15. `PIA paper-aligned confirmation` 继续保留文档层条件性首位，但执行层视为 `no-go`
+16. 基于第一版统一总表继续补质量 / 成本列，并保持灰盒机理说明与 adaptive gate 一致
+17. 如当前或后续 packet 改变了 exported fields / packet contract / summary logic / runner requirement，允许 `Researcher` 直接对接 `Platform / Runtime-Server`，但默认先做 note-level handoff，不要机械跨仓
 
 ## 申报 / PPT 应该怎么讲
 

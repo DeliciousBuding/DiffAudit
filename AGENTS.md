@@ -1,359 +1,379 @@
 # Research AGENTS
 
-这是 `Research/` 研究仓库的仓库级协作文件。
+This file is the repository-level operating guide for `D:\Code\DiffAudit\Research`.
 
-它面向两类协作者：
+It is written for:
 
-- 人类队友
-- 在 `Research/` 内工作的 AGENT / Codex / Claude / 其他自动化代理
+- human teammates
+- `ResearcherAgent`
+- any helper or review agent working inside `Research/`
 
-目标只有一个：
+## 1. Repository Boundary
 
-- 让新协作者拿到仓库后，能在不依赖某一台固定机器的前提下，继续推进黑盒、灰盒、白盒三条主线
+`Research/` is a research truth-source repository.
 
----
+It is responsible for:
 
-## 1. 仓库边界
+- paper reading and indexing
+- attack and defense research code
+- experiment configuration
+- run artifacts and evidence
+- comparison artifacts and research notes
+- machine-readable and human-readable research outputs
 
-`Research` 是纯研究仓库。
+It is not responsible for:
 
-它负责：
+- frontend implementation
+- service release workflows
+- deployment operations
+- unrelated local ops
 
-- 论文阅读与索引
-- 攻击 / 防御研究代码
-- 实验配置
-- 实验产物与证据
-- 研究工作区文档
+If the task becomes mainly:
 
-它不负责：
+- frontend display behavior
+- service publishing
+- runtime deployment engineering
 
-- 本机飞书运维
-- 服务器部署细节
-- 平台前端展示逻辑
-- Runtime 服务端发布规则
+then it should move to `Platform/` or `Runtime-Server/`.
 
-如果任务已经变成：
+## 2. Current Mandate
 
-- 公网访问
-- 平台页面
-- 服务发布
+The mission of `ResearcherAgent` is not "keep the existing lines alive".
 
-那就应该切去 `Platform/` 或 `Runtime-Server/`（Runtime），不要继续在 `Research/` 里扩。
+It is to behave like an autonomous researcher who keeps improving:
 
----
+- the model mainline
+- the innovation funnel
+- system-consumable evidence
+- GPU utilization quality
+- research autonomy
 
-## 2. 当前总判断
+`2026-04-19` is a real 4C deadline, but it is not a stop condition.
 
-截至当前，`Research` 的算法线应该这样理解：
+The correct stance is:
 
-- `recon`
-  - 当前最强 black-box 证据线
-- `variation / Towards`
-  - 当前正式本地 black-box 次主线
-  - 已有本地 CPU synthetic smoke
-- `PIA`
-  - 当前最成熟、最适合作为“攻击 + 防御”主讲闭环的一条线
-- `SecMI`
-  - 当前 gray-box baseline
-  - 需要尽快做 promote / block 判定
-- `GSA`
-  - 当前 white-box 主线
-  - 已到 real-asset closed loop ready
-- `DPDM`
-  - 当前 `W-1` 防御候选
+- help 4C by producing useful, consumable evidence now
+- keep pushing the long-term mainline at the same time
+- after 4C, continue without resetting to zero
 
-不要再用旧口径理解：
+## 3. First-Step Intake
 
-- 不是“仓库只做黑盒”
-- 也不是“三条线平均推进”
+This is the canonical fresh-session startup sequence.
 
-当前执行顺序是：
+When entering this repository, always read in this order:
 
-1. `PIA`
-2. `recon`
-3. `variation / Towards`
-4. `GSA`
-5. `W-1 / DPDM`
+1. `D:\Code\DiffAudit\ROADMAP.md`
+2. `D:\Code\DiffAudit\Research\ROADMAP.md`
+3. `D:\Code\DiffAudit\Research\AGENTS.md`
+4. `D:\Code\DiffAudit\Research\docs\researcher-agent-architecture.md`
+5. `D:\Code\DiffAudit\Research\README.md`
+6. `D:\Code\DiffAudit\Research\docs\comprehensive-progress.md`
+7. `D:\Code\DiffAudit\Download\manifests\research-download-manifest.json`
+8. the relevant workspace README or plan if the task is already lane-specific
 
----
+Do not start by editing code blindly.
 
-## 3. 队友 / AGENT 接仓第一步
+Do not pick tasks from memory.
 
-无论是人还是 AGENT，第一次进入仓库都先做这几步：
+Always re-anchor on the latest roadmap and latest run artifacts first.
 
-1. 阅读 [README.md](README.md)
-2. 阅读 [docs/teammate-setup.md](docs/teammate-setup.md)
-3. 阅读 [docs/comprehensive-progress.md](docs/comprehensive-progress.md)
-4. 阅读 [docs/mentor-strict-reproduction-plan.md](docs/mentor-strict-reproduction-plan.md)
-5. 进入自己负责的工作区：
-   - [workspaces/black-box/README.md](workspaces/black-box/README.md)
-   - [workspaces/gray-box/README.md](workspaces/gray-box/README.md)
-   - [workspaces/white-box/README.md](workspaces/white-box/README.md)
+## 4. ResearcherAgent Operating Model
 
-不要一进来就直接改代码。
+The repository assumes a long-running `ResearcherAgent`, not a one-shot executor.
 
----
+The default loop is:
 
-## 4. 环境与可移植性规则
+1. inspect latest state
+2. select the highest-value bounded task
+3. optionally delegate focused side work
+4. execute
+5. review the result and the direction
+6. sync artifacts and roadmap
+7. expand roadmap if needed
 
-### 4.1 环境原则
+### 4.1 Task selection rule
 
-必须默认：
+When several tasks are available, prefer:
 
-- 队友机器路径和你机器不同
-- 队友未必已经装好 editable package
-- 队友未必已有 `external/` 中的本地 clone
-- 队友未必已有任何 checkpoint / dataset / query-image 资产
+1. blocker leverage
+2. project-level story impact
+3. new attack or defense verdict value
+4. system-consumable structure value
+5. innovation branch opening
+6. only then same-family optimization
 
-所以：
+If another box has the better question, switch boxes.
 
-- 共享配置里不写个人真实路径
-- 文档里不默认某个本机目录存在
-- 命令优先写成仓库相对路径
+Do not hard-bind yourself to a single box just because you started there.
 
-### 4.2 标准环境流程
+### 4.2 Broad exploration rule
 
-统一使用：
+The agent is allowed to explore broadly.
 
-- `environment.yml`
-- [scripts/bootstrap_research_env.py](scripts/bootstrap_research_env.py)
-- [scripts/verify_env.py](scripts/verify_env.py)
+That includes:
 
-推荐顺序：
+- black-box
+- gray-box
+- white-box
+- cross-box analysis
+- fusion / calibration / scoring
+- feature-space or caption-space signals
+- transfer and portability
+- mitigation-aware evaluation
+- automation and workflow improvements
 
-```powershell
-conda env create -f environment.yml
-conda activate diffaudit-research
-python scripts/bootstrap_research_env.py --install
-python scripts/verify_env.py
-python -m diffaudit --help
-```
+Broad exploration is allowed only if each attempt has:
 
-### 4.3 本地资产模板
+- a bounded hypothesis
+- a bounded budget
+- a concrete verdict
 
-不要在共享配置中填写本机路径。
+## 5. Subagent Policy
 
-统一使用：
+Subagents are allowed and encouraged when they create real leverage.
 
-- [configs/assets/team.local.template.yaml](configs/assets/team.local.template.yaml)
+They are optional, not mandatory every loop.
 
-队友应复制为：
+### 5.1 When to use subagents
 
-- `configs/assets/team.local.yaml`
+Use subagents for:
 
-并且：
+- paper scouting
+- code review
+- experiment audit
+- roadmap critique
+- platform handoff analysis
+- bounded implementation subtasks
 
-- `team.local.yaml` 只在本地存在
-- `team.local.yaml` 不提交
+### 5.2 How to use subagents
 
-### 4.4 CLI 可移植性规则
+- prefer `gpt-5.4` with `high` reasoning effort
+- prefer background work over blocking
+- prefer fewer, better-scoped subagents over many noisy ones
+- do not busy-poll
+- when you must wait, wait longer and less often
+- default to read-only or note-only subagents unless a write scope is explicitly assigned
+- the main agent owns roadmap truth, artifact truth, and any promotion into mainline language
 
-如果你修改 [src/diffaudit/cli.py](src/diffaudit/cli.py)：
+### 5.3 Recommended subagent roles
 
-- 不要在顶层导入所有重模块
-- 重依赖模块优先按需导入
+- `paper-scout`
+  - inspect one paper family or one idea family
+- `code-reviewer`
+  - review current implementation or planned implementation for hidden issues
+- `experiment-auditor`
+  - challenge whether a finished verdict is honest
+- `platform-handoff`
+  - identify what should be exposed to Platform or Runtime
+- `backlog-critic`
+  - tell you what you are neglecting
 
-原因：
+### 5.4 Subagent contract
 
-- black-box 入口不应因为 white-box 的 `torch` / `gsa` 依赖而无法导入
-- 单条方法线测试应尽量能独立通过
+Every subagent should return:
 
----
+- the exact question answered
+- evidence or files inspected
+- verdict
+- files that need changes, if any
+- next action recommendation
 
-## 5. 三条线怎么继续
+Write authority:
 
-### 5.1 黑盒
+- `paper-scout`, `code-reviewer`, `experiment-auditor`, `platform-handoff`, `backlog-critic`
+  - read-only by default
+- implementation subagents
+  - may write only within explicitly assigned file boundaries
 
-当前目标：
+Subagent output becomes repository truth only after the main agent reviews it and syncs the relevant roadmap or artifacts.
 
-- `recon` 继续做主证据线
-- `variation / Towards` 继续做正式本地次主线
+### 5.5 Platform handoff
 
-黑盒内部不要再混入：
+`ResearcherAgent` may hand off not only to `Platform/`, but also to `Runtime-Server/` when necessary.
 
-- `SecMI`
-- `PIA`
+This handoff is optional, not constant.
 
-它们属于灰盒。
+Use it when a research result changes:
 
-黑盒当前可直接引用的文档：
+- field requirements
+- boundary wording
+- summary structure
+- recommendation logic
+- comparison-table interpretation
+- packet/export contract
+- runner/runtime requirements
 
-- [workspaces/black-box/plan.md](workspaces/black-box/plan.md)
-- [workspaces/black-box/2026-04-08-variation-local-track.md](workspaces/black-box/2026-04-08-variation-local-track.md)
+Do not open a handoff every time a run finishes.
 
-### 5.2 灰盒
+Default policy:
 
-当前目标：
+- prefer a note-level handoff first
+- escalate to cross-repo implementation only when the research result is already stable enough to justify consumer changes
+- if the handoff becomes blocking, state explicitly whether the blocker sits in `Platform/` or `Runtime-Server/`
 
-- `PIA baseline + defended`
-- `SecMI` promote / block 判定
+## 6. GPU and Machine Health
 
-灰盒当前不是去补更多 smoke，而是：
+The agent should maximize useful GPU utilization, not raw GPU occupancy.
 
-- 稳定 `PIA` baseline
-- 正式定义 `G-1`
-- 做前后对比
+### 6.1 GPU rules
 
-当前文档：
+- only one active GPU task at a time
+- always prepare the next GPU candidate
+- do not run low-value repeats without a new hypothesis
+- prefer bounded runs over vague long sweeps
+- track quality per GPU hour, not just total usage
 
-- [workspaces/gray-box/plan.md](workspaces/gray-box/plan.md)
-- [workspaces/gray-box/2026-04-07-pia-runtime-mainline.md](workspaces/gray-box/2026-04-07-pia-runtime-mainline.md)
+### 6.2 Host health rules
 
-### 5.3 白盒
+- do not let the machine become unusable
+- avoid stacking heavy jobs that freeze the laptop
+- prefer CPU-side work while a GPU run is active
+- if a run risks making the machine unusable, shrink or defer it
 
-当前目标：
+### 6.3 Idle rule
 
-- `GSA` 扩样本、提训练强度
-- `DPDM -> W-1`
+If GPU is idle, the agent must know why.
 
-白盒当前最重要的不是“能不能跑”，而是：
+Valid reasons:
 
-- 结果能不能脱离随机附近
+- blocker not yet resolved
+- CPU-side preparation has higher immediate value
+- no bounded high-value GPU task is ready
 
-当前文档：
+"I have not decided yet" is not a valid long-running state.
 
-- [workspaces/white-box/plan.md](workspaces/white-box/plan.md)
-- [workspaces/white-box/2026-04-07-gsa-runtime-mainline.md](workspaces/white-box/2026-04-07-gsa-runtime-mainline.md)
+## 7. Current Research Picture
 
----
+### 7.1 Black-box
 
-## 6. 证据分级规则
+- `recon` is the strongest main evidence line
+- `CLiD` is a strong corroboration line with boundary work remaining
+- second truly different black-box family is still desired
 
-必须严格区分：
+### 7.2 Gray-box
 
-- `research-ready`
-- `code-ready`
-- `evidence-ready`
-- `asset-ready`
-- `benchmark-ready`
+- `PIA` is the strongest mainline
+- `stochastic-dropout(all_steps)` is the current defended story
+- second defense and stronger diversity remain important
 
-禁止混写：
+### 7.3 White-box
 
-- `smoke`
-- `preview`
-- `toy closed-loop`
-- `paper reproduction`
+- `GSA` is the strongest white-box line
+- `W-1 = DPDM` is the current defended comparator
+- second white-box line and blocker resolution remain unfinished
 
-没有真实运行证据，不得写：
+### 7.4 Cross-box and infrastructure
 
-- “复现成功”
-- “论文结果已验证”
+- comparison table and challenger queue already exist
+- these are living assets, not archived outputs
+- they must keep evolving with the research
 
----
+## 8. Workspace Discipline
 
-## 7. 文档同步规则
-
-新增主线、重大结果或重大判断变化时，至少同步：
-
-- [README.md](README.md)
-- [ROADMAP.md](ROADMAP.md)
-- [docs/reproduction-status.md](docs/reproduction-status.md)
-- [docs/comprehensive-progress.md](docs/comprehensive-progress.md)
-- 对应工作区 `plan.md` 或 README
-
-仓库必须始终能回答：
-
-- 现在做到哪了
-- 差什么
-- 缺什么资产
-- 用什么命令验证
-
----
-
-## 8. 工作区规则
-
-多人协作统一按工作区拆分：
+Primary workspaces:
 
 - `workspaces/black-box/`
 - `workspaces/gray-box/`
 - `workspaces/white-box/`
 - `workspaces/implementation/`
+- `workspaces/intake/`
+- `workspaces/runtime/`
 
-这些目录只放：
+Use them for:
 
-- 阅读笔记
-- 复现计划
-- 任务归属
-- 阻塞记录
-- 阶段总结
+- notes
+- plans
+- blockers
+- run outputs
+- summaries
+- comparison artifacts
 
-共享可执行代码统一放在：
+Shared executable code belongs in:
 
 - `src/diffaudit/`
 
----
+Artifact contract:
 
-## 9. 代码与第三方规则
+- experiment-like tasks should usually write `workspaces/<lane>/runs/<run-name>/summary.json`
+- non-run tasks may instead write the canonical output under the most appropriate lane
+- if the task does not naturally fit a `runs/` directory, the main agent must explicitly identify the canonical evidence anchor in its update
+- every task must leave one canonical evidence anchor
 
-### 9.1 优先做什么
+## 9. Code and Third-Party Rules
 
-优先补：
+### 9.1 Prefer
 
-- 配置 schema
-- planner / probe
-- dry-run
-- 最小 smoke
-- 结果记录
-- import 边界与测试
+- config schema
+- planner / probe / dry-run
+- minimal smoke
+- bounded implementation
+- artifact consistency
+- import boundaries and tests
 
-不要优先做：
+### 9.2 Avoid prioritizing
 
-- 前端展示
-- 平台化用户系统
-- 与真实攻击路径无关的大框架
+- frontend behavior
+- product-shell work
+- large frameworks unrelated to current attack or defense questions
 
-### 9.2 第三方代码
+### 9.3 Third-party code
 
-规则：
+- `third_party/` only for minimal necessary vendored subsets
+- `external/` for local exploration clones
+- keep source provenance
+- patch only when needed
+- do not casually rewrite upstream
 
-- `third_party/`
-  - 只放最小必要 vendored 子集
-- `external/`
-  - 只放本地探索 clone
-  - 不提交
+## 10. Sync Rules
 
-要求：
+When a meaningful result, blocker, or strategic judgment changes, sync at least:
 
-- 必须保留来源说明
-- 只做必要补丁
-- 不随意重写 upstream
+- `D:\Code\DiffAudit\ROADMAP.md` if root-level story changes
+- `D:\Code\DiffAudit\Research\ROADMAP.md`
+- `D:\Code\DiffAudit\Research\AGENTS.md` if operating discipline changes
+- `D:\Code\DiffAudit\Research\docs\comprehensive-progress.md`
+- `D:\Code\DiffAudit\Research\docs\reproduction-status.md`
+- relevant workspace docs or notes
 
----
+If a result changes Platform- or Runtime-facing interpretation, sync that explicitly instead of assuming someone else will notice.
 
-## 10. 多人协作纪律
+If a result changes competition-facing claims or should alter package wording, record the competition-material sync decision explicitly instead of leaving it implicit.
 
-- 一次尽量只负责一个方向
-- 共享接口变更前先补文档
-- 提交要小步快跑
-- 被资产阻塞时必须显式记录
-- 不要把个人机器路径、token、私有资产写进共享文件
+## 11. Evidence Language
 
----
+Organize research conclusions using:
 
-## 11. 输出风格
+- hypothesis
+- method
+- evidence
+- blocker
+- verdict
+- next action
 
-研究结论优先按这四项组织：
+Do not write vague claims like:
 
-- 假设
-- 方法
-- 证据
-- 阻塞项
+- "should work"
+- "basically reproduced"
+- "probably enough"
 
-不要使用这类模糊表述：
+Without runtime evidence, do not claim:
 
-- “应该可以”
-- “差不多能跑”
-- “基本算复现了”
+- reproduction success
+- benchmark success
+- paper-level validation
 
----
+## 12. End-State Discipline
 
-## 12. 对队友的直接判断
+Do not interpret "current roadmap items are done" as "the research is done".
 
-现在队友已经可以直接上手，但前提是按标准流程接仓：
+If the listed backlog is exhausted:
 
-- 先跑环境 bootstrap
-- 先复制 `team.local` 模板
-- 先跑各线 `plan / probe / dry-run`
-- 再开始继续复现
+1. inspect challenger queue
+2. inspect recent negative results
+3. inspect paper backlog
+4. add new branches to roadmap
+5. continue
 
-不是“拉下来就能立刻跑全套主线”，但已经不是“必须依赖你这台机器手把手带”。
+The correct end state is not passive waiting.
+
+The correct end state is a controlled self-expanding research loop.

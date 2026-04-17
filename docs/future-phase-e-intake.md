@@ -24,7 +24,6 @@
 ## 当前固定排序
 
 1. `PIA paper-aligned confirmation`
-2. `Finding NeMo + local memorization + FB-Mem`
 
 ## 当前正式解释
 
@@ -33,9 +32,8 @@
 1. `PIA paper-aligned confirmation`
    - 文档层条件性第 1 顺位
    - 当前执行层 `no-go`
-2. `Finding NeMo + local memorization + FB-Mem`
 
-其中只有 2 仍构成当前 intake-only 准入验证优先顺序，而且它当前仍是 `zero-GPU hold`。
+当前没有仍处于活跃状态的 `intake-only` 准入验证优先项。
 
 ## 1. PIA paper-aligned confirmation
 
@@ -64,7 +62,7 @@
 
 ### 当前定位
 
-这是白盒最自然的下一问，但当前只允许把它推进成 `decision-grade intake/eligibility artifact`。
+这曾经是白盒最自然的下一问，但它当前已经不再属于活跃 `Phase E` intake-only 候选。
 
 它当前回答的问题不是“已经证明了什么机制”，而是：
 
@@ -82,10 +80,12 @@
 当前固定结论补充：
 
 - `activation export adapter = implemented`
-- `current verdict = zero-GPU hold`
-- `current boundary = non-GPU only; remains an intake dossier until a separate hypothesis/budget review exists`
-- `current decisive artifact = phase-e-finding-nemo-intake-hold-decision`
-- 这仍不是 `go`
+- 历史 intake 裁决 = `not-yet / adapter-complete zero-GPU hold`
+- 当前 branch truth = `non-admitted actual bounded falsifier`
+- 当前 decisive artifacts:
+  - `finding-nemo-first-truly-bounded-admitted-intervention-review-verdict`
+  - `finding-nemo-post-first-actual-packet-boundary-review`
+- 这不再是当前 `Phase E` 的 intake queue item
 
 ### 进入条件
 
@@ -111,8 +111,9 @@
 
 当前已落地裁决：
 
-- `not-yet`
-- 具体形态：`adapter-complete zero-GPU hold`
+- 历史 intake 裁决：`not-yet`
+- 历史具体形态：`adapter-complete zero-GPU hold`
+- 当前执行后边界：`non-admitted actual bounded falsifier`
 
 ### 预期产物
 
@@ -235,26 +236,26 @@
 ## 当前默认规则
 
 - 只要 `PIA provenance` 在窗口内解除，`PIA paper-aligned confirmation` 就保持第一优先
-- 当前 `PIA provenance dossier` 已 closed 为 `remain long-term blocker`，因此当前只保留 `Finding NeMo + local memorization + FB-Mem` 作为唯一 remaining intake-only candidate，不把它写成当前 queue 偏好
+- 当前 `PIA provenance dossier` 已 closed 为 `remain long-term blocker`，因此 `PIA paper-aligned confirmation` 继续只保留 document-layer conditional 身位，不把它写成当前 queue 偏好
 - 在 provenance blocker 未发生实质变化前，`PIA paper-aligned confirmation` 不计入当前可释放队列，也不计入当前准入验证优先顺序
 - 这里的 `decision-grade` 只指 intake/eligibility 决策质量，不指 admitted 升级，不指 benchmark-ready，也不指 GPU 已放行
-- `Finding NeMo` 当前虽然仍列在 intake review priority #1，但状态已固定为 `zero-GPU hold`
+- `Finding NeMo` 已退出当前 intake review priority order；当前若再进入考虑，必须走一条新的 separate hypothesis/budget review，而不是沿用旧 intake queue truth
 - `DP-LoRA / SMP-LoRA` 已不再停留在 intake-only 候选面，而是已经进入并完成一条 bounded exploration branch
 - `SecMI unblock` 与 `TMIA-DM intake` 也都已移出当前 intake-only 候选排序面
 - 单卡长期排程见 [2026-04-10-rtx4070-8gb-long-horizon-plan](../workspaces/implementation/2026-04-10-rtx4070-8gb-long-horizon-plan.md)
-- 上述长期排程不改变候选排序；它只额外规定：在 `Finding NeMo` 继续 `zero-GPU hold` 的前提下，它不进入实际 GPU 预排程
+- 上述长期排程不改变候选排序；但 `Finding NeMo` 当前的实际边界已经不再由旧 `zero-GPU hold` 句子定义
 
 ## 当前准入验证优先顺序
 
 在真正进入下一条 GPU 题的准入验证时，当前候选审查顺序为：
 
-1. `Finding NeMo + local memorization + FB-Mem`
+当前为空。
 
 补充说明：
 
 - `PIA paper-aligned confirmation` 继续保留文档层条件性第 1 顺位
 - 但在 provenance 条件未变化前，不进入执行层
-- `Finding NeMo + local memorization + FB-Mem` 当前只是当前最完整的 intake dossier 参考，不构成当前 GPU release，也不构成近期待申请项
+- `Finding NeMo + local memorization + FB-Mem` 当前不再属于 `Phase E` intake-only 候选；它的当前诚实边界应去读 white-box `I-B` packet 与 post-packet boundary review
 - `DP-LoRA / SMP-LoRA` 当前应读作已执行过的 bounded exploration branch，而不是当前 intake-only 候选
 - `SecMI` 当前应读作独立 corroboration line，而不是 `SecMI unblock`
 - `TMIA-DM` 当前应读作 strongest packaged gray-box challenger，而不是 `TMIA-DM intake`

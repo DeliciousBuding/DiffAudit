@@ -1,6 +1,7 @@
 from __future__ import annotations
 
 import argparse
+import hashlib
 import json
 import math
 import sys
@@ -40,6 +41,23 @@ def parse_args() -> argparse.Namespace:
     parser.add_argument("--generation-steps", type=int, default=50)
     parser.add_argument("--inversion-guidance-scale", type=float, default=1.0)
     parser.add_argument("--generation-guidance-scale", type=float, default=3.5)
+    parser.add_argument(
+        "--generation-guidance-mode",
+        choices=["fixed", "hidden-jitter"],
+        default="fixed",
+    )
+    parser.add_argument(
+        "--generation-guidance-scales",
+        type=str,
+        default=None,
+        help="Comma-separated candidate guidance scales for fixed or hidden-jitter execution.",
+    )
+    parser.add_argument(
+        "--generation-guidance-seed",
+        type=int,
+        default=0,
+        help="Deterministic seed for per-sample hidden guidance selection.",
+    )
     parser.add_argument("--distance-metric", choices=["mse", "ssim"], default="mse")
     parser.add_argument("--member-limit", type=int, default=1)
     parser.add_argument("--member-offset", type=int, default=0)
@@ -52,6 +70,8 @@ def parse_args() -> argparse.Namespace:
 
 
 def load_rows(split_dir: Path, subset_limit: int, offset: int = 0) -> list[dict]:
+    if subset_limit <= 0:
+        return []
     rows: list[dict] = []
     metadata_path = split_dir / "metadata.jsonl"
     loaded = 0
@@ -79,12 +99,112 @@ def build_transform(resolution: int) -> transforms.Compose:
     )
 
 
+def parse_generation_guidance_scales(raw_value: str | None, fallback_scale: float) -> list[float]:
+    if raw_value is None or not raw_value.strip():
+        return [float(fallback_scale)]
+    scales: list[float] = []
+    for token in raw_value.split(","):
+        value = token.strip()
+        if not value:
+            continue
+        scales.append(float(value))
+    if not scales:
+        raise ValueError("generation-guidance-scales must contain at least one numeric value.")
+    return scales
+
+
+def resolve_generation_guidance_config(args: argparse.Namespace) -> dict[str, object]:
+    scales = parse_generation_guidance_scales(
+        getattr(args, "generation_guidance_scales", None),
+        float(args.generation_guidance_scale),
+    )
+    mode = str(args.generation_guidance_mode)
+    if mode == "fixed":
+        if len(scales) != 1:
+            raise ValueError("fixed generation-guidance-mode requires exactly one guidance scale.")
+        return {
+            "mode": mode,
+            "scales": [float(scales[0])],
+            "seed": int(args.generation_guidance_seed),
+            "selection_rule": "fixed guidance_scale for every sample",
+        }
+    unique_scales = list(dict.fromkeys(float(scale) for scale in scales))
+    if len(unique_scales) < 2:
+        raise ValueError("hidden-jitter generation-guidance-mode requires at least two candidate scales.")
+    return {
+        "mode": mode,
+        "scales": unique_scales,
+        "seed": int(args.generation_guidance_seed),
+        "selection_rule": (
+            "deterministic hidden per-sample choice keyed by generation_guidance_seed + split + file_name"
+        ),
+    }
+
+
+def deterministic_guidance_choice(
+    *,
+    split_name: str,
+    file_name: str,
+    scales: list[float],
+    seed: int,
+) -> tuple[int, float]:
+    key = f"{seed}:{split_name}:{file_name}".encode("utf-8")
+    digest = hashlib.sha256(key).digest()
+    index = int.from_bytes(digest[:8], "big") % len(scales)
+    return index, float(scales[index])
+
+
+def normalize_record_split(split_name: str) -> str:
+    if split_name.startswith("calibration_nonmember"):
+        return "calibration_nonmember"
+    if split_name.startswith("nonmember"):
+        return "nonmember"
+    if split_name.startswith("member"):
+        return "member"
+    return split_name
+
+
+def summarize_guidance_usage(records: list[dict]) -> dict[str, dict[str, int]]:
+    usage: dict[str, dict[str, int]] = {"all": {}}
+    for record in records:
+        scale_key = str(float(record["generation_guidance_scale_used"]))
+        usage["all"][scale_key] = usage["all"].get(scale_key, 0) + 1
+        split_key = normalize_record_split(str(record["split"]))
+        split_usage = usage.setdefault(split_key, {})
+        split_usage[scale_key] = split_usage.get(scale_key, 0) + 1
+    return usage
+
+
+def ensure_disjoint_rows(
+    primary_rows: list[dict],
+    calibration_rows: list[dict],
+    *,
+    primary_name: str,
+    calibration_name: str,
+) -> None:
+    primary_files = {str(row["file_name"]) for row in primary_rows}
+    calibration_files = {str(row["file_name"]) for row in calibration_rows}
+    overlap = sorted(primary_files & calibration_files)
+    if overlap:
+        preview = ", ".join(overlap[:5])
+        raise ValueError(
+            f"{primary_name} and {calibration_name} must be disjoint by file_name; overlap: {preview}"
+        )
+
+
+def tensor_to_uint8_image(pixel: torch.Tensor) -> Image.Image:
+    image_tensor = ((pixel.detach().float().cpu().squeeze(0) + 1.0) * 127.5).clamp(0, 255).to(torch.uint8)
+    image_tensor = image_tensor.permute(1, 2, 0).contiguous()
+    return Image.fromarray(image_tensor.numpy(), mode="RGB")
+
+
 class NoiseAsProbeCanaryRunner:
     def __init__(self, args: argparse.Namespace) -> None:
         self.args = args
         self.device = torch.device(args.device)
         self.dtype = torch.float16 if self.device.type == "cuda" else torch.float32
         self.transform = build_transform(args.resolution)
+        self.guidance_config = resolve_generation_guidance_config(args)
         self._blip_processor: BlipProcessor | None = None
         self._blip_model: BlipForConditionalGeneration | None = None
         self._load_models()
@@ -203,7 +323,18 @@ class NoiseAsProbeCanaryRunner:
             current = step_output.prev_sample
         return current
 
-    def generate_from_latents(self, prompt: str, latents: torch.Tensor) -> Image.Image:
+    def generation_guidance_for(self, split_name: str, row: dict) -> tuple[int, float]:
+        scales = list(self.guidance_config["scales"])
+        if str(self.guidance_config["mode"]) == "fixed":
+            return 0, float(scales[0])
+        return deterministic_guidance_choice(
+            split_name=split_name,
+            file_name=str(row["file_name"]),
+            scales=scales,
+            seed=int(self.guidance_config["seed"]),
+        )
+
+    def generate_from_latents(self, prompt: str, latents: torch.Tensor, guidance_scale: float) -> Image.Image:
         self.pipe.scheduler = self.forward_scheduler
         self.pipe.scheduler.set_timesteps(self.args.generation_steps, device=self.device)
         with torch.inference_mode(), torch.autocast(
@@ -213,7 +344,7 @@ class NoiseAsProbeCanaryRunner:
                 prompt=prompt,
                 negative_prompt="",
                 num_inference_steps=self.args.generation_steps,
-                guidance_scale=self.args.generation_guidance_scale,
+                guidance_scale=guidance_scale,
                 height=self.args.resolution,
                 width=self.args.resolution,
                 latents=latents.clone().to(device=self.device, dtype=self.dtype),
@@ -250,14 +381,15 @@ class NoiseAsProbeCanaryRunner:
         query_pixel, latent = self.encode_image(image)
         cond_embeds, uncond_embeds = self.encode_prompt(prompt)
         inverted_latent = self.invert_latent(latent, cond_embeds, uncond_embeds)
-        replay_image = self.generate_from_latents(prompt, inverted_latent)
+        guidance_choice_index, guidance_scale = self.generation_guidance_for(split_name, row)
+        replay_image = self.generate_from_latents(prompt, inverted_latent, guidance_scale=guidance_scale)
         metrics = self.distance_metrics(query_pixel, replay_image)
 
         stem = f"{split_name}_{Path(row['file_name']).stem}"
         query_path = output_dir / f"{stem}_query.png"
         replay_path = output_dir / f"{stem}_replay.png"
         latent_path = output_dir / f"{stem}_inverted_latent.pt"
-        image.resize((self.args.resolution, self.args.resolution)).save(query_path)
+        tensor_to_uint8_image(query_pixel).save(query_path)
         replay_image.save(replay_path)
         torch.save(inverted_latent.detach().float().cpu(), latent_path)
 
@@ -266,6 +398,10 @@ class NoiseAsProbeCanaryRunner:
             "file_name": row["file_name"],
             "prompt": prompt,
             "prompt_source": prompt_source,
+            "generation_guidance_mode": str(self.guidance_config["mode"]),
+            "generation_guidance_scale_used": float(guidance_scale),
+            "generation_guidance_choice_index": int(guidance_choice_index),
+            "generation_guidance_choice_key": f"{split_name}:{row['file_name']}",
             "query_path": query_path.as_posix(),
             "replay_path": replay_path.as_posix(),
             "inverted_latent_path": latent_path.as_posix(),
@@ -322,6 +458,12 @@ def main() -> int:
     )
     if not member_rows or not nonmember_rows:
         raise ValueError("Both member-dir and nonmember-dir need at least one metadata row.")
+    ensure_disjoint_rows(
+        nonmember_rows,
+        calibration_rows,
+        primary_name="evaluation nonmember rows",
+        calibration_name="calibration rows",
+    )
 
     runner = NoiseAsProbeCanaryRunner(args)
     member_records = [
@@ -339,6 +481,7 @@ def main() -> int:
     threshold = threshold_from_calibration(calibration_records)
     threshold_eval = evaluate_threshold(member_records, nonmember_records, threshold)
     records = member_records + nonmember_records
+    all_records = records + calibration_records
 
     summary = {
         "status": "interface-canary-only" if args.member_limit == 1 and args.nonmember_limit == 1 else "bounded-expansion-rung",
@@ -349,7 +492,13 @@ def main() -> int:
         "distance_direction": "lower-is-more-member-like",
         "inversion_steps": args.inversion_steps,
         "generation_steps": args.generation_steps,
-        "generation_guidance_scale": args.generation_guidance_scale,
+        "generation_guidance_scale": (
+            float(runner.guidance_config["scales"][0]) if runner.guidance_config["mode"] == "fixed" else None
+        ),
+        "generation_guidance_mode": runner.guidance_config["mode"],
+        "generation_guidance_scales": runner.guidance_config["scales"],
+        "generation_guidance_seed": runner.guidance_config["seed"],
+        "generation_guidance_selection_rule": runner.guidance_config["selection_rule"],
         "inversion_guidance_scale": args.inversion_guidance_scale,
         "member_limit": args.member_limit,
         "nonmember_limit": args.nonmember_limit,
@@ -357,6 +506,7 @@ def main() -> int:
         "gpu_release": "none",
         "records": records,
         "calibration_records": calibration_records,
+        "guidance_usage": summarize_guidance_usage(all_records),
         "threshold_candidate": threshold_eval,
         "duration_seconds": round(time.perf_counter() - start_time, 3),
     }

@@ -1,6 +1,6 @@
 # DiffAudit Research ROADMAP — Continuous Autonomous Mainline
 
-> Last updated: 2026-04-17 00:20
+> Last updated: 2026-04-18 04:10
 > Mode: continuous autonomous research
 > Owner: `Researcher`
 > Rule: one active GPU task at a time, every task must end in a concrete verdict
@@ -244,9 +244,736 @@ Current need:
 - keep narrative and machine-readable structure aligned
 - keep expanding cross-box reasoning, not just per-box silos
 
+### 4.5 Current execution posture
+
+Current truth:
+
+- `active GPU question = none`
+- `next_gpu_candidate = G1-A larger shared-surface tri-score rerun review pending separate bounded GPU review`
+- the first real `PIA vs TMIA-DM confidence-gated switching` packet already closed as `negative but useful`
+- `X-88` is now closed as `bounded`: `G1-A = gray-box tri-evidence audit scorer` won post-`B-M0` long-horizon scoping as the next honest distinct-family candidate
+- `X-89` is now closed as `positive`: the `X-88` CPU gate landed honestly on frozen `gpu256_undefended / gpu256_defended` surfaces with one real internal tri-score canary while keeping current consumer schema unchanged
+- no direct GPU fire is authorized yet; the next move is a separate bounded GPU review for the larger shared-surface rerun rather than another reselection pass
+- `X-13` is now closed as `positive`: higher-layer / system-consumable entry points now carry the sharper `I-C` boundary, including `translated-contract-only + negative falsifier`, without changing any admitted mainline table or opening a new consumer contract
+- `I-D.1` is now closed as `positive but bounded`: the first honest conditional target contract is frozen to `Stable Diffusion v1.5 base + celeba_partial_target/checkpoint-25000` on a local latent-diffusion canary surface, while current `recon DDIM public` evidence remains only a family-level runtime support surface
+- `I-D.2` is now closed as `positive but bounded`: on one frozen `8 / 8 / 8` packet, `generation_guidance_scale = 7.5` widens raw member-vs-nonmember `MSE` separation over `3.5`, but fixed thresholds are not portable across scales
+- `I-D.3` is now closed as `positive but bounded`: hidden-guidance jitter is a plausible conditional randomization defense idea, but current mixed-packet evidence is still seed-sensitive and below low-FPR / adaptive release
+- `X-14` is now closed as `positive`: the first bounded `I-D` attack/defense packet pair is synchronized into higher-layer truth without changing admitted tables, consumer schema, or competition-facing claims
+- `I-D.4` is now closed as `negative but useful`: the first actual runner-level deterministic hidden-guidance-jitter rerun is real and reproducible, but on the frozen packet it collapses to `accuracy = 0.5 / TPR = 0.625 / FPR = 0.625`, so the candidate falls below low-FPR and adaptive-release honesty
+- `I-A` refresh is now closed as `positive but stabilizing`: the failed actual `I-D.4` rerun narrows the conditional future-surface but does not weaken the current `PIA + stochastic-dropout` mechanistic packet
+- `X-15` is now closed as `positive`: after the `I-A` refresh, the next honest non-graybox slot is no longer maintenance or future-surface cleanup but `I-B` execution-side reopening
+- `I-B.5` is now closed as `positive`: the first executable packet should stay white-box-only and CPU-only on the native `I-B` pair rather than importing `I-C` bridge semantics
+- `I-B.6` is now closed as `positive but bounded`: the first packet executes successfully on current admitted assets, but still only proves execution and local drift readability, not defense effect
+- `I-B.7` is now closed as `positive`: the first attack-side review should stay on admitted `GSA` assets with one bounded evaluation-size override rather than full-scale rerender or subset-asset duplication
+- `I-B.8` is now closed as `positive but bounded`: the admitted `GSA` runtime surface now exposes a real bounded attack-side evaluation control via `--max-samples`, and one CPU-only `max_samples = 64` review packet on reused admitted gradients preserves strong attack signal while sharply shrinking evaluation size and low-FPR stability
+- `I-B.9` is now closed as `positive`: the first honest intervention-on/off review must be a target-anchored fixed-mask dual-run bounded board on the same `max_samples = 64` packet, with one frozen mask object replayed across target and shadow extractions rather than per-model reselection
+- `I-B.10` is now closed as `positive but bounded`: the repository now exposes `run-gsa-runtime-intervention-review`, which reads one frozen target-anchored mask summary and emits bounded baseline/intervened boards plus delta fields on the same review surface, but admitted execution is still pending
+- `I-B.11` is now closed as `blocked but useful`: the first admitted target-anchored fixed-mask packet is still not honest to release because the current dual-run surface bounds only evaluation, not extraction; it would still traverse the full admitted `8000`-image board twice
+- `I-B.12` is now closed as `positive but bounded`: the dual-run review surface now supports extraction-side boundedness via `extraction_max_samples`, with fallback from `max_samples`, so the first packet can be honestly bounded at both extraction and evaluation layers
+- `I-B.13` is now closed as `positive`: the first truly bounded admitted packet is frozen to the existing `max_samples = extraction_max_samples = 64` contract on admitted `GSA epoch300 rerun1` assets, with the native `965 / 467` frozen mask summary replayed on `cuda` under the paper-aligned runtime schedule; the packet is still cost-warning rather than cheap, but it is now honest to release on the current host
+- `I-B.14` is now closed as `negative but useful`: the first actual bounded admitted packet executes cleanly on real assets, but the frozen fixed mask pushes the bounded attack-side metrics slightly upward (`AUC +0.00354 / ASR +0.015624 / TPR@1%FPR +0.03125 / TPR@0.1%FPR +0.0`) while the locality anchor remains clean, so the branch now carries one real falsifier rather than a defense-positive result
+- `I-B.15` is now closed as `negative but clarifying`: the first actual `Finding NeMo / I-B` packet should now be frozen as an `actual bounded falsifier` rather than either a `zero-GPU hold` or a defense-positive result, so same-family GPU rescue reruns are below release until a genuinely new bounded hypothesis appears
+- `X-16` is now closed as `positive`: after that sharper `I-B` boundary, the next honest non-graybox `CPU-first` lane is not another box-local reopen or an asset-blocked portability probe, but a cross-box / system-consumable sync pass
+- `X-17` is now closed as `positive`: higher-layer entry points now carry the updated `Finding NeMo` boundary that one actual bounded packet exists and is `negative but useful`, while admitted tables and consumer schema remain unchanged
+- `I-A` refresh after the first actual negative `I-B` packet is now closed as `positive but stabilizing`: the new white-box falsifier narrows a competing branch but does not weaken the mechanistic `PIA + stochastic-dropout` packet, so `I-A` remains the strongest near-term innovation track
+- `X-18` is now closed as `positive`: after that `I-A` refresh, the next honest non-graybox `CPU-first` lane is `XB-CH-2 transfer / portability blocker refresh review`, not another same-family reopen
+- `XB-CH-2` transfer / portability blocker refresh is now closed as `negative but useful`: recent `I-B` falsifiers, `I-A` refresh, and higher-layer sync did not create the missing paired model/split contracts, so the branch remains `needs-assets` rather than execution-ready
+- `X-19` is now closed as `positive`: after the refreshed transfer blocker, the next honest non-graybox move is one bounded higher-layer stale-entry sync pass rather than another empty reselection loop or a blocked-branch reopen
+- `X-20` is now closed as `positive`: Research-side entry docs and the root control board are now aligned to the current `Finding NeMo = actual bounded falsifier / XB-CH-2 = needs-assets / no active GPU` truth
+- `X-21` is now closed as `positive`: after `X-20`, there is still no honest executable reopen in `XB-CH-2` or other blocked queue items, so the strongest next non-graybox lane is a bounded return to `I-A`
+- `X-22` is now closed as `positive`: the remaining `I-A` residue was higher-layer presentation strength rather than mechanism truth, and leader/material entry docs now carry the stronger four-metric plus bounded-adaptive reading
+- `X-23` is now closed as `positive`: after `X-22`, blocked challengers still do not expose a stronger executable branch, so the next honest move is one residual stale-entry cleanup pass before reopening substantive lane selection
+- `X-24` is now closed as `positive`: the last visible stale execution-order layer in higher docs and the root control board is now aligned to current truth, so the next honest move is another non-graybox reselection pass
+- `X-25` is now closed as `positive`: after `X-24`, no blocked or hold non-graybox branch gained an honest execution release, so the strongest executable next lane is to promote `PIA provenance maintenance` from carry-forward sidecar into the main CPU-first slot
+- `X-26` is now closed as `positive`: the `PIA` provenance blocker no longer needs new consumer fields or a new execution release, so the correct maintenance action is to freeze its carry-forward boundary, intake reading, and reopen trigger explicitly
+- `X-27` is now closed as `positive`: after `X-26`, the strongest remaining unresolved non-graybox branch is `XB-CH-2`, but only as a CPU-side blocker/contract review rather than an execution reopen
+- `X-28` is now closed as `positive`: the current repo still cannot freeze one honest cross-box shared execution surface, but it can now freeze the exact reopen contract for `XB-CH-2`, so the branch remains `needs-assets` with sharper paired-model / paired-split / shared-metric requirements
+- `X-29` is now closed as `positive`: after `X-28`, `XB-CH-2` remains blocker-frozen rather than execution-ready, so the strongest executable non-graybox lane becomes a bounded return to `I-A`
+- `X-30` is now closed as `positive but stabilizing`: the current mechanistic / low-FPR / bounded-adaptive `I-A` reading is now stable across higher-layer docs, so `I-A` can return to sidecar status unless new drift appears
+- `X-31` is now closed as `positive`: the remaining post-`X-30` drift was only stale control-plane wording, and higher-layer entry docs are now aligned again
+- `X-32` is now closed as `positive`: once `I-A` is back to sidecar and all blocked/hold non-graybox branches remain below release, the strongest honest main-slot choice is to promote `cross-box / system-consumable wording maintenance` back into the main lane because active intake/system surfaces still drift on `Finding NeMo` and `Phase E` truth
+- `X-33` is now closed as `positive`: the remaining stale intake/system surfaces are now aligned again, and `Finding NeMo` is no longer encoded as the current `Phase E` intake-only `zero-GPU hold` candidate in active higher-layer or machine-readable registry docs
+- `X-34` is now closed as `positive`: after both control-plane and intake-plane stale surfaces were cleared, the visible non-graybox candidate pool still contains no honest ready main-slot lane above blocked/hold status or stable sidecar maintenance, so the next move is candidate-surface expansion rather than another fake reopen
+- `X-35` is now closed as `positive`: the first honest way to expand the stale non-graybox pool is to restore `I-D` as an active candidate surface, because black-box still lacks a new family contract, white-box still lacks a distinct defended-family import lane, and `I-C` still lacks a genuinely new bounded cross-box hypothesis beyond its frozen translated-contract falsifier
+- `X-36` is now closed as `positive`: the restored `I-D` surface does not currently contain one genuinely new bounded successor lane beyond its frozen contract, bounded `CFG` packet, and negative actual runner-level hidden-guidance-jitter rerun, so the honest outcome is to freeze `I-D` back to future-surface support only and yield to non-graybox reselection
+- `X-37` is now closed as `positive`: after `X-36`, no blocked/hold non-graybox branch honestly reopened and no new `I-A` successor question appeared, so the strongest immediate main-slot move is one bounded cross-box / system-consumable stale-surface sync pass on the remaining active `I-D` material wording drift
+- `X-38` is now closed as `positive`: the remaining active material-facing `I-D` wording surface is now aligned to `X-36`, so higher-layer readers no longer see `bounded hidden-guidance defense idea` without the stronger `negative actual runner-level rerun + no honest bounded successor lane` boundary
+- `X-39` is now closed as `positive`: after `X-38`, the visible non-graybox pool still contains no honest ready main-slot lane above blocked/hold branches or stable sidecar maintenance, so the correct next move is another bounded candidate-surface expansion rather than a fake reopen
+- `X-40` is now closed as `positive`: the first honest way to expand the now-stale non-graybox pool again is to restore `I-C`, but only as fresh bounded cross-box hypothesis generation rather than same-pair translated-contract hardening
+- `X-41` is now closed as `positive`: the first genuinely new bounded `I-C` hypothesis is not another translated intervention retry but a bounded multi-pair agreement-first cross-box hypothesis, asking whether white-box local concentration and gray-box packet-local membership advantage rank the same frozen objects directionally before stronger support claims are attempted
+- `X-42` is now closed as `blocked but useful`: the agreement-first idea survives, but the first executable board contract is still missing one second member/nonmember pair freeze under the same overlap authority, so the next honest move is pairboard identity freeze rather than execution
+- `X-43` is now closed as `positive but bounded`: the second pairboard identity is now frozen deterministically to member `8` and nonmember `23`, so the new `I-C` agreement-first line now has a real `2 member + 2 nonmember` identity board under the same overlap authority, but still lacks an executable agreement-board contract
+- `X-44` is now closed as `blocked but useful`: the identity board is now complete, gray-box already exposes object-level scores, but the first honest agreement-board contract still lacks one frozen white-box board-local concentration scalar and selector policy
+- `X-45` is now closed as `positive but bounded`: the white-box blocker is now resolved by freezing `selected_channel_abs_profile_mean` on the board-wide selected-channel set inherited from the already-frozen pair-A selector, so the fresh `I-C` line can now return to an actual four-object board read
+- `X-46` is now closed as `negative but useful`: the first honest four-object board read is real and still shows class-mean same-direction residue, but it does not preserve a clean enough same-object broad order to count as positive agreement-first support, so the current fresh `I-C` line should yield the next main-slot decision back to non-graybox reselection
+- `X-47` is now closed as `positive`: after the first fresh `I-C` board read landed as `negative but useful`, the most honest immediate next move is not same-board salvage and not immediate `I-A` promotion, but one bounded cross-box / system-consumable stale-entry sync pass because higher-layer readers still see the pre-`X-46` control-plane state
+- `X-48` is now closed as `positive`: the active higher-layer entry docs are now aligned again to the post-`X-46` control-plane truth, so the next honest move is a fresh non-graybox reselection rather than more wording-only work
+- `X-49` is now closed as `positive`: once the stale-entry sync is cleared, no stronger ready non-graybox branch reopens above `I-A`, so the most honest next main-slot move is a bounded return to `I-A` truth-hardening
+- `X-50` is now closed as `positive`: the remaining `I-A` residue sat in higher-layer carry-forward rather than in the underlying packet, and the active higher-layer entry docs now again carry the bounded repeated-query adaptive reading plus mandatory four-metric low-FPR reporting
+- `X-51` is now closed as `positive`: once that `I-A` residue is cleared, no blocked/hold non-graybox branch reopens above one remaining materials-facing stale-entry sync, because `competition-evidence-pack` still encodes `SecMI` and `TMIA-DM` with pre-refresh gray-box status
+- `X-52` is now closed as `positive`: the active admitted/material-facing evidence pack is now aligned again to current gray-box truth, so the next honest move is a fresh non-graybox reselection rather than more wording-only sync
+- `X-53` is now closed as `positive`: once the materials-facing stale entry is cleared, no blocked/hold branch honestly reopens above the stable `I-A` sidecar, but `I-B` is now the strongest innovation surface that has not yet received an explicit post-falsifier successor review, so the next honest move is to inspect `I-B` for any genuinely new bounded successor lane rather than to re-promote `I-A` mechanically
+- `X-54` is now closed as `negative but useful`: the restored `I-B` surface still does not contain one honest bounded successor lane above its `actual bounded falsifier` freeze, because same-family rescue remains forbidden, distinct-family import is not available on this branch, and no new bounded localization-defense hypothesis is yet visible
+- `X-55` is now closed as `positive`: once `I-B` is successor-frozen, no blocked/hold branch honestly reopens above the stable `I-A` sidecar, but fresh `I-C` is now the strongest innovation surface still lacking an explicit post-negative successor review after `X-46`, so the next honest move is to inspect `I-C` for any genuinely new bounded successor lane rather than to force a return to `I-A`
+- `X-56` is now closed as `negative but useful`: the fresh `I-C` surface still does not contain one honest bounded successor lane above the first negative agreement-board read, because same-board salvage remains forbidden, black-box corroboration still lacks a frozen bridge surface, and no new bounded cross-permission hypothesis is visible
+- `X-57` is now closed as `positive`: once `I-C` is successor-frozen, no blocked/hold branch honestly reopens above the stable `I-A` sidecar, but one active higher-layer entry doc still lags behind the current control-plane state, so the next honest move is one bounded cross-box / system-consumable stale-entry sync pass rather than immediate candidate-surface expansion
+- `X-58` is now closed as `positive`: the remaining active higher-layer entry doc is now aligned again to the post-`X-56` control-plane truth, so the next honest move is a fresh non-graybox reselection rather than more wording-only work
+- `X-59` is now closed as `positive`: once the stale-entry sync is cleared, no blocked/hold branch honestly reopens above the stable `I-A` sidecar and no fresh successor lane appears inside `I-B` or `I-C`, so the next honest move is bounded non-graybox candidate-surface expansion rather than a forced same-family return
+- `X-60` is now closed as `positive`: the restored non-graybox candidate surface is `black-box paper-backed next-family scouting`, because black-box is the only remaining non-graybox area with honest CPU-only expansion room that does not violate current frozen negative or `needs-assets` boundaries
+- `X-61` is now closed as `negative but useful`: the remaining paper-backed black-box backlog still does not expose one genuinely new promotable family, because the face-image LDM route is domain-specific, collection-level, and structurally overlaps with `semantic-auxiliary-classifier` and gray-box-owned `CDI`
+- `X-62` is now closed as `positive`: once that black-box scouting surface also closes negative and no immediate stale-entry sync need remains, the strongest next live lane returns to `I-A` truth-hardening rather than another artificial candidate-surface expansion
+- `X-63` is now closed as `positive`: one remaining materials-facing `I-A` residue existed in the active PIA visual prompt, which still invited `AUC-only` defense storytelling; that residue is now cleared by forcing four-metric plus bounded-adaptive wording into the prompt itself
+- `X-64` is now closed as `positive`: once `X-63` clears the last visible `I-A` residue and no stale-entry sync or blocked/hold reopen remains above sidecar maintenance, the honest next move is another bounded non-graybox candidate-surface expansion rather than a forced `I-A` rerun or white-box reopen
+- `X-65` is now closed as `positive`: the restored non-graybox candidate surface is `I-B paper-backed localization-defense successor scouting`, because black-box has already closed negative, white-box still should not take the next slot, and the broader `Finding NeMo + local memorization + FB-Mem` mechanism stack still contains CPU-only hypothesis-generation room above same-family rescue churn
+- `X-66` is now closed as `negative but useful`: the broader `Finding NeMo + local memorization + FB-Mem` mechanism stack still does not expose one genuinely new bounded successor hypothesis on top of the current `actual bounded falsifier`, because the extra material remains either historical intake scaffolding, observability plumbing, or paper-faithful `SD1.4/LAION` context rather than a current admitted-surface hypothesis
+- `X-67` is now closed as `positive`: once the broadened `I-B` stack also freezes below active successor status, no stronger blocked/hold branch honestly reopens above the stable sidecar line, so the strongest next live lane returns to `I-A` truth-hardening
+- `X-68` is now closed as `positive but stabilizing`: the current `I-A` contract still contained one real carry-forward task, but only a narrow higher-layer residue in the `Leader` one-page summary table, which still foregrounded `AUC / ASR` before the low-FPR and bounded-adaptive read path
+- `X-69` is now closed as `positive`: once that last top-summary `I-A` residue is cleared, no blocked/hold branch honestly reopens above sidecar maintenance, so the next honest move is bounded non-graybox candidate-surface expansion rather than another `I-A` turn
+- `X-70` is now closed as `positive`: the next honest restored non-graybox candidate surface is `WB-CH-4 white-box loss-feature challenger family`, because the visible white-box pool was exhausted but the paper-backed loss-feature family (`LSA* / LiRA / Strong LiRA`) had never been promoted into the candidate queue even though it is distinct from the current `GSA` gradient family
+- `X-71` is now closed as `positive but bounded`: the restored `WB-CH-4` surface does contain one honest near-term lane, but only as a bounded same-asset `LSA*`-style contract review; `LiRA / Strong LiRA` remain above current bounded host-fit budget
+- `X-72` is now closed as `positive but bounded`: current admitted `DDPM/CIFAR10` white-box assets do support one bounded same-asset `LSA*`-style loss-feature contract, but current runtime/mainline still exports gradients only, so execution remains blocked on a loss-score export surface review
+- `X-73` is now closed as `positive but bounded`: one honest bounded loss-score export surface does exist, but it should be added first as a separate in-repo internal helper / CLI surface rather than by patching the upstream external extractor or mutating current admitted `run-gsa-runtime-mainline` semantics
+- `X-74` is now closed as `positive but bounded`: the repository now exposes one separate bounded internal loss-score export surface on the admitted `DDPM/CIFAR10` white-box asset family, and one real-asset `cpu / extraction_max_samples = 1` smoke succeeded without mutating admitted gradient-mainline semantics
+- `X-75` is now closed as `positive but bounded`: the first honest bounded packet is now frozen to a `threshold-style`, `shadow-oriented`, `shadow-threshold-transfer` board on exported scalar loss scores with `extraction_max_samples = 64` per split, while low-FPR fields remain mandatory but still below release-grade honesty at that bounded scale
+- `X-76` is now closed as `positive but bounded`: the repository now exposes a separate bounded threshold evaluator surface on top of exported white-box loss-score artifacts via `evaluate-gsa-loss-score-packet`, and one real bounded smoke confirms the intended honesty boundary because the frozen shadow-only orientation/threshold transfer goes negative on target while the target self-board remains positive and therefore diagnostic-only
+- `X-77` is now closed as `positive but bounded`: the first real bounded `64`-per-split actual packet now exists on the frozen white-box loss-score contract, and its shadow-transferred target board lands at `AUC = 0.699463 / ASR = 0.632812 / TPR@1%FPR = 0.03125 / TPR@0.1%FPR = 0.03125`, which is real auxiliary evidence but still below release-grade low-FPR honesty
+- `X-78` is now closed as `positive but stabilizing`: the first actual loss-score packet is now boundary-reviewed and should be frozen as bounded auxiliary white-box evidence rather than promoted or immediately extended by another same-family packet, because the branch is executable and genuinely positive but still weak at low FPR and lacks a new bounded follow-up hypothesis
+- `X-79` is now closed as `positive`: once the white-box loss-score branch is frozen below immediate continuation and no stale sync remains above it, the strongest next live lane returns to `I-A` truth-hardening rather than another box-local follow-up or forced candidate expansion
+- `X-80` is now closed as `positive`: one active higher-layer residue still existed in `docs/mainline-narrative.md`, whose current-state paragraph was still frozen at `X-76`; that residue is now cleared and the doc again carries the post-`X-77 / X-78 / X-79` control-plane truth
+- `X-81` is now closed as `positive`: after `X-80`, the strongest next move is neither another `I-A` micro-audit nor a fresh candidate-surface reopen, but one bounded `cross-box / system-consumable stale-entry sync`, because active higher-layer docs still expose stale lane state
+- `X-82` is now closed as `positive`: the active higher-layer stale-entry surfaces are now aligned again to current control-plane truth, so the strongest next move is no longer another wording-only sync pass
+- `X-83` is now closed as `positive`: once the stale-entry sync is cleared, no blocked/hold branch honestly reopens and no new active `I-A` residue is visible, so the honest next move becomes bounded non-graybox candidate-surface expansion rather than another forced `I-A` microtask
+- `X-84` is now closed as `positive`: the restored non-graybox candidate surface is `cross-box admitted-summary quality/cost read-path hardening`, because all immediate box-local reopens remain frozen/blocked while the unified table already carries richer `quality_cost / evidence_level / boundary` fields that higher-layer admitted summaries do not foreground enough yet
+- `X-85` is now closed as `positive`: the admitted summary now explicitly exposes `Evidence Level` and `Quality / Cost`, so higher-layer readers no longer have to infer execution scale and evidence grade only from headline metrics plus free-text boundary notes
+- the current live review lane is now `G1-A larger shared-surface tri-score rerun review pending separate bounded GPU review after X-89`
+- `next_gpu_candidate` is now `G1-A larger shared-surface tri-score rerun review pending separate bounded GPU review`
+- the current CPU sidecar is `I-A higher-layer boundary maintenance`
+- any new GPU release still requires a separate bounded GPU review that freezes shared-surface identity, host-fit budget, story delta, and kill gate before any fire decision
+
+Near-term priority order:
+
+1. review `G1-A larger shared-surface tri-score rerun` as a separate bounded GPU candidate after `X-89`, not as an auto-fire continuation
+2. keep `I-A higher-layer boundary maintenance` as the active CPU sidecar while GPU remains free
+3. keep `LiRA / Strong LiRA`, same-family `I-B` rescue, `I-D`, and other hold branches below execution release until a genuinely new bounded hypothesis or an explicit `G1-A` review approval appears
+
 ---
 
-## 5. Task Selection Heuristic
+## 5. Innovation Tracks
+
+These tracks are not marketing slogans.
+
+They are the current innovation ladder for the repository. Each one must be backed by concrete evidence, explicit gates, and honest anti-overclaim rules.
+
+### 5.1 `I-A` Trajectory-Consistency -> Inference-Time Randomization Defense
+
+Current status: `near-term primary innovation track / first truth-hardening packet landed`
+
+Core claim:
+
+- the gray-box membership signal exposed by `PIA` is best understood as `epsilon-trajectory consistency`
+- inference-time randomization defenses such as `stochastic-dropout` weaken that consistency without requiring retraining
+
+Why it matters:
+
+- this is the strongest candidate for a real, already-nearby technical innovation
+- it is stronger than merely saying "`G-1 = stochastic-dropout`"
+- it creates a mechanistic story rather than an engineering toggle story
+
+Required gates before stronger promotion:
+
+- [x] `I-A.1` write one formal mechanism statement linking `PIA` signal to trajectory consistency
+- [x] `I-A.2` add adaptive-attacker evaluation or bounded adaptive review
+- [x] `I-A.3` make low-FPR reporting mandatory alongside `AUC/ASR`
+- [x] `I-A.4` update higher-layer wording so this is described as a mechanistic defense result, not a narrative flourish
+
+Current truth packet:
+
+- canonical evidence anchor:
+  - `workspaces/implementation/2026-04-17-ia-trajectory-consistency-truth-hardening.md`
+  - `workspaces/implementation/2026-04-17-ia-refresh-after-negative-id4-verdict.md`
+  - `workspaces/implementation/2026-04-17-ia-refresh-after-negative-ib14-verdict.md`
+- current mechanistic wording:
+  - `PIA` exposes `epsilon-trajectory consistency`
+  - `stochastic-dropout(all_steps)` weakens that signal via inference-time randomization
+- current adaptive boundary:
+  - supported only for bounded repeated-query review, not for a fully defense-aware retrained attacker
+- current higher-layer read rule:
+  - always report `AUC / ASR / TPR@1%FPR / TPR@0.1%FPR` together
+
+Anti-overclaim rule:
+
+- do not claim this is validated privacy protection until low-FPR and adaptive-attacker boundaries are explicit
+
+### 5.2 `I-B` Memory Localization -> Surgical Defense
+
+Current status: `mid-term execution candidate / intake-gated / first bridge packet landed / first observable selected / first intervention proposal landed / first metric contract landed`
+
+Core claim:
+
+- memorization is likely concentrated in sparse internal units
+- a stronger innovation than full defended-model replacement would be to detect those units and intervene locally
+
+Current repository mapping:
+
+- `GSA` provides a white-box signal surface
+- `Finding NeMo` provides the nearest localization/intervention execution branch, but its current frozen boundary is `non-admitted actual bounded falsifier`, not intake-only readiness
+
+Required gates before promotion:
+
+- [x] `I-B.1` establish the minimum honest protocol bridge between current admitted white-box assets and localization tooling
+- [x] `I-B.2` identify one bounded localization observable worth trusting
+- [x] `I-B.3` define one bounded local intervention proposal
+- [x] `I-B.4` define the quality-vs-defense metric contract for that intervention
+- [x] `I-B.5` select one first bounded localization/intervention packet that can actually be executed on current admitted assets
+- [x] `I-B.6` implement the first bounded localization/intervention packet on current admitted assets
+- [x] `I-B.7` select one bounded attack-side evaluation packet for the first honest quality-vs-defense review
+- [x] `I-B.8` implement bounded attack-side evaluation packet control on the admitted `GSA` surface
+- [x] `I-B.9` select the first honest intervention-on/off bounded attack-side review contract on the admitted `GSA` surface
+- [x] `I-B.10` implement the target-anchored fixed-mask intervention-on/off bounded attack-side review surface on the admitted `GSA` surface
+- [x] `I-B.11` review execution budget and host-fit for the first admitted target-anchored fixed-mask intervention-on/off bounded packet
+- [x] `I-B.12` implement extraction-side bounded dataset cap for the target-anchored fixed-mask intervention review surface
+- [x] `I-B.13` review launch config and release honesty for the first truly bounded admitted target-anchored fixed-mask intervention-on/off packet
+- [x] `I-B.14` execute and review the first truly bounded admitted target-anchored fixed-mask intervention-on/off packet
+- [x] `I-B.15` review branch boundary and next-step honesty after the first negative actual bounded admitted packet
+- [x] `I-A refresh after first actual negative I-B packet`
+- [x] `XB-CH-2` transfer / portability blocker refresh review
+
+Current truth packet:
+
+- canonical evidence anchor:
+  - `workspaces/white-box/2026-04-17-finding-nemo-minimum-honest-protocol-bridge.md`
+  - `workspaces/white-box/2026-04-17-finding-nemo-bounded-attack-side-evaluation-packet-control-verdict.md`
+  - `workspaces/white-box/2026-04-17-finding-nemo-first-intervention-on-off-bounded-review-contract-selection.md`
+  - `workspaces/white-box/2026-04-17-finding-nemo-intervention-on-off-bounded-review-surface-verdict.md`
+  - `workspaces/white-box/2026-04-17-finding-nemo-first-admitted-fixed-mask-packet-execution-budget-review.md`
+  - `workspaces/white-box/2026-04-17-finding-nemo-extraction-side-bounded-cap-verdict.md`
+  - `workspaces/white-box/runs/finding-nemo-bounded-attack-side-eval-control-20260417-r1/summary.json`
+- current minimum honest bridge:
+  - admitted `GSA` asset root
+  - fixed target checkpoint root
+  - activation-only migrated DDPM observability
+  - one fixed selector at a time
+  - fixed member/control sample binding
+  - CPU-only read-only artifact export
+- current first trusted localization observable:
+  - raw sample-level activation tensor under fixed selector/timestep contract
+  - `summary_stat` is metadata only
+  - `grad_norm` remains a supporting comparator candidate
+- current first bounded intervention proposal:
+  - `single-selector top-k channel attenuation mask`
+  - default shape:
+    - selector `mid_block.attentions.0.to_v`
+    - timestep `999`
+    - `top-k = 8`
+    - `alpha = 0.5`
+  - channel-local only, not neuron identity proof
+- current quality-vs-defense review contract:
+  - always report `AUC / ASR / TPR@1%FPR / TPR@0.1%FPR`
+  - always report one mandatory no-sampling control-surface drift metric
+  - report locality budget fields and compute-cost fields together
+  - no positive reading from `AUC` alone
+- current bounded attack-side evaluation control:
+  - `run-gsa-runtime-mainline --max-samples`
+  - first bounded packet fixes `max_samples = 64`
+  - first bounded packet metrics:
+    - `AUC = 0.988159`
+    - `ASR = 0.90625`
+    - `TPR@1%FPR = 0.453125`
+    - `TPR@0.1%FPR = 0.0`
+    - `target_eval_size = 128`
+  - honest reading:
+    - `control-positive / defense-unproven`
+- current first intervention-on/off review contract:
+  - same bounded attack-side packet:
+    - `max_samples = 64`
+  - same intervention object for both target and shadows:
+    - selector `mid_block.attentions.0.to_v`
+    - timestep `999`
+    - `mask_kind = top_abs_delta_k`
+    - `k = 8`
+    - `alpha = 0.5`
+    - frozen channel indices:
+      - `[374, 471, 269, 1, 62, 360, 187, 394]`
+  - no per-model mask reselection in the first contract
+  - must compare:
+    - one baseline bounded board
+    - one intervened bounded board
+  - must keep the native `965 / 467` canary-control packet as the mandatory locality / drift anchor
+- current intervention-on/off review surface:
+  - command:
+    - `run-gsa-runtime-intervention-review`
+  - reads one frozen `inmodel-packet-export` summary as the target-anchored mask source
+  - emits:
+    - `baseline.metrics`
+    - `intervened.metrics`
+    - `metric_deltas`
+    - `locality_anchor`
+  - current reading:
+    - `implementation-positive / admitted-execution-pending`
+- current execution-budget boundary:
+  - current admitted family size per board:
+    - `8000` images
+  - current dual-run packet size:
+    - `16000` image-level extractions
+  - current blocker:
+    - `max_samples` only bounds evaluation, not extraction
+  - honest reading:
+    - `blocked but useful`
+- current extraction-side boundedness:
+  - command surface:
+    - `run-gsa-runtime-intervention-review --extraction-max-samples`
+  - fallback rule:
+    - if omitted, use `max_samples`
+  - current reading:
+    - `execution-budget blocker cleared`
+- current next step:
+  - `X-19 non-graybox next-lane reselection after refreshed transfer blocker review`
+
+Anti-overclaim rule:
+
+- until those gates land, `Finding NeMo` remains a localization-defense track candidate, not a current mainline result
+
+### 5.3 `I-C` Cross-Permission Signal Unification
+
+Current status: `research hypothesis / first falsifiable packet landed / first mask family frozen / first support contract landed`
+
+Core claim:
+
+- black-box, gray-box, and white-box member signals may be different projections of the same internal memorization structure
+
+Why it matters:
+
+- this would turn the project from three parallel attack lanes into one unified theory-bearing framework
+
+Required gates before promotion:
+
+- [x] `I-C.1` write one falsifiable minimal experiment
+- [x] `I-C.2` define which internal units or masks would be tested
+- [x] `I-C.3` define which black-box / gray-box / white-box metrics must move together to count as support
+- [x] `I-C.4` decide whether one bounded white-gray bridge packet is honest to release
+- [x] `I-C.5` define the minimum executable surface scaffolding for that packet
+- [x] `I-C.6` implement the minimum CPU-first scaffold for that packet
+- [x] `I-C.7` interpret the CPU canaries and decide whether the GPU candidate should be restored
+- [x] `I-C.8` define the same-packet identity and in-model intervention contract
+- [x] `I-C.9` implement canonical-index bridge binding and freeze the first membership-consistent matched pair
+- [x] `I-C.10` implement the in-model white-box intervention surface and CPU matched-pair co-movement canary
+- [x] `I-C.11` review selector-alias and architecture compatibility for gray-box bridge intervention
+- [x] `I-C.12` implement a gray-box translated-contract alias probe on `middleblocks.0.attn.proj_v`
+- [x] `I-C.13` review whether the executed `I-C.10 + I-C.12` packet set deserves any stronger bridge verdict than `translated-contract canary only`
+- [x] `I-C.14` execute one translated-contract targeted-vs-random falsifier on the frozen pair under the same locality budget
+- [x] `X-12` reseat the next live lane after the translated `I-C` packet yields both executability and falsifier truth
+- [x] `X-13` sync the sharper `I-C` boundary into cross-box / system-consumable higher-layer truth
+- [x] `I-D.1` define one honest conditional target contract
+- [x] `I-D.2` define one bounded CFG-scale probe
+- [x] `I-D.3` define one bounded CFG-randomization defense idea
+- [x] `X-14` sync the first bounded `I-D` attack/defense packet pair into higher-layer truth and freeze whether a runner-level hidden-jitter rerun deserves release review
+- [x] `I-D.4` execute one actual runner-level hidden-guidance-jitter rerun on the frozen `8 / 8 / 8` packet
+
+Current truth packet:
+
+- canonical evidence anchor:
+  - `workspaces/implementation/2026-04-17-id3-bounded-cfg-randomization-defense-idea-verdict.md`
+- current minimal falsifiable packet:
+  - one local `DDPM/CIFAR10` overlap surface only
+  - one bounded white-box local attenuation mask imported from `I-B`
+  - one matched random-mask control with the same locality budget
+  - one white-box internal directional readout:
+    - targeted local activation contrast should shrink
+  - one gray-box external directional readout:
+    - `PIA` member advantage should weaken on the same packet
+  - one mandatory drift guard:
+    - the effect must survive the already-frozen `I-B.4` control-surface budget
+- current falsifier:
+  - if the targeted mask does not beat the matched random mask, or the white-box change does not co-move with gray-box weakening, the first local unification reading fails on this surface
+- current first test mask family:
+  - unit type:
+    - channel indices on `mid_block.attentions.0.to_v` at timestep `999`
+  - primary mask:
+    - `top_abs_delta_k`
+  - controls:
+    - `random_k_seeded`
+    - `bottom_abs_delta_k`
+  - current default budget:
+    - `k = 8`
+    - `alpha = 0.5`
+  - explicit exclusions:
+    - no neuron naming
+    - no multi-selector or multi-timestep masks
+    - no `grad_norm`-derived mask family in the first rung
+- current support-counting contract:
+  - white-box local movement alone is necessary but not sufficient
+  - first valid support tier is:
+    - `white-gray bridge support`
+  - mandatory white-box metrics:
+    - `selected_channel_abs_delta`
+    - `selected_delta_retention_ratio`
+    - one `off_mask_drift` reading
+  - mandatory gray-box packet-local metric:
+    - `PIA` member-control score gap on the matched packet
+  - mandatory gray-box split-level bundle:
+    - `AUC / ASR / TPR@1%FPR / TPR@0.1%FPR`
+  - black-box current admitted metrics are not valid first-packet support metrics on this surface
+  - future black-box contribution is corroboration-only until a compatible bridge lands
+- current release-review verdict:
+  - one bounded white-gray bridge packet is currently `blocked`
+  - blocker A:
+    - white-box mask execution surface is missing
+  - blocker B:
+    - gray-box matched-packet `PIA` score-gap export surface is missing
+  - current GPU posture:
+    - `active_gpu_question = none`
+    - `next_gpu_candidate = none`
+- current minimum unblock scaffold:
+  - white-box side:
+    - `export-gsa-observability-masked-packet`
+    - pre/post-mask tensors
+    - `selected_channel_abs_delta / selected_delta_retention_ratio / off_mask_drift`
+  - gray-box side:
+    - `export-pia-packet-scores`
+    - `sample_scores.jsonl`
+    - `member_control_score_gap`
+    - explicit fixed member/non-member packet indices
+- current CPU-first scaffold truth:
+  - white-box canary:
+    - `workspaces/white-box/runs/cross-permission-masked-packet-canary-20260417-r1/summary.json`
+    - `selected_delta_retention_ratio = 0.5`
+  - gray-box canary:
+    - `workspaces/gray-box/runs/pia-packet-score-export-20260417-r1/summary.json`
+    - `member_control_score_gap = 18.217201`
+  - current reading:
+    - execution surface exists on both sides
+    - support truth is still not established
+    - current canaries are not yet one joint packet
+  - current `I-C.7` interpretation:
+    - blocker A:
+      - white-box and gray-box packet identity is still mismatched
+    - blocker B:
+      - white-box intervention remains offline tensor masking, not in-model bridge execution
+    - current GPU posture:
+      - `active_gpu_question = none`
+      - `next_gpu_candidate = none`
+- current same-packet identity contract:
+  - canonical packet key:
+    - `CIFAR10 canonical_index`
+  - canonical membership semantics:
+    - `member = PIA mia_train_idxs`
+    - `nonmember = PIA mia_eval_idxs`
+  - first honest packet size:
+    - `1 member + 1 nonmember`
+  - white-box `split/sample_id` remains an auxiliary locator, not the primary membership authority
+  - current white-box control canary:
+    - `target-nonmember/00-data_batch_1-00467.png`
+  - current contract consequence:
+    - that control sample maps to `canonical_index = 467`, which is a `PIA` member rather than a `PIA` nonmember, so the old white-box pair is not same-packet-ready
+- current matched-pair freeze:
+  - member object:
+    - `target-member/00-data_batch_1-00965.png`
+    - `canonical_index = 965`
+    - `PIA member_offset = 1238`
+  - nonmember object:
+    - `target-nonmember/00-data_batch_1-01278.png`
+    - `canonical_index = 1278`
+    - `PIA nonmember_offset = 1803`
+  - current CPU-first artifact pair:
+    - `workspaces/white-box/runs/cross-permission-matched-pairfreeze-20260417-r1/summary.json`
+    - `workspaces/gray-box/runs/pia-packet-score-export-matched-pairfreeze-20260417-r1/summary.json`
+  - current reading:
+    - same-packet identity is now frozen on one honest `1 + 1` pair
+    - support truth is still not established
+    - current gray-box packet score gap on the frozen pair is `-6.157752`
+- current in-model intervention contract:
+  - the white-box intervention must be applied inside the forward path on the same:
+    - `canonical packet`
+    - `checkpoint`
+    - `timestep`
+    - `noise_seed`
+    - `prediction_type`
+    - `layer_selector`
+    - `mask_kind / channel_indices / alpha`
+  - offline tensor masking remains scaffold-only and does not satisfy the bridge contract
+  - the first bridge-ready packet must emit:
+    - `baseline` and `intervened` forward results
+    - one downstream white-box readout
+    - one gray-box matched-packet `PIA member_control_score_gap`
+- current `I-C.10` execution reading:
+  - white-box in-model packet canary:
+    - `workspaces/white-box/runs/cross-permission-inmodel-packet-canary-20260417-r1/summary.json`
+  - current white-box reading:
+    - `selected_delta_retention_ratio = 0.5`
+    - `epsilon_prediction_rms_drift_mean = 2.78113e-07`
+    - `epsilon_prediction_max_abs_drift_mean = 1.549721e-06`
+  - current blocker:
+    - gray-box does not expose the same selector name as white-box
+    - the closest `PIA` structural alias is shape-mismatched with the current white-box channel contract
+  - current GPU posture:
+    - `active_gpu_question = none`
+    - `next_gpu_candidate = none`
+- current `I-C.11` selector-alias review:
+  - primary honest gray-box alias:
+    - `middleblocks.0.attn.proj_v`
+  - secondary fallback alias:
+    - `middleblocks.0.attn`
+  - current runtime alias shape on the frozen matched pair:
+    - `(1, 256, 4, 4)`
+  - current hard blocker:
+    - white-box channel contract assumes `channel_dim = last axis`
+    - gray-box alias exposes `channel_dim = 1`
+    - white-box selector width/operator family does not match the gray-box alias directly
+  - current reading:
+    - bridge remains `blocked but useful`
+    - no honest same-spec gray-box reuse exists yet
+    - the next task is an alias-scoped translated-contract probe, not GPU release
+- current `I-C.12` translated-contract canary:
+  - canonical run artifact:
+    - `workspaces/gray-box/runs/pia-translated-alias-probe-20260417-r1/summary.json`
+  - canonical packet:
+    - member `canonical_index = 965`
+    - nonmember `canonical_index = 1278`
+  - executed translation contract:
+    - alias selector `middleblocks.0.attn.proj_v`
+    - translated from `mid_block.attentions.0.to_v`
+    - `translation_kind = translated-contract`
+    - `same_spec_reuse = false`
+    - tensor layout `BCHW`
+    - `channel_dim = 1`
+  - executed runtime facts:
+    - `alias_weight_shape = (256, 256, 1, 1)`
+    - `alias_activation_shape = (1, 256, 4, 4)`
+    - `selected_delta_retention_ratio = 0.5`
+    - `off_mask_drift = 0.0`
+    - `baseline_member_control_score_gap = -6.157752`
+    - `intervened_member_control_score_gap = -6.191175`
+    - `member_control_score_gap_delta = -0.033422`
+  - current reading:
+    - translated-contract execution now exists on the frozen matched pair
+    - gray-box packet-local scores move non-trivially, with a larger delta on the member than the nonmember
+    - this is still below same-spec bridge support and below GPU release
+- current `I-C.13` bridge-promotion review:
+  - canonical review note:
+    - `workspaces/white-box/2026-04-17-cross-permission-bridge-verdict-review.md`
+  - current blocking facts:
+    - `same_spec_reuse = false`
+    - no translated-contract targeted-vs-random falsifier exists yet
+    - no split-level gray-box bundle exists yet on the translated packet
+    - the current frozen pair starts from a negative gray-box member-control gap rather than an obvious support-eligible member advantage
+  - current reading:
+    - promotion to `support` remains blocked
+    - the current packet set should be read as `translated-contract canary only`
+    - the track is not `no-go`, but immediate GPU release still remains dishonest
+- current `I-C.14` translated-contract falsifier:
+  - canonical review note:
+    - `workspaces/white-box/2026-04-17-cross-permission-translated-falsifier-review.md`
+  - compared masks:
+    - targeted `top_abs_delta_k`
+    - control `random_k_seeded`
+    - control `bottom_abs_delta_k`
+  - current translated-surface reading:
+    - targeted alias-local contrast is much larger than both controls
+    - targeted gray-box packet delta does not beat matched random on the support-facing readout
+    - the first translated-contract falsifier is therefore negative on the current frozen pair
+  - current consequence:
+    - `I-C` remains below support
+    - immediate `I-C` GPU release remains dishonest
+    - further work on the same frozen pair now requires a genuinely new bounded hypothesis rather than more packet churn
+- current `X-41` fresh-hypothesis generation:
+  - the first genuinely new bounded `I-C` hypothesis after the translated-falsifier freeze is now:
+    - `I-C.15 bounded multi-pair agreement-first hypothesis`
+  - current reading:
+    - the next honest support object should be a tiny canonical pairboard rather than another single translated intervention packet
+    - the first question is directional agreement-before-intervention, not immediate causal support promotion
+    - current GPU posture remains:
+      - `active_gpu_question = none`
+      - `next_gpu_candidate = none`
+- current `X-42` agreement-first contract review:
+  - the first honest board shape can now be frozen to:
+    - `2 members + 2 nonmembers`
+    - CPU-first only
+    - no GPU release
+  - current narrow blocker:
+    - only one matched `1 + 1` pair is frozen in active repo truth
+    - one second member/nonmember pair is still missing
+- current `X-12` reselection reading:
+  - black-box still has no honest ready next-family promotion candidate
+  - white-box still has no honest immediate next-hypothesis execution lane
+  - `I-A` remains a CPU sidecar maintenance track rather than the best new main lane
+  - the highest-value immediate next move is therefore cross-box / system-consumable sync
+- current `X-13` system-sync reading:
+  - challenger queue now no longer reports a stale `I-C.8` live lane
+  - leader-facing summary now explicitly preserves the `translated-contract-only + negative falsifier` boundary
+  - no new admitted metric, no new consumer schema, and no new GPU release are implied by this sync
+- current exclusion boundary:
+  - black-box is intentionally outside `I-C.1` and belongs to `I-C.3`
+- current next step:
+  - `I-D.2 bounded CFG-scale probe`
+
+Anti-overclaim rule:
+
+- this track remains hypothesis-only until at least one executed packet survives the targeted-vs-random falsifier, the white-gray support contract, and a release review grounded in a real executable surface; current admitted `recon` metrics still do not count as first-packet corroboration
+
+### 5.4 `I-D` Conditional Diffusion / CFG Guidance Audit
+
+Current status: `contract-frozen / first bounded probe pending`
+
+Core claim:
+
+- conditional diffusion likely exposes a different and more deployment-relevant leakage surface through CFG guidance behavior
+
+Why it matters:
+
+- it aligns with the most commercial target family (`Stable Diffusion / DiT / Kandinsky` style systems)
+- it can become both a new attack surface and a new defense/randomization surface
+
+Frozen `I-D.1` contract:
+
+- `target family = Stable Diffusion v1.5` style `text-conditioned latent diffusion`
+- `concrete local target = stable-diffusion-v1-5 base + celeba_partial_target/checkpoint-25000 LoRA`
+- `reading = latent-diffusion local canary contract`, not full conditional-diffusion coverage
+- current `recon DDIM public` runtime evidence supports this family only as a real conditional/runtime entry surface
+- `DiT`, `Kandinsky`, and `Finding NeMo` remain outside the frozen first contract
+
+Required gates before promotion:
+
+- [x] `I-D.1` define one honest conditional target contract
+- [x] `I-D.2` define one bounded CFG-scale probe
+- [x] `I-D.3` define one bounded CFG-randomization defense idea
+
+Anti-overclaim rule:
+
+- current `DDPM/CIFAR10` results must not be presented as if they already establish conditional-diffusion audit capability
+- current `recon DDIM public` runtime evidence must not be presented as if it already covers all conditional families or paper-faithful member semantics
+- current `CFG` probe results must not be presented as if one scale already dominates universally or as if low-FPR portability has been established
+- current hidden-guidance-jitter results must not be presented as if defense success or adaptive robustness has already been established
+
+Frozen `I-D.2` probe:
+
+- same local family only: `SD1.5 + celeba_partial_target/checkpoint-25000`
+- same `DDIM 10 / 10` execution surface only
+- same `8 / 8 / 8` packet only
+- vary `generation_guidance_scale` only: `3.5` vs `7.5`
+- current read:
+  - `7.5` widens raw separation on the frozen packet
+  - but cross-scale threshold portability fails
+
+Frozen `I-D.3` idea:
+
+- same local family only: `SD1.5 + celeba_partial_target/checkpoint-25000`
+- no new family / scheduler / prompt-source change
+- first defense idea = hidden guidance jitter between `3.5` and `7.5`
+- current read:
+  - mixed hidden-guidance packets usually degrade attack accuracy relative to fixed-scale packets
+  - but the effect is seed-sensitive and low-FPR/adaptive truth is still below release
+
+### 5.5 Long-Horizon Research Phases
+
+`Research` should evolve in phases, not as an endless pile of unrelated tasks.
+
+#### `R-Phase-1` Immediate truth-hardening (`now -> 2026-04-30`)
+
+Goals:
+
+- complete `X-66` broadened-`I-B` scoping and `X-67` reselection, then test whether `I-A` still contains one live carry-forward truth-hardening task
+- keep `I-B` frozen as `actual bounded falsifier` unless a genuinely new localization-defense hypothesis appears
+- keep `I-C` frozen as `translated-contract-only + negative falsifier` unless a genuinely new cross-permission hypothesis appears
+- keep `I-D` frozen as `bounded conditional packet landed + negative actual defense rerun` unless a genuinely new conditional successor hypothesis appears
+- keep `I-A` boundary/provenance maintenance alive as a CPU sidecar, not a fresh rerun appetite
+- keep `gpu_release = none` unless a genuinely new bounded hypothesis appears
+
+#### `R-Phase-2` Mid-term bridge building (`2026-05`)
+
+Goals:
+
+- search for one genuinely new bounded successor on `I-B`
+- search for one genuinely new bounded successor on `I-C`
+- search for one genuinely new bounded successor on `I-D`
+- keep each box supplied with one honest champion/challenger structure
+
+#### `R-Phase-3` National Innovation expansion (`2026-06+`)
+
+Goals:
+
+- either promote `I-C` into a unified-framework branch or freeze falsifier-first boundaries cleanly enough to stop churn
+- only widen `I-D` beyond the current `SD1.5 + bounded CFG packet` surface if a genuinely new bounded successor survives review
+- keep all outputs system-consumable and reusable by higher layers
+
+### 5.6 Rolling Execution Windows
+
+#### `Now | 24h`
+
+- write and review `Research/workspaces/2026-04-17-g1a-bounded-gpu-review.md` before any GPU fire decision
+- review `G1-A larger shared-surface tri-score rerun` as a separate bounded GPU candidate after `X-89`
+- keep `active GPU question = none / next_gpu_candidate = G1-A larger shared-surface tri-score rerun review pending separate bounded GPU review`
+- preserve `I-A higher-layer boundary maintenance` as the active CPU sidecar
+
+#### `Next | 72h`
+
+- either freeze `G1-A` as `ready-for-bounded-gpu-review` with explicit host-fit / story-delta / kill-gate evidence, or hold / no-go it cleanly without auto-firing GPU
+- if `G1-A` fails review, keep expanding challenger/intake/innovation surfaces rather than reopening blocked or hold branches mechanically
+- keep `Finding NeMo` same-family rescue, `GB-CH-2`, and `XB-CH-2` below execution until a genuinely new bounded hypothesis or new assets appear
+- keep `I-D` bounded and do not widen the contract to `DiT`, `Kandinsky`, or white-box `SD1.4` unless a genuinely new bounded hypothesis appears first
+- force one explicit successor-or-freeze decision on whichever of `I-B / I-C / I-D` currently has the most plausible fresh hypothesis surface
+
+#### `Near | 2 weeks`
+
+- produce one genuinely new successor verdict on at least one of:
+  - `I-B`
+  - `I-C`
+  - `I-D`
+- or freeze all three as "executed-but-currently-no-successor" and expand a new candidate surface elsewhere
+
+#### `Mid | 1-2 months`
+
+- land at least one nontrivial secondary innovation successor packet:
+  - `I-B` genuinely new localization-defense successor
+  - or `I-C` genuinely new support/disconfirmation packet
+  - or `I-D` genuinely new conditional successor packet
+
+### 5.7 Promotion / Kill Criteria
+
+#### Promote to GPU only when
+
+- same-packet or same-asset identity is frozen
+- machine-readable artifact schema is frozen
+- the task can still change a project-level story rather than only a local metric
+- host-health cost is acceptable relative to expected information value
+
+#### Hold or kill early when
+
+- two consecutive reviews remain blocked on packet identity or asset mismatch
+- only same-family micro-optimization is left
+- control / drift / comparability contract is still ambiguous
+- the machine-cost or babysitting cost now exceeds likely research value
+
+#### Expand instead of resting when
+
+- a track closes cleanly but opens an adjacent stronger question
+- a negative result clarifies selection and reveals a new bounded branch
+- higher-layer wording, queue truth, or artifact truth has become stale enough to change decisions
+
+### 5.8 Cross-Repo Handoff Policy
+
+`Researcher` may directly interface with `Platform/` or `Runtime-Server/` when that creates real leverage.
+
+Good triggers:
+
+- a result changes exported field requirements
+- a result changes summary or recommendation logic
+- a result requires a new packet/export contract
+- a result requires a runner/runtime capability to stay executable
+
+Rules:
+
+- handoff is optional, not mandatory every loop
+- default to note-level handoff first
+- only escalate to cross-repo implementation when the research result is already stable enough to justify consumer changes
+- if code changes are needed outside `Research/`, explicitly state:
+  - target repo
+  - affected files or interfaces
+  - urgency
+  - whether the handoff is blocking future research
+
+---
+
+## 6. Task Selection Heuristic
 
 When multiple unchecked tasks are available, choose in this order:
 
@@ -267,7 +994,7 @@ If two tasks are similar, prefer:
 
 ---
 
-## 6. Active Backlog
+## 7. Active Backlog
 
 ### 6.1 Cross-box integration and system sync
 
@@ -531,6 +1258,74 @@ Verdict:
   - `black-box next-family candidate-generation refresh review`
 
 Value: ⭐⭐⭐
+Budget: CPU-only
+
+#### ✅ `X-10` Post-gray-box-yield next-lane reselection review
+
+Goal: freeze the next non-gray-box `CPU-first` lane after `GB-67` yielded the immediate slot and before any new GPU question is reopened
+
+Current read:
+
+- `active GPU question = none`
+- `next_gpu_candidate = none`
+- gray-box switching work reached a clean closure point
+- the highest-value next move should now come from:
+  - non-gray-box lane reselection,
+  - `I-A` truth-hardening,
+  - or another cross-box/system-structure question
+
+Tasks:
+
+- [x] `X-10.1` compare the best non-gray-box candidates by story impact, asset readiness, and bounded cost
+- [x] `X-10.2` freeze one current execution lane, one next GPU candidate status, and one CPU sidecar
+- [x] `X-10.3` expand the roadmap if the current visible non-gray-box options are still too stale or too weak
+
+Status:
+
+- completed for the current post-`GB-67` reselection round
+- current execution lane:
+  - `I-A trajectory-consistency truth-hardening`
+- frozen posture:
+  - `next_gpu_candidate = none`
+  - `cpu_sidecar = PIA provenance / higher-layer boundary sync`
+- black-box and white-box remain closure-negative for immediate reopen
+
+Canonical evidence anchor:
+
+- `workspaces/implementation/2026-04-17-post-graybox-yield-next-lane-reselection-review.md`
+
+Value: ⭐⭐⭐
+Budget: CPU-only
+
+---
+
+#### ✅ `X-11` PIA provenance / higher-layer boundary sync
+
+Goal: synchronize competition-facing and summary-facing `PIA` wording to the current `I-A` mechanistic packet and the already-closed provenance blocker, so higher-layer readers no longer drift back to an `AUC-only` or `provenance-only` partial reading
+
+Tasks:
+
+- [x] `X-11.1` identify which higher-layer docs still compress `PIA` into a partial reading
+- [x] `X-11.2` align those docs to the same mechanistic wording, bounded adaptive boundary, and low-FPR read order
+- [x] `X-11.3` freeze the next live CPU-first lane after this sidecar sync closes
+
+Status:
+
+- completed for the current sidecar sync round
+- synchronized the main higher-layer `PIA` entry docs around:
+  - `epsilon-trajectory consistency`
+  - `inference-time randomization`
+  - bounded repeated-query adaptive review
+  - `AUC / ASR / TPR@1%FPR / TPR@0.1%FPR`
+  - `paper-aligned blocked by checkpoint/source provenance`
+- the next live CPU-first lane now moves to:
+  - `I-B minimum honest protocol bridge`
+
+Canonical evidence anchor:
+
+- `workspaces/implementation/2026-04-17-pia-provenance-higher-layer-boundary-sync.md`
+
+Value: ⭐⭐
 Budget: CPU-only
 
 ---
@@ -984,6 +1779,64 @@ Selection verdict:
   - `next_gpu_candidate = none`
 
 Value: ⭐⭐⭐
+Budget: CPU-only
+
+#### ✅ `GB-66` PIA vs TMIA-DM confidence-gated switching offline packet
+
+Goal: run the first real bounded switching packet on aligned `PIA/TMIA-DM` score surfaces and decide whether it deserves promotion beyond a design note
+
+Tasks:
+
+- [x] `GB-66.1` execute the bounded offline packet on aligned undefended and defended surfaces
+- [x] `GB-66.2` compare the best switching threshold against `PIA`, `TMIA-DM`, and bounded `z-score sum`
+- [x] `GB-66.3` record whether the branch should promote, hold, or close
+
+Canonical evidence anchor:
+
+- `workspaces/gray-box/2026-04-17-pia-tmiadm-confidence-gated-switching-offline-packet.md`
+- `workspaces/gray-box/runs/pia-tmiadm-confidence-switch-20260417-r1/summary.json`
+
+Selection verdict:
+
+- `GB-66` now closes as `negative but useful`
+- the first confidence-gated switching packet is real and honest, but:
+  - it does not beat bounded `z-score sum` on the aligned undefended packets
+  - and it underperforms on the defended packet
+- therefore it should remain a bounded ranking-sensitive analysis packet rather than a promoted scorer family
+- keep:
+  - `gpu_release = none`
+  - `next_gpu_candidate = none`
+- `next_live_cpu_lane` is now:
+  - `gray-box post-switch lane reselection review`
+
+Value: ⭐⭐
+Budget: CPU-only
+
+#### ✅ `GB-67` Gray-box post-switch lane reselection review
+
+Goal: decide whether gray-box should keep the next live CPU-first slot after the switching packet closed as `negative but useful`
+
+Tasks:
+
+- [x] `GB-67.1` review whether gray-box still exposes a more urgent CPU-first question than the rest of the repo
+- [x] `GB-67.2` reject same-family switching-packet inflation as the default next move
+- [x] `GB-67.3` freeze whether gray-box keeps or yields the next live CPU-first slot
+
+Canonical evidence anchor:
+
+- `workspaces/gray-box/2026-04-17-graybox-post-switch-lane-reselection-review.md`
+
+Selection verdict:
+
+- `GB-67` now closes as `positive`
+- gray-box no longer exposes a more urgent immediate CPU-first lane than the best remaining cross-box or other-box questions
+- treat the switching packet as a clean closure point for the current gray-box ranking-sensitive branch
+- keep:
+  - `gpu_release = none`
+  - `next_gpu_candidate = none`
+- gray-box should now yield the next live CPU-first slot
+
+Value: ⭐⭐
 Budget: CPU-only
 
 ---
@@ -4076,13 +4929,13 @@ Value: ⭐⭐
 
 ---
 
-## 7. Near-Term Priority Ladder
+## 8. Near-Term Priority Ladder
 
 This is a preference order, not a prison.
 
 ### Top now
 
-`GB-65` PIA vs TMIA-DM confidence-gated switching design review is now closed.
+`GB-66` and `GB-67` are now closed.
 
 No immediate GPU lane should be opened until a new bounded comparison or defended-extension question is selected.
 
@@ -4090,33 +4943,18 @@ Current release posture:
 
 - `gpu_release = none`
 - `next_gpu_candidate = none`
-- `next_live_cpu_lane = PIA vs TMIA-DM confidence-gated switching offline packet`
+- `gray-box` should now yield the next live CPU-first slot after the switching closure round
 
 ### Next
 
-1. ✅ `GB-65` PIA vs TMIA-DM confidence-gated switching design review
-2. ✅ `GB-64` ranking-sensitive variable search review
-3. ✅ `WB-20` distinct white-box defended-family import / selection review
-4. ✅ `GB-63` second gray-box defense mechanism selection review
-5. ✅ `BB-8` black-box next-family candidate-generation refresh review
-6. ✅ `X-9` cross-box closure-round system sync review
-7. ✅ `WB-19` white-box post-breadth next-hypothesis selection review
-8. ✅ `GB-62` gray-box post-noise contract-shift reselection review
-9. ✅ `GB-61` Noise as a Probe contract-shift review
-10. ✅ `GB-60` Noise as a Probe promotion-gap review
-10. ✅ `GB-49` CDI paired-surface mismatch review
-11. ✅ `GB-48` CDI paired-feature extension review
-12. ✅ `GB-47` SecMI-PIA 2048 paired-surface verdict
-13. ✅ `GB-45` PIA 2048 CDI rung runtime-health review
-14. ✅ `GB-44` CDI internal canary execution
-15. ✅ `GB-43` CDI feature / collection-surface review
-16. ✅ `GB-42` CDI protocol / asset contract
-17. ✅ `GB-41` Post-MoFit gray-box next-family reselection
-18. ✅ `WB-18` DP-LoRA post-harmonized lane-status review
-19. ✅ `WB-17` DP-LoRA harmonized local board verdict
-5. ✅ `WB-16` DP-LoRA local evaluator hardening
-6. ✅ `WB-15` DP-LoRA secondary-metric harmonization audit
-7. ✅ `WB-14` DP-LoRA next-question review
+1. ✅ `GB-67` gray-box post-switch lane reselection review
+2. ✅ `GB-66` PIA vs TMIA-DM confidence-gated switching offline packet
+3. ✅ `GB-65` PIA vs TMIA-DM confidence-gated switching design review
+4. ✅ `GB-64` ranking-sensitive variable search review
+5. ✅ `WB-20` distinct white-box defended-family import / selection review
+6. ✅ `GB-63` second gray-box defense mechanism selection review
+7. ✅ `BB-8` black-box next-family candidate-generation refresh review
+8. ✅ `X-9` cross-box closure-round system sync review
 8. ✅ `WB-13` DP-LoRA comparator admission packet refresh
 9. ✅ `WB-12` DP-LoRA comparator release-review refresh
 10. ✅ `WB-11` DP-LoRA local comparator board refresh verdict
@@ -4158,7 +4996,7 @@ Current release posture:
 
 ---
 
-## 8. Success Conditions
+## 9. Success Conditions
 
 ### Near-term health
 
@@ -4189,7 +5027,7 @@ If that happens, the agent must add new branches and continue.
 
 ---
 
-## 9. Changelog
+## 10. Changelog
 
 | Date | Change |
 |------|--------|
@@ -4285,6 +5123,126 @@ If that happens, the agent must add new branches and continue.
 | 2026-04-17 02:35 | Closed `WB-20` as `negative but clarifying`: white-box still does not expose a distinct defended-family import-ready lane, because the visible options are either same-family corroboration (`GSA2`), bounded branch continuation (`DP-LoRA`), observability hold (`Finding NeMo`), or family-alias collapse (`Local Mirror`); keep `gpu_release = none`, keep `next_gpu_candidate = none`, and move the next live CPU-first slot to `ranking-sensitive variable search` |
 | 2026-04-17 02:50 | Closed `GB-64` as `positive but bounded`: among current ranking-sensitive directions, `PIA vs SecMI` still only supports a negative naive-fusion verdict, while `PIA vs TMIA-DM` already shows bounded-positive same-split actionability gain; therefore the next honest gray-box CPU-first lane is `PIA vs TMIA-DM confidence-gated switching design review`, while `gpu_release` and `next_gpu_candidate` remain `none` |
 | 2026-04-17 03:05 | Closed `GB-65` as `positive but bounded`: the next `PIA/TMIA-DM` step should not be another static fusion rerun but a confidence-gated switching design that uses only attack-side normalized scores, dominant-method identity, and a frozen margin-gap threshold with `z-score sum` fallback; keep `gpu_release = none`, keep `next_gpu_candidate = none`, and move the next live CPU-first slot to `PIA vs TMIA-DM confidence-gated switching offline packet` |
+| 2026-04-17 03:20 | Closed `GB-66` as `negative but useful`: the first real `PIA vs TMIA-DM` confidence-gated switching offline packet executed honestly, but it did not beat bounded `z-score sum` on the aligned undefended surfaces and degraded further on the defended surface, so it remains a bounded ranking-sensitive analysis packet rather than a promoted scorer family |
+| 2026-04-17 03:30 | Closed `GB-67` as `positive`: after the switching packet closed, gray-box no longer exposed a more urgent immediate CPU-first lane than the best remaining cross-box or other-box questions, so gray-box should now yield the next live CPU-first slot while keeping `gpu_release = none` and the current packaged gray-box truth unchanged |
+| 2026-04-17 03:45 | Closed `X-10` as `positive`: the post-gray-box-yield reselection review found that black-box and white-box immediate reopens are still lower-value than finishing the innovation-truth gap on the current strongest mechanistic line, so the live `CPU-first` lane is now frozen to `I-A truth-hardening`, with `next_gpu_candidate = none` and `cpu_sidecar = PIA provenance / higher-layer boundary sync` |
+| 2026-04-17 04:00 | Closed the current `I-A` truth-hardening packet as `positive but bounded`: `PIA + stochastic-dropout` now has a frozen formal mechanism statement, a bounded repeated-query adaptive-attacker reading, mandatory low-FPR reporting, and higher-layer mechanistic wording, but it still remains below any claim of validated privacy protection or general adaptive-attacker closure |
+| 2026-04-17 04:15 | Closed `X-11` as `positive`: the higher-layer `PIA` entry docs now all carry the same mechanistic reading (`epsilon-trajectory consistency -> inference-time randomization`), bounded repeated-query adaptive boundary, four-metric read order, and long-term provenance blocker, so the summary layer no longer drifts between partial `AUC-only` or `provenance-only` readings |
+| 2026-04-17 04:20 | After the higher-layer provenance/boundary sync, the next live CPU-first lane moves to `I-B minimum honest protocol bridge`; keep `next_gpu_candidate = none`, and retain higher-layer `PIA provenance / I-A` wording maintenance as the carry-forward CPU sidecar |
+| 2026-04-17 04:35 | Closed `I-B.1` as `positive but bounded`: the minimum honest protocol bridge is now frozen to `activation-only migrated DDPM observability on admitted GSA assets`, not paper-faithful `Finding NeMo`; the bridge is CPU-only, read-only, and still below release, so the next live CPU-first lane now moves to `I-B.2 bounded localization observable selection` while `next_gpu_candidate` remains `none` |
+| 2026-04-17 04:45 | Closed `I-B.2` as `positive but bounded`: the first honest localization observable is now frozen to the raw sample-level activation tensor under the fixed admitted `GSA` selector/timestep/sample-pair contract; scalar `summary_stat` remains metadata only, `grad_norm` remains a supporting comparator candidate, and the next live CPU-first lane now moves to `I-B.3 bounded local intervention proposal` while `next_gpu_candidate` stays `none` |
+| 2026-04-17 05:05 | Closed `I-B.3` as `positive but bounded`: the first honest local intervention proposal is now frozen to a selector-local `top-k` channel attenuation mask on the admitted `GSA` activation bridge, using one fixed selector/timestep and a small bounded mask rather than hard ablation or global perturbation; it remains below release and below defense claims, and the next live CPU-first lane now moves to `I-B.4 quality-vs-defense metric contract` while `next_gpu_candidate` stays `none` |
+| 2026-04-17 05:20 | Closed `I-B.4` as `positive but bounded`: the intervention line now has an explicit multi-axis review contract requiring defense metrics, mandatory control-surface drift, locality budget, and compute-cost fields together, so future review can no longer hide behind `AUC-only` gains or vague “local” wording; the next live CPU-first lane now moves to `I-C.1 falsifiable minimal experiment` while `next_gpu_candidate` stays `none` |
+| 2026-04-17 05:35 | Closed `I-C.1` as `positive but bounded`: the cross-permission hypothesis now has one explicit falsifiable minimal packet on the local `DDPM/CIFAR10` overlap surface, requiring a bounded white-box targeted mask to beat a matched random mask and directionally co-reduce white-box local activation contrast and gray-box `PIA` member advantage without escaping the existing drift budget; black-box remains intentionally outside this first packet, and the next live CPU-first lane now moves to `I-C.2 define which internal units or masks would be tested` while `next_gpu_candidate` stays `none` |
+| 2026-04-17 05:50 | Closed `I-C.2` as `positive but bounded`: the first cross-permission mask family is now frozen to channel-local masks on `mid_block.attentions.0.to_v` at timestep `999`, with one primary targeted mask (`top_abs_delta_k`) and two same-budget controls (`random_k_seeded`, `bottom_abs_delta_k`); this keeps the line below neuron or mechanism claims while preventing future `I-C` work from hiding behind vague “local unit” wording, and the next live CPU-first lane now moves to `I-C.3 define which black-box / gray-box / white-box metrics must move together to count as support` while `next_gpu_candidate` stays `none` |
+| 2026-04-17 06:10 | Closed `I-C.3` as `positive but bounded`: the first cross-permission packet now has an explicit support-counting contract, where white-box local movement is necessary but insufficient, the first valid positive tier is only `white-gray bridge support`, and current admitted `recon` metrics are explicitly excluded from first-packet corroboration because they live on a different semantic surface; this both hardens anti-overclaim rules and creates the first honest hot-standby GPU candidate (`bounded I-C white-gray targeted-mask packet on the local DDPM/CIFAR10 overlap surface`), while the next live CPU-first lane now moves to `I-C.4 bounded white-gray bridge packet release review` |
+| 2026-04-17 06:25 | Closed `I-C.4` as `blocked`: the first hot-standby white-gray bridge packet is still not honest to release, because the repo has only a read-only white-box activation-export adapter rather than a mask executor, and `PIA` currently exposes split-level summary plus runtime preview rather than the exact matched-packet score-gap export required by the packet contract; therefore `active_gpu_question` and `next_gpu_candidate` both return to `none`, and the next live CPU-first lane now moves to `I-C.5 minimum executable surface scaffolding for the white-gray bridge packet` |
+| 2026-04-17 06:40 | Closed `I-C.5` as `positive but bounded`: the minimum unblock surface is now frozen to two explicit scaffold families, `export-gsa-observability-masked-packet` on the white-box side and `export-pia-packet-scores` on the gray-box side, each with a small machine-readable artifact contract; this keeps the next task focused on executable surface rather than more theory drift, and the next live CPU-first lane now moves to `I-C.6 implement the minimum CPU-first scaffold for the white-gray bridge packet` while `next_gpu_candidate` stays `none` |
+| 2026-04-17 07:05 | Closed `I-C.6` as `positive but bounded`: the minimum CPU-first scaffold is now implemented and verified on real local assets, with a white-box masked-packet canary and a gray-box packet-score export canary both returning `ready`; this clears the implementation blocker from `I-C.4`, but still does not establish support truth or justify immediate GPU release, so the next live CPU-first lane now moves to `I-C.7 bounded white-gray CPU bridge canary interpretation and GPU re-release review` while `next_gpu_candidate` remains `none` |
+| 2026-04-17 07:20 | Closed `I-C.7` as `blocked`: the new CPU canaries do not yet form one joint bridge packet, because the white-box side is still anchored on one named sample pair while the gray-box side currently exports a different fixed split-index packet, and the white-box manipulation is still offline tensor masking rather than in-model intervention; therefore GPU re-release remains `none`, and the next live CPU-first lane now moves to `I-C.8 same-packet identity and in-model intervention contract` |
+| 2026-04-17 07:40 | Closed `I-C.8` as `positive`: the white-gray bridge now has an explicit same-packet contract keyed on `CIFAR10 canonical_index`, with `PIA` split semantics as the membership authority, a first honest packet shape of `1 member + 1 nonmember`, and an explicit in-model intervention requirement that rejects offline tensor masking as scaffold-only; because the current white-box control canary maps to `canonical_index = 467`, which is a `PIA` member rather than a `PIA` nonmember, the old pair cannot be reused as the first matched bridge packet, and `next_gpu_candidate` therefore remains `none` while the next live CPU-first lane moves to `I-C.9 canonical-index bridge binding and membership-consistent pair freeze` |
+| 2026-04-17 08:00 | Closed `I-C.9` as `positive but bounded`: the first honest `same-packet` bridge pair is now frozen to member `canonical_index = 965` and nonmember `canonical_index = 1278`, with exact `PIA` offsets `1238 / 1803`, and both the white-box masked-packet scaffold and the gray-box packet-score scaffold have already emitted real CPU-first artifacts on that exact `1 + 1` pair; this resolves pair-selection drift but still does not establish support or restore GPU release, so the next live CPU-first lane now moves to `I-C.10 implement the in-model white-box intervention surface and CPU matched-pair co-movement canary` while `next_gpu_candidate` remains `none` |
+| 2026-04-17 08:35 | Closed `I-C.10` as `blocked but useful`: the new `export-gsa-observability-inmodel-packet` surface now lands a real matched-pair white-box in-model canary on `965 / 1278`, with targeted local movement preserved and a tiny but nonzero downstream `epsilon`-prediction drift, so the white-box-side execution blocker is cleared; however a same-spec gray-box co-movement canary is still not honest, because `PIA` does not expose the same selector and the closest structural alias is shape-mismatched with the current white-box channel contract, so `next_gpu_candidate` remains `none` and the next live CPU-first lane now moves to `I-C.11 selector-alias and architecture-compatibility review for gray-box bridge intervention` |
+| 2026-04-17 09:05 | Closed `I-C.11` as `blocked but useful`: the alias review found one honest primary gray-box selector candidate, `middleblocks.0.attn.proj_v`, plus one weaker block-level fallback, but it also confirmed a real architecture blocker: the frozen white-box channel contract assumes `channel_dim = last axis` on a `(512, 512)` value projection, while the gray-box alias is a `(256, 256, 1, 1)` `Conv2d` output with `channel_dim = 1`; therefore the bridge is not `no-go`, but direct same-spec reuse is still dishonest, `next_gpu_candidate` remains `none`, and the next live CPU-first lane now moves to `I-C.12 gray-box translated-contract alias probe on middleblocks.0.attn.proj_v` |
+| 2026-04-17 09:45 | Closed `I-C.12` as `positive but bounded`: the new `export-pia-translated-alias-probe` surface now executes a real gray-box translated-contract canary on the frozen `965 / 1278` pair, with explicit `alias_selector = middleblocks.0.attn.proj_v`, `translated_from = mid_block.attentions.0.to_v`, `same_spec_reuse = false`, `tensor_layout = BCHW`, and `channel_dim = 1`; the probe records the honest gray-box alias shape `(1, 256, 4, 4)` and weight shape `(256, 256, 1, 1)`, preserves the local mask-retention signal at `0.5`, and produces a nonzero packet-local score-gap delta `-0.033422`, but this still counts only as translated-contract execution rather than same-spec white-gray support, so `next_gpu_candidate` remains `none` and the next live CPU-first lane now moves to `I-C.13 bridge verdict review after translated-contract canary` |
+| 2026-04-17 10:20 | Closed `I-C.13` as `blocked`: the first bridge-promotion review confirms that the executed `I-C.10 + I-C.12` packet set still cannot be promoted beyond `translated-contract canary only`, because same-spec reuse is explicitly false, no translated-contract targeted-vs-random falsifier exists yet, no split-level gray-box support bundle exists yet on the translated packet, and the current frozen pair starts from a negative gray-box member-control gap rather than a clean support-eligible member advantage; therefore `next_gpu_candidate` remains `none`, `gpu_release` remains `none`, and the next live CPU-first lane now moves to `I-C.14 translated-contract targeted-vs-random falsifier on the frozen pair` |
+| 2026-04-17 10:45 | Closed `I-C.14` as `negative but useful`: the first translated-contract targeted-vs-random falsifier on the frozen `965 / 1278` pair shows that `top_abs_delta_k` is genuinely more concentrated than both `random_k_seeded` and `bottom_abs_delta_k` on alias-local contrast, but it still does not beat the matched random control on the gray-box support-facing packet readout; targeted produces `member_control_score_gap_delta = -0.033422`, random produces `+0.031760`, and bottom stays near-flat at `-0.003209`, so the current translated surface yields a useful negative falsifier rather than first support, `next_gpu_candidate` remains `none`, and the next live CPU-first lane now moves to `X-12 non-graybox next-lane reselection after translated I-C falsifier` |
+| 2026-04-17 11:10 | Closed `X-12` as `positive`: after the translated `I-C` packet produced both its first executability result and its first negative falsifier, the next honest move is a reselection away from stale box-local reopens rather than an `I-A` rebound; black-box still has no ready next-family candidate, white-box still has no immediate next-hypothesis lane, and `I-A` remains a sidecar, so the next live CPU-first lane now moves to `X-13 cross-box / system-consumable sync after translated I-C falsifier`, while `next_gpu_candidate` stays `none` |
+| 2026-04-17 11:35 | Closed `X-13` as `positive`: the higher-layer sync pass now propagates the sharper `I-C` boundary into system-consumable entry points, including a corrected challenger queue state and Leader-facing wording that preserves `translated-contract-only + negative falsifier` without changing admitted metrics or consumer schema; `next_gpu_candidate` remains `none`, and the next live CPU-first lane now moves to `I-D.1 honest conditional target contract` |
+| 2026-04-17 12:00 | Closed `I-D.1` as `positive but bounded`: the first honest conditional target contract is now frozen to `Stable Diffusion v1.5 base + celeba_partial_target/checkpoint-25000` on a text-conditioned latent-diffusion local canary surface, with current `recon DDIM public` evidence retained only as family-level runtime support rather than general conditional coverage; this explicitly excludes `DDPM/CIFAR10` transfer, `DiT/Kandinsky` parity, and `Finding NeMo` paper-faithful white-box claims, so `active_gpu_question` stays `none`, `next_gpu_candidate` becomes `I-D.2 SD1.5 CFG micro-probe on the frozen local canary contract`, and the next live CPU-first lane now moves to `I-D.2 bounded CFG-scale probe` |
+| 2026-04-17 03:49 | Closed `I-D.2` as `positive but bounded`: the first real conditional `CFG` packet on the frozen `SD1.5 + celeba_partial_target/checkpoint-25000` contract now exists on a single disjoint `8 / 8 / 8` GPU micro-probe, with `DDIM 10 / 10`, fixed `inversion_guidance_scale = 1.0`, and `generation_guidance_scale = 3.5` vs `7.5`; `7.5` widens raw member-vs-nonmember `MSE` separation (`1081.7483 -> 1580.4574`) and lowers same-run `FPR` (`0.25 -> 0.125`) at the cost of slightly lower `TPR` (`1.0 -> 0.875`), but cross-scale threshold portability fails entirely (`g35 threshold on g75: TPR 0.125 / FPR 0.0`; `g75 threshold on g35: TPR 1.0 / FPR 1.0`), so `active_gpu_question` returns to `none`, the next live CPU-first lane now moves to `I-D.3 bounded CFG-randomization defense idea`, and `next_gpu_candidate` becomes `I-D.3 SD1.5 hidden-guidance-jitter micro-probe (pending adaptive-review contract freeze)` |
+| 2026-04-17 04:05 | Closed `I-D.3` as `positive but bounded`: the first bounded conditional-randomization defense idea is now frozen to hidden-guidance jitter on the same `SD1.5 + celeba_partial_target/checkpoint-25000` contract, using CPU-side recombination of the real `g=3.5` and `g=7.5` GPU packets over one fixed `8 / 8 / 8` packet; across seeds `0..9`, mixed hidden-guidance thresholding drops mean attack accuracy to `0.675` with mean `TPR = 0.6375` and mean `FPR = 0.2875`, and no mixed seed beats the fixed packets on accuracy, but the effect remains seed-sensitive and does not yet establish low-FPR or adaptive robustness, so `active_gpu_question` stays `none`, the next live CPU-first lane now moves to `X-14 cross-box / system-consumable sync after first bounded I-D packet pair`, and `next_gpu_candidate` becomes `I-D.3 actual runner-level hidden-guidance-jitter rerun on the frozen 8/8/8 packet (pending adaptive-review contract freeze)` |
+| 2026-04-17 04:15 | Closed `X-14` as `positive`: the first bounded `I-D` attack/defense packet pair is now synchronized into higher-layer truth, so Leader-facing and system-consumable entry points explicitly carry `local conditional canary only + bounded CFG probe + bounded hidden-guidance jitter idea`, while admitted tables, consumer schema, and competition-facing claims remain unchanged |
+| 2026-04-17 04:25 | Closed `I-D.4` as `negative but useful`: the first actual runner-level deterministic hidden-guidance-jitter rerun on the frozen `8 / 8 / 8` packet is now real and reproducible, but under the honest `seed + split + file_name` selection rule it collapses to `accuracy = 0.5 / TPR = 0.625 / FPR = 0.625` with separation only `47.2605`, so the earlier optimistic CPU-side mixed-packet reading does not survive runner-level contract freeze; `active_gpu_question` stays `none`, `next_gpu_candidate` returns to `none`, and the next live CPU-first lane now moves to `I-A truth-hardening refresh after negative actual I-D rerun` |
+| 2026-04-17 04:45 | Closed the `I-A` refresh after negative actual `I-D.4` rerun as `positive but stabilizing`: the failed runner-level conditional-defense rerun narrows a future-surface branch but does not weaken the existing mechanistic `PIA + stochastic-dropout` packet, so `I-A` remains the strongest near-term innovation track, `next_gpu_candidate` stays `none`, and the next live CPU-first lane now moves to `X-15 non-graybox next-lane reselection after I-A refresh` |
+| 2026-04-17 05:00 | Closed `X-15` as `positive`: after the `I-A` refresh, black-box transfer remains `needs-assets`, white-box distinct-family reopen remains closed-negative, and the conditional future-surface just produced a real negative runner-level rerun, so the next honest non-graybox `CPU-first` lane now moves to `I-B.5 first bounded localization/intervention packet selection`; `next_gpu_candidate` stays `none`, and the carry-forward CPU sidecar remains `higher-layer PIA provenance / I-A boundary maintenance` |
+| 2026-04-17 05:15 | Closed `I-B.5` as `positive`: the first executable localization/intervention packet is now frozen to a white-box-only, CPU-only, in-model `top_abs_delta_k` attenuation review on the native `I-B` pair (`target-member/00-data_batch_1-00965.png` vs `target-nonmember/00-data_batch_1-00467.png`) under `checkpoint-9600`, `mid_block.attentions.0.to_v`, `timestep = 999`, `k = 8`, and `alpha = 0.5`; this keeps the packet inside the original `I-B` contract instead of importing `I-C` bridge semantics, so `next_gpu_candidate` stays `none` and the next live CPU-first lane now moves to `I-B.6 implement first bounded localization/intervention packet` |
+| 2026-04-17 05:30 | Closed `I-B.6` as `positive but bounded`: the first bounded localization/intervention packet now executes successfully on current admitted assets through `export-gsa-observability-inmodel-packet` for the native `965 / 467` pair, producing the expected local attenuation (`selected_delta_retention_ratio = 0.5`) with `off_mask_drift = 0.0` and only tiny `epsilon`-prediction drift (`2.81695e-07` mean RMS), but this still counts only as execution-positive rather than defense-positive because no attack-side evaluation bundle is yet attached; `next_gpu_candidate` stays `none`, and the next live CPU-first lane now moves to `I-B.7 bounded attack-side evaluation packet selection` |
+| 2026-04-17 05:45 | Closed `I-B.7` as `positive`: the first honest attack-side review surface should stay on the admitted `GSA` asset family with one bounded evaluation-size override rather than reusing the full-scale admitted board or creating a duplicate subset asset root; this keeps the first quality-vs-defense review bounded and on-contract, so `next_gpu_candidate` stays `none` and the next live CPU-first lane now moves to `I-B.8 implement bounded attack-side evaluation packet control on admitted GSA surface` |
+| 2026-04-17 06:05 | Closed `I-B.8` as `positive but bounded`: the admitted `GSA` runtime surface now exposes a real bounded attack-side evaluation control via `run-gsa-runtime-mainline --max-samples`, and the first CPU-only `max_samples = 64` review on reused `epoch300 rerun1` gradients lands at `AUC = 0.988159 / ASR = 0.90625 / TPR@1%FPR = 0.453125 / TPR@0.1%FPR = 0.0` with `target_eval_size = 128`; this is control-positive rather than defense-positive, so `next_gpu_candidate` stays `none` and the next live CPU-first lane now moves to `I-B.9 select first honest intervention-on/off bounded attack-side review contract` |
+| 2026-04-17 06:40 | Closed `I-B.9` as `positive`: the first honest intervention-on/off review is now frozen to a target-anchored fixed-mask dual-run bounded board on the same admitted `GSA` `max_samples = 64` packet, with one frozen `top_abs_delta_k` mask object from the native `965 / 467` packet replayed across target and shadow extractions and no per-model mask reselection; this is still contract-only rather than defense evidence, so `next_gpu_candidate` remains `none` and the next live CPU-first lane now moves to `I-B.10 implement target-anchored fixed-mask intervention-on/off bounded attack-side review surface on admitted GSA assets` |
+| 2026-04-17 07:05 | Closed `I-B.10` as `positive but bounded`: the repository now exposes `run-gsa-runtime-intervention-review`, a bounded dual-run review surface that reads one frozen target-anchored mask summary, runs baseline and intervened boards on the same packet definition, and emits `baseline.metrics + intervened.metrics + metric_deltas + locality_anchor`; unit coverage now includes the new CLI surface, but no admitted real-asset packet has been launched yet, so the honest reading is `implementation-positive / admitted-execution-pending`, `active_gpu_question` stays `none`, and `next_gpu_candidate` now becomes `I-B.11 actual target-anchored fixed-mask intervention-on/off bounded packet on admitted GSA assets (pending execution-budget review)` |
+| 2026-04-17 07:25 | Closed `I-B.11` as `blocked but useful`: execution-budget review shows the first admitted packet is still not honest to release, because the new dual-run surface bounds only the closed-loop evaluation stage while extraction still iterates the full admitted board; the admitted manifest is `1000 + 1000 + 3*(1000 + 1000) = 8000` images per board, so baseline plus intervened would still traverse `16000` image-level extractions. `next_gpu_candidate` therefore returns to `none`, and the next live CPU-first lane now moves to `I-B.12 implement extraction-side bounded dataset cap for target-anchored fixed-mask intervention review` |
+| 2026-04-17 07:50 | Closed `I-B.12` as `positive but bounded`: the dual-run review surface now supports extraction-side boundedness through `extraction_max_samples`, with fallback from `max_samples`, and the updated tests verify both the runtime field and that the bounded cap is actually passed into the extractor; this clears the execution-budget blocker from `I-B.11`, but no admitted real-asset packet has run yet, so the honest reading is still implementation-level only, `active_gpu_question` stays `none`, and the next live CPU-first lane now moves to `I-B.13 launch review for first truly bounded admitted target-anchored fixed-mask intervention-on/off packet` while `next_gpu_candidate` becomes that actual bounded packet |
+| 2026-04-17 08:05 | Closed `I-B.13` as `positive`: the first truly bounded admitted launch config is now frozen to `max_samples = extraction_max_samples = 64` on admitted `GSA epoch300 rerun1` assets, reusing the native `965 / 467` frozen mask summary on `cuda` under the paper-aligned runtime schedule; the total extraction budget is now honestly bounded to `1024` images instead of a hidden full-board replay, so the next honest action is the actual packet execution itself, `active_gpu_question` moves to that running packet, and `next_gpu_candidate` returns to `none` while it is active |
+| 2026-04-17 08:20 | Closed `I-B.14` as `negative but useful`: the first actual bounded admitted fixed-mask packet now exists on real `GSA epoch300 rerun1` assets and keeps the locality anchor clean (`selected_delta_retention_ratio = 0.5 / off_mask_drift = 0.0`), but the bounded attack-side board moves in the wrong direction under intervention (`AUC 0.992065 -> 0.995605`, `ASR 0.960938 -> 0.976562`, `TPR@1%FPR 0.734375 -> 0.765625`, `TPR@0.1%FPR 0.0 -> 0.0`); the branch therefore gains one real falsifier, `active_gpu_question` returns to `none`, `next_gpu_candidate` remains `none`, and the next live CPU-first lane becomes `I-B.15 post-first-actual-packet boundary / reselection review` |
+| 2026-04-17 08:30 | Closed `I-B.15` as `negative but clarifying`: after the first real bounded admitted packet, the current `Finding NeMo / I-B` branch should no longer be read as either `zero-GPU hold` or a defense-positive line; the strongest honest wording is now `actual bounded falsifier`, so same-family GPU rescue reruns stay below release until a genuinely new bounded hypothesis appears, and the next live CPU-first lane moves to `X-16 non-graybox next-lane reselection after first actual negative I-B packet` |
+| 2026-04-17 08:35 | Closed `X-16` as `positive`: after the sharper `I-B` boundary, reopening another box-local execution family is weaker than one sync pass, because black-box transfer is still asset-blocked, white-box same-family reruns are now explicitly below release, and `I-A` remains sidecar-strength rather than the best new main lane; the next live CPU-first lane therefore moves to `X-17 cross-box / system-consumable sync after first actual negative I-B packet`, while `next_gpu_candidate` stays `none` |
+| 2026-04-17 08:40 | Closed `X-17` as `positive`: higher-layer entry points now reflect that `Finding NeMo` has one actual bounded admitted packet and that the current honest verdict is `negative but useful`, not `zero-GPU hold` and not defense-positive; leader-facing and competition-facing wording are narrowed without changing admitted tables or consumer schema, `active_gpu_question` stays `none`, `next_gpu_candidate` stays `none`, and the next live CPU-first lane becomes `I-A truth-hardening refresh after first actual negative I-B packet` |
+| 2026-04-17 08:50 | Closed the `I-A` refresh after first actual negative `I-B` packet as `positive but stabilizing`: the new white-box falsifier narrows a competing near-term branch but does not weaken the admitted mechanistic `PIA + stochastic-dropout` packet, so `I-A` remains the strongest near-term innovation track; one stale `Finding NeMo` sentence in `mainline-narrative.md` was corrected, `active_gpu_question` stays `none`, `next_gpu_candidate` stays `none`, and the next live CPU-first lane moves to `X-18 non-graybox next-lane reselection after I-A refresh from negative actual I-B packet` |
+| 2026-04-17 09:00 | Closed `X-18` as `positive`: after the refreshed `I-A` ordering, the next honest non-graybox `CPU-first` lane is now `XB-CH-2 transfer / portability blocker refresh review`, because gray-box hold items still lack a new signal, white-box same-family rescue remains below release, and transfer / portability remains the highest-value unresolved branch even though it is still blocker-shaped; `active_gpu_question` stays `none` and `next_gpu_candidate` stays `none` |
+| 2026-04-17 09:15 | Closed `XB-CH-2` refresh as `negative but useful`: recent repo progress sharpens the blocker rather than resolving it, because the current gray-box portability evidence is still only an intra-contract `PIA GPU128/GPU256` support pair, while cross-dataset, cross-model, and cross-threat-model portability still lack paired model contracts, paired split contracts, and one bounded shared-surface hypothesis; `active_gpu_question` stays `none`, `next_gpu_candidate` stays `none`, and the next live CPU-first lane moves to `X-19 non-graybox next-lane reselection after refreshed transfer blocker review` |
+| 2026-04-17 09:20 | Closed `X-19` as `positive`: once the refreshed transfer branch is confirmed to remain `needs-assets`, the honest immediate move is another non-graybox CPU-first reselection rather than pretending the blocked branch is executable; `active_gpu_question` stays `none`, `next_gpu_candidate` stays `none`, and the current live lane remains the reselection pass itself until a stronger executable branch is chosen |
+| 2026-04-17 09:40 | Closed `X-20` as `positive`: the bounded higher-layer stale-entry sync is now complete, because `mainline-narrative`, `challenger-queue`, `comprehensive-progress`, and the root control board no longer drift on `Finding NeMo = actual bounded falsifier`, `XB-CH-2 = needs-assets`, and `no active GPU`; `active_gpu_question` stays `none`, `next_gpu_candidate` stays `none`, and the current live CPU-first lane now moves to `X-21 non-graybox next-lane reselection after X-20 stale-entry sync` |
+| 2026-04-17 10:05 | Closed `X-21` as `positive`: after the stale-entry sync closed, there is still no honest executable reopen in `XB-CH-2`, `GB-CH-2`, or other blocked/hold queue items; the strongest immediate non-graybox move is therefore `X-22 I-A higher-layer truth-hardening residue audit after X-21 reselection`, while `active_gpu_question` stays `none`, `next_gpu_candidate` stays `none`, and the CPU sidecar narrows to `PIA provenance maintenance` |
+| 2026-04-17 10:20 | Closed `X-22` as `positive`: the current `I-A` residue sat in higher-layer presentation strength rather than in the underlying mechanistic packet, so leader/material entry docs were upgraded to carry the four-metric low-FPR contract and bounded repeated-query adaptive boundary explicitly; `active_gpu_question` stays `none`, `next_gpu_candidate` stays `none`, and the current live CPU-first lane now moves to `X-23 non-graybox next-lane reselection after X-22 I-A residue audit` |
+| 2026-04-17 10:35 | Closed `X-23` as `positive`: after the `I-A` residue audit, there is still no stronger executable reopen in blocked non-graybox challenger branches, but one bounded stale layer remains in `mainline-narrative` and the root control board; `active_gpu_question` stays `none`, `next_gpu_candidate` stays `none`, and the current live CPU-first lane now moves to `X-24 residual stale-entry cleanup after X-23 reselection` |
+| 2026-04-17 10:50 | Closed `X-24` as `positive`: the final residual stale execution-order layer in `mainline-narrative` and the root `ROADMAP` is now aligned to current truth, so `active_gpu_question` stays `none`, `next_gpu_candidate` stays `none`, and the current live CPU-first lane now moves to `X-25 non-graybox next-lane reselection after X-24 cleanup` |
+| 2026-04-17 11:10 | Closed `X-25` as `positive`: after the stale-entry cleanup, blocked and hold non-graybox branches still do not expose a stronger executable reopen, so the honest next move is to promote `PIA provenance maintenance` from carry-forward sidecar into the main CPU-first slot; `active_gpu_question` stays `none`, `next_gpu_candidate` stays `none`, and the current live lane now moves to `X-26 PIA provenance maintenance main-lane review after X-25 reselection` while the CPU sidecar narrows to `I-A higher-layer boundary maintenance` |
+| 2026-04-17 11:30 | Closed `X-26` as `positive`: the current `PIA` provenance blocker is already sharp enough and does not require a new manifest field, schema bump, or GPU release; the honest maintenance action is to freeze `workspace-verified` intake reading, the explicit `paper-aligned blocked by checkpoint/source provenance` boundary, and the real reopen triggers, while `active_gpu_question` stays `none`, `next_gpu_candidate` stays `none`, and the current live lane now moves to `X-27 non-graybox next-lane reselection after X-26 provenance review` |
+| 2026-04-17 11:45 | Closed `X-27` as `positive`: after `X-26` froze the provenance blocker, the strongest unresolved non-graybox branch becomes `XB-CH-2` again, but still only as a CPU-side blocker/contract review because no paired contracts or shared execution surface were released; `active_gpu_question` stays `none`, `next_gpu_candidate` stays `none`, and the current live lane now moves to `X-28 XB-CH-2 shared-surface contract freeze review after X-27 reselection` while the CPU sidecar remains `I-A higher-layer boundary maintenance` |
+| 2026-04-17 12:00 | Closed `X-28` as `positive`: the current repo still cannot freeze one honest cross-box shared execution surface, but the blocker is now explicit and compact: `paired model contract + paired split contract + shared metric hypothesis + bounded packet budget`; `XB-CH-2` therefore remains `needs-assets`, `active_gpu_question` stays `none`, `next_gpu_candidate` stays `none`, and the current live lane now moves to `X-29 non-graybox next-lane reselection after X-28 shared-surface contract freeze review` while the CPU sidecar remains `I-A higher-layer boundary maintenance` |
+| 2026-04-17 12:15 | Closed `X-29` as `positive`: after `X-28`, `XB-CH-2` is sharper but still not executable, while gray-box and white-box hold branches still do not expose a stronger immediate lane; the honest next move is therefore a bounded return to `I-A` as `X-30 I-A carry-forward truth-hardening audit after X-29 reselection`, with `active_gpu_question = none`, `next_gpu_candidate = none`, and the CPU sidecar shifting to `cross-box / system-consumable wording maintenance` |
+| 2026-04-17 12:30 | Closed `X-30` as `positive but stabilizing`: the current mechanistic `I-A` wording is now stable across leader/materials/higher-layer docs, with four-metric low-FPR reporting, bounded repeated-query adaptive reading, and provenance caveat all still visible; `active_gpu_question` stays `none`, `next_gpu_candidate` stays `none`, and the current live lane now moves to `X-31 non-graybox next-lane reselection after X-30 I-A audit` while the CPU sidecar remains `cross-box / system-consumable wording maintenance` |
+| 2026-04-17 12:45 | Closed `X-31` as `positive`: the only remaining post-`X-30` drift was stale control-plane wording in the root board and one long-form progress sentence; `active_gpu_question` stays `none`, `next_gpu_candidate` stays `none`, and the current live lane now moves to `X-32 non-graybox next-lane reselection after X-31 stale-entry sync` while the CPU sidecar remains `cross-box / system-consumable wording maintenance` |
+| 2026-04-17 13:00 | Closed `X-32` as `positive`: after `X-31`, all blocked/hold non-graybox branches still remain below honest execution release and `I-A` has already returned to stable sidecar status, so the strongest main-slot choice is to promote `cross-box / system-consumable wording maintenance` back into the main lane specifically to clear active stale intake/system surfaces that still encode `Finding NeMo` and `Phase E` with old queue truth; `active_gpu_question` stays `none`, `next_gpu_candidate` stays `none`, and the current live lane now moves to `X-33 cross-box / system-consumable stale intake sync after X-32 reselection` while the CPU sidecar narrows to `I-A higher-layer boundary maintenance` |
+| 2026-04-17 13:15 | Closed `X-33` as `positive`: active higher-layer and machine-readable intake surfaces now stop encoding `Finding NeMo` as the current `Phase E` intake-only `zero-GPU hold` candidate, and instead preserve `PIA paper-aligned confirmation` as document-layer conditional only while moving `Finding NeMo` fully to `non-admitted actual bounded falsifier` boundary truth; `active_gpu_question` stays `none`, `next_gpu_candidate` stays `none`, and the current live lane now moves to `X-34 non-graybox next-lane reselection after X-33 stale intake sync` while the CPU sidecar remains `I-A higher-layer boundary maintenance` |
+| 2026-04-17 13:30 | Closed `X-34` as `positive`: after both control-plane and intake-plane stale surfaces were cleared, the visible non-graybox pool still contains no honest ready main-slot lane above blocked/hold branches or stable sidecar maintenance, so the correct next move is bounded non-graybox candidate-surface expansion rather than another fake reopen; `active_gpu_question` stays `none`, `next_gpu_candidate` stays `none`, and the current live lane now moves to `X-35 non-graybox candidate-surface expansion after X-34 reselection` while the CPU sidecar remains `I-A higher-layer boundary maintenance` |
+| 2026-04-17 13:45 | Closed `X-35` as `positive`: the first honest way to expand the stale non-graybox pool is to restore `I-D` as an active candidate surface, because black-box still lacks a new family contract, white-box still lacks a distinct defended-family import lane, and `I-C` still lacks a genuinely new bounded cross-box hypothesis beyond its frozen translated-contract falsifier; `active_gpu_question` stays `none`, `next_gpu_candidate` stays `none`, and the current live lane now moves to `X-36 I-D conditional future-surface successor selection after X-35 expansion` while the CPU sidecar remains `I-A higher-layer boundary maintenance` |
+| 2026-04-17 14:20 | Closed `X-36` as `positive`: the restored `I-D` surface does not currently contain one genuinely new bounded successor lane, because same-contract scale tuning would be parameter churn, hidden-guidance-jitter salvage would be failed-contract rescue, and broader conditional-family widening would break the frozen `I-D.1` contract; `active_gpu_question` stays `none`, `next_gpu_candidate` stays `none`, and the current live lane now moves to `X-37 non-graybox next-lane reselection after X-36 I-D successor freeze` while the CPU sidecar remains `I-A higher-layer boundary maintenance` |
+| 2026-04-17 14:35 | Closed `X-37` as `positive`: after `X-36`, no blocked/hold non-graybox branch honestly reopened and no new `I-A` successor question appeared, so the strongest immediate main-slot move is one bounded cross-box / system-consumable stale-surface sync pass on the remaining active `I-D` material wording drift; `active_gpu_question` stays `none`, `next_gpu_candidate` stays `none`, and the current live lane now moves to `X-38 cross-box / system-consumable stale-surface sync after X-37 reselection` while the CPU sidecar remains `I-A higher-layer boundary maintenance` |
+| 2026-04-17 14:45 | Closed `X-38` as `positive`: the remaining active material-facing `I-D` wording surface is now aligned to `X-36`, so higher-layer readers no longer see `bounded hidden-guidance defense idea` without the sharper `negative actual runner-level rerun + no honest bounded successor lane` boundary; `active_gpu_question` stays `none`, `next_gpu_candidate` stays `none`, and the current live lane now moves to `X-39 non-graybox next-lane reselection after X-38 stale-surface sync` while the CPU sidecar remains `I-A higher-layer boundary maintenance` |
+| 2026-04-17 15:05 | Closed `X-39` as `positive`: after `X-38`, the visible non-graybox pool still contains no honest ready main-slot lane above blocked/hold branches or stable sidecar maintenance, so the correct next move is another bounded candidate-surface expansion rather than a fake reopen; `active_gpu_question` stays `none`, `next_gpu_candidate` stays `none`, and the current live lane now moves to `X-40 non-graybox candidate-surface expansion after X-39 reselection` while the CPU sidecar remains `I-A higher-layer boundary maintenance` |
+| 2026-04-17 15:20 | Closed `X-40` as `positive`: the first honest way to expand the stale non-graybox pool again is to restore `I-C`, but only as fresh bounded cross-box hypothesis generation rather than same-pair translated-contract hardening; `active_gpu_question` stays `none`, `next_gpu_candidate` stays `none`, and the current live lane now moves to `X-41 I-C fresh bounded cross-box hypothesis generation after X-40 expansion` while the CPU sidecar remains `I-A higher-layer boundary maintenance` |
+| 2026-04-17 15:40 | Closed `X-41` as `positive`: the first genuinely new bounded `I-C` hypothesis after the translated-falsifier freeze is a bounded multi-pair agreement-first cross-box hypothesis, not another translated intervention retry; `active_gpu_question` stays `none`, `next_gpu_candidate` stays `none`, and the current live lane now moves to `X-42 I-C bounded multi-pair agreement-first contract review after X-41 hypothesis generation` while the CPU sidecar remains `I-A higher-layer boundary maintenance` |
+| 2026-04-17 15:55 | Closed `X-42` as `blocked but useful`: the new agreement-first `I-C` idea survives, but the first executable board contract is still missing one second member/nonmember pair freeze under the same overlap authority; `active_gpu_question` stays `none`, `next_gpu_candidate` stays `none`, and the current live lane now moves to `X-43 I-C secondary pairboard identity freeze after X-42 contract review` while the CPU sidecar remains `I-A higher-layer boundary maintenance` |
+| 2026-04-17 16:15 | Closed `X-43` as `positive but bounded`: the second pairboard identity is now frozen deterministically to member `canonical_index = 8` and nonmember `canonical_index = 23`, giving the fresh `I-C` agreement-first line a complete `2 member + 2 nonmember` identity board under the same overlap authority without metric-based cherry-picking; `active_gpu_question` stays `none`, `next_gpu_candidate` stays `none`, and the current live lane now moves to `X-44 I-C bounded multi-pair agreement-board contract freeze after X-43 pairboard identity freeze` while the CPU sidecar remains `I-A higher-layer boundary maintenance` |
+| 2026-04-17 16:35 | Closed `X-44` as `blocked but useful`: the fresh `I-C` identity board is now complete and gray-box already exposes object-level per-sample scores, but the first honest agreement-board contract still cannot be frozen because current white-box admitted metrics remain pair-local deltas and no board-wide object-local concentration scalar plus selector policy has been frozen yet; `active_gpu_question` stays `none`, `next_gpu_candidate` stays `none`, and the current live lane now moves to `X-45 I-C white-box board-local concentration scalar contract freeze after X-44 agreement-board contract review` while the CPU sidecar remains `I-A higher-layer boundary maintenance` |
+| 2026-04-17 17:05 | Closed `X-45` as `positive but bounded`: the white-box contract blocker is now resolved by freezing one board-local scalar, `selected_channel_abs_profile_mean`, on the board-wide selected-channel set `[5, 471, 1, 135, 360, 215, 394, 425]` inherited from the already-frozen pair-A selector, and a bounded four-object CPU probe confirms that scalar is not degenerate on the `965 / 1278 / 8 / 23` board; `active_gpu_question` stays `none`, `next_gpu_candidate` stays `none`, and the current live lane now moves to `X-46 I-C first bounded four-object agreement-board read after X-45 scalar contract freeze` while the CPU sidecar remains `I-A higher-layer boundary maintenance` |
+| 2026-04-17 17:25 | Closed `X-46` as `negative but useful`: the first honest four-object agreement board is now fully readable on both surfaces, but while both white-box and gray-box still place members above nonmembers on average, they do not preserve a clean enough same-object broad order to count as positive agreement-first support; `active_gpu_question` stays `none`, `next_gpu_candidate` stays `none`, and the current live lane now moves to `X-47 non-graybox next-lane reselection after X-46 first bounded agreement-board read` while the CPU sidecar remains `I-A higher-layer boundary maintenance` |
+| 2026-04-17 17:40 | Closed `X-47` as `positive`: after that first fresh `I-C` board read landed as `negative but useful`, the most honest immediate next move is one bounded cross-box / system-consumable stale-entry sync pass because higher-layer readers still see the pre-`X-46` control-plane state; `active_gpu_question` stays `none`, `next_gpu_candidate` stays `none`, and the current live lane now moves to `X-48 cross-box / system-consumable stale-entry sync after X-47 reselection` while the CPU sidecar remains `I-A higher-layer boundary maintenance` |
+| 2026-04-17 17:50 | Closed `X-48` as `positive`: the active higher-layer entry docs are now aligned again to the post-`X-46` control-plane truth, so higher-layer readers no longer stop at the older `X-45` blocker state; `active_gpu_question` stays `none`, `next_gpu_candidate` stays `none`, and the current live lane now moves to `X-49 non-graybox next-lane reselection after X-48 stale-entry sync` while the CPU sidecar remains `I-A higher-layer boundary maintenance` |
+| 2026-04-17 18:00 | Closed `X-49` as `positive`: once the stale-entry sync is cleared, no stronger ready non-graybox branch reopens above `I-A`, because fresh `I-C` just landed a negative-but-useful first board read, `XB-CH-2` still remains `needs-assets`, and no new defended-family or black-box challenger question appeared; `active_gpu_question` stays `none`, `next_gpu_candidate` stays `none`, and the current live lane now moves to `X-50 I-A higher-layer boundary maintenance audit after X-49 reselection` while the CPU sidecar remains `I-A higher-layer boundary maintenance` |
+| 2026-04-17 18:20 | Closed `X-50` as `positive`: the remaining `I-A` residue sat in higher-layer carry-forward rather than in the packet itself, and `mainline-narrative`, `comprehensive-progress`, `admitted-results-summary`, and the current control-plane summary now again carry the bounded repeated-query adaptive reading plus mandatory `AUC / ASR / TPR@1%FPR / TPR@0.1%FPR` reporting; `active_gpu_question` stays `none`, `next_gpu_candidate` stays `none`, and the current live lane now moves to `X-51 non-graybox next-lane reselection after X-50 I-A boundary audit` while the CPU sidecar remains `I-A higher-layer boundary maintenance` |
+| 2026-04-17 18:35 | Closed `X-51` as `positive`: once the `I-A` boundary audit is cleared, no stronger blocked/hold non-graybox branch reopens above one remaining materials-facing stale-entry sync, because `competition-evidence-pack` still encodes `SecMI` as `blocked baseline` and `TMIA-DM` as `intake only`; `active_gpu_question` stays `none`, `next_gpu_candidate` stays `none`, and the current live lane now moves to `X-52 cross-box / materials stale-entry sync after X-51 reselection` while the CPU sidecar remains `I-A higher-layer boundary maintenance` |
+| 2026-04-17 19:10 | Closed `X-52` as `positive`: the active admitted/material-facing evidence pack now preserves `SecMI = same-asset independent corroboration line` and `TMIA-DM = strongest packaged gray-box challenger`, so higher-layer materials no longer lag behind current gray-box truth; `active_gpu_question` stays `none`, `next_gpu_candidate` stays `none`, and the current live lane now moves to `X-53 non-graybox next-lane reselection after X-52 materials stale-entry sync` while the CPU sidecar remains `I-A higher-layer boundary maintenance` |
+| 2026-04-17 19:35 | Closed `X-53` as `positive`: after the materials-facing stale-entry sync, no blocked/hold non-graybox branch honestly reopened above the stable `I-A` sidecar, but `I-B` had become the strongest innovation surface without an explicit post-falsifier successor review; `active_gpu_question` stays `none`, `next_gpu_candidate` stays `none`, and the current live lane now moves to `X-54 I-B post-falsifier successor selection after X-53 reselection` while the CPU sidecar remains `I-A higher-layer boundary maintenance` |
+| 2026-04-17 20:10 | Closed `X-54` as `negative but useful`: the restored `I-B` surface still has no honest bounded successor lane above its `actual bounded falsifier` freeze, because same-family rescue remains forbidden, distinct-family import is absent, and no new bounded localization-defense hypothesis is visible; `active_gpu_question` stays `none`, `next_gpu_candidate` stays `none`, and the current live lane now moves to `X-55 non-graybox next-lane reselection after X-54 I-B successor freeze` while the CPU sidecar remains `I-A higher-layer boundary maintenance` |
+| 2026-04-17 20:35 | Closed `X-55` as `positive`: once `I-B` is successor-frozen, no blocked/hold branch honestly reopens above the stable `I-A` sidecar, but fresh `I-C` is now the strongest innovation surface still lacking an explicit post-negative successor review after `X-46`; `active_gpu_question` stays `none`, `next_gpu_candidate` stays `none`, and the current live lane now moves to `X-56 I-C post-negative-agreement-board successor selection after X-55 reselection` while the CPU sidecar remains `I-A higher-layer boundary maintenance` |
+| 2026-04-17 21:00 | Closed `X-56` as `negative but useful`: the fresh `I-C` surface still has no honest bounded successor lane above the first negative agreement-board read, because same-board salvage remains forbidden, black-box corroboration still lacks a frozen bridge surface, and no new bounded cross-permission hypothesis is visible; `active_gpu_question` stays `none`, `next_gpu_candidate` stays `none`, and the current live lane now moves to `X-57 non-graybox next-lane reselection after X-56 I-C successor freeze` while the CPU sidecar remains `I-A higher-layer boundary maintenance` |
+| 2026-04-17 21:20 | Closed `X-57` as `positive`: once `I-C` is successor-frozen, no blocked/hold branch honestly reopens above the stable `I-A` sidecar, but one active higher-layer entry doc still lags behind the current control-plane state, so the next honest move is one bounded stale-entry sync pass rather than immediate candidate-surface expansion; `active_gpu_question` stays `none`, `next_gpu_candidate` stays `none`, and the current live lane now moves to `X-58 cross-box / system-consumable stale-entry sync after X-57 reselection` while the CPU sidecar remains `I-A higher-layer boundary maintenance` |
+| 2026-04-17 21:30 | Closed `X-58` as `positive`: the remaining active higher-layer entry doc is now aligned again to the post-`X-56` control-plane truth, so higher-layer readers no longer stop at the old `X-53` lane state; `active_gpu_question` stays `none`, `next_gpu_candidate` stays `none`, and the current live lane now moves to `X-59 non-graybox next-lane reselection after X-58 stale-entry sync` while the CPU sidecar remains `I-A higher-layer boundary maintenance` |
+| 2026-04-17 21:45 | Closed `X-59` as `positive`: once the stale-entry sync is cleared, no blocked/hold branch honestly reopens above the stable `I-A` sidecar and no fresh successor lane appears inside `I-B` or `I-C`, so the next honest move is bounded non-graybox candidate-surface expansion rather than a forced same-family return; `active_gpu_question` stays `none`, `next_gpu_candidate` stays `none`, and the current live lane now moves to `X-60 non-graybox candidate-surface expansion after X-59 reselection` while the CPU sidecar remains `I-A higher-layer boundary maintenance` |
+| 2026-04-17 22:10 | Closed `X-60` as `positive`: the restored non-graybox candidate surface is `black-box paper-backed next-family scouting`, because black-box is the only remaining non-graybox area with honest CPU-only expansion room that does not violate the current frozen `I-B / I-C` negatives, white-box distinct-family closure, or `XB-CH-2 needs-assets` boundary; `active_gpu_question` stays `none`, `next_gpu_candidate` stays `none`, and the current live lane now moves to `X-61 black-box paper-backed next-family scoping review after X-60 expansion` while the CPU sidecar remains `I-A higher-layer boundary maintenance` |
+| 2026-04-17 22:35 | Closed `X-61` as `negative but useful`: the remaining paper-backed black-box backlog still does not expose one genuinely new promotable family, because the face-image LDM route is domain-specific, collection-level, and structurally overlaps with the already-landed `semantic-auxiliary-classifier` and gray-box-owned `CDI`; `active_gpu_question` stays `none`, `next_gpu_candidate` stays `none`, and the current live lane now moves to `X-62 non-graybox next-lane reselection after X-61 black-box scoping` while the CPU sidecar remains `I-A higher-layer boundary maintenance` |
+| 2026-04-17 22:45 | Closed `X-62` as `positive`: once black-box scouting also closes negative and the `X-60 / X-61` changes were already synced directly into active higher-layer docs, no blocked/hold non-graybox branch honestly reopens and no stale-entry sync pass remains above the stable carry-forward line, so the strongest next live lane returns to `I-A` truth-hardening; `active_gpu_question` stays `none`, `next_gpu_candidate` stays `none`, and the current live lane now moves to `X-63 I-A formal/adaptive low-FPR residue audit after X-62 reselection` while the CPU sidecar remains `I-A higher-layer boundary maintenance` |
+| 2026-04-17 23:05 | Closed `X-63` as `positive`: the remaining `I-A` residue was materials-facing rather than experiment-facing, because the active PIA visual prompt still suggested `AUC-only` comparison text; it now explicitly preserves `AUC / ASR / TPR@1%FPR / TPR@0.1%FPR` plus the bounded repeated-query adaptive boundary, so the current live lane moves to `X-64 non-graybox next-lane reselection after X-63 I-A residue audit` while `active_gpu_question` and `next_gpu_candidate` both stay `none` and the CPU sidecar remains `I-A higher-layer boundary maintenance` |
+| 2026-04-17 23:35 | Closed `X-64` as `positive`: once `X-63` cleared the last visible `I-A` residue, no blocked/hold branch honestly reopened and no stale-entry sync pass remained above sidecar maintenance, so the honest next move became another bounded non-graybox candidate-surface expansion rather than a forced `I-A` rerun or white-box reopen; `active_gpu_question` stays `none`, `next_gpu_candidate` stays `none`, and the current live lane now moves to `X-65 non-graybox candidate-surface expansion after X-64 reselection` while the CPU sidecar remains `I-A higher-layer boundary maintenance` |
+| 2026-04-17 23:55 | Closed `X-65` as `positive`: the restored non-graybox candidate surface is `I-B paper-backed localization-defense successor scouting`, because black-box already closed negative, white-box still should not take the next slot, and the broader `Finding NeMo + local memorization + FB-Mem` mechanism stack still contains CPU-only hypothesis-generation room above same-family rescue churn; `active_gpu_question` stays `none`, `next_gpu_candidate` stays `none`, and the current live lane now moves to `X-66 I-B paper-backed localization-defense scoping review after X-65 expansion` while the CPU sidecar remains `I-A higher-layer boundary maintenance` |
+| 2026-04-18 00:20 | Closed `X-66` as `negative but useful`: the broadened `Finding NeMo + local memorization + FB-Mem` stack still does not expose one genuinely new bounded successor hypothesis on top of the current `actual bounded falsifier`, because the additional material remains either historical intake scaffolding, observability plumbing, or paper-faithful `SD1.4 / LAION` context rather than a current admitted-surface hypothesis; `active_gpu_question` stays `none`, `next_gpu_candidate` stays `none`, and the current live lane now moves to `X-67 non-graybox next-lane reselection after X-66 I-B paper-backed scoping` while the CPU sidecar remains `I-A higher-layer boundary maintenance` |
+| 2026-04-18 00:30 | Closed `X-67` as `positive`: once the broadened `I-B` stack also freezes, no stronger blocked/hold branch honestly reopens above the stable sidecar line, so the strongest next live lane returns to `I-A` truth-hardening rather than another immediate expansion; `active_gpu_question` stays `none`, `next_gpu_candidate` stays `none`, and the current live lane now moves to `X-68 I-A formal-adaptive-lowfpr carry-forward audit after X-67 reselection` while the CPU sidecar remains `I-A higher-layer boundary maintenance` |
+| 2026-04-18 01:05 | Closed `X-68` as `positive but stabilizing`: the current `I-A` formal/adaptive/low-FPR contract still had one live carry-forward task, but it was only a top-summary read-path residue in `leader-research-ready-summary.md`, whose one-page table still foregrounded `AUC / ASR`; once that table was upgraded to carry the low-FPR pair explicitly, `I-A` returned to sidecar-only status, `active_gpu_question` stayed `none`, `next_gpu_candidate` stayed `none`, and the current live lane moved to `X-69 non-graybox next-lane reselection after X-68 I-A carry-forward audit` while the CPU sidecar remained `I-A higher-layer boundary maintenance` |
+| 2026-04-18 01:15 | Closed `X-69` as `positive`: once the final top-summary `I-A` residue was cleared, no blocked/hold branch honestly reopened above sidecar maintenance, so the next honest move became `X-70 non-graybox candidate-surface expansion after X-69 reselection` rather than another `I-A` turn; `active_gpu_question` stayed `none`, `next_gpu_candidate` stayed `none`, and the CPU sidecar remained `I-A higher-layer boundary maintenance` |
+| 2026-04-18 01:45 | Closed `X-70` as `positive`: the next honest restored non-graybox candidate surface is `WB-CH-4 white-box loss-feature challenger family`, because black-box remains exhausted or asset-blocked, visible white-box candidates remain exhausted, and the paper-backed white-box loss-feature family (`LSA* / LiRA / Strong LiRA`) is distinct from the current `GSA` gradient family while also being directly relevant to `SMP-LoRA / DP-LoRA`; `active_gpu_question` stayed `none`, `next_gpu_candidate` stayed `none`, and the current live lane moved to `X-71 white-box loss-feature challenger scoping review after X-70 expansion` while the CPU sidecar remained `I-A higher-layer boundary maintenance` |
+| 2026-04-18 02:00 | Closed `X-71` as `positive but bounded`: the restored `WB-CH-4` surface does contain one honest near-term lane, but only as a bounded same-asset `LSA*`-style loss-feature contract review on current admitted `DDPM/CIFAR10` white-box assets; `LiRA / Strong LiRA` remain above current bounded host-fit budget, so `active_gpu_question` stayed `none`, `next_gpu_candidate` stayed `none`, and the current live lane moved to `X-72 white-box same-asset loss-feature contract review after X-71 scoping` while the CPU sidecar remained `I-A higher-layer boundary maintenance` |
+| 2026-04-18 02:35 | Closed `X-72` as `positive but bounded`: current admitted `DDPM/CIFAR10` white-box assets do support one bounded same-asset `LSA*`-style loss-feature contract because the same runtime path already computes denoising loss on the frozen admitted datasets/checkpoints, but current runtime/mainline still exports gradients only and does not emit per-sample loss-score artifacts, so execution remains blocked on a bounded loss-score export surface review; `active_gpu_question` stayed `none`, `next_gpu_candidate` stayed `none`, and the current live lane moved to `X-73 white-box same-asset loss-score export surface review after X-72 contract review` while the CPU sidecar remained `I-A higher-layer boundary maintenance` |
+| 2026-04-18 03:10 | Closed `X-73` as `positive but bounded`: one honest bounded loss-score export surface does exist on current admitted `DDPM/CIFAR10` white-box assets, but the preferred path is a separate in-repo internal helper / CLI surface built on top of the existing in-process GSA extraction logic rather than patching the upstream external extractor or mutating current admitted `run-gsa-runtime-mainline` semantics first; `active_gpu_question` stayed `none`, `next_gpu_candidate` stayed `none`, and the current live lane moved to `X-74 white-box bounded internal loss-score export implementation after X-73 surface review` while the CPU sidecar remained `I-A higher-layer boundary maintenance` |
+| 2026-04-18 03:45 | Closed `X-74` as `positive but bounded`: the repository now exposes one separate bounded internal loss-score export surface on the admitted `DDPM/CIFAR10` white-box asset family via `export-gsa-loss-score-packet`, and one real-asset `cpu / ddpm_num_steps = 20 / sampling_frequency = 2 / extraction_max_samples = 1` smoke succeeded on target plus three shadow pairs without mutating admitted gradient-mainline semantics; `active_gpu_question` stayed `none`, `next_gpu_candidate` stayed `none`, and the current live lane moved to `X-75 white-box bounded loss-score first packet selection after X-74 implementation` while the CPU sidecar remained `I-A higher-layer boundary maintenance` |
+| 2026-04-18 04:10 | Closed `X-75` as `positive but bounded`: the first honest bounded loss-score packet is now frozen to a `threshold-style`, `shadow-oriented`, `shadow-threshold-transfer` board on exported scalar loss scores with `extraction_max_samples = 64` per target/shadow split, while `AUC / ASR / TPR@1%FPR / TPR@0.1%FPR` remain mandatory but the packet still stays below release-grade low-FPR honesty at that bounded scale; `active_gpu_question` stayed `none`, `next_gpu_candidate` stayed `none`, and the current live lane moved to `X-76 white-box bounded loss-score threshold evaluator implementation after X-75 packet selection` while the CPU sidecar remained `I-A higher-layer boundary maintenance` |
+| 2026-04-18 04:40 | Closed `X-76` as `positive but bounded`: the repository now exposes `evaluate-gsa-loss-score-packet`, which reads the exported white-box loss-score packet, freezes score orientation plus operating threshold from pooled shadow scores only, transfers that frozen board onto target evaluation, and emits the mandatory `AUC / ASR / TPR@1%FPR / TPR@0.1%FPR` bundle; one real bounded smoke on the existing export packet returned `shadow member-lower` but `target transfer = AUC 0.0 / ASR 0.0 / TPR@1%FPR 0.0 / TPR@0.1%FPR 0.0` while `target self-board` stayed positive, which confirms that the self-board must remain diagnostic-only rather than verdict truth; `active_gpu_question` stayed `none`, `next_gpu_candidate` stayed `none`, and the current live lane moved to `X-77 white-box bounded loss-score first actual packet after X-76 evaluator implementation` while the CPU sidecar remained `I-A higher-layer boundary maintenance` |
+| 2026-04-18 05:30 | Closed `X-77` as `positive but bounded`: the first real bounded `64`-per-split loss-score packet now exists on current admitted white-box assets via `export-gsa-loss-score-packet` plus `evaluate-gsa-loss-score-packet`; under the frozen shadow-only transfer contract, the target board lands at `AUC = 0.699463 / ASR = 0.632812 / TPR@1%FPR = 0.03125 / TPR@0.1%FPR = 0.03125`, while the diagnostic target self-board differs only by threshold and does not rescue the low-FPR boundary; `active_gpu_question` stayed `none`, `next_gpu_candidate` stayed `none`, and the current live lane moved to `X-78 white-box bounded loss-score post-first-actual-packet boundary review after X-77 actual packet` while the CPU sidecar remained `I-A higher-layer boundary maintenance` |
+| 2026-04-18 05:50 | Closed `X-78` as `positive but stabilizing`: the first actual white-box loss-score packet is now boundary-reviewed and should be frozen as bounded auxiliary evidence rather than promoted or immediately extended, because it is execution-positive but still only `AUC = 0.699463 / ASR = 0.632812 / TPR@1%FPR = 0.03125 / TPR@0.1%FPR = 0.03125` on the transferred target board, with weak low-FPR behavior and no genuinely new same-family follow-up hypothesis; `active_gpu_question` stayed `none`, `next_gpu_candidate` stayed `none`, and the current live lane moved to `X-79 non-graybox next-lane reselection after X-78 white-box loss-score boundary review` while the CPU sidecar remained `I-A higher-layer boundary maintenance` |
+| 2026-04-18 06:05 | Closed `X-79` as `positive`: once the white-box loss-score branch is frozen as bounded auxiliary evidence and current higher-layer sync is already aligned, no stronger blocked/hold non-graybox branch honestly reopens above the carry-forward sidecar, so the strongest next live lane returns to `X-80 I-A formal-adaptive-lowFPR carry-forward audit after X-79 reselection`; `active_gpu_question` stayed `none`, `next_gpu_candidate` stayed `none`, and the CPU sidecar remained `I-A higher-layer boundary maintenance` |
+| 2026-04-18 06:20 | Closed `X-80` as `positive`: one real active `I-A` carry-forward residue still existed in `docs/mainline-narrative.md`, whose current-state paragraph was still frozen at `X-76`; once that doc was updated to carry `X-77 / X-78 / X-79` and the current `X-80` lane, the higher-layer read path again aligned with repo truth; `active_gpu_question` stayed `none`, `next_gpu_candidate` stayed `none`, and the current live lane moved to `X-81 non-graybox next-lane reselection after X-80 I-A carry-forward audit` while the CPU sidecar remained `I-A higher-layer boundary maintenance` |
+| 2026-04-18 06:35 | Closed `X-81` as `positive`: once the active `I-A` residue was cleared, the strongest next move was still not a fresh black-box or white-box reopen, because black-box scouting remains closed negative, white-box loss-score is already boundary-frozen, and `XB-CH-2` remains `needs-assets`; the honest immediate move is one bounded `X-82 cross-box / system-consumable stale-entry sync after X-81 reselection`, because active higher-layer docs still expose stale lane state; `active_gpu_question` stayed `none`, `next_gpu_candidate` stayed `none`, and the CPU sidecar remained `I-A higher-layer boundary maintenance` |
+| 2026-04-18 06:50 | Closed `X-82` as `positive`: the active higher-layer stale-entry surfaces are now aligned again to current control-plane truth, including the current live lane and post-`X-78 / X-79 / X-80 / X-81` read-path; `active_gpu_question` stayed `none`, `next_gpu_candidate` stayed `none`, and the current live lane moved to `X-83 non-graybox next-lane reselection after X-82 stale-entry sync` while the CPU sidecar remained `I-A higher-layer boundary maintenance` |
+| 2026-04-18 07:00 | Closed `X-83` as `positive`: once the stale-entry sync cleared and no new active `I-A` residue remained, the strongest next move was no longer another wording-only sync pass and still not any blocked/hold reopen, because black-box scouting remains closed negative, white-box loss-score remains frozen as bounded auxiliary evidence, and `XB-CH-2` remains `needs-assets`; the honest next move is therefore `X-84 non-graybox candidate-surface expansion after X-83 reselection`; `active_gpu_question` stayed `none`, `next_gpu_candidate` stayed `none`, and the CPU sidecar remained `I-A higher-layer boundary maintenance` |
+| 2026-04-18 07:15 | Closed `X-84` as `positive`: the restored non-graybox candidate surface is `cross-box admitted-summary quality/cost read-path hardening`, because all immediate box-local reopens remain frozen or blocked while the unified comparison table already carries richer `quality_cost / evidence_level / boundary` fields that higher-layer admitted summaries do not foreground enough; `active_gpu_question` stayed `none`, `next_gpu_candidate` stayed `none`, and the current live lane moved to `X-85 cross-box admitted-summary quality-cost sync review after X-84 expansion` while the CPU sidecar remained `I-A higher-layer boundary maintenance` |
+| 2026-04-18 07:30 | Closed `X-85` as `positive`: the admitted results summary now explicitly exposes `Evidence Level` and `Quality / Cost` alongside the admitted metric columns, so higher-layer readers no longer have to infer execution scale and evidence grade only from headline metrics plus free-text boundary notes; `active_gpu_question` stayed `none`, `next_gpu_candidate` stayed `none`, and the current live lane moved to `X-86 non-graybox next-lane reselection after X-85 admitted-summary sync review` while the CPU sidecar remained `I-A higher-layer boundary maintenance` |
+| 2026-04-17 16:20 | Closed `X-87` as `bounded`: root `§4 B-M0` converged to candidate `A` rather than `B`, because the current `I-C` bridge still lacks an honest same-pair gray-box four-metric release surface on the frozen `965 / 1278` pair; on one fresh `cuda` re-export of the frozen `X-75 / X-77` `DDPM/CIFAR10` `64`-per-split loss-score packet, threshold-transfer lands at `AUC = 0.671143 / ASR = 0.59375 / TPR@1%FPR = 0.015625 / TPR@0.1%FPR = 0.015625`, while Gaussian LR-transfer lands at `AUC = 0.602051 / ASR = 0.59375 / TPR@1%FPR = 0.03125 / TPR@0.1%FPR = 0.03125`, so LR beats threshold only on the two low-FPR targets and the branch closes as `bounded` rather than promoted; `active_gpu_question` returns to `none`, `next_gpu_candidate` returns to `none`, and no Platform consumer-field handoff is required because the packet schema is unchanged |
+| 2026-04-17 16:56 | Closed `X-88` as `bounded`: long-horizon post-`B-M0` scoping now selects `G1-A = gray-box tri-evidence audit scorer` as the next honest distinct-family candidate, because `I-C` still lacks a same-pair four-metric release surface on the frozen `965 / 1278` pair, broadened `I-B` still exposes no genuinely new admitted-surface successor above the current actual bounded falsifier, and fresh black-box/latent second-signal paths remain contract-blocked below honest comparability; the chosen lane reuses the aligned `PIA gpu256` plus `TMIA-DM long_window gpu256` packet surfaces and the frozen internal `CDI` paired-contract, freezes one CPU-first gate of `TMIA sample-identity export + tri-score offline canary`, commits to `AUC / ASR / TPR@1%FPR / TPR@0.1%FPR`, keeps `active_gpu_question = none`, keeps `next_gpu_candidate = none` until that CPU-first gate lands and is inspected, and requires no Platform consumer-field handoff because current contract-first consumer fields stay unchanged |
+| 2026-04-17 17:55 | Closed `X-89` as `positive`: the `X-88` CPU gate is now landed honestly on the frozen `gpu256_undefended` plus `gpu256_defended` surfaces, because `TMIA-DM` sample identity can be frozen from current artifacts by reusing the aligned `PIA` packet order only after matching `dataset_root / member_split_root / model_dir / max_samples / num_samples / sample_count_per_split`, and the new internal tri-score canary is a real scorer extension rather than another switching-threshold restatement; the canonical canary summary at `Research/workspaces/gray-box/runs/x88-cdi-tmiadm-triscore-canary-20260417-175249/audit_summary.json` reports macro `component_auc = { pia = 0.835152, tmiadm = 0.777561, zscore_sum = 0.852928 }` and composite `AUC = 0.854515 / ASR = 0.790039 / TPR@1%FPR = 0.130859 / TPR@0.1%FPR = 0.048828`, while on `gpu256_defended` the composite beats both bounded baselines on both low-FPR targets with higher `AUC` (`0.837601 > 0.836227 > 0.832870`); `active_gpu_question` stays `none`, `next_gpu_candidate` becomes `G1-A larger shared-surface tri-score rerun review pending separate bounded GPU review`, and no Platform consumer-field handoff is required because the consumer schema remains unchanged |
+| 2026-04-17 09:25 | Closed the actual `X-19` lane selection as `positive`: the strongest immediate executable branch after the refreshed transfer blocker is one bounded `X-20` higher-layer stale-entry sync pass, because `mainline-narrative` and `challenger-queue` still underexpose the current `Finding NeMo = actual bounded falsifier` and `XB-CH-2 = needs-assets` truth; `active_gpu_question` stays `none`, `next_gpu_candidate` stays `none`, and the current live CPU-first lane now becomes `X-20 cross-box / system-consumable stale-entry sync after X-19 reselection` |
 | 2026-04-16 14:25 | Closed `BB-7` as `negative but stabilizing`: after the second-signal challenger, scoring review, `CLiD` boundary tightening, mitigation no-go, and `variation` asset-contract clarification, black-box currently has no honest new GPU-worthy question; keep `Recon` as headline, `semantic-auxiliary-classifier` as leading challenger, `CLiD` as corroboration-only, and `variation` as contract-ready blocked until a genuinely new feature family or real asset change appears |
 | 2026-04-16 08:05 | Refreshed the `Phase E` candidate registry after recent lane promotions and selected `WB-5 DP-LoRA comparability dossier` as the next live CPU-first lane; `Finding NeMo` remains `zero-GPU hold`, `TMIA-DM` is removed from intake-only candidate ordering, and `gpu_release` stays `none` |
 | 2026-04-16 08:20 | Closed `WB-5.1` as `positive but bounded`: `DP-LoRA` has real white-box defense-family overlap and a local `SMP-LoRA under DDPM/CIFAR10` bridge hint, but the current relation to admitted `GSA/W-1` remains `partial-overlap only`, so `gpu_release` still stays `none` and the next gate is the minimal local config candidate |
@@ -4327,7 +5285,7 @@ If that happens, the agent must add new branches and continue.
 
 ---
 
-## 10. Archived Roadmaps
+## 11. Archived Roadmaps
 
 - `legacy/2026-04-15-P0-P3-completed-roadmap.md`
 - `legacy/2026-04-15-competition-sprint-roadmap-archived.md`

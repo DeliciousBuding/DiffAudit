@@ -578,6 +578,45 @@ def build_parser() -> argparse.ArgumentParser:
         help="number of member and non-member samples loaded for the runtime preview",
     )
 
+    pia_packet_export_parser = subparsers.add_parser(
+        "export-pia-packet-scores",
+        help="export one CPU-first matched member/non-member PIA packet score scaffold",
+    )
+    pia_packet_export_parser.add_argument("--config", required=True, help="path to audit yaml")
+    pia_packet_export_parser.add_argument("--workspace", required=True)
+    pia_packet_export_parser.add_argument("--repo-root", default="external/PIA")
+    pia_packet_export_parser.add_argument("--member-split-root", default="external/PIA/DDPM")
+    pia_packet_export_parser.add_argument("--device", default="cpu")
+    pia_packet_export_parser.add_argument("--packet-size", type=int, default=4)
+    pia_packet_export_parser.add_argument("--member-offset", type=int, default=0)
+    pia_packet_export_parser.add_argument("--nonmember-offset", type=int, default=0)
+    pia_packet_export_parser.add_argument("--batch-size", type=int, default=4)
+    pia_packet_export_parser.add_argument("--adaptive-query-repeats", type=int, default=1)
+    pia_packet_export_parser.add_argument("--provenance-status", default="workspace-verified")
+
+    pia_translated_alias_parser = subparsers.add_parser(
+        "export-pia-translated-alias-probe",
+        help="export one CPU-first translated-contract alias probe on a frozen PIA member/non-member pair",
+    )
+    pia_translated_alias_parser.add_argument("--config", required=True, help="path to audit yaml")
+    pia_translated_alias_parser.add_argument("--workspace", required=True)
+    pia_translated_alias_parser.add_argument("--repo-root", default="external/PIA")
+    pia_translated_alias_parser.add_argument("--member-split-root", default="external/PIA/DDPM")
+    pia_translated_alias_parser.add_argument("--device", default="cpu")
+    pia_translated_alias_parser.add_argument("--member-index", type=int, required=True)
+    pia_translated_alias_parser.add_argument("--nonmember-index", type=int, required=True)
+    pia_translated_alias_parser.add_argument("--batch-size", type=int, default=1)
+    pia_translated_alias_parser.add_argument("--adaptive-query-repeats", type=int, default=1)
+    pia_translated_alias_parser.add_argument("--alias-selector", default="middleblocks.0.attn.proj_v")
+    pia_translated_alias_parser.add_argument("--translated-from", default="mid_block.attentions.0.to_v")
+    pia_translated_alias_parser.add_argument("--channel-dim", type=int, default=1)
+    pia_translated_alias_parser.add_argument("--mask-kind", default="top_abs_delta_k")
+    pia_translated_alias_parser.add_argument("--k", type=int, default=8)
+    pia_translated_alias_parser.add_argument("--alpha", type=float, default=0.5)
+    pia_translated_alias_parser.add_argument("--mask-seed", type=int, default=0)
+    pia_translated_alias_parser.add_argument("--alias-timestep", type=int, default=0)
+    pia_translated_alias_parser.add_argument("--provenance-status", default="workspace-verified")
+
     runtime_probe_parser = subparsers.add_parser(
         "runtime-probe-secmi",
         help="validate SecMI runtime readiness by loading flags and model",
@@ -854,6 +893,76 @@ def build_parser() -> argparse.ArgumentParser:
         help="provenance label recorded in the emitted payload",
     )
 
+    gsa_masked_packet_parser = subparsers.add_parser(
+        "export-gsa-observability-masked-packet",
+        help="export one CPU-first masked white-box packet scaffold without authorizing any GPU release",
+    )
+    gsa_masked_packet_parser.add_argument("--workspace", required=True)
+    gsa_masked_packet_parser.add_argument("--repo-root", default="workspaces/white-box/external/GSA")
+    gsa_masked_packet_parser.add_argument(
+        "--assets-root",
+        default="workspaces/white-box/assets/gsa-cifar10-1k-3shadow-epoch300-rerun1",
+    )
+    gsa_masked_packet_parser.add_argument(
+        "--checkpoint-root",
+        default="workspaces/white-box/assets/gsa-cifar10-1k-3shadow-epoch300-rerun1/checkpoints/target",
+    )
+    gsa_masked_packet_parser.add_argument("--checkpoint-dir", default=None)
+    gsa_masked_packet_parser.add_argument("--split", required=True)
+    gsa_masked_packet_parser.add_argument("--sample-id", required=True)
+    gsa_masked_packet_parser.add_argument("--control-split", required=True)
+    gsa_masked_packet_parser.add_argument("--control-sample-id", required=True)
+    gsa_masked_packet_parser.add_argument("--layer-selector", default="mid_block.attentions.0.to_v")
+    gsa_masked_packet_parser.add_argument(
+        "--mask-kind",
+        default="top_abs_delta_k",
+        choices=["top_abs_delta_k", "random_k_seeded", "bottom_abs_delta_k"],
+    )
+    gsa_masked_packet_parser.add_argument("--k", type=int, default=8)
+    gsa_masked_packet_parser.add_argument("--alpha", type=float, default=0.5)
+    gsa_masked_packet_parser.add_argument("--timestep", type=int, default=999)
+    gsa_masked_packet_parser.add_argument("--noise-seed", type=int, default=0)
+    gsa_masked_packet_parser.add_argument("--mask-seed", type=int, default=0)
+    gsa_masked_packet_parser.add_argument("--prediction-type", default="epsilon")
+    gsa_masked_packet_parser.add_argument("--device", default="cpu")
+    gsa_masked_packet_parser.add_argument("--resolution", type=int, default=32)
+    gsa_masked_packet_parser.add_argument("--provenance-status", default="workspace-verified")
+
+    gsa_inmodel_packet_parser = subparsers.add_parser(
+        "export-gsa-observability-inmodel-packet",
+        help="export one CPU-first in-model white-box packet canary without authorizing any GPU release",
+    )
+    gsa_inmodel_packet_parser.add_argument("--workspace", required=True)
+    gsa_inmodel_packet_parser.add_argument("--repo-root", default="workspaces/white-box/external/GSA")
+    gsa_inmodel_packet_parser.add_argument(
+        "--assets-root",
+        default="workspaces/white-box/assets/gsa-cifar10-1k-3shadow-epoch300-rerun1",
+    )
+    gsa_inmodel_packet_parser.add_argument(
+        "--checkpoint-root",
+        default="workspaces/white-box/assets/gsa-cifar10-1k-3shadow-epoch300-rerun1/checkpoints/target",
+    )
+    gsa_inmodel_packet_parser.add_argument("--checkpoint-dir", default=None)
+    gsa_inmodel_packet_parser.add_argument("--split", required=True)
+    gsa_inmodel_packet_parser.add_argument("--sample-id", required=True)
+    gsa_inmodel_packet_parser.add_argument("--control-split", required=True)
+    gsa_inmodel_packet_parser.add_argument("--control-sample-id", required=True)
+    gsa_inmodel_packet_parser.add_argument("--layer-selector", default="mid_block.attentions.0.to_v")
+    gsa_inmodel_packet_parser.add_argument(
+        "--mask-kind",
+        default="top_abs_delta_k",
+        choices=["top_abs_delta_k", "random_k_seeded", "bottom_abs_delta_k"],
+    )
+    gsa_inmodel_packet_parser.add_argument("--k", type=int, default=8)
+    gsa_inmodel_packet_parser.add_argument("--alpha", type=float, default=0.5)
+    gsa_inmodel_packet_parser.add_argument("--timestep", type=int, default=999)
+    gsa_inmodel_packet_parser.add_argument("--noise-seed", type=int, default=0)
+    gsa_inmodel_packet_parser.add_argument("--mask-seed", type=int, default=0)
+    gsa_inmodel_packet_parser.add_argument("--prediction-type", default="epsilon")
+    gsa_inmodel_packet_parser.add_argument("--device", default="cpu")
+    gsa_inmodel_packet_parser.add_argument("--resolution", type=int, default=32)
+    gsa_inmodel_packet_parser.add_argument("--provenance-status", default="workspace-verified")
+
     gsa_runtime_mainline_parser = subparsers.add_parser(
         "run-gsa-runtime-mainline",
         help="run the canonical white-box GSA DDPM closed loop against real local assets",
@@ -903,6 +1012,12 @@ def build_parser() -> argparse.ArgumentParser:
         help="prediction type passed to the official GSA DDPM gradient extractor",
     )
     gsa_runtime_mainline_parser.add_argument(
+        "--max-samples",
+        type=int,
+        default=None,
+        help="optional per-side evaluation cap applied to target/shadow member and nonmember gradients",
+    )
+    gsa_runtime_mainline_parser.add_argument(
         "--paper-aligned",
         action="store_true",
         help="use stronger GSA defaults closer to the upstream paper path",
@@ -917,6 +1032,90 @@ def build_parser() -> argparse.ArgumentParser:
         "--provenance-status",
         default="workspace-verified",
         help="provenance label recorded in the emitted summary",
+    )
+
+    gsa_loss_score_export_parser = subparsers.add_parser(
+        "export-gsa-loss-score-packet",
+        help="export a bounded same-asset white-box loss-score packet without mutating admitted gradient mainline semantics",
+    )
+    gsa_loss_score_export_parser.add_argument("--workspace", required=True)
+    gsa_loss_score_export_parser.add_argument(
+        "--repo-root",
+        default="workspaces/white-box/external/GSA",
+    )
+    gsa_loss_score_export_parser.add_argument(
+        "--assets-root",
+        default="workspaces/white-box/assets/gsa-cifar10-1k-3shadow-epoch300-rerun1",
+    )
+    gsa_loss_score_export_parser.add_argument("--resolution", type=int, default=32)
+    gsa_loss_score_export_parser.add_argument("--ddpm-num-steps", type=int, default=20)
+    gsa_loss_score_export_parser.add_argument("--sampling-frequency", type=int, default=2)
+    gsa_loss_score_export_parser.add_argument("--attack-method", type=int, default=1)
+    gsa_loss_score_export_parser.add_argument("--prediction-type", default="epsilon")
+    gsa_loss_score_export_parser.add_argument("--extraction-max-samples", type=int, default=None)
+    gsa_loss_score_export_parser.add_argument(
+        "--device",
+        default="cpu",
+        choices=["auto", "cpu", "cuda"],
+    )
+    gsa_loss_score_export_parser.add_argument("--provenance-status", default="workspace-verified")
+
+    gsa_loss_score_eval_parser = subparsers.add_parser(
+        "evaluate-gsa-loss-score-packet",
+        help="evaluate a bounded threshold-style white-box packet from exported loss-score artifacts",
+    )
+    gsa_loss_score_eval_parser.add_argument("--workspace", required=True)
+    gsa_loss_score_eval_parser.add_argument(
+        "--packet-summary",
+        required=True,
+        help="path to a ready export-gsa-loss-score-packet summary.json artifact",
+    )
+    gsa_loss_score_eval_parser.add_argument(
+        "--evaluation-style",
+        default="threshold-transfer",
+        choices=["threshold-transfer", "gaussian-likelihood-ratio-transfer"],
+        help="score-evaluation surface to apply on the frozen exported packet",
+    )
+    gsa_loss_score_eval_parser.add_argument("--provenance-status", default="workspace-verified")
+
+    gsa_runtime_intervention_review_parser = subparsers.add_parser(
+        "run-gsa-runtime-intervention-review",
+        help="run a bounded baseline/intervened white-box GSA review with one frozen target-anchored mask",
+    )
+    gsa_runtime_intervention_review_parser.add_argument("--workspace", required=True)
+    gsa_runtime_intervention_review_parser.add_argument(
+        "--repo-root",
+        default="workspaces/white-box/external/GSA",
+    )
+    gsa_runtime_intervention_review_parser.add_argument(
+        "--assets-root",
+        default="workspaces/white-box/assets/gsa-cifar10-1k-3shadow-epoch300-rerun1",
+    )
+    gsa_runtime_intervention_review_parser.add_argument(
+        "--mask-summary",
+        required=True,
+        help="path to the frozen target-anchored in-model packet summary containing mask channel indices",
+    )
+    gsa_runtime_intervention_review_parser.add_argument("--resolution", type=int, default=32)
+    gsa_runtime_intervention_review_parser.add_argument("--ddpm-num-steps", type=int, default=20)
+    gsa_runtime_intervention_review_parser.add_argument("--sampling-frequency", type=int, default=2)
+    gsa_runtime_intervention_review_parser.add_argument("--attack-method", type=int, default=1)
+    gsa_runtime_intervention_review_parser.add_argument("--prediction-type", default="epsilon")
+    gsa_runtime_intervention_review_parser.add_argument("--max-samples", type=int, default=None)
+    gsa_runtime_intervention_review_parser.add_argument("--extraction-max-samples", type=int, default=None)
+    gsa_runtime_intervention_review_parser.add_argument(
+        "--paper-aligned",
+        action="store_true",
+        help="use stronger GSA defaults closer to the upstream paper path",
+    )
+    gsa_runtime_intervention_review_parser.add_argument(
+        "--device",
+        default="cpu",
+        choices=["auto", "cpu", "cuda"],
+    )
+    gsa_runtime_intervention_review_parser.add_argument(
+        "--provenance-status",
+        default="workspace-verified",
     )
 
     dpdm_w1_target_only_parser = subparsers.add_parser(
@@ -1204,6 +1403,62 @@ def main(argv: list[str] | None = None) -> int:
         print(json.dumps(payload, indent=2, ensure_ascii=True))
         return 0 if payload["status"] == "ready" else 1
 
+    if args.command == "export-gsa-observability-masked-packet":
+        from diffaudit.attacks.gsa_observability import export_gsa_observability_masked_packet
+
+        payload = export_gsa_observability_masked_packet(
+            workspace=args.workspace,
+            repo_root=args.repo_root,
+            assets_root=args.assets_root,
+            checkpoint_root=args.checkpoint_root,
+            checkpoint_dir=args.checkpoint_dir,
+            split=args.split,
+            sample_id=args.sample_id,
+            control_split=args.control_split,
+            control_sample_id=args.control_sample_id,
+            layer_selector=args.layer_selector,
+            mask_kind=args.mask_kind,
+            k=args.k,
+            alpha=args.alpha,
+            timestep=args.timestep,
+            noise_seed=args.noise_seed,
+            mask_seed=args.mask_seed,
+            prediction_type=args.prediction_type,
+            device=args.device,
+            resolution=args.resolution,
+            provenance_status=args.provenance_status,
+        )
+        print(json.dumps(payload, indent=2, ensure_ascii=True))
+        return 0 if payload["status"] == "ready" else 1
+
+    if args.command == "export-gsa-observability-inmodel-packet":
+        from diffaudit.attacks.gsa_observability import export_gsa_observability_inmodel_packet
+
+        payload = export_gsa_observability_inmodel_packet(
+            workspace=args.workspace,
+            repo_root=args.repo_root,
+            assets_root=args.assets_root,
+            checkpoint_root=args.checkpoint_root,
+            checkpoint_dir=args.checkpoint_dir,
+            split=args.split,
+            sample_id=args.sample_id,
+            control_split=args.control_split,
+            control_sample_id=args.control_sample_id,
+            layer_selector=args.layer_selector,
+            mask_kind=args.mask_kind,
+            k=args.k,
+            alpha=args.alpha,
+            timestep=args.timestep,
+            noise_seed=args.noise_seed,
+            mask_seed=args.mask_seed,
+            prediction_type=args.prediction_type,
+            device=args.device,
+            resolution=args.resolution,
+            provenance_status=args.provenance_status,
+        )
+        print(json.dumps(payload, indent=2, ensure_ascii=True))
+        return 0 if payload["status"] == "ready" else 1
+
     if args.command == "prepare-secmi":
         from diffaudit.attacks.secmi_adapter import prepare_secmi_adapter, summarize_secmi_adapter
 
@@ -1408,6 +1663,53 @@ def main(argv: list[str] | None = None) -> int:
         print(json.dumps(payload, indent=2, ensure_ascii=True))
         return exit_code
 
+    if args.command == "export-pia-packet-scores":
+        from diffaudit.attacks.pia_adapter import export_pia_packet_scores
+
+        config = load_audit_config(args.config)
+        payload = export_pia_packet_scores(
+            config,
+            workspace=args.workspace,
+            repo_root=args.repo_root,
+            member_split_root=args.member_split_root,
+            device=args.device,
+            packet_size=args.packet_size,
+            member_offset=args.member_offset,
+            nonmember_offset=args.nonmember_offset,
+            batch_size=args.batch_size,
+            adaptive_query_repeats=args.adaptive_query_repeats,
+            provenance_status=args.provenance_status,
+        )
+        print(json.dumps(payload, indent=2, ensure_ascii=True))
+        return 0 if payload["status"] == "ready" else 1
+
+    if args.command == "export-pia-translated-alias-probe":
+        from diffaudit.attacks.pia_adapter import export_pia_translated_alias_probe
+
+        config = load_audit_config(args.config)
+        payload = export_pia_translated_alias_probe(
+            config,
+            workspace=args.workspace,
+            repo_root=args.repo_root,
+            member_split_root=args.member_split_root,
+            device=args.device,
+            member_index=args.member_index,
+            nonmember_index=args.nonmember_index,
+            batch_size=args.batch_size,
+            adaptive_query_repeats=args.adaptive_query_repeats,
+            alias_selector=args.alias_selector,
+            translated_from=args.translated_from,
+            channel_dim=args.channel_dim,
+            mask_kind=args.mask_kind,
+            k=args.k,
+            alpha=args.alpha,
+            mask_seed=args.mask_seed,
+            alias_timestep=args.alias_timestep,
+            provenance_status=args.provenance_status,
+        )
+        print(json.dumps(payload, indent=2, ensure_ascii=True))
+        return 0 if payload["status"] == "ready" else 1
+
     if args.command == "runtime-probe-secmi":
         from diffaudit.attacks.secmi_adapter import probe_secmi_runtime
 
@@ -1497,6 +1799,64 @@ def main(argv: list[str] | None = None) -> int:
             sampling_frequency=sampling_frequency,
             attack_method=args.attack_method,
             prediction_type=args.prediction_type,
+            max_samples=args.max_samples,
+            device=args.device,
+            provenance_status=args.provenance_status,
+        )
+        print(json.dumps(payload, indent=2, ensure_ascii=True))
+        return 0 if payload["status"] == "ready" else 1
+
+    if args.command == "export-gsa-loss-score-packet":
+        from diffaudit.attacks.gsa import export_gsa_loss_score_packet
+
+        payload = export_gsa_loss_score_packet(
+            workspace=args.workspace,
+            assets_root=args.assets_root,
+            repo_root=args.repo_root,
+            resolution=args.resolution,
+            ddpm_num_steps=args.ddpm_num_steps,
+            sampling_frequency=args.sampling_frequency,
+            attack_method=args.attack_method,
+            prediction_type=args.prediction_type,
+            extraction_max_samples=args.extraction_max_samples,
+            device=args.device,
+            provenance_status=args.provenance_status,
+        )
+        print(json.dumps(payload, indent=2, ensure_ascii=True))
+        return 0 if payload["status"] == "ready" else 1
+
+    if args.command == "evaluate-gsa-loss-score-packet":
+        from diffaudit.attacks.gsa import evaluate_gsa_loss_score_packet
+
+        payload = evaluate_gsa_loss_score_packet(
+            workspace=args.workspace,
+            packet_summary=args.packet_summary,
+            evaluation_style=args.evaluation_style,
+            provenance_status=args.provenance_status,
+        )
+        print(json.dumps(payload, indent=2, ensure_ascii=True))
+        return 0 if payload["status"] == "ready" else 1
+
+    if args.command == "run-gsa-runtime-intervention-review":
+        from diffaudit.attacks.gsa import run_gsa_runtime_intervention_review
+
+        ddpm_num_steps = args.ddpm_num_steps
+        sampling_frequency = args.sampling_frequency
+        if args.paper_aligned:
+            ddpm_num_steps = 1000
+            sampling_frequency = 10
+        payload = run_gsa_runtime_intervention_review(
+            workspace=args.workspace,
+            assets_root=args.assets_root,
+            repo_root=args.repo_root,
+            mask_summary=args.mask_summary,
+            resolution=args.resolution,
+            ddpm_num_steps=ddpm_num_steps,
+            sampling_frequency=sampling_frequency,
+            attack_method=args.attack_method,
+            prediction_type=args.prediction_type,
+            max_samples=args.max_samples,
+            extraction_max_samples=args.extraction_max_samples,
             device=args.device,
             provenance_status=args.provenance_status,
         )

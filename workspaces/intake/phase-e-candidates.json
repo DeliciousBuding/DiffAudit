@@ -1,7 +1,7 @@
 {
   "schema": "diffaudit.phase_e_candidates.v2",
-  "updated_at": "2026-04-16",
-  "status": "sparse-hold",
+  "updated_at": "2026-04-17",
+  "status": "document-conditional-only",
   "scope": "research-owned candidate metadata only; not a promoted contract surface, not a Local-API job routing surface, and not an admitted benchmark registry",
   "document_layer_conditional": [
     {
@@ -15,16 +15,5 @@
       "source_doc": "workspaces/gray-box/2026-04-09-pia-provenance-dossier.md"
     }
   ],
-  "intake_review_priority_order": [
-    {
-      "order": 1,
-      "id": "white-box/finding-nemo-local-memorization-fb-mem",
-      "track": "white-box",
-      "record_class": "phase-e-candidate",
-      "current_verdict": "hold",
-      "current_shape": "adapter-complete zero-GPU hold",
-      "current_boundary": "non-GPU only; remains an intake dossier until a separate hypothesis/budget review exists",
-      "source_doc": "workspaces/intake/2026-04-10-phase-e-finding-nemo-intake-hold-decision.md"
-    }
-  ]
+  "intake_review_priority_order": []
 }
