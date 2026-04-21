@@ -148,12 +148,13 @@ workspaces/              多人协作工作区
 2. `probe-recon-assets`
 3. `dry-run-recon`
 4. `run-recon-mainline-smoke`
-5. 若已有真实 dataset payload 与 target/shadow LoRA checkpoint，先执行 `probe-recon-runtime-assets`
-6. runtime asset probe 通过后执行 `run-recon-runtime-mainline`
-7. 有现成 score artifact 时，先执行 `probe-recon-score-artifacts`
-8. artifact probe 通过后执行 `run-recon-artifact-mainline`
-9. 需要拆阶段排查时，再分别执行 `run-recon-eval-smoke` / `summarize-recon-artifacts` / `run-recon-upstream-eval-smoke`
-10. 对仅有图像、缺原始 caption 的场景，再补 BLIP captioning 路线
+5. 若要启动 strict paper-faithful `Attack-I`，先执行 `check-recon-stage0-paper-gate`
+6. 若已有真实 dataset payload 与 target/shadow LoRA checkpoint，先执行 `probe-recon-runtime-assets`
+7. runtime asset probe 通过后执行 `run-recon-runtime-mainline`
+8. 有现成 score artifact 时，先执行 `probe-recon-score-artifacts`
+9. artifact probe 通过后执行 `run-recon-artifact-mainline`
+10. 需要拆阶段排查时，再分别执行 `run-recon-eval-smoke` / `summarize-recon-artifacts` / `run-recon-upstream-eval-smoke`
+11. 对仅有图像、缺原始 caption 的场景，再补 BLIP captioning 路线
 
 对 `DiT` 这条 transformer 扩散模型运行线，当前推荐命令顺序是：
 
@@ -413,11 +414,18 @@ python -m diffaudit run-recon-runtime-mainline --target-member-dataset path/to/t
 - `--backend stable_diffusion` 走当前默认的 Stable Diffusion LoRA 推理链
 - `--backend kandinsky_v22` 走上游 `kandinsky2_2_inference.py`，但需要额外提供 target/shadow 的 `decoder_dir` 与 `prior_dir`
 - 公开 `recon` 资产的当前语义映射说明见 [docs/recon-public-asset-mapping.md](docs/recon-public-asset-mapping.md)
+- 当前公开 bundle 的 strict paper-faithful Stage 0 gate 仍会返回 `blocked`，因为它只能证明 `proxy-shadow-member / local-semantic-chain-ready`，不能证明 paper-aligned `target/shadow/member/non-member` 语义
 
 若要显式验证 `DDIM` 采样器路径，可追加：
 
 ```powershell
 python -m diffaudit run-recon-runtime-mainline --target-member-dataset path/to/target_member_dataset.pkl --target-nonmember-dataset path/to/target_nonmember_dataset.pkl --shadow-member-dataset path/to/shadow_member_dataset.pkl --shadow-nonmember-dataset path/to/shadow_nonmember_dataset.pkl --target-model-dir path/to/target_lora_checkpoint --shadow-model-dir path/to/shadow_lora_checkpoint --workspace experiments/recon-runtime-mainline-ddim --repo-root external/Reconstruction-based-Attack --scheduler ddim --method threshold
+```
+
+检查 `recon` strict paper-faithful Stage 0 gate：
+
+```powershell
+python -m diffaudit check-recon-stage0-paper-gate --repo-root external/Reconstruction-based-Attack --bundle-root external/recon-assets/ndss-2025-blackbox-membership-inference-fine-tuned-diffusion-models --attack-scenario attack-i
 ```
 
 探测官方 `DiT` 采样资产：

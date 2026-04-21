@@ -151,6 +151,18 @@ def build_parser() -> argparse.ArgumentParser:
     )
     recon_public_bundle_audit_parser.add_argument("--bundle-root", required=True)
 
+    recon_stage0_gate_parser = subparsers.add_parser(
+        "check-recon-stage0-paper-gate",
+        help="block strict Recon Attack-I starts unless the public bundle is paper-aligned",
+    )
+    recon_stage0_gate_parser.add_argument(
+        "--repo-root",
+        default="external/Reconstruction-based-Attack",
+        help="path to local reconstruction-based attack repository root",
+    )
+    recon_stage0_gate_parser.add_argument("--bundle-root", required=True)
+    recon_stage0_gate_parser.add_argument("--attack-scenario", default="attack-i")
+
     dit_asset_probe_parser = subparsers.add_parser(
         "probe-dit-assets",
         help="inspect official DiT sampling workspace and optional checkpoint readiness",
@@ -1332,6 +1344,17 @@ def main(argv: list[str] | None = None) -> int:
         from diffaudit.attacks.recon import audit_recon_public_bundle
 
         payload = audit_recon_public_bundle(bundle_root=args.bundle_root)
+        print(json.dumps(payload, indent=2, ensure_ascii=True))
+        return 0 if payload["status"] == "ready" else 1
+
+    if args.command == "check-recon-stage0-paper-gate":
+        from diffaudit.attacks.recon import check_recon_stage0_paper_gate
+
+        payload = check_recon_stage0_paper_gate(
+            repo_root=args.repo_root,
+            bundle_root=args.bundle_root,
+            attack_scenario=args.attack_scenario,
+        )
         print(json.dumps(payload, indent=2, ensure_ascii=True))
         return 0 if payload["status"] == "ready" else 1
 

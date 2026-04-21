@@ -59,9 +59,11 @@
 - 可以合理声称：公开资产已经足以支撑 `Stable Diffusion + DDIM` 的 `10-sample public runtime-mainline`，以及 `kandinsky_v22` 的最小真实 `runtime-mainline`
 - 可以合理声称：当前 `derived-public-{10,25,50,100}` 都带有一致的本地映射注释，因此现有 `recon` 主证据链是“语义受约束但本地自洽”的
 - 不能合理声称：当前公开资产已经严格对齐论文里的完整 target/shadow/member/non-member 语义
+- issue #10 后，strict paper-faithful `Attack-I` 入口必须使用 `check-recon-stage0-paper-gate`；当前 gate 的正确结果是 `blocked / paper_aligned_semantics = false`
 
 ## 推荐执行策略
 
 1. `1-sample` 与更小规模 smoke 可继续用当前映射推进，目的在于验证系统与运行链。
 2. 扩到更大样本规模前，先在报告中显式注明 `shadow_member` 仍是代理语义。
-3. 如果后续拿到更完整的 split 说明或补充资产，再更新本文件，不要直接在命令里静默替换映射。
+3. 若目标是 strict paper-faithful `Attack-I`，先运行 `check-recon-stage0-paper-gate`；在该 gate 返回 `blocked` 时，不允许把结果写成 paper-aligned。
+4. 如果后续拿到更完整的 split 说明或补充资产，再更新本文件，不要直接在命令里静默替换映射。
