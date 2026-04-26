@@ -24,6 +24,10 @@ conda activate diffaudit-research
 python scripts/bootstrap_research_env.py --install
 ```
 
+上面这套是默认接仓入口，也是 CI 使用的入口。
+
+如果你用的是较新的 NVIDIA GPU，并且在默认环境里已经遇到 `no kernel image is available for execution on the device`，再把上面的 `environment.yml` 换成 `environment.gpu-cu128.yml` 重试；普通接仓不要默认改共享入口。
+
 ## 2. 本地资产模板
 
 不要直接改共享配置里的占位符。

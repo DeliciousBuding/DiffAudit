@@ -180,6 +180,8 @@ conda activate diffaudit-research
 python -m ipykernel install --user --name diffaudit-research --display-name "Python (diffaudit-research)"
 ```
 
+默认入口使用 `environment.yml`。如果你在较新的 NVIDIA GPU 上已经遇到 `no kernel image is available for execution on the device`，请改看 [docs/environment.md](docs/environment.md) 里的可选 `environment.gpu-cu128.yml` 方案，不要直接把默认环境文件改成面向单机 GPU 的版本。
+
 环境说明见 [docs/environment.md](docs/environment.md)。
 队友接仓指南见 [docs/teammate-setup.md](docs/teammate-setup.md)。
 
