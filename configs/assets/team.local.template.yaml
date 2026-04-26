@@ -5,6 +5,7 @@ team:
 
 repo:
   research_root: .
+  download_root: REPLACE_WITH_DIFFAUDIT_DOWNLOAD_ROOT
 
 shared:
   cifar10_archive: REPLACE_WITH_CIFAR10_ARCHIVE

@@ -4,6 +4,8 @@
 
 目标不是解释算法，而是保证新机器能尽快进入“可跑命令、可补路径、可继续三线复现”的状态。
 
+如果只看一份数据/权重说明，先看 [data-and-assets-handoff.md](data-and-assets-handoff.md)。它记录了如何拿到和当前项目一致的 `Download\` 资产布局。
+
 ## 1. 拉仓后的第一步
 
 在 `Research` 根目录执行：
@@ -29,6 +31,16 @@ python scripts/bootstrap_research_env.py --install
 如果你用的是较新的 NVIDIA GPU，并且在默认环境里已经遇到 `no kernel image is available for execution on the device`，再把上面的 `environment.yml` 换成 `environment.gpu-cu128.yml` 重试；普通接仓不要默认改共享入口。
 
 ## 2. 本地资产模板
+
+默认目录布局是：
+
+```text
+D:\Code\DiffAudit\
+  Research\        # this git repo
+  Download\        # raw datasets / weights / supplementary bundles
+```
+
+`Download\` 不属于 git 仓库。新机器要么从项目资产镜像复制整个 `Download\`，要么按 [research-download-master-list.md](research-download-master-list.md) 的 first-wave 顺序下载。不要把这些大文件放回 `Research\external\`。
 
 不要直接改共享配置里的占位符。
 
@@ -112,6 +124,6 @@ conda run -n diffaudit-research python -m diffaudit probe-gsa-assets --repo-root
 4. 黑盒入口里误用 `SecMI`，它属于灰盒 baseline。
 5. `TMIA-DM` 已归档但属于灰盒候选，不要把它写成黑盒主线。
 6. `variation` 的真实恢复首先缺 query image set，不是先缺 API 代码。
-
+7. `D:\Code\DiffAudit\Download\manifests\research-download-manifest.json` 是本机 manifest；真正随仓库走的是 [research-download-master-list.md](research-download-master-list.md) 和 [data-and-assets-handoff.md](data-and-assets-handoff.md)。
 
 

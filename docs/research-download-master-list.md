@@ -4,33 +4,38 @@
 > Principle: top-level only grouped by `black-box / gray-box / white-box / shared`
 > GitHub repositories are intentionally excluded because the agent can fetch those itself.
 > Current local/manual status snapshot: `D:\Code\DiffAudit\Research\docs\research-download-current-status.md`
+> Teammate handoff guide: `D:\Code\DiffAudit\Research\docs\data-and-assets-handoff.md`
 
 ---
 
 ## 1. Directory Rules
 
-Download all assets into these directories:
+New teammates should either copy the project `Download\` directory wholesale from a trusted project mirror, or recreate it by downloading the assets below into the same layout.
 
-- `D:\\Code\\DiffAudit\\Download\\black-box\datasets`
-- `D:\\Code\\DiffAudit\\Download\\black-box\weights`
-- `D:\\Code\\DiffAudit\\Download\\black-box\papers`
-- `D:\\Code\\DiffAudit\\Download\\black-box\supplementary`
-- `D:\\Code\\DiffAudit\\Download\\gray-box\datasets`
-- `D:\\Code\\DiffAudit\\Download\\gray-box\weights`
-- `D:\\Code\\DiffAudit\\Download\\gray-box\papers`
-- `D:\\Code\\DiffAudit\\Download\\gray-box\supplementary`
-- `D:\\Code\\DiffAudit\\Download\\white-box\datasets`
-- `D:\\Code\\DiffAudit\\Download\\white-box\weights`
-- `D:\\Code\\DiffAudit\\Download\\white-box\papers`
-- `D:\\Code\\DiffAudit\\Download\\white-box\supplementary`
-- `D:\\Code\\DiffAudit\\Download\\shared\datasets`
-- `D:\\Code\\DiffAudit\\Download\\shared\weights`
-- `D:\\Code\\DiffAudit\\Download\\shared\papers`
-- `D:\\Code\\DiffAudit\\Download\\shared\supplementary`
+Download all raw assets into these directories:
+
+- `D:\Code\DiffAudit\Download\black-box\datasets`
+- `D:\Code\DiffAudit\Download\black-box\weights`
+- `D:\Code\DiffAudit\Download\black-box\papers`
+- `D:\Code\DiffAudit\Download\black-box\supplementary`
+- `D:\Code\DiffAudit\Download\gray-box\datasets`
+- `D:\Code\DiffAudit\Download\gray-box\weights`
+- `D:\Code\DiffAudit\Download\gray-box\papers`
+- `D:\Code\DiffAudit\Download\gray-box\supplementary`
+- `D:\Code\DiffAudit\Download\white-box\datasets`
+- `D:\Code\DiffAudit\Download\white-box\weights`
+- `D:\Code\DiffAudit\Download\white-box\papers`
+- `D:\Code\DiffAudit\Download\white-box\supplementary`
+- `D:\Code\DiffAudit\Download\shared\datasets`
+- `D:\Code\DiffAudit\Download\shared\weights`
+- `D:\Code\DiffAudit\Download\shared\papers`
+- `D:\Code\DiffAudit\Download\shared\supplementary`
 
 Machine-readable mirror:
 
-- `D:\\Code\\DiffAudit\\Download\\manifests\research-download-manifest.json`
+- `D:\Code\DiffAudit\Download\manifests\research-download-manifest.json`
+
+That manifest is local to the machine and not committed with `Research`. The committed source of truth for a teammate is this document plus [data-and-assets-handoff.md](data-and-assets-handoff.md).
 
 ---
 
@@ -136,6 +141,8 @@ If you want to front-load the highest-value assets before we reopen serious expe
 5. `SH-WT-03` BLIP large
 6. `GB-WT-01` SecMI official bundle
 7. `WB-SUP-01` / `BB-SUP-02` if you can obtain real supplementary artifacts
+
+After downloading, bind the local paths through `configs/assets/team.local.yaml`; do not edit shared attack configs with personal absolute paths.
 
 ---
 

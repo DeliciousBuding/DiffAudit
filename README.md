@@ -4,6 +4,18 @@ DiffAudit 是一个面向扩散模型的隐私风险审计研究仓库。
 
 本项目的目标不是提升图像生成质量，而是研究扩散模型是否会对训练样本产生过强记忆，并围绕成员推断攻击、风险量化、证据整理和审计原型逐步形成一套可复现的研究工作流。
 
+## 新同学接手
+
+如果你刚拉下这个仓库，按这个顺序走：
+
+1. 先看 [docs/teammate-setup.md](docs/teammate-setup.md) 建环境。
+2. 再看 [docs/data-and-assets-handoff.md](docs/data-and-assets-handoff.md) 获取和当前项目一致的数据集、权重和 supplementary 包。
+3. 按 [docs/research-download-master-list.md](docs/research-download-master-list.md) 的 first-wave 清单补齐缺失资产。
+4. 用 `configs/assets/team.local.template.yaml` 复制出本机 `configs/assets/team.local.yaml`，只在本机文件里填个人路径。
+5. 运行 `python scripts/render_team_local_configs.py` 和 `python scripts/verify_env.py` 做接手自检。
+
+默认资产布局是 `D:\Code\DiffAudit\Research` 放仓库、`D:\Code\DiffAudit\Download` 放原始数据集/权重/补充包。不要把大数据集和模型权重放进 `Research/external`。
+
 ## 项目定位
 
 一句话概括：
@@ -184,6 +196,7 @@ python -m ipykernel install --user --name diffaudit-research --display-name "Pyt
 
 环境说明见 [docs/environment.md](docs/environment.md)。
 队友接仓指南见 [docs/teammate-setup.md](docs/teammate-setup.md)。
+数据集、权重、supplementary 包的获取与本机路径绑定见 [docs/data-and-assets-handoff.md](docs/data-and-assets-handoff.md)。
 
 环境验证：
 

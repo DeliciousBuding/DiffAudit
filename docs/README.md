@@ -6,6 +6,7 @@
 - `comprehensive-progress.md`: one-page integrated progress view for the research repo
 - `mainline-narrative.md`: current research storyline, claimable contributions, and presentation-ready framing
 - `storage-boundary.md`: where external code, raw downloads, lane assets, and run evidence should live
+- `data-and-assets-handoff.md`: how a teammate gets the same datasets, weights, supplementary bundles, and local path bindings
 - `recon-artifact-replay-guidance.md`: separation notes for Runtime recon-artifact replay directories versus admitted evidence
 - `future-phase-e-intake.md`: ordered intake queue, entry gates, and expected outputs for the next research question
 - `next-run-intake-index.md`: next-run intake gate entrypoints and contracts
@@ -38,6 +39,7 @@
 - [comprehensive-progress.md](comprehensive-progress.md)：研究仓库的综合进度入口
 - [mainline-narrative.md](mainline-narrative.md)：当前主线叙事、可主张创新点与答辩/PPT 素材入口
 - [storage-boundary.md](storage-boundary.md)：`external / third_party / Download / workspaces/*/assets / runs` 的存放边界
+- [data-and-assets-handoff.md](data-and-assets-handoff.md)：新同学获取同样数据集/权重/补充包并绑定本机路径的入口
 - [future-phase-e-intake.md](future-phase-e-intake.md)：`Phase E` 候选池排序、进入条件与退出条件
 - [next-run-intake-index.md](next-run-intake-index.md)：可运行 next-run 入口索引（用于挂任务板的一句话口径）
 - [repo-map.md](repo-map.md)：仓库目录地图和代码职责说明
