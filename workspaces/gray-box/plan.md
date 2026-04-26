@@ -4,10 +4,10 @@
 
 - `owner`: `research_leader`
 - `scope`: 部分中间信息、条件相关评分、噪声预测与结构特征下的成员推断
-- `status`: `PIA real-asset runtime-mainline ready; GPU128/GPU256/GPU512 baseline + defended pairs landed; GPU512 rerun confirmed; GPU128/GPU256 adaptive portability pair landed on RTX4070 8GB; provisional G-1 established; SecMI full-split corroboration landed; PIA-vs-SecMI disagreement verdict landed`
-- `blocked by`: `PIA` 仍未升级到 `paper-aligned`；灰盒当前仍缺第二条 defended comparator；`PIA + SecMI` 还没有 promotion-worthy 的 fusion story
-- `next step`: 保持 `stochastic-dropout = provisional G-1 (repeat-confirmed at GPU512)`；把 `SecMI` 固定为独立 corroboration line 而不是 blocked baseline；不再为 naive `PIA + SecMI` fusion 消耗预算；若再动 GPU，优先材料不同的 gray-box defense 或新 family
-- `last updated`: `2026-04-15`
+- `status`: `PIA real-asset runtime-mainline ready; GPU128/GPU256/GPU512 baseline + defended pairs landed; GPU512 rerun confirmed; GPU128/GPU256 adaptive portability pair landed on RTX4070 8GB; provisional G-1 established; SecMI full-split corroboration landed; PIA-vs-SecMI disagreement verdict landed; TMIA-DM late-window + temporal-striding(stride=2) is now the strongest defended gray-box challenger reference; Noise as a Probe is a strengthened bounded challenger candidate; MoFit is now current-contract hold; CDI contract review and first internal canary both landed; PIA 2048 shared-score surface landed; repaired SecMI 2048 paired surface now also landed and recovers the old strong paired regime; CDI paired-feature scorer design now also landed; CDI paired scorer boundary is now frozen to default-internal-only; summary-layer wording is now synchronized; default-run policy is now frozen; machine-readable contract is now emitted; consumer handoff rule is now also landed; gray-box current gpu question = none`
+- `blocked by`: `PIA` 仍未升级到 `paper-aligned`；`SimA` feasibility 与 later-timestep rescan 虽都可执行但仍明显偏弱；`structural memorization` 当前 local faithful approximation 也已落成 `negative but useful`；`Noise as a Probe` 在当前 local `SD1.5` 合同上没有 honest defended-extension gate；`MoFit` 在当前 local contract 下只给出 tiny weak-positive gap`
+- `next step`: 保持 `PIA + stochastic-dropout(all_steps)` 为 admitted defended headline；保持 `TMIA-DM late-window + temporal-striding(stride=2)` 为 strongest defended challenger reference，并将其冻结为当前选中的 second gray-box defense mechanism；保持 `Noise as a Probe` 为 strengthened bounded challenger candidate；保持 `MoFit` 为 `current-contract hold`；`PIA vs TMIA-DM confidence-gated switching` 已完成 bounded offline packet，但未超过 `z-score sum`，因此 gray-box 当前应让出 next live CPU-first slot，且继续保持 `gpu_question = none`
+- `last updated`: `2026-04-17`
 
 ## 推荐论文
 
@@ -18,6 +18,7 @@
 - `2025-arxiv-small-noise-injection-membership-inference-diffusion-models.pdf`
 - `2026-crad-temporal-membership-inference-attack-method-diffusion-models.pdf`
 - `2026-openreview-mofit-caption-free-membership-inference.pdf`
+- `2025-cvpr-cdi-copyrighted-data-identification-diffusion-models.pdf`
 
 ## 当前主线与 baseline
 
@@ -28,7 +29,7 @@
 
 - `PIA` 是当前最成熟、最适合作为“攻击 + 防御”主讲闭环的一条线
 - `SecMI` 已完成 full-split local execution，当前更适合作为独立 corroboration line，而不是 blocked placeholder
-- `TMIA-DM` 已归档，但当前应作为时间相关噪声信号的灰盒候选论文，而不是黑盒主线
+- `TMIA-DM` 当前已升级为 strongest packaged gray-box challenger，应写成灰盒时间相关噪声信号主候选，而不是 intake-only 占位或黑盒主线
 
 ## 当前可执行证据
 
@@ -50,6 +51,57 @@
 - `workspaces/gray-box/2026-04-08-secmi-blocked.md`
 - `workspaces/gray-box/2026-04-15-pia-vs-secmi-graybox-comparison.md`
 - `workspaces/gray-box/2026-04-15-graybox-ranking-sensitive-disagreement-verdict.md`
+- `workspaces/gray-box/2026-04-16-tmiadm-temporal-striding-defense-verdict.md`
+- `workspaces/gray-box/2026-04-16-pia-vs-tmiadm-temporal-striding-defended-comparison.md`
+- `workspaces/gray-box/2026-04-16-noise-as-probe-challenger-boundary-review.md`
+- `workspaces/gray-box/2026-04-16-noise-as-probe-defended-extension-feasibility-review.md`
+- `workspaces/gray-box/2026-04-16-post-temporal-striding-graybox-next-question-review.md`
+- `workspaces/gray-box/2026-04-16-post-noise-next-family-reselection.md`
+- `workspaces/gray-box/2026-04-16-mofit-protocol-asset-contract.md`
+- `workspaces/gray-box/2026-04-16-mofit-implementation-surface-review.md`
+- `workspaces/gray-box/2026-04-16-mofit-scaffold-schema-decision.md`
+- `workspaces/gray-box/2026-04-16-mofit-scaffold-implementation-verdict.md`
+- `workspaces/gray-box/2026-04-16-mofit-record-schema-integration-verdict.md`
+- `workspaces/gray-box/2026-04-16-mofit-score-trace-update-verdict.md`
+- `workspaces/gray-box/2026-04-16-mofit-optimization-helper-verdict.md`
+- `workspaces/gray-box/2026-04-16-mofit-latent-loss-contract-verdict.md`
+- `workspaces/gray-box/2026-04-16-mofit-real-target-path-wiring-verdict.md`
+- `workspaces/gray-box/2026-04-16-mofit-sample-level-execution-assembly-verdict.md`
+- `workspaces/gray-box/2026-04-16-mofit-script-level-canary-execution-review.md`
+- `workspaces/gray-box/2026-04-16-mofit-script-level-canary-implementation-verdict.md`
+- `workspaces/gray-box/2026-04-16-mofit-real-asset-canary-launch-gate-review.md`
+- `workspaces/gray-box/2026-04-16-mofit-launch-budget-tightening-verdict.md`
+- `workspaces/gray-box/2026-04-16-mofit-fresh-real-asset-canary-verdict.md`
+- `workspaces/gray-box/2026-04-16-mofit-canary-score-shape-review.md`
+- `workspaces/gray-box/2026-04-16-mofit-cpu-microrung-design.md`
+- `workspaces/gray-box/2026-04-16-mofit-cpu-microrung-execution-verdict.md`
+- `workspaces/gray-box/2026-04-16-mofit-cpu-microrung-score-review.md`
+- `workspaces/gray-box/2026-04-16-mofit-final-cpu-reviewrung-verdict.md`
+- `workspaces/gray-box/2026-04-16-mofit-current-contract-hold-verdict.md`
+- `workspaces/gray-box/2026-04-16-post-mofit-next-family-reselection.md`
+- `workspaces/gray-box/2026-04-16-cdi-protocol-asset-contract.md`
+- `workspaces/gray-box/2026-04-16-cdi-feature-collection-surface-review.md`
+- `workspaces/gray-box/2026-04-16-cdi-internal-canary-verdict.md`
+- `workspaces/gray-box/2026-04-16-pia-2048-cdi-rung-runtime-health-review.md`
+- `workspaces/gray-box/2026-04-16-pia-2048-cdi-rung-verdict.md`
+- `workspaces/gray-box/2026-04-16-secmi-pia-2048-paired-surface-verdict.md`
+- `workspaces/gray-box/2026-04-16-cdi-paired-feature-extension-review.md`
+- `workspaces/gray-box/2026-04-16-cdi-paired-surface-mismatch-review.md`
+- `workspaces/gray-box/2026-04-16-secmi-paired-surface-repair-contract-review.md`
+- `workspaces/gray-box/2026-04-16-secmi-pia-2048-repaired-paired-surface-verdict.md`
+- `workspaces/gray-box/2026-04-16-cdi-paired-feature-repromotion-review.md`
+- `workspaces/gray-box/2026-04-16-cdi-paired-feature-scorer-design.md`
+- `workspaces/gray-box/2026-04-16-cdi-paired-scorer-boundary-review.md`
+- `workspaces/gray-box/2026-04-17-cdi-paired-scorer-machine-readable-contract-note.md`
+- `workspaces/gray-box/2026-04-17-cdi-paired-scorer-consumer-handoff-note.md`
+- `workspaces/gray-box/2026-04-17-graybox-post-cdi-lane-reselection-review.md`
+- `workspaces/gray-box/2026-04-17-noise-as-probe-promotion-gap-review.md`
+- `workspaces/gray-box/2026-04-17-noise-as-probe-contract-shift-review.md`
+- `workspaces/gray-box/2026-04-17-graybox-post-noise-contract-shift-reselection-review.md`
+- `workspaces/gray-box/runs/cdi-internal-canary-20260416-r1/audit_summary.json`
+- `workspaces/gray-box/runs/cdi-paired-canary-20260417-r3-contract/audit_summary.json`
+- `workspaces/gray-box/runs/pia-cifar10-runtime-mainline-20260416-gpu-2048-cdi-r1/summary.json`
+- `workspaces/gray-box/runs/secmi-pia-disagreement-20260416-r2/summary.json`
 - `workspaces/gray-box/runs/pia-cifar10-runtime-mainline-20260408-gpu-128/summary.json`
 - `workspaces/gray-box/runs/pia-cifar10-runtime-mainline-dropout-defense-20260408-gpu-128/summary.json`
 - `workspaces/gray-box/runs/pia-cifar10-runtime-mainline-20260408-gpu-256/summary.json`
@@ -84,17 +136,41 @@
 
 ## 当前推荐执行顺序
 
-1. 固定 `stochastic-dropout = provisional G-1`
-2. 以 `GPU512` 为主档，做单旋钮最小消融，不再继续扩大样本规模
-3. 为 `PIA` defense pair 补 `FID / IS / LPIPS` 中至少一项可落地 utility 指标，并把 wall-clock 写成正式成本列
-4. 复用 [2026-04-09-pia-signal-and-cost.md](2026-04-09-pia-signal-and-cost.md) 作为灰盒主讲线的机理与成本说明
-5. 把 repeated-query adaptive review 设成硬门槛，并比较 `off / all_steps / late_steps_only`
-6. 补同档 repeat / 多 seed 的最小稳健性说明，而不是换数据集
-7. 把 `SecMI` 固定为 `independent corroboration line`，不要再写成 `blocked baseline`
-8. 将 `PIA vs SecMI` disagreement verdict 固定为 `naive fusion = no-go`
-9. 保持 `TMIA-DM` 为研究候选，不提前伪装成可执行主线
-10. 复用 [2026-04-09-graybox-signal-axis-note.md](2026-04-09-graybox-signal-axis-note.md) 统一 `PIA / TMIA-DM / SimA / MoFit` 的信号轴叙事
-11. 将灰盒主结果接入统一总表并持续复用
+1. 固定 `PIA + stochastic-dropout(all_steps)` 为 admitted defended headline，不再回退成单纯“provisional but unstable”
+2. 固定 `TMIA-DM late-window + temporal-striding(stride=2)` 为 strongest defended gray-box challenger reference，不再继续机械补 rung
+3. 固定 `Noise as a Probe` 为 `strengthened bounded challenger candidate`，但不把它提前包装成 active challenger
+4. 将灰盒当前状态明确写成 `no-new-gpu-question`，直到出现 genuinely new mechanism 或真实 contract shift
+5. 把 `SecMI` 固定为 `independent corroboration line`，把 `PIA vs SecMI` 固定为 `naive fusion = no-go`
+6. 复用 [2026-04-09-pia-signal-and-cost.md](2026-04-09-pia-signal-and-cost.md) 与 [2026-04-09-graybox-signal-axis-note.md](2026-04-09-graybox-signal-axis-note.md) 维持灰盒主讲线机理与信号轴叙事
+7. `MoFit` 当前最终 verdict 已固定为 `execution-positive but signal-weak / current-contract hold`
+8. `MoFit` 只有在 target-family、caption/bootstrap、surrogate objective、embedding objective 或 score definition 发生实质变化时，才允许重开
+9. 当前下一条 live lane 已重选为 `CDI`
+10. `CDI` 当前应写成 `gray-box collection-level audit extension`，而不是单样本 MIA 替代线
+11. `CDI` 的第一步必须保持 `CPU-only + contract-first`，并冻结 `P/U/control/test` collection schema、首个可复用 score source 与 Welch-`t` audit summary contract
+12. `CDI` 的 honest local surface 当前固定为共享 local `CIFAR-10 DDPM` score contract，不应一开始跳到 `SD1.5`、latent-diffusion 或 white-box-only feature path
+13. `CDI` 的 first bounded canary 已冻结为：现有 `1024 / 1024` shared surface 上的 deterministic `512 / 512` control-test partition + `SecMI stat only`
+14. paired `PIA + SecMI` 当前保留为下一条 extension，而不是 first canary 默认值
+15. 当前最有价值的 GPU follow-up 不是重开旧 family，而是把 `PIA` 的 shared-score surface 扩大，供 `CDI` 的 paired-method follow-up 直接消费
+16. `CDI` 的 first internal canary 已经真实落盘，并且在 memberness orientation 显式归一后给出强同向 Welch statistic；这证明当前 lane 已经从 contract truth 升级到 execution truth
+17. 活跃中的 `PIA 2048` GPU rung 目前仍在真实计算，但已超过最简单线性时长预期且尚未吐出首批 artifact；因此当前策略不是无限等待，而是保留到显式 runtime-health cap 后再决定继续或止损
+18. `PIA 2048` rung 现已完成并被固定为 `positive but cost-heavy`：它足以作为 `CDI` paired follow-up 的新 `PIA` surface，但不足以单独再放行更大的同家族 `PIA` 扩档
+19. `SecMI 2048` paired-surface export 已执行成功，但结果是 `mixed but useful`：当前 widened paired surface 并不稳定 enough for immediate paired `CDI` promotion，因此下一步应先 review mismatch，再决定是保留 `1024`、修正 `2048`，还是另建 paired contract
+20. `CDI paired-surface mismatch review` 已将当前主嫌疑收敛到 `export/config drift`，其中最明确的是新 `2048` export 使用了 `t_sec = 20`，而不是已承认 `SecMI` mainline 与旧强 `1024` paired packet 所使用的 `t_sec = 100`；因此当前不应把这次弱化直接写成 `SecMI` 的真实 scale collapse
+21. `SecMI paired-surface repair contract review` 已完成并放行一个有界 GPU 问题：修复后的 paired export 必须回到 admitted `SecMI stat` 合同（`t_sec = 100 / timestep = 10 / batch_size = 64 / canonical split root = external/SecMI/mia_evals/member_splits`），而且 `SecMI` 与 `PIA` 的 CIFAR-10 half-split 文件已验证为字节级一致，因此下一步可以诚实地重跑一次 `2048` paired surface
+22. 修复合同后的 `SecMI 2048` paired rerun 已真实落盘，并把 paired surface 拉回到旧强 `1024` 的同一量级（`AUC = 0.876912 / combined Spearman = 0.906879 / disagreement = 0.121582`）；因此旧弱 `r2` packet 只保留为 drift-history，而 paired `PIA + SecMI` feature promotion 现在可以重新打开，但下一步应先做 scorer design 而不是继续烧 GPU
+23. `CDI paired-feature scorer design` 已完成并在 repaired `2048` surface 上给出正向 bounded canary：当前冻结 scorer 为 control-fitted `control-z-linear`（`SecMI stat` 权重 `0.526839`，`PIA` 权重 `0.473161`），paired `t = 30.027926` 略高于单独 `SecMI` 的 `29.637878`；因此下一步不是新 GPU，而是 paired scorer 的 boundary review
+24. `CDI paired-scorer boundary review` 已完成：paired scorer 在反向 half-split 上仍然强正向，且权重稳定在 `SecMI ~0.52 / PIA ~0.48`；但它并不稳定压过 `SecMI`，所以当前最诚实的边界是 `default internal paired scorer on the repaired 2048 surface`，而不是 headline scorer 或外部证据
+25. `CDI paired-scorer default-run policy note` 已完成：默认 CLI 策略现在是 `--paired-scorer auto`，即 paired inputs 存在时自动启用 `control-z-linear`，否则退回 component-only；且 paired runs 必须继续并报 `paired + SecMI + PIA` 三项统计，因此当前下一步不是新 GPU，而是把这些字段要求固定成 machine-readable contract
+26. `CDI paired-scorer machine-readable contract note` 已完成：新的 paired canary artifact 已显式写出 `contract.name / version / feature_mode / paired_scorer_policy_requested / paired_scorer_policy_effective / component_reporting_required / headline_use_allowed / external_evidence_allowed`，因此更高层消费者现在可以直接读 contract 字段而不是回推 Markdown 规则
+27. `CDI paired-scorer consumer handoff note` 已完成：当前 paired `CDI` artifact 的 higher-layer 消费顺序已冻结为 `contract -> feature_mode -> metrics -> notes -> analysis`；其中 `Leader / materials` 只应消费 contract 边界字段与 internal-only 说明，future `Platform / Runtime` 也必须先看 `headline_use_allowed = false / external_evidence_allowed = false` 再决定是否展示 paired 标签；因此当前下一步不是重讲 paired `t`，而是转入灰盒 post-`CDI` 下一条 live lane 的重选 review
+28. `gray-box post-CDI lane reselection review` 已完成：在 `CDI` boundary / contract / consumer handoff 都冻结后，当前最值得开的灰盒 CPU-first lane 不再是 `TMIA` 包装回环、`SimA` 弱 reopen、`MoFit` hold reopen 或 `structural memorization` 负向重试；新的优先项应是 `Noise as a Probe promotion-gap review`，因为它是当前最强的未升格新机制，而 defended extension 在当前合同上又已明确是 `no-go`
+29. `Noise as a Probe promotion-gap review` 已完成：当前阻止这条线升格的已经不是 execution truth，而是 comparability gap；它运行在 `SD1.5 + celeba_partial_target` 的 latent-diffusion 合同上，无法直接加入当前以 `DDPM/CIFAR10 + PIA/TMIA-DM` 为核心的 packaged challenger board，而 defended extension 又已判成 `no-go`；因此当前下一步不是 promotion 或 GPU，而是先判断是否值得建立一张同表面对照合同
+30. `Noise as a Probe contract-shift review` 已完成：即便把问题放宽到 latent-diffusion 同表面对照合同，当前也不值得建板，因为同表面上只有 `Noise as a Probe` 一条是真正 repeat-positive，`MoFit` 仍只是 tiny weak-positive hold，`structural memorization` 仍是 direction-negative；现在硬建 board 只会制造伪可比性，而不会改变项目级主线判断
+31. `gray-box post-noise contract-shift reselection review` 已完成：在 `Noise as a Probe` 的 promotion-gap 与 contract-shift 都收口后，gray-box 已不再暴露高价值的 immediate next-family CPU lane；当前最诚实的做法不是继续在 latent-diffusion 支线上空转，而是承认 gray-box 进入 `stable mainline + no-new-gpu-question + no immediate next-family ask` 状态，并把下一条 live CPU-first slot 让给 white-box 的新假设选择
+32. `second gray-box defense mechanism selection review` 已完成：在 black-box candidate refresh 也收口之后，gray-box 当前终于可以把第二防御机制冻结下来；`TMIA-DM late-window + temporal-striding(stride=2)` 是唯一还通过了机制差异、repeat/scale 证据和 narrative 价值三重筛选的候选，而 `epsilon-precision-throttling / epsilon-output-noise / input-gaussian-blur` 都已负结论、`Noise as a Probe` 没有 defended-extension gate、`MoFit` 仍是 hold，因此当前不应再为灰盒开新 GPU 题，下一 CPU-first lane 转给 `distinct white-box defended-family import / selection`
+33. `ranking-sensitive variable search review` 已完成：在 white-box distinct-family import 也收口后，当前最值得开的灰盒变量搜索不应回到 `PIA vs SecMI` 的 naive disagreement 复读，而应转向 `PIA vs TMIA-DM` 的 bounded-positive same-split 组合迹象；因此下一条 CPU-first lane 应具体收敛为 `PIA vs TMIA-DM confidence-gated switching design review`，而不是继续停留在泛化的 `ranking-sensitive variable search` 标签
+34. `PIA vs TMIA-DM confidence-gated switching` 的 first offline packet 已完成：这条线是 honest and useful 的，但它在 aligned undefended surfaces 上仍未超过 bounded `z-score sum`，并且在 defended surface 上进一步变弱；因此它应保留为 bounded ranking-sensitive analysis packet，而不是 promoted scorer family
+35. `gray-box post-switch lane reselection review` 已完成：在 switching offline packet 也收口后，gray-box 不再暴露高于其余盒子的 immediate CPU-first 优先项；当前更诚实的状态是保留现有 gray-box package，不再继续做 same-family packet inflation，并将 next live CPU-first slot 让给其他 lane
 
 ## 2026-04-08 新观察
 
@@ -155,6 +231,16 @@
   - `SecMI` 已升级为灰盒独立 corroboration line
   - `PIA` 仍是 defended gray-box mainline
   - `PIA + SecMI` 的简单融合不值得升格为当前 gray-box 新分支
+  - `epsilon-output-noise (std = 0.1)` 在 `cpu-32` bounded smoke 上也未能压低攻击，因此不应作为下一个 GPU defended candidate
+  - `input-gaussian-blur (sigma = 1.0)` 在 `cpu-32` bounded smoke 上进一步放大了攻击，因此也不应作为下一个 GPU defended candidate
+- `SimA` 已在当前 DDPM asset line 上完成 bounded CPU feasibility 与 later-timestep rescan：
+  - 初始最优 `AUC = 0.542969 @ t=120`
+  - rescan 最优 `AUC = 0.584961 @ t=160`
+  - 仍不足以升级为 challenger 或 GPU 题
+- `structural memorization` 已在当前 CelebA target-family faithful approximation 上完成 bounded smoke，但结果方向为负：
+  - `AUC = 0.375 / ASR = 0.53125`
+  - member mean `SSIM = 0.730527` 低于 non-member mean `0.750170`
+  - 当前不应升级为 active gray-box family 或下一条 GPU 题
 
 ## 2026-04-10 新观察
 
@@ -184,3 +270,11 @@
 6. 保持 `SecMI = corroboration line`，不回退到 blocked wording
 7. 复用 [unified table](../implementation/2026-04-08-unified-attack-defense-table.md) 作为灰盒对外引用入口
 8. 不再为 naive `PIA + SecMI` ensemble 追加预算，除非先写出新的 gating hypothesis
+9. 不把 `epsilon-output-noise` 或 `input-gaussian-blur` 重开成 GPU 题；下一候选必须明显区别于小幅输入/输出扰动
+10. 若 `G-2 distillation` 仍无正式训练/评估链，则灰盒下一活跃任务应先转到 `GB-3` 新 family 选择，而不是继续机械扩第二防御小 smoke
+11. 当前 `GB-3 / SimA` 已完成 bounded CPU feasibility 与 later-timestep rescan，但结论仍是 strength-negative；`structural memorization` 也已完成 local faithful-approximation smoke，但结论是 direction-negative；下一灰盒活跃任务已重选为 `TMIA-DM protocol / asset decomposition`
+12. 当前 `TMIA-DM` 已完成最小 `protocol probe`、一次 repeat、same-split 比较、late-window refine、两次正向 `GPU128` rung，以及两次正向 `GPU256` rung；结论是该线已成为稳定 GPU challenger，且 `late_steps_only` 与 `timestep-jitter` defense ablation 都已证伪为弱解，下一条任务应是材料化总表或新的 defense hypothesis
+13. 新的 `TMIA-DM late-window temporal-striding(stride=2)` 已完成两个 `cpu-32` repeat，`AUC` 从 `0.823242 / 0.760742` 降到 `0.697266 / 0.696289`；结论是它成为当前最值得过 `GPU128` gate 的 challenger-specific 新防御假设，但还不能直接写成第二 defended comparator
+14. `TMIA-DM late-window temporal-striding(stride=2)` 已完成两个 `GPU128` repeat，`AUC` 进一步压到 `0.727234 / 0.711609`；结论是它已成为当前最强的 `TMIA-DM`-specific defended candidate，下一门槛是单个 `GPU256` scale rung，而不是重新回到 defense shortlist
+15. `TMIA-DM late-window temporal-striding(stride=2)` 已完成两个 `GPU256` repeat，`AUC` 维持在 `0.733322 / 0.7173`；结论是它已成为 repeat-confirmed 的 scale-positive defended candidate，下一门槛不再是更多盲目 rung，而是 defended operating-point comparison 与系统层摘要同步审查
+16. defended operating-point comparison 与统一总表 sync 已完成；结论是 `TMIA + temporal-striding` 现在应取代 `TMIA + dropout`，成为更高层 gray-box defended challenger 摘要里的首选 defended reference

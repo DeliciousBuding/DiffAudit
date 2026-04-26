@@ -12,7 +12,7 @@
 
 ```powershell
 conda run -n diffaudit-research python -m diffaudit audit-recon-public-bundle `
-  --bundle-root external/recon-assets/ndss-2025-blackbox-membership-inference-fine-tuned-diffusion-models
+  --bundle-root D:/Code/DiffAudit/Download/black-box/supplementary/recon-assets/ndss-2025-blackbox-membership-inference-fine-tuned-diffusion-models
 ```
 
 ## B. Audit Result
@@ -75,3 +75,31 @@ So the strongest current claim is:
 1. Keep `recon DDIM public-100 step30` as main evidence.
 2. Keep the semantic caveat visible in all black-box summary docs.
 3. Do not spend GPU on recon reruns until new paper-aligned split evidence appears.
+
+## E. 2026-04-21 Issue #10 Stage 0 Gate Resolution
+
+Issue #10 asked whether strict `Attack-I` can start from the current public bundle. The answer is now represented by a dedicated command:
+
+```powershell
+python -m diffaudit check-recon-stage0-paper-gate `
+  --repo-root external/Reconstruction-based-Attack `
+  --bundle-root D:/Code/DiffAudit/Download/black-box/supplementary/recon-assets/ndss-2025-blackbox-membership-inference-fine-tuned-diffusion-models `
+  --attack-scenario attack-i
+```
+
+Expected current verdict:
+
+- `status = blocked`
+- `checks.repo_workspace_ready = true` when the upstream recon workspace is present
+- `checks.local_semantic_chain_ready = true` when the public bundle audit is clean
+- `checks.paper_aligned_semantics = false`
+- `missing_keys` includes `paper_aligned_semantics`
+- `missing` includes `proxy-shadow-member`
+
+Interpretation:
+
+- `audit-recon-public-bundle` remains the local-consistency audit.
+- `check-recon-stage0-paper-gate` is the strict paper-faithful start gate.
+- The current allowed claim remains `local-semantic-chain-ready`, not `paper-aligned`.
+- No GPU rerun, Runtime schema change, or Platform field change is justified by this issue.
+

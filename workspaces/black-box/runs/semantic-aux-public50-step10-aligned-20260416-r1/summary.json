@@ -1,0 +1,42 @@
+{
+  "run_id": "semantic-aux-public50-step10-aligned-20260416-r1",
+  "track": "black-box",
+  "method": "semantic-auxiliary-classifier",
+  "dataset": "CelebA",
+  "model": "StableDiffusion-v1.5 + Recon target LoRA",
+  "mode": "small-sample-probe",
+  "status": "candidate",
+  "metrics": {
+    "auc": 0.859375,
+    "asr": 0.8125,
+    "tpr_at_1pct_fpr": 0.625
+  },
+  "analysis": {
+    "threshold": 0.507397,
+    "best_tpr": 0.625,
+    "best_fpr": 0.0,
+    "member_mean_cos": 0.507871,
+    "nonmember_mean_cos": 0.392879,
+    "member_max_cos": 0.557334,
+    "nonmember_max_cos": 0.442991,
+    "member_rows": 16,
+    "nonmember_rows": 16,
+    "feature_names": [
+      "mean_cos",
+      "max_cos",
+      "std_cos",
+      "gap_cos",
+      "mean_ssim",
+      "max_ssim"
+    ],
+    "cv_splits": 4
+  },
+  "cost": {
+    "gpu_hours": 0.0624
+  },
+  "notes": "Small-sample black-box probe using returned-image semantic features and an offline logistic auxiliary classifier. Generation uses only image-derived prompts and final returned images.",
+  "artifacts": {
+    "records_json": "D:/Code/DiffAudit/Research/workspaces/black-box/runs/semantic-aux-public50-step10-aligned-20260416-r1/outputs/records.json",
+    "generated_dir": "D:/Code/DiffAudit/Research/workspaces/black-box/runs/semantic-aux-public50-step10-aligned-20260416-r1/outputs/generated"
+  }
+}

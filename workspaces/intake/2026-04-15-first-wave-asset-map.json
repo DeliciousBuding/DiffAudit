@@ -1,0 +1,59 @@
+{
+  "schema": "diffaudit.first_wave_asset_map.v1",
+  "generated_at": "2026-04-15T12:30:00+08:00",
+  "source_docs": {
+    "master_list": "docs/research-download-master-list.md",
+    "download_manifest": "D:/Code/DiffAudit/Download/manifests/research-download-manifest.json"
+  },
+  "local_pointer_file": "configs/assets/staged-downloads.local.yaml",
+  "assets": [
+    {
+      "id": "SH-DS-01",
+      "status": "present",
+      "download_path": "D:/Code/DiffAudit/Download/shared/datasets/cifar-10-python.tar.gz",
+      "repo_pointer": "configs/assets/staged-downloads.local.yaml#shared.cifar10_archive"
+    },
+    {
+      "id": "SH-DS-02",
+      "status": "present",
+      "download_path": "D:/Code/DiffAudit/Download/shared/datasets/celeba/img_align_celeba.zip",
+      "repo_pointer": "configs/assets/staged-downloads.local.yaml#shared.celeba_root"
+    },
+    {
+      "id": "SH-DS-03",
+      "status": "present",
+      "download_path": "D:/Code/DiffAudit/Download/shared/datasets/celeba",
+      "repo_pointer": "configs/assets/staged-downloads.local.yaml#shared.celeba_root"
+    },
+    {
+      "id": "SH-WT-01",
+      "status": "present",
+      "download_path": "D:/Code/DiffAudit/Download/shared/weights/stable-diffusion-v1-5",
+      "repo_pointer": "configs/assets/staged-downloads.local.yaml#shared.sd15_model_dir"
+    },
+    {
+      "id": "SH-WT-02",
+      "status": "present",
+      "download_path": "D:/Code/DiffAudit/Download/shared/weights/clip-vit-large-patch14",
+      "repo_pointer": "configs/assets/staged-downloads.local.yaml#shared.clip_model_dir"
+    },
+    {
+      "id": "SH-WT-03",
+      "status": "present",
+      "download_path": "D:/Code/DiffAudit/Download/shared/weights/blip-image-captioning-large",
+      "repo_pointer": "configs/assets/staged-downloads.local.yaml#shared.blip_model_dir"
+    },
+    {
+      "id": "GB-WT-01",
+      "status": "present",
+      "download_path": "D:/Code/DiffAudit/Download/gray-box/weights/secmi-cifar-bundle",
+      "repo_pointer": "workspaces/gray-box/assets/secmi/manifest.json"
+    },
+    {
+      "id": "BB-SUP-02",
+      "status": "present",
+      "download_path": "D:/Code/DiffAudit/Download/black-box/supplementary/clid-mia-supplementary/contents/CLID_MIA",
+      "repo_pointer": "configs/assets/staged-downloads.local.yaml#black_box.clid.supplementary_root"
+    }
+  ]
+}

@@ -38,7 +38,7 @@
 - Existing internal-access assets in repo:
   - `external/DiT/pretrained_models/DiT-XL-2-256x256.pt`
     - real checkpoint exists, but it is a DiT sampling asset, not a paper-aligned GSA or NeMo reproduction asset
-  - `external/recon-assets/**/pytorch_lora_weights.safetensors`
+  - `D:/Code/DiffAudit/Download/black-box/supplementary/recon-assets/**/pytorch_lora_weights.safetensors`
     - black-box runtime assets, not usable as white-box gradient baselines for GSA
 - White-box access status today:
   - `checkpoint`: only via newly downloaded upstream code path, not via ready experiment assets
@@ -236,3 +236,4 @@ but only after paper-aligned `target/shadow member/non-member` assets exist.
 Current blocker for faithful reproduction is no longer "we have nothing executable".
 
 Current blocker is: `paper-aligned checkpoints + member/non-member assets + classifier dependency gap`.
+

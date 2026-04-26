@@ -40,7 +40,7 @@
 
 ```powershell
 conda run -n diffaudit-research python -m diffaudit audit-recon-public-bundle `
-  --bundle-root D:\Code\DiffAudit\Research\external\recon-assets\ndss-2025-blackbox-membership-inference-fine-tuned-diffusion-models
+  --bundle-root D:\\Code\\DiffAudit\\Download\\black-box\\supplementary\\recon-assets\\ndss-2025-blackbox-membership-inference-fine-tuned-diffusion-models
 ```
 
 返回：
@@ -216,3 +216,4 @@ conda run -n diffaudit-research python -m diffaudit run-recon-artifact-mainline 
 - `writing-only / non-GPU`
 - `admitted_change = none`
 - `gpu_release = none`
+

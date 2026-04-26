@@ -1,0 +1,53 @@
+{
+  "task_scope": "BB-1.3 timestep-selective reconstruction probe",
+  "track": "black-box",
+  "method_family": "recon-coordinate-selective",
+  "artifact_dir": "D:/Code/DiffAudit/Research/experiments/recon-runtime-mainline-ddim-public-100-step30/score-artifacts",
+  "vector_length": 768,
+  "baseline_dim": 0,
+  "baseline_orientation": "identity",
+  "best_shadow_dim": 732,
+  "best_shadow_auc": 0.6753,
+  "best_shadow_orientation": "negated",
+  "baseline_target": {
+    "auc": 0.6897,
+    "tpr_at_1pct_fpr": 0.13
+  },
+  "selected_target": {
+    "auc": 0.6472,
+    "tpr_at_1pct_fpr": 0.14
+  },
+  "target_auc_gain_vs_dim0": -0.0425,
+  "target_top5_dims_by_shadow_auc": [
+    {
+      "dim": 732,
+      "shadow_auc": 0.6753,
+      "target_auc": 0.6472,
+      "orientation": "negated"
+    },
+    {
+      "dim": 485,
+      "shadow_auc": 0.6675,
+      "target_auc": 0.6731,
+      "orientation": "negated"
+    },
+    {
+      "dim": 417,
+      "shadow_auc": 0.6527,
+      "target_auc": 0.6882,
+      "orientation": "negated"
+    },
+    {
+      "dim": 451,
+      "shadow_auc": 0.6509,
+      "target_auc": 0.7795,
+      "orientation": "negated"
+    },
+    {
+      "dim": 409,
+      "shadow_auc": 0.6494,
+      "target_auc": 0.7259,
+      "orientation": "negated"
+    }
+  ]
+}

@@ -1,0 +1,93 @@
+{
+  "status": "ready",
+  "track": "gray-box",
+  "method": "tmiadm",
+  "paper": "TMIA-DM_arXiv2026",
+  "mode": "protocol-probe",
+  "device": "cpu",
+  "workspace": "workspaces\\gray-box\\runs\\tmiadm-cifar10-protocol-probe-20260416-cpu-32-r2-seed1",
+  "workspace_name": "tmiadm-cifar10-protocol-probe-20260416-cpu-32-r2-seed1",
+  "contract_stage": "target",
+  "asset_grade": "single-machine-real-asset",
+  "provenance_status": "workspace-verified",
+  "evidence_level": "protocol-probe",
+  "artifact_paths": {
+    "summary": "workspaces\\gray-box\\runs\\tmiadm-cifar10-protocol-probe-20260416-cpu-32-r2-seed1\\summary.json",
+    "family_scores": "workspaces\\gray-box\\runs\\tmiadm-cifar10-protocol-probe-20260416-cpu-32-r2-seed1\\family-scores.json"
+  },
+  "checks": {
+    "checkpoint": true,
+    "dataset_root": true,
+    "dataset_layout": true,
+    "member_split": true,
+    "runtime_probe_ready": true,
+    "multi_timestep_features_ready": true,
+    "protocol_probe_completed": true
+  },
+  "runtime": {
+    "repo_root": "external\\PIA",
+    "model_dir": "workspaces/gray-box/assets/pia/checkpoints/cifar10_ddpm",
+    "dataset_root": "workspaces/gray-box/assets/pia/datasets",
+    "member_split_root": "external\\PIA\\DDPM",
+    "batch_size": 8,
+    "max_samples": 32,
+    "num_samples": 32,
+    "weights_key": "ema_model",
+    "scan_timesteps": [
+      20,
+      40,
+      60,
+      80,
+      100,
+      120
+    ],
+    "aggregation_p_norm": 2.0,
+    "noise_seed": 1,
+    "elapsed_seconds": 40.555149
+  },
+  "sample_count_per_split": 32,
+  "family_metrics": {
+    "short_window": {
+      "auc": 0.37793,
+      "asr": 0.515625,
+      "threshold": -1.044478,
+      "tpr_at_1pct_fpr": 0.0,
+      "tpr_at_0_1pct_fpr": 0.0,
+      "member_score_mean": -1.017817,
+      "nonmember_score_mean": -1.007568
+    },
+    "long_window": {
+      "auc": 0.663086,
+      "asr": 0.671875,
+      "threshold": -22.910326,
+      "tpr_at_1pct_fpr": 0.0625,
+      "tpr_at_0_1pct_fpr": 0.0625,
+      "member_score_mean": -22.516243,
+      "nonmember_score_mean": -22.980577
+    },
+    "fused": {
+      "auc": 0.512695,
+      "asr": 0.546875,
+      "threshold": 0.48263,
+      "tpr_at_1pct_fpr": 0.0,
+      "tpr_at_0_1pct_fpr": 0.0,
+      "member_score_mean": 1e-06,
+      "nonmember_score_mean": -0.0
+    }
+  },
+  "best_family": "long_window",
+  "metrics": {
+    "auc": 0.663086,
+    "asr": 0.671875,
+    "threshold": -22.910326,
+    "tpr_at_1pct_fpr": 0.0625,
+    "tpr_at_0_1pct_fpr": 0.0625,
+    "member_score_mean": -22.516243,
+    "nonmember_score_mean": -22.980577
+  },
+  "notes": [
+    "TMIA-DM protocol probe uses a short-window temporal-difference family over epsilon predictions.",
+    "TMIA-DM protocol probe also uses a long-window temporal aggregation family over the same timesteps.",
+    "This is a bounded local protocol probe, not yet a paper-faithful reproduction or promoted challenger verdict."
+  ]
+}

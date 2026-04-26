@@ -40,6 +40,7 @@ def create_export_ready_observability_assets(assets_root: Path) -> None:
     for relative, color in (
         ("datasets/target-member/00-data_batch_1-00965.png", (255, 0, 0)),
         ("datasets/target-nonmember/00-data_batch_1-00467.png", (0, 255, 0)),
+        ("datasets/target-nonmember/00-data_batch_1-01278.png", (0, 0, 255)),
     ):
         Image.new("RGB", (32, 32), color=color).save(assets_root / relative)
 
@@ -244,6 +245,153 @@ class GsaObservabilityAdapterTests(unittest.TestCase):
         self.assertEqual(payload["status"], "ready")
         self.assertEqual(payload["mode"], "activation-export-canary")
         self.assertEqual(payload["gpu_release"], "none")
+        self.assertEqual(payload["requested"]["device"], "cpu")
+
+    def test_export_writes_masked_packet_artifacts(self) -> None:
+        from diffaudit.attacks.gsa_observability import export_gsa_observability_masked_packet
+
+        with tempfile.TemporaryDirectory() as tmpdir:
+            root = Path(tmpdir)
+            repo_root = root / "GSA"
+            assets_root = root / "assets"
+            workspace = root / "workspace"
+            create_minimal_gsa_repo(repo_root)
+            create_export_ready_observability_assets(assets_root)
+
+            payload = export_gsa_observability_masked_packet(
+                workspace=workspace,
+                repo_root=repo_root,
+                assets_root=assets_root,
+                checkpoint_root=assets_root / "checkpoints" / "target",
+                checkpoint_dir=assets_root / "checkpoints" / "target" / "checkpoint-9600",
+                split="target-member",
+                sample_id="target-member/00-data_batch_1-00965.png",
+                control_split="target-nonmember",
+                control_sample_id="target-nonmember/00-data_batch_1-00467.png",
+                layer_selector="mid_block.attentions.0.to_v",
+                mask_kind="top_abs_delta_k",
+                k=4,
+                alpha=0.5,
+                timestep=999,
+                noise_seed=7,
+                mask_seed=11,
+                device="cpu",
+            )
+
+            self.assertEqual(payload["status"], "ready")
+            self.assertEqual(payload["mode"], "masked-packet-export")
+            self.assertEqual(payload["gpu_release"], "none")
+            self.assertEqual(payload["mask"]["k"], 4)
+            self.assertIn("selected_delta_retention_ratio", payload["metrics"])
+            records = [json.loads(line) for line in (workspace / "records.jsonl").read_text(encoding="utf-8").splitlines()]
+            self.assertEqual(len(records), 2)
+            for record in records:
+                self.assertIn("pre_mask", record["artifact_paths"])
+                self.assertIn("post_mask", record["artifact_paths"])
+                self.assertTrue((workspace / record["artifact_paths"]["pre_mask"]).exists())
+                self.assertTrue((workspace / record["artifact_paths"]["post_mask"]).exists())
+
+    def test_export_writes_inmodel_packet_artifacts(self) -> None:
+        from diffaudit.attacks.gsa_observability import export_gsa_observability_inmodel_packet
+
+        with tempfile.TemporaryDirectory() as tmpdir:
+            root = Path(tmpdir)
+            repo_root = root / "GSA"
+            assets_root = root / "assets"
+            workspace = root / "workspace"
+            create_minimal_gsa_repo(repo_root)
+            create_export_ready_observability_assets(assets_root)
+
+            payload = export_gsa_observability_inmodel_packet(
+                workspace=workspace,
+                repo_root=repo_root,
+                assets_root=assets_root,
+                checkpoint_root=assets_root / "checkpoints" / "target",
+                checkpoint_dir=assets_root / "checkpoints" / "target" / "checkpoint-9600",
+                split="target-member",
+                sample_id="target-member/00-data_batch_1-00965.png",
+                control_split="target-nonmember",
+                control_sample_id="target-nonmember/00-data_batch_1-01278.png",
+                layer_selector="mid_block.attentions.0.to_v",
+                mask_kind="top_abs_delta_k",
+                k=4,
+                alpha=0.0,
+                timestep=999,
+                noise_seed=7,
+                mask_seed=11,
+                device="cpu",
+            )
+
+            self.assertEqual(payload["status"], "ready")
+            self.assertEqual(payload["mode"], "inmodel-packet-export")
+            self.assertEqual(payload["gpu_release"], "none")
+            self.assertTrue(payload["checks"]["intervention_applied"])
+            self.assertGreater(payload["metrics"]["epsilon_prediction_rms_drift_mean"], 0.0)
+            records = [json.loads(line) for line in (workspace / "records.jsonl").read_text(encoding="utf-8").splitlines()]
+            self.assertEqual(len(records), 2)
+            for record in records:
+                self.assertIn("baseline_layer", record["artifact_paths"])
+                self.assertIn("intervened_layer", record["artifact_paths"])
+                self.assertIn("baseline_prediction", record["artifact_paths"])
+                self.assertIn("intervened_prediction", record["artifact_paths"])
+                self.assertTrue((workspace / record["artifact_paths"]["baseline_layer"]).exists())
+                self.assertTrue((workspace / record["artifact_paths"]["intervened_layer"]).exists())
+                self.assertTrue((workspace / record["artifact_paths"]["baseline_prediction"]).exists())
+                self.assertTrue((workspace / record["artifact_paths"]["intervened_prediction"]).exists())
+
+    def test_cli_exports_inmodel_packet_with_cpu_only_contract(self) -> None:
+        from diffaudit.cli import main
+
+        with tempfile.TemporaryDirectory() as tmpdir:
+            root = Path(tmpdir)
+            repo_root = root / "GSA"
+            assets_root = root / "assets"
+            workspace = root / "workspace"
+            create_minimal_gsa_repo(repo_root)
+            create_export_ready_observability_assets(assets_root)
+
+            stdout = StringIO()
+            with redirect_stdout(stdout):
+                exit_code = main(
+                    [
+                        "export-gsa-observability-inmodel-packet",
+                        "--workspace",
+                        str(workspace),
+                        "--repo-root",
+                        str(repo_root),
+                        "--assets-root",
+                        str(assets_root),
+                        "--checkpoint-root",
+                        str(assets_root / "checkpoints" / "target"),
+                        "--checkpoint-dir",
+                        str(assets_root / "checkpoints" / "target" / "checkpoint-9600"),
+                        "--split",
+                        "target-member",
+                        "--sample-id",
+                        "target-member/00-data_batch_1-00965.png",
+                        "--control-split",
+                        "target-nonmember",
+                        "--control-sample-id",
+                        "target-nonmember/00-data_batch_1-01278.png",
+                        "--layer-selector",
+                        "mid_block.attentions.0.to_v",
+                        "--timestep",
+                        "999",
+                        "--noise-seed",
+                        "7",
+                        "--mask-seed",
+                        "11",
+                        "--prediction-type",
+                        "epsilon",
+                        "--device",
+                        "cpu",
+                    ]
+                )
+
+        payload = json.loads(stdout.getvalue())
+        self.assertEqual(exit_code, 0)
+        self.assertEqual(payload["status"], "ready")
+        self.assertEqual(payload["mode"], "inmodel-packet-export")
         self.assertEqual(payload["requested"]["device"], "cpu")
 
 

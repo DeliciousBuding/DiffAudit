@@ -576,6 +576,69 @@ def audit_recon_public_bundle(bundle_root: str | Path) -> dict[str, object]:
     }
 
 
+def check_recon_stage0_paper_gate(
+    repo_root: str | Path,
+    bundle_root: str | Path,
+    attack_scenario: str = "attack-i",
+) -> dict[str, object]:
+    repo_path = Path(repo_root)
+    bundle_path = Path(bundle_root)
+
+    repo_workspace_ready = False
+    repo_workspace_error = None
+    if repo_path.exists():
+        try:
+            repo_workspace_ready = validate_recon_workspace(repo_path)["status"] == "ready"
+        except FileNotFoundError as exc:
+            repo_workspace_error = str(exc)
+
+    bundle_audit = audit_recon_public_bundle(bundle_path)
+    semantic_gate = bundle_audit.get("semantic_gate", {})
+    paper_aligned = bool(semantic_gate.get("paper_aligned"))
+    local_semantic_chain_ready = (
+        bundle_audit["status"] == "ready"
+        and semantic_gate.get("current_state") == "proxy-shadow-member"
+        and semantic_gate.get("allowed_claim") == "local-semantic-chain-ready"
+    )
+
+    checks = {
+        "repo_root_exists": repo_path.exists(),
+        "bundle_root_exists": bundle_path.exists(),
+        "repo_workspace_ready": repo_workspace_ready,
+        "local_semantic_chain_ready": local_semantic_chain_ready,
+        "paper_aligned_semantics": paper_aligned,
+    }
+    missing_keys = [name for name, passed in checks.items() if not passed]
+    missing_labels = {
+        "repo_root_exists": str(repo_path),
+        "bundle_root_exists": str(bundle_path),
+        "repo_workspace_ready": "reconstruction attack workspace",
+        "local_semantic_chain_ready": "local-semantic-chain-ready",
+        "paper_aligned_semantics": semantic_gate.get("current_state", "paper-aligned semantics"),
+    }
+    result = {
+        "status": "ready" if all(checks.values()) else "blocked",
+        "stage": "recon-stage0-paper-gate",
+        "repo_root": str(repo_path),
+        "bundle_root": str(bundle_path),
+        "attack_scenario": attack_scenario,
+        "checks": checks,
+        "missing_keys": missing_keys,
+        "missing": [missing_labels[key] for key in missing_keys],
+        "semantic_gate": semantic_gate,
+        "bundle_audit_status": bundle_audit["status"],
+        "allowed_claim": semantic_gate.get("allowed_claim"),
+        "notes": [
+            "Stage 0 is a strict paper-faithful gate. Local semantic consistency is necessary but not sufficient.",
+            "The current public recon bundle can only support local-semantic-chain-ready while shadow_member_proxy remains a proxy mapping.",
+            "Do not start Attack-I as a paper-aligned reproduction until paper_aligned_semantics is true.",
+        ],
+    }
+    if repo_workspace_error is not None:
+        result["repo_workspace_error"] = repo_workspace_error
+    return result
+
+
 def _threshold_metrics(member_scores: np.ndarray, nonmember_scores: np.ndarray) -> dict[str, float]:
     min_value = float(min(member_scores.min(), nonmember_scores.min()))
     max_value = float(max(member_scores.max(), nonmember_scores.max()))
