@@ -1,0 +1,174 @@
+{
+  "status": "ready",
+  "dispatch": "G1-A post-B-M0 long-horizon next-hypothesis scoping",
+  "dispatch_date": "2026-04-17",
+  "root_authority": "D:/Code/DiffAudit/ROADMAP.md",
+  "research_authority": "D:/Code/DiffAudit/Research/ROADMAP.md#5.3",
+  "decision": {
+    "selected_candidate": "gb_cdi_tmiadm_triscore_bridge",
+    "selected_candidate_label": "gray-box tri-evidence audit scorer bridging current CDI paired contract and aligned PIA/TMIA-DM packet surfaces",
+    "verdict": "bounded",
+    "selection_reason": [
+      "It is genuinely distinct from the admitted white-box loss-score family and from the closed shadow-LR follow-up.",
+      "It reuses already-landed gray-box evidence surfaces instead of reopening same-family I-B rescue, translated I-C churn, or latent-diffusion pseudo-comparability.",
+      "The missing execution gap is CPU-first and concrete: freeze TMIA-DM sample-identity export plus an offline tri-score canary before any GPU question is reopened."
+    ],
+    "ready_within_48h_if_cpu_gate_lands": true,
+    "cpu_gate_required_before_any_gpu": true,
+    "no_gpu_fire_this_dispatch": true
+  },
+  "candidates": [
+    {
+      "candidate_id": "ic_samepair_bridge_replay",
+      "label": "I-C same-pair white-gray bridge replay on frozen 965/1278 pair",
+      "distinct_family_claim": "Cross-permission bridge support is a white-gray causal replay question, not a white-box loss-score scorer follow-up.",
+      "bounded_hypothesis": "If the frozen targeted mask can be replayed on the same packet under a same-spec gray-box contract, then targeted replay should beat matched random on both locality anchors and gray-box split-level low-FPR metrics.",
+      "cpu_first_prereq_cost": "medium (~6-12h): add a same-pair gray-box evaluator that emits AUC/ASR/TPR@1%FPR/TPR@0.1%FPR on a fixed bridge packet while preserving alias and packet identity.",
+      "gpu_fire_cost": "blocked until the same-spec gray-box release board exists; current candidate is not honest to fire.",
+      "four_metric_reporting_feasibility": "not yet honest; current bridge artifacts still stop at locality anchors and member_control_score_gap.",
+      "kill_conditions": [
+        "same_spec_reuse stays false after the CPU-first contract review",
+        "the same frozen packet still cannot emit a split-level four-metric board",
+        "the branch remains translated-contract-only on the frozen 965/1278 pair"
+      ],
+      "viability": "blocked",
+      "evidence": [
+        "D:/Code/DiffAudit/Research/workspaces/white-box/2026-04-17-cross-permission-inmodel-intervention-review.md",
+        "D:/Code/DiffAudit/Research/workspaces/white-box/2026-04-17-cross-permission-translated-falsifier-review.md",
+        "D:/Code/DiffAudit/Research/workspaces/implementation/2026-04-17-bm0-gpu-release-scoping-summary.json"
+      ]
+    },
+    {
+      "candidate_id": "ib_localization_delta_followup",
+      "label": "I-B selected-channel delta follow-up on existing Finding NeMo bounded packet",
+      "distinct_family_claim": "Finding NeMo locality review is still distinct from white-box loss-score scoring, but it remains inside the already-falsified localization-defense family.",
+      "bounded_hypothesis": "Existing fixed-mask artifacts might expose one new selected_channel_abs_delta-style sample ranking that changes the quality-vs-defense reading without retraining or another extraction run.",
+      "cpu_first_prereq_cost": "low (~2-4h): offline review over existing intervention-review outputs and locality-anchor artifacts.",
+      "gpu_fire_cost": "none for scoping; any later GPU rerun would still be same-family rescue.",
+      "four_metric_reporting_feasibility": "yes on the existing intervention-review surface, but only by re-reading an already closed falsifier packet.",
+      "kill_conditions": [
+        "the offline audit only rephrases the existing falsifier rather than creating a new project-level question",
+        "no new bounded admitted-surface hypothesis appears above the current actual bounded falsifier"
+      ],
+      "viability": "no-go",
+      "evidence": [
+        "D:/Code/DiffAudit/Research/ROADMAP.md",
+        "D:/Code/DiffAudit/Research/workspaces/white-box/2026-04-17-finding-nemo-post-first-actual-packet-boundary-review.md",
+        "D:/Code/DiffAudit/Research/workspaces/implementation/2026-04-17-bm0-gpu-release-scoping-summary.json"
+      ]
+    },
+    {
+      "candidate_id": "bb_second_signal_variance_curvature_scout",
+      "label": "black-box second-signal scouting via step-wise dispersion / curvature-style score",
+      "distinct_family_claim": "A black-box dispersion or curvature score would be a new signal family relative to recon, CLiD, semantic-aux, and the closed white-box loss-score line.",
+      "bounded_hypothesis": "A multi-step dispersion score on existing recon-compatible artifacts might separate members without intermediate access strongly enough to justify a new family canary.",
+      "cpu_first_prereq_cost": "high (~8-12h): freeze a runnable score contract, artifact schema, and asset reuse path on current black-box surfaces.",
+      "gpu_fire_cost": "unclear and probably nontrivial; not honest to estimate below one new runner contract review.",
+      "four_metric_reporting_feasibility": "possible only after a new scorer surface exists; not currently landed in the repo.",
+      "kill_conditions": [
+        "the candidate cannot reuse existing recon or local public artifacts without new runner code",
+        "the first CPU canary still depends on a brand-new black-box interface rather than a frozen current surface"
+      ],
+      "viability": "blocked",
+      "evidence": [
+        "D:/Code/DiffAudit/Research/ROADMAP.md",
+        "D:/Code/DiffAudit/Research/docs/comprehensive-progress.md"
+      ]
+    },
+    {
+      "candidate_id": "gb_cdi_tmiadm_triscore_bridge",
+      "label": "gray-box tri-evidence audit scorer over current CDI paired contract plus aligned PIA/TMIA-DM packet surfaces",
+      "distinct_family_claim": "This is a collection-level gray-box evidence-aggregation question, not another PIA/TMIA switching threshold scan and not a white-box loss-score scorer family.",
+      "bounded_hypothesis": "If the current bounded-positive PIA/TMIA-DM same-split actionability gain is real enough to matter beyond switching, then a frozen internal tri-score canary that combines current CDI paired-contract semantics with aligned TMIA-DM packet scores should beat at least one of the existing bounded baselines on low-FPR metrics without any new GPU run.",
+      "cpu_first_prereq_cost": "medium (~4-8h): add a TMIA-DM sample-identity-preserving export or adapter on the existing aligned packet and freeze one offline tri-score evaluator under the current internal CDI contract.",
+      "gpu_fire_cost": "none for the first canary; only after a positive CPU-first canary would a larger shared-surface rerun deserve separate review.",
+      "four_metric_reporting_feasibility": "yes; the first canary can emit AUC/ASR/TPR@1%FPR/TPR@0.1%FPR on the aligned packet while keeping CDI-style internal contract fields and component reporting.",
+      "kill_conditions": [
+        "TMIA-DM sample identity cannot be frozen from the current aligned packet artifacts without reopening GPU first",
+        "the tri-score canary fails to beat both current z-score-sum and current paired control-z-linear baselines on either AUC or low-FPR targets",
+        "the candidate drifts into another threshold-scan or same-family switching restatement"
+      ],
+      "viability": "bounded",
+      "evidence": [
+        "D:/Code/DiffAudit/Research/workspaces/gray-box/2026-04-16-pia-vs-tmiadm-disagreement-exploitation-verdict.md",
+        "D:/Code/DiffAudit/Research/workspaces/gray-box/2026-04-17-pia-tmiadm-confidence-gated-switching-offline-packet.md",
+        "D:/Code/DiffAudit/Research/workspaces/gray-box/2026-04-17-cdi-paired-scorer-consumer-handoff-note.md"
+      ]
+    }
+  ],
+  "contract": {
+    "chosen_candidate": {
+      "candidate_id": "gb_cdi_tmiadm_triscore_bridge",
+      "lane": "gray-box",
+      "release_shape": "internal audit-shape offline packet",
+      "promotion_target": "distinct bounded gray-box successor candidate for G1-A, still below headline and external evidence"
+    },
+    "packet_identity_frozen": {
+      "dataset": "CIFAR10",
+      "model_family": "DDPM",
+      "primary_surface": {
+        "name": "gpu256_undefended",
+        "pia_scores": "D:/Code/DiffAudit/Research/workspaces/gray-box/runs/pia-cifar10-runtime-mainline-20260408-gpu-256/scores.json",
+        "tmiadm_family_scores": "D:/Code/DiffAudit/Research/workspaces/gray-box/runs/tmiadm-cifar10-late-window-protocol-probe-20260416-gpu-256-r2-seed1/family-scores.json",
+        "tmiadm_family": "long_window",
+        "samples_per_class": 256
+      },
+      "secondary_surface": {
+        "name": "gpu256_defended",
+        "pia_scores": "D:/Code/DiffAudit/Research/workspaces/gray-box/runs/pia-cifar10-runtime-mainline-dropout-defense-20260408-gpu-256/scores.json",
+        "tmiadm_family_scores": "D:/Code/DiffAudit/Research/workspaces/gray-box/runs/tmiadm-cifar10-late-window-temporal-striding-defense-20260416-gpu-256-r2-seed1/family-scores.json",
+        "tmiadm_family": "long_window",
+        "samples_per_class": 256
+      },
+      "internal_contract_reference": "D:/Code/DiffAudit/Research/workspaces/gray-box/runs/cdi-paired-canary-20260417-r3-contract/audit_summary.json"
+    },
+    "cpu_first_prereq": {
+      "name": "tmiadm_identity_export_plus_triscore_offline_canary",
+      "bounded_budget_hours": 12,
+      "deliverables": [
+        "identity-preserving TMIA-DM sample export or deterministic adapter for the frozen aligned packet",
+        "one offline tri-score evaluator that emits four metrics plus current internal CDI contract fields",
+        "one canonical canary summary under Research/workspaces/gray-box/runs/"
+      ]
+    },
+    "schema_frozen": {
+      "summary_format": "gray-box internal audit summary",
+      "required_contract_fields": [
+        "contract.name",
+        "contract.version",
+        "contract.feature_mode",
+        "contract.component_reporting_required",
+        "contract.headline_use_allowed",
+        "contract.external_evidence_allowed"
+      ],
+      "required_metric_fields": [
+        "metrics.auc",
+        "metrics.asr",
+        "metrics.tpr_at_1pct_fpr",
+        "metrics.tpr_at_0_1pct_fpr",
+        "metrics.component_auc.pia",
+        "metrics.component_auc.tmiadm",
+        "metrics.component_auc.zscore_sum"
+      ],
+      "required_analysis_fields": [
+        "analysis.identity_alignment",
+        "analysis.feature_orientations",
+        "analysis.tri_scorer_details"
+      ]
+    },
+    "four_metric_reporting_committed": true,
+    "kill_gate": {
+      "gate": "kill_before_gpu_if_cpu_first_prereq_fails",
+      "conditions": [
+        "identity alignment cannot be frozen on current packet artifacts",
+        "the first offline tri-score canary does not beat current bounded baselines on at least one low-FPR target without collapsing AUC",
+        "the extension would require a new GPU run merely to establish packet identity"
+      ]
+    }
+  },
+  "consumer_handoff": {
+    "required": false,
+    "reason": "Current higher-layer consumer contract can stay unchanged at scoping time because this candidate remains internal-only and preserves the existing contract-first gating pattern; no new Platform-facing field is being promoted in this dispatch."
+  },
+  "canonical_evidence_anchor": "D:/Code/DiffAudit/Research/workspaces/2026-04-17-g1a-post-bm0-next-hypothesis-scoping.json"
+}

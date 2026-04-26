@@ -12,6 +12,7 @@
 | track | attack | defense | comparator type | AUC | ASR | TPR@1%FPR | TPR@0.1%FPR | evidence level | note |
 | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- |
 | white-box | `GSA 1k-3shadow` | `none` | admitted runtime mainline promoted from rerun1 | `0.998192` | `0.9895` | `0.987` | `0.432` | `runtime-mainline` | current strongest local white-box attack result after rerun1 promotion |
+| white-box | `GSA2 bounded comparator` | `none` | admitted target pair + first shadow pair bounded comparator | `0.922498` | `0.839` | `0.407` | `0.171` | `bounded-comparator` | strong same-family corroboration under reduced budget; keep as secondary line, not admitted headline |
 | white-box | `DPDM W-1` | `DPDM eps10 smoke checkpoint` | target-only comparator | `0.493652` | `0.585938` | `0.015625` | `0.0` | `runtime-smoke` | weaker than attack baseline; target-only only |
 | white-box | `DPDM W-1` | `DPDM eps10 smoke checkpoints x3` | multi-shadow comparator | `0.493652` | `0.5` | `0.015625` | `0.0` | `runtime-smoke` | first defended multi-shadow comparator |
 | white-box | `DPDM W-1` | `DPDM defended-target + smoke checkpoints x3` | defended-target multi-shadow comparator | `0.496338` | `0.5` | `0.015625` | `0.0` | `runtime-smoke` | current most aligned local W-1 comparator |
@@ -27,6 +28,7 @@
 ## 当前解释口径
 
 - `GSA rerun1` 现在是当前白盒攻击主证据线，旧 `20260408` 结果只保留为历史参考
+- `GSA2 bounded comparator` 现在已形成 `positive secondary line`：即使在 `1` 个 shadow pair + 降采样预算下仍保持强信号，但由于同属 `GSA` 家族且低于 admitted `GSA1`，只保留为 corroboration
 - `W-1` 当前已经不是“只有 checkpoint”，而是有 target-only 和 multi-shadow 两版 comparator
 - `W-1 strong-v2` 比 smoke 版略高，但仍显著弱于新的 `GSA rerun1` 主线，方向上继续支持白盒防御有效
 - `W-1 strong-v2 max512` 在更大评估规模下仍维持同一趋势，说明当前防御结果不只是 `128` 级样本偶然现象
@@ -43,6 +45,8 @@
 
 - attack baseline:
   - `workspaces/white-box/runs/gsa-runtime-mainline-20260409-cifar10-1k-3shadow-epoch300-rerun1/summary.json`
+- bounded same-family corroboration comparator:
+  - `workspaces/white-box/runs/gsa2-bounded-comparator-shadow01-20260415-r1/summary.json`
 - target-only defense comparator:
   - `workspaces/white-box/runs/dpdm-w1-target-only-20260408/summary.json`
 - multi-shadow defense comparator:
@@ -71,4 +75,4 @@
 1. 保留这张表作为当前白盒 admitted attack-defense 基线
 2. 将 `strong-v3 full-scale` 固定为当前 defended 主结果
 3. 将 `strong-v2 full-scale` 保留为参考 rung
-4. 下一步优先做 `GSA rerun1` 与 `W-1 strong-v3 full-scale` 的 same-protocol bridge，而不是继续开新的攻击强化复跑
+4. 下一步优先做 `GSA rerun1` 与 `W-1 strong-v3 full-scale` 的 same-protocol bridge，或扩白盒 defense breadth，而不是继续开新的 `GSA2` canary

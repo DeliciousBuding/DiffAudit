@@ -1,0 +1,189 @@
+{
+  "task_scope": "BB-2.2 bounded fusion experiments",
+  "track": "black-box",
+  "method_family": "semantic-auxiliary-classifier",
+  "device": "cpu",
+  "decision": "negative but useful",
+  "per_run": [
+    {
+      "sample_count": 32,
+      "member_rows": 16,
+      "nonmember_rows": 16,
+      "candidates": {
+        "mean_cos": {
+          "auc": 0.945312,
+          "asr": 0.875,
+          "tpr_at_1pct_fpr": 0.5,
+          "threshold": 0.427676,
+          "best_tpr": 1.0,
+          "best_fpr": 0.25,
+          "spearman_vs_mean_cos": 1.0
+        },
+        "max_cos": {
+          "auc": 0.90625,
+          "asr": 0.875,
+          "tpr_at_1pct_fpr": 0.1875,
+          "threshold": 0.486092,
+          "best_tpr": 1.0,
+          "best_fpr": 0.25,
+          "spearman_vs_mean_cos": 0.960044
+        },
+        "cosine_pair_zmean": {
+          "auc": 0.921875,
+          "asr": 0.875,
+          "tpr_at_1pct_fpr": 0.25,
+          "threshold": -0.553415,
+          "best_tpr": 1.0,
+          "best_fpr": 0.25,
+          "spearman_vs_mean_cos": 0.982771
+        },
+        "cosine_ssim_triplet_zmean": {
+          "auc": 0.894531,
+          "asr": 0.84375,
+          "tpr_at_1pct_fpr": 0.5,
+          "threshold": -0.490291,
+          "best_tpr": 0.9375,
+          "best_fpr": 0.25,
+          "spearman_vs_mean_cos": 0.878666
+        },
+        "cosine_ssim_rank_fusion": {
+          "auc": 0.916016,
+          "asr": 0.875,
+          "tpr_at_1pct_fpr": 0.4375,
+          "threshold": 12.674004,
+          "best_tpr": 0.9375,
+          "best_fpr": 0.1875,
+          "spearman_vs_mean_cos": 0.902688
+        }
+      },
+      "ranked_candidates": [
+        {
+          "name": "mean_cos",
+          "auc": 0.945312,
+          "asr": 0.875,
+          "spearman_vs_mean_cos": 1.0
+        },
+        {
+          "name": "cosine_pair_zmean",
+          "auc": 0.921875,
+          "asr": 0.875,
+          "spearman_vs_mean_cos": 0.982771
+        },
+        {
+          "name": "cosine_ssim_rank_fusion",
+          "auc": 0.916016,
+          "asr": 0.875,
+          "spearman_vs_mean_cos": 0.902688
+        },
+        {
+          "name": "max_cos",
+          "auc": 0.90625,
+          "asr": 0.875,
+          "spearman_vs_mean_cos": 0.960044
+        },
+        {
+          "name": "cosine_ssim_triplet_zmean",
+          "auc": 0.894531,
+          "asr": 0.84375,
+          "spearman_vs_mean_cos": 0.878666
+        }
+      ],
+      "best_candidate": "mean_cos",
+      "best_auc_gain_vs_mean_cos": 0.0,
+      "records_path": "D:/Code/DiffAudit/Research/workspaces/black-box/runs/semantic-aux-classifier-comparator-20260415-r1/outputs/records.json"
+    },
+    {
+      "sample_count": 64,
+      "member_rows": 32,
+      "nonmember_rows": 32,
+      "candidates": {
+        "mean_cos": {
+          "auc": 0.916992,
+          "asr": 0.875,
+          "tpr_at_1pct_fpr": 0.21875,
+          "threshold": 0.462228,
+          "best_tpr": 0.96875,
+          "best_fpr": 0.21875,
+          "spearman_vs_mean_cos": 1.0
+        },
+        "max_cos": {
+          "auc": 0.90625,
+          "asr": 0.859375,
+          "tpr_at_1pct_fpr": 0.28125,
+          "threshold": 0.524859,
+          "best_tpr": 0.90625,
+          "best_fpr": 0.1875,
+          "spearman_vs_mean_cos": 0.974588
+        },
+        "cosine_pair_zmean": {
+          "auc": 0.918945,
+          "asr": 0.875,
+          "tpr_at_1pct_fpr": 0.25,
+          "threshold": -0.126797,
+          "best_tpr": 0.90625,
+          "best_fpr": 0.15625,
+          "spearman_vs_mean_cos": 0.993132
+        },
+        "cosine_ssim_triplet_zmean": {
+          "auc": 0.887695,
+          "asr": 0.8125,
+          "tpr_at_1pct_fpr": 0.5,
+          "threshold": -0.231476,
+          "best_tpr": 0.90625,
+          "best_fpr": 0.28125,
+          "spearman_vs_mean_cos": 0.876923
+        },
+        "cosine_ssim_rank_fusion": {
+          "auc": 0.903809,
+          "asr": 0.84375,
+          "tpr_at_1pct_fpr": 0.59375,
+          "threshold": 28.354177,
+          "best_tpr": 0.90625,
+          "best_fpr": 0.21875,
+          "spearman_vs_mean_cos": 0.894796
+        }
+      },
+      "ranked_candidates": [
+        {
+          "name": "cosine_pair_zmean",
+          "auc": 0.918945,
+          "asr": 0.875,
+          "spearman_vs_mean_cos": 0.993132
+        },
+        {
+          "name": "mean_cos",
+          "auc": 0.916992,
+          "asr": 0.875,
+          "spearman_vs_mean_cos": 1.0
+        },
+        {
+          "name": "max_cos",
+          "auc": 0.90625,
+          "asr": 0.859375,
+          "spearman_vs_mean_cos": 0.974588
+        },
+        {
+          "name": "cosine_ssim_rank_fusion",
+          "auc": 0.903809,
+          "asr": 0.84375,
+          "spearman_vs_mean_cos": 0.894796
+        },
+        {
+          "name": "cosine_ssim_triplet_zmean",
+          "auc": 0.887695,
+          "asr": 0.8125,
+          "spearman_vs_mean_cos": 0.876923
+        }
+      ],
+      "best_candidate": "cosine_pair_zmean",
+      "best_auc_gain_vs_mean_cos": 0.001953,
+      "records_path": "D:/Code/DiffAudit/Research/workspaces/black-box/runs/semantic-aux-classifier-comparator-20260416-r2/outputs/records.json"
+    }
+  ],
+  "overall": {
+    "fusion_beats_mean_cos_any_run": true,
+    "meaningful_gain_ge_0p01_auc": false,
+    "preferred_reference_score": "mean_cos"
+  },
+  "notes": "At least one bounded fusion variant edges past mean_cos, but the gain stays below the 0.01 AUC bar and does not justify a new challenger promotion."
+}

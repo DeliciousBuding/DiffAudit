@@ -45,6 +45,12 @@ Every admitted row exposed to downstream consumers MUST carry:
 - `source`
 - `boundary`
 
+Hard interpretation rule:
+
+- `system-intake-ready` and `runtime-mainline` MUST NOT be interpreted as `paper-aligned` or `benchmark-ready`
+- `provenance_status = workspace-verified` remains below `paper-aligned`
+- downstream consumers must rely on the row `boundary` field for any stronger wording
+
 If a UI or API wants to expose non-admitted directions, it MUST label them as exactly one of:
 
 - `comparator`

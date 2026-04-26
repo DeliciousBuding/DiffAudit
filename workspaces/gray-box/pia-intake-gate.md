@@ -38,6 +38,7 @@ Interpretation:
 - the line is safe to consume as the next local research input
 - provenance is now `workspace-verified`, so only `paper-aligned` remains blocked
 - `paper-aligned` still remains blocked not only on release/source identity, but also on the CIFAR10 random-four-split / four-model protocol gap relative to the current single fixed split
+- `system-intake-ready` does **not** imply `paper-aligned` or `benchmark-ready`
 
 ## Gate Levels
 
@@ -120,6 +121,7 @@ Reason:
 - the `2026-04-09` strict next-run gate passed under a clean `external/PIA` snapshot
 - the current repo state must still be re-checked before any future strict release review
 - paper alignment has not yet been confirmed
+- the blocker only reopens on real upstream identity change or protocol-aligned split/model assets, not on wording drift
 
 Implementation detail:
 

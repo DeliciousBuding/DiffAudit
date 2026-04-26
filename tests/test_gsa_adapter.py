@@ -38,6 +38,78 @@ def create_minimal_gsa_assets(assets_root: Path) -> None:
 
 
 class GsaAdapterTests(unittest.TestCase):
+    def test_draw_loss_score_noise_is_deterministic_per_seed_and_sample(self) -> None:
+        from diffaudit.attacks.gsa import _draw_loss_score_noise
+
+        noise_a = _draw_loss_score_noise(
+            shape=(2, 3),
+            device=torch.device("cpu"),
+            dtype=torch.float32,
+            noise_seed=7,
+            sample_key="target-member/00-data_batch_1-00011.png",
+        )
+        noise_b = _draw_loss_score_noise(
+            shape=(2, 3),
+            device=torch.device("cpu"),
+            dtype=torch.float32,
+            noise_seed=7,
+            sample_key="target-member/00-data_batch_1-00011.png",
+        )
+        noise_c = _draw_loss_score_noise(
+            shape=(2, 3),
+            device=torch.device("cpu"),
+            dtype=torch.float32,
+            noise_seed=7,
+            sample_key="target-member/00-data_batch_1-00012.png",
+        )
+
+        self.assertTrue(torch.equal(noise_a, noise_b))
+        self.assertFalse(torch.equal(noise_a, noise_c))
+
+    def test_iter_dataset_files_ignores_non_image_artifacts(self) -> None:
+        from diffaudit.attacks.gsa import _iter_dataset_files
+
+        with tempfile.TemporaryDirectory() as tmpdir:
+            root = Path(tmpdir)
+            dataset_root = root / "dataset"
+            dataset_root.mkdir(parents=True)
+            (dataset_root / "dataset.json").write_text("{}", encoding="utf-8")
+            (dataset_root / "notes.txt").write_text("ignored", encoding="utf-8")
+            (dataset_root / "00-data_batch_1-00011.png").write_bytes(b"x")
+            (dataset_root / "00-data_batch_1-00012.JPG").write_bytes(b"x")
+
+            dataset_files = _iter_dataset_files(dataset_root)
+
+        self.assertEqual(
+            [path.name for path in dataset_files],
+            ["00-data_batch_1-00011.png", "00-data_batch_1-00012.JPG"],
+        )
+
+    def test_filter_dataset_files_by_sample_ids_selects_matching_suffixes(self) -> None:
+        from diffaudit.attacks.gsa import _filter_dataset_files_by_sample_ids
+
+        with tempfile.TemporaryDirectory() as tmpdir:
+            root = Path(tmpdir)
+            dataset_root = root / "dataset"
+            dataset_root.mkdir(parents=True)
+            files = []
+            for name in (
+                "00-data_batch_1-00011.png",
+                "00-data_batch_1-00123.png",
+                "00-data_batch_1-04567.png",
+                "ignored.txt",
+            ):
+                path = dataset_root / name
+                path.write_bytes(b"x")
+                files.append(path)
+
+            selected = _filter_dataset_files_by_sample_ids(
+                [files[0], files[1], files[2]],
+                sample_id_allowlist=[123, 4567],
+            )
+
+        self.assertEqual([path.name for path in selected], ["00-data_batch_1-00123.png", "00-data_batch_1-04567.png"])
+
     def test_cli_probes_gsa_assets(self) -> None:
         from diffaudit.cli import main
 
@@ -64,14 +136,14 @@ class GsaAdapterTests(unittest.TestCase):
         self.assertEqual(exit_code, 0)
         self.assertEqual(payload["status"], "ready")
         self.assertTrue(payload["checks"]["target_checkpoint"])
-        self.assertTrue(payload["checks"]["shadow_checkpoint"])
+        self.assertTrue(payload["checks"]["shadow_checkpoints"])
         self.assertTrue(payload["checks"]["manifest_file"])
 
     def test_cli_runs_gsa_runtime_mainline(self) -> None:
         from diffaudit.cli import main
 
-        def fake_subprocess_run(command, cwd=None, capture_output=None, text=None, check=None):
-            del cwd, capture_output, text, check
+        def fake_subprocess_run(command, cwd=None, capture_output=None, text=None, check=None, env=None):
+            del cwd, capture_output, text, check, env
             if "--output_name" in command:
                 output_path = Path(command[command.index("--output_name") + 1])
                 output_path.parent.mkdir(parents=True, exist_ok=True)
@@ -139,6 +211,497 @@ class GsaAdapterTests(unittest.TestCase):
             self.assertIn("tpr_at_0_1pct_fpr", payload["metrics"])
             self.assertTrue(Path(payload["artifact_paths"]["summary"]).exists())
             self.assertTrue(Path(payload["artifact_paths"]["target_member_gradients"]).exists())
+
+    def test_cli_runs_gsa_runtime_mainline_with_bounded_max_samples(self) -> None:
+        from diffaudit.cli import main
+
+        def fake_subprocess_run(command, cwd=None, capture_output=None, text=None, check=None, env=None):
+            del cwd, capture_output, text, check, env
+            if "--output_name" in command:
+                output_path = Path(command[command.index("--output_name") + 1])
+                output_path.parent.mkdir(parents=True, exist_ok=True)
+                base = 0.9 if "member" in output_path.name else 0.1
+                tensor = torch.tensor(
+                    [
+                        [base, base + 0.1, base + 0.2],
+                        [base + 0.05, base + 0.15, base + 0.25],
+                        [base + 0.1, base + 0.2, base + 0.3],
+                        [base + 0.15, base + 0.25, base + 0.35],
+                    ],
+                    dtype=torch.float32,
+                )
+                torch.save(tensor, output_path)
+                return type(
+                    "Completed",
+                    (),
+                    {"returncode": 0, "stdout": "gradient ok\n", "stderr": ""},
+                )()
+            return type(
+                "Completed",
+                (),
+                {"returncode": 0, "stdout": "attack ok\n", "stderr": ""},
+            )()
+
+        with tempfile.TemporaryDirectory() as tmpdir:
+            root = Path(tmpdir)
+            repo_root = root / "GSA"
+            assets_root = root / "assets"
+            create_minimal_gsa_repo(repo_root)
+            create_minimal_gsa_assets(assets_root)
+
+            stdout = StringIO()
+            with patch("diffaudit.attacks.gsa.subprocess.run", side_effect=fake_subprocess_run):
+                with redirect_stdout(stdout):
+                    exit_code = main(
+                        [
+                            "run-gsa-runtime-mainline",
+                            "--workspace",
+                            str(root / "gsa-runtime-mainline-bounded"),
+                            "--repo-root",
+                            str(repo_root),
+                            "--assets-root",
+                            str(assets_root),
+                            "--resolution",
+                            "32",
+                            "--ddpm-num-steps",
+                            "20",
+                            "--sampling-frequency",
+                            "2",
+                            "--attack-method",
+                            "1",
+                            "--max-samples",
+                            "2",
+                        ]
+                    )
+
+            payload = json.loads(stdout.getvalue())
+            self.assertEqual(exit_code, 0)
+            self.assertEqual(payload["status"], "ready")
+            self.assertEqual(payload["runtime"]["max_samples"], 2)
+            self.assertEqual(payload["metrics"]["target_eval_size"], 4)
+            self.assertLessEqual(payload["metrics"]["shadow_train_size"], 4)
+
+    def test_cli_runs_gsa_runtime_intervention_review_with_frozen_mask_summary(self) -> None:
+        from diffaudit.cli import main
+
+        received_extraction_caps: list[int | None] = []
+
+        def fake_extract(
+            *,
+            output_path,
+            channel_indices=None,
+            extraction_max_samples=None,
+            **kwargs,
+        ):
+            del kwargs
+            received_extraction_caps.append(extraction_max_samples)
+            output_path = Path(output_path)
+            output_path.parent.mkdir(parents=True, exist_ok=True)
+            base = 0.9 if "member" in output_path.name else 0.1
+            if channel_indices:
+                base = base - 0.2 if "member" in output_path.name else base + 0.2
+            tensor = torch.tensor(
+                [
+                    [base, base + 0.1, base + 0.2],
+                    [base + 0.05, base + 0.15, base + 0.25],
+                    [base + 0.1, base + 0.2, base + 0.3],
+                    [base + 0.15, base + 0.25, base + 0.35],
+                ],
+                dtype=torch.float32,
+            )
+            torch.save(tensor, output_path)
+
+        with tempfile.TemporaryDirectory() as tmpdir:
+            root = Path(tmpdir)
+            repo_root = root / "GSA"
+            assets_root = root / "assets"
+            create_minimal_gsa_repo(repo_root)
+            create_minimal_gsa_assets(assets_root)
+            mask_summary = root / "mask-summary.json"
+            mask_summary.write_text(
+                json.dumps(
+                    {
+                        "mode": "inmodel-packet-export",
+                        "requested": {
+                            "layer_selector": "mid_block.attentions.0.to_v",
+                            "checkpoint_dir": str(
+                                assets_root / "checkpoints" / "target" / "checkpoint-10"
+                            ),
+                            "sample_id": "target-member/sample-a.png",
+                            "control_sample_id": "target-nonmember/sample-b.png",
+                            "timestep": 999,
+                            "mask_seed": 11,
+                            "noise_seed": 7,
+                        },
+                        "mask": {
+                            "mask_kind": "top_abs_delta_k",
+                            "channel_indices": [0, 2],
+                            "k": 2,
+                            "alpha": 0.5,
+                        },
+                        "metrics": {
+                            "selected_delta_retention_ratio": 0.5,
+                            "off_mask_drift": 0.0,
+                            "epsilon_prediction_rms_drift_mean": 1e-6,
+                            "epsilon_prediction_max_abs_drift_mean": 2e-6,
+                        },
+                    },
+                    indent=2,
+                ),
+                encoding="utf-8",
+            )
+
+            stdout = StringIO()
+            with patch(
+                "diffaudit.attacks.gsa._extract_gsa_gradients_with_fixed_mask",
+                side_effect=fake_extract,
+                create=True,
+            ), patch(
+                "diffaudit.attacks.gsa._evaluate_gsa_closed_loop",
+                side_effect=[
+                    {
+                        "auc": 0.99,
+                        "asr": 0.95,
+                        "tpr_at_1pct_fpr": 0.6,
+                        "tpr_at_0_1pct_fpr": 0.2,
+                        "shadow_train_size": 8,
+                        "target_eval_size": 4,
+                    },
+                    {
+                        "auc": 0.88,
+                        "asr": 0.8,
+                        "tpr_at_1pct_fpr": 0.25,
+                        "tpr_at_0_1pct_fpr": 0.0,
+                        "shadow_train_size": 8,
+                        "target_eval_size": 4,
+                    },
+                ],
+                create=True,
+            ):
+                with redirect_stdout(stdout):
+                    exit_code = main(
+                        [
+                            "run-gsa-runtime-intervention-review",
+                            "--workspace",
+                            str(root / "gsa-runtime-intervention-review"),
+                            "--repo-root",
+                            str(repo_root),
+                            "--assets-root",
+                            str(assets_root),
+                            "--mask-summary",
+                            str(mask_summary),
+                            "--max-samples",
+                            "2",
+                        ]
+                    )
+
+            payload = json.loads(stdout.getvalue())
+            self.assertEqual(exit_code, 0)
+            self.assertEqual(payload["status"], "ready")
+            self.assertEqual(payload["mode"], "runtime-intervention-review")
+            self.assertEqual(payload["runtime"]["max_samples"], 2)
+            self.assertEqual(payload["runtime"]["extraction_max_samples"], 2)
+            self.assertEqual(payload["mask"]["channel_indices"], [0, 2])
+            self.assertEqual(payload["baseline"]["metrics"]["auc"], 0.99)
+            self.assertEqual(payload["intervened"]["metrics"]["auc"], 0.88)
+            self.assertEqual(payload["metric_deltas"]["auc_delta"], -0.11)
+            self.assertTrue(received_extraction_caps)
+            self.assertTrue(all(cap == 2 for cap in received_extraction_caps))
+            self.assertTrue(Path(payload["artifact_paths"]["summary"]).exists())
+
+    def test_cli_exports_gsa_loss_score_packet(self) -> None:
+        from diffaudit.cli import main
+
+        def fake_export(
+            *,
+            output_path,
+            records_path,
+            extraction_max_samples=None,
+            **kwargs,
+        ):
+            del kwargs
+            output_path = Path(output_path)
+            records_path = Path(records_path)
+            output_path.parent.mkdir(parents=True, exist_ok=True)
+            records_path.parent.mkdir(parents=True, exist_ok=True)
+            base = 0.9 if "member" in output_path.name else 0.1
+            tensor = torch.tensor([base, base + 0.05], dtype=torch.float32)
+            torch.save(tensor, output_path)
+            records_path.write_text(
+                json.dumps({"sample_index": 0, "sample_path": "sample-a.png", "loss_score": float(base)}),
+                encoding="utf-8",
+            )
+            return {
+                "status": "ready",
+                "output_path": str(output_path),
+                "records_path": str(records_path),
+                "checkpoint_dir": "checkpoint-10",
+                "sample_count": 1 if extraction_max_samples == 1 else 2,
+                "score_stats": {
+                    "mean": round(float(tensor.mean().item()), 6),
+                    "min": round(float(tensor.min().item()), 6),
+                    "max": round(float(tensor.max().item()), 6),
+                },
+            }
+
+        with tempfile.TemporaryDirectory() as tmpdir:
+            root = Path(tmpdir)
+            repo_root = root / "GSA"
+            assets_root = root / "assets"
+            create_minimal_gsa_repo(repo_root)
+            create_minimal_gsa_assets(assets_root)
+
+            stdout = StringIO()
+            with patch(
+                "diffaudit.attacks.gsa._extract_gsa_loss_scores",
+                side_effect=fake_export,
+                create=True,
+            ):
+                with redirect_stdout(stdout):
+                    exit_code = main(
+                        [
+                            "export-gsa-loss-score-packet",
+                            "--workspace",
+                            str(root / "gsa-loss-score-packet"),
+                            "--repo-root",
+                            str(repo_root),
+                            "--assets-root",
+                            str(assets_root),
+                            "--extraction-max-samples",
+                            "1",
+                        ]
+                    )
+
+            payload = json.loads(stdout.getvalue())
+            self.assertEqual(exit_code, 0)
+            self.assertEqual(payload["status"], "ready")
+            self.assertEqual(payload["mode"], "loss-score-export")
+            self.assertEqual(payload["runtime"]["extraction_max_samples"], 1)
+            self.assertTrue(Path(payload["artifact_paths"]["summary"]).exists())
+            self.assertTrue(Path(payload["artifact_paths"]["target_member_scores"]).exists())
+
+    def test_cli_exports_gsa_loss_score_packet_with_sample_id_file(self) -> None:
+        from diffaudit.cli import main
+
+        received_allowlists: list[list[int] | None] = []
+
+        def fake_export(
+            *,
+            output_path,
+            records_path,
+            sample_id_allowlist=None,
+            **kwargs,
+        ):
+            del kwargs
+            received_allowlists.append(sample_id_allowlist)
+            output_path = Path(output_path)
+            records_path = Path(records_path)
+            output_path.parent.mkdir(parents=True, exist_ok=True)
+            records_path.parent.mkdir(parents=True, exist_ok=True)
+            tensor = torch.tensor([0.9, 0.95], dtype=torch.float32)
+            torch.save(tensor, output_path)
+            records_path.write_text(
+                json.dumps({"sample_index": 0, "sample_path": "00-data_batch_1-00123.png", "loss_score": 0.9}),
+                encoding="utf-8",
+            )
+            return {
+                "status": "ready",
+                "output_path": str(output_path),
+                "records_path": str(records_path),
+                "checkpoint_dir": "checkpoint-10",
+                "sample_count": 2,
+                "score_stats": {
+                    "mean": 0.925,
+                    "min": 0.9,
+                    "max": 0.95,
+                },
+            }
+
+        with tempfile.TemporaryDirectory() as tmpdir:
+            root = Path(tmpdir)
+            repo_root = root / "GSA"
+            assets_root = root / "assets"
+            sample_id_file = root / "sample_ids.txt"
+            sample_id_file.write_text("123\n4567\n", encoding="utf-8")
+            create_minimal_gsa_repo(repo_root)
+            create_minimal_gsa_assets(assets_root)
+
+            stdout = StringIO()
+            with patch(
+                "diffaudit.attacks.gsa._extract_gsa_loss_scores",
+                side_effect=fake_export,
+                create=True,
+            ):
+                with redirect_stdout(stdout):
+                    exit_code = main(
+                        [
+                            "export-gsa-loss-score-packet",
+                            "--workspace",
+                            str(root / "gsa-loss-score-packet"),
+                            "--repo-root",
+                            str(repo_root),
+                            "--assets-root",
+                            str(assets_root),
+                            "--sample-id-file",
+                            str(sample_id_file),
+                        ]
+                    )
+
+            payload = json.loads(stdout.getvalue())
+            self.assertEqual(exit_code, 0)
+            self.assertEqual(payload["status"], "ready")
+            self.assertEqual(payload["runtime"]["sample_id_allowlist_count"], 2)
+            self.assertTrue(received_allowlists)
+            self.assertEqual(received_allowlists[0], [123, 4567])
+            self.assertTrue(Path(payload["artifact_paths"]["summary"]).exists())
+
+    def test_cli_evaluates_gsa_loss_score_packet_with_shadow_only_orientation(self) -> None:
+        from diffaudit.cli import main
+
+        with tempfile.TemporaryDirectory() as tmpdir:
+            root = Path(tmpdir)
+            export_root = root / "gsa-loss-score-export"
+            scores_root = export_root / "loss-scores"
+            scores_root.mkdir(parents=True, exist_ok=True)
+
+            artifacts = {
+                "target_member": scores_root / "target_member-loss-scores.pt",
+                "target_non_member": scores_root / "target_non_member-loss-scores.pt",
+                "shadow_01_member": scores_root / "shadow_01_member-loss-scores.pt",
+                "shadow_01_non_member": scores_root / "shadow_01_non_member-loss-scores.pt",
+            }
+            torch.save(torch.tensor([0.6, 0.7], dtype=torch.float32), artifacts["target_member"])
+            torch.save(torch.tensor([0.3, 0.4], dtype=torch.float32), artifacts["target_non_member"])
+            torch.save(torch.tensor([0.2, 0.3], dtype=torch.float32), artifacts["shadow_01_member"])
+            torch.save(torch.tensor([0.7, 0.8], dtype=torch.float32), artifacts["shadow_01_non_member"])
+
+            packet_summary = export_root / "summary.json"
+            packet_summary.write_text(
+                json.dumps(
+                    {
+                        "status": "ready",
+                        "mode": "loss-score-export",
+                        "asset_grade": "real-asset-closed-loop",
+                        "runtime": {
+                            "extraction_max_samples": 64,
+                            "attack_method": 1,
+                        },
+                        "artifact_paths": {
+                            "shadow_specs": [
+                                {
+                                    "name": "shadow-01",
+                                }
+                            ]
+                        },
+                        "exports": {
+                            key: {
+                                "status": "ready",
+                                "output_path": str(path),
+                            }
+                            for key, path in artifacts.items()
+                        },
+                    },
+                    indent=2,
+                ),
+                encoding="utf-8",
+            )
+
+            stdout = StringIO()
+            with redirect_stdout(stdout):
+                exit_code = main(
+                    [
+                        "evaluate-gsa-loss-score-packet",
+                        "--workspace",
+                        str(root / "gsa-loss-score-threshold-eval"),
+                        "--packet-summary",
+                        str(packet_summary),
+                    ]
+                )
+
+            payload = json.loads(stdout.getvalue())
+            self.assertEqual(exit_code, 0)
+            self.assertEqual(payload["status"], "ready")
+            self.assertEqual(payload["mode"], "loss-score-threshold-eval")
+            self.assertEqual(payload["shadow_pool"]["metrics"]["score_direction"], "member-lower")
+            self.assertEqual(payload["target_transfer"]["metrics"]["score_direction"], "member-lower")
+            self.assertEqual(payload["target_transfer"]["metrics"]["inferred_score_direction"], "member-higher")
+            self.assertEqual(payload["target_self_diagnostic"]["metrics"]["score_direction"], "member-higher")
+            self.assertTrue(Path(payload["artifact_paths"]["summary"]).exists())
+
+    def test_cli_evaluates_gsa_loss_score_packet_with_gaussian_lr_transfer(self) -> None:
+        from diffaudit.cli import main
+
+        with tempfile.TemporaryDirectory() as tmpdir:
+            root = Path(tmpdir)
+            export_root = root / "gsa-loss-score-export"
+            scores_root = export_root / "loss-scores"
+            scores_root.mkdir(parents=True, exist_ok=True)
+
+            artifacts = {
+                "target_member": scores_root / "target_member-loss-scores.pt",
+                "target_non_member": scores_root / "target_non_member-loss-scores.pt",
+                "shadow_01_member": scores_root / "shadow_01_member-loss-scores.pt",
+                "shadow_01_non_member": scores_root / "shadow_01_non_member-loss-scores.pt",
+            }
+            torch.save(torch.tensor([0.58, 0.61], dtype=torch.float32), artifacts["target_member"])
+            torch.save(torch.tensor([0.31, 0.35], dtype=torch.float32), artifacts["target_non_member"])
+            torch.save(torch.tensor([0.62, 0.64], dtype=torch.float32), artifacts["shadow_01_member"])
+            torch.save(torch.tensor([0.28, 0.32], dtype=torch.float32), artifacts["shadow_01_non_member"])
+
+            packet_summary = export_root / "summary.json"
+            packet_summary.write_text(
+                json.dumps(
+                    {
+                        "status": "ready",
+                        "mode": "loss-score-export",
+                        "asset_grade": "real-asset-closed-loop",
+                        "runtime": {
+                            "extraction_max_samples": 64,
+                            "attack_method": 1,
+                        },
+                        "artifact_paths": {
+                            "shadow_specs": [
+                                {
+                                    "name": "shadow-01",
+                                }
+                            ]
+                        },
+                        "exports": {
+                            key: {
+                                "status": "ready",
+                                "output_path": str(path),
+                            }
+                            for key, path in artifacts.items()
+                        },
+                    },
+                    indent=2,
+                ),
+                encoding="utf-8",
+            )
+
+            stdout = StringIO()
+            with redirect_stdout(stdout):
+                exit_code = main(
+                    [
+                        "evaluate-gsa-loss-score-packet",
+                        "--workspace",
+                        str(root / "gsa-loss-score-lr-eval"),
+                        "--packet-summary",
+                        str(packet_summary),
+                        "--evaluation-style",
+                        "gaussian-likelihood-ratio-transfer",
+                    ]
+                )
+
+            payload = json.loads(stdout.getvalue())
+            self.assertEqual(exit_code, 0)
+            self.assertEqual(payload["status"], "ready")
+            self.assertEqual(payload["mode"], "loss-score-lr-eval")
+            self.assertEqual(payload["runtime"]["evaluation_style"], "gaussian-likelihood-ratio-transfer")
+            self.assertEqual(payload["runtime"]["orientation_source"], "pooled-shadow-gaussian-lr")
+            self.assertIn("density_fit", payload["shadow_pool"])
+            self.assertGreater(payload["target_transfer"]["metrics"]["auc"], 0.5)
+            self.assertTrue(Path(payload["artifact_paths"]["summary"]).exists())
 
 
 if __name__ == "__main__":

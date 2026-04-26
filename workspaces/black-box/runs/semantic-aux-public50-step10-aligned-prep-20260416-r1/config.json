@@ -1,0 +1,16 @@
+{
+  "status": "prepared",
+  "contract_surface": "recon-public-50-step10",
+  "exports": {
+    "member": {
+      "count": 50,
+      "source": "D:/Code/DiffAudit/Research/external/recon-assets/ndss-2025-blackbox-membership-inference-fine-tuned-diffusion-models/derived-public-50/target_member.pt",
+      "out_dir": "D:/Code/DiffAudit/Research/workspaces/black-box/runs/semantic-aux-public50-step10-aligned-prep-20260416-r1/datasets/member"
+    },
+    "nonmember": {
+      "count": 50,
+      "source": "D:/Code/DiffAudit/Research/external/recon-assets/ndss-2025-blackbox-membership-inference-fine-tuned-diffusion-models/derived-public-50/target_non_member.pt",
+      "out_dir": "D:/Code/DiffAudit/Research/workspaces/black-box/runs/semantic-aux-public50-step10-aligned-prep-20260416-r1/datasets/nonmember"
+    }
+  }
+}

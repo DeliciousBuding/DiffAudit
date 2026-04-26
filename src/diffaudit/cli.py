@@ -151,6 +151,18 @@ def build_parser() -> argparse.ArgumentParser:
     )
     recon_public_bundle_audit_parser.add_argument("--bundle-root", required=True)
 
+    recon_stage0_gate_parser = subparsers.add_parser(
+        "check-recon-stage0-paper-gate",
+        help="block strict Recon Attack-I starts unless the public bundle is paper-aligned",
+    )
+    recon_stage0_gate_parser.add_argument(
+        "--repo-root",
+        default="external/Reconstruction-based-Attack",
+        help="path to local reconstruction-based attack repository root",
+    )
+    recon_stage0_gate_parser.add_argument("--bundle-root", required=True)
+    recon_stage0_gate_parser.add_argument("--attack-scenario", default="attack-i")
+
     dit_asset_probe_parser = subparsers.add_parser(
         "probe-dit-assets",
         help="inspect official DiT sampling workspace and optional checkpoint readiness",
@@ -182,6 +194,83 @@ def build_parser() -> argparse.ArgumentParser:
         help="inspect API-only variation attack readiness without remote calls",
     )
     variation_asset_probe_parser.add_argument("--config", required=True, help="path to audit yaml")
+
+    h2_asset_probe_parser = subparsers.add_parser(
+        "probe-h2-assets",
+        help="inspect 04-H2 privacy-aware adapter asset readiness on local DDPM checkpoints and image roots",
+    )
+    h2_asset_probe_parser.add_argument("--checkpoint-root", required=True)
+    h2_asset_probe_parser.add_argument("--checkpoint-dir", default=None)
+    h2_asset_probe_parser.add_argument("--member-dataset-dir", required=True)
+    h2_asset_probe_parser.add_argument("--nonmember-dataset-dir", required=True)
+    h2_asset_probe_parser.add_argument("--packet-cap", type=int, default=1000)
+    h2_asset_probe_parser.add_argument(
+        "--max-layout-checks",
+        type=int,
+        default=0,
+        help="maximum images per split used for layout validation; 0 means scan all images",
+    )
+    h2_asset_probe_parser.add_argument(
+        "--provenance-status",
+        default="workspace-verified",
+        help="provenance label recorded in the probe summary",
+    )
+
+    h2_prepare_parser = subparsers.add_parser(
+        "prepare-h2-contract",
+        help="freeze the first canonical workspace contract for 04-H2 privacy-aware adapter",
+    )
+    h2_prepare_parser.add_argument("--workspace", required=True)
+    h2_prepare_parser.add_argument("--checkpoint-root", required=True)
+    h2_prepare_parser.add_argument("--checkpoint-dir", default=None)
+    h2_prepare_parser.add_argument("--member-dataset-dir", required=True)
+    h2_prepare_parser.add_argument("--nonmember-dataset-dir", required=True)
+    h2_prepare_parser.add_argument("--packet-cap", type=int, default=1000)
+    h2_prepare_parser.add_argument("--max-layout-checks", type=int, default=0)
+    h2_prepare_parser.add_argument("--rank", type=int, default=4)
+    h2_prepare_parser.add_argument("--alpha", type=float, default=1.0)
+    h2_prepare_parser.add_argument("--lambda-coeff", type=float, default=0.5)
+    h2_prepare_parser.add_argument("--delta", type=float, default=1e-4)
+    h2_prepare_parser.add_argument("--lora-lr", type=float, default=1e-4)
+    h2_prepare_parser.add_argument("--proxy-lr", type=float, default=1e-3)
+    h2_prepare_parser.add_argument(
+        "--optimizer",
+        default="adam",
+        choices=["adam", "adamw", "sgd"],
+    )
+    h2_prepare_parser.add_argument("--sgd-momentum", type=float, default=0.9)
+    h2_prepare_parser.add_argument("--proxy-hidden-dim", type=int, default=256)
+    h2_prepare_parser.add_argument("--proxy-steps", type=int, default=5)
+    h2_prepare_parser.add_argument("--num-epochs", type=int, default=10)
+    h2_prepare_parser.add_argument("--batch-size", type=int, default=8)
+    h2_prepare_parser.add_argument("--num-workers", type=int, default=0)
+    h2_prepare_parser.add_argument("--method", default="smp", choices=["smp", "mp"])
+    h2_prepare_parser.add_argument("--device", default="cpu")
+    h2_prepare_parser.add_argument("--provenance-status", default="workspace-verified")
+
+    h2_run_parser = subparsers.add_parser(
+        "run-h2-defense-pilot",
+        help="execute one bounded 04-H2 privacy-aware adapter training pilot under a prepared contract",
+    )
+    h2_run_parser.add_argument("--workspace", required=True)
+    h2_run_parser.add_argument("--manifest", required=True)
+    h2_run_parser.add_argument("--member-limit", type=int, default=1)
+    h2_run_parser.add_argument("--nonmember-limit", type=int, default=1)
+    h2_run_parser.add_argument("--seed", type=int, default=None)
+
+    h2_review_parser = subparsers.add_parser(
+        "review-h2-defense-pilot",
+        help="run one same-packet attack-side review for baseline vs defended 04-H2 checkpoints",
+    )
+    h2_review_parser.add_argument("--workspace", required=True)
+    h2_review_parser.add_argument("--run-summary", required=True)
+    h2_review_parser.add_argument(
+        "--shadow-reference-summary",
+        default="workspaces/white-box/runs/gsa-loss-score-export-bounded-actual-20260418-r1/summary.json",
+    )
+    h2_review_parser.add_argument("--device", default="cpu")
+    h2_review_parser.add_argument("--noise-seed", type=int, default=None)
+    h2_review_parser.add_argument("--provenance-status", default="workspace-verified")
 
     prepare_parser = subparsers.add_parser(
         "prepare-secmi",
@@ -578,6 +667,67 @@ def build_parser() -> argparse.ArgumentParser:
         help="number of member and non-member samples loaded for the runtime preview",
     )
 
+    pia_packet_export_parser = subparsers.add_parser(
+        "export-pia-packet-scores",
+        help="export one CPU-first matched member/non-member PIA packet score scaffold",
+    )
+    pia_packet_export_parser.add_argument("--config", required=True, help="path to audit yaml")
+    pia_packet_export_parser.add_argument("--workspace", required=True)
+    pia_packet_export_parser.add_argument("--repo-root", default="external/PIA")
+    pia_packet_export_parser.add_argument("--member-split-root", default="external/PIA/DDPM")
+    pia_packet_export_parser.add_argument("--device", default="cpu")
+    pia_packet_export_parser.add_argument("--packet-size", type=int, default=4)
+    pia_packet_export_parser.add_argument("--member-offset", type=int, default=0)
+    pia_packet_export_parser.add_argument("--nonmember-offset", type=int, default=0)
+    pia_packet_export_parser.add_argument("--member-index-file", default=None)
+    pia_packet_export_parser.add_argument("--nonmember-index-file", default=None)
+    pia_packet_export_parser.add_argument("--batch-size", type=int, default=4)
+    pia_packet_export_parser.add_argument("--adaptive-query-repeats", type=int, default=1)
+    pia_packet_export_parser.add_argument("--provenance-status", default="workspace-verified")
+
+    sima_packet_export_parser = subparsers.add_parser(
+        "export-sima-packet-scores",
+        help="export one CPU-first matched member/non-member SimA packet score scaffold",
+    )
+    sima_packet_export_parser.add_argument("--config", required=True, help="path to audit yaml")
+    sima_packet_export_parser.add_argument("--workspace", required=True)
+    sima_packet_export_parser.add_argument("--repo-root", default="external/PIA")
+    sima_packet_export_parser.add_argument("--member-split-root", default="external/PIA/DDPM")
+    sima_packet_export_parser.add_argument("--device", default="cpu")
+    sima_packet_export_parser.add_argument("--packet-size", type=int, default=4)
+    sima_packet_export_parser.add_argument("--member-offset", type=int, default=0)
+    sima_packet_export_parser.add_argument("--nonmember-offset", type=int, default=0)
+    sima_packet_export_parser.add_argument("--member-index-file", default=None)
+    sima_packet_export_parser.add_argument("--nonmember-index-file", default=None)
+    sima_packet_export_parser.add_argument("--batch-size", type=int, default=4)
+    sima_packet_export_parser.add_argument("--timestep", type=int, default=20)
+    sima_packet_export_parser.add_argument("--p-norm", type=float, default=4.0)
+    sima_packet_export_parser.add_argument("--noise-seed", type=int, default=0)
+    sima_packet_export_parser.add_argument("--provenance-status", default="workspace-verified")
+
+    pia_translated_alias_parser = subparsers.add_parser(
+        "export-pia-translated-alias-probe",
+        help="export one CPU-first translated-contract alias probe on a frozen PIA member/non-member pair",
+    )
+    pia_translated_alias_parser.add_argument("--config", required=True, help="path to audit yaml")
+    pia_translated_alias_parser.add_argument("--workspace", required=True)
+    pia_translated_alias_parser.add_argument("--repo-root", default="external/PIA")
+    pia_translated_alias_parser.add_argument("--member-split-root", default="external/PIA/DDPM")
+    pia_translated_alias_parser.add_argument("--device", default="cpu")
+    pia_translated_alias_parser.add_argument("--member-index", type=int, required=True)
+    pia_translated_alias_parser.add_argument("--nonmember-index", type=int, required=True)
+    pia_translated_alias_parser.add_argument("--batch-size", type=int, default=1)
+    pia_translated_alias_parser.add_argument("--adaptive-query-repeats", type=int, default=1)
+    pia_translated_alias_parser.add_argument("--alias-selector", default="middleblocks.0.attn.proj_v")
+    pia_translated_alias_parser.add_argument("--translated-from", default="mid_block.attentions.0.to_v")
+    pia_translated_alias_parser.add_argument("--channel-dim", type=int, default=1)
+    pia_translated_alias_parser.add_argument("--mask-kind", default="top_abs_delta_k")
+    pia_translated_alias_parser.add_argument("--k", type=int, default=8)
+    pia_translated_alias_parser.add_argument("--alpha", type=float, default=0.5)
+    pia_translated_alias_parser.add_argument("--mask-seed", type=int, default=0)
+    pia_translated_alias_parser.add_argument("--alias-timestep", type=int, default=0)
+    pia_translated_alias_parser.add_argument("--provenance-status", default="workspace-verified")
+
     runtime_probe_parser = subparsers.add_parser(
         "runtime-probe-secmi",
         help="validate SecMI runtime readiness by loading flags and model",
@@ -729,6 +879,12 @@ def build_parser() -> argparse.ArgumentParser:
         help="repeat the same score query this many times and aggregate by mean for adaptive attacker review",
     )
     pia_runtime_mainline_parser.add_argument(
+        "--epsilon-precision-bins",
+        type=int,
+        default=None,
+        help="optional epsilon-output quantization bin count for precision-throttling defense review",
+    )
+    pia_runtime_mainline_parser.add_argument(
         "--late-step-threshold",
         type=int,
         default=None,
@@ -854,6 +1010,76 @@ def build_parser() -> argparse.ArgumentParser:
         help="provenance label recorded in the emitted payload",
     )
 
+    gsa_masked_packet_parser = subparsers.add_parser(
+        "export-gsa-observability-masked-packet",
+        help="export one CPU-first masked white-box packet scaffold without authorizing any GPU release",
+    )
+    gsa_masked_packet_parser.add_argument("--workspace", required=True)
+    gsa_masked_packet_parser.add_argument("--repo-root", default="workspaces/white-box/external/GSA")
+    gsa_masked_packet_parser.add_argument(
+        "--assets-root",
+        default="workspaces/white-box/assets/gsa-cifar10-1k-3shadow-epoch300-rerun1",
+    )
+    gsa_masked_packet_parser.add_argument(
+        "--checkpoint-root",
+        default="workspaces/white-box/assets/gsa-cifar10-1k-3shadow-epoch300-rerun1/checkpoints/target",
+    )
+    gsa_masked_packet_parser.add_argument("--checkpoint-dir", default=None)
+    gsa_masked_packet_parser.add_argument("--split", required=True)
+    gsa_masked_packet_parser.add_argument("--sample-id", required=True)
+    gsa_masked_packet_parser.add_argument("--control-split", required=True)
+    gsa_masked_packet_parser.add_argument("--control-sample-id", required=True)
+    gsa_masked_packet_parser.add_argument("--layer-selector", default="mid_block.attentions.0.to_v")
+    gsa_masked_packet_parser.add_argument(
+        "--mask-kind",
+        default="top_abs_delta_k",
+        choices=["top_abs_delta_k", "random_k_seeded", "bottom_abs_delta_k"],
+    )
+    gsa_masked_packet_parser.add_argument("--k", type=int, default=8)
+    gsa_masked_packet_parser.add_argument("--alpha", type=float, default=0.5)
+    gsa_masked_packet_parser.add_argument("--timestep", type=int, default=999)
+    gsa_masked_packet_parser.add_argument("--noise-seed", type=int, default=0)
+    gsa_masked_packet_parser.add_argument("--mask-seed", type=int, default=0)
+    gsa_masked_packet_parser.add_argument("--prediction-type", default="epsilon")
+    gsa_masked_packet_parser.add_argument("--device", default="cpu")
+    gsa_masked_packet_parser.add_argument("--resolution", type=int, default=32)
+    gsa_masked_packet_parser.add_argument("--provenance-status", default="workspace-verified")
+
+    gsa_inmodel_packet_parser = subparsers.add_parser(
+        "export-gsa-observability-inmodel-packet",
+        help="export one CPU-first in-model white-box packet canary without authorizing any GPU release",
+    )
+    gsa_inmodel_packet_parser.add_argument("--workspace", required=True)
+    gsa_inmodel_packet_parser.add_argument("--repo-root", default="workspaces/white-box/external/GSA")
+    gsa_inmodel_packet_parser.add_argument(
+        "--assets-root",
+        default="workspaces/white-box/assets/gsa-cifar10-1k-3shadow-epoch300-rerun1",
+    )
+    gsa_inmodel_packet_parser.add_argument(
+        "--checkpoint-root",
+        default="workspaces/white-box/assets/gsa-cifar10-1k-3shadow-epoch300-rerun1/checkpoints/target",
+    )
+    gsa_inmodel_packet_parser.add_argument("--checkpoint-dir", default=None)
+    gsa_inmodel_packet_parser.add_argument("--split", required=True)
+    gsa_inmodel_packet_parser.add_argument("--sample-id", required=True)
+    gsa_inmodel_packet_parser.add_argument("--control-split", required=True)
+    gsa_inmodel_packet_parser.add_argument("--control-sample-id", required=True)
+    gsa_inmodel_packet_parser.add_argument("--layer-selector", default="mid_block.attentions.0.to_v")
+    gsa_inmodel_packet_parser.add_argument(
+        "--mask-kind",
+        default="top_abs_delta_k",
+        choices=["top_abs_delta_k", "random_k_seeded", "bottom_abs_delta_k"],
+    )
+    gsa_inmodel_packet_parser.add_argument("--k", type=int, default=8)
+    gsa_inmodel_packet_parser.add_argument("--alpha", type=float, default=0.5)
+    gsa_inmodel_packet_parser.add_argument("--timestep", type=int, default=999)
+    gsa_inmodel_packet_parser.add_argument("--noise-seed", type=int, default=0)
+    gsa_inmodel_packet_parser.add_argument("--mask-seed", type=int, default=0)
+    gsa_inmodel_packet_parser.add_argument("--prediction-type", default="epsilon")
+    gsa_inmodel_packet_parser.add_argument("--device", default="cpu")
+    gsa_inmodel_packet_parser.add_argument("--resolution", type=int, default=32)
+    gsa_inmodel_packet_parser.add_argument("--provenance-status", default="workspace-verified")
+
     gsa_runtime_mainline_parser = subparsers.add_parser(
         "run-gsa-runtime-mainline",
         help="run the canonical white-box GSA DDPM closed loop against real local assets",
@@ -903,6 +1129,12 @@ def build_parser() -> argparse.ArgumentParser:
         help="prediction type passed to the official GSA DDPM gradient extractor",
     )
     gsa_runtime_mainline_parser.add_argument(
+        "--max-samples",
+        type=int,
+        default=None,
+        help="optional per-side evaluation cap applied to target/shadow member and nonmember gradients",
+    )
+    gsa_runtime_mainline_parser.add_argument(
         "--paper-aligned",
         action="store_true",
         help="use stronger GSA defaults closer to the upstream paper path",
@@ -917,6 +1149,312 @@ def build_parser() -> argparse.ArgumentParser:
         "--provenance-status",
         default="workspace-verified",
         help="provenance label recorded in the emitted summary",
+    )
+
+    gsa_loss_score_export_parser = subparsers.add_parser(
+        "export-gsa-loss-score-packet",
+        help="export a bounded same-asset white-box loss-score packet without mutating admitted gradient mainline semantics",
+    )
+    gsa_loss_score_export_parser.add_argument("--workspace", required=True)
+    gsa_loss_score_export_parser.add_argument(
+        "--repo-root",
+        default="workspaces/white-box/external/GSA",
+    )
+    gsa_loss_score_export_parser.add_argument(
+        "--assets-root",
+        default="workspaces/white-box/assets/gsa-cifar10-1k-3shadow-epoch300-rerun1",
+    )
+    gsa_loss_score_export_parser.add_argument("--resolution", type=int, default=32)
+    gsa_loss_score_export_parser.add_argument("--ddpm-num-steps", type=int, default=20)
+    gsa_loss_score_export_parser.add_argument("--sampling-frequency", type=int, default=2)
+    gsa_loss_score_export_parser.add_argument("--attack-method", type=int, default=1)
+    gsa_loss_score_export_parser.add_argument("--prediction-type", default="epsilon")
+    gsa_loss_score_export_parser.add_argument("--extraction-max-samples", type=int, default=None)
+    gsa_loss_score_export_parser.add_argument(
+        "--sample-id-file",
+        default=None,
+        help="optional path to a text or JSON file listing sample IDs to export from each split",
+    )
+    gsa_loss_score_export_parser.add_argument(
+        "--device",
+        default="cpu",
+        choices=["auto", "cpu", "cuda"],
+    )
+    gsa_loss_score_export_parser.add_argument("--provenance-status", default="workspace-verified")
+
+    gsa_loss_score_eval_parser = subparsers.add_parser(
+        "evaluate-gsa-loss-score-packet",
+        help="evaluate a bounded threshold-style white-box packet from exported loss-score artifacts",
+    )
+    gsa_loss_score_eval_parser.add_argument("--workspace", required=True)
+    gsa_loss_score_eval_parser.add_argument(
+        "--packet-summary",
+        required=True,
+        help="path to a ready export-gsa-loss-score-packet summary.json artifact",
+    )
+    gsa_loss_score_eval_parser.add_argument(
+        "--evaluation-style",
+        default="threshold-transfer",
+        choices=["threshold-transfer", "gaussian-likelihood-ratio-transfer"],
+        help="score-evaluation surface to apply on the frozen exported packet",
+    )
+    gsa_loss_score_eval_parser.add_argument("--provenance-status", default="workspace-verified")
+
+    crossbox_pairboard_parser = subparsers.add_parser(
+        "analyze-crossbox-pairboard",
+        help="build a shared-score pairboard from two cross-box score surfaces",
+    )
+    crossbox_pairboard_parser.add_argument("--workspace", required=True)
+    crossbox_pairboard_parser.add_argument(
+        "--surface-a",
+        required=True,
+        help="path to the first score surface JSON or GSA loss-score-export summary",
+    )
+    crossbox_pairboard_parser.add_argument(
+        "--surface-b",
+        required=True,
+        help="path to the second score surface JSON or GSA loss-score-export summary",
+    )
+    crossbox_pairboard_parser.add_argument("--surface-a-name", default=None)
+    crossbox_pairboard_parser.add_argument("--surface-b-name", default=None)
+    crossbox_pairboard_parser.add_argument(
+        "--surface-a-family",
+        default=None,
+        help="optional nested family key for family-scores style JSON payloads",
+    )
+    crossbox_pairboard_parser.add_argument(
+        "--surface-b-family",
+        default=None,
+        help="optional nested family key for family-scores style JSON payloads",
+    )
+    crossbox_pairboard_parser.add_argument(
+        "--calibration-fraction",
+        type=float,
+        default=0.5,
+        help="fraction of each label bucket reserved for calibration",
+    )
+    crossbox_pairboard_parser.add_argument(
+        "--seed",
+        type=int,
+        default=0,
+        help="random seed used for calibration/test partitioning",
+    )
+    crossbox_pairboard_parser.add_argument(
+        "--repeats",
+        type=int,
+        default=1,
+        help="number of stratified repeated holdout runs to evaluate",
+    )
+    crossbox_pairboard_parser.add_argument(
+        "--tail-gated-cascade",
+        action="store_true",
+        help="enable bounded H4 tail-gated cascade on top of the pairboard candidates",
+    )
+    crossbox_pairboard_parser.add_argument("--cascade-anchor-name", default=None)
+    crossbox_pairboard_parser.add_argument("--cascade-candidate-name", default="logistic_2feature")
+    crossbox_pairboard_parser.add_argument("--cascade-route-fractions", default=None)
+    crossbox_pairboard_parser.add_argument("--cascade-gammas", default=None)
+    crossbox_pairboard_parser.add_argument("--cascade-secondary-cost-ratio", type=float, default=0.25)
+
+    risk_targeted_unlearning_parser = subparsers.add_parser(
+        "prepare-risk-targeted-unlearning-pilot",
+        help="aggregate aligned GSA/PIA-style risk scores and export bounded forget/control lists for 04-H1",
+    )
+    risk_targeted_unlearning_parser.add_argument("--workspace", required=True)
+    risk_targeted_unlearning_parser.add_argument(
+        "--surface-a",
+        required=True,
+        help="path to the first score surface JSON or GSA loss-score-export summary",
+    )
+    risk_targeted_unlearning_parser.add_argument(
+        "--surface-b",
+        required=True,
+        help="path to the second score surface JSON or GSA loss-score-export summary",
+    )
+    risk_targeted_unlearning_parser.add_argument("--surface-a-name", default=None)
+    risk_targeted_unlearning_parser.add_argument("--surface-b-name", default=None)
+    risk_targeted_unlearning_parser.add_argument("--surface-a-family", default=None)
+    risk_targeted_unlearning_parser.add_argument("--surface-b-family", default=None)
+    risk_targeted_unlearning_parser.add_argument("--weight-a", type=float, default=0.5)
+    risk_targeted_unlearning_parser.add_argument("--weight-b", type=float, default=0.5)
+    risk_targeted_unlearning_parser.add_argument("--top-fraction", type=float, default=0.1)
+    risk_targeted_unlearning_parser.add_argument(
+        "--top-k",
+        default="16,32,64",
+        help="comma-separated forget-set sizes to export",
+    )
+    risk_targeted_unlearning_parser.add_argument("--provenance-status", default="workspace-verified")
+
+    risk_targeted_unlearning_pilot_parser = subparsers.add_parser(
+        "run-risk-targeted-unlearning-pilot",
+        help="run one bounded retain+forget training pilot on current DDPM/CIFAR10 admitted assets",
+    )
+    risk_targeted_unlearning_pilot_parser.add_argument("--workspace", required=True)
+    risk_targeted_unlearning_pilot_parser.add_argument(
+        "--member-dataset-dir",
+        default="workspaces/white-box/assets/gsa-cifar10-1k-3shadow-epoch300-rerun1/datasets/target-member",
+    )
+    risk_targeted_unlearning_pilot_parser.add_argument("--forget-member-index-file", required=True)
+    risk_targeted_unlearning_pilot_parser.add_argument("--matched-nonmember-index-file", default=None)
+    risk_targeted_unlearning_pilot_parser.add_argument(
+        "--checkpoint-root",
+        default="workspaces/white-box/assets/gsa-cifar10-1k-3shadow-epoch300-rerun1/checkpoints/target",
+    )
+    risk_targeted_unlearning_pilot_parser.add_argument("--checkpoint-dir", default=None)
+    risk_targeted_unlearning_pilot_parser.add_argument(
+        "--random-init",
+        action="store_true",
+        help="use a random DDPM initialization instead of loading a target checkpoint",
+    )
+    risk_targeted_unlearning_pilot_parser.add_argument("--retain-max-samples", type=int, default=None)
+    risk_targeted_unlearning_pilot_parser.add_argument("--forget-max-samples", type=int, default=None)
+    risk_targeted_unlearning_pilot_parser.add_argument("--num-steps", type=int, default=100)
+    risk_targeted_unlearning_pilot_parser.add_argument("--batch-size", type=int, default=4)
+    risk_targeted_unlearning_pilot_parser.add_argument("--num-workers", type=int, default=0)
+    risk_targeted_unlearning_pilot_parser.add_argument("--lr", type=float, default=1e-5)
+    risk_targeted_unlearning_pilot_parser.add_argument("--alpha", type=float, default=0.5)
+    risk_targeted_unlearning_pilot_parser.add_argument("--mixture-lambda", type=float, default=0.5)
+    risk_targeted_unlearning_pilot_parser.add_argument("--grad-clip", type=float, default=1.0)
+    risk_targeted_unlearning_pilot_parser.add_argument("--resolution", type=int, default=32)
+    risk_targeted_unlearning_pilot_parser.add_argument("--ddpm-num-train-timesteps", type=int, default=1000)
+    risk_targeted_unlearning_pilot_parser.add_argument("--device", default="cuda")
+    risk_targeted_unlearning_pilot_parser.add_argument("--seed", type=int, default=0)
+    risk_targeted_unlearning_pilot_parser.add_argument("--provenance-status", default="workspace-verified")
+
+    risk_targeted_unlearning_review_parser = subparsers.add_parser(
+        "review-risk-targeted-unlearning-pilot",
+        help="run one attack-side subset review for baseline vs defended 04-H1 target checkpoints",
+    )
+    risk_targeted_unlearning_review_parser.add_argument("--workspace", required=True)
+    risk_targeted_unlearning_review_parser.add_argument(
+        "--shadow-reference-summary",
+        required=True,
+        help="ready undefended GSA loss-score-export summary used only for borrowed shadow threshold transfer",
+    )
+    risk_targeted_unlearning_review_parser.add_argument(
+        "--target-member-dataset-dir",
+        default="workspaces/white-box/assets/gsa-cifar10-1k-3shadow-epoch300-rerun1/datasets/target-member",
+    )
+    risk_targeted_unlearning_review_parser.add_argument(
+        "--target-nonmember-dataset-dir",
+        default="workspaces/white-box/assets/gsa-cifar10-1k-3shadow-epoch300-rerun1/datasets/target-nonmember",
+    )
+    risk_targeted_unlearning_review_parser.add_argument(
+        "--baseline-checkpoint-root",
+        default="workspaces/white-box/assets/gsa-cifar10-1k-3shadow-epoch300-rerun1/checkpoints/target",
+    )
+    risk_targeted_unlearning_review_parser.add_argument("--baseline-checkpoint-dir", default=None)
+    risk_targeted_unlearning_review_parser.add_argument("--defended-checkpoint-dir", required=True)
+    risk_targeted_unlearning_review_parser.add_argument("--forget-member-index-file", default=None)
+    risk_targeted_unlearning_review_parser.add_argument("--matched-nonmember-index-file", default=None)
+    risk_targeted_unlearning_review_parser.add_argument("--resolution", type=int, default=32)
+    risk_targeted_unlearning_review_parser.add_argument("--ddpm-num-steps", type=int, default=20)
+    risk_targeted_unlearning_review_parser.add_argument("--sampling-frequency", type=int, default=2)
+    risk_targeted_unlearning_review_parser.add_argument("--attack-method", type=int, default=1)
+    risk_targeted_unlearning_review_parser.add_argument("--prediction-type", default="epsilon")
+    risk_targeted_unlearning_review_parser.add_argument("--device", default="cuda")
+    risk_targeted_unlearning_review_parser.add_argument("--noise-seed", type=int, default=None)
+    risk_targeted_unlearning_review_parser.add_argument("--provenance-status", default="workspace-verified")
+
+    temporal_surrogate_export_parser = subparsers.add_parser(
+        "export-temporal-surrogate-feature-packet",
+        help="export one target-only temporal feature packet for 06-H1 teacher-calibrated surrogate scoping",
+    )
+    temporal_surrogate_export_parser.add_argument("--config", required=True, help="path to audit yaml")
+    temporal_surrogate_export_parser.add_argument("--workspace", required=True)
+    temporal_surrogate_export_parser.add_argument(
+        "--repo-root",
+        default="external/PIA",
+        help="path to local PIA repository root",
+    )
+    temporal_surrogate_export_parser.add_argument(
+        "--member-split-root",
+        default="external/PIA/DDPM",
+        help="path to PIA DDPM member split npz files",
+    )
+    temporal_surrogate_export_parser.add_argument("--device", default="cpu")
+    temporal_surrogate_export_parser.add_argument("--max-samples", type=int, default=None)
+    temporal_surrogate_export_parser.add_argument("--batch-size", type=int, default=8)
+    temporal_surrogate_export_parser.add_argument("--scan-timesteps", nargs="+", type=int, default=None)
+    temporal_surrogate_export_parser.add_argument("--noise-seed", type=int, default=0)
+    temporal_surrogate_export_parser.add_argument("--timestep-jitter-radius", type=int, default=0)
+    temporal_surrogate_export_parser.add_argument("--timestep-stride", type=int, default=1)
+    temporal_surrogate_export_parser.add_argument("--provenance-status", default="workspace-verified")
+
+    temporal_surrogate_eval_parser = subparsers.add_parser(
+        "evaluate-temporal-surrogate-packets",
+        help="fit and evaluate one teacher-calibrated temporal surrogate packet for 06-H1",
+    )
+    temporal_surrogate_eval_parser.add_argument("--workspace", required=True)
+    temporal_surrogate_eval_parser.add_argument("--teacher-feature-packet", required=True)
+    temporal_surrogate_eval_parser.add_argument("--teacher-score-surface", required=True)
+    temporal_surrogate_eval_parser.add_argument("--teacher-score-family", default=None)
+    temporal_surrogate_eval_parser.add_argument("--transfer-feature-packet", default=None)
+    temporal_surrogate_eval_parser.add_argument("--bag-count", type=int, default=8)
+    temporal_surrogate_eval_parser.add_argument(
+        "--quantiles",
+        nargs="+",
+        type=float,
+        default=[0.2, 0.35, 0.5, 0.65, 0.8],
+    )
+    temporal_surrogate_eval_parser.add_argument("--l2-alpha", type=float, default=0.01)
+    temporal_surrogate_eval_parser.add_argument("--cv-splits", type=int, default=4)
+    temporal_surrogate_eval_parser.add_argument("--cv-repeats", type=int, default=2)
+    temporal_surrogate_eval_parser.add_argument("--random-seed", type=int, default=0)
+    temporal_surrogate_eval_parser.add_argument("--provenance-status", default="workspace-verified")
+
+    temporal_lr_eval_parser = subparsers.add_parser(
+        "evaluate-temporal-lr-packets",
+        help="evaluate one fixed temporal likelihood-ratio fallback packet for 06-H2",
+    )
+    temporal_lr_eval_parser.add_argument("--workspace", required=True)
+    temporal_lr_eval_parser.add_argument("--calibration-feature-packet", required=True)
+    temporal_lr_eval_parser.add_argument("--transfer-feature-packet", default=None)
+    temporal_lr_eval_parser.add_argument("--primary-candidate", default="eps_abs_mean_late")
+    temporal_lr_eval_parser.add_argument("--sensitivity-candidate", default="eps_abs_late_over_early")
+    temporal_lr_eval_parser.add_argument("--cv-splits", type=int, default=4)
+    temporal_lr_eval_parser.add_argument("--cv-repeats", type=int, default=2)
+    temporal_lr_eval_parser.add_argument("--random-seed", type=int, default=0)
+    temporal_lr_eval_parser.add_argument("--provenance-status", default="workspace-verified")
+
+    gsa_runtime_intervention_review_parser = subparsers.add_parser(
+        "run-gsa-runtime-intervention-review",
+        help="run a bounded baseline/intervened white-box GSA review with one frozen target-anchored mask",
+    )
+    gsa_runtime_intervention_review_parser.add_argument("--workspace", required=True)
+    gsa_runtime_intervention_review_parser.add_argument(
+        "--repo-root",
+        default="workspaces/white-box/external/GSA",
+    )
+    gsa_runtime_intervention_review_parser.add_argument(
+        "--assets-root",
+        default="workspaces/white-box/assets/gsa-cifar10-1k-3shadow-epoch300-rerun1",
+    )
+    gsa_runtime_intervention_review_parser.add_argument(
+        "--mask-summary",
+        required=True,
+        help="path to the frozen target-anchored in-model packet summary containing mask channel indices",
+    )
+    gsa_runtime_intervention_review_parser.add_argument("--resolution", type=int, default=32)
+    gsa_runtime_intervention_review_parser.add_argument("--ddpm-num-steps", type=int, default=20)
+    gsa_runtime_intervention_review_parser.add_argument("--sampling-frequency", type=int, default=2)
+    gsa_runtime_intervention_review_parser.add_argument("--attack-method", type=int, default=1)
+    gsa_runtime_intervention_review_parser.add_argument("--prediction-type", default="epsilon")
+    gsa_runtime_intervention_review_parser.add_argument("--max-samples", type=int, default=None)
+    gsa_runtime_intervention_review_parser.add_argument("--extraction-max-samples", type=int, default=None)
+    gsa_runtime_intervention_review_parser.add_argument(
+        "--paper-aligned",
+        action="store_true",
+        help="use stronger GSA defaults closer to the upstream paper path",
+    )
+    gsa_runtime_intervention_review_parser.add_argument(
+        "--device",
+        default="cpu",
+        choices=["auto", "cpu", "cuda"],
+    )
+    gsa_runtime_intervention_review_parser.add_argument(
+        "--provenance-status",
+        default="workspace-verified",
     )
 
     dpdm_w1_target_only_parser = subparsers.add_parser(
@@ -1136,6 +1674,17 @@ def main(argv: list[str] | None = None) -> int:
         print(json.dumps(payload, indent=2, ensure_ascii=True))
         return 0 if payload["status"] == "ready" else 1
 
+    if args.command == "check-recon-stage0-paper-gate":
+        from diffaudit.attacks.recon import check_recon_stage0_paper_gate
+
+        payload = check_recon_stage0_paper_gate(
+            repo_root=args.repo_root,
+            bundle_root=args.bundle_root,
+            attack_scenario=args.attack_scenario,
+        )
+        print(json.dumps(payload, indent=2, ensure_ascii=True))
+        return 0 if payload["status"] == "ready" else 1
+
     if args.command == "probe-dit-assets":
         payload = probe_dit_assets(
             repo_root=args.repo_root,
@@ -1149,6 +1698,52 @@ def main(argv: list[str] | None = None) -> int:
     if args.command == "probe-variation-assets":
         config = load_audit_config(args.config)
         payload = explain_variation_assets(config)
+        print(json.dumps(payload, indent=2, ensure_ascii=True))
+        return 0 if payload["status"] == "ready" else 1
+
+    if args.command == "probe-h2-assets":
+        from diffaudit.defenses.h2_adapter import probe_h2_assets
+
+        payload = probe_h2_assets(
+            checkpoint_root=args.checkpoint_root,
+            checkpoint_dir=args.checkpoint_dir,
+            member_dataset_dir=args.member_dataset_dir,
+            nonmember_dataset_dir=args.nonmember_dataset_dir,
+            packet_cap=args.packet_cap,
+            max_layout_checks=args.max_layout_checks,
+            provenance_status=args.provenance_status,
+        )
+        print(json.dumps(payload, indent=2, ensure_ascii=True))
+        return 0 if payload["status"] == "ready" else 1
+
+    if args.command == "prepare-h2-contract":
+        from diffaudit.defenses.h2_adapter import prepare_h2_contract
+
+        payload = prepare_h2_contract(
+            workspace=args.workspace,
+            checkpoint_root=args.checkpoint_root,
+            checkpoint_dir=args.checkpoint_dir,
+            member_dataset_dir=args.member_dataset_dir,
+            nonmember_dataset_dir=args.nonmember_dataset_dir,
+            packet_cap=args.packet_cap,
+            max_layout_checks=args.max_layout_checks,
+            rank=args.rank,
+            alpha=args.alpha,
+            lambda_coeff=args.lambda_coeff,
+            delta=args.delta,
+            lora_lr=args.lora_lr,
+            proxy_lr=args.proxy_lr,
+            optimizer=args.optimizer,
+            sgd_momentum=args.sgd_momentum,
+            proxy_hidden_dim=args.proxy_hidden_dim,
+            proxy_steps=args.proxy_steps,
+            num_epochs=args.num_epochs,
+            batch_size=args.batch_size,
+            num_workers=args.num_workers,
+            method=args.method,
+            device=args.device,
+            provenance_status=args.provenance_status,
+        )
         print(json.dumps(payload, indent=2, ensure_ascii=True))
         return 0 if payload["status"] == "ready" else 1
 
@@ -1199,6 +1794,89 @@ def main(argv: list[str] | None = None) -> int:
             prediction_type=args.prediction_type,
             device=args.device,
             resolution=args.resolution,
+            provenance_status=args.provenance_status,
+        )
+        print(json.dumps(payload, indent=2, ensure_ascii=True))
+        return 0 if payload["status"] == "ready" else 1
+
+    if args.command == "export-gsa-observability-masked-packet":
+        from diffaudit.attacks.gsa_observability import export_gsa_observability_masked_packet
+
+        payload = export_gsa_observability_masked_packet(
+            workspace=args.workspace,
+            repo_root=args.repo_root,
+            assets_root=args.assets_root,
+            checkpoint_root=args.checkpoint_root,
+            checkpoint_dir=args.checkpoint_dir,
+            split=args.split,
+            sample_id=args.sample_id,
+            control_split=args.control_split,
+            control_sample_id=args.control_sample_id,
+            layer_selector=args.layer_selector,
+            mask_kind=args.mask_kind,
+            k=args.k,
+            alpha=args.alpha,
+            timestep=args.timestep,
+            noise_seed=args.noise_seed,
+            mask_seed=args.mask_seed,
+            prediction_type=args.prediction_type,
+            device=args.device,
+            resolution=args.resolution,
+            provenance_status=args.provenance_status,
+        )
+        print(json.dumps(payload, indent=2, ensure_ascii=True))
+        return 0 if payload["status"] == "ready" else 1
+
+    if args.command == "export-gsa-observability-inmodel-packet":
+        from diffaudit.attacks.gsa_observability import export_gsa_observability_inmodel_packet
+
+        payload = export_gsa_observability_inmodel_packet(
+            workspace=args.workspace,
+            repo_root=args.repo_root,
+            assets_root=args.assets_root,
+            checkpoint_root=args.checkpoint_root,
+            checkpoint_dir=args.checkpoint_dir,
+            split=args.split,
+            sample_id=args.sample_id,
+            control_split=args.control_split,
+            control_sample_id=args.control_sample_id,
+            layer_selector=args.layer_selector,
+            mask_kind=args.mask_kind,
+            k=args.k,
+            alpha=args.alpha,
+            timestep=args.timestep,
+            noise_seed=args.noise_seed,
+            mask_seed=args.mask_seed,
+            prediction_type=args.prediction_type,
+            device=args.device,
+            resolution=args.resolution,
+            provenance_status=args.provenance_status,
+        )
+        print(json.dumps(payload, indent=2, ensure_ascii=True))
+        return 0 if payload["status"] == "ready" else 1
+
+    if args.command == "run-h2-defense-pilot":
+        from diffaudit.defenses.h2_adapter import run_h2_defense_pilot
+
+        payload = run_h2_defense_pilot(
+            workspace=args.workspace,
+            manifest_path=args.manifest,
+            member_limit=args.member_limit,
+            nonmember_limit=args.nonmember_limit,
+            seed=args.seed,
+        )
+        print(json.dumps(payload, indent=2, ensure_ascii=True))
+        return 0 if payload["status"] == "ready" else 1
+
+    if args.command == "review-h2-defense-pilot":
+        from diffaudit.defenses.h2_adapter import review_h2_defense_pilot
+
+        payload = review_h2_defense_pilot(
+            workspace=args.workspace,
+            run_summary_path=args.run_summary,
+            shadow_reference_summary=args.shadow_reference_summary,
+            device=args.device,
+            noise_seed=args.noise_seed,
             provenance_status=args.provenance_status,
         )
         print(json.dumps(payload, indent=2, ensure_ascii=True))
@@ -1408,6 +2086,79 @@ def main(argv: list[str] | None = None) -> int:
         print(json.dumps(payload, indent=2, ensure_ascii=True))
         return exit_code
 
+    if args.command == "export-pia-packet-scores":
+        from diffaudit.attacks.pia_adapter import export_pia_packet_scores
+
+        config = load_audit_config(args.config)
+        payload = export_pia_packet_scores(
+            config,
+            workspace=args.workspace,
+            repo_root=args.repo_root,
+            member_split_root=args.member_split_root,
+            device=args.device,
+            packet_size=args.packet_size,
+            member_offset=args.member_offset,
+            nonmember_offset=args.nonmember_offset,
+            member_index_file=args.member_index_file,
+            nonmember_index_file=args.nonmember_index_file,
+            batch_size=args.batch_size,
+            adaptive_query_repeats=args.adaptive_query_repeats,
+            provenance_status=args.provenance_status,
+        )
+        print(json.dumps(payload, indent=2, ensure_ascii=True))
+        return 0 if payload["status"] == "ready" else 1
+
+    if args.command == "export-sima-packet-scores":
+        from diffaudit.attacks.sima_adapter import export_sima_packet_scores
+
+        config = load_audit_config(args.config)
+        payload = export_sima_packet_scores(
+            config,
+            workspace=args.workspace,
+            repo_root=args.repo_root,
+            member_split_root=args.member_split_root,
+            device=args.device,
+            packet_size=args.packet_size,
+            member_offset=args.member_offset,
+            nonmember_offset=args.nonmember_offset,
+            member_index_file=args.member_index_file,
+            nonmember_index_file=args.nonmember_index_file,
+            batch_size=args.batch_size,
+            timestep=args.timestep,
+            p_norm=args.p_norm,
+            noise_seed=args.noise_seed,
+            provenance_status=args.provenance_status,
+        )
+        print(json.dumps(payload, indent=2, ensure_ascii=True))
+        return 0 if payload["status"] == "ready" else 1
+
+    if args.command == "export-pia-translated-alias-probe":
+        from diffaudit.attacks.pia_adapter import export_pia_translated_alias_probe
+
+        config = load_audit_config(args.config)
+        payload = export_pia_translated_alias_probe(
+            config,
+            workspace=args.workspace,
+            repo_root=args.repo_root,
+            member_split_root=args.member_split_root,
+            device=args.device,
+            member_index=args.member_index,
+            nonmember_index=args.nonmember_index,
+            batch_size=args.batch_size,
+            adaptive_query_repeats=args.adaptive_query_repeats,
+            alias_selector=args.alias_selector,
+            translated_from=args.translated_from,
+            channel_dim=args.channel_dim,
+            mask_kind=args.mask_kind,
+            k=args.k,
+            alpha=args.alpha,
+            mask_seed=args.mask_seed,
+            alias_timestep=args.alias_timestep,
+            provenance_status=args.provenance_status,
+        )
+        print(json.dumps(payload, indent=2, ensure_ascii=True))
+        return 0 if payload["status"] == "ready" else 1
+
     if args.command == "runtime-probe-secmi":
         from diffaudit.attacks.secmi_adapter import probe_secmi_runtime
 
@@ -1474,6 +2225,7 @@ def main(argv: list[str] | None = None) -> int:
             stochastic_dropout_defense=args.stochastic_dropout_defense,
             dropout_activation_schedule=args.dropout_activation_schedule,
             adaptive_query_repeats=args.adaptive_query_repeats,
+            epsilon_precision_bins=args.epsilon_precision_bins,
             late_step_threshold=args.late_step_threshold,
             provenance_status=args.provenance_status,
         )
@@ -1497,6 +2249,234 @@ def main(argv: list[str] | None = None) -> int:
             sampling_frequency=sampling_frequency,
             attack_method=args.attack_method,
             prediction_type=args.prediction_type,
+            max_samples=args.max_samples,
+            device=args.device,
+            provenance_status=args.provenance_status,
+        )
+        print(json.dumps(payload, indent=2, ensure_ascii=True))
+        return 0 if payload["status"] == "ready" else 1
+
+    if args.command == "export-gsa-loss-score-packet":
+        from diffaudit.attacks.gsa import export_gsa_loss_score_packet
+
+        sample_id_allowlist = None
+        if args.sample_id_file is not None:
+            sample_id_file = Path(args.sample_id_file)
+            raw_text = sample_id_file.read_text(encoding="utf-8").strip()
+            if raw_text:
+                if raw_text.startswith("["):
+                    sample_id_allowlist = [int(value) for value in json.loads(raw_text)]
+                else:
+                    sample_id_allowlist = [int(line.strip()) for line in raw_text.splitlines() if line.strip()]
+            else:
+                sample_id_allowlist = []
+
+        payload = export_gsa_loss_score_packet(
+            workspace=args.workspace,
+            assets_root=args.assets_root,
+            repo_root=args.repo_root,
+            resolution=args.resolution,
+            ddpm_num_steps=args.ddpm_num_steps,
+            sampling_frequency=args.sampling_frequency,
+            attack_method=args.attack_method,
+            prediction_type=args.prediction_type,
+            extraction_max_samples=args.extraction_max_samples,
+            sample_id_allowlist=sample_id_allowlist,
+            device=args.device,
+            provenance_status=args.provenance_status,
+        )
+        print(json.dumps(payload, indent=2, ensure_ascii=True))
+        return 0 if payload["status"] == "ready" else 1
+
+    if args.command == "evaluate-gsa-loss-score-packet":
+        from diffaudit.attacks.gsa import evaluate_gsa_loss_score_packet
+
+        payload = evaluate_gsa_loss_score_packet(
+            workspace=args.workspace,
+            packet_summary=args.packet_summary,
+            evaluation_style=args.evaluation_style,
+            provenance_status=args.provenance_status,
+        )
+        print(json.dumps(payload, indent=2, ensure_ascii=True))
+        return 0 if payload["status"] == "ready" else 1
+
+    if args.command == "analyze-crossbox-pairboard":
+        from diffaudit.attacks.crossbox_pairboard import run_crossbox_pairboard
+
+        payload = run_crossbox_pairboard(
+            workspace=args.workspace,
+            surface_a_path=args.surface_a,
+            surface_b_path=args.surface_b,
+            surface_a_name=args.surface_a_name,
+            surface_b_name=args.surface_b_name,
+            surface_a_family=args.surface_a_family,
+            surface_b_family=args.surface_b_family,
+            calibration_fraction=args.calibration_fraction,
+            seed=args.seed,
+            repeats=args.repeats,
+            enable_tail_gated_cascade=args.tail_gated_cascade,
+            cascade_anchor_name=args.cascade_anchor_name,
+            cascade_candidate_name=args.cascade_candidate_name,
+            cascade_route_fractions=args.cascade_route_fractions,
+            cascade_gammas=args.cascade_gammas,
+            cascade_secondary_cost_ratio=args.cascade_secondary_cost_ratio,
+        )
+        print(json.dumps(payload, indent=2, ensure_ascii=True))
+        return 0 if payload["status"] == "ready" else 1
+
+    if args.command == "prepare-risk-targeted-unlearning-pilot":
+        from diffaudit.defenses.risk_targeted_unlearning import run_risk_targeted_unlearning_prep
+
+        top_k_values = [int(value.strip()) for value in str(args.top_k).split(",") if value.strip()]
+        payload = run_risk_targeted_unlearning_prep(
+            workspace=args.workspace,
+            surface_a_path=args.surface_a,
+            surface_b_path=args.surface_b,
+            surface_a_name=args.surface_a_name,
+            surface_b_name=args.surface_b_name,
+            surface_a_family=args.surface_a_family,
+            surface_b_family=args.surface_b_family,
+            weight_a=args.weight_a,
+            weight_b=args.weight_b,
+            top_fraction=args.top_fraction,
+            top_k_values=top_k_values,
+            provenance_status=args.provenance_status,
+        )
+        print(json.dumps(payload, indent=2, ensure_ascii=True))
+        return 0 if payload["status"] == "ready" else 1
+
+    if args.command == "run-risk-targeted-unlearning-pilot":
+        from diffaudit.defenses.risk_targeted_unlearning import run_risk_targeted_unlearning_pilot
+
+        payload = run_risk_targeted_unlearning_pilot(
+            workspace=args.workspace,
+            member_dataset_dir=args.member_dataset_dir,
+            forget_member_index_file=args.forget_member_index_file,
+            checkpoint_root=args.checkpoint_root,
+            checkpoint_dir=args.checkpoint_dir,
+            matched_nonmember_index_file=args.matched_nonmember_index_file,
+            random_init=args.random_init,
+            retain_max_samples=args.retain_max_samples,
+            forget_max_samples=args.forget_max_samples,
+            num_steps=args.num_steps,
+            batch_size=args.batch_size,
+            num_workers=args.num_workers,
+            lr=args.lr,
+            alpha=args.alpha,
+            mixture_lambda=args.mixture_lambda,
+            grad_clip=args.grad_clip,
+            resolution=args.resolution,
+            ddpm_num_train_timesteps=args.ddpm_num_train_timesteps,
+            device=args.device,
+            seed=args.seed,
+            provenance_status=args.provenance_status,
+        )
+        print(json.dumps(payload, indent=2, ensure_ascii=True))
+        return 0 if payload["status"] == "ready" else 1
+
+    if args.command == "review-risk-targeted-unlearning-pilot":
+        from diffaudit.defenses.risk_targeted_unlearning import review_risk_targeted_unlearning_pilot
+
+        payload = review_risk_targeted_unlearning_pilot(
+            workspace=args.workspace,
+            shadow_reference_summary=args.shadow_reference_summary,
+            target_member_dataset_dir=args.target_member_dataset_dir,
+            target_nonmember_dataset_dir=args.target_nonmember_dataset_dir,
+            baseline_checkpoint_root=args.baseline_checkpoint_root,
+            baseline_checkpoint_dir=args.baseline_checkpoint_dir,
+            defended_checkpoint_dir=args.defended_checkpoint_dir,
+            forget_member_index_file=args.forget_member_index_file,
+            matched_nonmember_index_file=args.matched_nonmember_index_file,
+            resolution=args.resolution,
+            ddpm_num_steps=args.ddpm_num_steps,
+            sampling_frequency=args.sampling_frequency,
+            attack_method=args.attack_method,
+            prediction_type=args.prediction_type,
+            device=args.device,
+            noise_seed=args.noise_seed,
+            provenance_status=args.provenance_status,
+        )
+        print(json.dumps(payload, indent=2, ensure_ascii=True))
+        return 0 if payload["status"] == "ready" else 1
+
+    if args.command == "export-temporal-surrogate-feature-packet":
+        from diffaudit.attacks.temporal_surrogate import export_temporal_surrogate_feature_packet
+
+        config = load_audit_config(args.config)
+        payload = export_temporal_surrogate_feature_packet(
+            config=config,
+            workspace=args.workspace,
+            repo_root=args.repo_root,
+            member_split_root=args.member_split_root,
+            device=args.device,
+            max_samples=args.max_samples,
+            batch_size=args.batch_size,
+            scan_timesteps=args.scan_timesteps,
+            noise_seed=args.noise_seed,
+            timestep_jitter_radius=args.timestep_jitter_radius,
+            timestep_stride=args.timestep_stride,
+            provenance_status=args.provenance_status,
+        )
+        print(json.dumps(payload, indent=2, ensure_ascii=True))
+        return 0 if payload["status"] == "ready" else 1
+
+    if args.command == "evaluate-temporal-surrogate-packets":
+        from diffaudit.attacks.temporal_surrogate import evaluate_temporal_surrogate_packets
+
+        payload = evaluate_temporal_surrogate_packets(
+            workspace=args.workspace,
+            teacher_feature_packet=args.teacher_feature_packet,
+            teacher_score_surface=args.teacher_score_surface,
+            teacher_score_family=args.teacher_score_family,
+            transfer_feature_packet=args.transfer_feature_packet,
+            bag_count=args.bag_count,
+            quantiles=args.quantiles,
+            l2_alpha=args.l2_alpha,
+            cv_splits=args.cv_splits,
+            cv_repeats=args.cv_repeats,
+            random_seed=args.random_seed,
+            provenance_status=args.provenance_status,
+        )
+        print(json.dumps(payload, indent=2, ensure_ascii=True))
+        return 0 if payload["status"] == "ready" else 1
+
+    if args.command == "evaluate-temporal-lr-packets":
+        from diffaudit.attacks.temporal_lr import evaluate_temporal_lr_packets
+
+        payload = evaluate_temporal_lr_packets(
+            workspace=args.workspace,
+            calibration_feature_packet=args.calibration_feature_packet,
+            transfer_feature_packet=args.transfer_feature_packet,
+            primary_candidate=args.primary_candidate,
+            sensitivity_candidate=args.sensitivity_candidate,
+            cv_splits=args.cv_splits,
+            cv_repeats=args.cv_repeats,
+            random_seed=args.random_seed,
+            provenance_status=args.provenance_status,
+        )
+        print(json.dumps(payload, indent=2, ensure_ascii=True))
+        return 0 if payload["status"] == "ready" else 1
+
+    if args.command == "run-gsa-runtime-intervention-review":
+        from diffaudit.attacks.gsa import run_gsa_runtime_intervention_review
+
+        ddpm_num_steps = args.ddpm_num_steps
+        sampling_frequency = args.sampling_frequency
+        if args.paper_aligned:
+            ddpm_num_steps = 1000
+            sampling_frequency = 10
+        payload = run_gsa_runtime_intervention_review(
+            workspace=args.workspace,
+            assets_root=args.assets_root,
+            repo_root=args.repo_root,
+            mask_summary=args.mask_summary,
+            resolution=args.resolution,
+            ddpm_num_steps=ddpm_num_steps,
+            sampling_frequency=sampling_frequency,
+            attack_method=args.attack_method,
+            prediction_type=args.prediction_type,
+            max_samples=args.max_samples,
+            extraction_max_samples=args.extraction_max_samples,
             device=args.device,
             provenance_status=args.provenance_status,
         )
@@ -1565,3 +2545,7 @@ def main(argv: list[str] | None = None) -> int:
 
     parser.error(f"Unsupported command: {args.command}")
     return 2
+
+
+if __name__ == "__main__":
+    raise SystemExit(main())

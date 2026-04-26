@@ -1,0 +1,25 @@
+{
+  "task_scope": "BB-1.4 prompt-response consistency probe",
+  "track": "black-box",
+  "method_family": "prompt-response-consistency",
+  "device": "cpu",
+  "records_source": "D:/Code/DiffAudit/Research/workspaces/black-box/runs/semantic-aux-classifier-comparator-20260416-r2/outputs/records.json",
+  "generated_dir": "D:/Code/DiffAudit/Research/workspaces/black-box/runs/semantic-aux-classifier-comparator-20260416-r2/outputs/generated",
+  "metrics": {
+    "auc": 0.481445,
+    "asr": 0.578125,
+    "tpr_at_1pct_fpr": 0.0,
+    "threshold": 0.20873,
+    "best_tpr": 0.4375,
+    "best_fpr": 0.28125,
+    "spearman_vs_mean_cos": 0.109112,
+    "auc_gain_vs_mean_cos": -0.435547
+  },
+  "means": {
+    "member_mean_prompt_cos": 0.196779,
+    "nonmember_mean_prompt_cos": 0.199764,
+    "member_mean_cos": 0.583986,
+    "nonmember_mean_cos": 0.430354
+  },
+  "notes": "Existing generated outputs reused; no new image generation performed."
+}

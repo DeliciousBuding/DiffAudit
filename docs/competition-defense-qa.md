@@ -10,7 +10,7 @@
    - 主证据固定为 `DDIM public-100 step30` 的 admitted artifact，主要解释它修正了 shadow_non_member 复用和 artifact-mainline 的对齐，replay/variation 只做证据复核。
 
 4. **PIA 线怎么讲？**
-   - 当前主讲口径是 `GPU512 baseline` 加上 `stochastic-dropout(all_steps)` defended pairing，已经在 admissible asset 上复现指标落差，checkpoint/source provenance 仍是 long-term blocker，Research 只补充文档和 replay 而不改 admitted claim。
+   - 当前主讲口径是：`PIA GPU512 baseline` 暴露的是 `epsilon-trajectory consistency`，`stochastic-dropout(all_steps)` 作为 inference-time randomization 会在同一 admitted 合同下削弱这条信号；对外必须一起报 `AUC / ASR / TPR@1%FPR / TPR@0.1%FPR`，并同时强调当前 adaptive 证据只到 bounded repeated-query review，`checkpoint/source provenance` 仍是 long-term blocker。
 
 5. **GSA+W-1 怎么讲？**
    - 口径写成 `GSA 1k-3shadow` 与 `W-1 strong-v3 full-scale` 这两组 admitted asset 的 defended comparator，Research 负责把指标写回 unified table 并保持 bridge 冻结，避免把解释变成新的执行线。

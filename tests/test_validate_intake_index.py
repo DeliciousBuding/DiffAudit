@@ -51,7 +51,7 @@ class ValidateIntakeIndexTests(unittest.TestCase):
         )
 
         self.assertEqual(payload["schema"], "diffaudit.phase_e_candidates.v2")
-        self.assertEqual(payload["status"], "intake-only")
+        self.assertEqual(payload["status"], "document-conditional-only")
 
         document_layer = payload["document_layer_conditional"]
         self.assertEqual(len(document_layer), 1)
@@ -61,12 +61,7 @@ class ValidateIntakeIndexTests(unittest.TestCase):
         self.assertNotIn("manifest", document_layer[0])
 
         execution_layer = payload["intake_review_priority_order"]
-        self.assertEqual([item["order"] for item in execution_layer], [1, 2, 3, 4])
-        self.assertEqual(execution_layer[0]["current_shape"], "adapter-complete zero-GPU hold")
-        self.assertIn("separate hypothesis/budget review exists", execution_layer[0]["current_boundary"])
-        self.assertEqual(execution_layer[1]["current_shape"], "comparability / intake hardening only")
-        self.assertEqual(execution_layer[2]["current_shape"], "blocked baseline")
-        self.assertEqual(execution_layer[3]["current_shape"], "protocol-and-asset decomposition intake only")
+        self.assertEqual(execution_layer, [])
         for item in execution_layer:
             self.assertNotIn("contract_key", item)
             self.assertNotIn("manifest", item)

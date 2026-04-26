@@ -4,10 +4,10 @@
 
 - `owner`: `research_leader`
 - `scope`: 白盒成员推断、梯度级攻击、记忆定位与内部信号审计
-- `status`: `GSA epoch300 rerun1 admitted as white-box attack main evidence; W-1 strong-v3 full-scale frozen as defended main rung; strong-v2 full-scale retained as reference rung; same-protocol bridge is the only active white-box GPU question`
-- `blocked by`: `W-1` 仍是 defended comparator 而不是最终 benchmark；`DPDM` 与 `GSA` 仍有模型结构不一致；`W-2` 仍缺稳定训练目标与实现
-- `next step`: keep `strong-v3 full-scale` as the admitted defended main rung, treat rerun1 promotion as completed, and shift white-box work to same-protocol bridge plus portable execution entry`
-- `last updated`: `2026-04-09`
+- `status`: `GSA epoch300 rerun1 admitted as white-box attack main evidence; W-1 strong-v3 full-scale frozen as defended main rung; strong-v2 full-scale retained as reference rung; direct GSA gradient extraction verified on admitted assets; DP-LoRA successor lane now reduced to a bounded metric-split local comparator branch; fresh white-box paper-backed loss-feature challenger family is now restored for CPU-first scoping`
+- `blocked by`: `W-1` 仍是 defended comparator 而不是最终 benchmark；`DPDM` 与 `GSA` 仍有模型结构不一致；第二白盒线虽已形成 `GSA2` bounded corroboration，但 distinct 新家族仍未形成；`WB-3.2` 已正式收口为 `none selected / not-requestable``; `DP-LoRA` 当前也没有新的 GPU-worthy 问题，只有一个已完成的 harmonized local board，其结果是 `metric-split` 而不是 clean local dominance`；`LiRA / Strong LiRA` 级 loss-feature 变体当前又高于 bounded host-fit 预算`
+- `next step`: keep `strong-v3 full-scale` as the admitted defended main rung, keep `GSA2` as a bounded corroboration line, keep white-box breadth frozen below execution until a genuinely new defended family appears, and treat observability/feature routes as `ready below release threshold`; the current white-box-specific `I-B` branch is now frozen as an `actual bounded falsifier` after one real admitted packet plus boundary review, so white-box should not reopen same-family GPU work until a genuinely new bounded hypothesis survives CPU review. The fresh white-box-specific loss-score branch is now boundary-frozen as bounded auxiliary evidence after `X-78`: `X-72` already froze the same-asset contract, `X-73` selected the separate in-repo export path, `X-74` implemented and smoke-validated export, `X-75` froze the first honest packet contract, `X-76` implemented the evaluator and smoke-validated the `shadow-only transfer` honesty boundary, `X-77` landed the first actual packet with a positive-but-bounded transferred target board, and `X-78` froze that board below release-grade low-FPR honesty and below immediate same-family follow-up. Repo-level reselection and `I-A` carry-forward audit have now also closed in `X-79 / X-80`, and `X-81` further confirmed that the honest immediate move is stale-entry sync first. The current live repo lane should therefore be `X-82 cross-box / system-consumable stale-entry sync after X-81 reselection`.`
+- `last updated`: `2026-04-18`
 
 ## 推荐论文
 
@@ -78,6 +78,24 @@
 - `strong-v3` checkpoint 集合已确认可读，并已成功跑出 three-shadow `max128 / max256 / max512 / full-scale` GPU comparator，当前主口径已冻结但仍非论文最终 benchmark
 - `Finding NeMo` 仍缺 neuron-level 分析接口与资产
 - 当前白盒最大问题已不是“能不能继续把攻击跑高”，而是 `GSA` 与 `DPDM/W-1` 仍不在同一个协议面上
+- 直接 upstream `gen_l2_gradients_DDPM.py` 在 admitted target-member assets 上已被重新验证为可跑；当前执行层问题已缩到 dataset-mode 与 output-path hygiene，而不是梯度提取本身
+- 当前 `WB-2` 已收口为 `positive secondary line`：`GSA2 comparator` 在 admitted target pair + first shadow pair 上完成 bounded comparator，`AUC = 0.922498`，但仍低于 admitted `GSA1` 主线，因此只保留为 corroboration，不升级为新 headline
+- 白盒 breadth shortlist 已完成第一轮负筛选：
+  - `Finding NeMo` 当前仍是 observability / mechanism 路线，不是可执行 defended comparator
+  - `Local Mirror` 不是 defense family
+  - `DPDM` 的各个 strong-v2/strong-v3 变体仍只是在扩 `W-1`，不是第二防御家族
+- `WB-3.2` 也已完成正式 selection decision：
+  - 当前没有 candidate 值得进入 `WB-3.3`
+  - `WB-3.3 / WB-3.4` 在现有候选集上应视为 `not-requestable`
+- `WB-4` 也已完成当前波次轻量 probe：
+  - migrated DDPM observability contract still resolves cleanly
+  - but it does not change white-box story and remains below release threshold
+- `2026-04-17` 的 distinct defended-family import / selection review 也已收口：
+  - `GSA2` 仍只是 same-family corroboration
+  - `DP-LoRA` 仍只是 bounded metric-split branch
+  - `Finding NeMo` 仍是 observability hold
+  - `Local Mirror` 仍回落为 `GSA` family alias
+  - 因此白盒当前仍没有 import-ready 的 distinct defended family
 
 ## 当前最短路径
 

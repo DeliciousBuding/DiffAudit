@@ -1,0 +1,102 @@
+{
+  "status": "ready",
+  "track": "gray-box",
+  "method": "tmiadm",
+  "paper": "TMIA-DM_arXiv2026",
+  "mode": "protocol-probe",
+  "device": "cuda:0",
+  "workspace": "workspaces\\gray-box\\runs\\tmiadm-cifar10-late-window-timestep-jitter-defense-20260416-gpu-128-r1",
+  "workspace_name": "tmiadm-cifar10-late-window-timestep-jitter-defense-20260416-gpu-128-r1",
+  "contract_stage": "target",
+  "asset_grade": "single-machine-real-asset",
+  "provenance_status": "workspace-verified",
+  "evidence_level": "protocol-probe",
+  "artifact_paths": {
+    "summary": "workspaces\\gray-box\\runs\\tmiadm-cifar10-late-window-timestep-jitter-defense-20260416-gpu-128-r1\\summary.json",
+    "family_scores": "workspaces\\gray-box\\runs\\tmiadm-cifar10-late-window-timestep-jitter-defense-20260416-gpu-128-r1\\family-scores.json"
+  },
+  "checks": {
+    "checkpoint": true,
+    "dataset_root": true,
+    "dataset_layout": true,
+    "member_split": true,
+    "runtime_probe_ready": true,
+    "multi_timestep_features_ready": true,
+    "protocol_probe_completed": true
+  },
+  "runtime": {
+    "repo_root": "external\\PIA",
+    "model_dir": "workspaces/gray-box/assets/pia/checkpoints/cifar10_ddpm",
+    "dataset_root": "workspaces/gray-box/assets/pia/datasets",
+    "member_split_root": "external\\PIA\\DDPM",
+    "batch_size": 8,
+    "max_samples": 128,
+    "num_samples": 128,
+    "weights_key": "ema_model",
+    "scan_timesteps": [
+      80,
+      100,
+      120
+    ],
+    "effective_timesteps": [
+      81,
+      93,
+      124
+    ],
+    "aggregation_p_norm": 2.0,
+    "noise_seed": 0,
+    "elapsed_seconds": 8.477038
+  },
+  "defense": {
+    "name": "timestep-jitter",
+    "enabled": true,
+    "dropout_activation_schedule": "off",
+    "late_step_threshold": 20,
+    "timestep_jitter_radius": 10
+  },
+  "sample_count_per_split": 128,
+  "family_metrics": {
+    "short_window": {
+      "auc": 0.350952,
+      "asr": 0.503906,
+      "threshold": -1.083302,
+      "tpr_at_1pct_fpr": 0.0,
+      "tpr_at_0_1pct_fpr": 0.0,
+      "member_score_mean": -1.054425,
+      "nonmember_score_mean": -1.04437
+    },
+    "long_window": {
+      "auc": 0.850098,
+      "asr": 0.792969,
+      "threshold": -31.282784,
+      "tpr_at_1pct_fpr": 0.109375,
+      "tpr_at_0_1pct_fpr": 0.046875,
+      "member_score_mean": -30.848221,
+      "nonmember_score_mean": -31.549355
+    },
+    "fused": {
+      "auc": 0.488892,
+      "asr": 0.5625,
+      "threshold": 0.288222,
+      "tpr_at_1pct_fpr": 0.015625,
+      "tpr_at_0_1pct_fpr": 0.015625,
+      "member_score_mean": 0.0,
+      "nonmember_score_mean": -1e-06
+    }
+  },
+  "best_family": "long_window",
+  "metrics": {
+    "auc": 0.850098,
+    "asr": 0.792969,
+    "threshold": -31.282784,
+    "tpr_at_1pct_fpr": 0.109375,
+    "tpr_at_0_1pct_fpr": 0.046875,
+    "member_score_mean": -30.848221,
+    "nonmember_score_mean": -31.549355
+  },
+  "notes": [
+    "TMIA-DM protocol probe uses a short-window temporal-difference family over epsilon predictions.",
+    "TMIA-DM protocol probe also uses a long-window temporal aggregation family over the same timesteps.",
+    "This is a bounded local protocol probe, not yet a paper-faithful reproduction or promoted challenger verdict."
+  ]
+}

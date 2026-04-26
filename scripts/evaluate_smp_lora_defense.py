@@ -105,6 +105,8 @@ class SimpleGSA:
         member_images: list[Path],
         nonmember_images: list[Path],
         num_samples: int = 200,
+        evaluation_seed: int = 42,
+        score_artifact_path: Path | None = None,
     ) -> dict[str, Any]:
         """Evaluate attack accuracy on member vs non-member samples."""
         from torch.utils.data import DataLoader, Dataset
@@ -148,7 +150,8 @@ class SimpleGSA:
         X = np.vstack([member_features, nonmember_features])
         y = np.array([1] * len(member_features) + [0] * len(nonmember_features))
 
-        indices = np.random.permutation(len(X))
+        rng = np.random.default_rng(evaluation_seed)
+        indices = rng.permutation(len(X))
         X, y = X[indices], y[indices]
 
         split = int(0.7 * len(X))
@@ -157,7 +160,7 @@ class SimpleGSA:
 
         try:
             from sklearn.ensemble import RandomForestClassifier
-            from sklearn.metrics import accuracy_score, roc_auc_score
+            from sklearn.metrics import accuracy_score, roc_auc_score, roc_curve
 
             clf = RandomForestClassifier(n_estimators=100, random_state=42)
             clf.fit(X_train, y_train)
@@ -167,13 +170,40 @@ class SimpleGSA:
 
             accuracy = accuracy_score(y_test, y_pred)
             auc = roc_auc_score(y_test, y_prob)
+            fpr, tpr, _ = roc_curve(y_test, y_prob)
 
-            return {
+            def _tpr_at(target_fpr: float) -> float:
+                return float(tpr[np.argmin(np.abs(fpr - target_fpr))])
+
+            result = {
                 "accuracy": float(accuracy),
+                "asr": float(accuracy),
                 "auc": float(auc),
+                "tpr_at_1pct_fpr": _tpr_at(0.01),
+                "tpr_at_0_1pct_fpr": _tpr_at(0.001),
                 "num_member": len(member_features),
                 "num_nonmember": len(nonmember_features),
+                "evaluation_seed": int(evaluation_seed),
+                "num_train": int(len(X_train)),
+                "num_test": int(len(X_test)),
             }
+
+            if score_artifact_path is not None:
+                score_artifact_path.parent.mkdir(parents=True, exist_ok=True)
+                score_payload = {
+                    "evaluation_seed": int(evaluation_seed),
+                    "y_test": [int(v) for v in y_test.tolist()],
+                    "y_pred": [int(v) for v in y_pred.tolist()],
+                    "y_prob": [float(v) for v in y_prob.tolist()],
+                    "fpr": [float(v) for v in fpr.tolist()],
+                    "tpr": [float(v) for v in tpr.tolist()],
+                }
+                score_artifact_path.write_text(
+                    json.dumps(score_payload, indent=2),
+                    encoding="utf-8",
+                )
+
+            return result
         except ImportError:
             diff = member_features.mean(axis=0) - nonmember_features.mean(axis=0)
             score = np.linalg.norm(diff)
@@ -265,9 +295,21 @@ def main():
     parser.add_argument("--member_dir", type=Path, required=True, help="Member images directory")
     parser.add_argument("--nonmember_dir", type=Path, required=True, help="Non-member images directory")
     parser.add_argument("--output", type=Path, default=None, help="Output JSON path")
+    parser.add_argument(
+        "--details_output",
+        type=Path,
+        default=None,
+        help="Optional path for persisted score/probability artifacts",
+    )
     parser.add_argument("--device", type=str, default="cuda", help="Device to use")
     parser.add_argument("--num_samples", type=int, default=500, help="Number of samples to evaluate")
     parser.add_argument("--rank", type=int, default=None, help="LoRA rank (auto-detected from config if not specified)")
+    parser.add_argument(
+        "--evaluation_seed",
+        type=int,
+        default=42,
+        help="Seed used for evaluation-set permutation before train/test split",
+    )
     args = parser.parse_args()
 
     device = torch.device(args.device if torch.cuda.is_available() else "cpu")
@@ -324,19 +366,35 @@ def main():
     print("Evaluating protected model...")
     gsa = SimpleGSA(model, noise_scheduler)
 
-    result = gsa.evaluate(member_images, nonmember_images, num_samples=args.num_samples)
+    details_output = args.details_output
+    if details_output is None and args.output is not None:
+        details_output = args.output.with_name(f"{args.output.stem}_details.json")
+
+    result = gsa.evaluate(
+        member_images,
+        nonmember_images,
+        num_samples=args.num_samples,
+        evaluation_seed=args.evaluation_seed,
+        score_artifact_path=details_output,
+    )
 
     print("\n=== Evaluation Results (LoRA-Protected) ===")
     print(f"Accuracy: {result['accuracy']:.4f}")
+    print(f"ASR: {result['asr']:.4f}")
     print(f"AUC: {result['auc']:.4f}")
+    print(f"TPR@1%FPR: {result['tpr_at_1pct_fpr']:.4f}")
+    print(f"TPR@0.1%FPR: {result['tpr_at_0_1pct_fpr']:.4f}")
     print(f"Member samples: {result['num_member']}")
     print(f"Non-member samples: {result['num_nonmember']}")
+    print(f"Evaluation seed: {result['evaluation_seed']}")
 
     if args.output:
         args.output.parent.mkdir(parents=True, exist_ok=True)
         with open(args.output, "w") as f:
             json.dump(result, f, indent=2)
         print(f"\nResults saved to {args.output}")
+    if details_output is not None:
+        print(f"Detailed score artifacts saved to {details_output}")
 
     return result
 

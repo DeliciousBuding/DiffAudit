@@ -1,0 +1,24 @@
+{
+  "run_id": "semantic-aux-public50-step10-aligned-20260416-r1",
+  "track": "black-box",
+  "method": "semantic-auxiliary-classifier",
+  "status": "running",
+  "mode": "small-sample-probe",
+  "assets": {
+    "member_dataset": "D:/Code/DiffAudit/Research/workspaces/black-box/runs/semantic-aux-public50-step10-aligned-prep-20260416-r1/datasets/member",
+    "nonmember_dataset": "D:/Code/DiffAudit/Research/workspaces/black-box/runs/semantic-aux-public50-step10-aligned-prep-20260416-r1/datasets/nonmember",
+    "model_dir": "D:/Code/DiffAudit/Download/shared/weights/stable-diffusion-v1-5",
+    "lora_dir": "D:/Code/DiffAudit/Research/external/recon-assets/ndss-2025-blackbox-membership-inference-fine-tuned-diffusion-models/model-checkpoints/celeba_partial_target/checkpoint-25000",
+    "clip_dir": "D:/Code/DiffAudit/Download/shared/weights/clip-vit-large-patch14",
+    "blip_dir": "D:/Code/DiffAudit/Download/shared/weights/blip-image-captioning-large"
+  },
+  "parameters": {
+    "subset_limit": 16,
+    "num_returns": 3,
+    "num_inference_steps": 10,
+    "guidance_scale": 7.5,
+    "resolution": 512,
+    "seed": 20260416,
+    "caption_source": "metadata-with-blip-fallback"
+  }
+}

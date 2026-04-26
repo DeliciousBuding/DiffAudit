@@ -1095,6 +1095,59 @@ class ReconAttackTests(unittest.TestCase):
         self.assertEqual(len(payload["derived_public_variants"]), 4)
         self.assertTrue(payload["checks"]["derived_public_mapping_notes_ready"])
 
+    def test_cli_blocks_recon_stage0_when_bundle_is_proxy_semantic(self) -> None:
+        from diffaudit.cli import main
+
+        with tempfile.TemporaryDirectory() as tmpdir:
+            root = Path(tmpdir)
+            repo_root = root / "recon"
+            bundle_root = root / "bundle"
+            create_minimal_recon_repo(repo_root)
+            create_public_recon_bundle(bundle_root, count=5)
+            prepared_root = bundle_root / "derived-public-100"
+            prepared_root.mkdir(parents=True, exist_ok=True)
+            (prepared_root / "mapping-note.md").write_text(
+                "\n".join(
+                    [
+                        "# Recon Public Subset Mapping",
+                        "",
+                        "- target_member <- source-datasets/partial-100-target/member/dataset.pkl",
+                        "- target_non_member <- source-datasets/partial-100-target/non_member/dataset.pkl",
+                        "- shadow_non_member <- source-datasets/100-shadow/non_member/dataset.pkl",
+                        "- shadow_member_proxy <- source-datasets/100-target/non_member/dataset.pkl",
+                        "",
+                        "Note: shadow_member_proxy is an engineering proxy, not a fully validated paper-equivalent shadow-member split.",
+                    ]
+                ),
+                encoding="utf-8",
+            )
+
+            stdout = StringIO()
+            with redirect_stdout(stdout):
+                exit_code = main(
+                    [
+                        "check-recon-stage0-paper-gate",
+                        "--repo-root",
+                        str(repo_root),
+                        "--bundle-root",
+                        str(bundle_root),
+                        "--attack-scenario",
+                        "attack-i",
+                    ]
+                )
+
+        payload = json.loads(stdout.getvalue())
+        self.assertEqual(exit_code, 1)
+        self.assertEqual(payload["status"], "blocked")
+        self.assertEqual(payload["attack_scenario"], "attack-i")
+        self.assertTrue(payload["checks"]["repo_root_exists"])
+        self.assertTrue(payload["checks"]["bundle_root_exists"])
+        self.assertTrue(payload["checks"]["local_semantic_chain_ready"])
+        self.assertFalse(payload["checks"]["paper_aligned_semantics"])
+        self.assertIn("paper_aligned_semantics", payload["missing_keys"])
+        self.assertIn("proxy-shadow-member", payload["missing"])
+        self.assertEqual(payload["allowed_claim"], "local-semantic-chain-ready")
+
     def test_cli_runs_recon_runtime_mainline_with_kandinsky_backend(self) -> None:
         from diffaudit.cli import main
 
