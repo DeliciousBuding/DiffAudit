@@ -17,16 +17,16 @@ Once `TMIA-DM late-window` becomes a real GPU challenger, does the current gray-
 
 Primary defended rung:
 
-- `D:\Code\DiffAudit\Research\workspaces\gray-box\runs\tmiadm-cifar10-late-window-dropout-defense-20260416-gpu-128-r1\summary.json`
+- `<DIFFAUDIT_ROOT>/Research/workspaces/gray-box/runs/tmiadm-cifar10-late-window-dropout-defense-20260416-gpu-128-r1/summary.json`
 
 Current references:
 
 - `TMIA-DM GPU128 undefended`:
-  - `D:\Code\DiffAudit\Research\workspaces\gray-box\runs\tmiadm-cifar10-late-window-protocol-probe-20260416-gpu-128-r1\summary.json`
+  - `<DIFFAUDIT_ROOT>/Research/workspaces/gray-box/runs/tmiadm-cifar10-late-window-protocol-probe-20260416-gpu-128-r1/summary.json`
 - `PIA GPU128 undefended`:
-  - `D:\Code\DiffAudit\Research\workspaces\gray-box\runs\pia-cifar10-runtime-mainline-20260408-gpu-128\summary.json`
+  - `<DIFFAUDIT_ROOT>/Research/workspaces/gray-box/runs/pia-cifar10-runtime-mainline-20260408-gpu-128/summary.json`
 - `PIA GPU128 defended`:
-  - `D:\Code\DiffAudit\Research\workspaces\gray-box\runs\pia-cifar10-runtime-mainline-dropout-defense-20260408-gpu-128\summary.json`
+  - `<DIFFAUDIT_ROOT>/Research/workspaces/gray-box/runs/pia-cifar10-runtime-mainline-dropout-defense-20260408-gpu-128/summary.json`
 
 ## Metrics
 

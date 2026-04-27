@@ -6,19 +6,19 @@ After `MoFit` closed as `current-contract hold`, which bounded live lane is now 
 
 ## Inputs Reviewed
 
-- `D:\Code\DiffAudit\Research\ROADMAP.md`
-- `D:\Code\DiffAudit\Research\docs\comprehensive-progress.md`
-- `D:\Code\DiffAudit\Research\workspaces\black-box\plan.md`
-- `D:\Code\DiffAudit\Research\workspaces\gray-box\plan.md`
-- `D:\Code\DiffAudit\Research\workspaces\white-box\plan.md`
-- `D:\Code\DiffAudit\Research\workspaces\intake\phase-e-candidates.json`
-- `D:\Code\DiffAudit\Research\workspaces\intake\2026-04-16-finding-nemo-reconsideration-gate-review.md`
-- `D:\Code\DiffAudit\Research\workspaces\white-box\2026-04-16-dplora-post-harmonized-lane-status-review.md`
-- `D:\Code\DiffAudit\Research\workspaces\gray-box\2026-04-16-mofit-current-contract-hold-verdict.md`
-- `D:\Code\DiffAudit\Research\workspaces\gray-box\2026-04-15-pia-vs-secmi-graybox-comparison.md`
-- `D:\Code\DiffAudit\Research\workspaces\gray-box\2026-04-15-graybox-ranking-sensitive-disagreement-verdict.md`
-- `D:\Code\DiffAudit\Research\docs\paper-reports\gray-box\2025-cvpr-cdi-copyrighted-data-identification-diffusion-models-report.md`
-- `D:\Code\DiffAudit\Research\docs\paper-reports\gray-box\2024-arxiv-side-extracting-training-data-unconditional-diffusion-models-report.md`
+- `<DIFFAUDIT_ROOT>/Research/ROADMAP.md`
+- `<DIFFAUDIT_ROOT>/Research/docs/comprehensive-progress.md`
+- `<DIFFAUDIT_ROOT>/Research/workspaces/black-box/plan.md`
+- `<DIFFAUDIT_ROOT>/Research/workspaces/gray-box/plan.md`
+- `<DIFFAUDIT_ROOT>/Research/workspaces/white-box/plan.md`
+- `<DIFFAUDIT_ROOT>/Research/workspaces/intake/phase-e-candidates.json`
+- `<DIFFAUDIT_ROOT>/Research/workspaces/intake/2026-04-16-finding-nemo-reconsideration-gate-review.md`
+- `<DIFFAUDIT_ROOT>/Research/workspaces/white-box/2026-04-16-dplora-post-harmonized-lane-status-review.md`
+- `<DIFFAUDIT_ROOT>/Research/workspaces/gray-box/2026-04-16-mofit-current-contract-hold-verdict.md`
+- `<DIFFAUDIT_ROOT>/Research/workspaces/gray-box/2026-04-15-pia-vs-secmi-graybox-comparison.md`
+- `<DIFFAUDIT_ROOT>/Research/workspaces/gray-box/2026-04-15-graybox-ranking-sensitive-disagreement-verdict.md`
+- `<DIFFAUDIT_ROOT>/Research/docs/paper-reports/gray-box/2025-cvpr-cdi-copyrighted-data-identification-diffusion-models-report.md`
+- `<DIFFAUDIT_ROOT>/Research/docs/paper-reports/gray-box/2024-arxiv-side-extracting-training-data-unconditional-diffusion-models-report.md`
 
 ## Selection Review
 

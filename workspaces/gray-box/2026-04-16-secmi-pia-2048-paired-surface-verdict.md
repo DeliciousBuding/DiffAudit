@@ -6,16 +6,16 @@ After the new `PIA 2048` shared-score surface landed, can `SecMI stat` be widene
 
 ## Inputs Reviewed
 
-- `D:\Code\DiffAudit\Research\workspaces\gray-box\runs\pia-cifar10-runtime-mainline-20260416-gpu-2048-cdi-r1\summary.json`
-- `D:\Code\DiffAudit\Research\workspaces\gray-box\runs\pia-cifar10-runtime-mainline-20260416-gpu-2048-cdi-r1\scores.json`
-- `D:\Code\DiffAudit\Research\workspaces\gray-box\runs\secmi-pia-disagreement-20260415-r1\summary.json`
-- `D:\Code\DiffAudit\Research\workspaces\gray-box\runs\secmi-pia-disagreement-20260416-r2\summary.json`
+- `<DIFFAUDIT_ROOT>/Research/workspaces/gray-box/runs/pia-cifar10-runtime-mainline-20260416-gpu-2048-cdi-r1/summary.json`
+- `<DIFFAUDIT_ROOT>/Research/workspaces/gray-box/runs/pia-cifar10-runtime-mainline-20260416-gpu-2048-cdi-r1/scores.json`
+- `<DIFFAUDIT_ROOT>/Research/workspaces/gray-box/runs/secmi-pia-disagreement-20260415-r1/summary.json`
+- `<DIFFAUDIT_ROOT>/Research/workspaces/gray-box/runs/secmi-pia-disagreement-20260416-r2/summary.json`
 
 ## What Landed
 
 Run root:
 
-- `D:\Code\DiffAudit\Research\workspaces\gray-box\runs\secmi-pia-disagreement-20260416-r2`
+- `<DIFFAUDIT_ROOT>/Research/workspaces/gray-box/runs/secmi-pia-disagreement-20260416-r2`
 
 Observed metrics:
 

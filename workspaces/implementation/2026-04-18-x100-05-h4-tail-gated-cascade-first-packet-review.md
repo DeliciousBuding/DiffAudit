@@ -6,13 +6,13 @@ After `X-99` confirmed stable `05-H1/H2` tail lift on the enlarged `461 / 474` p
 
 ## Inputs Reviewed
 
-- `D:\Code\DiffAudit\Research\src\diffaudit\attacks\crossbox_pairboard.py`
-- `D:\Code\DiffAudit\Research\src\diffaudit\cli.py`
-- `D:\Code\DiffAudit\Research\tests\test_crossbox_pairboard.py`
-- `D:\Code\DiffAudit\Research\docs\report-bundles\gpt54\round2-results\05.md`
-- `D:\Code\DiffAudit\Research\workspaces\cross-box\runs\crossbox-pairboard-gsa-targeted-full-overlap-20260418-r1\summary.json`
-- `D:\Code\DiffAudit\Research\workspaces\cross-box\runs\crossbox-pairboard-gsa-targeted-full-overlap-h4-20260418-r1\summary.json`
-- `D:\Code\DiffAudit\Research\workspaces\cross-box\runs\crossbox-pairboard-gsa-targeted-full-overlap-h4-weighted-20260418-r1\summary.json`
+- `<DIFFAUDIT_ROOT>/Research/src/diffaudit/attacks/crossbox_pairboard.py`
+- `<DIFFAUDIT_ROOT>/Research/src/diffaudit/cli.py`
+- `<DIFFAUDIT_ROOT>/Research/tests/test_crossbox_pairboard.py`
+- `<DIFFAUDIT_ROOT>/Research/docs/report-bundles/gpt54/round2-results/05.md`
+- `<DIFFAUDIT_ROOT>/Research/workspaces/cross-box/runs/crossbox-pairboard-gsa-targeted-full-overlap-20260418-r1/summary.json`
+- `<DIFFAUDIT_ROOT>/Research/workspaces/cross-box/runs/crossbox-pairboard-gsa-targeted-full-overlap-h4-20260418-r1/summary.json`
+- `<DIFFAUDIT_ROOT>/Research/workspaces/cross-box/runs/crossbox-pairboard-gsa-targeted-full-overlap-h4-weighted-20260418-r1/summary.json`
 
 ## What Landed
 
@@ -111,12 +111,12 @@ More precise reading:
 
 Primary anchor:
 
-- `D:\Code\DiffAudit\Research\workspaces\cross-box\runs\crossbox-pairboard-gsa-targeted-full-overlap-h4-20260418-r1\summary.json`
+- `<DIFFAUDIT_ROOT>/Research/workspaces/cross-box/runs/crossbox-pairboard-gsa-targeted-full-overlap-h4-20260418-r1/summary.json`
 
 Supporting anchors:
 
-- `D:\Code\DiffAudit\Research\workspaces\cross-box\runs\crossbox-pairboard-gsa-targeted-full-overlap-h4-weighted-20260418-r1\summary.json`
-- `D:\Code\DiffAudit\Research\workspaces\cross-box\runs\crossbox-pairboard-gsa-targeted-full-overlap-20260418-r1\summary.json`
+- `<DIFFAUDIT_ROOT>/Research/workspaces/cross-box/runs/crossbox-pairboard-gsa-targeted-full-overlap-h4-weighted-20260418-r1/summary.json`
+- `<DIFFAUDIT_ROOT>/Research/workspaces/cross-box/runs/crossbox-pairboard-gsa-targeted-full-overlap-20260418-r1/summary.json`
 
 ## Handoff Decision
 

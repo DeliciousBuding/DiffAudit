@@ -4,7 +4,7 @@
   "method": "pia",
   "paper": "PIA_ICLR2024",
   "mode": "runtime-mainline",
-  "workspace": "D:\\Code\\DiffAudit\\Research\\experiments\\e2e-pia-test-001",
+  "workspace": "<DIFFAUDIT_ROOT>/Research/experiments/e2e-pia-test-001",
   "workspace_name": "e2e-pia-test-001",
   "contract_stage": "target",
   "asset_grade": "single-machine-real-asset",
@@ -15,7 +15,7 @@
   },
   "runtime_probe": {
     "status": "blocked",
-    "repo_root": "D:\\Code\\DiffAudit\\Research\\external\\PIA",
+    "repo_root": "<DIFFAUDIT_ROOT>/Research/external/PIA",
     "checks": {
       "checkpoint": true,
       "dataset_root": true,
@@ -26,12 +26,12 @@
       "model_dir": "workspaces\\gray-box\\assets\\pia\\checkpoints\\cifar10_ddpm",
       "dataset_root": "workspaces\\gray-box\\assets\\pia\\datasets",
       "dataset_dir": "workspaces\\gray-box\\assets\\pia\\datasets\\cifar10",
-      "member_split_root": "D:\\Code\\DiffAudit\\Research\\workspaces\\gray-box\\assets\\pia",
+      "member_split_root": "<DIFFAUDIT_ROOT>/Research/workspaces/gray-box/assets/pia",
       "checkpoint": "workspaces\\gray-box\\assets\\pia\\checkpoints\\cifar10_ddpm\\checkpoint.pt",
-      "member_split": "D:\\Code\\DiffAudit\\Research\\workspaces\\gray-box\\assets\\pia\\CIFAR10_train_ratio0.5.npz"
+      "member_split": "<DIFFAUDIT_ROOT>/Research/workspaces/gray-box/assets/pia/CIFAR10_train_ratio0.5.npz"
     },
     "missing": [
-      "D:\\Code\\DiffAudit\\Research\\workspaces\\gray-box\\assets\\pia\\CIFAR10_train_ratio0.5.npz"
+      "<DIFFAUDIT_ROOT>/Research/workspaces/gray-box/assets/pia/CIFAR10_train_ratio0.5.npz"
     ],
     "missing_keys": [
       "member_split"
@@ -42,7 +42,7 @@
     "missing_description": "member split"
   },
   "artifact_paths": {
-    "summary": "D:\\Code\\DiffAudit\\Research\\experiments\\e2e-pia-test-001\\summary.json"
+    "summary": "<DIFFAUDIT_ROOT>/Research/experiments/e2e-pia-test-001/summary.json"
   },
   "notes": [
     "Runtime mainline requires the canonical checkpoint, dataset root, and member split to be ready."

@@ -6,9 +6,9 @@ After `X-138` selects one minimal `4 / 4` packet-scale enlargement, does that fi
 
 ## Inputs Reviewed
 
-- `D:\Code\DiffAudit\Research\workspaces\implementation\2026-04-21-x138-04-h2-bounded-packet-scale-followup-selection.md`
-- `D:\Code\DiffAudit\Research\workspaces\implementation\runs\h2-run-defense-pilot-4x4-20260421-r1\summary.json`
-- `D:\Code\DiffAudit\Research\workspaces\implementation\runs\h2-review-defense-pilot-4x4-20260421-r1\summary.json`
+- `<DIFFAUDIT_ROOT>/Research/workspaces/implementation/2026-04-21-x138-04-h2-bounded-packet-scale-followup-selection.md`
+- `<DIFFAUDIT_ROOT>/Research/workspaces/implementation/runs/h2-run-defense-pilot-4x4-20260421-r1/summary.json`
+- `<DIFFAUDIT_ROOT>/Research/workspaces/implementation/runs/h2-review-defense-pilot-4x4-20260421-r1/summary.json`
 
 ## Findings
 
@@ -59,7 +59,7 @@ The highest-value immediate move is now a bounded stale-entry sync, because the 
 
 ## Canonical Evidence Anchor
 
-- `D:\Code\DiffAudit\Research\workspaces\implementation\runs\h2-review-defense-pilot-4x4-20260421-r1\summary.json`
+- `<DIFFAUDIT_ROOT>/Research/workspaces/implementation/runs/h2-review-defense-pilot-4x4-20260421-r1/summary.json`
 
 ## Control Decision
 

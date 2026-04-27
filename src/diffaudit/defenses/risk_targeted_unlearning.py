@@ -345,6 +345,15 @@ def run_risk_targeted_unlearning_prep(
 
 
 _SAMPLE_ID_PATTERN = re.compile(r"-(\d+)$")
+DEFAULT_RISK_TARGETED_CHECKPOINT_ROOT = (
+    Path(__file__).resolve().parents[3]
+    / "workspaces"
+    / "white-box"
+    / "assets"
+    / "gsa-cifar10-1k-3shadow-epoch300-rerun1"
+    / "checkpoints"
+    / "target"
+)
 
 
 def _extract_sample_id(path: str | Path) -> int:
@@ -545,7 +554,7 @@ def run_risk_targeted_unlearning_pilot(
     workspace: str | Path,
     member_dataset_dir: str | Path,
     forget_member_index_file: str | Path,
-    checkpoint_root: str | Path | None = "D:\\Code\\DiffAudit\\Research\\workspaces\\white-box\\assets\\gsa-cifar10-1k-3shadow-epoch300-rerun1\\checkpoints\\target",
+    checkpoint_root: str | Path | None = DEFAULT_RISK_TARGETED_CHECKPOINT_ROOT,
     checkpoint_dir: str | Path | None = None,
     matched_nonmember_index_file: str | Path | None = None,
     random_init: bool = False,

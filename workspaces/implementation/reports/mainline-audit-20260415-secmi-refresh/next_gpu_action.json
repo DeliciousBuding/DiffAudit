@@ -2,7 +2,7 @@
   "status": "recommended",
   "mode": "mainline-next-gpu-action",
   "schema": "diffaudit.mainline_gpu_action.v1",
-  "generated_from": "D:\\Code\\DiffAudit\\Research\\workspaces\\implementation\\reports\\mainline-audit-20260415-secmi-refresh\\summary.json",
+  "generated_from": "<DIFFAUDIT_ROOT>/Research/workspaces/implementation/reports/mainline-audit-20260415-secmi-refresh/summary.json",
   "focus_track": "gray-box",
   "focus_method": "pia",
   "recommended_rung": "GPU512 all_steps adaptive",

@@ -16,10 +16,10 @@ from typing import Any
 research_root = Path(__file__).resolve().parents[1]
 sys.path.insert(0, str(research_root / "src"))
 
-BASE_MODEL = "D:/Code/DiffAudit/Research/workspaces/white-box/assets/gsa-gpu-128/checkpoints/target/checkpoint-64"
-MEMBER_DIR = "D:/Code/DiffAudit/Research/workspaces/white-box/assets/gsa-cifar10-1k-3shadow/datasets/target-member"
-NONMEMBER_DIR = "D:/Code/DiffAudit/Research/workspaces/white-box/assets/gsa-cifar10-1k-3shadow/datasets/target-nonmember"
-OUTPUT_BASE = "D:/Code/DiffAudit/Research/outputs/smp-lora-sweep"
+BASE_MODEL = str(research_root / "workspaces" / "white-box" / "assets" / "gsa-gpu-128" / "checkpoints" / "target" / "checkpoint-64")
+MEMBER_DIR = str(research_root / "workspaces" / "white-box" / "assets" / "gsa-cifar10-1k-3shadow" / "datasets" / "target-member")
+NONMEMBER_DIR = str(research_root / "workspaces" / "white-box" / "assets" / "gsa-cifar10-1k-3shadow" / "datasets" / "target-nonmember")
+OUTPUT_BASE = str(research_root / "outputs" / "smp-lora-sweep")
 
 
 def run_command(cmd: list[str], desc: str, timeout: int = 7200) -> bool:
@@ -70,7 +70,7 @@ def train_smp_lora(
 
     cmd = [
         "conda", "run", "-n", "diffaudit-research",
-        "python", "D:/Code/DiffAudit/Research/scripts/train_smp_lora.py",
+        "python", str(research_root / "scripts" / "train_smp_lora.py"),
         "--local_model", BASE_MODEL,
         "--member_dir", MEMBER_DIR,
         "--nonmember_dir", NONMEMBER_DIR,
@@ -99,7 +99,7 @@ def evaluate_smp_lora(
 
     cmd = [
         "conda", "run", "-n", "diffaudit-research",
-        "python", "D:/Code/DiffAudit/Research/scripts/evaluate_smp_lora_defense.py",
+        "python", str(research_root / "scripts" / "evaluate_smp_lora_defense.py"),
         "--lora_checkpoint", str(lora_checkpoint),
         "--base_model", BASE_MODEL,
         "--member_dir", MEMBER_DIR,

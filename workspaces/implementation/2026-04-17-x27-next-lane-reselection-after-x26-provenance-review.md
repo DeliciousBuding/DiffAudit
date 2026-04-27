@@ -6,16 +6,16 @@ After `X-26` froze the current `PIA` provenance blocker and its consumer reading
 
 ## Inputs Reviewed
 
-- `D:\Code\DiffAudit\ROADMAP.md`
-- `D:\Code\DiffAudit\Research\ROADMAP.md`
-- `D:\Code\DiffAudit\Research\docs\comprehensive-progress.md`
-- `D:\Code\DiffAudit\Research\workspaces\implementation\challenger-queue.md`
-- `D:\Code\DiffAudit\Research\workspaces\implementation\2026-04-17-x26-pia-provenance-maintenance-main-lane-review.md`
-- `D:\Code\DiffAudit\Research\workspaces\implementation\2026-04-17-crossbox-transfer-portability-blocker-refresh-review.md`
-- `D:\Code\DiffAudit\Research\workspaces\implementation\2026-04-17-post-transfer-blocker-next-lane-reselection-review.md`
-- `D:\Code\DiffAudit\Research\workspaces\black-box\plan.md`
-- `D:\Code\DiffAudit\Research\workspaces\gray-box\plan.md`
-- `D:\Code\DiffAudit\Research\workspaces\white-box\plan.md`
+- `<DIFFAUDIT_ROOT>/ROADMAP.md`
+- `<DIFFAUDIT_ROOT>/Research/ROADMAP.md`
+- `<DIFFAUDIT_ROOT>/Research/docs/comprehensive-progress.md`
+- `<DIFFAUDIT_ROOT>/Research/workspaces/implementation/challenger-queue.md`
+- `<DIFFAUDIT_ROOT>/Research/workspaces/implementation/2026-04-17-x26-pia-provenance-maintenance-main-lane-review.md`
+- `<DIFFAUDIT_ROOT>/Research/workspaces/implementation/2026-04-17-crossbox-transfer-portability-blocker-refresh-review.md`
+- `<DIFFAUDIT_ROOT>/Research/workspaces/implementation/2026-04-17-post-transfer-blocker-next-lane-reselection-review.md`
+- `<DIFFAUDIT_ROOT>/Research/workspaces/black-box/plan.md`
+- `<DIFFAUDIT_ROOT>/Research/workspaces/gray-box/plan.md`
+- `<DIFFAUDIT_ROOT>/Research/workspaces/white-box/plan.md`
 
 ## Candidate Comparison
 
@@ -73,15 +73,15 @@ More precise reading:
 
 ## Canonical Evidence Anchor
 
-- `D:\Code\DiffAudit\Research\workspaces\implementation\2026-04-17-x27-next-lane-reselection-after-x26-provenance-review.md`
+- `<DIFFAUDIT_ROOT>/Research/workspaces/implementation/2026-04-17-x27-next-lane-reselection-after-x26-provenance-review.md`
 
 ## Handoff Decision
 
-- `D:\Code\DiffAudit\Research\ROADMAP.md`: update required
-- `D:\Code\DiffAudit\Research\docs\comprehensive-progress.md`: update required
-- `D:\Code\DiffAudit\Research\workspaces\implementation\challenger-queue.md`: update required
-- `D:\Code\DiffAudit\Research\docs\mainline-narrative.md`: update required
-- `D:\Code\DiffAudit\ROADMAP.md`: update required
+- `<DIFFAUDIT_ROOT>/Research/ROADMAP.md`: update required
+- `<DIFFAUDIT_ROOT>/Research/docs/comprehensive-progress.md`: update required
+- `<DIFFAUDIT_ROOT>/Research/workspaces/implementation/challenger-queue.md`: update required
+- `<DIFFAUDIT_ROOT>/Research/docs/mainline-narrative.md`: update required
+- `<DIFFAUDIT_ROOT>/ROADMAP.md`: update required
 - `platform_runtime_handoff = none`
 - `competition_material_sync = none`
 

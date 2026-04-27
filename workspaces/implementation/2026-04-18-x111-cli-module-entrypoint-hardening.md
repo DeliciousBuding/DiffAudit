@@ -6,12 +6,12 @@ Can `Research` expose one honest module-level CLI entrypoint so `python -m diffa
 
 ## Inputs Reviewed
 
-- `D:\Code\DiffAudit\Research\src\diffaudit\cli.py`
-- `D:\Code\DiffAudit\Research\src\diffaudit\__main__.py`
-- `D:\Code\DiffAudit\Research\tests\test_risk_targeted_unlearning.py`
-- `D:\Code\DiffAudit\Runtime-Server\runners\gsa-runner\run.py`
-- `D:\Code\DiffAudit\Runtime-Server\runners\pia-runner\run.py`
-- `D:\Code\DiffAudit\Runtime-Server\runners\recon-runner\run.py`
+- `<DIFFAUDIT_ROOT>/Research/src/diffaudit/cli.py`
+- `<DIFFAUDIT_ROOT>/Research/src/diffaudit/__main__.py`
+- `<DIFFAUDIT_ROOT>/Research/tests/test_risk_targeted_unlearning.py`
+- `<DIFFAUDIT_ROOT>/Runtime-Server/runners/gsa-runner/run.py`
+- `<DIFFAUDIT_ROOT>/Runtime-Server/runners/pia-runner/run.py`
+- `<DIFFAUDIT_ROOT>/Runtime-Server/runners/recon-runner/run.py`
 
 ## What Landed
 
@@ -19,7 +19,7 @@ Can `Research` expose one honest module-level CLI entrypoint so `python -m diffa
 
 The repo now contains a direct subprocess-level test:
 
-- `D:\Code\DiffAudit\Research\tests\test_cli_module_entrypoint.py`
+- `<DIFFAUDIT_ROOT>/Research/tests/test_cli_module_entrypoint.py`
 
 It verifies that:
 
@@ -31,7 +31,7 @@ Before this fix, that module invocation exited `0` and produced no parser output
 
 ### 2. The module entrypoint is now hardened
 
-`D:\Code\DiffAudit\Research\src\diffaudit\cli.py` now explicitly ends with:
+`<DIFFAUDIT_ROOT>/Research/src/diffaudit/cli.py` now explicitly ends with:
 
 - `if __name__ == "__main__":`
 - `raise SystemExit(main())`
@@ -65,7 +65,7 @@ Result:
 
 ## Canonical Evidence Anchor
 
-- `D:\Code\DiffAudit\Research\workspaces\implementation\2026-04-18-x111-cli-module-entrypoint-hardening.md`
+- `<DIFFAUDIT_ROOT>/Research/workspaces/implementation/2026-04-18-x111-cli-module-entrypoint-hardening.md`
 
 ## Handoff Decision
 

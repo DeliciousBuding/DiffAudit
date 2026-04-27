@@ -13,13 +13,13 @@ After `X-63` clears the last visible materials-facing `I-A` residue, what is the
 
 ## Inputs Reviewed
 
-- `D:\Code\DiffAudit\Research\ROADMAP.md`
-- `D:\Code\DiffAudit\Research\workspaces\implementation\challenger-queue.md`
-- `D:\Code\DiffAudit\Research\docs\comprehensive-progress.md`
-- `D:\Code\DiffAudit\Research\docs\mainline-narrative.md`
-- `D:\Code\DiffAudit\Research\workspaces\implementation\2026-04-17-x63-ia-formal-adaptive-lowfpr-residue-audit-after-x62-reselection.md`
-- `D:\Code\DiffAudit\Research\workspaces\white-box\2026-04-17-whitebox-post-breadth-next-hypothesis-selection-review.md`
-- `D:\Code\DiffAudit\Research\workspaces\implementation\2026-04-17-x61-blackbox-paper-backed-next-family-scoping-review-after-x60-expansion.md`
+- `<DIFFAUDIT_ROOT>/Research/ROADMAP.md`
+- `<DIFFAUDIT_ROOT>/Research/workspaces/implementation/challenger-queue.md`
+- `<DIFFAUDIT_ROOT>/Research/docs/comprehensive-progress.md`
+- `<DIFFAUDIT_ROOT>/Research/docs/mainline-narrative.md`
+- `<DIFFAUDIT_ROOT>/Research/workspaces/implementation/2026-04-17-x63-ia-formal-adaptive-lowfpr-residue-audit-after-x62-reselection.md`
+- `<DIFFAUDIT_ROOT>/Research/workspaces/white-box/2026-04-17-whitebox-post-breadth-next-hypothesis-selection-review.md`
+- `<DIFFAUDIT_ROOT>/Research/workspaces/implementation/2026-04-17-x61-blackbox-paper-backed-next-family-scoping-review-after-x60-expansion.md`
 
 ## Candidate Comparison
 
@@ -78,5 +78,5 @@ Why it wins:
 - `Research/workspaces/implementation/challenger-queue.md`: update required
 - `Research/docs/comprehensive-progress.md`: update required
 - `Research/docs/mainline-narrative.md`: update required
-- `D:\Code\DiffAudit\ROADMAP.md`: update required
+- `<DIFFAUDIT_ROOT>/ROADMAP.md`: update required
 - `Platform / Runtime`: no immediate handoff required

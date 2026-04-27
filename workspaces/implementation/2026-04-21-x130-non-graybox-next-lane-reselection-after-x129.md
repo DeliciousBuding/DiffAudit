@@ -6,10 +6,10 @@ After `X-129` cleared the remaining material-facing `I-A` wording softness, shou
 
 ## Inputs Reviewed
 
-- `D:\Code\DiffAudit\Research\README.md`
-- `D:\Code\DiffAudit\Research\workspaces\implementation\challenger-queue.md`
-- `D:\Code\DiffAudit\Research\ROADMAP.md`
-- `D:\Code\DiffAudit\Research\workspaces\implementation\2026-04-21-x129-ia-truth-hardening-after-x128.md`
+- `<DIFFAUDIT_ROOT>/Research/README.md`
+- `<DIFFAUDIT_ROOT>/Research/workspaces/implementation/challenger-queue.md`
+- `<DIFFAUDIT_ROOT>/Research/ROADMAP.md`
+- `<DIFFAUDIT_ROOT>/Research/workspaces/implementation/2026-04-21-x129-ia-truth-hardening-after-x128.md`
 
 ## Findings
 
@@ -50,7 +50,7 @@ Sharper control truth:
 
 ## Canonical Evidence Anchor
 
-- `D:\Code\DiffAudit\Research\workspaces\implementation\2026-04-21-x130-non-graybox-next-lane-reselection-after-x129.md`
+- `<DIFFAUDIT_ROOT>/Research/workspaces/implementation/2026-04-21-x130-non-graybox-next-lane-reselection-after-x129.md`
 
 ## Handoff
 

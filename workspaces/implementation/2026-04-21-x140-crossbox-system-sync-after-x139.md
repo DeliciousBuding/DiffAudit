@@ -6,14 +6,14 @@ After `X-139` closes the minimal `04-H2` packet-scale follow-up as `negative but
 
 ## Inputs Reviewed
 
-- `D:\Code\DiffAudit\Research\README.md`
-- `D:\Code\DiffAudit\Research\docs\comprehensive-progress.md`
-- `D:\Code\DiffAudit\Research\docs\reproduction-status.md`
-- `D:\Code\DiffAudit\Research\docs\mainline-narrative.md`
-- `D:\Code\DiffAudit\Research\docs\research-autonomous-execution-prompt.md`
-- `D:\Code\DiffAudit\Research\workspaces\implementation\challenger-queue.md`
-- `D:\Code\DiffAudit\Research\ROADMAP.md`
-- `D:\Code\DiffAudit\Research\workspaces\implementation\2026-04-21-x139-04-h2-4x4-bounded-followup-review.md`
+- `<DIFFAUDIT_ROOT>/Research/README.md`
+- `<DIFFAUDIT_ROOT>/Research/docs/comprehensive-progress.md`
+- `<DIFFAUDIT_ROOT>/Research/docs/reproduction-status.md`
+- `<DIFFAUDIT_ROOT>/Research/docs/mainline-narrative.md`
+- `<DIFFAUDIT_ROOT>/Research/docs/research-autonomous-execution-prompt.md`
+- `<DIFFAUDIT_ROOT>/Research/workspaces/implementation/challenger-queue.md`
+- `<DIFFAUDIT_ROOT>/Research/ROADMAP.md`
+- `<DIFFAUDIT_ROOT>/Research/workspaces/implementation/2026-04-21-x139-04-h2-4x4-bounded-followup-review.md`
 
 ## Findings
 
@@ -46,7 +46,7 @@ with:
 
 ## Canonical Evidence Anchor
 
-- `D:\Code\DiffAudit\Research\workspaces\implementation\2026-04-21-x140-crossbox-system-sync-after-x139.md`
+- `<DIFFAUDIT_ROOT>/Research/workspaces/implementation/2026-04-21-x140-crossbox-system-sync-after-x139.md`
 
 ## Handoff
 

@@ -6,10 +6,10 @@ After the fresh canary, micro-rung, and final bounded CPU review rung, should th
 
 ## Inputs Reviewed
 
-- `D:\Code\DiffAudit\Research\workspaces\gray-box\2026-04-16-mofit-fresh-real-asset-canary-verdict.md`
-- `D:\Code\DiffAudit\Research\workspaces\gray-box\2026-04-16-mofit-cpu-microrung-score-review.md`
-- `D:\Code\DiffAudit\Research\workspaces\gray-box\2026-04-16-mofit-final-cpu-reviewrung-verdict.md`
-- `D:\Code\DiffAudit\Research\workspaces\gray-box\plan.md`
+- `<DIFFAUDIT_ROOT>/Research/workspaces/gray-box/2026-04-16-mofit-fresh-real-asset-canary-verdict.md`
+- `<DIFFAUDIT_ROOT>/Research/workspaces/gray-box/2026-04-16-mofit-cpu-microrung-score-review.md`
+- `<DIFFAUDIT_ROOT>/Research/workspaces/gray-box/2026-04-16-mofit-final-cpu-reviewrung-verdict.md`
+- `<DIFFAUDIT_ROOT>/Research/workspaces/gray-box/plan.md`
 
 ## What The Evidence Now Says
 

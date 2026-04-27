@@ -13,9 +13,9 @@ Given the current repo state, is there any bounded second white-box defense cand
 
 ## Reviewed Inputs
 
-- `D:\Code\DiffAudit\Research\workspaces\white-box\2026-04-16-whitebox-defense-breadth-shortlist-verdict.md`
-- `D:\Code\DiffAudit\Research\workspaces\white-box\plan.md`
-- `D:\Code\DiffAudit\Research\docs\comprehensive-progress.md`
+- `<DIFFAUDIT_ROOT>/Research/workspaces/white-box/2026-04-16-whitebox-defense-breadth-shortlist-verdict.md`
+- `<DIFFAUDIT_ROOT>/Research/workspaces/white-box/plan.md`
+- `<DIFFAUDIT_ROOT>/Research/docs/comprehensive-progress.md`
 
 ## Selection Result
 

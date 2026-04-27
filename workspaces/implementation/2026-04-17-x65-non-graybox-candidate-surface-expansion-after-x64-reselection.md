@@ -13,17 +13,17 @@ After `X-64` confirms that no blocked/hold branch honestly reopens above sidecar
 
 ## Inputs Reviewed
 
-- `D:\Code\DiffAudit\Research\ROADMAP.md`
-- `D:\Code\DiffAudit\Research\workspaces\implementation\challenger-queue.md`
-- `D:\Code\DiffAudit\Research\docs\comprehensive-progress.md`
-- `D:\Code\DiffAudit\Research\docs\mainline-narrative.md`
-- `D:\Code\DiffAudit\Research\workspaces\implementation\2026-04-17-x54-ib-post-falsifier-successor-selection-after-x53-reselection.md`
-- `D:\Code\DiffAudit\Research\workspaces\implementation\2026-04-17-x56-ic-post-negative-agreement-board-successor-selection-after-x55-reselection.md`
-- `D:\Code\DiffAudit\Research\workspaces\white-box\2026-04-17-whitebox-post-breadth-next-hypothesis-selection-review.md`
-- `D:\Code\DiffAudit\Research\workspaces\white-box\2026-04-10-finding-nemo-mechanism-intake.md`
-- `D:\Code\DiffAudit\Research\workspaces\white-box\2026-04-10-finding-nemo-observability-smoke-contract.md`
-- `D:\Code\DiffAudit\Research\workspaces\white-box\2026-04-15-whitebox-second-line-verdict.md`
-- `D:\Code\DiffAudit\Research\docs\paper-reports\white-box\2024-neurips-finding-nemo-localizing-memorization-neurons-diffusion-models-report.md`
+- `<DIFFAUDIT_ROOT>/Research/ROADMAP.md`
+- `<DIFFAUDIT_ROOT>/Research/workspaces/implementation/challenger-queue.md`
+- `<DIFFAUDIT_ROOT>/Research/docs/comprehensive-progress.md`
+- `<DIFFAUDIT_ROOT>/Research/docs/mainline-narrative.md`
+- `<DIFFAUDIT_ROOT>/Research/workspaces/implementation/2026-04-17-x54-ib-post-falsifier-successor-selection-after-x53-reselection.md`
+- `<DIFFAUDIT_ROOT>/Research/workspaces/implementation/2026-04-17-x56-ic-post-negative-agreement-board-successor-selection-after-x55-reselection.md`
+- `<DIFFAUDIT_ROOT>/Research/workspaces/white-box/2026-04-17-whitebox-post-breadth-next-hypothesis-selection-review.md`
+- `<DIFFAUDIT_ROOT>/Research/workspaces/white-box/2026-04-10-finding-nemo-mechanism-intake.md`
+- `<DIFFAUDIT_ROOT>/Research/workspaces/white-box/2026-04-10-finding-nemo-observability-smoke-contract.md`
+- `<DIFFAUDIT_ROOT>/Research/workspaces/white-box/2026-04-15-whitebox-second-line-verdict.md`
+- `<DIFFAUDIT_ROOT>/Research/docs/paper-reports/white-box/2024-neurips-finding-nemo-localizing-memorization-neurons-diffusion-models-report.md`
 
 ## Candidate Review
 
@@ -88,7 +88,7 @@ Why it wins:
 - `Research/workspaces/implementation/challenger-queue.md`: update required
 - `Research/docs/comprehensive-progress.md`: update required
 - `Research/docs/mainline-narrative.md`: update required
-- `D:\Code\DiffAudit\ROADMAP.md`: update required
+- `<DIFFAUDIT_ROOT>/ROADMAP.md`: update required
 - `Research/docs/research-autonomous-execution-prompt.md`: update required
 - `Research/docs/codex-roadmap-execution-prompt.md`: update required
 - `Platform / Runtime`: no immediate handoff required

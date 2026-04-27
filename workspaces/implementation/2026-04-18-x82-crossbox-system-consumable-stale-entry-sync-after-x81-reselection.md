@@ -12,11 +12,11 @@ The active stale lane-state surfaces are now aligned again to current repo truth
 
 ## Canonical evidence anchor
 
-- `D:\Code\DiffAudit\Research\docs\comprehensive-progress.md`
-- `D:\Code\DiffAudit\Research\docs\mainline-narrative.md`
-- `D:\Code\DiffAudit\Research\workspaces\white-box\plan.md`
-- `D:\Code\DiffAudit\Research\docs\research-autonomous-execution-prompt.md`
-- `D:\Code\DiffAudit\Research\docs\codex-roadmap-execution-prompt.md`
+- `<DIFFAUDIT_ROOT>/Research/docs/comprehensive-progress.md`
+- `<DIFFAUDIT_ROOT>/Research/docs/mainline-narrative.md`
+- `<DIFFAUDIT_ROOT>/Research/workspaces/white-box/plan.md`
+- `<DIFFAUDIT_ROOT>/Research/docs/research-autonomous-execution-prompt.md`
+- `<DIFFAUDIT_ROOT>/Research/docs/codex-roadmap-execution-prompt.md`
 
 ## Synced truth
 

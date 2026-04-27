@@ -6,13 +6,13 @@ After `X-124` closed the `SimA` packet-export gap, does `PIA + SimA` now deliver
 
 ## Inputs Reviewed
 
-- `D:\Code\DiffAudit\Research\workspaces\implementation\2026-04-21-x124-r25c-sima-packet-score-export-contract-landing.md`
-- `D:\Code\DiffAudit\Research\workspaces\gray-box\runs\pia-packet-score-export-gsa-full-overlap-20260418-r1\summary.json`
-- `D:\Code\DiffAudit\Research\workspaces\gray-box\runs\pia-packet-score-export-gsa-full-overlap-20260418-r1\scores.json`
-- `D:\Code\DiffAudit\Research\workspaces\gray-box\runs\sima-cifar10-runtime-rescan-20260416-cpu-32-r2\summary.json`
-- `D:\Code\DiffAudit\Research\workspaces\gray-box\runs\sima-packet-score-export-pia-full-overlap-20260421-r1\summary.json`
-- `D:\Code\DiffAudit\Research\workspaces\gray-box\runs\sima-packet-score-export-pia-full-overlap-20260421-r1\scores.json`
-- `D:\Code\DiffAudit\Research\workspaces\cross-box\runs\crossbox-pairboard-pia-sima-full-overlap-20260421-r1\summary.json`
+- `<DIFFAUDIT_ROOT>/Research/workspaces/implementation/2026-04-21-x124-r25c-sima-packet-score-export-contract-landing.md`
+- `<DIFFAUDIT_ROOT>/Research/workspaces/gray-box/runs/pia-packet-score-export-gsa-full-overlap-20260418-r1/summary.json`
+- `<DIFFAUDIT_ROOT>/Research/workspaces/gray-box/runs/pia-packet-score-export-gsa-full-overlap-20260418-r1/scores.json`
+- `<DIFFAUDIT_ROOT>/Research/workspaces/gray-box/runs/sima-cifar10-runtime-rescan-20260416-cpu-32-r2/summary.json`
+- `<DIFFAUDIT_ROOT>/Research/workspaces/gray-box/runs/sima-packet-score-export-pia-full-overlap-20260421-r1/summary.json`
+- `<DIFFAUDIT_ROOT>/Research/workspaces/gray-box/runs/sima-packet-score-export-pia-full-overlap-20260421-r1/scores.json`
+- `<DIFFAUDIT_ROOT>/Research/workspaces/cross-box/runs/crossbox-pairboard-pia-sima-full-overlap-20260421-r1/summary.json`
 
 ## Bounded Packet Used
 
@@ -104,7 +104,7 @@ Sharper control truth:
 
 ## Canonical Evidence Anchor
 
-- `D:\Code\DiffAudit\Research\workspaces\implementation\2026-04-21-x125-r25b-pia-sima-support-fusion-bounded-review.md`
+- `<DIFFAUDIT_ROOT>/Research/workspaces/implementation/2026-04-21-x125-r25b-pia-sima-support-fusion-bounded-review.md`
 
 ## Handoff
 

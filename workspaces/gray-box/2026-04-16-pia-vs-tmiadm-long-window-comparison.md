@@ -17,15 +17,15 @@ After `TMIA-DM long_window` survived one bounded repeat, does it now compete wit
 Aligned local references:
 
 - `PIA cpu-32 baseline`:
-  - `D:\Code\DiffAudit\Research\workspaces\gray-box\runs\pia-cifar10-runtime-mainline-20260408-cpu-32\summary.json`
+  - `<DIFFAUDIT_ROOT>/Research/workspaces/gray-box/runs/pia-cifar10-runtime-mainline-20260408-cpu-32/summary.json`
 - `TMIA-DM long_window r1`:
-  - `D:\Code\DiffAudit\Research\workspaces\gray-box\runs\tmiadm-cifar10-protocol-probe-20260416-cpu-32-r1\summary.json`
+  - `<DIFFAUDIT_ROOT>/Research/workspaces/gray-box/runs/tmiadm-cifar10-protocol-probe-20260416-cpu-32-r1/summary.json`
 - `TMIA-DM long_window r2 / seed1`:
-  - `D:\Code\DiffAudit\Research\workspaces\gray-box\runs\tmiadm-cifar10-protocol-probe-20260416-cpu-32-r2-seed1\summary.json`
+  - `<DIFFAUDIT_ROOT>/Research/workspaces/gray-box/runs/tmiadm-cifar10-protocol-probe-20260416-cpu-32-r2-seed1/summary.json`
 
 Supporting repeat verdict:
 
-- `D:\Code\DiffAudit\Research\workspaces\gray-box\2026-04-16-tmiadm-long-window-repeat-verdict.md`
+- `<DIFFAUDIT_ROOT>/Research/workspaces/gray-box/2026-04-16-tmiadm-long-window-repeat-verdict.md`
 
 ## Metrics
 

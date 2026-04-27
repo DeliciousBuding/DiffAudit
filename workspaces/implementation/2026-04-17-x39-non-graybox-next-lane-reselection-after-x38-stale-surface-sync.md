@@ -6,13 +6,13 @@ After `X-38` cleared the last active `I-D` stale material surface, which non-gra
 
 ## Inputs Reviewed
 
-- `D:\Code\DiffAudit\ROADMAP.md`
-- `D:\Code\DiffAudit\Research\ROADMAP.md`
-- `D:\Code\DiffAudit\Research\docs\comprehensive-progress.md`
-- `D:\Code\DiffAudit\Research\workspaces\implementation\challenger-queue.md`
-- `D:\Code\DiffAudit\Research\workspaces\implementation\2026-04-17-x38-crossbox-stale-surface-sync-after-x37-reselection.md`
-- `D:\Code\DiffAudit\Research\workspaces\implementation\2026-04-17-x37-non-graybox-next-lane-reselection-after-x36-id-successor-freeze.md`
-- `D:\Code\DiffAudit\Research\workspaces\implementation\2026-04-17-post-translated-ic-falsifier-next-lane-reselection-review.md`
+- `<DIFFAUDIT_ROOT>/ROADMAP.md`
+- `<DIFFAUDIT_ROOT>/Research/ROADMAP.md`
+- `<DIFFAUDIT_ROOT>/Research/docs/comprehensive-progress.md`
+- `<DIFFAUDIT_ROOT>/Research/workspaces/implementation/challenger-queue.md`
+- `<DIFFAUDIT_ROOT>/Research/workspaces/implementation/2026-04-17-x38-crossbox-stale-surface-sync-after-x37-reselection.md`
+- `<DIFFAUDIT_ROOT>/Research/workspaces/implementation/2026-04-17-x37-non-graybox-next-lane-reselection-after-x36-id-successor-freeze.md`
+- `<DIFFAUDIT_ROOT>/Research/workspaces/implementation/2026-04-17-post-translated-ic-falsifier-next-lane-reselection-review.md`
 
 ## Candidate Review
 
@@ -79,14 +79,14 @@ More precise reading:
 
 ## Canonical Evidence Anchor
 
-- `D:\Code\DiffAudit\Research\workspaces\implementation\2026-04-17-x39-non-graybox-next-lane-reselection-after-x38-stale-surface-sync.md`
+- `<DIFFAUDIT_ROOT>/Research/workspaces/implementation/2026-04-17-x39-non-graybox-next-lane-reselection-after-x38-stale-surface-sync.md`
 
 ## Handoff Decision
 
-- `D:\Code\DiffAudit\Research\ROADMAP.md`: update required
-- `D:\Code\DiffAudit\Research\workspaces\implementation\challenger-queue.md`: update required
-- `D:\Code\DiffAudit\Research\docs\comprehensive-progress.md`: update required
-- `D:\Code\DiffAudit\ROADMAP.md`: update required
+- `<DIFFAUDIT_ROOT>/Research/ROADMAP.md`: update required
+- `<DIFFAUDIT_ROOT>/Research/workspaces/implementation/challenger-queue.md`: update required
+- `<DIFFAUDIT_ROOT>/Research/docs/comprehensive-progress.md`: update required
+- `<DIFFAUDIT_ROOT>/ROADMAP.md`: update required
 - `platform_runtime_handoff = none`
 - `competition_material_sync = none`
 

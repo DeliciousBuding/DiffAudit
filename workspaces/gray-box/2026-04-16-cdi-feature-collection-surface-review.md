@@ -6,15 +6,15 @@ Given the current local gray-box artifacts, what is the smallest honest `CDI` fe
 
 ## Inputs Reviewed
 
-- `D:\Code\DiffAudit\Research\workspaces\gray-box\2026-04-16-cdi-protocol-asset-contract.md`
-- `D:\Code\DiffAudit\Research\workspaces\gray-box\2026-04-15-pia-vs-secmi-graybox-comparison.md`
-- `D:\Code\DiffAudit\Research\workspaces\gray-box\2026-04-15-graybox-ranking-sensitive-disagreement-verdict.md`
-- `D:\Code\DiffAudit\Research\workspaces\gray-box\runs\pia-cifar10-runtime-mainline-20260415-gpu-1024-adaptive\summary.json`
-- `D:\Code\DiffAudit\Research\workspaces\gray-box\runs\pia-cifar10-runtime-mainline-20260415-gpu-1024-adaptive\scores.json`
-- `D:\Code\DiffAudit\Research\workspaces\gray-box\runs\secmi-pia-disagreement-20260415-r1\summary.json`
-- `D:\Code\DiffAudit\Research\workspaces\gray-box\runs\secmi-pia-disagreement-20260415-r1\outputs\secmi_scores_1024.json`
-- `D:\Code\DiffAudit\Research\workspaces\gray-box\runs\secmi-pia-disagreement-20260415-r1\outputs\disagreement_analysis.json`
-- `D:\Code\DiffAudit\Research\docs\paper-reports\gray-box\2025-cvpr-cdi-copyrighted-data-identification-diffusion-models-report.md`
+- `<DIFFAUDIT_ROOT>/Research/workspaces/gray-box/2026-04-16-cdi-protocol-asset-contract.md`
+- `<DIFFAUDIT_ROOT>/Research/workspaces/gray-box/2026-04-15-pia-vs-secmi-graybox-comparison.md`
+- `<DIFFAUDIT_ROOT>/Research/workspaces/gray-box/2026-04-15-graybox-ranking-sensitive-disagreement-verdict.md`
+- `<DIFFAUDIT_ROOT>/Research/workspaces/gray-box/runs/pia-cifar10-runtime-mainline-20260415-gpu-1024-adaptive/summary.json`
+- `<DIFFAUDIT_ROOT>/Research/workspaces/gray-box/runs/pia-cifar10-runtime-mainline-20260415-gpu-1024-adaptive/scores.json`
+- `<DIFFAUDIT_ROOT>/Research/workspaces/gray-box/runs/secmi-pia-disagreement-20260415-r1/summary.json`
+- `<DIFFAUDIT_ROOT>/Research/workspaces/gray-box/runs/secmi-pia-disagreement-20260415-r1/outputs/secmi_scores_1024.json`
+- `<DIFFAUDIT_ROOT>/Research/workspaces/gray-box/runs/secmi-pia-disagreement-20260415-r1/outputs/disagreement_analysis.json`
+- `<DIFFAUDIT_ROOT>/Research/docs/paper-reports/gray-box/2025-cvpr-cdi-copyrighted-data-identification-diffusion-models-report.md`
 
 ## Current Surface Review
 

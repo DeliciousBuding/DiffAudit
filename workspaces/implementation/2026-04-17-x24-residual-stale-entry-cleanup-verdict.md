@@ -6,12 +6,12 @@ After `X-23` selected one final residual stale-entry cleanup pass, did that pass
 
 ## Inputs Reviewed
 
-- `D:\Code\DiffAudit\ROADMAP.md`
-- `D:\Code\DiffAudit\Research\ROADMAP.md`
-- `D:\Code\DiffAudit\Research\docs\comprehensive-progress.md`
-- `D:\Code\DiffAudit\Research\workspaces\implementation\challenger-queue.md`
-- `D:\Code\DiffAudit\Research\docs\mainline-narrative.md`
-- `D:\Code\DiffAudit\Research\workspaces\implementation\2026-04-17-x23-next-lane-reselection-after-x22-residue-audit.md`
+- `<DIFFAUDIT_ROOT>/ROADMAP.md`
+- `<DIFFAUDIT_ROOT>/Research/ROADMAP.md`
+- `<DIFFAUDIT_ROOT>/Research/docs/comprehensive-progress.md`
+- `<DIFFAUDIT_ROOT>/Research/workspaces/implementation/challenger-queue.md`
+- `<DIFFAUDIT_ROOT>/Research/docs/mainline-narrative.md`
+- `<DIFFAUDIT_ROOT>/Research/workspaces/implementation/2026-04-17-x23-next-lane-reselection-after-x22-residue-audit.md`
 
 ## Review
 
@@ -74,11 +74,11 @@ More precise reading:
 
 ## Canonical Evidence Anchor
 
-- `D:\Code\DiffAudit\Research\workspaces\implementation\2026-04-17-x24-residual-stale-entry-cleanup-verdict.md`
+- `<DIFFAUDIT_ROOT>/Research/workspaces/implementation/2026-04-17-x24-residual-stale-entry-cleanup-verdict.md`
 
 ## Handoff Decision
 
-- `D:\Code\DiffAudit\ROADMAP.md`: updated in this pass
+- `<DIFFAUDIT_ROOT>/ROADMAP.md`: updated in this pass
 - `Research/ROADMAP.md`: update required
 - `docs/comprehensive-progress.md`: update required
 - `workspaces/implementation/challenger-queue.md`: update required

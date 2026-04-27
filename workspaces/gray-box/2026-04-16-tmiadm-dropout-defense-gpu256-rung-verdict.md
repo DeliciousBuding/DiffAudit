@@ -17,14 +17,14 @@ After the defended `GPU128` line survived, does `TMIA-DM late-window` stay alive
 
 Primary rung:
 
-- `D:\Code\DiffAudit\Research\workspaces\gray-box\runs\tmiadm-cifar10-late-window-dropout-defense-20260416-gpu-256-r1\summary.json`
+- `<DIFFAUDIT_ROOT>/Research/workspaces/gray-box/runs/tmiadm-cifar10-late-window-dropout-defense-20260416-gpu-256-r1/summary.json`
 
 Current references:
 
 - `PIA GPU256 defended`:
-  - `D:\Code\DiffAudit\Research\workspaces\gray-box\runs\pia-cifar10-runtime-mainline-dropout-defense-20260408-gpu-256\summary.json`
+  - `<DIFFAUDIT_ROOT>/Research/workspaces/gray-box/runs/pia-cifar10-runtime-mainline-dropout-defense-20260408-gpu-256/summary.json`
 - `TMIA-DM GPU256 undefended`:
-  - `D:\Code\DiffAudit\Research\workspaces\gray-box\runs\tmiadm-cifar10-late-window-protocol-probe-20260416-gpu-256-r1\summary.json`
+  - `<DIFFAUDIT_ROOT>/Research/workspaces/gray-box/runs/tmiadm-cifar10-late-window-protocol-probe-20260416-gpu-256-r1/summary.json`
 
 ## Metrics
 

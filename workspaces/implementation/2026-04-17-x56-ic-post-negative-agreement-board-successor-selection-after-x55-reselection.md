@@ -6,11 +6,11 @@ Once fresh `I-C` is restored after `X-55`, does the current cross-permission lin
 
 ## Inputs Reviewed
 
-- `D:\Code\DiffAudit\Research\ROADMAP.md`
-- `D:\Code\DiffAudit\Research\workspaces\implementation\challenger-queue.md`
-- `D:\Code\DiffAudit\Research\workspaces\implementation\2026-04-17-x41-ic-fresh-bounded-crossbox-hypothesis-generation-after-x40-expansion.md`
-- `D:\Code\DiffAudit\Research\workspaces\implementation\2026-04-17-x46-ic-first-bounded-four-object-agreement-board-read-after-x45-scalar-contract-freeze.md`
-- `D:\Code\DiffAudit\Research\workspaces\implementation\2026-04-17-x55-non-graybox-next-lane-reselection-after-x54-ib-successor-freeze.md`
+- `<DIFFAUDIT_ROOT>/Research/ROADMAP.md`
+- `<DIFFAUDIT_ROOT>/Research/workspaces/implementation/challenger-queue.md`
+- `<DIFFAUDIT_ROOT>/Research/workspaces/implementation/2026-04-17-x41-ic-fresh-bounded-crossbox-hypothesis-generation-after-x40-expansion.md`
+- `<DIFFAUDIT_ROOT>/Research/workspaces/implementation/2026-04-17-x46-ic-first-bounded-four-object-agreement-board-read-after-x45-scalar-contract-freeze.md`
+- `<DIFFAUDIT_ROOT>/Research/workspaces/implementation/2026-04-17-x55-non-graybox-next-lane-reselection-after-x54-ib-successor-freeze.md`
 
 ## Candidate Comparison
 
@@ -76,5 +76,5 @@ More precise reading:
 
 - `Research/ROADMAP.md`: update required
 - `Research/workspaces/implementation/challenger-queue.md`: update required
-- `D:\Code\DiffAudit\ROADMAP.md`: update required because the live lane advanced again
+- `<DIFFAUDIT_ROOT>/ROADMAP.md`: update required because the live lane advanced again
 - `Platform / Runtime`: no handoff

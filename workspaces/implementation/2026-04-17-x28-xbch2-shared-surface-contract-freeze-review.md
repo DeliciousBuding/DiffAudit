@@ -6,18 +6,18 @@ Can the current repo truth now support one honest shared-surface contract for `X
 
 ## Inputs Reviewed
 
-- `D:\Code\DiffAudit\Research\ROADMAP.md`
-- `D:\Code\DiffAudit\Research\Research\ROADMAP.md`
-- `D:\Code\DiffAudit\Research\docs\comprehensive-progress.md`
-- `D:\Code\DiffAudit\Research\workspaces\implementation\challenger-queue.md`
-- `D:\Code\DiffAudit\Research\workspaces\implementation\2026-04-16-crossbox-transfer-portability-review.md`
-- `D:\Code\DiffAudit\Research\workspaces\implementation\2026-04-17-crossbox-transfer-portability-blocker-refresh-review.md`
-- `D:\Code\DiffAudit\Research\workspaces\implementation\2026-04-16-crossbox-agreement-analysis-refresh.md`
-- `D:\Code\DiffAudit\Research\workspaces\implementation\2026-04-16-crossbox-score-calibration-review.md`
-- `D:\Code\DiffAudit\Research\workspaces\implementation\artifacts\\unified-attack-defense-table.json`
-- `D:\Code\DiffAudit\Research\workspaces\black-box\plan.md`
-- `D:\Code\DiffAudit\Research\workspaces\gray-box\plan.md`
-- `D:\Code\DiffAudit\Research\workspaces\white-box\plan.md`
+- `<DIFFAUDIT_ROOT>/Research/ROADMAP.md`
+- `<DIFFAUDIT_ROOT>/Research/Research/ROADMAP.md`
+- `<DIFFAUDIT_ROOT>/Research/docs/comprehensive-progress.md`
+- `<DIFFAUDIT_ROOT>/Research/workspaces/implementation/challenger-queue.md`
+- `<DIFFAUDIT_ROOT>/Research/workspaces/implementation/2026-04-16-crossbox-transfer-portability-review.md`
+- `<DIFFAUDIT_ROOT>/Research/workspaces/implementation/2026-04-17-crossbox-transfer-portability-blocker-refresh-review.md`
+- `<DIFFAUDIT_ROOT>/Research/workspaces/implementation/2026-04-16-crossbox-agreement-analysis-refresh.md`
+- `<DIFFAUDIT_ROOT>/Research/workspaces/implementation/2026-04-16-crossbox-score-calibration-review.md`
+- `<DIFFAUDIT_ROOT>/Research/workspaces/implementation/artifacts/unified-attack-defense-table.json`
+- `<DIFFAUDIT_ROOT>/Research/workspaces/black-box/plan.md`
+- `<DIFFAUDIT_ROOT>/Research/workspaces/gray-box/plan.md`
+- `<DIFFAUDIT_ROOT>/Research/workspaces/white-box/plan.md`
 
 ## Candidate Shared Surfaces
 
@@ -87,15 +87,15 @@ More precise reading:
 
 ## Canonical Evidence Anchor
 
-- `D:\Code\DiffAudit\Research\workspaces\implementation\2026-04-17-x28-xbch2-shared-surface-contract-freeze-review.md`
+- `<DIFFAUDIT_ROOT>/Research/workspaces/implementation/2026-04-17-x28-xbch2-shared-surface-contract-freeze-review.md`
 
 ## Handoff Decision
 
-- `D:\Code\DiffAudit\Research\ROADMAP.md`: update required
-- `D:\Code\DiffAudit\Research\docs\comprehensive-progress.md`: update required
-- `D:\Code\DiffAudit\Research\workspaces\implementation\challenger-queue.md`: update required
-- `D:\Code\DiffAudit\Research\docs\mainline-narrative.md`: update required
-- `D:\Code\DiffAudit\ROADMAP.md`: update required
+- `<DIFFAUDIT_ROOT>/Research/ROADMAP.md`: update required
+- `<DIFFAUDIT_ROOT>/Research/docs/comprehensive-progress.md`: update required
+- `<DIFFAUDIT_ROOT>/Research/workspaces/implementation/challenger-queue.md`: update required
+- `<DIFFAUDIT_ROOT>/Research/docs/mainline-narrative.md`: update required
+- `<DIFFAUDIT_ROOT>/ROADMAP.md`: update required
 - `platform_runtime_handoff = none`
 - `competition_material_sync = none`
 

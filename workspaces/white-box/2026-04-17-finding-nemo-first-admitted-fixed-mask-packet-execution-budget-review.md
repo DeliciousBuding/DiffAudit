@@ -6,12 +6,12 @@ After `I-B.10` landed the dual-run review surface, is the first admitted target-
 
 ## Inputs Reviewed
 
-- `D:\Code\DiffAudit\Research\ROADMAP.md`
-- `D:\Code\DiffAudit\Research\workspaces\white-box\2026-04-17-finding-nemo-first-intervention-on-off-bounded-review-contract-selection.md`
-- `D:\Code\DiffAudit\Research\workspaces\white-box\2026-04-17-finding-nemo-intervention-on-off-bounded-review-surface-verdict.md`
-- `D:\Code\DiffAudit\Research\workspaces\white-box\assets\gsa-cifar10-1k-3shadow-epoch300-rerun1\manifests\cifar10-ddpm-1k-3shadow-epoch300-rerun1.json`
-- `D:\Code\DiffAudit\Research\workspaces\white-box\runs\gsa-runtime-mainline-20260409-cifar10-1k-3shadow-epoch300-rerun1\summary.json`
-- `D:\Code\DiffAudit\Research\src\diffaudit\attacks\gsa.py`
+- `<DIFFAUDIT_ROOT>/Research/ROADMAP.md`
+- `<DIFFAUDIT_ROOT>/Research/workspaces/white-box/2026-04-17-finding-nemo-first-intervention-on-off-bounded-review-contract-selection.md`
+- `<DIFFAUDIT_ROOT>/Research/workspaces/white-box/2026-04-17-finding-nemo-intervention-on-off-bounded-review-surface-verdict.md`
+- `<DIFFAUDIT_ROOT>/Research/workspaces/white-box/assets/gsa-cifar10-1k-3shadow-epoch300-rerun1/manifests/cifar10-ddpm-1k-3shadow-epoch300-rerun1.json`
+- `<DIFFAUDIT_ROOT>/Research/workspaces/white-box/runs/gsa-runtime-mainline-20260409-cifar10-1k-3shadow-epoch300-rerun1/summary.json`
+- `<DIFFAUDIT_ROOT>/Research/src/diffaudit/attacks/gsa.py`
 
 ## Execution-Budget Facts
 
@@ -110,7 +110,7 @@ because the packet is still missing one bounded-execution gate.
 
 ## Canonical Evidence Anchor
 
-- `D:\Code\DiffAudit\Research\workspaces\white-box\2026-04-17-finding-nemo-first-admitted-fixed-mask-packet-execution-budget-review.md`
+- `<DIFFAUDIT_ROOT>/Research/workspaces/white-box/2026-04-17-finding-nemo-first-admitted-fixed-mask-packet-execution-budget-review.md`
 
 ## Next Step
 

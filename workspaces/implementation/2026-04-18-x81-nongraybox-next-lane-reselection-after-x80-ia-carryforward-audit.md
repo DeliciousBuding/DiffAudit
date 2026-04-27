@@ -41,9 +41,9 @@ That means the most honest immediate move is:
 
 ## Canonical evidence anchors
 
-- `D:\Code\DiffAudit\Research\docs\comprehensive-progress.md`
-- `D:\Code\DiffAudit\Research\workspaces\white-box\plan.md`
-- `D:\Code\DiffAudit\Research\workspaces\implementation\challenger-queue.md`
+- `<DIFFAUDIT_ROOT>/Research/docs/comprehensive-progress.md`
+- `<DIFFAUDIT_ROOT>/Research/workspaces/white-box/plan.md`
+- `<DIFFAUDIT_ROOT>/Research/workspaces/implementation/challenger-queue.md`
 
 ## Next recommended lane
 

@@ -6,12 +6,12 @@ After the first real `PIA vs TMIA-DM confidence-gated switching` offline packet 
 
 ## Inputs Reviewed
 
-- `D:\Code\DiffAudit\Research\ROADMAP.md`
-- `D:\Code\DiffAudit\Research\workspaces\gray-box\2026-04-17-pia-tmiadm-confidence-gated-switching-offline-packet.md`
-- `D:\Code\DiffAudit\Research\workspaces\gray-box\2026-04-17-pia-tmiadm-confidence-gated-switching-design-review.md`
-- `D:\Code\DiffAudit\Research\workspaces\gray-box\2026-04-17-ranking-sensitive-variable-search-review.md`
-- `D:\Code\DiffAudit\Research\workspaces\gray-box\plan.md`
-- `D:\Code\DiffAudit\Research\workspaces\implementation\challenger-queue.md`
+- `<DIFFAUDIT_ROOT>/Research/ROADMAP.md`
+- `<DIFFAUDIT_ROOT>/Research/workspaces/gray-box/2026-04-17-pia-tmiadm-confidence-gated-switching-offline-packet.md`
+- `<DIFFAUDIT_ROOT>/Research/workspaces/gray-box/2026-04-17-pia-tmiadm-confidence-gated-switching-design-review.md`
+- `<DIFFAUDIT_ROOT>/Research/workspaces/gray-box/2026-04-17-ranking-sensitive-variable-search-review.md`
+- `<DIFFAUDIT_ROOT>/Research/workspaces/gray-box/plan.md`
+- `<DIFFAUDIT_ROOT>/Research/workspaces/implementation/challenger-queue.md`
 
 ## Review
 

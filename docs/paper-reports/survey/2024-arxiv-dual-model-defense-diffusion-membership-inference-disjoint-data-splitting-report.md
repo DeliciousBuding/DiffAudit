@@ -22,7 +22,7 @@
 - Title: Dual-Model Defense: Safeguarding Diffusion Models from Membership Inference Attacks Through Disjoint Data Splitting
 - Authors: Bao Q. Tran, Viet Nguyen, Anh Tran, Toan Tran
 - Venue / year / version: arXiv preprint, 2024
-- Local PDF path: `D:/Code/DiffAudit/Research/references/materials/survey/2024-arxiv-dual-model-defense-diffusion-membership-inference-disjoint-data-splitting.pdf`
+- Local PDF path: `<DIFFAUDIT_ROOT>/Research/references/materials/survey/2024-arxiv-dual-model-defense-diffusion-membership-inference-disjoint-data-splitting.pdf`
 - Source URL: [https://arxiv.org/abs/2410.16657](https://arxiv.org/abs/2410.16657)
 
 ## Research Question

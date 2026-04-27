@@ -16,19 +16,19 @@ After the target pair and first shadow pair were all extracted successfully unde
 
 Primary bounded comparator run:
 
-- `D:\Code\DiffAudit\Research\workspaces\white-box\runs\gsa2-bounded-comparator-shadow01-20260415-r1\summary.json`
-- `D:\Code\DiffAudit\Research\workspaces\white-box\runs\gsa2-bounded-comparator-shadow01-20260415-r1\attack-output.txt`
+- `<DIFFAUDIT_ROOT>/Research/workspaces/white-box/runs/gsa2-bounded-comparator-shadow01-20260415-r1/summary.json`
+- `<DIFFAUDIT_ROOT>/Research/workspaces/white-box/runs/gsa2-bounded-comparator-shadow01-20260415-r1/attack-output.txt`
 
 Gradient artifacts consumed by the comparator:
 
-- `D:\Code\DiffAudit\Research\workspaces\white-box\runs\gsa-gradient-direct-attackmethod2-20260415-r2\target_member-gradients.pt`
-- `D:\Code\DiffAudit\Research\workspaces\white-box\runs\gsa-gradient-direct-attackmethod2-20260415-r3\target_nonmember-gradients.pt`
-- `D:\Code\DiffAudit\Research\workspaces\white-box\runs\gsa-gradient-direct-attackmethod2-20260416-shadow01-member-r1\shadow01_member-gradients.pt`
-- `D:\Code\DiffAudit\Research\workspaces\white-box\runs\gsa-gradient-direct-attackmethod2-20260416-shadow01-nonmember-r1\shadow01_nonmember-gradients.pt`
+- `<DIFFAUDIT_ROOT>/Research/workspaces/white-box/runs/gsa-gradient-direct-attackmethod2-20260415-r2/target_member-gradients.pt`
+- `<DIFFAUDIT_ROOT>/Research/workspaces/white-box/runs/gsa-gradient-direct-attackmethod2-20260415-r3/target_nonmember-gradients.pt`
+- `<DIFFAUDIT_ROOT>/Research/workspaces/white-box/runs/gsa-gradient-direct-attackmethod2-20260416-shadow01-member-r1/shadow01_member-gradients.pt`
+- `<DIFFAUDIT_ROOT>/Research/workspaces/white-box/runs/gsa-gradient-direct-attackmethod2-20260416-shadow01-nonmember-r1/shadow01_nonmember-gradients.pt`
 
 Admitted mainline reference:
 
-- `D:\Code\DiffAudit\Research\workspaces\white-box\runs\gsa-runtime-mainline-20260409-cifar10-1k-3shadow-epoch300-rerun1\summary.json`
+- `<DIFFAUDIT_ROOT>/Research/workspaces/white-box/runs/gsa-runtime-mainline-20260409-cifar10-1k-3shadow-epoch300-rerun1/summary.json`
 
 ## Metrics
 

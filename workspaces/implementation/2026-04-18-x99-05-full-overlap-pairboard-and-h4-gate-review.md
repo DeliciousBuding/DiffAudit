@@ -6,15 +6,15 @@ After `X-98`, can `05-cross-box` move beyond the small `45 / 35` enlarged packet
 
 ## Inputs Reviewed
 
-- `D:\Code\DiffAudit\Research\src\diffaudit\attacks\pia_adapter.py`
-- `D:\Code\DiffAudit\Research\src\diffaudit\attacks\crossbox_pairboard.py`
-- `D:\Code\DiffAudit\Research\src\diffaudit\cli.py`
-- `D:\Code\DiffAudit\Research\tests\test_pia_adapter.py`
-- `D:\Code\DiffAudit\Research\tests\test_crossbox_pairboard.py`
-- `D:\Code\DiffAudit\Research\workspaces\cross-box\materials\05-gsa-pia-full-overlap-20260418-r1\`
-- `D:\Code\DiffAudit\Research\workspaces\gray-box\runs\pia-packet-score-export-gsa-full-overlap-20260418-r1\summary.json`
-- `D:\Code\DiffAudit\Research\workspaces\white-box\runs\gsa-loss-score-export-targeted-full-overlap-20260418-r1\summary.json`
-- `D:\Code\DiffAudit\Research\workspaces\cross-box\runs\crossbox-pairboard-gsa-targeted-full-overlap-20260418-r1\summary.json`
+- `<DIFFAUDIT_ROOT>/Research/src/diffaudit/attacks/pia_adapter.py`
+- `<DIFFAUDIT_ROOT>/Research/src/diffaudit/attacks/crossbox_pairboard.py`
+- `<DIFFAUDIT_ROOT>/Research/src/diffaudit/cli.py`
+- `<DIFFAUDIT_ROOT>/Research/tests/test_pia_adapter.py`
+- `<DIFFAUDIT_ROOT>/Research/tests/test_crossbox_pairboard.py`
+- `<DIFFAUDIT_ROOT>/Research/workspaces/cross-box/materials/05-gsa-pia-full-overlap-20260418-r1\`
+- `<DIFFAUDIT_ROOT>/Research/workspaces/gray-box/runs/pia-packet-score-export-gsa-full-overlap-20260418-r1/summary.json`
+- `<DIFFAUDIT_ROOT>/Research/workspaces/white-box/runs/gsa-loss-score-export-targeted-full-overlap-20260418-r1/summary.json`
+- `<DIFFAUDIT_ROOT>/Research/workspaces/cross-box/runs/crossbox-pairboard-gsa-targeted-full-overlap-20260418-r1/summary.json`
 
 ## What Landed
 
@@ -112,12 +112,12 @@ More precise reading:
 
 Primary anchor:
 
-- `D:\Code\DiffAudit\Research\workspaces\cross-box\runs\crossbox-pairboard-gsa-targeted-full-overlap-20260418-r1\summary.json`
+- `<DIFFAUDIT_ROOT>/Research/workspaces/cross-box/runs/crossbox-pairboard-gsa-targeted-full-overlap-20260418-r1/summary.json`
 
 Supporting anchors:
 
-- `D:\Code\DiffAudit\Research\workspaces\gray-box\runs\pia-packet-score-export-gsa-full-overlap-20260418-r1\summary.json`
-- `D:\Code\DiffAudit\Research\workspaces\white-box\runs\gsa-loss-score-export-targeted-full-overlap-20260418-r1\summary.json`
+- `<DIFFAUDIT_ROOT>/Research/workspaces/gray-box/runs/pia-packet-score-export-gsa-full-overlap-20260418-r1/summary.json`
+- `<DIFFAUDIT_ROOT>/Research/workspaces/white-box/runs/gsa-loss-score-export-targeted-full-overlap-20260418-r1/summary.json`
 
 ## Handoff Decision
 

@@ -6,17 +6,17 @@ Can the first actual `06-H1` packet clear the `TMIA-DM-256` teacher-calibrated g
 
 ## Inputs Reviewed
 
-- `D:\Code\DiffAudit\Research\src\diffaudit\attacks\temporal_surrogate.py`
-- `D:\Code\DiffAudit\Research\docs\report-bundles\gpt54\round2-results\06.md`
-- `D:\Code\DiffAudit\Research\workspaces\gray-box\runs\temporal-surrogate-feature-packet-cifar10-scout64-20260418-r1\summary.json`
-- `D:\Code\DiffAudit\Research\workspaces\gray-box\runs\tmiadm-cifar10-temporal-surrogate-teacher64-20260418-r1\summary.json`
-- `D:\Code\DiffAudit\Research\workspaces\gray-box\runs\temporal-surrogate-eval-cifar10-teacher64-20260418-r1\summary.json`
-- `D:\Code\DiffAudit\Research\workspaces\gray-box\runs\temporal-surrogate-feature-packet-cifar10-scout128-20260418-r1\summary.json`
-- `D:\Code\DiffAudit\Research\workspaces\gray-box\runs\tmiadm-cifar10-temporal-surrogate-teacher128-20260418-r1\summary.json`
-- `D:\Code\DiffAudit\Research\workspaces\gray-box\runs\temporal-surrogate-eval-cifar10-teacher128-20260418-r1\summary.json`
-- `D:\Code\DiffAudit\Research\workspaces\gray-box\runs\temporal-surrogate-feature-packet-cifar10-teacher256-20260418-r1\summary.json`
-- `D:\Code\DiffAudit\Research\workspaces\gray-box\runs\tmiadm-cifar10-temporal-surrogate-teacher256-20260418-r1\summary.json`
-- `D:\Code\DiffAudit\Research\workspaces\gray-box\runs\temporal-surrogate-eval-cifar10-teacher256-20260418-r1\summary.json`
+- `<DIFFAUDIT_ROOT>/Research/src/diffaudit/attacks/temporal_surrogate.py`
+- `<DIFFAUDIT_ROOT>/Research/docs/report-bundles/gpt54/round2-results/06.md`
+- `<DIFFAUDIT_ROOT>/Research/workspaces/gray-box/runs/temporal-surrogate-feature-packet-cifar10-scout64-20260418-r1/summary.json`
+- `<DIFFAUDIT_ROOT>/Research/workspaces/gray-box/runs/tmiadm-cifar10-temporal-surrogate-teacher64-20260418-r1/summary.json`
+- `<DIFFAUDIT_ROOT>/Research/workspaces/gray-box/runs/temporal-surrogate-eval-cifar10-teacher64-20260418-r1/summary.json`
+- `<DIFFAUDIT_ROOT>/Research/workspaces/gray-box/runs/temporal-surrogate-feature-packet-cifar10-scout128-20260418-r1/summary.json`
+- `<DIFFAUDIT_ROOT>/Research/workspaces/gray-box/runs/tmiadm-cifar10-temporal-surrogate-teacher128-20260418-r1/summary.json`
+- `<DIFFAUDIT_ROOT>/Research/workspaces/gray-box/runs/temporal-surrogate-eval-cifar10-teacher128-20260418-r1/summary.json`
+- `<DIFFAUDIT_ROOT>/Research/workspaces/gray-box/runs/temporal-surrogate-feature-packet-cifar10-teacher256-20260418-r1/summary.json`
+- `<DIFFAUDIT_ROOT>/Research/workspaces/gray-box/runs/tmiadm-cifar10-temporal-surrogate-teacher256-20260418-r1/summary.json`
+- `<DIFFAUDIT_ROOT>/Research/workspaces/gray-box/runs/temporal-surrogate-eval-cifar10-teacher256-20260418-r1/summary.json`
 
 ## What Was Implemented
 
@@ -115,12 +115,12 @@ More precise reading:
 
 Primary anchor:
 
-- `D:\Code\DiffAudit\Research\workspaces\gray-box\runs\temporal-surrogate-eval-cifar10-teacher256-20260418-r1\summary.json`
+- `<DIFFAUDIT_ROOT>/Research/workspaces/gray-box/runs/temporal-surrogate-eval-cifar10-teacher256-20260418-r1/summary.json`
 
 Supporting anchors:
 
-- `D:\Code\DiffAudit\Research\workspaces\gray-box\runs\temporal-surrogate-eval-cifar10-teacher64-20260418-r1\summary.json`
-- `D:\Code\DiffAudit\Research\workspaces\gray-box\runs\temporal-surrogate-eval-cifar10-teacher128-20260418-r1\summary.json`
+- `<DIFFAUDIT_ROOT>/Research/workspaces/gray-box/runs/temporal-surrogate-eval-cifar10-teacher64-20260418-r1/summary.json`
+- `<DIFFAUDIT_ROOT>/Research/workspaces/gray-box/runs/temporal-surrogate-eval-cifar10-teacher128-20260418-r1/summary.json`
 
 ## Handoff Decision
 

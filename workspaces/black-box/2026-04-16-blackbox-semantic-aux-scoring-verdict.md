@@ -16,13 +16,13 @@ Within the current `semantic-auxiliary-classifier` challenger, does the multi-fe
 
 Comparator summaries:
 
-- `D:\Code\DiffAudit\Research\workspaces\black-box\runs\semantic-aux-classifier-comparator-20260415-r1\summary.json`
-- `D:\Code\DiffAudit\Research\workspaces\black-box\runs\semantic-aux-classifier-comparator-20260416-r2\summary.json`
+- `<DIFFAUDIT_ROOT>/Research/workspaces/black-box/runs/semantic-aux-classifier-comparator-20260415-r1/summary.json`
+- `<DIFFAUDIT_ROOT>/Research/workspaces/black-box/runs/semantic-aux-classifier-comparator-20260416-r2/summary.json`
 
 Raw feature records:
 
-- `D:\Code\DiffAudit\Research\workspaces\black-box\runs\semantic-aux-classifier-comparator-20260415-r1\outputs\records.json`
-- `D:\Code\DiffAudit\Research\workspaces\black-box\runs\semantic-aux-classifier-comparator-20260416-r2\outputs\records.json`
+- `<DIFFAUDIT_ROOT>/Research/workspaces/black-box/runs/semantic-aux-classifier-comparator-20260415-r1/outputs/records.json`
+- `<DIFFAUDIT_ROOT>/Research/workspaces/black-box/runs/semantic-aux-classifier-comparator-20260416-r2/outputs/records.json`
 
 ## Metrics
 

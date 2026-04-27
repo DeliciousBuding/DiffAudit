@@ -6,11 +6,11 @@ Now that `Finding NeMo + local memorization + FB-Mem` is the only remaining inta
 
 ## Inputs Reviewed
 
-- `D:\Code\DiffAudit\Research\workspaces\intake\phase-e-candidates.json`
-- `D:\Code\DiffAudit\Research\workspaces\intake\2026-04-10-phase-e-finding-nemo-intake-hold-decision.md`
-- `D:\Code\DiffAudit\Research\workspaces\white-box\plan.md`
-- `D:\Code\DiffAudit\Research\ROADMAP.md`
-- `D:\Code\DiffAudit\Research\docs\comprehensive-progress.md`
+- `<DIFFAUDIT_ROOT>/Research/workspaces/intake/phase-e-candidates.json`
+- `<DIFFAUDIT_ROOT>/Research/workspaces/intake/2026-04-10-phase-e-finding-nemo-intake-hold-decision.md`
+- `<DIFFAUDIT_ROOT>/Research/workspaces/white-box/plan.md`
+- `<DIFFAUDIT_ROOT>/Research/ROADMAP.md`
+- `<DIFFAUDIT_ROOT>/Research/docs/comprehensive-progress.md`
 
 ## Current Truth
 

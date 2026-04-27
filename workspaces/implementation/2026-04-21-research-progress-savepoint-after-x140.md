@@ -49,20 +49,20 @@ So the current control verdict is:
 
 ## Canonical Anchors Added This Round
 
-- `D:\Code\DiffAudit\Research\workspaces\implementation\2026-04-21-x138-04-h2-bounded-packet-scale-followup-selection.md`
-- `D:\Code\DiffAudit\Research\workspaces\implementation\runs\h2-review-defense-pilot-4x4-20260421-r1\summary.json`
-- `D:\Code\DiffAudit\Research\workspaces\implementation\2026-04-21-x140-crossbox-system-sync-after-x139.md`
+- `<DIFFAUDIT_ROOT>/Research/workspaces/implementation/2026-04-21-x138-04-h2-bounded-packet-scale-followup-selection.md`
+- `<DIFFAUDIT_ROOT>/Research/workspaces/implementation/runs/h2-review-defense-pilot-4x4-20260421-r1/summary.json`
+- `<DIFFAUDIT_ROOT>/Research/workspaces/implementation/2026-04-21-x140-crossbox-system-sync-after-x139.md`
 
 ## Where To Resume
 
-1. Read `D:\Code\DiffAudit\Research\ROADMAP.md`
-2. Read `D:\Code\DiffAudit\Research\workspaces\implementation\challenger-queue.md`
+1. Read `<DIFFAUDIT_ROOT>/Research/ROADMAP.md`
+2. Read `<DIFFAUDIT_ROOT>/Research/workspaces/implementation/challenger-queue.md`
 3. Start from `X-141 non-graybox next-lane reselection after X-140 stale-entry sync`
 
 ## Storage Boundary Reminder
 
 - upstream/local exploratory code clones -> `Research/external/`
 - minimal vendored code actually used by repo -> `Research/third_party/`
-- raw downloaded datasets / checkpoints / archives -> `D:\Code\DiffAudit\Download\`
+- raw downloaded datasets / checkpoints / archives -> `<DIFFAUDIT_ROOT>/Download/`
 - lane-normalized admitted assets / manifests -> `Research/workspaces/<lane>/assets/`
 - run evidence -> `Research/workspaces/<lane>/runs/`

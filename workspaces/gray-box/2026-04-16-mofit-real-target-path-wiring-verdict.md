@@ -6,10 +6,10 @@ Can the `MoFit` lane now bridge its loss-contract helpers onto the real `SD1.5` 
 
 ## Inputs Reviewed
 
-- `D:\Code\DiffAudit\Research\tests\test_mofit_scaffold.py`
-- `D:\Code\DiffAudit\Research\src\diffaudit\attacks\mofit_scaffold.py`
-- `D:\Code\DiffAudit\Research\scripts\run_structural_memorization_smoke.py`
-- `D:\Code\DiffAudit\Research\workspaces\gray-box\2026-04-16-mofit-latent-loss-contract-verdict.md`
+- `<DIFFAUDIT_ROOT>/Research/tests/test_mofit_scaffold.py`
+- `<DIFFAUDIT_ROOT>/Research/src/diffaudit/attacks/mofit_scaffold.py`
+- `<DIFFAUDIT_ROOT>/Research/scripts/run_structural_memorization_smoke.py`
+- `<DIFFAUDIT_ROOT>/Research/workspaces/gray-box/2026-04-16-mofit-latent-loss-contract-verdict.md`
 
 ## Verification
 

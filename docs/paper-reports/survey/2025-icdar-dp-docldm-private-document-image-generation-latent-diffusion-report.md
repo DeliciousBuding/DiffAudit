@@ -22,7 +22,7 @@
 - Title: DP-DocLDM: Differentially Private Document Image Generation using Latent Diffusion Models
 - Authors: Saifullah Saifullah, Stefan Agne, Andreas Dengel, Sheraz Ahmed
 - Venue / year / version: ICDAR 2025 conference paper
-- Local PDF path: `D:/Code/DiffAudit/Research/references/materials/survey/2025-icdar-dp-docldm-private-document-image-generation-latent-diffusion.pdf`
+- Local PDF path: `<DIFFAUDIT_ROOT>/Research/references/materials/survey/2025-icdar-dp-docldm-private-document-image-generation-latent-diffusion.pdf`
 - Source URL: [https://doi.org/10.1007/978-3-032-04627-7_6](https://doi.org/10.1007/978-3-032-04627-7_6)
 
 ## Research Question

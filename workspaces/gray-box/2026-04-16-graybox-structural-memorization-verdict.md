@@ -16,12 +16,12 @@ Does the already-implemented local `structural memorization` faithful-approximat
 
 Primary local smoke artifact:
 
-- `D:\Code\DiffAudit\Research\workspaces\gray-box\runs\structural-memorization-smoke-20260415-r1\summary.json`
+- `<DIFFAUDIT_ROOT>/Research/workspaces/gray-box/runs/structural-memorization-smoke-20260415-r1/summary.json`
 
 Local implementation notes reviewed:
 
-- `D:\Code\DiffAudit\Research\workspaces\gray-box\2026-04-15-graybox-new-family-structural-memorization-feasibility.md`
-- `D:\Code\DiffAudit\Research\workspaces\gray-box\2026-04-15-graybox-structural-memorization-smoke-note.md`
+- `<DIFFAUDIT_ROOT>/Research/workspaces/gray-box/2026-04-15-graybox-new-family-structural-memorization-feasibility.md`
+- `<DIFFAUDIT_ROOT>/Research/workspaces/gray-box/2026-04-15-graybox-structural-memorization-smoke-note.md`
 
 ## Metrics
 

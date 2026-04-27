@@ -4,10 +4,10 @@
   "method": "dit",
   "paper": "Scalable_Diffusion_Transformers_2022",
   "mode": "sample-smoke",
-  "workspace": "D:\\Code\\DiffAudit\\Research\\experiments\\dit-sample-step10",
+  "workspace": "<DIFFAUDIT_ROOT>/Research/experiments/dit-sample-step10",
   "artifact_paths": {
-    "summary": "D:\\Code\\DiffAudit\\Research\\experiments\\dit-sample-step10\\summary.json",
-    "sample_image": "D:\\Code\\DiffAudit\\Research\\experiments\\dit-sample-step10\\sample.png"
+    "summary": "<DIFFAUDIT_ROOT>/Research/experiments/dit-sample-step10/summary.json",
+    "sample_image": "<DIFFAUDIT_ROOT>/Research/experiments/dit-sample-step10/sample.png"
   },
   "checks": {
     "asset_probe_ready": true,
@@ -15,12 +15,12 @@
     "sample_image_created": true
   },
   "runtime": {
-    "repo_root": "D:\\Code\\DiffAudit\\Research\\external\\DiT",
+    "repo_root": "<DIFFAUDIT_ROOT>/Research/external/DiT",
     "model": "DiT-XL/2",
     "image_size": 256,
     "num_sampling_steps": 10,
     "seed": 0,
-    "ckpt": "D:\\Code\\DiffAudit\\Research\\external\\DiT\\pretrained_models\\DiT-XL-2-256x256.pt"
+    "ckpt": "<DIFFAUDIT_ROOT>/Research/external/DiT/pretrained_models/DiT-XL-2-256x256.pt"
   },
   "stdout_tail": [],
   "notes": [

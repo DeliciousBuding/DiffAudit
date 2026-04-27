@@ -6,15 +6,15 @@ Given current repo truth, is `PIA + SimA` support-fusion / calibration review al
 
 ## Inputs Reviewed
 
-- `D:\Code\DiffAudit\Research\src\diffaudit\attacks\sima_adapter.py`
-- `D:\Code\DiffAudit\Research\src\diffaudit\attacks\pia_adapter.py`
-- `D:\Code\DiffAudit\Research\src\diffaudit\attacks\crossbox_pairboard.py`
-- `D:\Code\DiffAudit\Research\tests\test_sima_adapter.py`
-- `D:\Code\DiffAudit\Research\workspaces\gray-box\2026-04-16-graybox-sima-feasibility-verdict.md`
-- `D:\Code\DiffAudit\Research\workspaces\gray-box\2026-04-16-graybox-sima-rescan-verdict.md`
-- `D:\Code\DiffAudit\Research\workspaces\gray-box\runs\sima-cifar10-runtime-feasibility-20260416-cpu-32-r1\summary.json`
-- `D:\Code\DiffAudit\Research\workspaces\gray-box\runs\sima-cifar10-runtime-rescan-20260416-cpu-32-r2\summary.json`
-- `D:\Code\DiffAudit\Research\docs\report-bundles\gpt54\round2-results\02.md`
+- `<DIFFAUDIT_ROOT>/Research/src/diffaudit/attacks/sima_adapter.py`
+- `<DIFFAUDIT_ROOT>/Research/src/diffaudit/attacks/pia_adapter.py`
+- `<DIFFAUDIT_ROOT>/Research/src/diffaudit/attacks/crossbox_pairboard.py`
+- `<DIFFAUDIT_ROOT>/Research/tests/test_sima_adapter.py`
+- `<DIFFAUDIT_ROOT>/Research/workspaces/gray-box/2026-04-16-graybox-sima-feasibility-verdict.md`
+- `<DIFFAUDIT_ROOT>/Research/workspaces/gray-box/2026-04-16-graybox-sima-rescan-verdict.md`
+- `<DIFFAUDIT_ROOT>/Research/workspaces/gray-box/runs/sima-cifar10-runtime-feasibility-20260416-cpu-32-r1/summary.json`
+- `<DIFFAUDIT_ROOT>/Research/workspaces/gray-box/runs/sima-cifar10-runtime-rescan-20260416-cpu-32-r2/summary.json`
+- `<DIFFAUDIT_ROOT>/Research/docs/report-bundles/gpt54/round2-results/02.md`
 
 ## Findings
 
@@ -86,7 +86,7 @@ Sharper control truth:
 
 ## Canonical Evidence Anchor
 
-- `D:\Code\DiffAudit\Research\workspaces\implementation\2026-04-21-x123-r25b-pia-sima-support-fusion-contract-review.md`
+- `<DIFFAUDIT_ROOT>/Research/workspaces/implementation/2026-04-21-x123-r25b-pia-sima-support-fusion-contract-review.md`
 
 ## Handoff
 

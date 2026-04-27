@@ -4,10 +4,9 @@
 
 这份规范用于约束 DiffAudit 全部论文阅读报告的写法、结构、公式表达和图片处理方式。
 
-飞书发布、本机权限设置、目录归档与同步命令已经迁移到：
+飞书发布、本机权限设置、目录归档与同步命令属于 operator-local surface，不属于 `Research` 的可移植合同。
 
-- `D:\Code\DiffAudit\LocalOps\feishu\README.md`
-- `D:\Code\DiffAudit\LocalOps\feishu\docs\workspace-rules.md`
+如果当前机器上有完整 DiffAudit 根工作区，先从 `<DIFFAUDIT_ROOT>/Archive/LocalOps/README.md` 找到最新的本机发布入口；不要再把历史 `LocalOps/feishu/...` 路径当成固定前置条件。
 
 目标不是生成“像总结的东西”，而是生成**可复核、可引用、可继续扩展**的学术技术文档。报告必须体现以下特征：
 

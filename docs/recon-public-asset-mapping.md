@@ -8,14 +8,14 @@
 
 相关本地根目录：
 
-- `D:\Code\DiffAudit\Download\black-box\supplementary\recon-assets\ndss-2025-blackbox-membership-inference-fine-tuned-diffusion-models\`
+- `<DIFFAUDIT_ROOT>/Download/black-box/supplementary/recon-assets/ndss-2025-blackbox-membership-inference-fine-tuned-diffusion-models/`
 
 当前派生映射注释还存在于：
 
-- `D:\Code\DiffAudit\Download\black-box\supplementary\recon-assets\ndss-2025-blackbox-membership-inference-fine-tuned-diffusion-models\derived-public-10\mapping-note.md`
-- `D:\Code\DiffAudit\Download\black-box\supplementary\recon-assets\ndss-2025-blackbox-membership-inference-fine-tuned-diffusion-models\derived-public-25\mapping-note.md`
-- `D:\Code\DiffAudit\Download\black-box\supplementary\recon-assets\ndss-2025-blackbox-membership-inference-fine-tuned-diffusion-models\derived-public-50\mapping-note.md`
-- `D:\Code\DiffAudit\Download\black-box\supplementary\recon-assets\ndss-2025-blackbox-membership-inference-fine-tuned-diffusion-models\derived-public-100\mapping-note.md`
+- `<DIFFAUDIT_ROOT>/Download/black-box/supplementary/recon-assets/ndss-2025-blackbox-membership-inference-fine-tuned-diffusion-models/derived-public-10/mapping-note.md`
+- `<DIFFAUDIT_ROOT>/Download/black-box/supplementary/recon-assets/ndss-2025-blackbox-membership-inference-fine-tuned-diffusion-models/derived-public-25/mapping-note.md`
+- `<DIFFAUDIT_ROOT>/Download/black-box/supplementary/recon-assets/ndss-2025-blackbox-membership-inference-fine-tuned-diffusion-models/derived-public-50/mapping-note.md`
+- `<DIFFAUDIT_ROOT>/Download/black-box/supplementary/recon-assets/ndss-2025-blackbox-membership-inference-fine-tuned-diffusion-models/derived-public-100/mapping-note.md`
 
 ## 当前最稳妥的映射
 

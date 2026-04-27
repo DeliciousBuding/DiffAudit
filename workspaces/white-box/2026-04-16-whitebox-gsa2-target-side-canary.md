@@ -33,11 +33,11 @@ Reason:
 
 Target-member direct extraction:
 
-- `D:\Code\DiffAudit\Research\workspaces\white-box\runs\gsa-gradient-direct-attackmethod2-20260415-r2\target_member-gradients.pt`
+- `<DIFFAUDIT_ROOT>/Research/workspaces/white-box/runs/gsa-gradient-direct-attackmethod2-20260415-r2/target_member-gradients.pt`
 
 Target-nonmember direct extraction:
 
-- `D:\Code\DiffAudit\Research\workspaces\white-box\runs\gsa-gradient-direct-attackmethod2-20260415-r3\target_nonmember-gradients.pt`
+- `<DIFFAUDIT_ROOT>/Research/workspaces/white-box/runs/gsa-gradient-direct-attackmethod2-20260415-r3/target_nonmember-gradients.pt`
 
 Shared canary contract:
 

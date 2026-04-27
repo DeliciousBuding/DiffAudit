@@ -6,12 +6,12 @@ After `X-56` freezes fresh `I-C` below active successor-lane status, what should
 
 ## Inputs Reviewed
 
-- `D:\Code\DiffAudit\ROADMAP.md`
-- `D:\Code\DiffAudit\Research\ROADMAP.md`
-- `D:\Code\DiffAudit\Research\docs\comprehensive-progress.md`
-- `D:\Code\DiffAudit\Research\docs\mainline-narrative.md`
-- `D:\Code\DiffAudit\Research\workspaces\implementation\challenger-queue.md`
-- `D:\Code\DiffAudit\Research\workspaces\implementation\2026-04-17-x56-ic-post-negative-agreement-board-successor-selection-after-x55-reselection.md`
+- `<DIFFAUDIT_ROOT>/ROADMAP.md`
+- `<DIFFAUDIT_ROOT>/Research/ROADMAP.md`
+- `<DIFFAUDIT_ROOT>/Research/docs/comprehensive-progress.md`
+- `<DIFFAUDIT_ROOT>/Research/docs/mainline-narrative.md`
+- `<DIFFAUDIT_ROOT>/Research/workspaces/implementation/challenger-queue.md`
+- `<DIFFAUDIT_ROOT>/Research/workspaces/implementation/2026-04-17-x56-ic-post-negative-agreement-board-successor-selection-after-x55-reselection.md`
 
 ## Candidate Comparison
 
@@ -71,5 +71,5 @@ Selected next lane:
 
 - `Research/ROADMAP.md`: update required
 - `Research/workspaces/implementation/challenger-queue.md`: update required
-- `D:\Code\DiffAudit\ROADMAP.md`: update required because the current live lane advanced
+- `<DIFFAUDIT_ROOT>/ROADMAP.md`: update required because the current live lane advanced
 - `Platform / Runtime`: no handoff

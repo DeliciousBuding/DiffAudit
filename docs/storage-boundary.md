@@ -10,7 +10,7 @@
 
 - `external/` 放 **外部代码仓 / 本地探索 clone**
 - `third_party/` 放 **仓库真实依赖的最小 vendored 代码**
-- `D:\Code\DiffAudit\Download\` 放 **原始下载物**
+- `<DIFFAUDIT_ROOT>/Download/` 放 **原始下载物**
 - `workspaces/<lane>/assets/` 放 **lane 归一化后的 admitted 资产入口**
 - `workspaces/<lane>/runs/` 放 **运行产物和 evidence**
 
@@ -46,7 +46,7 @@
 - `external/` 是“上游代码工作区”，不是“数据仓库”
 - 能通过 `--repo-root` 指过去的上游实现，优先放这里
 - 除非某个上游 release 与代码目录强耦合，否则不要把大数据集长期塞进这里
-- 如果看到 `Research/external/downloads/`，默认就是边界漂移；应迁回 `D:\Code\DiffAudit\Download\`
+- 如果看到 `Research/external/downloads/`，默认就是边界漂移；应迁回 `<DIFFAUDIT_ROOT>/Download/`
 
 ---
 
@@ -73,7 +73,7 @@
 
 ---
 
-## 3. `D:\Code\DiffAudit\Download\`
+## 3. `<DIFFAUDIT_ROOT>/Download/`
 
 放什么：
 
@@ -157,7 +157,7 @@
 ### `CLiD`
 
 - `external/CLiD/` = 本地 working clone / `--repo-root`
-- `D:\Code\DiffAudit\Download\black-box\supplementary\clid-mia-supplementary\` = raw supplementary mirror
+- `<DIFFAUDIT_ROOT>/Download/black-box/supplementary/clid-mia-supplementary/` = raw supplementary mirror
 
 也就是说：
 
@@ -168,7 +168,7 @@
 
 `recon-assets` 已经从 `external/` 迁出，当前 canonical raw bundle 位置是：
 
-- `D:\Code\DiffAudit\Download\black-box\supplementary\recon-assets\`
+- `<DIFFAUDIT_ROOT>/Download/black-box/supplementary/recon-assets/`
 
 它不再属于代码 clone 层。
 
@@ -180,7 +180,7 @@
 
 正确做法：
 
-- 原始下载先进 `D:\Code\DiffAudit\Download\`
+- 原始下载先进 `<DIFFAUDIT_ROOT>/Download/`
 - 当前 lane 真正消费的入口再在 `workspaces/<lane>/assets/` 或 manifest 里指过去
 
 ### 情况 B：把 run 结果写回 `Download/`
@@ -203,7 +203,7 @@
 1. 新拿到一个外部代码仓：
    - 先放 `external/`
 2. 新拿到一个原始数据集/权重/附件：
-   - 先放 `D:\Code\DiffAudit\Download\`
+   - 先放 `<DIFFAUDIT_ROOT>/Download/`
 3. 某条 lane 要把原始物变成稳定消费入口：
    - 在 `workspaces/<lane>/assets/` 建 manifest 或归一化入口
 4. 真正执行后的证据：
@@ -218,10 +218,12 @@
 如果你问“外部代码和数据集到底该放哪”：
 
 - 外部代码默认放 `Research/external/`
-- 原始数据集和原始权重默认放 `D:\Code\DiffAudit\Download\`
+- 原始数据集和原始权重默认放 `<DIFFAUDIT_ROOT>/Download/`
 - 当前研究主线真正消费的 lane 入口放 `Research/workspaces/<lane>/assets/`
 - 运行结果放 `Research/workspaces/<lane>/runs/`
 - 只有最小 vendored 依赖才进 `Research/third_party/`
+
+目录名该怎么统一，见 [download-naming-policy.md](download-naming-policy.md)。
 
 
 

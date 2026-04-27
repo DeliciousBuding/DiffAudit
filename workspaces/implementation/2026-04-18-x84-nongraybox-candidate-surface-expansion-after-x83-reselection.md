@@ -39,8 +39,8 @@ It is a system-consumable surface that can improve:
 
 ## Canonical evidence anchors
 
-- `D:\Code\\DiffAudit\\Research\\workspaces\\implementation\\artifacts\\unified-attack-defense-table.json`
-- `D:\Code\\DiffAudit\\Research\\docs\\admitted-results-summary.md`
+- `<DIFFAUDIT_ROOT>/Research/workspaces/implementation/artifacts/unified-attack-defense-table.json`
+- `<DIFFAUDIT_ROOT>/Research/docs/admitted-results-summary.md`
 
 ## Next recommended lane
 

@@ -6,17 +6,17 @@ After `X-44` narrowed the remaining blocker to white-box contract definition, ca
 
 ## Inputs Reviewed
 
-- `D:\Code\DiffAudit\Research\ROADMAP.md`
-- `D:\Code\DiffAudit\Research\workspaces\implementation\challenger-queue.md`
-- `D:\Code\DiffAudit\Research\workspaces\implementation\2026-04-17-x44-ic-bounded-multipair-agreement-board-contract-freeze-after-x43-pairboard-identity-freeze.md`
-- `D:\Code\DiffAudit\Research\workspaces\white-box\2026-04-17-finding-nemo-bounded-localization-observable-selection.md`
-- `D:\Code\DiffAudit\Research\workspaces\white-box\2026-04-17-cross-permission-mask-selection.md`
-- `D:\Code\DiffAudit\Research\workspaces\white-box\2026-04-17-cross-permission-matched-pair-freeze.md`
-- `D:\Code\DiffAudit\Research\workspaces\white-box\runs\cross-permission-matched-pairfreeze-20260417-r1\summary.json`
-- `D:\Code\DiffAudit\Research\workspaces\white-box\runs\cross-permission-board-local-scalar-probe-20260417-r1\summary.json`
-- `D:\Code\DiffAudit\Research\workspaces\white-box\runs\cross-permission-board-local-scalar-probe-20260417-r1\rows.json`
-- `D:\Code\DiffAudit\Research\workspaces\gray-box\runs\pia-packet-score-export-secondary-pairboard-20260417-r1\summary.json`
-- `D:\Code\DiffAudit\Research\src\diffaudit\attacks\gsa_observability.py`
+- `<DIFFAUDIT_ROOT>/Research/ROADMAP.md`
+- `<DIFFAUDIT_ROOT>/Research/workspaces/implementation/challenger-queue.md`
+- `<DIFFAUDIT_ROOT>/Research/workspaces/implementation/2026-04-17-x44-ic-bounded-multipair-agreement-board-contract-freeze-after-x43-pairboard-identity-freeze.md`
+- `<DIFFAUDIT_ROOT>/Research/workspaces/white-box/2026-04-17-finding-nemo-bounded-localization-observable-selection.md`
+- `<DIFFAUDIT_ROOT>/Research/workspaces/white-box/2026-04-17-cross-permission-mask-selection.md`
+- `<DIFFAUDIT_ROOT>/Research/workspaces/white-box/2026-04-17-cross-permission-matched-pair-freeze.md`
+- `<DIFFAUDIT_ROOT>/Research/workspaces/white-box/runs/cross-permission-matched-pairfreeze-20260417-r1/summary.json`
+- `<DIFFAUDIT_ROOT>/Research/workspaces/white-box/runs/cross-permission-board-local-scalar-probe-20260417-r1/summary.json`
+- `<DIFFAUDIT_ROOT>/Research/workspaces/white-box/runs/cross-permission-board-local-scalar-probe-20260417-r1/rows.json`
+- `<DIFFAUDIT_ROOT>/Research/workspaces/gray-box/runs/pia-packet-score-export-secondary-pairboard-20260417-r1/summary.json`
+- `<DIFFAUDIT_ROOT>/Research/src/diffaudit/attacks/gsa_observability.py`
 
 ## Candidate Review
 
@@ -166,15 +166,15 @@ More precise reading:
 
 ## Canonical Evidence Anchor
 
-- `D:\Code\DiffAudit\Research\workspaces\implementation\2026-04-17-x45-ic-whitebox-board-local-concentration-scalar-contract-freeze-after-x44-agreement-board-contract-review.md`
+- `<DIFFAUDIT_ROOT>/Research/workspaces/implementation/2026-04-17-x45-ic-whitebox-board-local-concentration-scalar-contract-freeze-after-x44-agreement-board-contract-review.md`
 
 ## Handoff Decision
 
-- `D:\Code\DiffAudit\Research\ROADMAP.md`: update required
-- `D:\Code\DiffAudit\Research\workspaces\implementation\challenger-queue.md`: update required
-- `D:\Code\DiffAudit\Research\docs\comprehensive-progress.md`: update required
-- `D:\Code\DiffAudit\Research\docs\mainline-narrative.md`: update required
-- `D:\Code\DiffAudit\ROADMAP.md`: update required
+- `<DIFFAUDIT_ROOT>/Research/ROADMAP.md`: update required
+- `<DIFFAUDIT_ROOT>/Research/workspaces/implementation/challenger-queue.md`: update required
+- `<DIFFAUDIT_ROOT>/Research/docs/comprehensive-progress.md`: update required
+- `<DIFFAUDIT_ROOT>/Research/docs/mainline-narrative.md`: update required
+- `<DIFFAUDIT_ROOT>/ROADMAP.md`: update required
 - `platform_runtime_handoff = none`
 - `competition_material_sync = none`
 

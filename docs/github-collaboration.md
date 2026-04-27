@@ -4,7 +4,7 @@
 
 根级 GitHub 设置基线见：
 
-- [github-settings-baseline.md](D:\Code\DiffAudit\Research\docs\github-settings-baseline.md)
+- [github-settings-baseline.md](github-settings-baseline.md)
 
 ## 一、怎么让队友可以 push
 

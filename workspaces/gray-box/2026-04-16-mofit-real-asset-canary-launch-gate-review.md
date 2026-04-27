@@ -6,9 +6,9 @@ After `GB-31`, is it honest to immediately launch a fresh real local CPU canary 
 
 ## Inputs Reviewed
 
-- `D:\Code\DiffAudit\Research\scripts\run_mofit_interface_canary.py`
-- `D:\Code\DiffAudit\Research\workspaces\gray-box\2026-04-16-mofit-script-level-canary-implementation-verdict.md`
-- `D:\Code\DiffAudit\Research\workspaces\gray-box\plan.md`
+- `<DIFFAUDIT_ROOT>/Research/scripts/run_mofit_interface_canary.py`
+- `<DIFFAUDIT_ROOT>/Research/workspaces/gray-box/2026-04-16-mofit-script-level-canary-implementation-verdict.md`
+- `<DIFFAUDIT_ROOT>/Research/workspaces/gray-box/plan.md`
 
 ## Current Launch Surface
 

@@ -6,14 +6,14 @@ If the first `I-D.3` hidden-guidance jitter idea is executed as a real runner-le
 
 ## Inputs Reviewed
 
-- `D:\Code\DiffAudit\Research\scripts\run_noise_as_probe_interface_canary.py`
-- `D:\Code\DiffAudit\Research\tests\test_noise_as_probe_interface_canary.py`
-- `D:\Code\DiffAudit\Research\workspaces\implementation\2026-04-17-id2-bounded-cfg-scale-probe-verdict.md`
-- `D:\Code\DiffAudit\Research\workspaces\implementation\2026-04-17-id3-bounded-cfg-randomization-defense-idea-verdict.md`
-- `D:\Code\DiffAudit\Research\workspaces\implementation\runs\id3-hidden-guidance-jitter-20260417-r1\summary.json`
-- `D:\Code\DiffAudit\Research\workspaces\gray-box\runs\noise-as-probe-cfg-microprobe-20260417-gpu-r1-g35\summary.json`
-- `D:\Code\DiffAudit\Research\workspaces\gray-box\runs\noise-as-probe-cfg-microprobe-20260417-gpu-r1-g75\summary.json`
-- `D:\Code\DiffAudit\Research\workspaces\gray-box\runs\noise-as-probe-hidden-guidance-jitter-20260417-gpu-r2-s0\summary.json`
+- `<DIFFAUDIT_ROOT>/Research/scripts/run_noise_as_probe_interface_canary.py`
+- `<DIFFAUDIT_ROOT>/Research/tests/test_noise_as_probe_interface_canary.py`
+- `<DIFFAUDIT_ROOT>/Research/workspaces/implementation/2026-04-17-id2-bounded-cfg-scale-probe-verdict.md`
+- `<DIFFAUDIT_ROOT>/Research/workspaces/implementation/2026-04-17-id3-bounded-cfg-randomization-defense-idea-verdict.md`
+- `<DIFFAUDIT_ROOT>/Research/workspaces/implementation/runs/id3-hidden-guidance-jitter-20260417-r1/summary.json`
+- `<DIFFAUDIT_ROOT>/Research/workspaces/gray-box/runs/noise-as-probe-cfg-microprobe-20260417-gpu-r1-g35/summary.json`
+- `<DIFFAUDIT_ROOT>/Research/workspaces/gray-box/runs/noise-as-probe-cfg-microprobe-20260417-gpu-r1-g75/summary.json`
+- `<DIFFAUDIT_ROOT>/Research/workspaces/gray-box/runs/noise-as-probe-hidden-guidance-jitter-20260417-gpu-r2-s0/summary.json`
 
 ## Frozen Contract
 
@@ -57,7 +57,7 @@ Implementation hardening added before execution:
 ## Run Anchor
 
 - Actual runner-level packet:
-  - `D:\Code\DiffAudit\Research\workspaces\gray-box\runs\noise-as-probe-hidden-guidance-jitter-20260417-gpu-r2-s0\summary.json`
+  - `<DIFFAUDIT_ROOT>/Research/workspaces/gray-box/runs/noise-as-probe-hidden-guidance-jitter-20260417-gpu-r2-s0/summary.json`
 
 ## Result
 

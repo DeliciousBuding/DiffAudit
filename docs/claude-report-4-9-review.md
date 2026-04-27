@@ -1,6 +1,6 @@
 # 2026-04-09 Claude 4.9 报告复核与后续研究判断
 
-这份文档用于复核 `D:\Code\DiffAudit\docs\ClaudeReport\4.9.md` 中提到的新增论文与路线建议，并把它们放回 `Research` 当前真实主线中理解。
+这份文档用于复核 `<DIFFAUDIT_ROOT>/docs/ClaudeReport/4.9.md` 中提到的新增论文与路线建议，并把它们放回 `Research` 当前真实主线中理解。
 
 它不是新的路线图，也不替代：
 

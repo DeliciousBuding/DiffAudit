@@ -6,12 +6,12 @@ Does the first fresh `MoFit` local CPU canary show enough score directionality t
 
 ## Inputs Reviewed
 
-- `D:\Code\DiffAudit\Research\workspaces\gray-box\runs\mofit-sd15-celeba-canary-20260416-cpu-r4\summary.json`
-- `D:\Code\DiffAudit\Research\workspaces\gray-box\runs\mofit-sd15-celeba-canary-20260416-cpu-r4\records.jsonl`
-- `D:\Code\DiffAudit\Research\workspaces\gray-box\runs\mofit-sd15-celeba-canary-20260416-cpu-r4\traces\surrogate\member-000.json`
-- `D:\Code\DiffAudit\Research\workspaces\gray-box\runs\mofit-sd15-celeba-canary-20260416-cpu-r4\traces\embedding\member-000.json`
-- `D:\Code\DiffAudit\Research\workspaces\gray-box\runs\mofit-sd15-celeba-canary-20260416-cpu-r4\traces\surrogate\nonmember-000.json`
-- `D:\Code\DiffAudit\Research\workspaces\gray-box\runs\mofit-sd15-celeba-canary-20260416-cpu-r4\traces\embedding\nonmember-000.json`
+- `<DIFFAUDIT_ROOT>/Research/workspaces/gray-box/runs/mofit-sd15-celeba-canary-20260416-cpu-r4/summary.json`
+- `<DIFFAUDIT_ROOT>/Research/workspaces/gray-box/runs/mofit-sd15-celeba-canary-20260416-cpu-r4/records.jsonl`
+- `<DIFFAUDIT_ROOT>/Research/workspaces/gray-box/runs/mofit-sd15-celeba-canary-20260416-cpu-r4/traces/surrogate/member-000.json`
+- `<DIFFAUDIT_ROOT>/Research/workspaces/gray-box/runs/mofit-sd15-celeba-canary-20260416-cpu-r4/traces/embedding/member-000.json`
+- `<DIFFAUDIT_ROOT>/Research/workspaces/gray-box/runs/mofit-sd15-celeba-canary-20260416-cpu-r4/traces/surrogate/nonmember-000.json`
+- `<DIFFAUDIT_ROOT>/Research/workspaces/gray-box/runs/mofit-sd15-celeba-canary-20260416-cpu-r4/traces/embedding/nonmember-000.json`
 
 ## What The Canary Actually Shows
 

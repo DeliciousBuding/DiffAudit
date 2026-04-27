@@ -6,15 +6,15 @@ Which single conditional-diffusion target contract can the current repo freeze h
 
 ## Inputs Reviewed
 
-- `D:\Code\DiffAudit\Research\ROADMAP.md`
-- `D:\Code\DiffAudit\Research\docs\reproduction-status.md`
-- `D:\Code\DiffAudit\Research\docs\comprehensive-progress.md`
-- `D:\Code\DiffAudit\Research\workspaces\gray-box\2026-04-16-noise-as-a-probe-protocol-asset-contract.md`
-- `D:\Code\DiffAudit\Research\workspaces\gray-box\2026-04-16-mofit-protocol-asset-contract.md`
-- `D:\Code\DiffAudit\Research\workspaces\gray-box\2026-04-16-mofit-current-contract-hold-verdict.md`
-- `D:\Code\DiffAudit\Research\workspaces\white-box\2026-04-10-finding-nemo-protocol-reconciliation.md`
-- `D:\Code\DiffAudit\Research\workspaces\intake\2026-04-11-dplora-comparability-note.md`
-- `D:\Code\DiffAudit\Research\src\diffaudit\attacks\dit.py`
+- `<DIFFAUDIT_ROOT>/Research/ROADMAP.md`
+- `<DIFFAUDIT_ROOT>/Research/docs/reproduction-status.md`
+- `<DIFFAUDIT_ROOT>/Research/docs/comprehensive-progress.md`
+- `<DIFFAUDIT_ROOT>/Research/workspaces/gray-box/2026-04-16-noise-as-a-probe-protocol-asset-contract.md`
+- `<DIFFAUDIT_ROOT>/Research/workspaces/gray-box/2026-04-16-mofit-protocol-asset-contract.md`
+- `<DIFFAUDIT_ROOT>/Research/workspaces/gray-box/2026-04-16-mofit-current-contract-hold-verdict.md`
+- `<DIFFAUDIT_ROOT>/Research/workspaces/white-box/2026-04-10-finding-nemo-protocol-reconciliation.md`
+- `<DIFFAUDIT_ROOT>/Research/workspaces/intake/2026-04-11-dplora-comparability-note.md`
+- `<DIFFAUDIT_ROOT>/Research/src/diffaudit/attacks/dit.py`
 
 ## Decision
 

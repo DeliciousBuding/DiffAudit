@@ -17,11 +17,11 @@ The branch should now be frozen as **bounded auxiliary white-box evidence**, not
 ## Canonical evidence anchors
 
 - packet note:
-  - `D:\Code\DiffAudit\Research\workspaces\implementation\2026-04-18-x77-whitebox-bounded-loss-score-first-actual-packet-after-x76-evaluator-implementation.md`
+  - `<DIFFAUDIT_ROOT>/Research/workspaces/implementation/2026-04-18-x77-whitebox-bounded-loss-score-first-actual-packet-after-x76-evaluator-implementation.md`
 - export run:
-  - `D:\Code\DiffAudit\Research\workspaces\white-box\runs\gsa-loss-score-export-bounded-actual-20260418-r1\summary.json`
+  - `<DIFFAUDIT_ROOT>/Research/workspaces/white-box/runs/gsa-loss-score-export-bounded-actual-20260418-r1/summary.json`
 - threshold-eval run:
-  - `D:\Code\DiffAudit\Research\workspaces\white-box\runs\gsa-loss-score-threshold-eval-bounded-actual-20260418-r1\summary.json`
+  - `<DIFFAUDIT_ROOT>/Research/workspaces/white-box/runs/gsa-loss-score-threshold-eval-bounded-actual-20260418-r1/summary.json`
 
 ## Review outcome
 

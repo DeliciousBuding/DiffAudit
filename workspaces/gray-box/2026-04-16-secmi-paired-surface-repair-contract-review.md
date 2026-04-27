@@ -6,15 +6,15 @@ After diagnosing the weak `SecMI 2048` paired packet as a drift-heavy artifact, 
 
 ## Inputs Reviewed
 
-- `D:\Code\DiffAudit\Research\workspaces\gray-box\2026-04-16-cdi-paired-surface-mismatch-review.md`
-- `D:\Code\DiffAudit\Research\workspaces\gray-box\runs\secmi-cifar10-gpu-4096-20260415-r1\summary.json`
-- `D:\Code\DiffAudit\Research\workspaces\gray-box\runs\secmi-cifar10-gpu-full-stat-20260415-r2\summary.json`
-- `D:\Code\DiffAudit\Research\workspaces\gray-box\runs\secmi-pia-disagreement-20260415-r1\analysis.md`
-- `D:\Code\DiffAudit\Research\workspaces\gray-box\runs\secmi-pia-disagreement-20260415-r1\disagreement_analysis.py`
-- `D:\Code\DiffAudit\Research\workspaces\gray-box\runs\secmi-pia-disagreement-20260416-r2\summary.json`
-- `D:\Code\DiffAudit\Research\scripts\run_secmi_pia_disagreement.py`
-- `D:\Code\DiffAudit\Research\src\diffaudit\attacks\secmi.py`
-- `D:\Code\DiffAudit\Research\external\SecMI\mia_evals\dataset_utils.py`
+- `<DIFFAUDIT_ROOT>/Research/workspaces/gray-box/2026-04-16-cdi-paired-surface-mismatch-review.md`
+- `<DIFFAUDIT_ROOT>/Research/workspaces/gray-box/runs/secmi-cifar10-gpu-4096-20260415-r1/summary.json`
+- `<DIFFAUDIT_ROOT>/Research/workspaces/gray-box/runs/secmi-cifar10-gpu-full-stat-20260415-r2/summary.json`
+- `<DIFFAUDIT_ROOT>/Research/workspaces/gray-box/runs/secmi-pia-disagreement-20260415-r1/analysis.md`
+- `<DIFFAUDIT_ROOT>/Research/workspaces/gray-box/runs/secmi-pia-disagreement-20260415-r1/disagreement_analysis.py`
+- `<DIFFAUDIT_ROOT>/Research/workspaces/gray-box/runs/secmi-pia-disagreement-20260416-r2/summary.json`
+- `<DIFFAUDIT_ROOT>/Research/scripts/run_secmi_pia_disagreement.py`
+- `<DIFFAUDIT_ROOT>/Research/src/diffaudit/attacks/secmi.py`
+- `<DIFFAUDIT_ROOT>/Research/external/SecMI/mia_evals/dataset_utils.py`
 
 ## Review
 

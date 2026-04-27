@@ -5,10 +5,11 @@ import subprocess
 import sys
 from pathlib import Path
 
-BASE_MODEL = "D:/Code/DiffAudit/Research/workspaces/white-box/assets/gsa-gpu-128/checkpoints/target/checkpoint-64"
-MEMBER_DIR = "D:/Code/DiffAudit/Research/workspaces/white-box/assets/gsa-cifar10-1k-3shadow/datasets/target-member"
-NONMEMBER_DIR = "D:/Code/DiffAudit/Research/workspaces/white-box/assets/gsa-cifar10-1k-3shadow/datasets/target-nonmember"
-SWEEP_DIR = Path("D:/Code/DiffAudit/Research/outputs/smp-lora-sweep")
+RESEARCH_ROOT = Path(__file__).resolve().parents[1]
+BASE_MODEL = str(RESEARCH_ROOT / "workspaces" / "white-box" / "assets" / "gsa-gpu-128" / "checkpoints" / "target" / "checkpoint-64")
+MEMBER_DIR = str(RESEARCH_ROOT / "workspaces" / "white-box" / "assets" / "gsa-cifar10-1k-3shadow" / "datasets" / "target-member")
+NONMEMBER_DIR = str(RESEARCH_ROOT / "workspaces" / "white-box" / "assets" / "gsa-cifar10-1k-3shadow" / "datasets" / "target-nonmember")
+SWEEP_DIR = RESEARCH_ROOT / "outputs" / "smp-lora-sweep"
 
 
 def main():
@@ -36,7 +37,7 @@ def main():
 
         cmd = [
             "conda", "run", "-n", "diffaudit-research",
-            "python", "D:/Code/DiffAudit/Research/scripts/evaluate_smp_lora_defense.py",
+            "python", str(RESEARCH_ROOT / "scripts" / "evaluate_smp_lora_defense.py"),
             "--lora_checkpoint", str(lora_checkpoint),
             "--base_model", BASE_MODEL,
             "--member_dir", MEMBER_DIR,

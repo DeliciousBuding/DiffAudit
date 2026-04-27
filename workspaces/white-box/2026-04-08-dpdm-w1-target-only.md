@@ -13,12 +13,12 @@
 
 ```powershell
 conda run -n diffaudit-research python -m diffaudit run-dpdm-w1-target-only `
-  --workspace D:\Code\DiffAudit\Research\workspaces\white-box\runs\dpdm-w1-target-only-20260408 `
-  --checkpoint-path D:\Code\DiffAudit\Research\external\DPDM\runs\dpdm-cifar10-32-eps10-gpu-smoke-v7\checkpoints\final_checkpoint.pth `
-  --member-dataset-dir D:\Code\DiffAudit\Research\workspaces\white-box\assets\gsa-cifar10-1k-3shadow\datasets\target-member `
-  --nonmember-dataset-dir D:\Code\DiffAudit\Research\workspaces\white-box\assets\gsa-cifar10-1k-3shadow\datasets\target-nonmember `
-  --dpdm-root D:\Code\DiffAudit\Research\external\DPDM `
-  --config-path D:\Code\DiffAudit\Research\external\DPDM\configs\cifar10_32\train_eps_10.0.yaml `
+  --workspace <DIFFAUDIT_ROOT>/Research/workspaces/white-box/runs/dpdm-w1-target-only-20260408 `
+  --checkpoint-path <DIFFAUDIT_ROOT>/Research/external/DPDM/runs/dpdm-cifar10-32-eps10-gpu-smoke-v7/checkpoints/final_checkpoint.pth `
+  --member-dataset-dir <DIFFAUDIT_ROOT>/Research/workspaces/white-box/assets/gsa-cifar10-1k-3shadow/datasets/target-member `
+  --nonmember-dataset-dir <DIFFAUDIT_ROOT>/Research/workspaces/white-box/assets/gsa-cifar10-1k-3shadow/datasets/target-nonmember `
+  --dpdm-root <DIFFAUDIT_ROOT>/Research/external/DPDM `
+  --config-path <DIFFAUDIT_ROOT>/Research/external/DPDM/configs/cifar10_32/train_eps_10.0.yaml `
   --device cuda `
   --sigma-points 4 `
   --max-samples 64

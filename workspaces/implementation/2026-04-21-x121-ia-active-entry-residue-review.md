@@ -6,12 +6,12 @@ After `X-120` finished the post-`H2` prompt sync, do the active higher-layer ent
 
 ## Inputs Reviewed
 
-- `D:\Code\DiffAudit\Research\docs\research-autonomous-execution-prompt.md`
-- `D:\Code\DiffAudit\Research\docs\codex-roadmap-execution-prompt.md`
-- `D:\Code\DiffAudit\Research\docs\comprehensive-progress.md`
-- `D:\Code\DiffAudit\Research\docs\mainline-narrative.md`
-- `D:\Code\DiffAudit\Research\docs\leader-research-ready-summary.md`
-- `D:\Code\DiffAudit\Research\workspaces\implementation\challenger-queue.md`
+- `<DIFFAUDIT_ROOT>/Research/docs/research-autonomous-execution-prompt.md`
+- `<DIFFAUDIT_ROOT>/Research/docs/codex-roadmap-execution-prompt.md`
+- `<DIFFAUDIT_ROOT>/Research/docs/comprehensive-progress.md`
+- `<DIFFAUDIT_ROOT>/Research/docs/mainline-narrative.md`
+- `<DIFFAUDIT_ROOT>/Research/docs/leader-research-ready-summary.md`
+- `<DIFFAUDIT_ROOT>/Research/workspaces/implementation/challenger-queue.md`
 
 ## Finding
 
@@ -32,7 +32,7 @@ This is not a new research result. It is a control-plane confirmation that the c
 
 ## Canonical Evidence Anchor
 
-- `D:\Code\DiffAudit\Research\workspaces\implementation\2026-04-21-x121-ia-active-entry-residue-review.md`
+- `<DIFFAUDIT_ROOT>/Research/workspaces/implementation/2026-04-21-x121-ia-active-entry-residue-review.md`
 
 ## Next
 

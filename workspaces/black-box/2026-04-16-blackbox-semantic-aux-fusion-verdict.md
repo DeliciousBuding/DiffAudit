@@ -16,12 +16,12 @@ Within the current `semantic-auxiliary-classifier` challenger, can a bounded sco
 
 Fusion run summary:
 
-- `D:\Code\DiffAudit\Research\workspaces\black-box\runs\semantic-aux-fusion-20260416-r1\summary.json`
+- `<DIFFAUDIT_ROOT>/Research/workspaces/black-box/runs/semantic-aux-fusion-20260416-r1/summary.json`
 
 Comparator record sources:
 
-- `D:\Code\DiffAudit\Research\workspaces\black-box\runs\semantic-aux-classifier-comparator-20260415-r1\outputs\records.json`
-- `D:\Code\DiffAudit\Research\workspaces\black-box\runs\semantic-aux-classifier-comparator-20260416-r2\outputs\records.json`
+- `<DIFFAUDIT_ROOT>/Research/workspaces/black-box/runs/semantic-aux-classifier-comparator-20260415-r1/outputs/records.json`
+- `<DIFFAUDIT_ROOT>/Research/workspaces/black-box/runs/semantic-aux-classifier-comparator-20260416-r2/outputs/records.json`
 
 Bounded candidates tested:
 

@@ -6,18 +6,18 @@ Now that `R2-5 02-H1 SimA` has been promoted into the current support lane, does
 
 ## Inputs Reviewed
 
-- `D:\Code\DiffAudit\Research\src\diffaudit\attacks\sima_adapter.py`
-- `D:\Code\DiffAudit\Research\tests\test_sima_adapter.py`
-- `D:\Code\DiffAudit\Research\workspaces\gray-box\2026-04-16-graybox-sima-feasibility-verdict.md`
-- `D:\Code\DiffAudit\Research\workspaces\gray-box\2026-04-16-graybox-sima-rescan-verdict.md`
-- `D:\Code\DiffAudit\Research\workspaces\gray-box\2026-04-16-graybox-next-family-reselection.md`
-- `D:\Code\DiffAudit\Research\workspaces\gray-box\runs\sima-cifar10-runtime-feasibility-20260416-cpu-32-r1\summary.json`
-- `D:\Code\DiffAudit\Research\workspaces\gray-box\runs\sima-cifar10-runtime-rescan-20260416-cpu-32-r2\summary.json`
-- `D:\Code\DiffAudit\Research\docs\report-bundles\gpt54\round2-results\02.md`
+- `<DIFFAUDIT_ROOT>/Research/src/diffaudit/attacks/sima_adapter.py`
+- `<DIFFAUDIT_ROOT>/Research/tests/test_sima_adapter.py`
+- `<DIFFAUDIT_ROOT>/Research/workspaces/gray-box/2026-04-16-graybox-sima-feasibility-verdict.md`
+- `<DIFFAUDIT_ROOT>/Research/workspaces/gray-box/2026-04-16-graybox-sima-rescan-verdict.md`
+- `<DIFFAUDIT_ROOT>/Research/workspaces/gray-box/2026-04-16-graybox-next-family-reselection.md`
+- `<DIFFAUDIT_ROOT>/Research/workspaces/gray-box/runs/sima-cifar10-runtime-feasibility-20260416-cpu-32-r1/summary.json`
+- `<DIFFAUDIT_ROOT>/Research/workspaces/gray-box/runs/sima-cifar10-runtime-rescan-20260416-cpu-32-r2/summary.json`
+- `<DIFFAUDIT_ROOT>/Research/docs/report-bundles/gpt54/round2-results/02.md`
 
 ## Verification
 
-- `python -m unittest D:\Code\DiffAudit\Research\tests\test_sima_adapter.py`
+- `python -m unittest <DIFFAUDIT_ROOT>/Research/tests/test_sima_adapter.py`
 - result: `Ran 2 tests ... OK`
 - note: `pytest` is not installed in the current shell, so the local validation used stdlib `unittest`
 

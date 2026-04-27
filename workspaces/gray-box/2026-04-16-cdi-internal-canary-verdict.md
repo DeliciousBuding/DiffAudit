@@ -6,11 +6,11 @@ After freezing the first `CDI` collection contract, can the repo actually execut
 
 ## Inputs Reviewed
 
-- `D:\Code\DiffAudit\Research\scripts\run_cdi_internal_canary.py`
-- `D:\Code\DiffAudit\Research\tests\test_cdi_internal_canary.py`
-- `D:\Code\DiffAudit\Research\workspaces\gray-box\runs\secmi-pia-disagreement-20260415-r1\outputs\secmi_scores_1024.json`
-- `D:\Code\DiffAudit\Research\workspaces\gray-box\2026-04-16-cdi-feature-collection-surface-review.md`
-- `D:\Code\DiffAudit\Research\workspaces\gray-box\runs\cdi-internal-canary-20260416-r1\audit_summary.json`
+- `<DIFFAUDIT_ROOT>/Research/scripts/run_cdi_internal_canary.py`
+- `<DIFFAUDIT_ROOT>/Research/tests/test_cdi_internal_canary.py`
+- `<DIFFAUDIT_ROOT>/Research/workspaces/gray-box/runs/secmi-pia-disagreement-20260415-r1/outputs/secmi_scores_1024.json`
+- `<DIFFAUDIT_ROOT>/Research/workspaces/gray-box/2026-04-16-cdi-feature-collection-surface-review.md`
+- `<DIFFAUDIT_ROOT>/Research/workspaces/gray-box/runs/cdi-internal-canary-20260416-r1/audit_summary.json`
 
 ## Verification
 
@@ -22,13 +22,13 @@ Unit verification:
 
 Real canary execution:
 
-- `conda run -n diffaudit-research python D:\Code\DiffAudit\Research\scripts\run_cdi_internal_canary.py --run-root D:\Code\DiffAudit\Research\workspaces\gray-box\runs\cdi-internal-canary-20260416-r1 --secmi-scores D:\Code\DiffAudit\Research\workspaces\gray-box\runs\secmi-pia-disagreement-20260415-r1\outputs\secmi_scores_1024.json --control-size 512 --test-size 512 --resamples 1 --seed 0`
+- `conda run -n diffaudit-research python <DIFFAUDIT_ROOT>/Research/scripts/run_cdi_internal_canary.py --run-root <DIFFAUDIT_ROOT>/Research/workspaces/gray-box/runs/cdi-internal-canary-20260416-r1 --secmi-scores <DIFFAUDIT_ROOT>/Research/workspaces/gray-box/runs/secmi-pia-disagreement-20260415-r1/outputs/secmi_scores_1024.json --control-size 512 --test-size 512 --resamples 1 --seed 0`
 
 ## What Landed
 
 The first bounded internal `CDI` canary now exists at:
 
-- `D:\Code\DiffAudit\Research\workspaces\gray-box\runs\cdi-internal-canary-20260416-r1\audit_summary.json`
+- `<DIFFAUDIT_ROOT>/Research/workspaces/gray-box/runs/cdi-internal-canary-20260416-r1/audit_summary.json`
 
 Emitted artifacts:
 

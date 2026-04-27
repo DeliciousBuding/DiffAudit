@@ -306,11 +306,11 @@ SMP-LoRA 与当前 admitted 白盒线存在**结构性协议差异**，但差异
 
 ### 关联产物
 
-- `D:/Code/DiffAudit/Research/workspaces/GPU_TRAINING_HANDOVER.md`
-- `D:/Code/DiffAudit/Research/outputs/smp-lora-sweep/sweep_results.json`
-- `D:/Code/DiffAudit/Research/outputs/smp-lora-phase2/baseline_nodefense_target-64/evaluation.json`
-- `D:/Code/DiffAudit/Research/outputs/smp-lora-best-config/evaluation.json`
-- `D:/Code/DiffAudit/Research/outputs/smp-lora-lambda005/`
+- `<DIFFAUDIT_ROOT>/Research/workspaces/GPU_TRAINING_HANDOVER.md`
+- `<DIFFAUDIT_ROOT>/Research/outputs/smp-lora-sweep/sweep_results.json`
+- `<DIFFAUDIT_ROOT>/Research/outputs/smp-lora-phase2/baseline_nodefense_target-64/evaluation.json`
+- `<DIFFAUDIT_ROOT>/Research/outputs/smp-lora-best-config/evaluation.json`
+- `<DIFFAUDIT_ROOT>/Research/outputs/smp-lora-lambda005/`
 
 ### 下一步
 

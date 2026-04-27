@@ -6,13 +6,13 @@ After `I-B.14` produced the first real admitted fixed-mask bounded packet and cl
 
 ## Inputs Reviewed
 
-- `D:\Code\DiffAudit\Research\ROADMAP.md`
-- `D:\Code\DiffAudit\Research\docs\comprehensive-progress.md`
-- `D:\Code\DiffAudit\Research\workspaces\white-box\plan.md`
-- `D:\Code\DiffAudit\Research\workspaces\implementation\challenger-queue.md`
-- `D:\Code\DiffAudit\Research\workspaces\white-box\2026-04-17-finding-nemo-first-truly-bounded-admitted-packet-launch-review.md`
-- `D:\Code\DiffAudit\Research\workspaces\white-box\2026-04-17-finding-nemo-first-truly-bounded-admitted-intervention-review-verdict.md`
-- `D:\Code\DiffAudit\Research\workspaces\white-box\runs\finding-nemo-first-truly-bounded-admitted-intervention-review-20260417-r1\summary.json`
+- `<DIFFAUDIT_ROOT>/Research/ROADMAP.md`
+- `<DIFFAUDIT_ROOT>/Research/docs/comprehensive-progress.md`
+- `<DIFFAUDIT_ROOT>/Research/workspaces/white-box/plan.md`
+- `<DIFFAUDIT_ROOT>/Research/workspaces/implementation/challenger-queue.md`
+- `<DIFFAUDIT_ROOT>/Research/workspaces/white-box/2026-04-17-finding-nemo-first-truly-bounded-admitted-packet-launch-review.md`
+- `<DIFFAUDIT_ROOT>/Research/workspaces/white-box/2026-04-17-finding-nemo-first-truly-bounded-admitted-intervention-review-verdict.md`
+- `<DIFFAUDIT_ROOT>/Research/workspaces/white-box/runs/finding-nemo-first-truly-bounded-admitted-intervention-review-20260417-r1/summary.json`
 
 ## Current Branch Facts
 
@@ -125,7 +125,7 @@ More precise reading:
 
 ## Canonical Evidence Anchor
 
-- `D:\Code\DiffAudit\Research\workspaces\white-box\2026-04-17-finding-nemo-post-first-actual-packet-boundary-review.md`
+- `<DIFFAUDIT_ROOT>/Research/workspaces/white-box/2026-04-17-finding-nemo-post-first-actual-packet-boundary-review.md`
 
 ## Next Step
 

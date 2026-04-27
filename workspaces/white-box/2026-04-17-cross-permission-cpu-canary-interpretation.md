@@ -6,15 +6,15 @@ Do the new white-box and gray-box CPU canaries already form one honest joint bri
 
 ## Inputs Reviewed
 
-- `D:\Code\DiffAudit\Research\ROADMAP.md`
-- `D:\Code\DiffAudit\Research\workspaces\white-box\2026-04-17-cross-permission-cpu-scaffold-implementation.md`
-- `D:\Code\DiffAudit\Research\workspaces\white-box\2026-04-17-cross-permission-support-contract.md`
-- `D:\Code\DiffAudit\Research\workspaces\white-box\runs\cross-permission-masked-packet-canary-20260417-r1\summary.json`
-- `D:\Code\DiffAudit\Research\workspaces\white-box\runs\cross-permission-masked-packet-canary-20260417-r1\records.jsonl`
-- `D:\Code\DiffAudit\Research\workspaces\gray-box\runs\pia-packet-score-export-20260417-r1\summary.json`
-- `D:\Code\DiffAudit\Research\workspaces\gray-box\runs\pia-packet-score-export-20260417-r1\sample_scores.jsonl`
-- `D:\Code\DiffAudit\Research\src\diffaudit\attacks\gsa_observability.py`
-- `D:\Code\DiffAudit\Research\src\diffaudit\attacks\pia_adapter.py`
+- `<DIFFAUDIT_ROOT>/Research/ROADMAP.md`
+- `<DIFFAUDIT_ROOT>/Research/workspaces/white-box/2026-04-17-cross-permission-cpu-scaffold-implementation.md`
+- `<DIFFAUDIT_ROOT>/Research/workspaces/white-box/2026-04-17-cross-permission-support-contract.md`
+- `<DIFFAUDIT_ROOT>/Research/workspaces/white-box/runs/cross-permission-masked-packet-canary-20260417-r1/summary.json`
+- `<DIFFAUDIT_ROOT>/Research/workspaces/white-box/runs/cross-permission-masked-packet-canary-20260417-r1/records.jsonl`
+- `<DIFFAUDIT_ROOT>/Research/workspaces/gray-box/runs/pia-packet-score-export-20260417-r1/summary.json`
+- `<DIFFAUDIT_ROOT>/Research/workspaces/gray-box/runs/pia-packet-score-export-20260417-r1/sample_scores.jsonl`
+- `<DIFFAUDIT_ROOT>/Research/src/diffaudit/attacks/gsa_observability.py`
+- `<DIFFAUDIT_ROOT>/Research/src/diffaudit/attacks/pia_adapter.py`
 
 ## What The Two Canaries Actually Prove
 

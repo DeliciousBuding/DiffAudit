@@ -6,14 +6,14 @@ Before any future review of the bounded local intervention proposal, what exact 
 
 ## Inputs Reviewed
 
-- `D:\Code\DiffAudit\Research\ROADMAP.md`
-- `D:\Code\DiffAudit\Research\workspaces\white-box\2026-04-17-finding-nemo-bounded-local-intervention-proposal.md`
-- `D:\Code\DiffAudit\Research\workspaces\white-box\2026-04-17-finding-nemo-bounded-localization-observable-selection.md`
-- `D:\Code\DiffAudit\Research\workspaces\white-box\2026-04-17-finding-nemo-minimum-honest-protocol-bridge.md`
-- `D:\Code\DiffAudit\Research\workspaces\implementation\2026-04-08-unified-attack-defense-table.md`
-- `D:\Code\DiffAudit\Research\docs\admitted-results-summary.md`
-- `D:\Code\DiffAudit\Research\workspaces\gray-box\2026-04-09-pia-gpu512-adaptive-ablation.md`
-- `D:\Code\DiffAudit\Research\workspaces\white-box\2026-04-08-whitebox-attack-defense-table.md`
+- `<DIFFAUDIT_ROOT>/Research/ROADMAP.md`
+- `<DIFFAUDIT_ROOT>/Research/workspaces/white-box/2026-04-17-finding-nemo-bounded-local-intervention-proposal.md`
+- `<DIFFAUDIT_ROOT>/Research/workspaces/white-box/2026-04-17-finding-nemo-bounded-localization-observable-selection.md`
+- `<DIFFAUDIT_ROOT>/Research/workspaces/white-box/2026-04-17-finding-nemo-minimum-honest-protocol-bridge.md`
+- `<DIFFAUDIT_ROOT>/Research/workspaces/implementation/2026-04-08-unified-attack-defense-table.md`
+- `<DIFFAUDIT_ROOT>/Research/docs/admitted-results-summary.md`
+- `<DIFFAUDIT_ROOT>/Research/workspaces/gray-box/2026-04-09-pia-gpu512-adaptive-ablation.md`
+- `<DIFFAUDIT_ROOT>/Research/workspaces/white-box/2026-04-08-whitebox-attack-defense-table.md`
 
 ## Core Principle
 

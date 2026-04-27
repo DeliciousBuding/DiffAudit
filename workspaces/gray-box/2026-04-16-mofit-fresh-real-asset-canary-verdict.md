@@ -6,10 +6,10 @@ After the helper, script, and launch-budget work landed, can the `MoFit` lane no
 
 ## Inputs Reviewed
 
-- `D:\Code\DiffAudit\Research\scripts\run_mofit_interface_canary.py`
-- `D:\Code\DiffAudit\Research\workspaces\gray-box\runs\mofit-sd15-celeba-canary-20260416-cpu-r4\summary.json`
-- `D:\Code\DiffAudit\Research\workspaces\gray-box\runs\mofit-sd15-celeba-canary-20260416-cpu-r4\records.jsonl`
-- `D:\Code\DiffAudit\Research\workspaces\gray-box\2026-04-16-mofit-launch-budget-tightening-verdict.md`
+- `<DIFFAUDIT_ROOT>/Research/scripts/run_mofit_interface_canary.py`
+- `<DIFFAUDIT_ROOT>/Research/workspaces/gray-box/runs/mofit-sd15-celeba-canary-20260416-cpu-r4/summary.json`
+- `<DIFFAUDIT_ROOT>/Research/workspaces/gray-box/runs/mofit-sd15-celeba-canary-20260416-cpu-r4/records.jsonl`
+- `<DIFFAUDIT_ROOT>/Research/workspaces/gray-box/2026-04-16-mofit-launch-budget-tightening-verdict.md`
 
 ## Verification
 
@@ -21,7 +21,7 @@ Regression sweep before launch:
 
 Fresh real-asset canary launch:
 
-- `conda run -n diffaudit-research python D:\Code\DiffAudit\Research\scripts\run_mofit_interface_canary.py --run-root D:\Code\DiffAudit\Research\workspaces\gray-box\runs\mofit-sd15-celeba-canary-20260416-cpu-r4 --member-dir D:\Code\DiffAudit\Research\workspaces\black-box\runs\clid-paper-align-asset-prep-20260415-r1\datasets\member --nonmember-dir D:\Code\DiffAudit\Research\workspaces\black-box\runs\clid-paper-align-asset-prep-20260415-r1\datasets\nonmember --model-dir D:\Code\DiffAudit\Download\shared\weights\stable-diffusion-v1-5 --lora-dir D:\\Code\\DiffAudit\\Download\\black-box\\supplementary\\recon-assets\\ndss-2025-blackbox-membership-inference-fine-tuned-diffusion-models\model-checkpoints\celeba_partial_target\checkpoint-25000 --blip-dir D:\Code\DiffAudit\Download\shared\weights\blip-image-captioning-large`
+- `conda run -n diffaudit-research python <DIFFAUDIT_ROOT>/Research/scripts/run_mofit_interface_canary.py --run-root <DIFFAUDIT_ROOT>/Research/workspaces/gray-box/runs/mofit-sd15-celeba-canary-20260416-cpu-r4 --member-dir <DIFFAUDIT_ROOT>/Research/workspaces/black-box/runs/clid-paper-align-asset-prep-20260415-r1/datasets/member --nonmember-dir <DIFFAUDIT_ROOT>/Research/workspaces/black-box/runs/clid-paper-align-asset-prep-20260415-r1/datasets/nonmember --model-dir <DIFFAUDIT_ROOT>/Download/shared/weights/stable-diffusion-v1-5 --lora-dir <DIFFAUDIT_ROOT>/Download/black-box/supplementary/recon-assets/ndss-2025-blackbox-membership-inference-fine-tuned-diffusion-models/model-checkpoints/celeba_partial_target/checkpoint-25000 --blip-dir <DIFFAUDIT_ROOT>/Download/shared/weights/blip-image-captioning-large`
 - final result:
   - `status = canary_executed`
   - `executed_member_count = 1`
@@ -31,7 +31,7 @@ Fresh real-asset canary launch:
 
 The first fresh real local CPU canary now exists at:
 
-- `D:\Code\DiffAudit\Research\workspaces\gray-box\runs\mofit-sd15-celeba-canary-20260416-cpu-r4`
+- `<DIFFAUDIT_ROOT>/Research/workspaces/gray-box/runs/mofit-sd15-celeba-canary-20260416-cpu-r4`
 
 Execution shape:
 

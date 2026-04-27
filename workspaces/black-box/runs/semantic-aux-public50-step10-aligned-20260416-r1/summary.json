@@ -36,7 +36,7 @@
   },
   "notes": "Small-sample black-box probe using returned-image semantic features and an offline logistic auxiliary classifier. Generation uses only image-derived prompts and final returned images.",
   "artifacts": {
-    "records_json": "D:/Code/DiffAudit/Research/workspaces/black-box/runs/semantic-aux-public50-step10-aligned-20260416-r1/outputs/records.json",
-    "generated_dir": "D:/Code/DiffAudit/Research/workspaces/black-box/runs/semantic-aux-public50-step10-aligned-20260416-r1/outputs/generated"
+    "records_json": "<DIFFAUDIT_ROOT>/Research/workspaces/black-box/runs/semantic-aux-public50-step10-aligned-20260416-r1/outputs/records.json",
+    "generated_dir": "<DIFFAUDIT_ROOT>/Research/workspaces/black-box/runs/semantic-aux-public50-step10-aligned-20260416-r1/outputs/generated"
   }
 }

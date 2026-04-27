@@ -22,7 +22,7 @@
 - Title: Privacy-Preserving Low-Rank Adaptation Against Membership Inference Attacks for Latent Diffusion Models
 - Authors: Zihao Luo, Xilie Xu, Feng Liu, Yun Sing Koh, Di Wang, Jingfeng Zhang
 - Venue / year / version: AAAI 2025
-- Local PDF path: `D:/Code/DiffAudit/Research/references/materials/survey/2025-aaai-privacy-preserving-lora-membership-inference-latent-diffusion-models.pdf`
+- Local PDF path: `<DIFFAUDIT_ROOT>/Research/references/materials/survey/2025-aaai-privacy-preserving-lora-membership-inference-latent-diffusion-models.pdf`
 - Source URL: [https://doi.org/10.1609/aaai.v39i6.32628](https://doi.org/10.1609/aaai.v39i6.32628)
 
 ## Research Question

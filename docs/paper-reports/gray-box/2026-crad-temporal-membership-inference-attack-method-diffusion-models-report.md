@@ -9,7 +9,7 @@ Temporal Membership Inference Attack Method for Diffusion Models
 - 发表 venue / year / version：计算机研究与发展，2026，Vol.63 No.1，journal version
 - 论文主问题：在扩散模型成员推断中，如何同时兼顾短时攻击和长时攻击效果，并用时间相关信号提升成员判定的稳定性
 - 威胁模型类别：灰盒查询式成员推断攻击
-- 本地 PDF 路径：`D:/Code/DiffAudit/Research/references/materials/gray-box/2026-crad-temporal-membership-inference-attack-method-diffusion-models.pdf`
+- 本地 PDF 路径：`<DIFFAUDIT_ROOT>/Research/references/materials/gray-box/2026-crad-temporal-membership-inference-attack-method-diffusion-models.pdf`
 - GitHub PDF 链接：[2026-crad-temporal-membership-inference-attack-method-diffusion-models.pdf](https://github.com/DeliciousBuding/DiffAudit-Research/blob/main/references/materials/gray-box/2026-crad-temporal-membership-inference-attack-method-diffusion-models.pdf)
 - OCR 精修版链接：待补
 - 飞书原生 PDF 获取方式：待补

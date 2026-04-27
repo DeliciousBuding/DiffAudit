@@ -6,15 +6,15 @@ After `X-29` returned the main slot to `I-A`, is there any currently visible hig
 
 ## Inputs Reviewed
 
-- `D:\Code\DiffAudit\Research\ROADMAP.md`
-- `D:\Code\DiffAudit\Research\docs\mainline-narrative.md`
-- `D:\Code\DiffAudit\Research\docs\leader-research-ready-summary.md`
-- `D:\Code\DiffAudit\Research\docs\competition-evidence-pack.md`
-- `D:\Code\DiffAudit\Research\docs\competition-innovation-summary.md`
-- `D:\Code\DiffAudit\Research\docs\competition-defense-qa.md`
-- `D:\Code\DiffAudit\Research\docs\research-boundary-card.md`
-- `D:\Code\DiffAudit\Research\docs\admitted-results-summary.md`
-- `D:\Code\DiffAudit\Research\workspaces\implementation\2026-04-17-x29-next-lane-reselection-after-x28-shared-surface-freeze-review.md`
+- `<DIFFAUDIT_ROOT>/Research/ROADMAP.md`
+- `<DIFFAUDIT_ROOT>/Research/docs/mainline-narrative.md`
+- `<DIFFAUDIT_ROOT>/Research/docs/leader-research-ready-summary.md`
+- `<DIFFAUDIT_ROOT>/Research/docs/competition-evidence-pack.md`
+- `<DIFFAUDIT_ROOT>/Research/docs/competition-innovation-summary.md`
+- `<DIFFAUDIT_ROOT>/Research/docs/competition-defense-qa.md`
+- `<DIFFAUDIT_ROOT>/Research/docs/research-boundary-card.md`
+- `<DIFFAUDIT_ROOT>/Research/docs/admitted-results-summary.md`
+- `<DIFFAUDIT_ROOT>/Research/workspaces/implementation/2026-04-17-x29-next-lane-reselection-after-x28-shared-surface-freeze-review.md`
 
 ## Review
 
@@ -62,15 +62,15 @@ More precise reading:
 
 ## Canonical Evidence Anchor
 
-- `D:\Code\DiffAudit\Research\workspaces\implementation\2026-04-17-x30-ia-carry-forward-truth-hardening-audit.md`
+- `<DIFFAUDIT_ROOT>/Research/workspaces/implementation/2026-04-17-x30-ia-carry-forward-truth-hardening-audit.md`
 
 ## Handoff Decision
 
-- `D:\Code\DiffAudit\Research\ROADMAP.md`: update required
-- `D:\Code\DiffAudit\Research\docs\comprehensive-progress.md`: update required
-- `D:\Code\DiffAudit\Research\workspaces\implementation\challenger-queue.md`: update required
-- `D:\Code\DiffAudit\Research\docs\mainline-narrative.md`: update required
-- `D:\Code\DiffAudit\ROADMAP.md`: update required
+- `<DIFFAUDIT_ROOT>/Research/ROADMAP.md`: update required
+- `<DIFFAUDIT_ROOT>/Research/docs/comprehensive-progress.md`: update required
+- `<DIFFAUDIT_ROOT>/Research/workspaces/implementation/challenger-queue.md`: update required
+- `<DIFFAUDIT_ROOT>/Research/docs/mainline-narrative.md`: update required
+- `<DIFFAUDIT_ROOT>/ROADMAP.md`: update required
 - `platform_runtime_handoff = none`
 - `competition_material_sync = none`
 

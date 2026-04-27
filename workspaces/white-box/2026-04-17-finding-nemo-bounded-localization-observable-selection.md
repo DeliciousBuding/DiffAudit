@@ -6,16 +6,16 @@ Given the current admitted white-box assets and the already-frozen `I-B.1` proto
 
 ## Inputs Reviewed
 
-- `D:\Code\DiffAudit\Research\ROADMAP.md`
-- `D:\Code\DiffAudit\Research\workspaces\white-box\signal-access-matrix.md`
-- `D:\Code\DiffAudit\Research\workspaces\white-box\2026-04-10-finding-nemo-mechanism-intake.md`
-- `D:\Code\DiffAudit\Research\workspaces\white-box\2026-04-10-finding-nemo-protocol-reconciliation.md`
-- `D:\Code\DiffAudit\Research\workspaces\white-box\2026-04-10-finding-nemo-observability-smoke-contract.md`
-- `D:\Code\DiffAudit\Research\workspaces\white-box\2026-04-10-finding-nemo-activation-export-adapter-review.md`
-- `D:\Code\DiffAudit\Research\workspaces\white-box\2026-04-16-whitebox-feature-trajectory-verdict.md`
-- `D:\Code\DiffAudit\Research\workspaces\white-box\runs\finding-nemo-observability-canary-20260410-round24\summary.json`
-- `D:\Code\DiffAudit\Research\workspaces\white-box\runs\finding-nemo-observability-canary-20260410-round24\records.jsonl`
-- `D:\Code\DiffAudit\Research\src\diffaudit\attacks\gsa_observability.py`
+- `<DIFFAUDIT_ROOT>/Research/ROADMAP.md`
+- `<DIFFAUDIT_ROOT>/Research/workspaces/white-box/signal-access-matrix.md`
+- `<DIFFAUDIT_ROOT>/Research/workspaces/white-box/2026-04-10-finding-nemo-mechanism-intake.md`
+- `<DIFFAUDIT_ROOT>/Research/workspaces/white-box/2026-04-10-finding-nemo-protocol-reconciliation.md`
+- `<DIFFAUDIT_ROOT>/Research/workspaces/white-box/2026-04-10-finding-nemo-observability-smoke-contract.md`
+- `<DIFFAUDIT_ROOT>/Research/workspaces/white-box/2026-04-10-finding-nemo-activation-export-adapter-review.md`
+- `<DIFFAUDIT_ROOT>/Research/workspaces/white-box/2026-04-16-whitebox-feature-trajectory-verdict.md`
+- `<DIFFAUDIT_ROOT>/Research/workspaces/white-box/runs/finding-nemo-observability-canary-20260410-round24/summary.json`
+- `<DIFFAUDIT_ROOT>/Research/workspaces/white-box/runs/finding-nemo-observability-canary-20260410-round24/records.jsonl`
+- `<DIFFAUDIT_ROOT>/Research/src/diffaudit/attacks/gsa_observability.py`
 
 ## Candidate Review
 

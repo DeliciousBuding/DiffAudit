@@ -17,14 +17,14 @@ Because `TMIA-DM late-window` depends on precise late timestep alignment, does s
 
 Primary jitter-defense rung:
 
-- `D:\Code\DiffAudit\Research\workspaces\gray-box\runs\tmiadm-cifar10-late-window-timestep-jitter-defense-20260416-gpu-128-r1\summary.json`
+- `<DIFFAUDIT_ROOT>/Research/workspaces/gray-box/runs/tmiadm-cifar10-late-window-timestep-jitter-defense-20260416-gpu-128-r1/summary.json`
 
 Current references:
 
 - `TMIA-DM late-window GPU128 undefended`:
-  - `D:\Code\DiffAudit\Research\workspaces\gray-box\runs\tmiadm-cifar10-late-window-protocol-probe-20260416-gpu-128-r1\summary.json`
+  - `<DIFFAUDIT_ROOT>/Research/workspaces/gray-box/runs/tmiadm-cifar10-late-window-protocol-probe-20260416-gpu-128-r1/summary.json`
 - `TMIA-DM late-window GPU128 all_steps defended`:
-  - `D:\Code\DiffAudit\Research\workspaces\gray-box\runs\tmiadm-cifar10-late-window-dropout-defense-20260416-gpu-128-r1\summary.json`
+  - `<DIFFAUDIT_ROOT>/Research/workspaces/gray-box/runs/tmiadm-cifar10-late-window-dropout-defense-20260416-gpu-128-r1/summary.json`
 
 ## Metrics
 

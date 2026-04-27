@@ -17,18 +17,18 @@ After `semantic-auxiliary-classifier` landed as the leading black-box challenger
 Primary references reviewed:
 
 - second-signal black-box challenger:
-  - `D:\Code\DiffAudit\Research\workspaces\black-box\2026-04-15-blackbox-second-signal-semantic-aux-verdict.md`
-  - `D:\Code\DiffAudit\Research\workspaces\black-box\runs\semantic-aux-classifier-comparator-20260416-r2\summary.json`
+  - `<DIFFAUDIT_ROOT>/Research/workspaces/black-box/2026-04-15-blackbox-second-signal-semantic-aux-verdict.md`
+  - `<DIFFAUDIT_ROOT>/Research/workspaces/black-box/runs/semantic-aux-classifier-comparator-20260416-r2/summary.json`
 - challenger scoring and same-protocol package:
-  - `D:\Code\DiffAudit\Research\workspaces\black-box\2026-04-16-blackbox-semantic-aux-scoring-verdict.md`
-  - `D:\Code\DiffAudit\Research\workspaces\black-box\2026-04-16-blackbox-score-package-verdict.md`
+  - `<DIFFAUDIT_ROOT>/Research/workspaces/black-box/2026-04-16-blackbox-semantic-aux-scoring-verdict.md`
+  - `<DIFFAUDIT_ROOT>/Research/workspaces/black-box/2026-04-16-blackbox-score-package-verdict.md`
 - boundary and blocked branches:
-  - `D:\Code\DiffAudit\Research\workspaces\black-box\2026-04-16-clid-threshold-evaluator-compatibility-verdict.md`
-  - `D:\Code\DiffAudit\Research\workspaces\black-box\2026-04-16-blackbox-served-image-mitigation-verdict.md`
-  - `D:\Code\DiffAudit\Research\workspaces\black-box\2026-04-16-variation-asset-contract-verdict.md`
+  - `<DIFFAUDIT_ROOT>/Research/workspaces/black-box/2026-04-16-clid-threshold-evaluator-compatibility-verdict.md`
+  - `<DIFFAUDIT_ROOT>/Research/workspaces/black-box/2026-04-16-blackbox-served-image-mitigation-verdict.md`
+  - `<DIFFAUDIT_ROOT>/Research/workspaces/black-box/2026-04-16-variation-asset-contract-verdict.md`
 - black-box plan / roadmap state:
-  - `D:\Code\DiffAudit\Research\workspaces\black-box\plan.md`
-  - `D:\Code\DiffAudit\Research\ROADMAP.md`
+  - `<DIFFAUDIT_ROOT>/Research/workspaces/black-box/plan.md`
+  - `<DIFFAUDIT_ROOT>/Research/ROADMAP.md`
 
 ## Review
 

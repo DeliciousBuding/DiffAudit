@@ -6,10 +6,10 @@ Can the repository clear the remaining higher-layer stale entry identified by `X
 
 ## Inputs Reviewed
 
-- `D:\Code\DiffAudit\Research\docs\mainline-narrative.md`
-- `D:\Code\DiffAudit\Research\docs\comprehensive-progress.md`
-- `D:\Code\DiffAudit\Research\ROADMAP.md`
-- `D:\Code\DiffAudit\Research\workspaces\implementation\challenger-queue.md`
+- `<DIFFAUDIT_ROOT>/Research/docs/mainline-narrative.md`
+- `<DIFFAUDIT_ROOT>/Research/docs/comprehensive-progress.md`
+- `<DIFFAUDIT_ROOT>/Research/ROADMAP.md`
+- `<DIFFAUDIT_ROOT>/Research/workspaces/implementation/challenger-queue.md`
 
 ## Sync Findings
 
@@ -42,6 +42,6 @@ More precise reading:
 
 - `Research/ROADMAP.md`: update required
 - `Research/workspaces/implementation/challenger-queue.md`: update required
-- `D:\Code\DiffAudit\ROADMAP.md`: update required because the current live lane advanced again
+- `<DIFFAUDIT_ROOT>/ROADMAP.md`: update required because the current live lane advanced again
 - `Leader/materials`: safe to reuse the refreshed control-plane wording
 - `Platform / Runtime`: no schema change required

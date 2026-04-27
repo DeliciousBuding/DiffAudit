@@ -9,4 +9,4 @@ Use it for:
 
 If you need the full upstream repository, upstream config files, or the full original split tree, use:
 
-- `D:\Code\DiffAudit\Research\external\SecMI\`
+- `external/SecMI/`

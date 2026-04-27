@@ -6,13 +6,13 @@ Given the `I-C.1` falsifiable packet, which exact internal units or masks are ho
 
 ## Inputs Reviewed
 
-- `D:\Code\DiffAudit\Research\ROADMAP.md`
-- `D:\Code\DiffAudit\Research\workspaces\white-box\2026-04-17-cross-permission-falsifiable-minimal-experiment.md`
-- `D:\Code\DiffAudit\Research\workspaces\white-box\2026-04-17-finding-nemo-bounded-localization-observable-selection.md`
-- `D:\Code\DiffAudit\Research\workspaces\white-box\2026-04-17-finding-nemo-bounded-local-intervention-proposal.md`
-- `D:\Code\DiffAudit\Research\workspaces\white-box\signal-access-matrix.md`
-- `D:\Code\DiffAudit\Research\workspaces\white-box\2026-04-10-finding-nemo-activation-export-adapter-review.md`
-- `D:\Code\DiffAudit\Research\workspaces\white-box\2026-04-16-whitebox-feature-trajectory-verdict.md`
+- `<DIFFAUDIT_ROOT>/Research/ROADMAP.md`
+- `<DIFFAUDIT_ROOT>/Research/workspaces/white-box/2026-04-17-cross-permission-falsifiable-minimal-experiment.md`
+- `<DIFFAUDIT_ROOT>/Research/workspaces/white-box/2026-04-17-finding-nemo-bounded-localization-observable-selection.md`
+- `<DIFFAUDIT_ROOT>/Research/workspaces/white-box/2026-04-17-finding-nemo-bounded-local-intervention-proposal.md`
+- `<DIFFAUDIT_ROOT>/Research/workspaces/white-box/signal-access-matrix.md`
+- `<DIFFAUDIT_ROOT>/Research/workspaces/white-box/2026-04-10-finding-nemo-activation-export-adapter-review.md`
+- `<DIFFAUDIT_ROOT>/Research/workspaces/white-box/2026-04-16-whitebox-feature-trajectory-verdict.md`
 
 ## Selection Principle
 

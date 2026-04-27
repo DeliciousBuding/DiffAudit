@@ -6,12 +6,12 @@ Can the repository land one honest reusable `05-cross-box` pairboard surface for
 
 ## Inputs Reviewed
 
-- `D:\Code\DiffAudit\Research\src\diffaudit\attacks\crossbox_pairboard.py`
-- `D:\Code\DiffAudit\Research\src\diffaudit\cli.py`
-- `D:\Code\DiffAudit\Research\tests\test_crossbox_pairboard.py`
-- `D:\Code\DiffAudit\Research\workspaces\gray-box\runs\pia-cifar10-runtime-mainline-20260409-gpu-512-adaptive\scores.json`
-- `D:\Code\DiffAudit\Research\workspaces\white-box\runs\gsa-loss-score-export-bounded-actual-20260418-r1\summary.json`
-- `D:\Code\DiffAudit\Research\workspaces\cross-box\runs\crossbox-pairboard-gsa-loss-pia-actualsubset-20260418-r1\summary.json`
+- `<DIFFAUDIT_ROOT>/Research/src/diffaudit/attacks/crossbox_pairboard.py`
+- `<DIFFAUDIT_ROOT>/Research/src/diffaudit/cli.py`
+- `<DIFFAUDIT_ROOT>/Research/tests/test_crossbox_pairboard.py`
+- `<DIFFAUDIT_ROOT>/Research/workspaces/gray-box/runs/pia-cifar10-runtime-mainline-20260409-gpu-512-adaptive/scores.json`
+- `<DIFFAUDIT_ROOT>/Research/workspaces/white-box/runs/gsa-loss-score-export-bounded-actual-20260418-r1/summary.json`
+- `<DIFFAUDIT_ROOT>/Research/workspaces/cross-box/runs/crossbox-pairboard-gsa-loss-pia-actualsubset-20260418-r1/summary.json`
 
 ## Implementation Review
 
@@ -75,7 +75,7 @@ Resulting shared overlap:
 
 The emitted run summary exists at:
 
-- `D:\Code\DiffAudit\Research\workspaces\cross-box\runs\crossbox-pairboard-gsa-loss-pia-actualsubset-20260418-r1\summary.json`
+- `<DIFFAUDIT_ROOT>/Research/workspaces/cross-box/runs/crossbox-pairboard-gsa-loss-pia-actualsubset-20260418-r1/summary.json`
 
 ### 4. Honest reading of that first actual run
 

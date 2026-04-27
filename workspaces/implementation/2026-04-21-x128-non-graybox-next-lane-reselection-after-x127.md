@@ -6,15 +6,15 @@ After `X-127` cleared the remaining active stale-entry layer, what is the highes
 
 ## Inputs Reviewed
 
-- `D:\Code\DiffAudit\Research\ROADMAP.md`
-- `D:\Code\DiffAudit\Research\workspaces\implementation\challenger-queue.md`
-- `D:\Code\DiffAudit\Research\docs\leader-research-ready-summary.md`
-- `D:\Code\DiffAudit\Research\docs\admitted-results-summary.md`
-- `D:\Code\DiffAudit\Research\docs\mainline-narrative.md`
-- `D:\Code\DiffAudit\Research\docs\competition-evidence-pack.md`
-- `D:\Code\DiffAudit\Research\docs\competition-defense-qa.md`
-- `D:\Code\DiffAudit\Research\docs\competition-innovation-summary.md`
-- `D:\Code\DiffAudit\Research\workspaces\implementation\2026-04-21-x127-crossbox-system-sync-after-x126.md`
+- `<DIFFAUDIT_ROOT>/Research/ROADMAP.md`
+- `<DIFFAUDIT_ROOT>/Research/workspaces/implementation/challenger-queue.md`
+- `<DIFFAUDIT_ROOT>/Research/docs/leader-research-ready-summary.md`
+- `<DIFFAUDIT_ROOT>/Research/docs/admitted-results-summary.md`
+- `<DIFFAUDIT_ROOT>/Research/docs/mainline-narrative.md`
+- `<DIFFAUDIT_ROOT>/Research/docs/competition-evidence-pack.md`
+- `<DIFFAUDIT_ROOT>/Research/docs/competition-defense-qa.md`
+- `<DIFFAUDIT_ROOT>/Research/docs/competition-innovation-summary.md`
+- `<DIFFAUDIT_ROOT>/Research/workspaces/implementation/2026-04-21-x127-crossbox-system-sync-after-x126.md`
 
 ## Findings
 
@@ -68,7 +68,7 @@ Sharper control truth:
 
 ## Canonical Evidence Anchor
 
-- `D:\Code\DiffAudit\Research\workspaces\implementation\2026-04-21-x128-non-graybox-next-lane-reselection-after-x127.md`
+- `<DIFFAUDIT_ROOT>/Research/workspaces/implementation/2026-04-21-x128-non-graybox-next-lane-reselection-after-x127.md`
 
 ## Handoff
 

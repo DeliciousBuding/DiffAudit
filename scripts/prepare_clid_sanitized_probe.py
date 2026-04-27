@@ -3,13 +3,24 @@ from __future__ import annotations
 import argparse
 import io
 import json
+import re
 from pathlib import Path
 
 from PIL import Image
 
 
 FALLBACK_FINALIZE_TEMPLATE = Path(
-    r"D:\Code\DiffAudit\Research\workspaces\black-box\runs\clid-recon-clip-target100-20260415-r1\finalize_run_summary.py"
+    Path(__file__).resolve().parents[1]
+    / "workspaces"
+    / "black-box"
+    / "runs"
+    / "clid-recon-clip-target100-20260415-r1"
+    / "finalize_run_summary.py"
+)
+
+FINALIZE_RUN_ROOT_RE = re.compile(
+    r'RUN_ROOT = Path\(\n\s*r".*clid-recon-clip-target100-20260415-r1"\n\)',
+    re.MULTILINE,
 )
 
 
@@ -67,6 +78,10 @@ def localize_script(
     script_text: str,
     *,
     use_data_model_name: str,
+    source_base_model: str,
+    source_member_dir: Path,
+    source_nonmember_dir: Path,
+    source_output_dir: Path,
     member_dir: Path,
     nonmember_dir: Path,
     output_dir: Path,
@@ -75,19 +90,19 @@ def localize_script(
     text = script_text
     text = text.replace('Use_data_model_name = "local_paper_align_target"', f'Use_data_model_name = "{use_data_model_name}"')
     text = text.replace(
-        '"local_paper_align_target": r"D:/Code/DiffAudit/Download/shared/weights/stable-diffusion-v1-5"',
-        f'"{use_data_model_name}": r"D:/Code/DiffAudit/Download/shared/weights/stable-diffusion-v1-5"',
+        f'"local_paper_align_target": r"{source_base_model}"',
+        f'"{use_data_model_name}": r"{source_base_model}"',
     )
     text = text.replace(
-        '"local_paper_align_target": r"D:/Code/DiffAudit/Research/workspaces/black-box/runs/clid-paper-align-asset-prep-20260415-r1/datasets/member"',
+        f'"local_paper_align_target": r"{source_member_dir.as_posix()}"',
         f'"{use_data_model_name}": r"{member_dir.as_posix()}"',
     )
     text = text.replace(
-        '"local_paper_align_target": r"D:/Code/DiffAudit/Research/workspaces/black-box/runs/clid-paper-align-asset-prep-20260415-r1/datasets/nonmember"',
+        f'"local_paper_align_target": r"{source_nonmember_dir.as_posix()}"',
         f'"{use_data_model_name}": r"{nonmember_dir.as_posix()}"',
     )
     text = text.replace(
-        "flags.outdir = r'D:/Code/DiffAudit/Research/workspaces/black-box/runs/clid-paper-align-asset-prep-20260415-r1/outputs'",
+        f"flags.outdir = r'{source_output_dir.as_posix()}'",
         f"flags.outdir = r'{output_dir.as_posix()}'",
     )
     text = text.replace("for Max_n_samples in [1]:", f"for Max_n_samples in [{max_n_samples}]:")
@@ -127,6 +142,10 @@ def main() -> None:
     localized_script = localize_script(
         (source_run / "mia_CLiD_clip_local.py").read_text(encoding="utf-8"),
         use_data_model_name="local_sanitized_target",
+        source_base_model=config["assets"]["base_model"],
+        source_member_dir=source_member,
+        source_nonmember_dir=source_nonmember,
+        source_output_dir=source_run / "outputs",
         member_dir=member_dir,
         nonmember_dir=nonmember_dir,
         output_dir=output_dir,
@@ -138,11 +157,13 @@ def main() -> None:
     if not finalize_template.exists():
         finalize_template = FALLBACK_FINALIZE_TEMPLATE
     finalize_script = finalize_template.read_text(encoding="utf-8")
-    finalize_script = finalize_script.replace(
-        'RUN_ROOT = Path(\n    r"D:\\Code\\DiffAudit\\Research\\workspaces\\black-box\\runs\\clid-recon-clip-target100-20260415-r1"\n)',
+    target_run_windows = target_run.as_posix().replace("/", "\\")
+    finalize_script = FINALIZE_RUN_ROOT_RE.sub(
         'RUN_ROOT = Path(\n'
-        f'    r"{target_run.as_posix().replace("/", "\\\\")}"\n'
+        f'    r"{target_run_windows}"\n'
         ')',
+        finalize_script,
+        count=1,
     )
     finalize_script = finalize_script.replace(
         '"run_id": "clid-recon-clip-target100-20260415-r1",',
@@ -150,10 +171,12 @@ def main() -> None:
     )
     finalize_script = finalize_script.replace(
         '"notes": (\n            "Local CLiD clip rung completed on 100 member + 100 non-member CelebA target samples using "\n            "base SD1.5 snapshot plus Recon target UNet attention-processor LoRA."\n        ),',
-        '"notes": (\n'
-        f'            "Local CLiD clip mitigation probe completed on sanitized served-image copies with JPEG quality {args.jpeg_quality} "\n'
-        f'            f"and resize {args.resize_down} using the same staged SD1.5 base and Recon target LoRA."\n'
-        '        ),',
+        (
+            '"notes": (\n'
+            f'            "Local CLiD clip mitigation probe completed on sanitized served-image copies with JPEG quality {args.jpeg_quality} "\n'
+            f'            "and resize {args.resize_down} using the same staged SD1.5 base and Recon target LoRA."\n'
+            '        ),'
+        ),
     )
     (target_run / "finalize_run_summary.py").write_text(finalize_script, encoding="utf-8")
 

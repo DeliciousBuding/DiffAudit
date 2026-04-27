@@ -35,16 +35,16 @@ Why this was worth trying:
 
 New bounded smoke:
 
-- `D:\Code\DiffAudit\Research\workspaces\gray-box\runs\pia-cifar10-runtime-mainline-eps-noise-defense-20260415-cpu-32\summary.json`
+- `<DIFFAUDIT_ROOT>/Research/workspaces/gray-box/runs/pia-cifar10-runtime-mainline-eps-noise-defense-20260415-cpu-32/summary.json`
 
 Relevant comparison references:
 
 - baseline:
-  - `D:\Code\DiffAudit\Research\workspaces\gray-box\runs\pia-cifar10-runtime-mainline-20260408-cpu-32\summary.json`
+  - `<DIFFAUDIT_ROOT>/Research/workspaces/gray-box/runs/pia-cifar10-runtime-mainline-20260408-cpu-32/summary.json`
 - current defended mainline smoke:
-  - `D:\Code\DiffAudit\Research\workspaces\gray-box\runs\pia-cifar10-runtime-mainline-dropout-defense-20260408-cpu-32\summary.json`
+  - `<DIFFAUDIT_ROOT>/Research/workspaces/gray-box/runs/pia-cifar10-runtime-mainline-dropout-defense-20260408-cpu-32/summary.json`
 - already rejected deterministic output restriction candidate:
-  - `D:\Code\DiffAudit\Research\workspaces\gray-box\2026-04-15-graybox-defense-precision-throttling-note.md`
+  - `<DIFFAUDIT_ROOT>/Research/workspaces/gray-box/2026-04-15-graybox-defense-precision-throttling-note.md`
 
 ## Metrics
 

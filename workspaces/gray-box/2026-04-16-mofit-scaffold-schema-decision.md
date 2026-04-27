@@ -6,11 +6,11 @@ For the first dedicated `MoFit` lane, what exact scaffold shape and minimum arti
 
 ## Inputs Reviewed
 
-- `D:\Code\DiffAudit\Research\workspaces\gray-box\2026-04-16-mofit-protocol-asset-contract.md`
-- `D:\Code\DiffAudit\Research\workspaces\gray-box\2026-04-16-mofit-implementation-surface-review.md`
-- `D:\Code\DiffAudit\Research\scripts\run_noise_as_probe_interface_canary.py`
-- `D:\Code\DiffAudit\Research\scripts\run_structural_memorization_smoke.py`
-- `D:\Code\DiffAudit\Research\scripts\run_blackbox_semantic_aux_probe.py`
+- `<DIFFAUDIT_ROOT>/Research/workspaces/gray-box/2026-04-16-mofit-protocol-asset-contract.md`
+- `<DIFFAUDIT_ROOT>/Research/workspaces/gray-box/2026-04-16-mofit-implementation-surface-review.md`
+- `<DIFFAUDIT_ROOT>/Research/scripts/run_noise_as_probe_interface_canary.py`
+- `<DIFFAUDIT_ROOT>/Research/scripts/run_structural_memorization_smoke.py`
+- `<DIFFAUDIT_ROOT>/Research/scripts/run_blackbox_semantic_aux_probe.py`
 
 ## Scaffold Decision
 

@@ -17,15 +17,15 @@ If the current `TMIA-DM` signal is restricted to a later timestep window, does `
 
 Late-window bounded probes:
 
-- `D:\Code\DiffAudit\Research\workspaces\gray-box\runs\tmiadm-cifar10-late-window-protocol-probe-20260416-cpu-32-r1\summary.json`
-- `D:\Code\DiffAudit\Research\workspaces\gray-box\runs\tmiadm-cifar10-late-window-protocol-probe-20260416-cpu-32-r2-seed1\summary.json`
+- `<DIFFAUDIT_ROOT>/Research/workspaces/gray-box/runs/tmiadm-cifar10-late-window-protocol-probe-20260416-cpu-32-r1/summary.json`
+- `<DIFFAUDIT_ROOT>/Research/workspaces/gray-box/runs/tmiadm-cifar10-late-window-protocol-probe-20260416-cpu-32-r2-seed1/summary.json`
 
 Comparison references:
 
 - `PIA cpu-32 baseline`:
-  - `D:\Code\DiffAudit\Research\workspaces\gray-box\runs\pia-cifar10-runtime-mainline-20260408-cpu-32\summary.json`
+  - `<DIFFAUDIT_ROOT>/Research/workspaces/gray-box/runs/pia-cifar10-runtime-mainline-20260408-cpu-32/summary.json`
 - prior full-window repeat note:
-  - `D:\Code\DiffAudit\Research\workspaces\gray-box\2026-04-16-tmiadm-long-window-repeat-verdict.md`
+  - `<DIFFAUDIT_ROOT>/Research/workspaces/gray-box/2026-04-16-tmiadm-long-window-repeat-verdict.md`
 
 ## Metrics
 

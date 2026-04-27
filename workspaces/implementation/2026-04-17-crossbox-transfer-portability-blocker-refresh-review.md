@@ -6,14 +6,14 @@ After the recent `I-B` actual-packet falsifier, `I-A` refresh, and higher-layer 
 
 ## Inputs Reviewed
 
-- `D:\Code\DiffAudit\Research\ROADMAP.md`
-- `D:\Code\DiffAudit\Research\docs\comprehensive-progress.md`
-- `D:\Code\DiffAudit\Research\workspaces\implementation\challenger-queue.md`
-- `D:\Code\DiffAudit\Research\workspaces\implementation\2026-04-16-crossbox-transfer-portability-review.md`
-- `D:\Code\DiffAudit\Research\workspaces\black-box\plan.md`
-- `D:\Code\DiffAudit\Research\workspaces\gray-box\plan.md`
-- `D:\Code\DiffAudit\Research\workspaces\white-box\plan.md`
-- `D:\Code\DiffAudit\Research\workspaces\implementation\2026-04-17-ia-refresh-after-negative-ib14-verdict.md`
+- `<DIFFAUDIT_ROOT>/Research/ROADMAP.md`
+- `<DIFFAUDIT_ROOT>/Research/docs/comprehensive-progress.md`
+- `<DIFFAUDIT_ROOT>/Research/workspaces/implementation/challenger-queue.md`
+- `<DIFFAUDIT_ROOT>/Research/workspaces/implementation/2026-04-16-crossbox-transfer-portability-review.md`
+- `<DIFFAUDIT_ROOT>/Research/workspaces/black-box/plan.md`
+- `<DIFFAUDIT_ROOT>/Research/workspaces/gray-box/plan.md`
+- `<DIFFAUDIT_ROOT>/Research/workspaces/white-box/plan.md`
+- `<DIFFAUDIT_ROOT>/Research/workspaces/implementation/2026-04-17-ia-refresh-after-negative-ib14-verdict.md`
 
 ## Refresh Check
 
@@ -102,7 +102,7 @@ More precise reading:
 
 ## Canonical Evidence Anchor
 
-- `D:\Code\DiffAudit\Research\workspaces\implementation\2026-04-17-crossbox-transfer-portability-blocker-refresh-review.md`
+- `<DIFFAUDIT_ROOT>/Research/workspaces/implementation/2026-04-17-crossbox-transfer-portability-blocker-refresh-review.md`
 
 ## Next Step
 

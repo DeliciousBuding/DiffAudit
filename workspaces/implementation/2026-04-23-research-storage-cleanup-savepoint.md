@@ -6,11 +6,11 @@
 
 Old:
 
-- `D:\Code\DiffAudit\Research\external\recon-assets\`
+- `<DIFFAUDIT_ROOT>/Research/external/recon-assets\`
 
 New canonical raw location:
 
-- `D:\Code\DiffAudit\Download\black-box\supplementary\recon-assets\`
+- `<DIFFAUDIT_ROOT>/Download/black-box/supplementary/recon-assets\`
 
 This is now the only intended live raw bundle location.
 
@@ -19,35 +19,35 @@ This is now the only intended live raw bundle location.
 ### 2. `SecMI` split is now explicit
 
 - full upstream reference clone:
-  - `D:\Code\DiffAudit\Research\external\SecMI\`
+  - `<DIFFAUDIT_ROOT>/Research/external/SecMI\`
 - canonical minimal in-repo integration surface:
-  - `D:\Code\DiffAudit\Research\third_party\secmi\`
+  - `<DIFFAUDIT_ROOT>/Research/third_party/secmi\`
 
 ### 3. `CLiD` split is now explicit
 
 - working code clone:
-  - `D:\Code\DiffAudit\Research\external\CLiD\`
+  - `<DIFFAUDIT_ROOT>/Research/external/CLiD\`
 - raw supplementary mirror:
-  - `D:\Code\DiffAudit\Download\black-box\supplementary\clid-mia-supplementary\`
+  - `<DIFFAUDIT_ROOT>/Download/black-box/supplementary/clid-mia-supplementary\`
 
 ## New Boundary Entry Files
 
-- `D:\Code\DiffAudit\Research\external\README.md`
-- `D:\Code\DiffAudit\Research\third_party\README.md`
-- `D:\Code\DiffAudit\Download\README.md`
-- `D:\Code\DiffAudit\Research\external\SecMI\LOCAL_ROLE.md`
-- `D:\Code\DiffAudit\Research\external\CLiD\LOCAL_ROLE.md`
-- `D:\Code\DiffAudit\Research\third_party\secmi\LOCAL_ROLE.md`
-- `D:\Code\DiffAudit\Research\docs\storage-boundary.md`
+- `<DIFFAUDIT_ROOT>/Research/external/README.md`
+- `<DIFFAUDIT_ROOT>/Research/third_party/README.md`
+- `<DIFFAUDIT_ROOT>/Download/README.md`
+- `<DIFFAUDIT_ROOT>/Research/external/SecMI/LOCAL_ROLE.md`
+- `<DIFFAUDIT_ROOT>/Research/external/CLiD/LOCAL_ROLE.md`
+- `<DIFFAUDIT_ROOT>/Research/third_party/secmi/LOCAL_ROLE.md`
+- `<DIFFAUDIT_ROOT>/Research/docs/storage-boundary.md`
 
 ## Active Entry Docs Updated
 
-- `D:\Code\DiffAudit\Research\README.md`
-- `D:\Code\DiffAudit\Research\docs\teammate-setup.md`
-- `D:\Code\DiffAudit\Research\docs\recon-public-asset-mapping.md`
-- `D:\Code\DiffAudit\Research\docs\research-download-master-list.md`
-- `D:\Code\DiffAudit\Research\workspaces\README.md`
-- `D:\Code\DiffAudit\Research\ROADMAP.md`
+- `<DIFFAUDIT_ROOT>/Research/README.md`
+- `<DIFFAUDIT_ROOT>/Research/docs/teammate-setup.md`
+- `<DIFFAUDIT_ROOT>/Research/docs/recon-public-asset-mapping.md`
+- `<DIFFAUDIT_ROOT>/Research/docs/research-download-master-list.md`
+- `<DIFFAUDIT_ROOT>/Research/workspaces/README.md`
+- `<DIFFAUDIT_ROOT>/Research/ROADMAP.md`
 
 ## Residual Historical Drift
 
@@ -62,10 +62,10 @@ That is acceptable as long as:
 
 - upstream/exploratory code clones -> `Research/external/`
 - minimal vendored integration -> `Research/third_party/`
-- raw downloads / supplementary / checkpoints -> `D:\Code\DiffAudit\Download\`
+- raw downloads / supplementary / checkpoints -> `<DIFFAUDIT_ROOT>/Download/`
 - lane-normalized gateways -> `Research/workspaces/<lane>/assets/`
 - run evidence -> `Research/workspaces/<lane>/runs/`
 
 ## Canonical Evidence Anchor
 
-- `D:\Code\DiffAudit\Research\workspaces\implementation\2026-04-23-research-storage-cleanup-savepoint.md`
+- `<DIFFAUDIT_ROOT>/Research/workspaces/implementation/2026-04-23-research-storage-cleanup-savepoint.md`

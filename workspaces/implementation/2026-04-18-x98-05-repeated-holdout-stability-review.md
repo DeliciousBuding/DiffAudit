@@ -6,12 +6,12 @@ Can the first enlarged `05-cross-box` packet survive a real `5x` stratified `50/
 
 ## Inputs Reviewed
 
-- `D:\Code\DiffAudit\Research\src\diffaudit\attacks\crossbox_pairboard.py`
-- `D:\Code\DiffAudit\Research\src\diffaudit\cli.py`
-- `D:\Code\DiffAudit\Research\tests\test_crossbox_pairboard.py`
-- `D:\Code\DiffAudit\Research\workspaces\gray-box\runs\pia-cifar10-runtime-mainline-20260416-gpu-2048-cdi-r1\scores.json`
-- `D:\Code\DiffAudit\Research\workspaces\white-box\runs\gsa-loss-score-export-targeted-pia2048-overlap-20260418-r1\summary.json`
-- `D:\Code\DiffAudit\Research\workspaces\cross-box\runs\crossbox-pairboard-gsa-targeted-pia2048-repeated-20260418-r1\summary.json`
+- `<DIFFAUDIT_ROOT>/Research/src/diffaudit/attacks/crossbox_pairboard.py`
+- `<DIFFAUDIT_ROOT>/Research/src/diffaudit/cli.py`
+- `<DIFFAUDIT_ROOT>/Research/tests/test_crossbox_pairboard.py`
+- `<DIFFAUDIT_ROOT>/Research/workspaces/gray-box/runs/pia-cifar10-runtime-mainline-20260416-gpu-2048-cdi-r1/scores.json`
+- `<DIFFAUDIT_ROOT>/Research/workspaces/white-box/runs/gsa-loss-score-export-targeted-pia2048-overlap-20260418-r1/summary.json`
+- `<DIFFAUDIT_ROOT>/Research/workspaces/cross-box/runs/crossbox-pairboard-gsa-targeted-pia2048-repeated-20260418-r1/summary.json`
 
 ## What Landed
 
@@ -100,12 +100,12 @@ More precise reading:
 
 Primary anchor:
 
-- `D:\Code\DiffAudit\Research\workspaces\cross-box\runs\crossbox-pairboard-gsa-targeted-pia2048-repeated-20260418-r1\summary.json`
+- `<DIFFAUDIT_ROOT>/Research/workspaces/cross-box/runs/crossbox-pairboard-gsa-targeted-pia2048-repeated-20260418-r1/summary.json`
 
 Supporting anchors:
 
-- `D:\Code\DiffAudit\Research\workspaces\cross-box\runs\crossbox-pairboard-gsa-targeted-pia2048-20260418-r1\summary.json`
-- `D:\Code\DiffAudit\Research\workspaces\white-box\runs\gsa-loss-score-export-targeted-pia2048-overlap-20260418-r1\summary.json`
+- `<DIFFAUDIT_ROOT>/Research/workspaces/cross-box/runs/crossbox-pairboard-gsa-targeted-pia2048-20260418-r1/summary.json`
+- `<DIFFAUDIT_ROOT>/Research/workspaces/white-box/runs/gsa-loss-score-export-targeted-pia2048-overlap-20260418-r1/summary.json`
 
 ## Handoff Decision
 

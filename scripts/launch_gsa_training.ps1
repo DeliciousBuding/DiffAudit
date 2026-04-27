@@ -5,8 +5,8 @@ param(
     [Parameter(Mandatory = $true)]
     [string]$OutputDir,
 
-    [string]$PythonExe = "C:\Users\Ding\miniforge3\envs\diffaudit-research\python.exe",
-    [string]$TrainScript = "D:\Code\DiffAudit\Research\workspaces\white-box\external\GSA\DDPM\train_unconditional.py",
+    [string]$PythonExe = "python",
+    [string]$TrainScript = "",
     [int]$Resolution = 32,
     [int]$TrainBatchSize = 32,
     [int]$NumEpochs = 200,
@@ -21,15 +21,24 @@ param(
 
 $ErrorActionPreference = "Stop"
 
-if (-not (Test-Path -LiteralPath $PythonExe)) {
-    throw "Python executable not found: $PythonExe"
+if ($TrainScript -eq "") {
+    $TrainScript = Join-Path (Split-Path -Parent $PSScriptRoot) "workspaces\white-box\external\GSA\DDPM\train_unconditional.py"
+}
+
+if (Test-Path -LiteralPath $PythonExe) {
+    $resolvedPythonExe = (Resolve-Path -LiteralPath $PythonExe).Path
+} else {
+    $pythonCommand = Get-Command $PythonExe -ErrorAction SilentlyContinue
+    if (-not $pythonCommand) {
+        throw "Python executable not found: $PythonExe"
+    }
+    $resolvedPythonExe = $pythonCommand.Source
 }
 
 if (-not (Test-Path -LiteralPath $TrainScript)) {
     throw "Train script not found: $TrainScript"
 }
 
-$resolvedPythonExe = (Resolve-Path -LiteralPath $PythonExe).Path
 $resolvedTrainScript = (Resolve-Path -LiteralPath $TrainScript).Path
 
 New-Item -ItemType Directory -Force -Path $OutputDir | Out-Null

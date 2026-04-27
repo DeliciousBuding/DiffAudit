@@ -16,17 +16,17 @@ After the first positive `TMIA-DM late-window GPU128` rung, does a matched secon
 
 GPU runs:
 
-- `D:\Code\DiffAudit\Research\workspaces\gray-box\runs\tmiadm-cifar10-late-window-protocol-probe-20260416-gpu-128-r1\summary.json`
-- `D:\Code\DiffAudit\Research\workspaces\gray-box\runs\tmiadm-cifar10-late-window-protocol-probe-20260416-gpu-128-r2-seed1\summary.json`
+- `<DIFFAUDIT_ROOT>/Research/workspaces/gray-box/runs/tmiadm-cifar10-late-window-protocol-probe-20260416-gpu-128-r1/summary.json`
+- `<DIFFAUDIT_ROOT>/Research/workspaces/gray-box/runs/tmiadm-cifar10-late-window-protocol-probe-20260416-gpu-128-r2-seed1/summary.json`
 
 Current reference:
 
 - `PIA GPU128 baseline`:
-  - `D:\Code\DiffAudit\Research\workspaces\gray-box\runs\pia-cifar10-runtime-mainline-20260408-gpu-128\summary.json`
+  - `<DIFFAUDIT_ROOT>/Research/workspaces/gray-box/runs/pia-cifar10-runtime-mainline-20260408-gpu-128/summary.json`
 
 Prior GPU rung verdict:
 
-- `D:\Code\DiffAudit\Research\workspaces\gray-box\2026-04-16-tmiadm-gpu-pilot-verdict.md`
+- `<DIFFAUDIT_ROOT>/Research/workspaces/gray-box/2026-04-16-tmiadm-gpu-pilot-verdict.md`
 
 ## Metrics
 

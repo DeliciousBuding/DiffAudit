@@ -16,18 +16,18 @@ After upgrading `TMIA-DM` to protocol-ready, does the first bounded local CPU pr
 
 Primary bounded protocol-probe run:
 
-- `D:\Code\DiffAudit\Research\workspaces\gray-box\runs\tmiadm-cifar10-protocol-probe-20260416-cpu-32-r1\summary.json`
+- `<DIFFAUDIT_ROOT>/Research/workspaces/gray-box/runs/tmiadm-cifar10-protocol-probe-20260416-cpu-32-r1/summary.json`
 
 Protocol note:
 
-- `D:\Code\DiffAudit\Research\workspaces\gray-box\2026-04-16-tmiadm-protocol-and-asset-note.md`
+- `<DIFFAUDIT_ROOT>/Research/workspaces/gray-box/2026-04-16-tmiadm-protocol-and-asset-note.md`
 
 Current mainline comparison references:
 
 - `PIA cpu-32 baseline`:
-  - `D:\Code\DiffAudit\Research\workspaces\gray-box\runs\pia-cifar10-runtime-mainline-20260408-cpu-32\summary.json`
+  - `<DIFFAUDIT_ROOT>/Research/workspaces/gray-box/runs/pia-cifar10-runtime-mainline-20260408-cpu-32/summary.json`
 - `SimA cpu-32 feasibility`:
-  - `D:\Code\DiffAudit\Research\workspaces\gray-box\runs\sima-cifar10-runtime-feasibility-20260416-cpu-32-r1\summary.json`
+  - `<DIFFAUDIT_ROOT>/Research/workspaces/gray-box/runs/sima-cifar10-runtime-feasibility-20260416-cpu-32-r1/summary.json`
 
 ## Metrics
 

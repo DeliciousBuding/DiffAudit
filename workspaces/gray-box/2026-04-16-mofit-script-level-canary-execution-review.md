@@ -6,10 +6,10 @@ After `GB-29`, what is the smallest honest script-level path to mount the new `M
 
 ## Inputs Reviewed
 
-- `D:\Code\DiffAudit\Research\scripts\run_mofit_interface_canary.py`
-- `D:\Code\DiffAudit\Research\scripts\run_structural_memorization_smoke.py`
-- `D:\Code\DiffAudit\Research\src\diffaudit\attacks\mofit_scaffold.py`
-- `D:\Code\DiffAudit\Research\workspaces\gray-box\plan.md`
+- `<DIFFAUDIT_ROOT>/Research/scripts/run_mofit_interface_canary.py`
+- `<DIFFAUDIT_ROOT>/Research/scripts/run_structural_memorization_smoke.py`
+- `<DIFFAUDIT_ROOT>/Research/src/diffaudit/attacks/mofit_scaffold.py`
+- `<DIFFAUDIT_ROOT>/Research/workspaces/gray-box/plan.md`
 
 ## What Already Exists
 

@@ -6,12 +6,12 @@ Once `I-B` is restored as the next candidate surface after `X-53`, does the curr
 
 ## Inputs Reviewed
 
-- `D:\Code\DiffAudit\Research\ROADMAP.md`
-- `D:\Code\DiffAudit\Research\workspaces\implementation\challenger-queue.md`
-- `D:\Code\DiffAudit\Research\workspaces\white-box\2026-04-17-finding-nemo-first-truly-bounded-admitted-intervention-review-verdict.md`
-- `D:\Code\DiffAudit\Research\workspaces\white-box\2026-04-17-finding-nemo-post-first-actual-packet-boundary-review.md`
-- `D:\Code\DiffAudit\Research\workspaces\white-box\plan.md`
-- `D:\Code\DiffAudit\Research\workspaces\implementation\2026-04-17-x53-non-graybox-next-lane-reselection-after-x52-materials-stale-entry-sync.md`
+- `<DIFFAUDIT_ROOT>/Research/ROADMAP.md`
+- `<DIFFAUDIT_ROOT>/Research/workspaces/implementation/challenger-queue.md`
+- `<DIFFAUDIT_ROOT>/Research/workspaces/white-box/2026-04-17-finding-nemo-first-truly-bounded-admitted-intervention-review-verdict.md`
+- `<DIFFAUDIT_ROOT>/Research/workspaces/white-box/2026-04-17-finding-nemo-post-first-actual-packet-boundary-review.md`
+- `<DIFFAUDIT_ROOT>/Research/workspaces/white-box/plan.md`
+- `<DIFFAUDIT_ROOT>/Research/workspaces/implementation/2026-04-17-x53-non-graybox-next-lane-reselection-after-x52-materials-stale-entry-sync.md`
 
 ## Candidate Comparison
 
@@ -78,5 +78,5 @@ More precise reading:
 
 - `Research/ROADMAP.md`: update required
 - `Research/workspaces/implementation/challenger-queue.md`: update required
-- `D:\Code\DiffAudit\ROADMAP.md`: update required because the live lane advanced again
+- `<DIFFAUDIT_ROOT>/ROADMAP.md`: update required because the live lane advanced again
 - `Platform / Runtime`: no handoff

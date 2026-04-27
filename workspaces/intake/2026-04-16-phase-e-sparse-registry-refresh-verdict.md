@@ -6,15 +6,15 @@ After `WB-18`, `GB-18`, and `BB-7` all clarified that the currently explored whi
 
 ## Inputs Reviewed
 
-- `D:\Code\DiffAudit\Research\ROADMAP.md`
-- `D:\Code\DiffAudit\Research\workspaces\intake\phase-e-candidates.json`
-- `D:\Code\DiffAudit\Research\workspaces\intake\2026-04-10-phase-e-intake-ordering-review.md`
-- `D:\Code\DiffAudit\Research\workspaces\intake\2026-04-16-phase-e-registry-refresh-and-dplora-selection-verdict.md`
-- `D:\Code\DiffAudit\Research\workspaces\gray-box\plan.md`
-- `D:\Code\DiffAudit\Research\workspaces\black-box\plan.md`
-- `D:\Code\DiffAudit\Research\workspaces\gray-box\2026-04-16-post-temporal-striding-graybox-next-question-review.md`
-- `D:\Code\DiffAudit\Research\workspaces\black-box\2026-04-16-post-second-signal-blackbox-next-question-review.md`
-- `D:\Code\DiffAudit\Research\workspaces\white-box\2026-04-16-dplora-post-harmonized-lane-status-review.md`
+- `<DIFFAUDIT_ROOT>/Research/ROADMAP.md`
+- `<DIFFAUDIT_ROOT>/Research/workspaces/intake/phase-e-candidates.json`
+- `<DIFFAUDIT_ROOT>/Research/workspaces/intake/2026-04-10-phase-e-intake-ordering-review.md`
+- `<DIFFAUDIT_ROOT>/Research/workspaces/intake/2026-04-16-phase-e-registry-refresh-and-dplora-selection-verdict.md`
+- `<DIFFAUDIT_ROOT>/Research/workspaces/gray-box/plan.md`
+- `<DIFFAUDIT_ROOT>/Research/workspaces/black-box/plan.md`
+- `<DIFFAUDIT_ROOT>/Research/workspaces/gray-box/2026-04-16-post-temporal-striding-graybox-next-question-review.md`
+- `<DIFFAUDIT_ROOT>/Research/workspaces/black-box/2026-04-16-post-second-signal-blackbox-next-question-review.md`
+- `<DIFFAUDIT_ROOT>/Research/workspaces/white-box/2026-04-16-dplora-post-harmonized-lane-status-review.md`
 
 ## Current Truth
 

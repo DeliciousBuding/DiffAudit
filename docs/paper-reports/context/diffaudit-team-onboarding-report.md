@@ -22,7 +22,7 @@
 - Title: DiffAudit 团队入门扫盲文档
 - Authors: 文档未署名；PDF metadata 未提供可信作者信息
 - Venue / year / version: 团队内部入门材料，PDF 创建时间为 2026-04-04，全文 6 页
-- Local PDF path: `D:/Code/DiffAudit/Research/references/materials/context/diffaudit-team-onboarding.pdf`
+- Local PDF path: `<DIFFAUDIT_ROOT>/Research/references/materials/context/diffaudit-team-onboarding.pdf`
 - Source URL: 未知；当前仅见本地 PDF
 
 ## Research Question

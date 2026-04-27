@@ -16,18 +16,18 @@ After selecting `SimA` as the next gray-box family, is the current local CIFAR-1
 
 Primary bounded feasibility run:
 
-- `D:\Code\DiffAudit\Research\workspaces\gray-box\runs\sima-cifar10-runtime-feasibility-20260416-cpu-32-r1\summary.json`
+- `<DIFFAUDIT_ROOT>/Research/workspaces/gray-box/runs/sima-cifar10-runtime-feasibility-20260416-cpu-32-r1/summary.json`
 
 Selection note:
 
-- `D:\Code\DiffAudit\Research\workspaces\gray-box\2026-04-16-graybox-new-family-sima-selection.md`
+- `<DIFFAUDIT_ROOT>/Research/workspaces/gray-box/2026-04-16-graybox-new-family-sima-selection.md`
 
 Current mainline comparison references:
 
 - `PIA cpu-32 baseline`:
-  - `D:\Code\DiffAudit\Research\workspaces\gray-box\runs\pia-cifar10-runtime-mainline-20260408-cpu-32\summary.json`
+  - `<DIFFAUDIT_ROOT>/Research/workspaces/gray-box/runs/pia-cifar10-runtime-mainline-20260408-cpu-32/summary.json`
 - `PIA defended cpu-32`:
-  - `D:\Code\DiffAudit\Research\workspaces\gray-box\runs\pia-cifar10-runtime-mainline-dropout-defense-20260408-cpu-32\summary.json`
+  - `<DIFFAUDIT_ROOT>/Research/workspaces/gray-box/runs/pia-cifar10-runtime-mainline-dropout-defense-20260408-cpu-32/summary.json`
 
 ## Metrics
 

@@ -78,14 +78,14 @@ Proposed local approximation for DiffAudit:
 Current local assets that make this feasible:
 
 - base model:
-  - `D:\Code\DiffAudit\Download\shared\weights\stable-diffusion-v1-5`
+  - `<DIFFAUDIT_ROOT>/Download/shared/weights/stable-diffusion-v1-5`
 - caption model:
-  - `D:\Code\DiffAudit\Download\shared\weights\blip-image-captioning-large`
+  - `<DIFFAUDIT_ROOT>/Download/shared/weights/blip-image-captioning-large`
 - prepared local target-family image datasets:
-  - `D:\Code\DiffAudit\Research\workspaces\black-box\runs\clid-paper-align-asset-prep-20260415-r1\datasets\member`
-  - `D:\Code\DiffAudit\Research\workspaces\black-box\runs\clid-paper-align-asset-prep-20260415-r1\datasets\nonmember`
+  - `<DIFFAUDIT_ROOT>/Research/workspaces/black-box/runs/clid-paper-align-asset-prep-20260415-r1/datasets/member`
+  - `<DIFFAUDIT_ROOT>/Research/workspaces/black-box/runs/clid-paper-align-asset-prep-20260415-r1/datasets/nonmember`
 - current target-side LoRA:
-  - `D:\\Code\\DiffAudit\\Download\\black-box\\supplementary\\recon-assets\\ndss-2025-blackbox-membership-inference-fine-tuned-diffusion-models\model-checkpoints\celeba_target\checkpoint-25000`
+  - `<DIFFAUDIT_ROOT>/Download/black-box/supplementary/recon-assets/ndss-2025-blackbox-membership-inference-fine-tuned-diffusion-models/model-checkpoints/celeba_target/checkpoint-25000`
 
 Local implementation leverage:
 

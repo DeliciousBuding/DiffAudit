@@ -6,12 +6,12 @@ After `X-135` lands a real bounded `H2` training pilot, can `04-H2` freeze the f
 
 ## Inputs Reviewed
 
-- `D:\Code\DiffAudit\Research\workspaces\implementation\2026-04-21-x135-04-h2-run-defense-pilot-contract-landing.md`
-- `D:\Code\DiffAudit\Research\src\diffaudit\defenses\h2_adapter.py`
-- `D:\Code\DiffAudit\Research\src\diffaudit\cli.py`
-- `D:\Code\DiffAudit\Research\tests\test_h2_adapter.py`
-- `D:\Code\DiffAudit\Research\workspaces\white-box\runs\gsa-loss-score-export-bounded-actual-20260418-r1\summary.json`
-- `D:\Code\DiffAudit\Research\workspaces\implementation\runs\h2-review-defense-pilot-20260421-r1\summary.json`
+- `<DIFFAUDIT_ROOT>/Research/workspaces/implementation/2026-04-21-x135-04-h2-run-defense-pilot-contract-landing.md`
+- `<DIFFAUDIT_ROOT>/Research/src/diffaudit/defenses/h2_adapter.py`
+- `<DIFFAUDIT_ROOT>/Research/src/diffaudit/cli.py`
+- `<DIFFAUDIT_ROOT>/Research/tests/test_h2_adapter.py`
+- `<DIFFAUDIT_ROOT>/Research/workspaces/white-box/runs/gsa-loss-score-export-bounded-actual-20260418-r1/summary.json`
+- `<DIFFAUDIT_ROOT>/Research/workspaces/implementation/runs/h2-review-defense-pilot-20260421-r1/summary.json`
 
 ## Findings
 
@@ -61,7 +61,7 @@ That means:
 
 ## Canonical Evidence Anchor
 
-- `D:\Code\DiffAudit\Research\workspaces\implementation\runs\h2-review-defense-pilot-20260421-r1\summary.json`
+- `<DIFFAUDIT_ROOT>/Research/workspaces/implementation/runs/h2-review-defense-pilot-20260421-r1/summary.json`
 
 ## Control Decision
 

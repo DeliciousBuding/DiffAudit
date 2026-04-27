@@ -6,10 +6,10 @@ Given that `PIA vs TMIA-DM` same-split combination is already `positive but boun
 
 ## Inputs Reviewed
 
-- `D:\Code\DiffAudit\Research\ROADMAP.md`
-- `D:\Code\DiffAudit\Research\workspaces\gray-box\2026-04-16-pia-vs-tmiadm-disagreement-exploitation-verdict.md`
-- `D:\Code\DiffAudit\Research\workspaces\gray-box\2026-04-16-pia-vs-tmiadm-long-window-comparison.md`
-- `D:\Code\DiffAudit\Research\workspaces\gray-box\2026-04-17-ranking-sensitive-variable-search-review.md`
+- `<DIFFAUDIT_ROOT>/Research/ROADMAP.md`
+- `<DIFFAUDIT_ROOT>/Research/workspaces/gray-box/2026-04-16-pia-vs-tmiadm-disagreement-exploitation-verdict.md`
+- `<DIFFAUDIT_ROOT>/Research/workspaces/gray-box/2026-04-16-pia-vs-tmiadm-long-window-comparison.md`
+- `<DIFFAUDIT_ROOT>/Research/workspaces/gray-box/2026-04-17-ranking-sensitive-variable-search-review.md`
 
 ## Review
 

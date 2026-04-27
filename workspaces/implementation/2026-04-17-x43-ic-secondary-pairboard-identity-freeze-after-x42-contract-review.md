@@ -6,14 +6,14 @@ After `X-42` narrowed the new `I-C` agreement-first lane to one missing second p
 
 ## Inputs Reviewed
 
-- `D:\Code\DiffAudit\Research\ROADMAP.md`
-- `D:\Code\DiffAudit\Research\workspaces\implementation\challenger-queue.md`
-- `D:\Code\DiffAudit\Research\workspaces\implementation\2026-04-17-x42-ic-bounded-multipair-agreement-first-contract-review.md`
-- `D:\Code\DiffAudit\Research\workspaces\white-box\2026-04-17-cross-permission-same-packet-intervention-contract.md`
-- `D:\Code\DiffAudit\Research\workspaces\white-box\2026-04-17-cross-permission-matched-pair-freeze.md`
-- `D:\Code\DiffAudit\Research\workspaces\white-box\assets\gsa-cifar10-1k-3shadow-epoch300-rerun1\datasets\target-member\`
-- `D:\Code\DiffAudit\Research\workspaces\white-box\assets\gsa-cifar10-1k-3shadow-epoch300-rerun1\datasets\target-nonmember\`
-- `D:\Code\DiffAudit\Research\external\PIA\DDPM\CIFAR10_train_ratio0.5.npz`
+- `<DIFFAUDIT_ROOT>/Research/ROADMAP.md`
+- `<DIFFAUDIT_ROOT>/Research/workspaces/implementation/challenger-queue.md`
+- `<DIFFAUDIT_ROOT>/Research/workspaces/implementation/2026-04-17-x42-ic-bounded-multipair-agreement-first-contract-review.md`
+- `<DIFFAUDIT_ROOT>/Research/workspaces/white-box/2026-04-17-cross-permission-same-packet-intervention-contract.md`
+- `<DIFFAUDIT_ROOT>/Research/workspaces/white-box/2026-04-17-cross-permission-matched-pair-freeze.md`
+- `<DIFFAUDIT_ROOT>/Research/workspaces/white-box/assets/gsa-cifar10-1k-3shadow-epoch300-rerun1/datasets/target-member\`
+- `<DIFFAUDIT_ROOT>/Research/workspaces/white-box/assets/gsa-cifar10-1k-3shadow-epoch300-rerun1/datasets/target-nonmember\`
+- `<DIFFAUDIT_ROOT>/Research/external/PIA/DDPM/CIFAR10_train_ratio0.5.npz`
 
 ## Overlap Authority
 
@@ -137,15 +137,15 @@ More precise reading:
 
 ## Canonical Evidence Anchor
 
-- `D:\Code\DiffAudit\Research\workspaces\implementation\2026-04-17-x43-ic-secondary-pairboard-identity-freeze-after-x42-contract-review.md`
+- `<DIFFAUDIT_ROOT>/Research/workspaces/implementation/2026-04-17-x43-ic-secondary-pairboard-identity-freeze-after-x42-contract-review.md`
 
 ## Handoff Decision
 
-- `D:\Code\DiffAudit\Research\ROADMAP.md`: update required
-- `D:\Code\DiffAudit\Research\workspaces\implementation\challenger-queue.md`: update required
-- `D:\Code\DiffAudit\Research\docs\comprehensive-progress.md`: update required
-- `D:\Code\DiffAudit\Research\docs\mainline-narrative.md`: update required
-- `D:\Code\DiffAudit\ROADMAP.md`: update required
+- `<DIFFAUDIT_ROOT>/Research/ROADMAP.md`: update required
+- `<DIFFAUDIT_ROOT>/Research/workspaces/implementation/challenger-queue.md`: update required
+- `<DIFFAUDIT_ROOT>/Research/docs/comprehensive-progress.md`: update required
+- `<DIFFAUDIT_ROOT>/Research/docs/mainline-narrative.md`: update required
+- `<DIFFAUDIT_ROOT>/ROADMAP.md`: update required
 - `platform_runtime_handoff = none`
 - `competition_material_sync = none`
 

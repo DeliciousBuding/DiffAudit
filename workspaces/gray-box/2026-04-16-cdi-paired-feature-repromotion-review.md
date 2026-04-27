@@ -6,10 +6,10 @@ Now that the repaired `SecMI 2048` paired surface has recovered, should the `CDI
 
 ## Inputs Reviewed
 
-- `D:\Code\DiffAudit\Research\workspaces\gray-box\2026-04-16-cdi-paired-feature-extension-review.md`
-- `D:\Code\DiffAudit\Research\workspaces\gray-box\2026-04-16-cdi-paired-surface-mismatch-review.md`
-- `D:\Code\DiffAudit\Research\workspaces\gray-box\2026-04-16-secmi-paired-surface-repair-contract-review.md`
-- `D:\Code\DiffAudit\Research\workspaces\gray-box\2026-04-16-secmi-pia-2048-repaired-paired-surface-verdict.md`
+- `<DIFFAUDIT_ROOT>/Research/workspaces/gray-box/2026-04-16-cdi-paired-feature-extension-review.md`
+- `<DIFFAUDIT_ROOT>/Research/workspaces/gray-box/2026-04-16-cdi-paired-surface-mismatch-review.md`
+- `<DIFFAUDIT_ROOT>/Research/workspaces/gray-box/2026-04-16-secmi-paired-surface-repair-contract-review.md`
+- `<DIFFAUDIT_ROOT>/Research/workspaces/gray-box/2026-04-16-secmi-pia-2048-repaired-paired-surface-verdict.md`
 
 ## Review
 

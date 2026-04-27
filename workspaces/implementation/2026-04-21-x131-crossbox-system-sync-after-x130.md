@@ -6,9 +6,9 @@ After `X-130` identified the remaining active stale-entry layer, are the current
 
 ## Inputs Reviewed
 
-- `D:\Code\DiffAudit\Research\README.md`
-- `D:\Code\DiffAudit\Research\workspaces\implementation\challenger-queue.md`
-- `D:\Code\DiffAudit\Research\workspaces\implementation\2026-04-21-x130-non-graybox-next-lane-reselection-after-x129.md`
+- `<DIFFAUDIT_ROOT>/Research/README.md`
+- `<DIFFAUDIT_ROOT>/Research/workspaces/implementation/challenger-queue.md`
+- `<DIFFAUDIT_ROOT>/Research/workspaces/implementation/2026-04-21-x130-non-graybox-next-lane-reselection-after-x129.md`
 
 ## Changes Applied
 
@@ -42,7 +42,7 @@ Sharper control truth:
 
 ## Canonical Evidence Anchor
 
-- `D:\Code\DiffAudit\Research\workspaces\implementation\2026-04-21-x131-crossbox-system-sync-after-x130.md`
+- `<DIFFAUDIT_ROOT>/Research/workspaces/implementation/2026-04-21-x131-crossbox-system-sync-after-x130.md`
 
 ## Handoff
 

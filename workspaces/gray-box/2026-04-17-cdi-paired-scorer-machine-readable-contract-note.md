@@ -52,7 +52,7 @@ Required when paired policy is effective:
 
 This round re-emitted a policy-aligned paired canary artifact with the contract fields present:
 
-- `D:\Code\DiffAudit\Research\workspaces\gray-box\runs\cdi-paired-canary-20260417-r3-contract\audit_summary.json`
+- `<DIFFAUDIT_ROOT>/Research/workspaces/gray-box/runs/cdi-paired-canary-20260417-r3-contract/audit_summary.json`
 
 ## Verdict
 

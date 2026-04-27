@@ -2,11 +2,11 @@
   "status": "ready",
   "mode": "mainline-audit-report",
   "schema": "diffaudit.mainline_audit_report.v2",
-  "research_root": "D:\\Code\\DiffAudit\\Research",
+  "research_root": "<DIFFAUDIT_ROOT>/Research",
   "artifact_paths": {
-    "summary": "D:\\Code\\DiffAudit\\Research\\workspaces\\implementation\\reports\\mainline-audit-20260415-final-refresh\\summary.json",
-    "next_gpu_action": "D:\\Code\\DiffAudit\\Research\\workspaces\\implementation\\reports\\mainline-audit-20260415-final-refresh\\next_gpu_action.json",
-    "attack_defense_table": "D:\\Code\\DiffAudit\\Research\\workspaces\\implementation\\artifacts\\unified-attack-defense-table.json"
+    "summary": "<DIFFAUDIT_ROOT>/Research/workspaces/implementation/reports/mainline-audit-20260415-final-refresh/summary.json",
+    "next_gpu_action": "<DIFFAUDIT_ROOT>/Research/workspaces/implementation/reports/mainline-audit-20260415-final-refresh/next_gpu_action.json",
+    "attack_defense_table": "<DIFFAUDIT_ROOT>/Research/workspaces/implementation/artifacts/unified-attack-defense-table.json"
   },
   "system_posture": {
     "overall_risk_level": "critical",

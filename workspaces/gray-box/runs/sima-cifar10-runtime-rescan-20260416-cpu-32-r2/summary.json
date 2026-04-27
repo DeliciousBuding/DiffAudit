@@ -5,15 +5,15 @@
   "paper": "SimA_arXiv2025",
   "mode": "runtime-feasibility",
   "device": "cpu",
-  "workspace": "D:\\Code\\DiffAudit\\Research\\workspaces\\gray-box\\runs\\sima-cifar10-runtime-rescan-20260416-cpu-32-r2",
+  "workspace": "<DIFFAUDIT_ROOT>/Research/workspaces/gray-box/runs/sima-cifar10-runtime-rescan-20260416-cpu-32-r2",
   "workspace_name": "sima-cifar10-runtime-rescan-20260416-cpu-32-r2",
   "contract_stage": "target",
   "asset_grade": "single-machine-real-asset",
   "provenance_status": "workspace-verified",
   "evidence_level": "feasibility",
   "artifact_paths": {
-    "summary": "D:\\Code\\DiffAudit\\Research\\workspaces\\gray-box\\runs\\sima-cifar10-runtime-rescan-20260416-cpu-32-r2\\summary.json",
-    "scan_results": "D:\\Code\\DiffAudit\\Research\\workspaces\\gray-box\\runs\\sima-cifar10-runtime-rescan-20260416-cpu-32-r2\\scan-results.json"
+    "summary": "<DIFFAUDIT_ROOT>/Research/workspaces/gray-box/runs/sima-cifar10-runtime-rescan-20260416-cpu-32-r2/summary.json",
+    "scan_results": "<DIFFAUDIT_ROOT>/Research/workspaces/gray-box/runs/sima-cifar10-runtime-rescan-20260416-cpu-32-r2/scan-results.json"
   },
   "checks": {
     "checkpoint": true,
@@ -24,10 +24,10 @@
     "scan_completed": true
   },
   "runtime": {
-    "repo_root": "D:\\Code\\DiffAudit\\Research\\external\\PIA",
+    "repo_root": "<DIFFAUDIT_ROOT>/Research/external/PIA",
     "model_dir": "workspaces/gray-box/assets/pia/checkpoints/cifar10_ddpm",
     "dataset_root": "workspaces/gray-box/assets/pia/datasets",
-    "member_split_root": "D:\\Code\\DiffAudit\\Research\\external\\PIA\\DDPM",
+    "member_split_root": "<DIFFAUDIT_ROOT>/Research/external/PIA/DDPM",
     "batch_size": 8,
     "max_samples": 32,
     "num_samples": 32,

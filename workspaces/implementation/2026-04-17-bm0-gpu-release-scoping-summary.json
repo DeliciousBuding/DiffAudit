@@ -2,7 +2,7 @@
   "status": "ready",
   "dispatch": "B-M0 GPU release scoping",
   "dispatch_date": "2026-04-17",
-  "root_authority": "D:/Code/DiffAudit/ROADMAP.md §4 B-M0",
+  "root_authority": "<DIFFAUDIT_ROOT>/ROADMAP.md §4 B-M0",
   "decision": {
     "selected_candidate": "A",
     "selected_candidate_label": "bounded shadow likelihood-ratio follow-up on frozen X-75/X-77 white-box loss-score packet",
@@ -15,9 +15,9 @@
       "Research/ROADMAP.md keeps I-C below support and below immediate GPU release after the translated-contract negative falsifier."
     ],
     "candidate_b_evidence": [
-      "D:/Code/DiffAudit/Research/workspaces/white-box/2026-04-17-cross-permission-inmodel-intervention-review.md",
-      "D:/Code/DiffAudit/Research/workspaces/white-box/2026-04-17-cross-permission-translated-falsifier-review.md",
-      "D:/Code/DiffAudit/Research/ROADMAP.md#5.3"
+      "<DIFFAUDIT_ROOT>/Research/workspaces/white-box/2026-04-17-cross-permission-inmodel-intervention-review.md",
+      "<DIFFAUDIT_ROOT>/Research/workspaces/white-box/2026-04-17-cross-permission-translated-falsifier-review.md",
+      "<DIFFAUDIT_ROOT>/Research/ROADMAP.md#5.3"
     ],
     "no_x87_reselection": true
   },
@@ -26,7 +26,7 @@
       "dataset": "CIFAR10",
       "model_family": "DDPM",
       "asset_family": "gsa-cifar10-1k-3shadow-epoch300-rerun1",
-      "packet_reference": "D:/Code/DiffAudit/Research/workspaces/white-box/runs/gsa-loss-score-export-bounded-actual-20260418-r1/summary.json",
+      "packet_reference": "<DIFFAUDIT_ROOT>/Research/workspaces/white-box/runs/gsa-loss-score-export-bounded-actual-20260418-r1/summary.json",
       "extraction_max_samples_per_split": 64,
       "runtime_schedule": {
         "resolution": 32,
@@ -54,9 +54,9 @@
   },
   "fire": {
     "status": "ready",
-    "gpu_export_summary": "D:/Code/DiffAudit/Research/workspaces/white-box/runs/gsa-loss-score-export-bounded-bm0-gpu-20260417-r1/summary.json",
-    "threshold_eval_summary": "D:/Code/DiffAudit/Research/workspaces/white-box/runs/gsa-loss-score-threshold-eval-bounded-bm0-gpu-20260417-r1/summary.json",
-    "lr_eval_summary": "D:/Code/DiffAudit/Research/workspaces/white-box/runs/gsa-loss-score-lr-eval-bounded-bm0-gpu-20260417-r1/summary.json",
+    "gpu_export_summary": "<DIFFAUDIT_ROOT>/Research/workspaces/white-box/runs/gsa-loss-score-export-bounded-bm0-gpu-20260417-r1/summary.json",
+    "threshold_eval_summary": "<DIFFAUDIT_ROOT>/Research/workspaces/white-box/runs/gsa-loss-score-threshold-eval-bounded-bm0-gpu-20260417-r1/summary.json",
+    "lr_eval_summary": "<DIFFAUDIT_ROOT>/Research/workspaces/white-box/runs/gsa-loss-score-lr-eval-bounded-bm0-gpu-20260417-r1/summary.json",
     "kill_gate_triggered": false,
     "observed_oom_events": 0,
     "observed_thermal_throttle_events": 0
@@ -88,5 +88,5 @@
     "required": false,
     "reason": "Packet schema and consumer-facing fields are unchanged; only scorer-family evidence within the existing white-box packet contract moved."
   },
-  "canonical_evidence_anchor": "D:/Code/DiffAudit/Research/workspaces/white-box/runs/gsa-loss-score-lr-eval-bounded-bm0-gpu-20260417-r1/summary.json"
+  "canonical_evidence_anchor": "<DIFFAUDIT_ROOT>/Research/workspaces/white-box/runs/gsa-loss-score-lr-eval-bounded-bm0-gpu-20260417-r1/summary.json"
 }

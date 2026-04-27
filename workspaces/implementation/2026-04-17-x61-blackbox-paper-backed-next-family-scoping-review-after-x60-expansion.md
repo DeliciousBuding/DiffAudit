@@ -13,21 +13,21 @@ After `X-60` restored black-box as the only honest remaining non-graybox candida
 
 ## Inputs Reviewed
 
-- `D:\Code\DiffAudit\Research\ROADMAP.md`
-- `D:\Code\DiffAudit\Research\workspaces\implementation\challenger-queue.md`
-- `D:\Code\DiffAudit\Research\workspaces\black-box\README.md`
-- `D:\Code\DiffAudit\Research\workspaces\black-box\plan.md`
-- `D:\Code\DiffAudit\Research\workspaces\black-box\paper-matrix-2024-2026.md`
-- `D:\Code\DiffAudit\Research\workspaces\black-box\experiment-entrypoints.md`
-- `D:\Code\DiffAudit\Research\workspaces\black-box\2026-04-17-blackbox-next-family-candidate-generation-refresh-review.md`
-- `D:\Code\DiffAudit\Research\workspaces\black-box\2026-04-15-blackbox-new-family-semantic-auxiliary-classifier-feasibility.md`
-- `D:\Code\DiffAudit\Research\workspaces\black-box\2026-04-15-blackbox-second-signal-semantic-aux-verdict.md`
-- `D:\Code\DiffAudit\Research\workspaces\black-box\2026-04-15-clid-paper-alignment-audit.md`
-- `D:\Code\DiffAudit\Research\workspaces\black-box\2026-04-08-variation-local-track.md`
-- `D:\Code\DiffAudit\Research\workspaces\black-box\2026-04-16-variation-asset-contract-verdict.md`
-- `D:\Code\DiffAudit\Research\workspaces\black-box\kandinsky-diagnostics\README.md`
-- `D:\Code\DiffAudit\Research\docs\paper-reports\black-box\2025-visapp-membership-inference-face-fine-tuned-latent-diffusion-models-report.md`
-- `D:\Code\DiffAudit\Download\manifests\research-download-manifest.json`
+- `<DIFFAUDIT_ROOT>/Research/ROADMAP.md`
+- `<DIFFAUDIT_ROOT>/Research/workspaces/implementation/challenger-queue.md`
+- `<DIFFAUDIT_ROOT>/Research/workspaces/black-box/README.md`
+- `<DIFFAUDIT_ROOT>/Research/workspaces/black-box/plan.md`
+- `<DIFFAUDIT_ROOT>/Research/workspaces/black-box/paper-matrix-2024-2026.md`
+- `<DIFFAUDIT_ROOT>/Research/workspaces/black-box/experiment-entrypoints.md`
+- `<DIFFAUDIT_ROOT>/Research/workspaces/black-box/2026-04-17-blackbox-next-family-candidate-generation-refresh-review.md`
+- `<DIFFAUDIT_ROOT>/Research/workspaces/black-box/2026-04-15-blackbox-new-family-semantic-auxiliary-classifier-feasibility.md`
+- `<DIFFAUDIT_ROOT>/Research/workspaces/black-box/2026-04-15-blackbox-second-signal-semantic-aux-verdict.md`
+- `<DIFFAUDIT_ROOT>/Research/workspaces/black-box/2026-04-15-clid-paper-alignment-audit.md`
+- `<DIFFAUDIT_ROOT>/Research/workspaces/black-box/2026-04-08-variation-local-track.md`
+- `<DIFFAUDIT_ROOT>/Research/workspaces/black-box/2026-04-16-variation-asset-contract-verdict.md`
+- `<DIFFAUDIT_ROOT>/Research/workspaces/black-box/kandinsky-diagnostics/README.md`
+- `<DIFFAUDIT_ROOT>/Research/docs/paper-reports/black-box/2025-visapp-membership-inference-face-fine-tuned-latent-diffusion-models-report.md`
+- `<DIFFAUDIT_ROOT>/Download/manifests/research-download-manifest.json`
 
 ## Review
 

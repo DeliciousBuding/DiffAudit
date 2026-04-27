@@ -6,14 +6,14 @@ After `Noise as a Probe` became a strengthened bounded challenger candidate, wha
 
 ## Inputs Reviewed
 
-- `D:\Code\DiffAudit\Research\workspaces\gray-box\2026-04-16-noise-as-probe-protocol-asset-contract.md`
-- `D:\Code\DiffAudit\Research\workspaces\gray-box\2026-04-16-noise-as-probe-larger-rung-repeat-verdict.md`
-- `D:\Code\DiffAudit\Research\workspaces\gray-box\2026-04-16-noise-as-probe-challenger-boundary-review.md`
-- `D:\Code\DiffAudit\Research\workspaces\gray-box\2026-04-16-noise-as-probe-defended-extension-feasibility-review.md`
-- `D:\Code\DiffAudit\Research\workspaces\gray-box\2026-04-16-noise-as-probe-summary-layer-sync-verdict.md`
-- `D:\Code\DiffAudit\Research\workspaces\gray-box\2026-04-16-pia-vs-tmiadm-operating-point-comparison.md`
-- `D:\Code\DiffAudit\Research\workspaces\gray-box\2026-04-16-pia-vs-tmiadm-defended-operating-point-comparison.md`
-- `D:\Code\DiffAudit\Research\workspaces\gray-box\2026-04-16-graybox-second-defense-closure-verdict.md`
+- `<DIFFAUDIT_ROOT>/Research/workspaces/gray-box/2026-04-16-noise-as-probe-protocol-asset-contract.md`
+- `<DIFFAUDIT_ROOT>/Research/workspaces/gray-box/2026-04-16-noise-as-probe-larger-rung-repeat-verdict.md`
+- `<DIFFAUDIT_ROOT>/Research/workspaces/gray-box/2026-04-16-noise-as-probe-challenger-boundary-review.md`
+- `<DIFFAUDIT_ROOT>/Research/workspaces/gray-box/2026-04-16-noise-as-probe-defended-extension-feasibility-review.md`
+- `<DIFFAUDIT_ROOT>/Research/workspaces/gray-box/2026-04-16-noise-as-probe-summary-layer-sync-verdict.md`
+- `<DIFFAUDIT_ROOT>/Research/workspaces/gray-box/2026-04-16-pia-vs-tmiadm-operating-point-comparison.md`
+- `<DIFFAUDIT_ROOT>/Research/workspaces/gray-box/2026-04-16-pia-vs-tmiadm-defended-operating-point-comparison.md`
+- `<DIFFAUDIT_ROOT>/Research/workspaces/gray-box/2026-04-16-graybox-second-defense-closure-verdict.md`
 
 ## Current Read
 

@@ -28,20 +28,20 @@
 当前推荐入口是 Go Runtime 控制面：
 
 ```powershell
-cd D:\Code\DiffAudit\Runtime-Server
+cd <DIFFAUDIT_ROOT>/Runtime-Server
 go run ./cmd/runtime --host 127.0.0.1 --port 8765
 ```
 
 覆盖本机目录：
 
 ```powershell
-cd D:\Code\DiffAudit\Runtime-Server
+cd <DIFFAUDIT_ROOT>/Runtime-Server
 go run ./cmd/runtime `
   --host 127.0.0.1 `
   --port 8765 `
-  --experiments-root D:\Code\DiffAudit\Research\experiments `
-  --jobs-root D:\Code\DiffAudit\Research\workspaces\runtime\jobs `
-  --project-root D:\Code\DiffAudit\Research
+  --experiments-root <DIFFAUDIT_ROOT>/Research/experiments `
+  --jobs-root <DIFFAUDIT_ROOT>/Research/workspaces/runtime/jobs `
+  --project-root <DIFFAUDIT_ROOT>/Research
 ```
 
 当前职责划分：
@@ -58,8 +58,8 @@ go run ./cmd/runtime `
 ```json
 {
   "status": "ok",
-  "experiments_root": "D:\\Code\\DiffAudit\\Research\\experiments",
-  "jobs_root": "D:\\Code\\DiffAudit\\Research\\workspaces\\runtime\\jobs"
+  "experiments_root": "<DIFFAUDIT_ROOT>/Research/experiments",
+  "jobs_root": "<DIFFAUDIT_ROOT>/Research/workspaces/runtime/jobs"
 }
 ```
 
@@ -190,8 +190,8 @@ job 元数据会写到：
   "job_type": "recon_artifact_mainline",
   "contract_key": "black-box/recon/sd15-ddim",
   "workspace_name": "api-recon-artifact-mainline",
-  "artifact_dir": "D:\\Code\\DiffAudit\\Research\\experiments\\recon-runtime-mainline-ddim-public-100-step30\\score-artifacts",
-  "repo_root": "D:\\Code\\DiffAudit\\Research\\external\\Reconstruction-based-Attack",
+  "artifact_dir": "<DIFFAUDIT_ROOT>/Research/experiments/recon-runtime-mainline-ddim-public-100-step30/score-artifacts",
+  "repo_root": "<DIFFAUDIT_ROOT>/Research/external/Reconstruction-based-Attack",
   "method": "threshold"
 }
 ```
@@ -209,7 +209,7 @@ job 元数据会写到：
   "shadow_nonmember_dataset": "D:\\path\\shadow_non_member.pt",
   "target_model_dir": "D:\\path\\target_checkpoint",
   "shadow_model_dir": "D:\\path\\shadow_checkpoint",
-  "repo_root": "D:\\Code\\DiffAudit\\Research\\external\\Reconstruction-based-Attack",
+  "repo_root": "<DIFFAUDIT_ROOT>/Research/external/Reconstruction-based-Attack",
   "backend": "stable_diffusion",
   "scheduler": "ddim",
   "method": "threshold"
@@ -224,12 +224,12 @@ job 元数据会写到：
   "contract_key": "gray-box/pia/cifar10-ddpm",
   "workspace_name": "api-pia-runtime-mainline-001",
   "runtime_profile": "docker-default",
-  "repo_root": "D:\\Code\\DiffAudit\\Research\\external\\PIA",
+  "repo_root": "<DIFFAUDIT_ROOT>/Research/external/PIA",
   "assets": {
-    "member_split_root": "D:\\Code\\DiffAudit\\Research\\external\\PIA\\DDPM"
+    "member_split_root": "<DIFFAUDIT_ROOT>/Research/external/PIA/DDPM"
   },
   "job_inputs": {
-    "config": "D:\\Code\\DiffAudit\\Research\\tmp\\configs\\pia-cifar10-graybox-assets.local.yaml",
+    "config": "<DIFFAUDIT_ROOT>/Research/tmp/configs/pia-cifar10-graybox-assets.local.yaml",
     "device": "cpu",
     "num_samples": "16"
   }
@@ -244,9 +244,9 @@ job 元数据会写到：
   "contract_key": "white-box/gsa/ddpm-cifar10",
   "workspace_name": "api-gsa-runtime-mainline-001",
   "runtime_profile": "docker-default",
-  "repo_root": "D:\\Code\\DiffAudit\\Research\\workspaces\\white-box\\external\\GSA",
+  "repo_root": "<DIFFAUDIT_ROOT>/Research/workspaces/white-box/external/GSA",
   "assets": {
-    "assets_root": "D:\\Code\\DiffAudit\\Research\\workspaces\\white-box\\assets\\gsa-cifar10-1k-3shadow-epoch300-rerun1"
+    "assets_root": "<DIFFAUDIT_ROOT>/Research/workspaces/white-box/assets/gsa-cifar10-1k-3shadow-epoch300-rerun1"
   },
   "job_inputs": {
     "resolution": "32",

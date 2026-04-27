@@ -2,7 +2,7 @@
   "task_scope": "BB-1.3 timestep-selective reconstruction probe",
   "track": "black-box",
   "method_family": "recon-coordinate-selective",
-  "artifact_dir": "D:/Code/DiffAudit/Research/experiments/recon-runtime-mainline-ddim-public-100-step30/score-artifacts",
+  "artifact_dir": "<DIFFAUDIT_ROOT>/Research/experiments/recon-runtime-mainline-ddim-public-100-step30/score-artifacts",
   "vector_length": 768,
   "baseline_dim": 0,
   "baseline_orientation": "identity",

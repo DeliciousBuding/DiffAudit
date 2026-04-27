@@ -6,11 +6,11 @@ Can the current repo support one honest first `MoFit`-style gray-box smoke on a 
 
 ## Inputs Reviewed
 
-- `D:\Code\DiffAudit\Research\workspaces\gray-box\2026-04-16-post-noise-next-family-reselection.md`
-- `D:\Code\DiffAudit\Research\docs\paper-reports\markdown\gray-box\2026-openreview-mofit-caption-free-membership-inference\2026-openreview-mofit-caption-free-membership-inference-refined.md`
-- `D:\Code\DiffAudit\Research\workspaces\gray-box\2026-04-16-noise-as-probe-implementation-surface-review.md`
-- `D:\Code\DiffAudit\Research\workspaces\gray-box\2026-04-09-graybox-signal-axis-note.md`
-- `D:\Code\DiffAudit\Research\README.md`
+- `<DIFFAUDIT_ROOT>/Research/workspaces/gray-box/2026-04-16-post-noise-next-family-reselection.md`
+- `<DIFFAUDIT_ROOT>/Research/docs/paper-reports/markdown/gray-box/2026-openreview-mofit-caption-free-membership-inference/2026-openreview-mofit-caption-free-membership-inference-refined.md`
+- `<DIFFAUDIT_ROOT>/Research/workspaces/gray-box/2026-04-16-noise-as-probe-implementation-surface-review.md`
+- `<DIFFAUDIT_ROOT>/Research/workspaces/gray-box/2026-04-09-graybox-signal-axis-note.md`
+- `<DIFFAUDIT_ROOT>/Research/README.md`
 
 ## What MoFit Needs
 

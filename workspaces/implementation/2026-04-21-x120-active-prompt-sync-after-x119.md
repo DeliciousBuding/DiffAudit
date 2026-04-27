@@ -6,11 +6,11 @@ After `X-119` froze `04-H2 privacy-aware adapter` as `prototype-implemented / co
 
 ## Inputs Reviewed
 
-- `D:\Code\DiffAudit\Research\docs\research-autonomous-execution-prompt.md`
-- `D:\Code\DiffAudit\Research\docs\codex-roadmap-execution-prompt.md`
-- `D:\Code\DiffAudit\Research\ROADMAP.md`
-- `D:\Code\DiffAudit\Research\workspaces\implementation\challenger-queue.md`
-- `D:\Code\DiffAudit\Research\workspaces\implementation\2026-04-21-x119-04-h2-canonical-contract-hardening.md`
+- `<DIFFAUDIT_ROOT>/Research/docs/research-autonomous-execution-prompt.md`
+- `<DIFFAUDIT_ROOT>/Research/docs/codex-roadmap-execution-prompt.md`
+- `<DIFFAUDIT_ROOT>/Research/ROADMAP.md`
+- `<DIFFAUDIT_ROOT>/Research/workspaces/implementation/challenger-queue.md`
+- `<DIFFAUDIT_ROOT>/Research/workspaces/implementation/2026-04-21-x119-04-h2-canonical-contract-hardening.md`
 
 ## Finding
 
@@ -48,7 +48,7 @@ This is a control-plane / system-consumable sync task only:
 
 ## Canonical Evidence Anchor
 
-- `D:\Code\DiffAudit\Research\workspaces\implementation\2026-04-21-x120-active-prompt-sync-after-x119.md`
+- `<DIFFAUDIT_ROOT>/Research/workspaces/implementation/2026-04-21-x120-active-prompt-sync-after-x119.md`
 
 ## Next
 

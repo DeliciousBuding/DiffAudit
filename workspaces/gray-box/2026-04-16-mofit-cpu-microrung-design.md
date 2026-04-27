@@ -6,10 +6,10 @@ After the first fresh `MoFit` CPU canary landed but remained score-inconclusive,
 
 ## Inputs Reviewed
 
-- `D:\Code\DiffAudit\Research\workspaces\gray-box\2026-04-16-mofit-canary-score-shape-review.md`
-- `D:\Code\DiffAudit\Research\workspaces\gray-box\runs\mofit-sd15-celeba-canary-20260416-cpu-r4\summary.json`
-- `D:\Code\DiffAudit\Research\workspaces\gray-box\runs\mofit-sd15-celeba-canary-20260416-cpu-r4\records.jsonl`
-- `D:\Code\DiffAudit\Research\scripts\run_mofit_interface_canary.py`
+- `<DIFFAUDIT_ROOT>/Research/workspaces/gray-box/2026-04-16-mofit-canary-score-shape-review.md`
+- `<DIFFAUDIT_ROOT>/Research/workspaces/gray-box/runs/mofit-sd15-celeba-canary-20260416-cpu-r4/summary.json`
+- `<DIFFAUDIT_ROOT>/Research/workspaces/gray-box/runs/mofit-sd15-celeba-canary-20260416-cpu-r4/records.jsonl`
+- `<DIFFAUDIT_ROOT>/Research/scripts/run_mofit_interface_canary.py`
 
 ## Current Constraint
 

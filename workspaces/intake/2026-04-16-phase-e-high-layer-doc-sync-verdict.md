@@ -6,10 +6,10 @@ After `phase-e-candidates.json` was refreshed into a sparse-hold registry, which
 
 ## Inputs Reviewed
 
-- `D:\Code\DiffAudit\Research\workspaces\intake\phase-e-candidates.json`
-- `D:\Code\DiffAudit\Research\docs\future-phase-e-intake.md`
-- `D:\Code\DiffAudit\Research\docs\reproduction-status.md`
-- `D:\Code\DiffAudit\Research\workspaces\intake\2026-04-16-phase-e-sparse-registry-refresh-verdict.md`
+- `<DIFFAUDIT_ROOT>/Research/workspaces/intake/phase-e-candidates.json`
+- `<DIFFAUDIT_ROOT>/Research/docs/future-phase-e-intake.md`
+- `<DIFFAUDIT_ROOT>/Research/docs/reproduction-status.md`
+- `<DIFFAUDIT_ROOT>/Research/workspaces/intake/2026-04-16-phase-e-sparse-registry-refresh-verdict.md`
 
 ## Stale Points
 

@@ -8,8 +8,9 @@ import torch
 import yaml
 
 
-DEFAULT_TEMPLATE = Path(r"D:\Code\DiffAudit\Research\external\CLiD\mia_CLiD_clip.py")
-DEFAULT_ASSET_CONFIG = Path(r"D:\Code\DiffAudit\Research\configs\assets\staged-downloads.local.yaml")
+REPO_ROOT = Path(__file__).resolve().parents[1]
+DEFAULT_TEMPLATE = REPO_ROOT / "external" / "CLiD" / "mia_CLiD_clip.py"
+DEFAULT_ASSET_CONFIG = REPO_ROOT / "configs" / "assets" / "staged-downloads.local.yaml"
 
 
 def parse_args() -> argparse.Namespace:

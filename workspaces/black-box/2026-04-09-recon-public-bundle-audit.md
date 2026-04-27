@@ -12,7 +12,7 @@
 
 ```powershell
 conda run -n diffaudit-research python -m diffaudit audit-recon-public-bundle `
-  --bundle-root D:/Code/DiffAudit/Download/black-box/supplementary/recon-assets/ndss-2025-blackbox-membership-inference-fine-tuned-diffusion-models
+  --bundle-root <DIFFAUDIT_ROOT>/Download/black-box/supplementary/recon-assets/ndss-2025-blackbox-membership-inference-fine-tuned-diffusion-models
 ```
 
 ## B. Audit Result
@@ -83,7 +83,7 @@ Issue #10 asked whether strict `Attack-I` can start from the current public bund
 ```powershell
 python -m diffaudit check-recon-stage0-paper-gate `
   --repo-root external/Reconstruction-based-Attack `
-  --bundle-root D:/Code/DiffAudit/Download/black-box/supplementary/recon-assets/ndss-2025-blackbox-membership-inference-fine-tuned-diffusion-models `
+  --bundle-root <DIFFAUDIT_ROOT>/Download/black-box/supplementary/recon-assets/ndss-2025-blackbox-membership-inference-fine-tuned-diffusion-models `
   --attack-scenario attack-i
 ```
 

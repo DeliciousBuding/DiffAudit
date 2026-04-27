@@ -14,9 +14,9 @@
 
 Canonical evidence:
 
-- `D:/Code/DiffAudit/Research/workspaces/gray-box/runs/x88-cdi-tmiadm-triscore-canary-20260417-175249/audit_summary.json`
-- `D:/Code/DiffAudit/ROADMAP.md`
-- `D:/Code/DiffAudit/Research/ROADMAP.md`
+- `<DIFFAUDIT_ROOT>/Research/workspaces/gray-box/runs/x88-cdi-tmiadm-triscore-canary-20260417-175249/audit_summary.json`
+- `<DIFFAUDIT_ROOT>/ROADMAP.md`
+- `<DIFFAUDIT_ROOT>/Research/ROADMAP.md`
 
 ## 2. Shared-Surface Identity
 
@@ -35,9 +35,9 @@ The larger rerun would reuse exactly the frozen surfaces from X-89 CPU gate:
 - TMIA-DM family scores: `workspaces/gray-box/runs/tmiadm-cifar10-late-window-temporal-striding-defense-20260416-gpu-256-r2-seed1/family-scores.json` (defended)
 
 **Frozen contract fields** (from X-89 identity alignment):
-- `dataset_root`: `D:\Code\DiffAudit\Research\workspaces\gray-box\assets\pia\datasets`
-- `member_split_root`: `D:\Code\DiffAudit\Research\external\PIA\DDPM`
-- `model_dir`: `D:\Code\DiffAudit\Research\workspaces\gray-box\assets\pia\checkpoints\cifar10_ddpm`
+- `dataset_root`: `<DIFFAUDIT_ROOT>/Research/workspaces/gray-box/assets/pia/datasets`
+- `member_split_root`: `<DIFFAUDIT_ROOT>/Research/external/PIA/DDPM`
+- `model_dir`: `<DIFFAUDIT_ROOT>/Research/workspaces/gray-box/assets/pia/checkpoints/cifar10_ddpm`
 - `max_samples`: 256
 - `num_samples`: 256
 - `sample_count_per_split`: 256
@@ -122,7 +122,7 @@ If the larger shared-surface rerun succeeds, it establishes that **gray-box evid
 
 ## 8. Changelog Stub
 
-When the review closes, append one new X-series line to `D:/Code/DiffAudit/Research/ROADMAP.md` with:
+When the review closes, append one new X-series line to `<DIFFAUDIT_ROOT>/Research/ROADMAP.md` with:
 
 - review outcome
 - recommendation

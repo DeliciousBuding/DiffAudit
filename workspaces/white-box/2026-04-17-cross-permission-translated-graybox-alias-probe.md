@@ -6,16 +6,16 @@ After `I-C.11` froze `middleblocks.0.attn.proj_v` as the first honest gray-box a
 
 ## Inputs Reviewed
 
-- `D:\Code\DiffAudit\Research\ROADMAP.md`
-- `D:\Code\DiffAudit\Research\workspaces\white-box\2026-04-17-cross-permission-selector-alias-compatibility-review.md`
-- `D:\Code\DiffAudit\Research\workspaces\white-box\2026-04-17-cross-permission-inmodel-intervention-review.md`
-- `D:\Code\DiffAudit\Research\workspaces\white-box\2026-04-17-cross-permission-matched-pair-freeze.md`
-- `D:\Code\DiffAudit\Research\workspaces\gray-box\runs\pia-packet-score-export-matched-pairfreeze-20260417-r1\summary.json`
-- `D:\Code\DiffAudit\Research\src\diffaudit\attacks\pia_adapter.py`
-- `D:\Code\DiffAudit\Research\src\diffaudit\cli.py`
-- `D:\Code\DiffAudit\Research\tests\test_pia_adapter.py`
-- `D:\Code\DiffAudit\Research\workspaces\gray-box\runs\pia-translated-alias-probe-20260417-r1\summary.json`
-- `D:\Code\DiffAudit\Research\workspaces\gray-box\runs\pia-translated-alias-probe-20260417-r1\sample_scores.jsonl`
+- `<DIFFAUDIT_ROOT>/Research/ROADMAP.md`
+- `<DIFFAUDIT_ROOT>/Research/workspaces/white-box/2026-04-17-cross-permission-selector-alias-compatibility-review.md`
+- `<DIFFAUDIT_ROOT>/Research/workspaces/white-box/2026-04-17-cross-permission-inmodel-intervention-review.md`
+- `<DIFFAUDIT_ROOT>/Research/workspaces/white-box/2026-04-17-cross-permission-matched-pair-freeze.md`
+- `<DIFFAUDIT_ROOT>/Research/workspaces/gray-box/runs/pia-packet-score-export-matched-pairfreeze-20260417-r1/summary.json`
+- `<DIFFAUDIT_ROOT>/Research/src/diffaudit/attacks/pia_adapter.py`
+- `<DIFFAUDIT_ROOT>/Research/src/diffaudit/cli.py`
+- `<DIFFAUDIT_ROOT>/Research/tests/test_pia_adapter.py`
+- `<DIFFAUDIT_ROOT>/Research/workspaces/gray-box/runs/pia-translated-alias-probe-20260417-r1/summary.json`
+- `<DIFFAUDIT_ROOT>/Research/workspaces/gray-box/runs/pia-translated-alias-probe-20260417-r1/sample_scores.jsonl`
 
 ## Executed Contract
 

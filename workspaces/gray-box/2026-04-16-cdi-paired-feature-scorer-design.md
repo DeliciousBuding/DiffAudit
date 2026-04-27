@@ -6,11 +6,11 @@ With the repaired `PIA + SecMI` paired surface now available, what is the smalle
 
 ## Inputs Reviewed
 
-- `D:\Code\DiffAudit\Research\workspaces\gray-box\2026-04-16-cdi-feature-collection-surface-review.md`
-- `D:\Code\DiffAudit\Research\workspaces\gray-box\2026-04-16-cdi-paired-feature-repromotion-review.md`
-- `D:\Code\DiffAudit\Research\workspaces\gray-box\runs\secmi-pia-disagreement-20260416-r3\summary.json`
-- `D:\Code\DiffAudit\Research\workspaces\gray-box\runs\pia-cifar10-runtime-mainline-20260416-gpu-2048-cdi-r1\scores.json`
-- `D:\Code\DiffAudit\Research\scripts\run_cdi_internal_canary.py`
+- `<DIFFAUDIT_ROOT>/Research/workspaces/gray-box/2026-04-16-cdi-feature-collection-surface-review.md`
+- `<DIFFAUDIT_ROOT>/Research/workspaces/gray-box/2026-04-16-cdi-paired-feature-repromotion-review.md`
+- `<DIFFAUDIT_ROOT>/Research/workspaces/gray-box/runs/secmi-pia-disagreement-20260416-r3/summary.json`
+- `<DIFFAUDIT_ROOT>/Research/workspaces/gray-box/runs/pia-cifar10-runtime-mainline-20260416-gpu-2048-cdi-r1/scores.json`
+- `<DIFFAUDIT_ROOT>/Research/scripts/run_cdi_internal_canary.py`
 
 ## Design
 
@@ -38,7 +38,7 @@ Why this is the smallest honest paired scorer:
 
 Run root:
 
-- `D:\Code\DiffAudit\Research\workspaces\gray-box\runs\cdi-paired-canary-20260416-r1`
+- `<DIFFAUDIT_ROOT>/Research/workspaces/gray-box/runs/cdi-paired-canary-20260416-r1`
 
 Frozen split:
 

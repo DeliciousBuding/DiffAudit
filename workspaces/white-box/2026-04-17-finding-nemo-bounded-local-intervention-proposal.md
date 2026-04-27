@@ -6,14 +6,14 @@ After freezing the minimum honest bridge and the first trusted localization obse
 
 ## Inputs Reviewed
 
-- `D:\Code\DiffAudit\Research\ROADMAP.md`
-- `D:\Code\DiffAudit\Research\workspaces\white-box\2026-04-17-finding-nemo-minimum-honest-protocol-bridge.md`
-- `D:\Code\DiffAudit\Research\workspaces\white-box\2026-04-17-finding-nemo-bounded-localization-observable-selection.md`
-- `D:\Code\DiffAudit\Research\workspaces\white-box\2026-04-10-finding-nemo-mechanism-intake.md`
-- `D:\Code\DiffAudit\Research\workspaces\white-box\2026-04-10-finding-nemo-protocol-reconciliation.md`
-- `D:\Code\DiffAudit\Research\workspaces\white-box\2026-04-10-finding-nemo-observability-smoke-contract.md`
-- `D:\Code\DiffAudit\Research\workspaces\white-box\2026-04-10-finding-nemo-activation-only-canary-sketch.md`
-- `D:\Code\DiffAudit\Research\workspaces\white-box\signal-access-matrix.md`
+- `<DIFFAUDIT_ROOT>/Research/ROADMAP.md`
+- `<DIFFAUDIT_ROOT>/Research/workspaces/white-box/2026-04-17-finding-nemo-minimum-honest-protocol-bridge.md`
+- `<DIFFAUDIT_ROOT>/Research/workspaces/white-box/2026-04-17-finding-nemo-bounded-localization-observable-selection.md`
+- `<DIFFAUDIT_ROOT>/Research/workspaces/white-box/2026-04-10-finding-nemo-mechanism-intake.md`
+- `<DIFFAUDIT_ROOT>/Research/workspaces/white-box/2026-04-10-finding-nemo-protocol-reconciliation.md`
+- `<DIFFAUDIT_ROOT>/Research/workspaces/white-box/2026-04-10-finding-nemo-observability-smoke-contract.md`
+- `<DIFFAUDIT_ROOT>/Research/workspaces/white-box/2026-04-10-finding-nemo-activation-only-canary-sketch.md`
+- `<DIFFAUDIT_ROOT>/Research/workspaces/white-box/signal-access-matrix.md`
 
 ## Candidate Space Review
 

@@ -4,7 +4,7 @@
   "method": "gsa",
   "paper": "WhiteBox_GSA_PoPETS2025",
   "mode": "runtime-mainline",
-  "workspace": "D:\\Code\\DiffAudit\\Research\\experiments\\e2e-gsa-test-003",
+  "workspace": "<DIFFAUDIT_ROOT>/Research/experiments/e2e-gsa-test-003",
   "workspace_name": "e2e-gsa-test-003",
   "contract_stage": "target",
   "asset_grade": "real-asset-closed-loop",
@@ -29,16 +29,16 @@
       "sources_dir": true
     },
     "paths": {
-      "repo_root": "D:\\Code\\DiffAudit\\Research\\workspaces\\white-box\\external\\GSA",
-      "assets_root": "D:\\Code\\DiffAudit\\Research\\workspaces\\white-box\\assets\\gsa-cifar10-1k-3shadow-epoch300-rerun1",
-      "target_member_dataset": "D:\\Code\\DiffAudit\\Research\\workspaces\\white-box\\assets\\gsa-cifar10-1k-3shadow-epoch300-rerun1\\datasets\\target-member",
-      "target_nonmember_dataset": "D:\\Code\\DiffAudit\\Research\\workspaces\\white-box\\assets\\gsa-cifar10-1k-3shadow-epoch300-rerun1\\datasets\\target-nonmember",
-      "shadow_member_dataset": "D:\\Code\\DiffAudit\\Research\\workspaces\\white-box\\assets\\gsa-cifar10-1k-3shadow-epoch300-rerun1\\datasets\\shadow-member",
-      "shadow_nonmember_dataset": "D:\\Code\\DiffAudit\\Research\\workspaces\\white-box\\assets\\gsa-cifar10-1k-3shadow-epoch300-rerun1\\datasets\\shadow-nonmember",
-      "target_checkpoint": "D:\\Code\\DiffAudit\\Research\\workspaces\\white-box\\assets\\gsa-cifar10-1k-3shadow-epoch300-rerun1\\checkpoints\\target\\checkpoint-9600",
-      "shadow_checkpoint": "D:\\Code\\DiffAudit\\Research\\workspaces\\white-box\\assets\\gsa-cifar10-1k-3shadow-epoch300-rerun1\\checkpoints\\shadow",
-      "manifests": "D:\\Code\\DiffAudit\\Research\\workspaces\\white-box\\assets\\gsa-cifar10-1k-3shadow-epoch300-rerun1\\manifests",
-      "sources": "D:\\Code\\DiffAudit\\Research\\workspaces\\white-box\\assets\\gsa-cifar10-1k-3shadow-epoch300-rerun1\\sources"
+      "repo_root": "<DIFFAUDIT_ROOT>/Research/workspaces/white-box/external/GSA",
+      "assets_root": "<DIFFAUDIT_ROOT>/Research/workspaces/white-box/assets/gsa-cifar10-1k-3shadow-epoch300-rerun1",
+      "target_member_dataset": "<DIFFAUDIT_ROOT>/Research/workspaces/white-box/assets/gsa-cifar10-1k-3shadow-epoch300-rerun1/datasets/target-member",
+      "target_nonmember_dataset": "<DIFFAUDIT_ROOT>/Research/workspaces/white-box/assets/gsa-cifar10-1k-3shadow-epoch300-rerun1/datasets/target-nonmember",
+      "shadow_member_dataset": "<DIFFAUDIT_ROOT>/Research/workspaces/white-box/assets/gsa-cifar10-1k-3shadow-epoch300-rerun1/datasets/shadow-member",
+      "shadow_nonmember_dataset": "<DIFFAUDIT_ROOT>/Research/workspaces/white-box/assets/gsa-cifar10-1k-3shadow-epoch300-rerun1/datasets/shadow-nonmember",
+      "target_checkpoint": "<DIFFAUDIT_ROOT>/Research/workspaces/white-box/assets/gsa-cifar10-1k-3shadow-epoch300-rerun1/checkpoints/target/checkpoint-9600",
+      "shadow_checkpoint": "<DIFFAUDIT_ROOT>/Research/workspaces/white-box/assets/gsa-cifar10-1k-3shadow-epoch300-rerun1/checkpoints/shadow",
+      "manifests": "<DIFFAUDIT_ROOT>/Research/workspaces/white-box/assets/gsa-cifar10-1k-3shadow-epoch300-rerun1/manifests",
+      "sources": "<DIFFAUDIT_ROOT>/Research/workspaces/white-box/assets/gsa-cifar10-1k-3shadow-epoch300-rerun1/sources"
     },
     "missing_keys": [
       "shadow_member_dataset",
@@ -46,9 +46,9 @@
       "shadow_checkpoint"
     ],
     "missing": [
-      "D:\\Code\\DiffAudit\\Research\\workspaces\\white-box\\assets\\gsa-cifar10-1k-3shadow-epoch300-rerun1\\datasets\\shadow-member",
-      "D:\\Code\\DiffAudit\\Research\\workspaces\\white-box\\assets\\gsa-cifar10-1k-3shadow-epoch300-rerun1\\datasets\\shadow-nonmember",
-      "D:\\Code\\DiffAudit\\Research\\workspaces\\white-box\\assets\\gsa-cifar10-1k-3shadow-epoch300-rerun1\\checkpoints\\shadow"
+      "<DIFFAUDIT_ROOT>/Research/workspaces/white-box/assets/gsa-cifar10-1k-3shadow-epoch300-rerun1/datasets/shadow-member",
+      "<DIFFAUDIT_ROOT>/Research/workspaces/white-box/assets/gsa-cifar10-1k-3shadow-epoch300-rerun1/datasets/shadow-nonmember",
+      "<DIFFAUDIT_ROOT>/Research/workspaces/white-box/assets/gsa-cifar10-1k-3shadow-epoch300-rerun1/checkpoints/shadow"
     ],
     "missing_items": [
       "shadow-member",
@@ -58,13 +58,13 @@
     "missing_description": "shadow-member dataset / shadow-nonmember dataset / shadow checkpoint-*",
     "workspace": {
       "status": "ready",
-      "repo_root": "D:\\Code\\DiffAudit\\Research\\workspaces\\white-box\\external\\GSA",
-      "gradient_entrypoint": "D:\\Code\\DiffAudit\\Research\\workspaces\\white-box\\external\\GSA\\DDPM\\gen_l2_gradients_DDPM.py",
-      "attack_entrypoint": "D:\\Code\\DiffAudit\\Research\\workspaces\\white-box\\external\\GSA\\test_attack_accuracy.py"
+      "repo_root": "<DIFFAUDIT_ROOT>/Research/workspaces/white-box/external/GSA",
+      "gradient_entrypoint": "<DIFFAUDIT_ROOT>/Research/workspaces/white-box/external/GSA/DDPM/gen_l2_gradients_DDPM.py",
+      "attack_entrypoint": "<DIFFAUDIT_ROOT>/Research/workspaces/white-box/external/GSA/test_attack_accuracy.py"
     }
   },
   "artifact_paths": {
-    "summary": "D:\\Code\\DiffAudit\\Research\\experiments\\e2e-gsa-test-003\\summary.json"
+    "summary": "<DIFFAUDIT_ROOT>/Research/experiments/e2e-gsa-test-003/summary.json"
   },
   "notes": [
     "GSA runtime mainline requires dataset buckets, manifest files, and checkpoint-* directories."

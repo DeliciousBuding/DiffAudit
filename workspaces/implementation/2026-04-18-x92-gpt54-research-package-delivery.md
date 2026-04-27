@@ -16,8 +16,8 @@ GPT-5.4 Pro研究包是否准备完成？包含哪些内容？
 **交付时目录名**：`docs/gpt54-deep-research/`（交付后已清理，不再保留在仓库中）
 
 **当前保留位置**：
-- 第一轮原始结果：`D:/Code/DiffAudit/Research/docs/report-bundles/gpt54/round1-results/`
-- 第二轮原始结果：`D:/Code/DiffAudit/Research/docs/report-bundles/gpt54/round2-results/`
+- 第一轮原始结果：`<DIFFAUDIT_ROOT>/Research/docs/report-bundles/gpt54/round1-results/`
+- 第二轮原始结果：`<DIFFAUDIT_ROOT>/Research/docs/report-bundles/gpt54/round2-results/`
 
 **6个研究方向**，每个20文件（含prompt）：
 1. `01-black-box-new-signals/` - 黑盒新信号家族
@@ -63,8 +63,8 @@ GPT-5.4 Pro研究包是否准备完成？包含哪些内容？
 ## 报告接收与保留
 
 **当前保留的结果文件夹**：
-- 第一轮：`D:/Code/DiffAudit/Research/docs/report-bundles/gpt54/round1-results/`
-- 第二轮：`D:/Code/DiffAudit/Research/docs/report-bundles/gpt54/round2-results/`
+- 第一轮：`<DIFFAUDIT_ROOT>/Research/docs/report-bundles/gpt54/round1-results/`
+- 第二轮：`<DIFFAUDIT_ROOT>/Research/docs/report-bundles/gpt54/round2-results/`
 
 临时 `prompt/context/follow-up package` 已完成使命，不再作为仓库长期入口保留。
 

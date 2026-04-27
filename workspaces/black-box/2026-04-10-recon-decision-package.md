@@ -40,7 +40,7 @@
 
 ```powershell
 conda run -n diffaudit-research python -m diffaudit audit-recon-public-bundle `
-  --bundle-root D:\\Code\\DiffAudit\\Download\\black-box\\supplementary\\recon-assets\\ndss-2025-blackbox-membership-inference-fine-tuned-diffusion-models
+  --bundle-root <DIFFAUDIT_ROOT>/Download/black-box/supplementary/recon-assets/ndss-2025-blackbox-membership-inference-fine-tuned-diffusion-models
 ```
 
 返回：
@@ -62,9 +62,9 @@ conda run -n diffaudit-research python -m diffaudit audit-recon-public-bundle `
 
 ```powershell
 conda run -n diffaudit-research python -m diffaudit run-recon-artifact-mainline `
-  --artifact-dir D:\Code\DiffAudit\Research\experiments\recon-runtime-mainline-ddim-public-100-step30\score-artifacts `
-  --workspace D:\Code\DiffAudit\Research\experiments\recon-artifact-mainline-public-100-step30-reverify-20260410-round28 `
-  --repo-root D:\Code\DiffAudit\Research\external\Reconstruction-based-Attack
+  --artifact-dir <DIFFAUDIT_ROOT>/Research/experiments/recon-runtime-mainline-ddim-public-100-step30/score-artifacts `
+  --workspace <DIFFAUDIT_ROOT>/Research/experiments/recon-artifact-mainline-public-100-step30-reverify-20260410-round28 `
+  --repo-root <DIFFAUDIT_ROOT>/Research/external/Reconstruction-based-Attack
 ```
 
 新产物：

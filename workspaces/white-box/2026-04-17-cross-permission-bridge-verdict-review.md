@@ -6,13 +6,13 @@ After `I-C.10` landed a real white-box in-model intervention surface and `I-C.12
 
 ## Inputs Reviewed
 
-- `D:\Code\DiffAudit\Research\ROADMAP.md`
-- `D:\Code\DiffAudit\Research\workspaces\white-box\2026-04-17-cross-permission-inmodel-intervention-review.md`
-- `D:\Code\DiffAudit\Research\workspaces\white-box\2026-04-17-cross-permission-selector-alias-compatibility-review.md`
-- `D:\Code\DiffAudit\Research\workspaces\white-box\2026-04-17-cross-permission-translated-graybox-alias-probe.md`
-- `D:\Code\DiffAudit\Research\workspaces\white-box\runs\cross-permission-inmodel-packet-canary-20260417-r1\summary.json`
-- `D:\Code\DiffAudit\Research\workspaces\gray-box\runs\pia-translated-alias-probe-20260417-r1\summary.json`
-- `D:\Code\DiffAudit\Research\workspaces\gray-box\runs\pia-translated-alias-probe-20260417-r1\sample_scores.jsonl`
+- `<DIFFAUDIT_ROOT>/Research/ROADMAP.md`
+- `<DIFFAUDIT_ROOT>/Research/workspaces/white-box/2026-04-17-cross-permission-inmodel-intervention-review.md`
+- `<DIFFAUDIT_ROOT>/Research/workspaces/white-box/2026-04-17-cross-permission-selector-alias-compatibility-review.md`
+- `<DIFFAUDIT_ROOT>/Research/workspaces/white-box/2026-04-17-cross-permission-translated-graybox-alias-probe.md`
+- `<DIFFAUDIT_ROOT>/Research/workspaces/white-box/runs/cross-permission-inmodel-packet-canary-20260417-r1/summary.json`
+- `<DIFFAUDIT_ROOT>/Research/workspaces/gray-box/runs/pia-translated-alias-probe-20260417-r1/summary.json`
+- `<DIFFAUDIT_ROOT>/Research/workspaces/gray-box/runs/pia-translated-alias-probe-20260417-r1/sample_scores.jsonl`
 
 ## Support Contract Reminder
 

@@ -6,19 +6,19 @@ After black-box candidate refresh closed negatively and gray-box regained the ne
 
 ## Inputs Reviewed
 
-- `D:\Code\DiffAudit\ROADMAP.md`
-- `D:\Code\DiffAudit\Research\ROADMAP.md`
-- `D:\Code\DiffAudit\Research\README.md`
-- `D:\Code\DiffAudit\Research\docs\comprehensive-progress.md`
-- `D:\Code\DiffAudit\Research\workspaces\gray-box\README.md`
-- `D:\Code\DiffAudit\Research\workspaces\gray-box\plan.md`
-- `D:\Code\DiffAudit\Research\workspaces\gray-box\2026-04-16-tmiadm-temporal-striding-defense-verdict.md`
-- `D:\Code\DiffAudit\Research\workspaces\gray-box\2026-04-16-pia-vs-tmiadm-temporal-striding-defended-comparison.md`
-- `D:\Code\DiffAudit\Research\workspaces\gray-box\2026-04-16-post-temporal-striding-graybox-next-question-review.md`
-- `D:\Code\DiffAudit\Research\workspaces\gray-box\2026-04-16-mofit-current-contract-hold-verdict.md`
-- `D:\Code\DiffAudit\Research\workspaces\gray-box\2026-04-15-graybox-defense-precision-throttling-note.md`
-- `D:\Code\DiffAudit\Research\workspaces\gray-box\2026-04-15-graybox-epsilon-output-noise-defense-verdict.md`
-- `D:\Code\DiffAudit\Research\workspaces\implementation\challenger-queue.md`
+- `<DIFFAUDIT_ROOT>/ROADMAP.md`
+- `<DIFFAUDIT_ROOT>/Research/ROADMAP.md`
+- `<DIFFAUDIT_ROOT>/Research/README.md`
+- `<DIFFAUDIT_ROOT>/Research/docs/comprehensive-progress.md`
+- `<DIFFAUDIT_ROOT>/Research/workspaces/gray-box/README.md`
+- `<DIFFAUDIT_ROOT>/Research/workspaces/gray-box/plan.md`
+- `<DIFFAUDIT_ROOT>/Research/workspaces/gray-box/2026-04-16-tmiadm-temporal-striding-defense-verdict.md`
+- `<DIFFAUDIT_ROOT>/Research/workspaces/gray-box/2026-04-16-pia-vs-tmiadm-temporal-striding-defended-comparison.md`
+- `<DIFFAUDIT_ROOT>/Research/workspaces/gray-box/2026-04-16-post-temporal-striding-graybox-next-question-review.md`
+- `<DIFFAUDIT_ROOT>/Research/workspaces/gray-box/2026-04-16-mofit-current-contract-hold-verdict.md`
+- `<DIFFAUDIT_ROOT>/Research/workspaces/gray-box/2026-04-15-graybox-defense-precision-throttling-note.md`
+- `<DIFFAUDIT_ROOT>/Research/workspaces/gray-box/2026-04-15-graybox-epsilon-output-noise-defense-verdict.md`
+- `<DIFFAUDIT_ROOT>/Research/workspaces/implementation/challenger-queue.md`
 
 ## Review
 

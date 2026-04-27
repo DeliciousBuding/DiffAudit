@@ -6,13 +6,13 @@ After `X-52` clears the remaining admitted/material-facing stale entry, what sho
 
 ## Inputs Reviewed
 
-- `D:\Code\DiffAudit\ROADMAP.md`
-- `D:\Code\DiffAudit\Research\ROADMAP.md`
-- `D:\Code\DiffAudit\Research\docs\comprehensive-progress.md`
-- `D:\Code\DiffAudit\Research\workspaces\implementation\challenger-queue.md`
-- `D:\Code\DiffAudit\Research\workspaces\white-box\2026-04-17-finding-nemo-post-first-actual-packet-boundary-review.md`
-- `D:\Code\DiffAudit\Research\workspaces\white-box\plan.md`
-- `D:\Code\DiffAudit\Research\workspaces\implementation\2026-04-17-x52-cross-box-materials-stale-entry-sync-after-x51-reselection.md`
+- `<DIFFAUDIT_ROOT>/ROADMAP.md`
+- `<DIFFAUDIT_ROOT>/Research/ROADMAP.md`
+- `<DIFFAUDIT_ROOT>/Research/docs/comprehensive-progress.md`
+- `<DIFFAUDIT_ROOT>/Research/workspaces/implementation/challenger-queue.md`
+- `<DIFFAUDIT_ROOT>/Research/workspaces/white-box/2026-04-17-finding-nemo-post-first-actual-packet-boundary-review.md`
+- `<DIFFAUDIT_ROOT>/Research/workspaces/white-box/plan.md`
+- `<DIFFAUDIT_ROOT>/Research/workspaces/implementation/2026-04-17-x52-cross-box-materials-stale-entry-sync-after-x51-reselection.md`
 
 ## Candidate Comparison
 
@@ -74,5 +74,5 @@ Selected next lane:
 
 - `Research/ROADMAP.md`: update required
 - `Research/workspaces/implementation/challenger-queue.md`: update required
-- `D:\Code\DiffAudit\ROADMAP.md`: update required because the current live lane advanced
+- `<DIFFAUDIT_ROOT>/ROADMAP.md`: update required because the current live lane advanced
 - `Platform / Runtime`: no handoff

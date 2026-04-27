@@ -6,14 +6,14 @@ Given that `04-H2 privacy-aware adapter` is now `prototype-implemented / contrac
 
 ## Inputs Reviewed
 
-- `D:\Code\DiffAudit\Research\workspaces\implementation\2026-04-21-x118-04-h2-executable-surface-reality-review.md`
-- `D:\Code\DiffAudit\Research\workspaces\implementation\runs\h2-smp-lora-contract-smoke-20260421-r1\summary.json`
-- `D:\Code\DiffAudit\Research\src\diffaudit\defenses\lora_ddpm.py`
-- `D:\Code\DiffAudit\Research\src\diffaudit\defenses\smp_lora.py`
-- `D:\Code\DiffAudit\Research\scripts\train_smp_lora.py`
-- `D:\Code\DiffAudit\Research\tests\test_lora_smoke.py`
-- `D:\Code\DiffAudit\Research\tests\test_smp_lora_runtime_tuning.py`
-- `D:\Code\DiffAudit\Research\docs\report-bundles\gpt54\round2-results\04.md`
+- `<DIFFAUDIT_ROOT>/Research/workspaces/implementation/2026-04-21-x118-04-h2-executable-surface-reality-review.md`
+- `<DIFFAUDIT_ROOT>/Research/workspaces/implementation/runs/h2-smp-lora-contract-smoke-20260421-r1/summary.json`
+- `<DIFFAUDIT_ROOT>/Research/src/diffaudit/defenses/lora_ddpm.py`
+- `<DIFFAUDIT_ROOT>/Research/src/diffaudit/defenses/smp_lora.py`
+- `<DIFFAUDIT_ROOT>/Research/scripts/train_smp_lora.py`
+- `<DIFFAUDIT_ROOT>/Research/tests/test_lora_smoke.py`
+- `<DIFFAUDIT_ROOT>/Research/tests/test_smp_lora_runtime_tuning.py`
+- `<DIFFAUDIT_ROOT>/Research/docs/report-bundles/gpt54/round2-results/04.md`
 
 ## Findings
 

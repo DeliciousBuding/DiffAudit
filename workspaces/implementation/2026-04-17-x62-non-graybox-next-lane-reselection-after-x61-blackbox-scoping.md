@@ -13,12 +13,12 @@ Once `X-61` has closed the restored black-box scouting surface as `negative but 
 
 ## Inputs Reviewed
 
-- `D:\Code\DiffAudit\Research\ROADMAP.md`
-- `D:\Code\DiffAudit\Research\workspaces\implementation\challenger-queue.md`
-- `D:\Code\DiffAudit\Research\docs\comprehensive-progress.md`
-- `D:\Code\DiffAudit\Research\docs\mainline-narrative.md`
-- `D:\Code\DiffAudit\Research\workspaces\implementation\2026-04-17-x61-blackbox-paper-backed-next-family-scoping-review-after-x60-expansion.md`
-- `D:\Code\DiffAudit\Research\workspaces\implementation\2026-04-17-ia-trajectory-consistency-truth-hardening.md`
+- `<DIFFAUDIT_ROOT>/Research/ROADMAP.md`
+- `<DIFFAUDIT_ROOT>/Research/workspaces/implementation/challenger-queue.md`
+- `<DIFFAUDIT_ROOT>/Research/docs/comprehensive-progress.md`
+- `<DIFFAUDIT_ROOT>/Research/docs/mainline-narrative.md`
+- `<DIFFAUDIT_ROOT>/Research/workspaces/implementation/2026-04-17-x61-blackbox-paper-backed-next-family-scoping-review-after-x60-expansion.md`
+- `<DIFFAUDIT_ROOT>/Research/workspaces/implementation/2026-04-17-ia-trajectory-consistency-truth-hardening.md`
 
 ## Review
 

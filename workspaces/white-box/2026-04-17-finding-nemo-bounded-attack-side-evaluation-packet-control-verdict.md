@@ -6,13 +6,13 @@ After `I-B.7` froze the first honest attack-side review surface to "one bounded 
 
 ## Inputs Reviewed
 
-- `D:\Code\DiffAudit\Research\ROADMAP.md`
-- `D:\Code\DiffAudit\Research\workspaces\white-box\2026-04-17-finding-nemo-bounded-attack-side-evaluation-packet-selection.md`
-- `D:\Code\DiffAudit\Research\workspaces\white-box\2026-04-17-finding-nemo-first-bounded-localization-intervention-packet-verdict.md`
-- `D:\Code\DiffAudit\Research\workspaces\white-box\runs\gsa-runtime-mainline-20260409-cifar10-1k-3shadow-epoch300-rerun1\summary.json`
-- `D:\Code\DiffAudit\Research\src\diffaudit\cli.py`
-- `D:\Code\DiffAudit\Research\src\diffaudit\attacks\gsa.py`
-- `D:\Code\DiffAudit\Research\tests\test_gsa_adapter.py`
+- `<DIFFAUDIT_ROOT>/Research/ROADMAP.md`
+- `<DIFFAUDIT_ROOT>/Research/workspaces/white-box/2026-04-17-finding-nemo-bounded-attack-side-evaluation-packet-selection.md`
+- `<DIFFAUDIT_ROOT>/Research/workspaces/white-box/2026-04-17-finding-nemo-first-bounded-localization-intervention-packet-verdict.md`
+- `<DIFFAUDIT_ROOT>/Research/workspaces/white-box/runs/gsa-runtime-mainline-20260409-cifar10-1k-3shadow-epoch300-rerun1/summary.json`
+- `<DIFFAUDIT_ROOT>/Research/src/diffaudit/cli.py`
+- `<DIFFAUDIT_ROOT>/Research/src/diffaudit/attacks/gsa.py`
+- `<DIFFAUDIT_ROOT>/Research/tests/test_gsa_adapter.py`
 
 ## Implementation
 
@@ -34,7 +34,7 @@ This is intentionally an evaluation-surface control, not a new asset root and no
 Test command:
 
 ```powershell
-conda run -n diffaudit-research python -m unittest D:\Code\DiffAudit\Research\tests\test_gsa_adapter.py
+conda run -n diffaudit-research python -m unittest <DIFFAUDIT_ROOT>/Research/tests/test_gsa_adapter.py
 ```
 
 Result:
@@ -49,7 +49,7 @@ CPU-only bounded review on admitted `GSA epoch300 rerun1` gradients:
 - source attack family:
   - admitted `GSA`
 - source summary:
-  - `D:\Code\DiffAudit\Research\workspaces\white-box\runs\gsa-runtime-mainline-20260409-cifar10-1k-3shadow-epoch300-rerun1\summary.json`
+  - `<DIFFAUDIT_ROOT>/Research/workspaces/white-box/runs/gsa-runtime-mainline-20260409-cifar10-1k-3shadow-epoch300-rerun1/summary.json`
 - bounded override:
   - `max_samples = 64`
 - evaluation surface:
@@ -59,7 +59,7 @@ CPU-only bounded review on admitted `GSA epoch300 rerun1` gradients:
 
 ## Canonical Evidence Anchor
 
-- `D:\Code\DiffAudit\Research\workspaces\white-box\runs\finding-nemo-bounded-attack-side-eval-control-20260417-r1\summary.json`
+- `<DIFFAUDIT_ROOT>/Research/workspaces/white-box/runs/finding-nemo-bounded-attack-side-eval-control-20260417-r1/summary.json`
 
 ## Result
 

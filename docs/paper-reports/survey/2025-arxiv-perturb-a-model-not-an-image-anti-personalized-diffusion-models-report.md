@@ -1,7 +1,7 @@
 # Perturb a Model, Not an Image: Towards Robust Privacy Protection via Anti-Personalized Diffusion Models
 
 - Title: Perturb a Model, Not an Image: Towards Robust Privacy Protection via Anti-Personalized Diffusion Models
-- Material Path: `D:/Code/DiffAudit/Research/references/materials/survey/2025-arxiv-perturb-a-model-not-an-image-anti-personalized-diffusion-models.pdf`
+- Material Path: `<DIFFAUDIT_ROOT>/Research/references/materials/survey/2025-arxiv-perturb-a-model-not-an-image-anti-personalized-diffusion-models.pdf`
 - Primary Track: `survey`
 - Venue / Year: `NeurIPS 2025 (arXiv v1, 2025-11-03)`
 - Threat Model Category: `防御 / 模型级 anti-personalization / 未授权个性化阻断`
@@ -22,7 +22,7 @@
 - Title: Perturb a Model, Not an Image: Towards Robust Privacy Protection via Anti-Personalized Diffusion Models
 - Authors: Tae-Young Lee, Juwon Seo, Jong Hwan Ko, Gyeong-Moon Park
 - Venue / year / version: NeurIPS 2025, arXiv:2511.01307v1, 2025-11-03
-- Local PDF path: `D:/Code/DiffAudit/Research/references/materials/survey/2025-arxiv-perturb-a-model-not-an-image-anti-personalized-diffusion-models.pdf`
+- Local PDF path: `<DIFFAUDIT_ROOT>/Research/references/materials/survey/2025-arxiv-perturb-a-model-not-an-image-anti-personalized-diffusion-models.pdf`
 - Source URL: `https://arxiv.org/abs/2511.01307`
 
 ## Research Question

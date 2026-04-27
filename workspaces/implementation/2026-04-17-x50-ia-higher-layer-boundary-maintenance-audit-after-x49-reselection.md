@@ -11,13 +11,13 @@ After `X-49` returned the main slot to `I-A`, does the current repository still 
 
 ## Inputs Reviewed
 
-- `D:\Code\DiffAudit\Research\workspaces\implementation\2026-04-17-ia-trajectory-consistency-truth-hardening.md`
-- `D:\Code\DiffAudit\Research\docs\mainline-narrative.md`
-- `D:\Code\DiffAudit\Research\docs\comprehensive-progress.md`
-- `D:\Code\DiffAudit\Research\docs\admitted-results-summary.md`
-- `D:\Code\DiffAudit\Research\ROADMAP.md`
-- `D:\Code\DiffAudit\Research\workspaces\implementation\challenger-queue.md`
-- `D:\Code\DiffAudit\ROADMAP.md`
+- `<DIFFAUDIT_ROOT>/Research/workspaces/implementation/2026-04-17-ia-trajectory-consistency-truth-hardening.md`
+- `<DIFFAUDIT_ROOT>/Research/docs/mainline-narrative.md`
+- `<DIFFAUDIT_ROOT>/Research/docs/comprehensive-progress.md`
+- `<DIFFAUDIT_ROOT>/Research/docs/admitted-results-summary.md`
+- `<DIFFAUDIT_ROOT>/Research/ROADMAP.md`
+- `<DIFFAUDIT_ROOT>/Research/workspaces/implementation/challenger-queue.md`
+- `<DIFFAUDIT_ROOT>/ROADMAP.md`
 
 ## Audit Findings
 
@@ -54,5 +54,5 @@ More precise reading:
 - `Research/docs/mainline-narrative.md`: update required
 - `Research/docs/comprehensive-progress.md`: update required
 - `Research/docs/admitted-results-summary.md`: update required
-- `D:\Code\DiffAudit\ROADMAP.md`: update required because current control-plane task advanced
+- `<DIFFAUDIT_ROOT>/ROADMAP.md`: update required because current control-plane task advanced
 - `Platform / Runtime`: no schema change required

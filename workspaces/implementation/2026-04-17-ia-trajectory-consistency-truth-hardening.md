@@ -6,14 +6,14 @@ Can the current repository freeze a stronger, still-honest `I-A` statement for `
 
 ## Inputs Reviewed
 
-- `D:\Code\DiffAudit\Research\ROADMAP.md`
-- `D:\Code\DiffAudit\Research\docs\comprehensive-progress.md`
-- `D:\Code\DiffAudit\Research\docs\admitted-results-summary.md`
-- `D:\Code\DiffAudit\Research\workspaces\gray-box\2026-04-09-graybox-signal-axis-note.md`
-- `D:\Code\DiffAudit\Research\workspaces\gray-box\2026-04-09-pia-gpu512-adaptive-ablation.md`
-- `D:\Code\DiffAudit\Research\workspaces\gray-box\2026-04-10-pia-8gb-supporting-frontier-note.md`
-- `D:\Code\DiffAudit\Research\workspaces\implementation\2026-04-08-unified-attack-defense-table.md`
-- `D:\Code\DiffAudit\Research\docs\competition-evidence-pack.md`
+- `<DIFFAUDIT_ROOT>/Research/ROADMAP.md`
+- `<DIFFAUDIT_ROOT>/Research/docs/comprehensive-progress.md`
+- `<DIFFAUDIT_ROOT>/Research/docs/admitted-results-summary.md`
+- `<DIFFAUDIT_ROOT>/Research/workspaces/gray-box/2026-04-09-graybox-signal-axis-note.md`
+- `<DIFFAUDIT_ROOT>/Research/workspaces/gray-box/2026-04-09-pia-gpu512-adaptive-ablation.md`
+- `<DIFFAUDIT_ROOT>/Research/workspaces/gray-box/2026-04-10-pia-8gb-supporting-frontier-note.md`
+- `<DIFFAUDIT_ROOT>/Research/workspaces/implementation/2026-04-08-unified-attack-defense-table.md`
+- `<DIFFAUDIT_ROOT>/Research/docs/competition-evidence-pack.md`
 
 ## Formal Mechanism Statement
 

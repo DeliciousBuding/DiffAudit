@@ -6,15 +6,15 @@ After the `I-C.4` release review closed as `blocked`, what is the minimum execut
 
 ## Inputs Reviewed
 
-- `D:\Code\DiffAudit\Research\ROADMAP.md`
-- `D:\Code\DiffAudit\Research\workspaces\white-box\2026-04-17-cross-permission-bridge-packet-release-review.md`
-- `D:\Code\DiffAudit\Research\workspaces\white-box\2026-04-17-cross-permission-support-contract.md`
-- `D:\Code\DiffAudit\Research\workspaces\white-box\2026-04-17-cross-permission-mask-selection.md`
-- `D:\Code\DiffAudit\Research\workspaces\white-box\2026-04-17-finding-nemo-bounded-local-intervention-proposal.md`
-- `D:\Code\DiffAudit\Research\workspaces\gray-box\2026-04-16-cdi-protocol-asset-contract.md`
-- `D:\Code\DiffAudit\Research\src\diffaudit\attacks\gsa_observability.py`
-- `D:\Code\DiffAudit\Research\src\diffaudit\attacks\pia_adapter.py`
-- `D:\Code\DiffAudit\Research\src\diffaudit\cli.py`
+- `<DIFFAUDIT_ROOT>/Research/ROADMAP.md`
+- `<DIFFAUDIT_ROOT>/Research/workspaces/white-box/2026-04-17-cross-permission-bridge-packet-release-review.md`
+- `<DIFFAUDIT_ROOT>/Research/workspaces/white-box/2026-04-17-cross-permission-support-contract.md`
+- `<DIFFAUDIT_ROOT>/Research/workspaces/white-box/2026-04-17-cross-permission-mask-selection.md`
+- `<DIFFAUDIT_ROOT>/Research/workspaces/white-box/2026-04-17-finding-nemo-bounded-local-intervention-proposal.md`
+- `<DIFFAUDIT_ROOT>/Research/workspaces/gray-box/2026-04-16-cdi-protocol-asset-contract.md`
+- `<DIFFAUDIT_ROOT>/Research/src/diffaudit/attacks/gsa_observability.py`
+- `<DIFFAUDIT_ROOT>/Research/src/diffaudit/attacks/pia_adapter.py`
+- `<DIFFAUDIT_ROOT>/Research/src/diffaudit/cli.py`
 
 ## Core Principle
 

@@ -1,7 +1,7 @@
 {
   "created_at": "2026-04-10T23:05:11+08:00",
   "host": {
-    "cwd": "D:\\Code\\DiffAudit\\Research",
+    "cwd": "<DIFFAUDIT_ROOT>/Research",
     "hostname": "DELICIOUS233",
     "pid": 14848,
     "platform": "win32",

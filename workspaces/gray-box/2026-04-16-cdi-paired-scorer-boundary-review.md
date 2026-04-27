@@ -6,10 +6,10 @@ Given the new `control-z-linear` paired scorer and the first repaired `2048` pai
 
 ## Inputs Reviewed
 
-- `D:\Code\DiffAudit\Research\workspaces\gray-box\2026-04-16-cdi-paired-feature-scorer-design.md`
-- `D:\Code\DiffAudit\Research\workspaces\gray-box\runs\cdi-paired-canary-20260416-r1\audit_summary.json`
-- `D:\Code\DiffAudit\Research\workspaces\gray-box\runs\cdi-paired-canary-20260416-r2-reverse\audit_summary.json`
-- `D:\Code\DiffAudit\Research\workspaces\gray-box\2026-04-16-secmi-pia-2048-repaired-paired-surface-verdict.md`
+- `<DIFFAUDIT_ROOT>/Research/workspaces/gray-box/2026-04-16-cdi-paired-feature-scorer-design.md`
+- `<DIFFAUDIT_ROOT>/Research/workspaces/gray-box/runs/cdi-paired-canary-20260416-r1/audit_summary.json`
+- `<DIFFAUDIT_ROOT>/Research/workspaces/gray-box/runs/cdi-paired-canary-20260416-r2-reverse/audit_summary.json`
+- `<DIFFAUDIT_ROOT>/Research/workspaces/gray-box/2026-04-16-secmi-pia-2048-repaired-paired-surface-verdict.md`
 
 ## Review
 

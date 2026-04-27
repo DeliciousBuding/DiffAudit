@@ -13,7 +13,7 @@
 - 共享配置里不要写个人私有资产的真实路径
 - 需要本地路径时，优先参考 `assets/team.local.template.yaml`
 - `attacks/*.yaml` 负责描述攻击设定，不负责泄露个人机器目录结构
-- 原始数据集、权重和 supplementary 包默认放在仓库外的 `D:\Code\DiffAudit\Download\`，再通过本地 `assets/team.local.yaml` 绑定到各攻击线
+- 原始数据集、权重和 supplementary 包默认放在仓库外的 `<DIFFAUDIT_ROOT>/Download/`，再通过本地 `assets/team.local.yaml` 绑定到各攻击线
 
 ## 当前建议
 

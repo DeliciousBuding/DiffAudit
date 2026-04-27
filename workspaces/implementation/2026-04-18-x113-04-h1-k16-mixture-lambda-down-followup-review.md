@@ -6,15 +6,15 @@ After `X-112` froze `k16 + mixture_lambda-down (0.4375)` as the first conditiona
 
 ## Inputs Reviewed
 
-- `D:\Code\DiffAudit\Research\workspaces\implementation\2026-04-18-x112-04-h1-selective-variable-candidate-freeze.md`
-- `D:\Code\DiffAudit\Research\workspaces\defense\runs\risk-targeted-unlearning-pilot-k16-20260418-r1\summary.json`
-- `D:\Code\DiffAudit\Research\workspaces\defense\runs\risk-targeted-unlearning-pilot-k16-lambda04375-20260418-r1\summary.json`
-- `D:\Code\DiffAudit\Research\workspaces\defense\runs\risk-targeted-unlearning-review-k16-pairednoise-20260418-r1\summary.json`
-- `D:\Code\DiffAudit\Research\workspaces\defense\runs\risk-targeted-unlearning-review-k16-lambda04375-pairednoise-20260418-r1\summary.json`
-- `D:\Code\DiffAudit\Research\workspaces\defense\runs\risk-targeted-unlearning-review-retained-k16-pairednoise-20260418-r1\summary.json`
-- `D:\Code\DiffAudit\Research\workspaces\defense\runs\risk-targeted-unlearning-review-retained-k16-lambda04375-pairednoise-20260418-r1\summary.json`
-- `D:\Code\DiffAudit\Research\workspaces\defense\runs\risk-targeted-unlearning-review-fullsplit-k16-pairednoise-20260418-r1\summary.json`
-- `D:\Code\DiffAudit\Research\workspaces\defense\runs\risk-targeted-unlearning-review-fullsplit-k16-lambda04375-pairednoise-20260418-r1\summary.json`
+- `<DIFFAUDIT_ROOT>/Research/workspaces/implementation/2026-04-18-x112-04-h1-selective-variable-candidate-freeze.md`
+- `<DIFFAUDIT_ROOT>/Research/workspaces/defense/runs/risk-targeted-unlearning-pilot-k16-20260418-r1/summary.json`
+- `<DIFFAUDIT_ROOT>/Research/workspaces/defense/runs/risk-targeted-unlearning-pilot-k16-lambda04375-20260418-r1/summary.json`
+- `<DIFFAUDIT_ROOT>/Research/workspaces/defense/runs/risk-targeted-unlearning-review-k16-pairednoise-20260418-r1/summary.json`
+- `<DIFFAUDIT_ROOT>/Research/workspaces/defense/runs/risk-targeted-unlearning-review-k16-lambda04375-pairednoise-20260418-r1/summary.json`
+- `<DIFFAUDIT_ROOT>/Research/workspaces/defense/runs/risk-targeted-unlearning-review-retained-k16-pairednoise-20260418-r1/summary.json`
+- `<DIFFAUDIT_ROOT>/Research/workspaces/defense/runs/risk-targeted-unlearning-review-retained-k16-lambda04375-pairednoise-20260418-r1/summary.json`
+- `<DIFFAUDIT_ROOT>/Research/workspaces/defense/runs/risk-targeted-unlearning-review-fullsplit-k16-pairednoise-20260418-r1/summary.json`
+- `<DIFFAUDIT_ROOT>/Research/workspaces/defense/runs/risk-targeted-unlearning-review-fullsplit-k16-lambda04375-pairednoise-20260418-r1/summary.json`
 
 ## What Landed
 
@@ -148,16 +148,16 @@ Practical read:
 
 Primary anchors:
 
-- `D:\Code\DiffAudit\Research\workspaces\defense\runs\risk-targeted-unlearning-pilot-k16-lambda04375-20260418-r1\summary.json`
-- `D:\Code\DiffAudit\Research\workspaces\defense\runs\risk-targeted-unlearning-review-k16-lambda04375-pairednoise-20260418-r1\summary.json`
-- `D:\Code\DiffAudit\Research\workspaces\defense\runs\risk-targeted-unlearning-review-retained-k16-lambda04375-pairednoise-20260418-r1\summary.json`
-- `D:\Code\DiffAudit\Research\workspaces\defense\runs\risk-targeted-unlearning-review-fullsplit-k16-lambda04375-pairednoise-20260418-r1\summary.json`
+- `<DIFFAUDIT_ROOT>/Research/workspaces/defense/runs/risk-targeted-unlearning-pilot-k16-lambda04375-20260418-r1/summary.json`
+- `<DIFFAUDIT_ROOT>/Research/workspaces/defense/runs/risk-targeted-unlearning-review-k16-lambda04375-pairednoise-20260418-r1/summary.json`
+- `<DIFFAUDIT_ROOT>/Research/workspaces/defense/runs/risk-targeted-unlearning-review-retained-k16-lambda04375-pairednoise-20260418-r1/summary.json`
+- `<DIFFAUDIT_ROOT>/Research/workspaces/defense/runs/risk-targeted-unlearning-review-fullsplit-k16-lambda04375-pairednoise-20260418-r1/summary.json`
 
 Supporting anchors:
 
-- `D:\Code\DiffAudit\Research\workspaces\defense\runs\risk-targeted-unlearning-review-k16-pairednoise-20260418-r1\summary.json`
-- `D:\Code\DiffAudit\Research\workspaces\defense\runs\risk-targeted-unlearning-review-retained-k16-pairednoise-20260418-r1\summary.json`
-- `D:\Code\DiffAudit\Research\workspaces\defense\runs\risk-targeted-unlearning-review-fullsplit-k16-pairednoise-20260418-r1\summary.json`
+- `<DIFFAUDIT_ROOT>/Research/workspaces/defense/runs/risk-targeted-unlearning-review-k16-pairednoise-20260418-r1/summary.json`
+- `<DIFFAUDIT_ROOT>/Research/workspaces/defense/runs/risk-targeted-unlearning-review-retained-k16-pairednoise-20260418-r1/summary.json`
+- `<DIFFAUDIT_ROOT>/Research/workspaces/defense/runs/risk-targeted-unlearning-review-fullsplit-k16-pairednoise-20260418-r1/summary.json`
 
 ## Handoff Decision
 

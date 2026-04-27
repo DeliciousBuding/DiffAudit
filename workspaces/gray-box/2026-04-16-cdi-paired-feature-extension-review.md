@@ -6,10 +6,10 @@ Given the completed `PIA 2048` surface and the new `SecMI 2048` paired-surface v
 
 ## Inputs Reviewed
 
-- `D:\Code\DiffAudit\Research\workspaces\gray-box\2026-04-16-cdi-feature-collection-surface-review.md`
-- `D:\Code\DiffAudit\Research\workspaces\gray-box\2026-04-16-cdi-internal-canary-verdict.md`
-- `D:\Code\DiffAudit\Research\workspaces\gray-box\2026-04-16-pia-2048-cdi-rung-verdict.md`
-- `D:\Code\DiffAudit\Research\workspaces\gray-box\2026-04-16-secmi-pia-2048-paired-surface-verdict.md`
+- `<DIFFAUDIT_ROOT>/Research/workspaces/gray-box/2026-04-16-cdi-feature-collection-surface-review.md`
+- `<DIFFAUDIT_ROOT>/Research/workspaces/gray-box/2026-04-16-cdi-internal-canary-verdict.md`
+- `<DIFFAUDIT_ROOT>/Research/workspaces/gray-box/2026-04-16-pia-2048-cdi-rung-verdict.md`
+- `<DIFFAUDIT_ROOT>/Research/workspaces/gray-box/2026-04-16-secmi-pia-2048-paired-surface-verdict.md`
 
 ## Review
 

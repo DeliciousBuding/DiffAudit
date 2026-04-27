@@ -6,14 +6,14 @@ After the `I-A` refresh re-confirmed `PIA + stochastic-dropout` as the strongest
 
 ## Inputs Reviewed
 
-- `D:\Code\DiffAudit\ROADMAP.md`
-- `D:\Code\DiffAudit\Research\ROADMAP.md`
-- `D:\Code\DiffAudit\Research\docs\comprehensive-progress.md`
-- `D:\Code\DiffAudit\Research\workspaces\implementation\challenger-queue.md`
-- `D:\Code\DiffAudit\Research\workspaces\implementation\2026-04-17-ia-refresh-after-negative-ib14-verdict.md`
-- `D:\Code\DiffAudit\Research\workspaces\implementation\2026-04-16-crossbox-transfer-portability-review.md`
-- `D:\Code\DiffAudit\Research\workspaces\white-box\2026-04-17-finding-nemo-post-first-actual-packet-boundary-review.md`
-- `D:\Code\DiffAudit\Research\workspaces\white-box\plan.md`
+- `<DIFFAUDIT_ROOT>/ROADMAP.md`
+- `<DIFFAUDIT_ROOT>/Research/ROADMAP.md`
+- `<DIFFAUDIT_ROOT>/Research/docs/comprehensive-progress.md`
+- `<DIFFAUDIT_ROOT>/Research/workspaces/implementation/challenger-queue.md`
+- `<DIFFAUDIT_ROOT>/Research/workspaces/implementation/2026-04-17-ia-refresh-after-negative-ib14-verdict.md`
+- `<DIFFAUDIT_ROOT>/Research/workspaces/implementation/2026-04-16-crossbox-transfer-portability-review.md`
+- `<DIFFAUDIT_ROOT>/Research/workspaces/white-box/2026-04-17-finding-nemo-post-first-actual-packet-boundary-review.md`
+- `<DIFFAUDIT_ROOT>/Research/workspaces/white-box/plan.md`
 
 ## Candidate Comparison
 

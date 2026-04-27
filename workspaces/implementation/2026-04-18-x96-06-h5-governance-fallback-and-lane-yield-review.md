@@ -6,13 +6,13 @@ After the first real `H1` and `H2` per-sample blocker-resolution packets both mi
 
 ## Inputs Reviewed
 
-- `D:\Code\DiffAudit\Research\workspaces\implementation\2026-04-18-x94-06h1-teacher-calibrated-temporal-surrogate-hard-validation.md`
-- `D:\Code\DiffAudit\Research\workspaces\implementation\2026-04-18-x95-06h2-temporal-lr-fallback-calibration-review.md`
-- `D:\Code\DiffAudit\Research\workspaces\gray-box\runs\cdi-internal-canary-20260416-r1\audit_summary.json`
-- `D:\Code\DiffAudit\Research\workspaces\gray-box\runs\cdi-paired-canary-20260417-r3-contract\audit_summary.json`
-- `D:\Code\DiffAudit\Research\workspaces\gray-box\2026-04-16-cdi-internal-canary-verdict.md`
-- `D:\Code\DiffAudit\Research\workspaces\gray-box\2026-04-16-cdi-paired-scorer-boundary-review.md`
-- `D:\Code\DiffAudit\Research\workspaces\gray-box\2026-04-17-cdi-paired-scorer-consumer-handoff-note.md`
+- `<DIFFAUDIT_ROOT>/Research/workspaces/implementation/2026-04-18-x94-06h1-teacher-calibrated-temporal-surrogate-hard-validation.md`
+- `<DIFFAUDIT_ROOT>/Research/workspaces/implementation/2026-04-18-x95-06h2-temporal-lr-fallback-calibration-review.md`
+- `<DIFFAUDIT_ROOT>/Research/workspaces/gray-box/runs/cdi-internal-canary-20260416-r1/audit_summary.json`
+- `<DIFFAUDIT_ROOT>/Research/workspaces/gray-box/runs/cdi-paired-canary-20260417-r3-contract/audit_summary.json`
+- `<DIFFAUDIT_ROOT>/Research/workspaces/gray-box/2026-04-16-cdi-internal-canary-verdict.md`
+- `<DIFFAUDIT_ROOT>/Research/workspaces/gray-box/2026-04-16-cdi-paired-scorer-boundary-review.md`
+- `<DIFFAUDIT_ROOT>/Research/workspaces/gray-box/2026-04-17-cdi-paired-scorer-consumer-handoff-note.md`
 
 ## Review
 
@@ -94,12 +94,12 @@ More precise reading:
 
 Primary governance anchor:
 
-- `D:\Code\DiffAudit\Research\workspaces\gray-box\runs\cdi-paired-canary-20260417-r3-contract\audit_summary.json`
+- `<DIFFAUDIT_ROOT>/Research/workspaces/gray-box/runs/cdi-paired-canary-20260417-r3-contract/audit_summary.json`
 
 Supporting anchors:
 
-- `D:\Code\DiffAudit\Research\workspaces\implementation\2026-04-18-x94-06h1-teacher-calibrated-temporal-surrogate-hard-validation.md`
-- `D:\Code\DiffAudit\Research\workspaces\implementation\2026-04-18-x95-06h2-temporal-lr-fallback-calibration-review.md`
+- `<DIFFAUDIT_ROOT>/Research/workspaces/implementation/2026-04-18-x94-06h1-teacher-calibrated-temporal-surrogate-hard-validation.md`
+- `<DIFFAUDIT_ROOT>/Research/workspaces/implementation/2026-04-18-x95-06h2-temporal-lr-fallback-calibration-review.md`
 
 ## Handoff Decision
 

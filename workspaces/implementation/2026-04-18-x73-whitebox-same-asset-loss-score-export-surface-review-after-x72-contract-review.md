@@ -6,11 +6,11 @@ What is the smallest honest export surface for a bounded same-asset white-box lo
 
 ## Inputs Reviewed
 
-- `D:\Code\DiffAudit\Research\workspaces\implementation\2026-04-18-x72-whitebox-same-asset-loss-feature-contract-review-after-x71-scoping.md`
-- `D:\Code\DiffAudit\Research\src\diffaudit\attacks\gsa.py`
-- `D:\Code\DiffAudit\Research\src\diffaudit\cli.py`
-- `D:\Code\DiffAudit\Research\workspaces\white-box\external\GSA\DDPM\gen_l2_gradients_DDPM.py`
-- `D:\Code\DiffAudit\Research\workspaces\white-box\runs\gsa-runtime-mainline-20260409-cifar10-1k-3shadow-epoch300-rerun1\summary.json`
+- `<DIFFAUDIT_ROOT>/Research/workspaces/implementation/2026-04-18-x72-whitebox-same-asset-loss-feature-contract-review-after-x71-scoping.md`
+- `<DIFFAUDIT_ROOT>/Research/src/diffaudit/attacks/gsa.py`
+- `<DIFFAUDIT_ROOT>/Research/src/diffaudit/cli.py`
+- `<DIFFAUDIT_ROOT>/Research/workspaces/white-box/external/GSA/DDPM/gen_l2_gradients_DDPM.py`
+- `<DIFFAUDIT_ROOT>/Research/workspaces/white-box/runs/gsa-runtime-mainline-20260409-cifar10-1k-3shadow-epoch300-rerun1/summary.json`
 
 ## Surface Review
 

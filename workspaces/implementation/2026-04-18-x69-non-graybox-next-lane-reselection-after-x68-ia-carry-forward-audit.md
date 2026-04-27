@@ -6,12 +6,12 @@ Once `X-68` clears the last live `I-A` carry-forward residue, what is the next h
 
 ## Inputs Reviewed
 
-- `D:\Code\DiffAudit\Research\workspaces\implementation\2026-04-18-x68-ia-formal-adaptive-lowfpr-carry-forward-audit-after-x67-reselection.md`
-- `D:\Code\DiffAudit\Research\workspaces\implementation\challenger-queue.md`
-- `D:\Code\DiffAudit\Research\ROADMAP.md`
-- `D:\Code\DiffAudit\Research\docs\comprehensive-progress.md`
-- `D:\Code\DiffAudit\Research\docs\mainline-narrative.md`
-- `D:\Code\DiffAudit\ROADMAP.md`
+- `<DIFFAUDIT_ROOT>/Research/workspaces/implementation/2026-04-18-x68-ia-formal-adaptive-lowfpr-carry-forward-audit-after-x67-reselection.md`
+- `<DIFFAUDIT_ROOT>/Research/workspaces/implementation/challenger-queue.md`
+- `<DIFFAUDIT_ROOT>/Research/ROADMAP.md`
+- `<DIFFAUDIT_ROOT>/Research/docs/comprehensive-progress.md`
+- `<DIFFAUDIT_ROOT>/Research/docs/mainline-narrative.md`
+- `<DIFFAUDIT_ROOT>/ROADMAP.md`
 
 ## Reselection Result
 

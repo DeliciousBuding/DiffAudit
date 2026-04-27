@@ -24,7 +24,7 @@ This intake is now staged under the gray-box workspace so the path semantics sta
 - source bundle stash: `Research/workspaces/gray-box/assets/pia/sources`
 - local-only config: `Research/tmp/configs/pia-cifar10-graybox-assets.local.yaml`
 
-The original source archives remain in `D:/Code/DiffAudit/tmp/data`.
+The original source archives remain in `<DIFFAUDIT_ROOT>/tmp/data`.
 
 ## B. What Was Used
 

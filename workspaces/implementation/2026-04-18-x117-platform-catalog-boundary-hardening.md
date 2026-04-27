@@ -6,10 +6,10 @@ Does the current `Platform` public `catalog.json` overstate admitted `Research` 
 
 ## Inputs Reviewed
 
-- `D:\Code\DiffAudit\Platform\apps\api-go\data\public\catalog.json`
-- `D:\Code\DiffAudit\Research\docs\admitted-results-summary.md`
-- `D:\Code\DiffAudit\Research\workspaces\implementation\2026-04-18-platform-intake-from-research.md`
-- `D:\Code\DiffAudit\Research\workspaces\implementation\2026-04-18-x115-research-runtime-platform-handoff-after-x114.md`
+- `<DIFFAUDIT_ROOT>/Platform/apps/api-go/data/public/catalog.json`
+- `<DIFFAUDIT_ROOT>/Research/docs/admitted-results-summary.md`
+- `<DIFFAUDIT_ROOT>/Research/workspaces/implementation/2026-04-18-platform-intake-from-research.md`
+- `<DIFFAUDIT_ROOT>/Research/workspaces/implementation/2026-04-18-x115-research-runtime-platform-handoff-after-x114.md`
 
 ## What Was Found
 
@@ -47,7 +47,7 @@ More precise reading:
 
 ## Canonical Evidence Anchor
 
-- `D:\Code\DiffAudit\Research\workspaces\implementation\2026-04-18-x117-platform-catalog-boundary-hardening.md`
+- `<DIFFAUDIT_ROOT>/Research/workspaces/implementation/2026-04-18-x117-platform-catalog-boundary-hardening.md`
 
 ## Handoff Decision
 

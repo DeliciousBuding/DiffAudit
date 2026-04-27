@@ -6,13 +6,13 @@ After `I-B.12` cleared extraction-side boundedness, is one concrete admitted `GS
 
 ## Inputs Reviewed
 
-- `D:\Code\DiffAudit\Research\ROADMAP.md`
-- `D:\Code\DiffAudit\Research\workspaces\white-box\2026-04-17-finding-nemo-first-intervention-on-off-bounded-review-contract-selection.md`
-- `D:\Code\DiffAudit\Research\workspaces\white-box\2026-04-17-finding-nemo-first-admitted-fixed-mask-packet-execution-budget-review.md`
-- `D:\Code\DiffAudit\Research\workspaces\white-box\2026-04-17-finding-nemo-extraction-side-bounded-cap-verdict.md`
-- `D:\Code\DiffAudit\Research\workspaces\white-box\runs\finding-nemo-first-bounded-localization-packet-20260417-r1\summary.json`
-- `D:\Code\DiffAudit\Research\workspaces\white-box\runs\gsa-runtime-mainline-20260409-cifar10-1k-3shadow-epoch300-rerun1\summary.json`
-- `D:\Code\DiffAudit\Research\workspaces\white-box\assets\gsa-cifar10-1k-3shadow-epoch300-rerun1\manifests\cifar10-ddpm-1k-3shadow-epoch300-rerun1.json`
+- `<DIFFAUDIT_ROOT>/Research/ROADMAP.md`
+- `<DIFFAUDIT_ROOT>/Research/workspaces/white-box/2026-04-17-finding-nemo-first-intervention-on-off-bounded-review-contract-selection.md`
+- `<DIFFAUDIT_ROOT>/Research/workspaces/white-box/2026-04-17-finding-nemo-first-admitted-fixed-mask-packet-execution-budget-review.md`
+- `<DIFFAUDIT_ROOT>/Research/workspaces/white-box/2026-04-17-finding-nemo-extraction-side-bounded-cap-verdict.md`
+- `<DIFFAUDIT_ROOT>/Research/workspaces/white-box/runs/finding-nemo-first-bounded-localization-packet-20260417-r1/summary.json`
+- `<DIFFAUDIT_ROOT>/Research/workspaces/white-box/runs/gsa-runtime-mainline-20260409-cifar10-1k-3shadow-epoch300-rerun1/summary.json`
+- `<DIFFAUDIT_ROOT>/Research/workspaces/white-box/assets/gsa-cifar10-1k-3shadow-epoch300-rerun1/manifests/cifar10-ddpm-1k-3shadow-epoch300-rerun1.json`
 - live host check via `nvidia-smi` on `2026-04-17 06:48`
 
 ## Frozen Launch Config
@@ -24,9 +24,9 @@ The first honest admitted packet is released with no contract drift:
 - source attack family:
   - admitted `GSA epoch300 rerun1`
 - frozen mask summary:
-  - `D:\Code\DiffAudit\Research\workspaces\white-box\runs\finding-nemo-first-bounded-localization-packet-20260417-r1\summary.json`
+  - `<DIFFAUDIT_ROOT>/Research/workspaces/white-box/runs/finding-nemo-first-bounded-localization-packet-20260417-r1/summary.json`
 - workspace:
-  - `D:\Code\DiffAudit\Research\workspaces\white-box\runs\finding-nemo-first-truly-bounded-admitted-intervention-review-20260417-r1`
+  - `<DIFFAUDIT_ROOT>/Research/workspaces/white-box/runs/finding-nemo-first-truly-bounded-admitted-intervention-review-20260417-r1`
 - device:
   - `cuda`
 - bounded packet size:
@@ -114,7 +114,7 @@ More precise reading:
 
 ## Canonical Evidence Anchor
 
-- `D:\Code\DiffAudit\Research\workspaces\white-box\2026-04-17-finding-nemo-first-truly-bounded-admitted-packet-launch-review.md`
+- `<DIFFAUDIT_ROOT>/Research/workspaces/white-box/2026-04-17-finding-nemo-first-truly-bounded-admitted-packet-launch-review.md`
 
 ## Next Step
 

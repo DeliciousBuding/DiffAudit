@@ -6,10 +6,10 @@ After freezing the `CDI` paired scorer boundary, have the gray-box summary-layer
 
 ## Inputs Reviewed
 
-- `D:\Code\DiffAudit\Research\workspaces\gray-box\README.md`
-- `D:\Code\DiffAudit\Research\README.md`
-- `D:\Code\DiffAudit\Research\docs\comprehensive-progress.md`
-- `D:\Code\DiffAudit\Research\workspaces\gray-box\2026-04-16-cdi-paired-scorer-boundary-review.md`
+- `<DIFFAUDIT_ROOT>/Research/workspaces/gray-box/README.md`
+- `<DIFFAUDIT_ROOT>/Research/README.md`
+- `<DIFFAUDIT_ROOT>/Research/docs/comprehensive-progress.md`
+- `<DIFFAUDIT_ROOT>/Research/workspaces/gray-box/2026-04-16-cdi-paired-scorer-boundary-review.md`
 
 ## Sync Applied
 

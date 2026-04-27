@@ -6,12 +6,12 @@ After `X-101` landed Step-0 risk aggregation and exported `k=16/32/64` ladders, 
 
 ## Inputs Reviewed
 
-- `D:\Code\DiffAudit\Research\src\diffaudit\defenses\risk_targeted_unlearning.py`
-- `D:\Code\DiffAudit\Research\src\diffaudit\cli.py`
-- `D:\Code\DiffAudit\Research\tests\test_risk_targeted_unlearning.py`
-- `D:\Code\DiffAudit\Research\workspaces\defense\runs\risk-targeted-unlearning-prep-full-overlap-20260418-r1\summary.json`
-- `D:\Code\DiffAudit\Research\workspaces\white-box\assets\gsa-cifar10-1k-3shadow-epoch300-rerun1\manifests\cifar10-ddpm-1k-3shadow-epoch300-rerun1.json`
-- `D:\Code\DiffAudit\Research\workspaces\defense\runs\risk-targeted-unlearning-pilot-k32-20260418-r2\summary.json`
+- `<DIFFAUDIT_ROOT>/Research/src/diffaudit/defenses/risk_targeted_unlearning.py`
+- `<DIFFAUDIT_ROOT>/Research/src/diffaudit/cli.py`
+- `<DIFFAUDIT_ROOT>/Research/tests/test_risk_targeted_unlearning.py`
+- `<DIFFAUDIT_ROOT>/Research/workspaces/defense/runs/risk-targeted-unlearning-prep-full-overlap-20260418-r1/summary.json`
+- `<DIFFAUDIT_ROOT>/Research/workspaces/white-box/assets/gsa-cifar10-1k-3shadow-epoch300-rerun1/manifests/cifar10-ddpm-1k-3shadow-epoch300-rerun1.json`
+- `<DIFFAUDIT_ROOT>/Research/workspaces/defense/runs/risk-targeted-unlearning-pilot-k32-20260418-r2/summary.json`
 
 ## What Landed
 
@@ -44,7 +44,7 @@ The first real run used:
 
 Artifacts now exist under:
 
-- `D:\Code\DiffAudit\Research\workspaces\defense\runs\risk-targeted-unlearning-pilot-k32-20260418-r2\`
+- `<DIFFAUDIT_ROOT>/Research/workspaces/defense/runs/risk-targeted-unlearning-pilot-k32-20260418-r2\`
 
 ## Actual Read
 
@@ -111,12 +111,12 @@ More precise reading:
 
 Primary anchor:
 
-- `D:\Code\DiffAudit\Research\workspaces\defense\runs\risk-targeted-unlearning-pilot-k32-20260418-r2\summary.json`
+- `<DIFFAUDIT_ROOT>/Research/workspaces/defense/runs/risk-targeted-unlearning-pilot-k32-20260418-r2/summary.json`
 
 Supporting anchors:
 
-- `D:\Code\DiffAudit\Research\workspaces\defense\runs\risk-targeted-unlearning-prep-full-overlap-20260418-r1\summary.json`
-- `D:\Code\DiffAudit\Research\workspaces\cross-box\runs\crossbox-pairboard-gsa-targeted-full-overlap-20260418-r1\summary.json`
+- `<DIFFAUDIT_ROOT>/Research/workspaces/defense/runs/risk-targeted-unlearning-prep-full-overlap-20260418-r1/summary.json`
+- `<DIFFAUDIT_ROOT>/Research/workspaces/cross-box/runs/crossbox-pairboard-gsa-targeted-full-overlap-20260418-r1/summary.json`
 
 ## Handoff Decision
 

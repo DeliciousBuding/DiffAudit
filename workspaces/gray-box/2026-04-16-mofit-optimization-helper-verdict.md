@@ -6,9 +6,9 @@ Can the dedicated `MoFit` scaffold now expose minimal reusable optimization help
 
 ## Inputs Reviewed
 
-- `D:\Code\DiffAudit\Research\tests\test_mofit_scaffold.py`
-- `D:\Code\DiffAudit\Research\src\diffaudit\attacks\mofit_scaffold.py`
-- `D:\Code\DiffAudit\Research\workspaces\gray-box\2026-04-16-mofit-score-trace-update-verdict.md`
+- `<DIFFAUDIT_ROOT>/Research/tests/test_mofit_scaffold.py`
+- `<DIFFAUDIT_ROOT>/Research/src/diffaudit/attacks/mofit_scaffold.py`
+- `<DIFFAUDIT_ROOT>/Research/workspaces/gray-box/2026-04-16-mofit-score-trace-update-verdict.md`
 
 ## Verification
 

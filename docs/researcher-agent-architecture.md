@@ -1,6 +1,6 @@
 # ResearcherAgent Architecture
 
-This document defines the long-running autonomous research architecture for `D:\Code\DiffAudit\Research`.
+This document defines the long-running autonomous research architecture for `Research/` under `<DIFFAUDIT_ROOT>`.
 
 ## 1. Goal
 

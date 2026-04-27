@@ -6,14 +6,14 @@ After `X-115` closed the system handoff as contract-stable, do any remaining liv
 
 ## Inputs Reviewed
 
-- `D:\Code\DiffAudit\Research\ROADMAP.md`
-- `D:\Code\DiffAudit\Research\docs\research-autonomous-execution-prompt.md`
-- `D:\Code\DiffAudit\Research\docs\codex-roadmap-execution-prompt.md`
-- `D:\Code\DiffAudit\Research\workspaces\implementation\challenger-queue.md`
-- `D:\Code\DiffAudit\Research\docs\comprehensive-progress.md`
-- `D:\Code\DiffAudit\Research\docs\mainline-narrative.md`
-- `D:\Code\DiffAudit\Research\workspaces\implementation\2026-04-18-x114-04-defense-post-h1-family-review.md`
-- `D:\Code\DiffAudit\Research\workspaces\implementation\2026-04-18-x115-research-runtime-platform-handoff-after-x114.md`
+- `<DIFFAUDIT_ROOT>/Research/ROADMAP.md`
+- `<DIFFAUDIT_ROOT>/Research/docs/research-autonomous-execution-prompt.md`
+- `<DIFFAUDIT_ROOT>/Research/docs/codex-roadmap-execution-prompt.md`
+- `<DIFFAUDIT_ROOT>/Research/workspaces/implementation/challenger-queue.md`
+- `<DIFFAUDIT_ROOT>/Research/docs/comprehensive-progress.md`
+- `<DIFFAUDIT_ROOT>/Research/docs/mainline-narrative.md`
+- `<DIFFAUDIT_ROOT>/Research/workspaces/implementation/2026-04-18-x114-04-defense-post-h1-family-review.md`
+- `<DIFFAUDIT_ROOT>/Research/workspaces/implementation/2026-04-18-x115-research-runtime-platform-handoff-after-x114.md`
 
 ## What Was Found
 
@@ -57,7 +57,7 @@ More precise reading:
 
 ## Canonical Evidence Anchor
 
-- `D:\Code\DiffAudit\Research\workspaces\implementation\2026-04-18-x116-live-entry-stale-sync-after-x115.md`
+- `<DIFFAUDIT_ROOT>/Research/workspaces/implementation/2026-04-18-x116-live-entry-stale-sync-after-x115.md`
 
 ## Handoff Decision
 

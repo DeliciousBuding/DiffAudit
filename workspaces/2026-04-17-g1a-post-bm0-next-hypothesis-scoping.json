@@ -2,8 +2,8 @@
   "status": "ready",
   "dispatch": "G1-A post-B-M0 long-horizon next-hypothesis scoping",
   "dispatch_date": "2026-04-17",
-  "root_authority": "D:/Code/DiffAudit/ROADMAP.md",
-  "research_authority": "D:/Code/DiffAudit/Research/ROADMAP.md#5.3",
+  "root_authority": "<DIFFAUDIT_ROOT>/ROADMAP.md",
+  "research_authority": "<DIFFAUDIT_ROOT>/Research/ROADMAP.md#5.3",
   "decision": {
     "selected_candidate": "gb_cdi_tmiadm_triscore_bridge",
     "selected_candidate_label": "gray-box tri-evidence audit scorer bridging current CDI paired contract and aligned PIA/TMIA-DM packet surfaces",
@@ -33,9 +33,9 @@
       ],
       "viability": "blocked",
       "evidence": [
-        "D:/Code/DiffAudit/Research/workspaces/white-box/2026-04-17-cross-permission-inmodel-intervention-review.md",
-        "D:/Code/DiffAudit/Research/workspaces/white-box/2026-04-17-cross-permission-translated-falsifier-review.md",
-        "D:/Code/DiffAudit/Research/workspaces/implementation/2026-04-17-bm0-gpu-release-scoping-summary.json"
+        "<DIFFAUDIT_ROOT>/Research/workspaces/white-box/2026-04-17-cross-permission-inmodel-intervention-review.md",
+        "<DIFFAUDIT_ROOT>/Research/workspaces/white-box/2026-04-17-cross-permission-translated-falsifier-review.md",
+        "<DIFFAUDIT_ROOT>/Research/workspaces/implementation/2026-04-17-bm0-gpu-release-scoping-summary.json"
       ]
     },
     {
@@ -52,9 +52,9 @@
       ],
       "viability": "no-go",
       "evidence": [
-        "D:/Code/DiffAudit/Research/ROADMAP.md",
-        "D:/Code/DiffAudit/Research/workspaces/white-box/2026-04-17-finding-nemo-post-first-actual-packet-boundary-review.md",
-        "D:/Code/DiffAudit/Research/workspaces/implementation/2026-04-17-bm0-gpu-release-scoping-summary.json"
+        "<DIFFAUDIT_ROOT>/Research/ROADMAP.md",
+        "<DIFFAUDIT_ROOT>/Research/workspaces/white-box/2026-04-17-finding-nemo-post-first-actual-packet-boundary-review.md",
+        "<DIFFAUDIT_ROOT>/Research/workspaces/implementation/2026-04-17-bm0-gpu-release-scoping-summary.json"
       ]
     },
     {
@@ -71,8 +71,8 @@
       ],
       "viability": "blocked",
       "evidence": [
-        "D:/Code/DiffAudit/Research/ROADMAP.md",
-        "D:/Code/DiffAudit/Research/docs/comprehensive-progress.md"
+        "<DIFFAUDIT_ROOT>/Research/ROADMAP.md",
+        "<DIFFAUDIT_ROOT>/Research/docs/comprehensive-progress.md"
       ]
     },
     {
@@ -90,9 +90,9 @@
       ],
       "viability": "bounded",
       "evidence": [
-        "D:/Code/DiffAudit/Research/workspaces/gray-box/2026-04-16-pia-vs-tmiadm-disagreement-exploitation-verdict.md",
-        "D:/Code/DiffAudit/Research/workspaces/gray-box/2026-04-17-pia-tmiadm-confidence-gated-switching-offline-packet.md",
-        "D:/Code/DiffAudit/Research/workspaces/gray-box/2026-04-17-cdi-paired-scorer-consumer-handoff-note.md"
+        "<DIFFAUDIT_ROOT>/Research/workspaces/gray-box/2026-04-16-pia-vs-tmiadm-disagreement-exploitation-verdict.md",
+        "<DIFFAUDIT_ROOT>/Research/workspaces/gray-box/2026-04-17-pia-tmiadm-confidence-gated-switching-offline-packet.md",
+        "<DIFFAUDIT_ROOT>/Research/workspaces/gray-box/2026-04-17-cdi-paired-scorer-consumer-handoff-note.md"
       ]
     }
   ],
@@ -108,19 +108,19 @@
       "model_family": "DDPM",
       "primary_surface": {
         "name": "gpu256_undefended",
-        "pia_scores": "D:/Code/DiffAudit/Research/workspaces/gray-box/runs/pia-cifar10-runtime-mainline-20260408-gpu-256/scores.json",
-        "tmiadm_family_scores": "D:/Code/DiffAudit/Research/workspaces/gray-box/runs/tmiadm-cifar10-late-window-protocol-probe-20260416-gpu-256-r2-seed1/family-scores.json",
+        "pia_scores": "<DIFFAUDIT_ROOT>/Research/workspaces/gray-box/runs/pia-cifar10-runtime-mainline-20260408-gpu-256/scores.json",
+        "tmiadm_family_scores": "<DIFFAUDIT_ROOT>/Research/workspaces/gray-box/runs/tmiadm-cifar10-late-window-protocol-probe-20260416-gpu-256-r2-seed1/family-scores.json",
         "tmiadm_family": "long_window",
         "samples_per_class": 256
       },
       "secondary_surface": {
         "name": "gpu256_defended",
-        "pia_scores": "D:/Code/DiffAudit/Research/workspaces/gray-box/runs/pia-cifar10-runtime-mainline-dropout-defense-20260408-gpu-256/scores.json",
-        "tmiadm_family_scores": "D:/Code/DiffAudit/Research/workspaces/gray-box/runs/tmiadm-cifar10-late-window-temporal-striding-defense-20260416-gpu-256-r2-seed1/family-scores.json",
+        "pia_scores": "<DIFFAUDIT_ROOT>/Research/workspaces/gray-box/runs/pia-cifar10-runtime-mainline-dropout-defense-20260408-gpu-256/scores.json",
+        "tmiadm_family_scores": "<DIFFAUDIT_ROOT>/Research/workspaces/gray-box/runs/tmiadm-cifar10-late-window-temporal-striding-defense-20260416-gpu-256-r2-seed1/family-scores.json",
         "tmiadm_family": "long_window",
         "samples_per_class": 256
       },
-      "internal_contract_reference": "D:/Code/DiffAudit/Research/workspaces/gray-box/runs/cdi-paired-canary-20260417-r3-contract/audit_summary.json"
+      "internal_contract_reference": "<DIFFAUDIT_ROOT>/Research/workspaces/gray-box/runs/cdi-paired-canary-20260417-r3-contract/audit_summary.json"
     },
     "cpu_first_prereq": {
       "name": "tmiadm_identity_export_plus_triscore_offline_canary",
@@ -170,5 +170,5 @@
     "required": false,
     "reason": "Current higher-layer consumer contract can stay unchanged at scoping time because this candidate remains internal-only and preserves the existing contract-first gating pattern; no new Platform-facing field is being promoted in this dispatch."
   },
-  "canonical_evidence_anchor": "D:/Code/DiffAudit/Research/workspaces/2026-04-17-g1a-post-bm0-next-hypothesis-scoping.json"
+  "canonical_evidence_anchor": "<DIFFAUDIT_ROOT>/Research/workspaces/2026-04-17-g1a-post-bm0-next-hypothesis-scoping.json"
 }

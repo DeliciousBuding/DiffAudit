@@ -16,12 +16,12 @@ Is `variation` still blocked in a vague “missing assets” sense, or has the r
 
 Current blocked note:
 
-- `D:\Code\DiffAudit\Research\workspaces\black-box\2026-04-09-variation-blocked.md`
+- `<DIFFAUDIT_ROOT>/Research/workspaces/black-box/2026-04-09-variation-blocked.md`
 
 Current recovery template:
 
-- `D:\Code\DiffAudit\Research\workspaces\black-box\2026-04-09-variation-real-asset-template.md`
-- `D:\Code\DiffAudit\Research\configs\attacks\variation_real_asset.template.yaml`
+- `<DIFFAUDIT_ROOT>/Research/workspaces/black-box/2026-04-09-variation-real-asset-template.md`
+- `<DIFFAUDIT_ROOT>/Research/configs/attacks/variation_real_asset.template.yaml`
 
 ## Verdict
 

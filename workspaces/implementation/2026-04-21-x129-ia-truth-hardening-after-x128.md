@@ -6,12 +6,12 @@ After `X-128` selected `I-A` as the next live non-graybox lane, is there still a
 
 ## Inputs Reviewed
 
-- `D:\Code\DiffAudit\Research\docs\competition-evidence-pack.md`
-- `D:\Code\DiffAudit\Research\docs\competition-innovation-summary.md`
-- `D:\Code\DiffAudit\Research\docs\competition-defense-qa.md`
-- `D:\Code\DiffAudit\Research\docs\leader-research-ready-summary.md`
-- `D:\Code\DiffAudit\Research\docs\admitted-results-summary.md`
-- `D:\Code\DiffAudit\Research\workspaces\implementation\2026-04-21-x128-non-graybox-next-lane-reselection-after-x127.md`
+- `<DIFFAUDIT_ROOT>/Research/docs/competition-evidence-pack.md`
+- `<DIFFAUDIT_ROOT>/Research/docs/competition-innovation-summary.md`
+- `<DIFFAUDIT_ROOT>/Research/docs/competition-defense-qa.md`
+- `<DIFFAUDIT_ROOT>/Research/docs/leader-research-ready-summary.md`
+- `<DIFFAUDIT_ROOT>/Research/docs/admitted-results-summary.md`
+- `<DIFFAUDIT_ROOT>/Research/workspaces/implementation/2026-04-21-x128-non-graybox-next-lane-reselection-after-x127.md`
 
 ## Findings
 
@@ -61,7 +61,7 @@ Sharper control truth:
 
 ## Canonical Evidence Anchor
 
-- `D:\Code\DiffAudit\Research\workspaces\implementation\2026-04-21-x129-ia-truth-hardening-after-x128.md`
+- `<DIFFAUDIT_ROOT>/Research/workspaces/implementation/2026-04-21-x129-ia-truth-hardening-after-x128.md`
 
 ## Handoff
 

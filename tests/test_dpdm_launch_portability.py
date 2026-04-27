@@ -15,8 +15,8 @@ class TestDpdmLaunchPortability(unittest.TestCase):
         text = _read_script("launch_dpdm_training.ps1")
         self.assertIn("DIFFAUDIT_WORKSPACE_ROOT", text)
         self.assertIn("DIFFAUDIT_RESEARCH_PYTHON", text)
-        self.assertNotIn(r"C:\Users\Ding\miniforge3\envs\diffaudit-research\python.exe", text)
-        self.assertNotIn(r"D:\Code\DiffAudit\Research\external\DPDM", text)
+        self.assertNotRegex(text, r"[A-Z]:[/\\]Users[/\\][^/\\]+[/\\].*diffaudit-research[/\\]python\.exe")
+        self.assertNotRegex(text, r"[A-Z]:[/\\]Code[/\\]DiffAudit[/\\]Research[/\\]external[/\\]DPDM")
 
     def test_target_and_shadow_launchers_do_not_require_repo_author_paths(self) -> None:
         for name in (
@@ -26,7 +26,7 @@ class TestDpdmLaunchPortability(unittest.TestCase):
         ):
             text = _read_script(name)
             self.assertIn("$PSScriptRoot", text, msg=name)
-            self.assertNotIn(r"D:\Code\DiffAudit\Research\scripts", text, msg=name)
+            self.assertNotRegex(text, r"[A-Z]:[/\\]Code[/\\]DiffAudit[/\\]Research[/\\]scripts", msg=name)
 
     def test_scripts_readme_marks_scheduler_optional(self) -> None:
         text = (SCRIPTS_ROOT / "README.md").read_text(encoding="utf-8")

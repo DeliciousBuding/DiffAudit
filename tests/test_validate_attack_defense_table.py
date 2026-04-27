@@ -111,7 +111,7 @@ class ValidateAttackDefenseTableTests(unittest.TestCase):
                                 "model": "Stable Diffusion v1.5 + DDIM",
                                 "evidence_level": "runtime-mainline",
                                 "boundary": "controlled / public-subset / risk-exists",
-                                "source": r"D:\Code\DiffAudit\Research\experiments\recon\summary.json",
+                                "source": r"C:\DiffAudit\Research\experiments\recon\summary.json",
                             }
                         ],
                     }

@@ -6,15 +6,15 @@ After `X-106` established `k16` as the current best working instantiation, does 
 
 ## Inputs Reviewed
 
-- `D:\Code\DiffAudit\Research\workspaces\defense\runs\risk-targeted-unlearning-prep-full-overlap-k8-20260418-r1\summary.json`
-- `D:\Code\DiffAudit\Research\workspaces\defense\runs\risk-targeted-unlearning-pilot-k8-20260418-r1\summary.json`
-- `D:\Code\DiffAudit\Research\workspaces\defense\runs\risk-targeted-retained-companion-k8-20260418-r1\summary.json`
-- `D:\Code\DiffAudit\Research\workspaces\defense\runs\risk-targeted-unlearning-review-k8-pairednoise-20260418-r1\summary.json`
-- `D:\Code\DiffAudit\Research\workspaces\defense\runs\risk-targeted-unlearning-review-retained-k8-pairednoise-20260418-r1\summary.json`
-- `D:\Code\DiffAudit\Research\workspaces\defense\runs\risk-targeted-unlearning-review-fullsplit-k8-pairednoise-20260418-r1\summary.json`
-- `D:\Code\DiffAudit\Research\workspaces\defense\runs\risk-targeted-unlearning-review-k16-pairednoise-20260418-r1\summary.json`
-- `D:\Code\DiffAudit\Research\workspaces\defense\runs\risk-targeted-unlearning-review-retained-k16-pairednoise-20260418-r1\summary.json`
-- `D:\Code\DiffAudit\Research\workspaces\defense\runs\risk-targeted-unlearning-review-fullsplit-k16-pairednoise-20260418-r1\summary.json`
+- `<DIFFAUDIT_ROOT>/Research/workspaces/defense/runs/risk-targeted-unlearning-prep-full-overlap-k8-20260418-r1/summary.json`
+- `<DIFFAUDIT_ROOT>/Research/workspaces/defense/runs/risk-targeted-unlearning-pilot-k8-20260418-r1/summary.json`
+- `<DIFFAUDIT_ROOT>/Research/workspaces/defense/runs/risk-targeted-retained-companion-k8-20260418-r1/summary.json`
+- `<DIFFAUDIT_ROOT>/Research/workspaces/defense/runs/risk-targeted-unlearning-review-k8-pairednoise-20260418-r1/summary.json`
+- `<DIFFAUDIT_ROOT>/Research/workspaces/defense/runs/risk-targeted-unlearning-review-retained-k8-pairednoise-20260418-r1/summary.json`
+- `<DIFFAUDIT_ROOT>/Research/workspaces/defense/runs/risk-targeted-unlearning-review-fullsplit-k8-pairednoise-20260418-r1/summary.json`
+- `<DIFFAUDIT_ROOT>/Research/workspaces/defense/runs/risk-targeted-unlearning-review-k16-pairednoise-20260418-r1/summary.json`
+- `<DIFFAUDIT_ROOT>/Research/workspaces/defense/runs/risk-targeted-unlearning-review-retained-k16-pairednoise-20260418-r1/summary.json`
+- `<DIFFAUDIT_ROOT>/Research/workspaces/defense/runs/risk-targeted-unlearning-review-fullsplit-k16-pairednoise-20260418-r1/summary.json`
 
 ## What Landed
 
@@ -139,16 +139,16 @@ Practical read:
 
 Primary anchors:
 
-- `D:\Code\DiffAudit\Research\workspaces\defense\runs\risk-targeted-unlearning-pilot-k8-20260418-r1\summary.json`
-- `D:\Code\DiffAudit\Research\workspaces\defense\runs\risk-targeted-unlearning-review-k8-pairednoise-20260418-r1\summary.json`
-- `D:\Code\DiffAudit\Research\workspaces\defense\runs\risk-targeted-unlearning-review-retained-k8-pairednoise-20260418-r1\summary.json`
-- `D:\Code\DiffAudit\Research\workspaces\defense\runs\risk-targeted-unlearning-review-fullsplit-k8-pairednoise-20260418-r1\summary.json`
+- `<DIFFAUDIT_ROOT>/Research/workspaces/defense/runs/risk-targeted-unlearning-pilot-k8-20260418-r1/summary.json`
+- `<DIFFAUDIT_ROOT>/Research/workspaces/defense/runs/risk-targeted-unlearning-review-k8-pairednoise-20260418-r1/summary.json`
+- `<DIFFAUDIT_ROOT>/Research/workspaces/defense/runs/risk-targeted-unlearning-review-retained-k8-pairednoise-20260418-r1/summary.json`
+- `<DIFFAUDIT_ROOT>/Research/workspaces/defense/runs/risk-targeted-unlearning-review-fullsplit-k8-pairednoise-20260418-r1/summary.json`
 
 Supporting anchors:
 
-- `D:\Code\DiffAudit\Research\workspaces\defense\runs\risk-targeted-unlearning-review-k16-pairednoise-20260418-r1\summary.json`
-- `D:\Code\DiffAudit\Research\workspaces\defense\runs\risk-targeted-unlearning-review-retained-k16-pairednoise-20260418-r1\summary.json`
-- `D:\Code\DiffAudit\Research\workspaces\defense\runs\risk-targeted-unlearning-review-fullsplit-k16-pairednoise-20260418-r1\summary.json`
+- `<DIFFAUDIT_ROOT>/Research/workspaces/defense/runs/risk-targeted-unlearning-review-k16-pairednoise-20260418-r1/summary.json`
+- `<DIFFAUDIT_ROOT>/Research/workspaces/defense/runs/risk-targeted-unlearning-review-retained-k16-pairednoise-20260418-r1/summary.json`
+- `<DIFFAUDIT_ROOT>/Research/workspaces/defense/runs/risk-targeted-unlearning-review-fullsplit-k16-pairednoise-20260418-r1/summary.json`
 
 ## Handoff Decision
 

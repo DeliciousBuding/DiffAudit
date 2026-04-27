@@ -6,11 +6,11 @@ After `I-C.13` froze the bridge promotion boundary at `translated-contract canar
 
 ## Inputs Reviewed
 
-- `D:\Code\DiffAudit\Research\ROADMAP.md`
-- `D:\Code\DiffAudit\Research\workspaces\white-box\2026-04-17-cross-permission-bridge-verdict-review.md`
-- `D:\Code\DiffAudit\Research\workspaces\gray-box\runs\pia-translated-alias-probe-20260417-r1\summary.json`
-- `D:\Code\DiffAudit\Research\workspaces\gray-box\runs\pia-translated-alias-probe-random-20260417-r1\summary.json`
-- `D:\Code\DiffAudit\Research\workspaces\gray-box\runs\pia-translated-alias-probe-bottom-20260417-r1\summary.json`
+- `<DIFFAUDIT_ROOT>/Research/ROADMAP.md`
+- `<DIFFAUDIT_ROOT>/Research/workspaces/white-box/2026-04-17-cross-permission-bridge-verdict-review.md`
+- `<DIFFAUDIT_ROOT>/Research/workspaces/gray-box/runs/pia-translated-alias-probe-20260417-r1/summary.json`
+- `<DIFFAUDIT_ROOT>/Research/workspaces/gray-box/runs/pia-translated-alias-probe-random-20260417-r1/summary.json`
+- `<DIFFAUDIT_ROOT>/Research/workspaces/gray-box/runs/pia-translated-alias-probe-bottom-20260417-r1/summary.json`
 
 ## Executed Comparison
 

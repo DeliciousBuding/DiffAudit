@@ -15,7 +15,7 @@
 
 ● 好的，我已经完成了几个关键任务的推进。现在让我更新根 ROADMAP 并总结当前状态。
 
-● Update(D:\Code\DiffAudit\ROADMAP.md)
+● Update(<DIFFAUDIT_ROOT>/ROADMAP.md)
   ⎿  Added 12 lines, removed 9 lines
       622
       623  ## 8. 当前优先级（Root View）
@@ -58,7 +58,7 @@
       639
       640  ## 9. 当前入口文档
 
-● Update(D:\Code\DiffAudit\ROADMAP.md)
+● Update(<DIFFAUDIT_ROOT>/ROADMAP.md)
   ⎿  Added 20 lines, removed 16 lines
       599
       600  ## 7. 当前 blocker 与缺口重述
@@ -164,22 +164,22 @@
 
 ● I'm ready to help! What would you like to work on?
 
-❯ D:\Code\DiffAudit 研究一下，看一下我们最新进度，规划一下
+❯ <DIFFAUDIT_ROOT> 研究一下，看一下我们最新进度，规划一下
 
 ● I'll explore the DiffAudit project to understand the current state and plan next steps.
 
-● Bash(cd D:/Code/DiffAudit && pwd)
+● Bash(cd <DIFFAUDIT_ROOT> && pwd)
   ⎿  /d/Code/DiffAudit
   ⎿  Shell cwd was reset to C:\Users\Ding
 
-● Bash(cd D:/Code/DiffAudit && ls -la)
+● Bash(cd <DIFFAUDIT_ROOT> && ls -la)
   ⎿  total 109
      drwxr-xr-x 1 Ding 197609     0 Apr 17 16:11 .
      drwxr-xr-x 1 Ding 197609     0 Apr  6 15:12 ..
      … +20 lines (ctrl+o to expand)
   ⎿  Shell cwd was reset to C:\Users\Ding
 
-● Bash(cd D:/Code/DiffAudit && git log --oneline -10)
+● Bash(cd <DIFFAUDIT_ROOT> && git log --oneline -10)
   ⎿  Error: Exit code 128
      fatal: not a git repository (or any of the parent directories): .git
 
@@ -191,14 +191,14 @@
 
   Read 2 files (ctrl+o to expand)
 
-● Bash(cd "D:/Code/DiffAudit/Platform" && git log --oneline -5)
+● Bash(cd "<DIFFAUDIT_ROOT>/Platform" && git log --oneline -5)
   ⎿  f0109df feat(platform): add report track detail views and runtime provenance scaffolding
      11acc87 fix(auth): pin oauth callback redirects to configured platform origin
      cf2f9c6 fix(platform): restore production oauth build and clarify error states
      … +2 lines (ctrl+o to expand)
   ⎿  Shell cwd was reset to C:\Users\Ding
 
-● Bash(cd "D:/Code/DiffAudit/Research" && git log --oneline -5)
+● Bash(cd "<DIFFAUDIT_ROOT>/Research" && git log --oneline -5)
   ⎿  4eea062 design tmiadm confidence-gated switch
      0b7454c select ranking-sensitive variable lane
      2098796 review whitebox defended-family import
@@ -279,28 +279,28 @@
 
 ● 好的，我现在开始并行推进这些任务。
 
-● Bash(cd "D:/Code/DiffAudit/Platform" && git remote -v)
+● Bash(cd "<DIFFAUDIT_ROOT>/Platform" && git remote -v)
   ⎿  gz2        ubuntu@gz2:/home/ubuntu/projects/diffaudit/platform-web/.git (fetch)
      gz2        ubuntu@gz2:/home/ubuntu/projects/diffaudit/platform-web/.git (push)
      origin     https://github.com/DeliciousBuding/DiffAudit-Platform.git (fetch)
      origin     https://github.com/DeliciousBuding/DiffAudit-Platform.git (push)
   ⎿  Shell cwd was reset to C:\Users\Ding
 
-● Bash(cd "D:/Code/DiffAudit/Platform" && git tag -l "v0.1.0-stable")
+● Bash(cd "<DIFFAUDIT_ROOT>/Platform" && git tag -l "v0.1.0-stable")
   ⎿  v0.1.0-stable
   ⎿  Shell cwd was reset to C:\Users\Ding
 
-● Bash(cd "D:/Code/DiffAudit/Platform" && git ls-remote --tags gz2 | grep "v0.1.0-stable")
+● Bash(cd "<DIFFAUDIT_ROOT>/Platform" && git ls-remote --tags gz2 | grep "v0.1.0-stable")
   ⎿  No matches found
 
 ● 确认 gz2 remote 缺失 v0.1.0-stable tag。现在推送 tag 到 gz2 并清理残留分支。
 
-● Bash(cd "D:/Code/DiffAudit/Platform" && git push gz2 v0.1.0-stable)
+● Bash(cd "<DIFFAUDIT_ROOT>/Platform" && git push gz2 v0.1.0-stable)
   ⎿  To gz2:/home/ubuntu/projects/diffaudit/platform-web/.git
       * [new tag]         v0.1.0-stable -> v0.1.0-stable
   ⎿  Shell cwd was reset to C:\Users\Ding
 
-● Bash(cd "D:/Code/DiffAudit/Platform" && git branch -r | grep "gz2/deploy-sync")
+● Bash(cd "<DIFFAUDIT_ROOT>/Platform" && git branch -r | grep "gz2/deploy-sync")
   ⎿    gz2/deploy-sync-2026-04-17
   ⎿  Shell cwd was reset to C:\Users\Ding
 
@@ -308,7 +308,7 @@
 
 ● 好的，tag 已推送到 gz2。现在删除残留分支并完成 G1-A GPU review 文档。
 
-● Bash(cd "D:/Code/DiffAudit/Platform" && ssh gz2 "cd /home/ubuntu/projects/diffaudit/platform-web && git branch -D
+● Bash(cd "<DIFFAUDIT_ROOT>/Platform" && ssh gz2 "cd /home/ubuntu/projects/diffaudit/platform-web && git branch -D
       deploy-sync-2026-04-17")
   ⎿  Error: Exit code 1
      error: branch 'deploy-sync-2026-04-17' not found.
@@ -317,13 +317,13 @@
 
 ● 分支已在远端删除（本地不存在该分支）。现在完成 G1-A GPU review 文档并更新 ROADMAP。
 
-● Bash(cd "D:/Code/DiffAudit/Platform" && git remote prune gz2)
+● Bash(cd "<DIFFAUDIT_ROOT>/Platform" && git remote prune gz2)
   ⎿  Pruning gz2
      URL: ubuntu@gz2:/home/ubuntu/projects/diffaudit/platform-web/.git
       * [pruned] gz2/deploy-sync-2026-04-17
   ⎿  Shell cwd was reset to C:\Users\Ding
 
-● Update(D:\Code\DiffAudit\Research\workspaces\2026-04-17-g1a-bounded-gpu-review.md)
+● Update(<DIFFAUDIT_ROOT>/Research/workspaces/2026-04-17-g1a-bounded-gpu-review.md)
   ⎿  Added 20 lines, removed 15 lines
       20
       21  ## 2. Shared-Surface Identity
@@ -362,9 +362,9 @@
       40 -  - `num_samples`
       41 -  - `sample_count_per_split`
       37 +**Frozen contract fields** (from X-89 identity alignment):
-      38 +- `dataset_root`: `D:\Code\DiffAudit\Research\workspaces\gray-box\assets\pia\datasets`
-      39 +- `member_split_root`: `D:\Code\DiffAudit\Research\external\PIA\DDPM`
-      40 +- `model_dir`: `D:\Code\DiffAudit\Research\workspaces\gray-box\assets\pia\checkpoints\cifar10_ddpm`
+      38 +- `dataset_root`: `<DIFFAUDIT_ROOT>/Research/workspaces/gray-box/assets/pia/datasets`
+      39 +- `member_split_root`: `<DIFFAUDIT_ROOT>/Research/external/PIA/DDPM`
+      40 +- `model_dir`: `<DIFFAUDIT_ROOT>/Research/workspaces/gray-box/assets/pia/checkpoints/cifar10_ddpm`
       41 +- `max_samples`: 256
       42 +- `num_samples`: 256
       43 +- `sample_count_per_split`: 256
@@ -377,7 +377,7 @@
       49
       50  Assess whether the rerun honestly fits the `RTX 4070 Laptop 8GB + CPU` host.
 
-● Update(D:\Code\DiffAudit\Research\workspaces\2026-04-17-g1a-bounded-gpu-review.md)
+● Update(<DIFFAUDIT_ROOT>/Research/workspaces/2026-04-17-g1a-bounded-gpu-review.md)
   ⎿  Added 13 lines, removed 8 lines
       47
       48  ## 3. Host-Fit Budget
@@ -414,7 +414,7 @@
       70  This section must justify why a larger rerun changes project-level story rather than merely polishing t
           he same internal canary.
 
-● Update(D:\Code\DiffAudit\Research\workspaces\2026-04-17-g1a-bounded-gpu-review.md)
+● Update(<DIFFAUDIT_ROOT>/Research/workspaces/2026-04-17-g1a-bounded-gpu-review.md)
   ⎿  Added 13 lines, removed 7 lines
       67
       68  ## 4. Story Delta Vs X-89
@@ -452,7 +452,7 @@
       88  ## 5. Kill Gate
       89
 
-● Update(D:\Code\DiffAudit\Research\workspaces\2026-04-17-g1a-bounded-gpu-review.md)
+● Update(<DIFFAUDIT_ROOT>/Research/workspaces/2026-04-17-g1a-bounded-gpu-review.md)
   ⎿  Added 9 lines, removed 6 lines
        87
        88  ## 5. Kill Gate
@@ -485,7 +485,7 @@
       103
       104  Choose exactly one:
 
-● Update(D:\Code\DiffAudit\Research\workspaces\2026-04-17-g1a-bounded-gpu-review.md)
+● Update(<DIFFAUDIT_ROOT>/Research/workspaces/2026-04-17-g1a-bounded-gpu-review.md)
   ⎿  Added 8 lines, removed 7 lines
       101
       102  ## 6. Recommendation
@@ -513,7 +513,7 @@
       116
       117  - [ ] shared-surface identity frozen with explicit drift rules
 
-● Update(D:\Code\DiffAudit\Research\workspaces\2026-04-17-g1a-bounded-gpu-review.md)
+● Update(<DIFFAUDIT_ROOT>/Research/workspaces/2026-04-17-g1a-bounded-gpu-review.md)
   ⎿  Added 5 lines, removed 5 lines
       114
       115  ## 7. Evidence Checklist
@@ -538,7 +538,7 @@
 
 ● 好的，我已经完成了几个关键任务的推进。现在让我更新根 ROADMAP 并总结当前状态。
 
-● Update(D:\Code\DiffAudit\ROADMAP.md)
+● Update(<DIFFAUDIT_ROOT>/ROADMAP.md)
   ⎿  Added 12 lines, removed 9 lines
       622
       623  ## 8. 当前优先级（Root View）
@@ -583,7 +583,7 @@
       639
       640  ## 9. 当前入口文档
 
-● Update(D:\Code\DiffAudit\ROADMAP.md)
+● Update(<DIFFAUDIT_ROOT>/ROADMAP.md)
   ⎿  Added 20 lines, removed 16 lines
       599
       600  ## 7. 当前 blocker 与缺口重述
@@ -675,7 +675,7 @@
 
 ● 我会继续推进 Research 模型主线，执行 X-90 更大共享表面 tri-score 评估。
 
-● Bash(cd "D:/Code/DiffAudit/Research" && git status)
+● Bash(cd "<DIFFAUDIT_ROOT>/Research" && git status)
   ⎿  On branch codex/competition-mainline-sync-20260414
      Your branch is ahead of 'origin/codex/competition-mainline-sync-20260414' by 120 commits.
        (use "git push" to publish your local commits)
@@ -684,7 +684,7 @@
 
   Read 1 file (ctrl+o to expand)
 
-● Bash(cd "D:/Code/DiffAudit/Research" && ls -la workspaces/gray-box/runs/ | grep "pia-cifar10-runtime-mainline" | head
+● Bash(cd "<DIFFAUDIT_ROOT>/Research" && ls -la workspaces/gray-box/runs/ | grep "pia-cifar10-runtime-mainline" | head
       -5)
   ⎿  drwxr-xr-x 1 Ding 197609 0 Apr  7 10:38 pia-cifar10-runtime-mainline-20260407-cpu
      drwxr-xr-x 1 Ding 197609 0 Apr  8 01:27 pia-cifar10-runtime-mainline-20260408-cpu-32
@@ -712,22 +712,22 @@
 
 ● I'm ready to help! What would you like to work on?
 
-❯ D:\Code\DiffAudit 研究一下，看一下我们最新进度，规划一下
+❯ <DIFFAUDIT_ROOT> 研究一下，看一下我们最新进度，规划一下
 
 ● I'll explore the DiffAudit project to understand the current state and plan next steps.
 
-● Bash(cd D:/Code/DiffAudit && pwd)
+● Bash(cd <DIFFAUDIT_ROOT> && pwd)
   ⎿  /d/Code/DiffAudit
   ⎿  Shell cwd was reset to C:\Users\Ding
 
-● Bash(cd D:/Code/DiffAudit && ls -la)
+● Bash(cd <DIFFAUDIT_ROOT> && ls -la)
   ⎿  total 109
      drwxr-xr-x 1 Ding 197609     0 Apr 17 16:11 .
      drwxr-xr-x 1 Ding 197609     0 Apr  6 15:12 ..
      … +20 lines (ctrl+o to expand)
   ⎿  Shell cwd was reset to C:\Users\Ding
 
-● Bash(cd D:/Code/DiffAudit && git log --oneline -10)
+● Bash(cd <DIFFAUDIT_ROOT> && git log --oneline -10)
   ⎿  Error: Exit code 128
      fatal: not a git repository (or any of the parent directories): .git
 
@@ -739,14 +739,14 @@
 
   Read 2 files (ctrl+o to expand)
 
-● Bash(cd "D:/Code/DiffAudit/Platform" && git log --oneline -5)
+● Bash(cd "<DIFFAUDIT_ROOT>/Platform" && git log --oneline -5)
   ⎿  f0109df feat(platform): add report track detail views and runtime provenance scaffolding
      11acc87 fix(auth): pin oauth callback redirects to configured platform origin
      cf2f9c6 fix(platform): restore production oauth build and clarify error states
      … +2 lines (ctrl+o to expand)
   ⎿  Shell cwd was reset to C:\Users\Ding
 
-● Bash(cd "D:/Code/DiffAudit/Research" && git log --oneline -5)
+● Bash(cd "<DIFFAUDIT_ROOT>/Research" && git log --oneline -5)
   ⎿  4eea062 design tmiadm confidence-gated switch
      0b7454c select ranking-sensitive variable lane
      2098796 review whitebox defended-family import
@@ -827,28 +827,28 @@
 
 ● 好的，我现在开始并行推进这些任务。
 
-● Bash(cd "D:/Code/DiffAudit/Platform" && git remote -v)
+● Bash(cd "<DIFFAUDIT_ROOT>/Platform" && git remote -v)
   ⎿  gz2        ubuntu@gz2:/home/ubuntu/projects/diffaudit/platform-web/.git (fetch)
      gz2        ubuntu@gz2:/home/ubuntu/projects/diffaudit/platform-web/.git (push)
      origin     https://github.com/DeliciousBuding/DiffAudit-Platform.git (fetch)
      origin     https://github.com/DeliciousBuding/DiffAudit-Platform.git (push)
   ⎿  Shell cwd was reset to C:\Users\Ding
 
-● Bash(cd "D:/Code/DiffAudit/Platform" && git tag -l "v0.1.0-stable")
+● Bash(cd "<DIFFAUDIT_ROOT>/Platform" && git tag -l "v0.1.0-stable")
   ⎿  v0.1.0-stable
   ⎿  Shell cwd was reset to C:\Users\Ding
 
-● Bash(cd "D:/Code/DiffAudit/Platform" && git ls-remote --tags gz2 | grep "v0.1.0-stable")
+● Bash(cd "<DIFFAUDIT_ROOT>/Platform" && git ls-remote --tags gz2 | grep "v0.1.0-stable")
   ⎿  No matches found
 
 ● 确认 gz2 remote 缺失 v0.1.0-stable tag。现在推送 tag 到 gz2 并清理残留分支。
 
-● Bash(cd "D:/Code/DiffAudit/Platform" && git push gz2 v0.1.0-stable)
+● Bash(cd "<DIFFAUDIT_ROOT>/Platform" && git push gz2 v0.1.0-stable)
   ⎿  To gz2:/home/ubuntu/projects/diffaudit/platform-web/.git
       * [new tag]         v0.1.0-stable -> v0.1.0-stable
   ⎿  Shell cwd was reset to C:\Users\Ding
 
-● Bash(cd "D:/Code/DiffAudit/Platform" && git branch -r | grep "gz2/deploy-sync")
+● Bash(cd "<DIFFAUDIT_ROOT>/Platform" && git branch -r | grep "gz2/deploy-sync")
   ⎿    gz2/deploy-sync-2026-04-17
   ⎿  Shell cwd was reset to C:\Users\Ding
 
@@ -856,7 +856,7 @@
 
 ● 好的，tag 已推送到 gz2。现在删除残留分支并完成 G1-A GPU review 文档。
 
-● Bash(cd "D:/Code/DiffAudit/Platform" && ssh gz2 "cd /home/ubuntu/projects/diffaudit/platform-web && git branch -D
+● Bash(cd "<DIFFAUDIT_ROOT>/Platform" && ssh gz2 "cd /home/ubuntu/projects/diffaudit/platform-web && git branch -D
       deploy-sync-2026-04-17")
   ⎿  Error: Exit code 1
      error: branch 'deploy-sync-2026-04-17' not found.
@@ -865,13 +865,13 @@
 
 ● 分支已在远端删除（本地不存在该分支）。现在完成 G1-A GPU review 文档并更新 ROADMAP。
 
-● Bash(cd "D:/Code/DiffAudit/Platform" && git remote prune gz2)
+● Bash(cd "<DIFFAUDIT_ROOT>/Platform" && git remote prune gz2)
   ⎿  Pruning gz2
      URL: ubuntu@gz2:/home/ubuntu/projects/diffaudit/platform-web/.git
       * [pruned] gz2/deploy-sync-2026-04-17
   ⎿  Shell cwd was reset to C:\Users\Ding
 
-● Update(D:\Code\DiffAudit\Research\workspaces\2026-04-17-g1a-bounded-gpu-review.md)
+● Update(<DIFFAUDIT_ROOT>/Research/workspaces/2026-04-17-g1a-bounded-gpu-review.md)
   ⎿  Added 20 lines, removed 15 lines
       20
       21  ## 2. Shared-Surface Identity
@@ -910,9 +910,9 @@
       40 -  - `num_samples`
       41 -  - `sample_count_per_split`
       37 +**Frozen contract fields** (from X-89 identity alignment):
-      38 +- `dataset_root`: `D:\Code\DiffAudit\Research\workspaces\gray-box\assets\pia\datasets`
-      39 +- `member_split_root`: `D:\Code\DiffAudit\Research\external\PIA\DDPM`
-      40 +- `model_dir`: `D:\Code\DiffAudit\Research\workspaces\gray-box\assets\pia\checkpoints\cifar10_ddpm`
+      38 +- `dataset_root`: `<DIFFAUDIT_ROOT>/Research/workspaces/gray-box/assets/pia/datasets`
+      39 +- `member_split_root`: `<DIFFAUDIT_ROOT>/Research/external/PIA/DDPM`
+      40 +- `model_dir`: `<DIFFAUDIT_ROOT>/Research/workspaces/gray-box/assets/pia/checkpoints/cifar10_ddpm`
       41 +- `max_samples`: 256
       42 +- `num_samples`: 256
       43 +- `sample_count_per_split`: 256
@@ -925,7 +925,7 @@
       49
       50  Assess whether the rerun honestly fits the `RTX 4070 Laptop 8GB + CPU` host.
 
-● Update(D:\Code\DiffAudit\Research\workspaces\2026-04-17-g1a-bounded-gpu-review.md)
+● Update(<DIFFAUDIT_ROOT>/Research/workspaces/2026-04-17-g1a-bounded-gpu-review.md)
   ⎿  Added 13 lines, removed 8 lines
       47
       48  ## 3. Host-Fit Budget
@@ -962,7 +962,7 @@
       70  This section must justify why a larger rerun changes project-level story rather than merely polishing the s
           ame internal canary.
 
-● Update(D:\Code\DiffAudit\Research\workspaces\2026-04-17-g1a-bounded-gpu-review.md)
+● Update(<DIFFAUDIT_ROOT>/Research/workspaces/2026-04-17-g1a-bounded-gpu-review.md)
   ⎿  Added 13 lines, removed 7 lines
       67
       68  ## 4. Story Delta Vs X-89
@@ -1000,7 +1000,7 @@
       88  ## 5. Kill Gate
       89
 
-● Update(D:\Code\DiffAudit\Research\workspaces\2026-04-17-g1a-bounded-gpu-review.md)
+● Update(<DIFFAUDIT_ROOT>/Research/workspaces/2026-04-17-g1a-bounded-gpu-review.md)
   ⎿  Added 9 lines, removed 6 lines
        87
        88  ## 5. Kill Gate
@@ -1032,7 +1032,7 @@
       103
       104  Choose exactly one:
 
-● Update(D:\Code\DiffAudit\Research\workspaces\2026-04-17-g1a-bounded-gpu-review.md)
+● Update(<DIFFAUDIT_ROOT>/Research/workspaces/2026-04-17-g1a-bounded-gpu-review.md)
   ⎿  Added 8 lines, removed 7 lines
       101
       102  ## 6. Recommendation
@@ -1060,7 +1060,7 @@
       116
       117  - [ ] shared-surface identity frozen with explicit drift rules
 
-● Update(D:\Code\DiffAudit\Research\workspaces\2026-04-17-g1a-bounded-gpu-review.md)
+● Update(<DIFFAUDIT_ROOT>/Research/workspaces/2026-04-17-g1a-bounded-gpu-review.md)
   ⎿  Added 5 lines, removed 5 lines
       114
       115  ## 7. Evidence Checklist
@@ -1085,7 +1085,7 @@
 
 ● 好的，我已经完成了几个关键任务的推进。现在让我更新根 ROADMAP 并总结当前状态。
 
-● Update(D:\Code\DiffAudit\ROADMAP.md)
+● Update(<DIFFAUDIT_ROOT>/ROADMAP.md)
   ⎿  Added 12 lines, removed 9 lines
       622
       623  ## 8. 当前优先级（Root View）
@@ -1128,7 +1128,7 @@
       639
       640  ## 9. 当前入口文档
 
-● Update(D:\Code\DiffAudit\ROADMAP.md)
+● Update(<DIFFAUDIT_ROOT>/ROADMAP.md)
   ⎿  Added 20 lines, removed 16 lines
       599
       600  ## 7. 当前 blocker 与缺口重述
@@ -1220,7 +1220,7 @@
 
 ● 我会继续推进 Research 模型主线，执行 X-90 更大共享表面 tri-score 评估。
 
-● Bash(cd "D:/Code/DiffAudit/Research" && git status)
+● Bash(cd "<DIFFAUDIT_ROOT>/Research" && git status)
   ⎿  On branch codex/competition-mainline-sync-20260414
      Your branch is ahead of 'origin/codex/competition-mainline-sync-20260414' by 120 commits.
        (use "git push" to publish your local commits)
@@ -1229,7 +1229,7 @@
 
   Read 1 file (ctrl+o to expand)
 
-● Bash(cd "D:/Code/DiffAudit/Research" && ls -la workspaces/gray-box/runs/ | grep "pia-cifar10-runtime-mainline" | head -5)
+● Bash(cd "<DIFFAUDIT_ROOT>/Research" && ls -la workspaces/gray-box/runs/ | grep "pia-cifar10-runtime-mainline" | head -5)
   ⎿  drwxr-xr-x 1 Ding 197609 0 Apr  7 10:38 pia-cifar10-runtime-mainline-20260407-cpu
      drwxr-xr-x 1 Ding 197609 0 Apr  8 01:27 pia-cifar10-runtime-mainline-20260408-cpu-32
      drwxr-xr-x 1 Ding 197609 0 Apr  8 21:38 pia-cifar10-runtime-mainline-20260408-gpu-128
@@ -1238,7 +1238,7 @@
 
 ● 我看到 Research 仓库有大量未提交的工作。让我先提交当前进展，然后继续推进 X-90 更大共享表面 tri-score 评估。
 
-● Bash(cd "D:/Code/DiffAudit/Research" && git add workspaces/2026-04-17-g1a-bounded-gpu-review.md
+● Bash(cd "<DIFFAUDIT_ROOT>/Research" && git add workspaces/2026-04-17-g1a-bounded-gpu-review.md
       workspaces/2026-04-17-g1a-post-bm0-next-hypothesis-scoping.json)
   ⎿  warning: in the working copy of 'workspaces/2026-04-17-g1a-bounded-gpu-review.md', LF will be replaced by CRLF the
       next time Git touches it
@@ -1246,7 +1246,7 @@
      aced by CRLF the next time Git touches it
   ⎿  Shell cwd was reset to C:\Users\Ding
 
-● Bash(cd "D:/Code/DiffAudit/Research" && git commit -m "complete G1-A bounded GPU review…)
+● Bash(cd "<DIFFAUDIT_ROOT>/Research" && git commit -m "complete G1-A bounded GPU review…)
   ⎿  [codex/competition-mainline-sync-20260414 ff1575a] complete G1-A bounded GPU review
       2 files changed, 304 insertions(+)
       create mode 100644 workspaces/2026-04-17-g1a-bounded-gpu-review.md
@@ -1255,12 +1255,12 @@
 
   Read 1 file (ctrl+o to expand)
 
-● Bash(cd "D:/Code/DiffAudit/Research" && ls -la workspaces/gray-box/runs/ | grep "gpu512" | head -3)
+● Bash(cd "<DIFFAUDIT_ROOT>/Research" && ls -la workspaces/gray-box/runs/ | grep "gpu512" | head -3)
   ⎿  Shell cwd was reset to C:\Users\Ding
 
 ● G1-A review committed. Now checking for existing512-sample runs to plan X-90 execution.
 
-● Bash(cd "D:/Code/DiffAudit/Research" && ls -la workspaces/gray-box/runs/ | grep -E "(pia|tmiadm)" | grep -E
+● Bash(cd "<DIFFAUDIT_ROOT>/Research" && ls -la workspaces/gray-box/runs/ | grep -E "(pia|tmiadm)" | grep -E
       "(512|1024|2048)" | head -10)
   ⎿  drwxr-xr-x 1 Ding 197609 0 Apr  8 23:14 pia-cifar10-runtime-mainline-20260408-gpu-512
      drwxr-xr-x 1 Ding 197609 0 Apr  9 11:45 pia-cifar10-runtime-mainline-20260409-gpu-512-adaptive
@@ -1270,14 +1270,14 @@
 
   Read 1 file (ctrl+o to expand)
 
-● Bash(cd "D:/Code/DiffAudit/Research" && python -c "import sys; print(sys.executable)")
-  ⎿  C:\Users\Ding\AppData\Local\Programs\Python\Python312\python.exe
+● Bash(cd "<DIFFAUDIT_ROOT>/Research" && python -c "import sys; print(sys.executable)")
+  ⎿  <PYTHON_EXE>
   ⎿  Shell cwd was reset to C:\Users\Ding
 
 ● 好的，我看到已有 512/1024/2048 样本的 PIA 运行。现在创建 X-90 脚本来执行更大共享表面 tri-score 评估。
 
-● Write(D:\Code\DiffAudit\Research\scripts\run_x90_larger_surface_triscore.py)
-  ⎿  Wrote 72 lines to D:\Code\DiffAudit\Research\scripts\run_x90_larger_surface_triscore.py
+● Write(<DIFFAUDIT_ROOT>/Research/scripts/run_x90_larger_surface_triscore.py)
+  ⎿  Wrote 72 lines to <DIFFAUDIT_ROOT>/Research/scripts/run_x90_larger_surface_triscore.py
       1 from __future__ import annotations
       2
       3 import argparse
@@ -1289,37 +1289,37 @@
       9
      … +70 lines (ctrl+o to expand)
 
-● Bash(cd "D:/Code/DiffAudit/Research" && python scripts/run_x90_larger_surface_triscore.py 2>&1 | tee /tmp/x90-output.log)
+● Bash(cd "<DIFFAUDIT_ROOT>/Research" && python scripts/run_x90_larger_surface_triscore.py 2>&1 | tee /tmp/x90-output.log)
   ⎿  Traceback (most recent call last):
-       File "D:\Code\DiffAudit\Research\scripts\run_x90_larger_surface_triscore.py", line 8, in <module>
+       File "<DIFFAUDIT_ROOT>/Research/scripts/run_x90_larger_surface_triscore.py", line 8, in <module>
          from diffaudit.attacks.graybox_triscore import run_graybox_triscore_canary
      ModuleNotFoundError: No module named 'diffaudit'
   ⎿  Shell cwd was reset to C:\Users\Ding
 
 ● 需要安装 diffaudit 模块。让我设置 Python 环境并执行 X-90。
 
-● Bash(cd "D:/Code/DiffAudit/Research" && pip install -e . --quiet)
+● Bash(cd "<DIFFAUDIT_ROOT>/Research" && pip install -e . --quiet)
   ⎿  [notice] A new release of pip is available: 25.0.1 -> 26.0.1
      [notice] To update, run: python.exe -m pip install --upgrade pip
   ⎿  Shell cwd was reset to C:\Users\Ding
 
-● Bash(cd "D:/Code/DiffAudit/Research" && python scripts/run_x90_larger_surface_triscore.py 2>&1)
+● Bash(cd "<DIFFAUDIT_ROOT>/Research" && python scripts/run_x90_larger_surface_triscore.py 2>&1)
   ⎿  Error: Exit code 1
      Traceback (most recent call last):
-       File "D:\Code\DiffAudit\Research\scripts\run_x90_larger_surface_triscore.py", line 72, in <module>
+       File "<DIFFAUDIT_ROOT>/Research/scripts/run_x90_larger_surface_triscore.py", line 72, in <module>
          raise SystemExit(main())
                           ^^^^^^
-       File "D:\Code\DiffAudit\Research\scripts\run_x90_larger_surface_triscore.py", line 33, in main
+       File "<DIFFAUDIT_ROOT>/Research/scripts/run_x90_larger_surface_triscore.py", line 33, in main
          summary = run_graybox_triscore_canary(
                    ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-       File "D:\Code\DiffAudit\Research\src\diffaudit\attacks\graybox_triscore.py", line 397, in run_graybox_triscore_canary
+       File "<DIFFAUDIT_ROOT>/Research/src/diffaudit/attacks/graybox_triscore.py", line 397, in run_graybox_triscore_canary
          evaluate_identity_aligned_surface(load_identity_aligned_surface(**surface_spec))
      … +4 lines (ctrl+o to see all)
 
 ● PIA 512-sample run has different member indices than TMIA-DM 256-sample run. Need to check if TMIA-DM 512-sample runs
   exist or use matching 256-sample surfaces.
 
-● Bash(cd "D:/Code/DiffAudit/Research" && ls -la workspaces/gray-box/runs/ | grep "tmiadm" | grep -E "(512|1024)" | head -5)
+● Bash(cd "<DIFFAUDIT_ROOT>/Research" && ls -la workspaces/gray-box/runs/ | grep "tmiadm" | grep -E "(512|1024)" | head -5)
   ⎿  Shell cwd was reset to C:\Users\Ding
 
   Read 1 file (ctrl+o to expand)
@@ -1329,12 +1329,12 @@
 
   Read 1 file (ctrl+o to expand)
 
-● Bash(cd "D:/Code/DiffAudit/Research" && python -c "import json;
+● Bash(cd "<DIFFAUDIT_ROOT>/Research" && python -c "import json;
       p=json.load(open('workspaces/gray-box/runs/pia-cifar10-runtime-mainline-20260409-gpu-512-adaptive/sco…)
   ⎿  PIA 512: 512 members, 512 nonmembers
   ⎿  Shell cwd was reset to C:\Users\Ding
 
-● Bash(cd "D:/Code/DiffAudit/Research" && python -c "import json;
+● Bash(cd "<DIFFAUDIT_ROOT>/Research" && python -c "import json;
       t=json.load(open('workspaces/gray-box/runs/tmiadm-cifar10-late-window-protocol-probe-20260416-gpu-256…)
   ⎿  Error: Exit code 1
      Traceback (most recent call last):
@@ -1344,8 +1344,8 @@
 ● TMIA-DM 256-sample run doesn't have matching 512-sample data. I'll document this as a blocker and update the Research
   ROADMAP with findings.
 
-● Write(D:\Code\DiffAudit\Research\workspaces\2026-04-18-x90-blocker-tmiadm-512-sample-gap.md)
-  ⎿  Wrote 68 lines to D:\Code\DiffAudit\Research\workspaces\2026-04-18-x90-blocker-tmiadm-512-sample-gap.md
+● Write(<DIFFAUDIT_ROOT>/Research/workspaces/2026-04-18-x90-blocker-tmiadm-512-sample-gap.md)
+  ⎿  Wrote 68 lines to <DIFFAUDIT_ROOT>/Research/workspaces/2026-04-18-x90-blocker-tmiadm-512-sample-gap.md
       1 # X-90 Blocker: TMIA-DM 512-Sample Gap
       2
       3 > Date: 2026-04-18
@@ -1358,7 +1358,7 @@
         t whether tri-evidence aggregation advantage holds at 512+ samples.
      … +61 lines (ctrl+o to expand)
 
-● Bash(cd "D:/Code/DiffAudit/Research" && git add workspaces/2026-04-18-x90-blocker-tmiadm-512-sample-gap.md
+● Bash(cd "<DIFFAUDIT_ROOT>/Research" && git add workspaces/2026-04-18-x90-blocker-tmiadm-512-sample-gap.md
       scripts/run_x90_larger_surface_triscore.py)
   ⎿  warning: in the working copy of 'scripts/run_x90_larger_surface_triscore.py', LF will be replaced by CRLF the next
       time Git touches it
@@ -1366,7 +1366,7 @@
      by CRLF the next time Git touches it
   ⎿  Shell cwd was reset to C:\Users\Ding
 
-● Bash(cd "D:/Code/DiffAudit/Research" && git commit -m "document X-90 blocker: TMIA-DM 512-sample gap…)
+● Bash(cd "<DIFFAUDIT_ROOT>/Research" && git commit -m "document X-90 blocker: TMIA-DM 512-sample gap…)
   ⎿  [codex/competition-mainline-sync-20260414 f89c368] document X-90 blocker: TMIA-DM 512-sample gap
       2 files changed, 140 insertions(+)
       create mode 100644 scripts/run_x90_larger_surface_triscore.py
@@ -1409,7 +1409,7 @@
 
   Read 1 file (ctrl+o to expand)
 
-● Bash(cd "D:/Code/DiffAudit/Research" && git status --short | head -20)
+● Bash(cd "<DIFFAUDIT_ROOT>/Research" && git status --short | head -20)
   ⎿   M AGENTS.md
       M ROADMAP.md
       M configs/assets/team.local.template.yaml
@@ -1418,14 +1418,14 @@
 
 ● 我看到 Research 有大量未提交的修改。让我先提交当前工作，然后根据 ROADMAP 继续推进。
 
-● Bash(cd "D:/Code/DiffAudit/Research" && git add -A && git status --short | wc -l)
+● Bash(cd "<DIFFAUDIT_ROOT>/Research" && git add -A && git status --short | wc -l)
   ⎿  warning: in the working copy of 'AGENTS.md', LF will be replaced by CRLF the next time Git touches it
      warning: in the working copy of 'ROADMAP.md', LF will be replaced by CRLF the next time Git touches it
      warning: in the working copy of 'configs/assets/team.local.template.yaml', LF will be replaced by CRLF the next ti
      … +258 lines (ctrl+o to expand)
   ⎿  Shell cwd was reset to C:\Users\Ding
 
-● Bash(cd "D:/Code/DiffAudit/Research" && git commit -m "sync research progress: X-86→X-89 complete, G1-A review done, X-90
+● Bash(cd "<DIFFAUDIT_ROOT>/Research" && git commit -m "sync research progress: X-86→X-89 complete, G1-A review done, X-90
       blocked…)
   ⎿  [codex/competition-mainline-sync-20260414 56e11f3] sync research progress: X-86→X-89 complete, G1-A review done, X
      -90 blocked
@@ -1434,7 +1434,7 @@
   ⎿  Shell cwd was reset to C:\Users\Ding
 
 ● Reading 1 file… (ctrl+o to expand)
-  ⎿  D:\Code\DiffAudit\Research\ROADMAP.md
+  ⎿  <DIFFAUDIT_ROOT>/Research/ROADMAP.md
 
 * Compacting conversation… (1m 42s · ↑ 3.1k tokens)
   ⎿  ✔ 完成 Research G1-A bounded GPU review 文档
@@ -1453,11 +1453,11 @@
 
 ✻ Conversation compacted (ctrl+o for history)
 
-  ⎿  Read D:\Code\DiffAudit\Research\workspaces\2026-04-18-x90-blocker-tmiadm-512-sample-gap.md (69 lines)
-  ⎿  Read D:\Code\DiffAudit\Research\scripts\run_x90_larger_surface_triscore.py (73 lines)
-  ⎿  Read D:\Code\DiffAudit\ROADMAP.md (655 lines)
-  ⎿  Read D:\Code\DiffAudit\Research\workspaces\2026-04-17-g1a-bounded-gpu-review.md (131 lines)
-  ⎿  Referenced file D:\Code\DiffAudit\Research\ROADMAP.md
+  ⎿  Read <DIFFAUDIT_ROOT>/Research/workspaces/2026-04-18-x90-blocker-tmiadm-512-sample-gap.md (69 lines)
+  ⎿  Read <DIFFAUDIT_ROOT>/Research/scripts/run_x90_larger_surface_triscore.py (73 lines)
+  ⎿  Read <DIFFAUDIT_ROOT>/ROADMAP.md (655 lines)
+  ⎿  Read <DIFFAUDIT_ROOT>/Research/workspaces/2026-04-17-g1a-bounded-gpu-review.md (131 lines)
+  ⎿  Referenced file <DIFFAUDIT_ROOT>/Research/ROADMAP.md
   ⎿  Skills restored (loop)
 
 ● I'll read the Research ROADMAP to identify the next task.
@@ -1485,9 +1485,9 @@
 
 ● I'll check the current X-90 blocker status and determine if we can proceed with a CPU-only approach or need GPU resources.
 
-● Bash(cd D:/Code/DiffAudit/Research && python scripts/run_x90_larger_surface_triscore.py 2>&1 | head -20)
+● Bash(cd <DIFFAUDIT_ROOT>/Research && python scripts/run_x90_larger_surface_triscore.py 2>&1 | head -20)
   ⎿  Traceback (most recent call last):
-       File "D:\Code\DiffAudit\Research\scripts\run_x90_larger_surface_triscore.py", line 72, in <module>
+       File "<DIFFAUDIT_ROOT>/Research/scripts/run_x90_larger_surface_triscore.py", line 72, in <module>
          raise SystemExit(main())
      … +12 lines (ctrl+o to expand)
   ⎿  Shell cwd was reset to C:\Users\Ding
@@ -1504,12 +1504,12 @@
 
 ● I'll navigate to the Research directory and check the X-89 results.
 
-● Bash(cd D:/Code/DiffAudit/Research && find workspaces/gray-box/runs -name "x89*" -type d 2>/dev/null | head -5)
+● Bash(cd <DIFFAUDIT_ROOT>/Research && find workspaces/gray-box/runs -name "x89*" -type d 2>/dev/null | head -5)
   ⎿  Shell cwd was reset to C:\Users\Ding
 
 ● I'll navigate to the Research directory and check the current state of X-90.
 
-● Bash(cd D:/Code/DiffAudit/Research && ls -la workspaces/gray-box/runs/ | grep -E "(x89|x90)" | head -10)
+● Bash(cd <DIFFAUDIT_ROOT>/Research && ls -la workspaces/gray-box/runs/ | grep -E "(x89|x90)" | head -10)
   ⎿  drwxr-xr-x 1 Ding 197609 0 Apr 17 19:56 x90-larger-surface-triscore-20260417-195623
      drwxr-xr-x 1 Ding 197609 0 Apr 17 20:00 x90-larger-surface-triscore-20260417-200015
   ⎿  Shell cwd was reset to C:\Users\Ding
@@ -1517,7 +1517,7 @@
 ● I see X-90 already attempted but failed due to the TMIA-DM 512-sample gap. Let me check what's in those existing run
   directories.
 
-● Bash(cd D:/Code/DiffAudit/Research && ls -la workspaces/gray-box/runs/x90-larger-surface-triscore-20260417-200015/)
+● Bash(cd <DIFFAUDIT_ROOT>/Research && ls -la workspaces/gray-box/runs/x90-larger-surface-triscore-20260417-200015/)
   ⎿  total 32
      drwxr-xr-x 1 Ding 197609 0 Apr 17 20:00 .
      drwxr-xr-x 1 Ding 197609 0 Apr 17 20:00 ..
@@ -1559,7 +1559,7 @@
 
 ● I'll update the root ROADMAP to document the X-90 blocker and determine the next Research task.
 
-● Update(D:\Code\DiffAudit\ROADMAP.md)
+● Update(<DIFFAUDIT_ROOT>/ROADMAP.md)
   ⎿  Added 4 lines, removed 2 lines
       603
       604  当前真正需要根级持续盯住的缺口：
@@ -1576,7 +1576,7 @@
       612  2. **Platform Part 12.5 仓库收尾** ✅ 已完成
       613     - `v0.1.0-stable` tag 已推送到 gz2
 
-● Update(D:\Code\DiffAudit\ROADMAP.md)
+● Update(<DIFFAUDIT_ROOT>/ROADMAP.md)
   ⎿  Added 1 line, removed 1 line
       633  - [x] `P0`: `Researcher` 已完成 `B-M0` 的 CPU-first 收敛与 `X-88` gate 落地；`G1-A bounded GPU review` 已
            完成，决策为 `hold-review-only`（CPU-bound 评估，非 GPU 问题）
@@ -1595,13 +1595,13 @@
 
 ● I'll commit the X-90 blocker documentation and root ROADMAP updates, then identify next Research task.
 
-● Bash(cd D:/Code/DiffAudit && git add -A && git status --short)
+● Bash(cd <DIFFAUDIT_ROOT> && git add -A && git status --short)
   ⎿  Error: Exit code 128
      fatal: not a git repository (or any of the parent directories): .git
 
 ● I need to navigate to the DiffAudit directory first.
 
-● Bash(cd D:/Code/DiffAudit && git add Research/workspaces/2026-04-18-x90-blocker-tmiadm-512-sample-gap.md ROADMAP.md && git
+● Bash(cd <DIFFAUDIT_ROOT> && git add Research/workspaces/2026-04-18-x90-blocker-tmiadm-512-sample-gap.md ROADMAP.md && git
        status --short)
   ⎿  Error: Exit code 128
      fatal: not a git repository (or any of the parent directories): .git
@@ -1692,7 +1692,7 @@
 
 ● I'll check the I-A higher-layer boundary maintenance status and add the epsilon-trajectory consistency mechanism wording.
 
-● Update(D:\Code\DiffAudit\Research\docs\leader-research-ready-summary.md)
+● Update(<DIFFAUDIT_ROOT>/Research/docs/leader-research-ready-summary.md)
   ⎿  Added 1 line, removed 1 line
        6  | 线索 | 模型 | 攻击 | 防御 | AUC | ASR | TPR@1%FPR | TPR@0.1%FPR | 能说的话 | 不能说的话 |
        7  | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- |
@@ -1715,7 +1715,7 @@
       12  这张一页表本身也必须遵守灰盒四指标合同，不能让读者先看到 `AUC / ASR`、再在正文里补 low-FPR 与 adaptive 边界
           。
 
-● Update(D:\Code\DiffAudit\Research\docs\leader-research-ready-summary.md)
+● Update(<DIFFAUDIT_ROOT>/Research/docs/leader-research-ready-summary.md)
   ⎿  Added 1 line, removed 1 line
       14  ## 2. 已 admit 的主线成果（可直接拿到 4C 材料）
       15
@@ -1773,9 +1773,9 @@
   maintenance completed. Next task per ROADMAP priority: Since G1-A review is complete (hold-review-only) and X-90 is
   blocked, I'll proceed with X-86 non-graybox reselection after X-85.
 
-● Write(D:\Code\DiffAudit\Research\workspaces\implementation\2026-04-18-x86-nongraybox-next-lane-reselection-after-x85-admit
+● Write(<DIFFAUDIT_ROOT>/Research/workspaces/implementation/2026-04-18-x86-nongraybox-next-lane-reselection-after-x85-admit
        ted-summary-sync.md)
-  ⎿  Wrote 95 lines to D:\Code\DiffAudit\Research\workspaces\implementation\2026-04-18-x86-nongraybox-next-lane-reselec
+  ⎿  Wrote 95 lines to <DIFFAUDIT_ROOT>/Research/workspaces/implementation/2026-04-18-x86-nongraybox-next-lane-reselec
      tion-after-x85-admitted-summary-sync.md
       1 # X-86: Non-Graybox Next-Lane Reselection After X-85 Admitted-Summary Sync
       2
@@ -1790,9 +1790,9 @@
 
 ● I'll continue with X-87: G1-A blocker resolution review.
 
-● Write(D:\Code\DiffAudit\Research\workspaces\implementation\2026-04-18-x87-g1a-blocker-resolution-review-after-x86-reselect
+● Write(<DIFFAUDIT_ROOT>/Research/workspaces/implementation/2026-04-18-x87-g1a-blocker-resolution-review-after-x86-reselect
        ion.md)
-  ⎿  Wrote 90 lines to D:\Code\DiffAudit\Research\workspaces\implementation\2026-04-18-x87-g1a-blocker-resolution-revie
+  ⎿  Wrote 90 lines to <DIFFAUDIT_ROOT>/Research/workspaces/implementation/2026-04-18-x87-g1a-blocker-resolution-revie
      w-after-x86-reselection.md
       1 # X-87: G1-A Blocker Resolution Review After X-86 Reselection
       2
@@ -1819,9 +1819,9 @@
 ● I'll continue Research progress. X-86/X-87 completed: G1-A/X-90 deferred due to TMIA-DM 512-sample gap conflicting with
   CPU-first classification. Next task per X-87: redirect to next honest lane.
 
-● Write(D:\Code\DiffAudit\Research\workspaces\implementation\2026-04-18-x88-nongraybox-next-lane-reselection-after-x87-g1a-d
+● Write(<DIFFAUDIT_ROOT>/Research/workspaces/implementation/2026-04-18-x88-nongraybox-next-lane-reselection-after-x87-g1a-d
        efer.md)
-  ⎿  Wrote 93 lines to D:\Code\DiffAudit\Research\workspaces\implementation\2026-04-18-x88-nongraybox-next-lane-reselec
+  ⎿  Wrote 93 lines to <DIFFAUDIT_ROOT>/Research/workspaces/implementation/2026-04-18-x88-nongraybox-next-lane-reselec
      tion-after-x87-g1a-defer.md
       1 # X-88: Non-Graybox Next-Lane Reselection After X-87 G1-A Defer
       2
@@ -1893,8 +1893,8 @@
 
 ● I'll create B-M0 Candidate A bounded GPU review based on X-75/X-77 frozen packet.
 
-● Write(D:\Code\DiffAudit\Research\workspaces\2026-04-18-b-m0-candidate-a-bounded-gpu-review.md)
-  ⎿  Wrote 132 lines to D:\Code\DiffAudit\Research\workspaces\2026-04-18-b-m0-candidate-a-bounded-gpu-review.md
+● Write(<DIFFAUDIT_ROOT>/Research/workspaces/2026-04-18-b-m0-candidate-a-bounded-gpu-review.md)
+  ⎿  Wrote 132 lines to <DIFFAUDIT_ROOT>/Research/workspaces/2026-04-18-b-m0-candidate-a-bounded-gpu-review.md
       1 # B-M0 Candidate A: Bounded Shadow-LR White-Box Loss-Score Follow-Up
       2
       3 > Date: 2026-04-18
@@ -1948,9 +1948,9 @@
   B-M0 Candidate A are CPU-bound evaluations, not GPU questions. Next: Continue with I-A higher-layer boundary maintenance
   or redirect per ROADMAP.
 
-● Write(D:\Code\DiffAudit\Research\workspaces\implementation\2026-04-18-x89-nongraybox-next-lane-reselection-after-b-m0-cand
+● Write(<DIFFAUDIT_ROOT>/Research/workspaces/implementation/2026-04-18-x89-nongraybox-next-lane-reselection-after-b-m0-cand
        idate-a-hold-review-only.md)
-  ⎿  Wrote 56 lines to D:\Code\DiffAudit\Research\workspaces\implementation\2026-04-18-x89-nongraybox-next-lane-reselec
+  ⎿  Wrote 56 lines to <DIFFAUDIT_ROOT>/Research/workspaces/implementation/2026-04-18-x89-nongraybox-next-lane-reselec
      tion-after-b-m0-candidate-a-hold-review-only.md
       1 # X-89: Non-Graybox Next-Lane Reselection After B-M0 Candidate A Hold-Review-Only
       2
@@ -2022,7 +2022,7 @@
 
 ● I'll update mainline-narrative.md to reflect X-86→X-89 sequence completion.
 
-● Update(D:\Code\DiffAudit\Research\docs\mainline-narrative.md)
+● Update(<DIFFAUDIT_ROOT>/Research/docs/mainline-narrative.md)
   ⎿  Added 1 line, removed 1 line
        6
        7  ## 当前一句话
@@ -2165,11 +2165,11 @@
 
 ✻ Conversation compacted (ctrl+o for history)
 
-  ⎿  Read D:\Code\DiffAudit\Research\workspaces\2026-04-18-x90-blocker-tmiadm-512-sample-gap.md (69 lines)
-  ⎿  Read D:\Code\DiffAudit\Research\scripts\run_x90_larger_surface_triscore.py (73 lines)
-  ⎿  Read D:\Code\DiffAudit\ROADMAP.md (655 lines)
-  ⎿  Read D:\Code\DiffAudit\Research\workspaces\2026-04-17-g1a-bounded-gpu-review.md (131 lines)
-  ⎿  Referenced file D:\Code\DiffAudit\Research\ROADMAP.md
+  ⎿  Read <DIFFAUDIT_ROOT>/Research/workspaces/2026-04-18-x90-blocker-tmiadm-512-sample-gap.md (69 lines)
+  ⎿  Read <DIFFAUDIT_ROOT>/Research/scripts/run_x90_larger_surface_triscore.py (73 lines)
+  ⎿  Read <DIFFAUDIT_ROOT>/ROADMAP.md (655 lines)
+  ⎿  Read <DIFFAUDIT_ROOT>/Research/workspaces/2026-04-17-g1a-bounded-gpu-review.md (131 lines)
+  ⎿  Referenced file <DIFFAUDIT_ROOT>/Research/ROADMAP.md
   ⎿  Skills restored (loop)
 
 ● I'll read the Research ROADMAP to identify the next task.
@@ -2199,9 +2199,9 @@
 ● I'll check the current X-90 blocker status and determine if we can proceed with a CPU-only approach or need GPU
   resources.
 
-● Bash(cd D:/Code/DiffAudit/Research && python scripts/run_x90_larger_surface_triscore.py 2>&1 | head -20)
+● Bash(cd <DIFFAUDIT_ROOT>/Research && python scripts/run_x90_larger_surface_triscore.py 2>&1 | head -20)
   ⎿  Traceback (most recent call last):
-       File "D:\Code\DiffAudit\Research\scripts\run_x90_larger_surface_triscore.py", line 72, in <module>
+       File "<DIFFAUDIT_ROOT>/Research/scripts/run_x90_larger_surface_triscore.py", line 72, in <module>
          raise SystemExit(main())
      … +12 lines (ctrl+o to expand)
   ⎿  Shell cwd was reset to C:\Users\Ding
@@ -2218,12 +2218,12 @@
 
 ● I'll navigate to the Research directory and check the X-89 results.
 
-● Bash(cd D:/Code/DiffAudit/Research && find workspaces/gray-box/runs -name "x89*" -type d 2>/dev/null | head -5)
+● Bash(cd <DIFFAUDIT_ROOT>/Research && find workspaces/gray-box/runs -name "x89*" -type d 2>/dev/null | head -5)
   ⎿  Shell cwd was reset to C:\Users\Ding
 
 ● I'll navigate to the Research directory and check the current state of X-90.
 
-● Bash(cd D:/Code/DiffAudit/Research && ls -la workspaces/gray-box/runs/ | grep -E "(x89|x90)" | head -10)
+● Bash(cd <DIFFAUDIT_ROOT>/Research && ls -la workspaces/gray-box/runs/ | grep -E "(x89|x90)" | head -10)
   ⎿  drwxr-xr-x 1 Ding 197609 0 Apr 17 19:56 x90-larger-surface-triscore-20260417-195623
      drwxr-xr-x 1 Ding 197609 0 Apr 17 20:00 x90-larger-surface-triscore-20260417-200015
   ⎿  Shell cwd was reset to C:\Users\Ding
@@ -2231,7 +2231,7 @@
 ● I see X-90 already attempted but failed due to the TMIA-DM 512-sample gap. Let me check what's in those existing run
   directories.
 
-● Bash(cd D:/Code/DiffAudit/Research && ls -la workspaces/gray-box/runs/x90-larger-surface-triscore-20260417-200015/)
+● Bash(cd <DIFFAUDIT_ROOT>/Research && ls -la workspaces/gray-box/runs/x90-larger-surface-triscore-20260417-200015/)
   ⎿  total 32
      drwxr-xr-x 1 Ding 197609 0 Apr 17 20:00 .
      drwxr-xr-x 1 Ding 197609 0 Apr 17 20:00 ..
@@ -2273,7 +2273,7 @@
 
 ● I'll update the root ROADMAP to document the X-90 blocker and determine the next Research task.
 
-● Update(D:\Code\DiffAudit\ROADMAP.md)
+● Update(<DIFFAUDIT_ROOT>/ROADMAP.md)
   ⎿  Added 4 lines, removed 2 lines
       603
       604  当前真正需要根级持续盯住的缺口：
@@ -2290,7 +2290,7 @@
       612  2. **Platform Part 12.5 仓库收尾** ✅ 已完成
       613     - `v0.1.0-stable` tag 已推送到 gz2
 
-● Update(D:\Code\DiffAudit\ROADMAP.md)
+● Update(<DIFFAUDIT_ROOT>/ROADMAP.md)
   ⎿  Added 1 line, removed 1 line
       633  - [x] `P0`: `Researcher` 已完成 `B-M0` 的 CPU-first 收敛与 `X-88` gate 落地；`G1-A bounded GPU review`
             已完成，决策为 `hold-review-only`（CPU-bound 评估，非 GPU 问题）
@@ -2310,13 +2310,13 @@
 
 ● I'll commit the X-90 blocker documentation and root ROADMAP updates, then identify next Research task.
 
-● Bash(cd D:/Code/DiffAudit && git add -A && git status --short)
+● Bash(cd <DIFFAUDIT_ROOT> && git add -A && git status --short)
   ⎿  Error: Exit code 128
      fatal: not a git repository (or any of the parent directories): .git
 
 ● I need to navigate to the DiffAudit directory first.
 
-● Bash(cd D:/Code/DiffAudit && git add Research/workspaces/2026-04-18-x90-blocker-tmiadm-512-sample-gap.md ROADMAP.md &&
+● Bash(cd <DIFFAUDIT_ROOT> && git add Research/workspaces/2026-04-18-x90-blocker-tmiadm-512-sample-gap.md ROADMAP.md &&
        git status --short)
   ⎿  Error: Exit code 128
      fatal: not a git repository (or any of the parent directories): .git
@@ -2408,7 +2408,7 @@
 ● I'll check the I-A higher-layer boundary maintenance status and add the epsilon-trajectory consistency mechanism
   wording.
 
-● Update(D:\Code\DiffAudit\Research\docs\leader-research-ready-summary.md)
+● Update(<DIFFAUDIT_ROOT>/Research/docs/leader-research-ready-summary.md)
   ⎿  Added 1 line, removed 1 line
        6  | 线索 | 模型 | 攻击 | 防御 | AUC | ASR | TPR@1%FPR | TPR@0.1%FPR | 能说的话 | 不能说的话 |
        7  | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- |
@@ -2432,7 +2432,7 @@
       12  这张一页表本身也必须遵守灰盒四指标合同，不能让读者先看到 `AUC / ASR`、再在正文里补 low-FPR 与 adaptive
           边界。
 
-● Update(D:\Code\DiffAudit\Research\docs\leader-research-ready-summary.md)
+● Update(<DIFFAUDIT_ROOT>/Research/docs/leader-research-ready-summary.md)
   ⎿  Added 1 line, removed 1 line
       14  ## 2. 已 admit 的主线成果（可直接拿到 4C 材料）
       15
@@ -2490,9 +2490,9 @@
   maintenance completed. Next task per ROADMAP priority: Since G1-A review is complete (hold-review-only) and X-90 is
   blocked, I'll proceed with X-86 non-graybox reselection after X-85.
 
-● Write(D:\Code\DiffAudit\Research\workspaces\implementation\2026-04-18-x86-nongraybox-next-lane-reselection-after-x85-a
+● Write(<DIFFAUDIT_ROOT>/Research/workspaces/implementation/2026-04-18-x86-nongraybox-next-lane-reselection-after-x85-a
        dmitted-summary-sync.md)
-  ⎿  Wrote 95 lines to D:\Code\DiffAudit\Research\workspaces\implementation\2026-04-18-x86-nongraybox-next-lane-res
+  ⎿  Wrote 95 lines to <DIFFAUDIT_ROOT>/Research/workspaces/implementation/2026-04-18-x86-nongraybox-next-lane-res
      election-after-x85-admitted-summary-sync.md
       1 # X-86: Non-Graybox Next-Lane Reselection After X-85 Admitted-Summary Sync
       2
@@ -2507,9 +2507,9 @@
 
 ● I'll continue with X-87: G1-A blocker resolution review.
 
-● Write(D:\Code\DiffAudit\Research\workspaces\implementation\2026-04-18-x87-g1a-blocker-resolution-review-after-x86-rese
+● Write(<DIFFAUDIT_ROOT>/Research/workspaces/implementation/2026-04-18-x87-g1a-blocker-resolution-review-after-x86-rese
        lection.md)
-  ⎿  Wrote 90 lines to D:\Code\DiffAudit\Research\workspaces\implementation\2026-04-18-x87-g1a-blocker-resolution-r
+  ⎿  Wrote 90 lines to <DIFFAUDIT_ROOT>/Research/workspaces/implementation/2026-04-18-x87-g1a-blocker-resolution-r
      eview-after-x86-reselection.md
       1 # X-87: G1-A Blocker Resolution Review After X-86 Reselection
       2
@@ -2536,9 +2536,9 @@
 ● I'll continue Research progress. X-86/X-87 completed: G1-A/X-90 deferred due to TMIA-DM 512-sample gap conflicting
   with CPU-first classification. Next task per X-87: redirect to next honest lane.
 
-● Write(D:\Code\DiffAudit\Research\workspaces\implementation\2026-04-18-x88-nongraybox-next-lane-reselection-after-x87-g
+● Write(<DIFFAUDIT_ROOT>/Research/workspaces/implementation/2026-04-18-x88-nongraybox-next-lane-reselection-after-x87-g
        1a-defer.md)
-  ⎿  Wrote 93 lines to D:\Code\DiffAudit\Research\workspaces\implementation\2026-04-18-x88-nongraybox-next-lane-res
+  ⎿  Wrote 93 lines to <DIFFAUDIT_ROOT>/Research/workspaces/implementation/2026-04-18-x88-nongraybox-next-lane-res
      election-after-x87-g1a-defer.md
       1 # X-88: Non-Graybox Next-Lane Reselection After X-87 G1-A Defer
       2
@@ -2610,8 +2610,8 @@
 
 ● I'll create B-M0 Candidate A bounded GPU review based on X-75/X-77 frozen packet.
 
-● Write(D:\Code\DiffAudit\Research\workspaces\2026-04-18-b-m0-candidate-a-bounded-gpu-review.md)
-  ⎿  Wrote 132 lines to D:\Code\DiffAudit\Research\workspaces\2026-04-18-b-m0-candidate-a-bounded-gpu-review.md
+● Write(<DIFFAUDIT_ROOT>/Research/workspaces/2026-04-18-b-m0-candidate-a-bounded-gpu-review.md)
+  ⎿  Wrote 132 lines to <DIFFAUDIT_ROOT>/Research/workspaces/2026-04-18-b-m0-candidate-a-bounded-gpu-review.md
       2 # B-M0 Candidate A: Bounded Shadow-LR White-Box Loss-Score Follow-Up
       3 > Date: 2026-04-18
       4 > Owner: Researcher
@@ -2666,9 +2666,9 @@
   and B-M0 Candidate A are CPU-bound evaluations, not GPU questions. Next: Continue with I-A higher-layer boundary
   maintenance or redirect per ROADMAP.
 
-● Write(D:\Code\DiffAudit\Research\workspaces\implementation\2026-04-18-x89-nongraybox-next-lane-reselection-after-b-m0-
+● Write(<DIFFAUDIT_ROOT>/Research/workspaces/implementation/2026-04-18-x89-nongraybox-next-lane-reselection-after-b-m0-
        candidate-a-hold-review-only.md)
-  ⎿  Wrote 56 lines to D:\Code\DiffAudit\Research\workspaces\implementation\2026-04-18-x89-nongraybox-next-lane-res
+  ⎿  Wrote 56 lines to <DIFFAUDIT_ROOT>/Research/workspaces/implementation/2026-04-18-x89-nongraybox-next-lane-res
      election-after-b-m0-candidate-a-hold-review-only.md
       1 # X-89: Non-Graybox Next-Lane Reselection After B-M0 Candidate A Hold-Review-Only
       2
@@ -2739,7 +2739,7 @@
 
 ● I'll update mainline-narrative.md to reflect X-86→X-89 sequence completion.
 
-● Update(D:\Code\DiffAudit\Research\docs\mainline-narrative.md)
+● Update(<DIFFAUDIT_ROOT>/Research/docs/mainline-narrative.md)
   ⎿  Added 1 line, removed 1 line
        6
        7  ## 当前一句话
@@ -2887,11 +2887,11 @@
 
 ✻ Conversation compacted (ctrl+o for history)
 
-  ⎿  Read D:\Code\DiffAudit\Research\workspaces\2026-04-18-x90-blocker-tmiadm-512-sample-gap.md (69 lines)
-  ⎿  Read D:\Code\DiffAudit\Research\scripts\run_x90_larger_surface_triscore.py (73 lines)
-  ⎿  Read D:\Code\DiffAudit\ROADMAP.md (655 lines)
-  ⎿  Read D:\Code\DiffAudit\Research\workspaces\2026-04-17-g1a-bounded-gpu-review.md (131 lines)
-  ⎿  Referenced file D:\Code\DiffAudit\Research\ROADMAP.md
+  ⎿  Read <DIFFAUDIT_ROOT>/Research/workspaces/2026-04-18-x90-blocker-tmiadm-512-sample-gap.md (69 lines)
+  ⎿  Read <DIFFAUDIT_ROOT>/Research/scripts/run_x90_larger_surface_triscore.py (73 lines)
+  ⎿  Read <DIFFAUDIT_ROOT>/ROADMAP.md (655 lines)
+  ⎿  Read <DIFFAUDIT_ROOT>/Research/workspaces/2026-04-17-g1a-bounded-gpu-review.md (131 lines)
+  ⎿  Referenced file <DIFFAUDIT_ROOT>/Research/ROADMAP.md
   ⎿  Skills restored (loop)
 
 ● I'll read the Research ROADMAP to identify the next task.
@@ -2921,9 +2921,9 @@
 ● I'll check the current X-90 blocker status and determine if we can proceed with a CPU-only approach or need GPU
   resources.
 
-● Bash(cd D:/Code/DiffAudit/Research && python scripts/run_x90_larger_surface_triscore.py 2>&1 | head -20)
+● Bash(cd <DIFFAUDIT_ROOT>/Research && python scripts/run_x90_larger_surface_triscore.py 2>&1 | head -20)
   ⎿  Traceback (most recent call last):
-       File "D:\Code\DiffAudit\Research\scripts\run_x90_larger_surface_triscore.py", line 72, in <module>
+       File "<DIFFAUDIT_ROOT>/Research/scripts/run_x90_larger_surface_triscore.py", line 72, in <module>
          raise SystemExit(main())
      … +12 lines (ctrl+o to expand)
   ⎿  Shell cwd was reset to C:\Users\Ding
@@ -2940,12 +2940,12 @@
 
 ● I'll navigate to the Research directory and check the X-89 results.
 
-● Bash(cd D:/Code/DiffAudit/Research && find workspaces/gray-box/runs -name "x89*" -type d 2>/dev/null | head -5)
+● Bash(cd <DIFFAUDIT_ROOT>/Research && find workspaces/gray-box/runs -name "x89*" -type d 2>/dev/null | head -5)
   ⎿  Shell cwd was reset to C:\Users\Ding
 
 ● I'll navigate to the Research directory and check the current state of X-90.
 
-● Bash(cd D:/Code/DiffAudit/Research && ls -la workspaces/gray-box/runs/ | grep -E "(x89|x90)" | head -10)
+● Bash(cd <DIFFAUDIT_ROOT>/Research && ls -la workspaces/gray-box/runs/ | grep -E "(x89|x90)" | head -10)
   ⎿  drwxr-xr-x 1 Ding 197609 0 Apr 17 19:56 x90-larger-surface-triscore-20260417-195623
      drwxr-xr-x 1 Ding 197609 0 Apr 17 20:00 x90-larger-surface-triscore-20260417-200015
   ⎿  Shell cwd was reset to C:\Users\Ding
@@ -2953,7 +2953,7 @@
 ● I see X-90 already attempted but failed due to the TMIA-DM 512-sample gap. Let me check what's in those existing run
   directories.
 
-● Bash(cd D:/Code/DiffAudit/Research && ls -la workspaces/gray-box/runs/x90-larger-surface-triscore-20260417-200015/)
+● Bash(cd <DIFFAUDIT_ROOT>/Research && ls -la workspaces/gray-box/runs/x90-larger-surface-triscore-20260417-200015/)
   ⎿  total 32
      drwxr-xr-x 1 Ding 197609 0 Apr 17 20:00 .
      drwxr-xr-x 1 Ding 197609 0 Apr 17 20:00 ..
@@ -2995,7 +2995,7 @@
 
 ● I'll update the root ROADMAP to document the X-90 blocker and determine the next Research task.
 
-● Update(D:\Code\DiffAudit\ROADMAP.md)
+● Update(<DIFFAUDIT_ROOT>/ROADMAP.md)
   ⎿  Added 4 lines, removed 2 lines
       603
       604  当前真正需要根级持续盯住的缺口：
@@ -3012,7 +3012,7 @@
       612  2. **Platform Part 12.5 仓库收尾** ✅ 已完成
       613     - `v0.1.0-stable` tag 已推送到 gz2
 
-● Update(D:\Code\DiffAudit\ROADMAP.md)
+● Update(<DIFFAUDIT_ROOT>/ROADMAP.md)
   ⎿  Added 1 line, removed 1 line
       633  - [x] `P0`: `Researcher` 已完成 `B-M0` 的 CPU-first 收敛与 `X-88` gate 落地；`G1-A bounded GPU review` 已
            完成，决策为 `hold-review-only`（CPU-bound 评估，非 GPU 问题）
@@ -3032,13 +3032,13 @@
 
 ● I'll commit the X-90 blocker documentation and root ROADMAP updates, then identify next Research task.
 
-● Bash(cd D:/Code/DiffAudit && git add -A && git status --short)
+● Bash(cd <DIFFAUDIT_ROOT> && git add -A && git status --short)
   ⎿  Error: Exit code 128
      fatal: not a git repository (or any of the parent directories): .git
 
 ● I need to navigate to the DiffAudit directory first.
 
-● Bash(cd D:/Code/DiffAudit && git add Research/workspaces/2026-04-18-x90-blocker-tmiadm-512-sample-gap.md ROADMAP.md &&
+● Bash(cd <DIFFAUDIT_ROOT> && git add Research/workspaces/2026-04-18-x90-blocker-tmiadm-512-sample-gap.md ROADMAP.md &&
        git status --short)
   ⎿  Error: Exit code 128
      fatal: not a git repository (or any of the parent directories): .git
@@ -3130,7 +3130,7 @@
 ● I'll check the I-A higher-layer boundary maintenance status and add the epsilon-trajectory consistency mechanism
   wording.
 
-● Update(D:\Code\DiffAudit\Research\docs\leader-research-ready-summary.md)
+● Update(<DIFFAUDIT_ROOT>/Research/docs/leader-research-ready-summary.md)
   ⎿  Added 1 line, removed 1 line
        6  | 线索 | 模型 | 攻击 | 防御 | AUC | ASR | TPR@1%FPR | TPR@0.1%FPR | 能说的话 | 不能说的话 |
        7  | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- |
@@ -3154,7 +3154,7 @@
           。
 
 
-● Update(D:\Code\DiffAudit\Research\docs\leader-research-ready-summary.md)
+● Update(<DIFFAUDIT_ROOT>/Research/docs/leader-research-ready-summary.md)
   ⎿  Added 1 line, removed 1 line
       14  ## 2. 已 admit 的主线成果（可直接拿到 4C 材料）
       15
@@ -3212,9 +3212,9 @@
   maintenance completed. Next task per ROADMAP priority: Since G1-A review is complete (hold-review-only) and X-90 is
   blocked, I'll proceed with X-86 non-graybox reselection after X-85.
 
-● Write(D:\Code\DiffAudit\Research\workspaces\implementation\2026-04-18-x86-nongraybox-next-lane-reselection-after-x85-a
+● Write(<DIFFAUDIT_ROOT>/Research/workspaces/implementation/2026-04-18-x86-nongraybox-next-lane-reselection-after-x85-a
        dmitted-summary-sync.md)
-  ⎿  Wrote 95 lines to D:\Code\DiffAudit\Research\workspaces\implementation\2026-04-18-x86-nongraybox-next-lane-reselec
+  ⎿  Wrote 95 lines to <DIFFAUDIT_ROOT>/Research/workspaces/implementation/2026-04-18-x86-nongraybox-next-lane-reselec
      tion-after-x85-admitted-summary-sync.md
       1 # X-86: Non-Graybox Next-Lane Reselection After X-85 Admitted-Summary Sync
       2
@@ -3229,9 +3229,9 @@
 
 ● I'll continue with X-87: G1-A blocker resolution review.
 
-● Write(D:\Code\DiffAudit\Research\workspaces\implementation\2026-04-18-x87-g1a-blocker-resolution-review-after-x86-rese
+● Write(<DIFFAUDIT_ROOT>/Research/workspaces/implementation/2026-04-18-x87-g1a-blocker-resolution-review-after-x86-rese
        lection.md)
-  ⎿  Wrote 90 lines to D:\Code\DiffAudit\Research\workspaces\implementation\2026-04-18-x87-g1a-blocker-resolution-revie
+  ⎿  Wrote 90 lines to <DIFFAUDIT_ROOT>/Research/workspaces/implementation/2026-04-18-x87-g1a-blocker-resolution-revie
      w-after-x86-reselection.md
       1 # X-87: G1-A Blocker Resolution Review After X-86 Reselection
       2
@@ -3258,9 +3258,9 @@
 ● I'll continue Research progress. X-86/X-87 completed: G1-A/X-90 deferred due to TMIA-DM 512-sample gap conflicting
   with CPU-first classification. Next task per X-87: redirect to next honest lane.
 
-● Write(D:\Code\DiffAudit\Research\workspaces\implementation\2026-04-18-x88-nongraybox-next-lane-reselection-after-x87-g
+● Write(<DIFFAUDIT_ROOT>/Research/workspaces/implementation/2026-04-18-x88-nongraybox-next-lane-reselection-after-x87-g
        1a-defer.md)
-  ⎿  Wrote 93 lines to D:\Code\DiffAudit\Research\workspaces\implementation\2026-04-18-x88-nongraybox-next-lane-reselec
+  ⎿  Wrote 93 lines to <DIFFAUDIT_ROOT>/Research/workspaces/implementation/2026-04-18-x88-nongraybox-next-lane-reselec
      tion-after-x87-g1a-defer.md
       1 # X-88: Non-Graybox Next-Lane Reselection After X-87 G1-A Defer
       2
@@ -3332,8 +3332,8 @@
 
 ● I'll create B-M0 Candidate A bounded GPU review based on X-75/X-77 frozen packet.
 
-● Write(D:\Code\DiffAudit\Research\workspaces\2026-04-18-b-m0-candidate-a-bounded-gpu-review.md)
-  ⎿  Wrote 132 lines to D:\Code\DiffAudit\Research\workspaces\2026-04-18-b-m0-candidate-a-bounded-gpu-review.md
+● Write(<DIFFAUDIT_ROOT>/Research/workspaces/2026-04-18-b-m0-candidate-a-bounded-gpu-review.md)
+  ⎿  Wrote 132 lines to <DIFFAUDIT_ROOT>/Research/workspaces/2026-04-18-b-m0-candidate-a-bounded-gpu-review.md
       1 # B-M0 Candidate A: Bounded Shadow-LR White-Box Loss-Score Follow-Up
       2
       3 > Date: 2026-04-18
@@ -3388,9 +3388,9 @@
   and B-M0 Candidate A are CPU-bound evaluations, not GPU questions. Next: Continue with I-A higher-layer boundary
   maintenance or redirect per ROADMAP.
 
-● Write(D:\Code\DiffAudit\Research\workspaces\implementation\2026-04-18-x89-nongraybox-next-lane-reselection-after-b-m0-cand
+● Write(<DIFFAUDIT_ROOT>/Research/workspaces/implementation/2026-04-18-x89-nongraybox-next-lane-reselection-after-b-m0-cand
        idate-a-hold-review-only.md)
-  ⎿  Wrote 56 lines to D:\Code\DiffAudit\Research\workspaces\implementation\2026-04-18-x89-nongraybox-next-lane-reselec
+  ⎿  Wrote 56 lines to <DIFFAUDIT_ROOT>/Research/workspaces/implementation/2026-04-18-x89-nongraybox-next-lane-reselec
      tion-after-b-m0-candidate-a-hold-review-only.md
       1 # X-89: Non-Graybox Next-Lane Reselection After B-M0 Candidate A Hold-Review-Only
       2
@@ -3461,7 +3461,7 @@
 
 ● I'll update mainline-narrative.md to reflect X-86→X-89 sequence completion.
 
-● Update(D:\Code\DiffAudit\Research\docs\mainline-narrative.md)
+● Update(<DIFFAUDIT_ROOT>/Research/docs/mainline-narrative.md)
   ⎿  Added 1 line, removed 1 line
        6
        7  ## 当前一句话
@@ -3678,7 +3678,7 @@
 
 ● ROADMAP §4.5显示当前状态已过时。实际已完成X-86→X-89，需更新ROADMAP控制面状态。
 
-● Update(D:\Code\DiffAudit\Research\ROADMAP.md)
+● Update(<DIFFAUDIT_ROOT>/Research/ROADMAP.md)
   ⎿  Added 8 lines, removed 2 lines
       345  - `X-83` is now closed as `positive`: once the stale-entry sync is cleared, no blocked/hold branch honestl
            y reopens and no new active `I-A` residue is visible, so the honest next move becomes bounded non-graybox
@@ -3736,7 +3736,7 @@
 
 ● 更新comprehensive-progress.md到X-89状态。
 
-● Update(D:\Code\DiffAudit\Research\docs\comprehensive-progress.md)
+● Update(<DIFFAUDIT_ROOT>/Research/docs/comprehensive-progress.md)
   ⎿  Added 1 line, removed 1 line
       40    - `Local Mirror` 不提供第二防御家族
       41  - [2026-04-10-recon-decision-package](../workspaces/black-box/2026-04-10-recon-decision-package.md) 已把黑
@@ -3798,9 +3798,9 @@
 
 ● 继续推进Research模型主线。当前I-A CPU sidecar维护中，检查是否有新的bounded hypothesis或需要执行的CPU-first任务。
 
-● Write(D:\Code\DiffAudit\Research\workspaces\implementation\2026-04-18-x90-ia-higher-layer-boundary-maintenance-after-x89.m
+● Write(<DIFFAUDIT_ROOT>/Research/workspaces/implementation/2026-04-18-x90-ia-higher-layer-boundary-maintenance-after-x89.m
        d)
-  ⎿  Wrote 49 lines to D:\Code\DiffAudit\Research\workspaces\implementation\2026-04-18-x90-ia-higher-layer-boundary-mai
+  ⎿  Wrote 49 lines to <DIFFAUDIT_ROOT>/Research/workspaces/implementation/2026-04-18-x90-ia-higher-layer-boundary-mai
      ntenance-after-x89.md
       1 # X-90: I-A Higher-Layer Boundary Maintenance After X-89
       2
@@ -3823,10 +3823,10 @@
 
 ● 发现research-autonomous-executionprompt和codex-roadmap-execution-prompt仍停留在X-86状态，需要更新到X-89。
 
-● Update(D:\Code\DiffAudit\Research\docs\research-autonomous-execution-prompt.md)
+● Update(<DIFFAUDIT_ROOT>/Research/docs/research-autonomous-execution-prompt.md)
   ⎿  File must be read first
 
-● Update(D:\Code\DiffAudit\Research\docs\codex-roadmap-execution-prompt.md)
+● Update(<DIFFAUDIT_ROOT>/Research/docs/codex-roadmap-execution-prompt.md)
   ⎿  File must be read first
 
 ● 需要先读取文件才能编辑。我来读取这两个文件并更新它们。
@@ -3835,7 +3835,7 @@
 
 ● 更新两个execution prompt文档到X-89状态。
 
-● Update(D:\Code\DiffAudit\Research\docs\codex-roadmap-execution-prompt.md)
+● Update(<DIFFAUDIT_ROOT>/Research/docs/codex-roadmap-execution-prompt.md)
 
 · Blanching… (1m 33s · ↓ 1.4k tokens)
 
@@ -3853,7 +3853,7 @@
 
 ● I'll update the root ROADMAP to document the X-90 blocker and determine the next Research task.
 
-● Update(D:\Code\DiffAudit\ROADMAP.md)
+● Update(<DIFFAUDIT_ROOT>/ROADMAP.md)
   ⎿  Added 4 lines, removed 2 lines
       603
       604  当前真正需要根级持续盯住的缺口：
@@ -3870,7 +3870,7 @@
       612  2. **Platform Part 12.5 仓库收尾** ✅ 已完成
       613     - `v0.1.0-stable` tag 已推送到 gz2
 
-● Update(D:\Code\DiffAudit\ROADMAP.md)
+● Update(<DIFFAUDIT_ROOT>/ROADMAP.md)
   ⎿  Added 1 line, removed 1 line
       633  - [x] `P0`: `Researcher` 已完成 `B-M0` 的 CPU-first 收敛与 `X-88` gate 落地；`G1-A bounded GPU review` 已
            完成，决策为 `hold-review-only`（CPU-bound 评估，非 GPU 问题）
@@ -3890,13 +3890,13 @@
 
 ● I'll commit the X-90 blocker documentation and root ROADMAP updates, then identify next Research task.
 
-● Bash(cd D:/Code/DiffAudit && git add -A && git status --short)
+● Bash(cd <DIFFAUDIT_ROOT> && git add -A && git status --short)
   ⎿  Error: Exit code 128
      fatal: not a git repository (or any of the parent directories): .git
 
 ● I need to navigate to the DiffAudit directory first.
 
-● Bash(cd D:/Code/DiffAudit && git add Research/workspaces/2026-04-18-x90-blocker-tmiadm-512-sample-gap.md ROADMAP.md &&
+● Bash(cd <DIFFAUDIT_ROOT> && git add Research/workspaces/2026-04-18-x90-blocker-tmiadm-512-sample-gap.md ROADMAP.md &&
        git status --short)
   ⎿  Error: Exit code 128
      fatal: not a git repository (or any of the parent directories): .git
@@ -3988,7 +3988,7 @@
 ● I'll check the I-A higher-layer boundary maintenance status and add the epsilon-trajectory consistency mechanism
   wording.
 
-● Update(D:\Code\DiffAudit\Research\docs\leader-research-ready-summary.md)
+● Update(<DIFFAUDIT_ROOT>/Research/docs/leader-research-ready-summary.md)
   ⎿  Added 1 line, removed 1 line
        6  | 线索 | 模型 | 攻击 | 防御 | AUC | ASR | TPR@1%FPR | TPR@0.1%FPR | 能说的话 | 不能说的话 |
        7  | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- |
@@ -4012,7 +4012,7 @@
           。
 
 
-● Update(D:\Code\DiffAudit\Research\docs\leader-research-ready-summary.md)
+● Update(<DIFFAUDIT_ROOT>/Research/docs/leader-research-ready-summary.md)
   ⎿  Added 1 line, removed 1 line
       14  ## 2. 已 admit 的主线成果（可直接拿到 4C 材料）
       15
@@ -4070,9 +4070,9 @@
   maintenance completed. Next task per ROADMAP priority: Since G1-A review is complete (hold-review-only) and X-90 is
   blocked, I'll proceed with X-86 non-graybox reselection after X-85.
 
-● Write(D:\Code\DiffAudit\Research\workspaces\implementation\2026-04-18-x86-nongraybox-next-lane-reselection-after-x85-a
+● Write(<DIFFAUDIT_ROOT>/Research/workspaces/implementation/2026-04-18-x86-nongraybox-next-lane-reselection-after-x85-a
        dmitted-summary-sync.md)
-  ⎿  Wrote 95 lines to D:\Code\DiffAudit\Research\workspaces\implementation\2026-04-18-x86-nongraybox-next-lane-reselec
+  ⎿  Wrote 95 lines to <DIFFAUDIT_ROOT>/Research/workspaces/implementation/2026-04-18-x86-nongraybox-next-lane-reselec
      tion-after-x85-admitted-summary-sync.md
       1 # X-86: Non-Graybox Next-Lane Reselection After X-85 Admitted-Summary Sync
       2
@@ -4087,9 +4087,9 @@
 
 ● I'll continue with X-87: G1-A blocker resolution review.
 
-● Write(D:\Code\DiffAudit\Research\workspaces\implementation\2026-04-18-x87-g1a-blocker-resolution-review-after-x86-rese
+● Write(<DIFFAUDIT_ROOT>/Research/workspaces/implementation/2026-04-18-x87-g1a-blocker-resolution-review-after-x86-rese
        lection.md)
-  ⎿  Wrote 90 lines to D:\Code\DiffAudit\Research\workspaces\implementation\2026-04-18-x87-g1a-blocker-resolution-revie
+  ⎿  Wrote 90 lines to <DIFFAUDIT_ROOT>/Research/workspaces/implementation/2026-04-18-x87-g1a-blocker-resolution-revie
      w-after-x86-reselection.md
       1 # X-87: G1-A Blocker Resolution Review After X-86 Reselection
       2
@@ -4116,9 +4116,9 @@
 ● I'll continue Research progress. X-86/X-87 completed: G1-A/X-90 deferred due to TMIA-DM 512-sample gap conflicting
   with CPU-first classification. Next task per X-87: redirect to next honest lane.
 
-● Write(D:\Code\DiffAudit\Research\workspaces\implementation\2026-04-18-x88-nongraybox-next-lane-reselection-after-x87-g
+● Write(<DIFFAUDIT_ROOT>/Research/workspaces/implementation/2026-04-18-x88-nongraybox-next-lane-reselection-after-x87-g
        1a-defer.md)
-  ⎿  Wrote 93 lines to D:\Code\DiffAudit\Research\workspaces\implementation\2026-04-18-x88-nongraybox-next-lane-reselec
+  ⎿  Wrote 93 lines to <DIFFAUDIT_ROOT>/Research/workspaces/implementation/2026-04-18-x88-nongraybox-next-lane-reselec
      tion-after-x87-g1a-defer.md
       1 # X-88: Non-Graybox Next-Lane Reselection After X-87 G1-A Defer
       2
@@ -4190,8 +4190,8 @@
 
 ● I'll create B-M0 Candidate A bounded GPU review based on X-75/X-77 frozen packet.
 
-● Write(D:\Code\DiffAudit\Research\workspaces\2026-04-18-b-m0-candidate-a-bounded-gpu-review.md)
-  ⎿  Wrote 132 lines to D:\Code\DiffAudit\Research\workspaces\2026-04-18-b-m0-candidate-a-bounded-gpu-review.md
+● Write(<DIFFAUDIT_ROOT>/Research/workspaces/2026-04-18-b-m0-candidate-a-bounded-gpu-review.md)
+  ⎿  Wrote 132 lines to <DIFFAUDIT_ROOT>/Research/workspaces/2026-04-18-b-m0-candidate-a-bounded-gpu-review.md
       1 # B-M0 Candidate A: Bounded Shadow-LR White-Box Loss-Score Follow-Up
       2
       3 > Date: 2026-04-18
@@ -4246,9 +4246,9 @@
   and B-M0 Candidate A are CPU-bound evaluations, not GPU questions. Next: Continue with I-A higher-layer boundary
   maintenance or redirect per ROADMAP.
 
-● Write(D:\Code\DiffAudit\Research\workspaces\implementation\2026-04-18-x89-nongraybox-next-lane-reselection-after-b-m0-cand
+● Write(<DIFFAUDIT_ROOT>/Research/workspaces/implementation/2026-04-18-x89-nongraybox-next-lane-reselection-after-b-m0-cand
        idate-a-hold-review-only.md)
-  ⎿  Wrote 56 lines to D:\Code\DiffAudit\Research\workspaces\implementation\2026-04-18-x89-nongraybox-next-lane-reselec
+  ⎿  Wrote 56 lines to <DIFFAUDIT_ROOT>/Research/workspaces/implementation/2026-04-18-x89-nongraybox-next-lane-reselec
      tion-after-b-m0-candidate-a-hold-review-only.md
       1 # X-89: Non-Graybox Next-Lane Reselection After B-M0 Candidate A Hold-Review-Only
       2
@@ -4319,7 +4319,7 @@
 
 ● I'll update mainline-narrative.md to reflect X-86→X-89 sequence completion.
 
-● Update(D:\Code\DiffAudit\Research\docs\mainline-narrative.md)
+● Update(<DIFFAUDIT_ROOT>/Research/docs/mainline-narrative.md)
   ⎿  Added 1 line, removed 1 line
        6
        7  ## 当前一句话
@@ -4536,7 +4536,7 @@
 
 ● ROADMAP §4.5显示当前状态已过时。实际已完成X-86→X-89，需更新ROADMAP控制面状态。
 
-● Update(D:\Code\DiffAudit\Research\ROADMAP.md)
+● Update(<DIFFAUDIT_ROOT>/Research/ROADMAP.md)
   ⎿  Added 8 lines, removed 2 lines
       345  - `X-83` is now closed as `positive`: once the stale-entry sync is cleared, no blocked/hold branch honestl
            y reopens and no new active `I-A` residue is visible, so the honest next move becomes bounded non-graybox
@@ -4594,7 +4594,7 @@
 
 ● 更新comprehensive-progress.md到X-89状态。
 
-● Update(D:\Code\DiffAudit\Research\docs\comprehensive-progress.md)
+● Update(<DIFFAUDIT_ROOT>/Research/docs/comprehensive-progress.md)
   ⎿  Added 1 line, removed 1 line
       40    - `Local Mirror` 不提供第二防御家族
       41  - [2026-04-10-recon-decision-package](../workspaces/black-box/2026-04-10-recon-decision-package.md) 已把黑
@@ -4656,9 +4656,9 @@
 
 ● 继续推进Research模型主线。当前I-A CPU sidecar维护中，检查是否有新的bounded hypothesis或需要执行的CPU-first任务。
 
-● Write(D:\Code\DiffAudit\Research\workspaces\implementation\2026-04-18-x90-ia-higher-layer-boundary-maintenance-after-x89.m
+● Write(<DIFFAUDIT_ROOT>/Research/workspaces/implementation/2026-04-18-x90-ia-higher-layer-boundary-maintenance-after-x89.m
        d)
-  ⎿  Wrote 49 lines to D:\Code\DiffAudit\Research\workspaces\implementation\2026-04-18-x90-ia-higher-layer-boundary-mai
+  ⎿  Wrote 49 lines to <DIFFAUDIT_ROOT>/Research/workspaces/implementation/2026-04-18-x90-ia-higher-layer-boundary-mai
      ntenance-after-x89.md
       1 # X-90: I-A Higher-Layer Boundary Maintenance After X-89
       2
@@ -4681,10 +4681,10 @@
 
 ● 发现research-autonomous-executionprompt和codex-roadmap-execution-prompt仍停留在X-86状态，需要更新到X-89。
 
-● Update(D:\Code\DiffAudit\Research\docs\research-autonomous-execution-prompt.md)
+● Update(<DIFFAUDIT_ROOT>/Research/docs/research-autonomous-execution-prompt.md)
   ⎿  File must be read first
 
-● Update(D:\Code\DiffAudit\Research\docs\codex-roadmap-execution-prompt.md)
+● Update(<DIFFAUDIT_ROOT>/Research/docs/codex-roadmap-execution-prompt.md)
   ⎿  File must be read first
 
 ● 需要先读取文件才能编辑。我来读取这两个文件并更新它们。
@@ -4693,7 +4693,7 @@
 
 ● 更新两个execution prompt文档到X-89状态。
 
-● Update(D:\Code\DiffAudit\Research\docs\codex-roadmap-execution-prompt.md)
+● Update(<DIFFAUDIT_ROOT>/Research/docs/codex-roadmap-execution-prompt.md)
   ⎿  Added 3 lines, removed 3 lines
       40  - `I-B` 当前应读作 `actual bounded falsifier`
       41  - `I-C` 当前应读作 `translated-contract-only + negative falsifier`
@@ -4714,7 +4714,7 @@
       47  始终同时维护三件事：
       48
 
-● Update(D:\Code\DiffAudit\Research\docs\research-autonomous-execution-prompt.md)
+● Update(<DIFFAUDIT_ROOT>/Research/docs/research-autonomous-execution-prompt.md)
   ⎿  Added 3 lines, removed 3 lines
       36  - `I-B` 当前最强口径不是 intake/bridge，而是 `actual bounded falsifier`
       37  - `I-C` 当前最强口径不是 live bridge packet，而是 `translated-contract-only + negative falsifier`
@@ -4769,9 +4769,9 @@
 
 ● 根据ROADMAP §5.7 "Expand instead of resting when a track closes cleanly"，当前I-A维护已完成，应执行下一轮reselection。
 
-● Write(D:\Code\DiffAudit\Research\workspaces\implementation\2026-04-18-x91-nongraybox-next-lane-reselection-after-x90-ia-ma
+● Write(<DIFFAUDIT_ROOT>/Research/workspaces/implementation/2026-04-18-x91-nongraybox-next-lane-reselection-after-x90-ia-ma
        intenance.md)
-  ⎿  Wrote 68 lines to D:\Code\DiffAudit\Research\workspaces\implementation\2026-04-18-x91-nongraybox-next-lane-reselec
+  ⎿  Wrote 68 lines to <DIFFAUDIT_ROOT>/Research/workspaces/implementation/2026-04-18-x91-nongraybox-next-lane-reselec
      tion-after-x90-ia-maintenance.md
       1 # X-91: Non-Graybox Next-Lane Reselection After X-90 I-A Maintenance
       2
@@ -4848,7 +4848,7 @@
 
 ● Challenger queue需要更新到X-91状态。当前仍显示X-86，但实际已完成X-86→X-91序列。
 
-● Update(D:\Code\DiffAudit\Research\workspaces\implementation\challenger-queue.md)
+● Update(<DIFFAUDIT_ROOT>/Research/workspaces/implementation/challenger-queue.md)
   ⎿  Added 2 lines, removed 2 lines
       10
       11  - `active GPU question = none`
@@ -4960,7 +4960,7 @@
 
 ● I'll update the root ROADMAP to document the X-90 blocker and determine the next Research task.
 
-● Update(D:\Code\DiffAudit\ROADMAP.md)
+● Update(<DIFFAUDIT_ROOT>/ROADMAP.md)
   ⎿  Added 4 lines, removed 2 lines
       603
       604  当前真正需要根级持续盯住的缺口：
@@ -4977,7 +4977,7 @@
       613     - `v0.1.0-stable` tag 已推送到 gz2
 
 
-● Update(D:\Code\DiffAudit\ROADMAP.md)
+● Update(<DIFFAUDIT_ROOT>/ROADMAP.md)
   ⎿  Added 1 line, removed 1 line
       633  - [x] `P0`: `Researcher` 已完成 `B-M0` 的 CPU-first 收敛与 `X-88` gate 落地；`G1-A bounded GPU review` 已完成，决策为 `hold-review-only`（
            CPU-bound 评估，非 GPU 问题）
@@ -4997,13 +4997,13 @@
 
 ● I'll commit the X-90 blocker documentation and root ROADMAP updates, then identify next Research task.
 
-● Bash(cd D:/Code/DiffAudit && git add -A && git status --short)
+● Bash(cd <DIFFAUDIT_ROOT> && git add -A && git status --short)
   ⎿  Error: Exit code 128
      fatal: not a git repository (or any of the parent directories): .git
 
 ● I need to navigate to the DiffAudit directory first.
 
-● Bash(cd D:/Code/DiffAudit && git add Research/workspaces/2026-04-18-x90-blocker-tmiadm-512-sample-gap.md ROADMAP.md &&
+● Bash(cd <DIFFAUDIT_ROOT> && git add Research/workspaces/2026-04-18-x90-blocker-tmiadm-512-sample-gap.md ROADMAP.md &&
        git status --short)
   ⎿  Error: Exit code 128
      fatal: not a git repository (or any of the parent directories): .git
@@ -5095,7 +5095,7 @@
 ● I'll check the I-A higher-layer boundary maintenance status and add the epsilon-trajectory consistency mechanism
   wording.
 
-● Update(D:\Code\DiffAudit\Research\docs\leader-research-ready-summary.md)
+● Update(<DIFFAUDIT_ROOT>/Research/docs/leader-research-ready-summary.md)
   ⎿  Added 1 line, removed 1 line
        6  | 线索 | 模型 | 攻击 | 防御 | AUC | ASR | TPR@1%FPR | TPR@0.1%FPR | 能说的话 | 不能说的话 |
        7  | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- |
@@ -5119,7 +5119,7 @@
 
 
 
-● Update(D:\Code\DiffAudit\Research\docs\leader-research-ready-summary.md)
+● Update(<DIFFAUDIT_ROOT>/Research/docs/leader-research-ready-summary.md)
   ⎿  Added 1 line, removed 1 line
       14  ## 2. 已 admit 的主线成果（可直接拿到 4C 材料）
       15
@@ -5177,10 +5177,10 @@
   maintenance completed. Next task per ROADMAP priority: Since G1-A review is complete (hold-review-only) and X-90 is
   blocked, I'll proceed with X-86 non-graybox reselection after X-85.
 
-● Write(D:\Code\DiffAudit\Research\workspaces\implementation\2026-04-18-x86-nongraybox-next-lane-reselection-after-x85-a
+● Write(<DIFFAUDIT_ROOT>/Research/workspaces/implementation/2026-04-18-x86-nongraybox-next-lane-reselection-after-x85-a
        dmitted-summary-sync.md)
   ⎿  Wrote 95 lines to
-     D:\Code\DiffAudit\Research\workspaces\implementation\2026-04-18-x86-nongraybox-next-lane-reselection-after-x85-admitted-summary-sync.md
+     <DIFFAUDIT_ROOT>/Research/workspaces/implementation/2026-04-18-x86-nongraybox-next-lane-reselection-after-x85-admitted-summary-sync.md
       1 # X-86: Non-Graybox Next-Lane Reselection After X-85 Admitted-Summary Sync
       2
       3 > Date: 2026-04-18
@@ -5194,9 +5194,9 @@
 
 ● I'll continue with X-87: G1-A blocker resolution review.
 
-● Write(D:\Code\DiffAudit\Research\workspaces\implementation\2026-04-18-x87-g1a-blocker-resolution-review-after-x86-rese
+● Write(<DIFFAUDIT_ROOT>/Research/workspaces/implementation/2026-04-18-x87-g1a-blocker-resolution-review-after-x86-rese
        lection.md)
-  ⎿  Wrote 90 lines to D:\Code\DiffAudit\Research\workspaces\implementation\2026-04-18-x87-g1a-blocker-resolution-review-after-x86-reselection.md
+  ⎿  Wrote 90 lines to <DIFFAUDIT_ROOT>/Research/workspaces/implementation/2026-04-18-x87-g1a-blocker-resolution-review-after-x86-reselection.md
       1 # X-87: G1-A Blocker Resolution Review After X-86 Reselection
       2
       3 > Date: 2026-04-18
@@ -5223,9 +5223,9 @@
 ● I'll continue Research progress. X-86/X-87 completed: G1-A/X-90 deferred due to TMIA-DM 512-sample gap conflicting
   with CPU-first classification. Next task per X-87: redirect to next honest lane.
 
-● Write(D:\Code\DiffAudit\Research\workspaces\implementation\2026-04-18-x88-nongraybox-next-lane-reselection-after-x87-g
+● Write(<DIFFAUDIT_ROOT>/Research/workspaces/implementation/2026-04-18-x88-nongraybox-next-lane-reselection-after-x87-g
        1a-defer.md)
-  ⎿  Wrote 93 lines to D:\Code\DiffAudit\Research\workspaces\implementation\2026-04-18-x88-nongraybox-next-lane-reselection-after-x87-g1a-defer.md
+  ⎿  Wrote 93 lines to <DIFFAUDIT_ROOT>/Research/workspaces/implementation/2026-04-18-x88-nongraybox-next-lane-reselection-after-x87-g1a-defer.md
       1 # X-88: Non-Graybox Next-Lane Reselection After X-87 G1-A Defer
       2
       3 > Date: 2026-04-18
@@ -5297,8 +5297,8 @@
 
 ● I'll create B-M0 Candidate A bounded GPU review based on X-75/X-77 frozen packet.
 
-● Write(D:\Code\DiffAudit\Research\workspaces\2026-04-18-b-m0-candidate-a-bounded-gpu-review.md)
-  ⎿  Wrote 132 lines to D:\Code\DiffAudit\Research\workspaces\2026-04-18-b-m0-candidate-a-bounded-gpu-review.md
+● Write(<DIFFAUDIT_ROOT>/Research/workspaces/2026-04-18-b-m0-candidate-a-bounded-gpu-review.md)
+  ⎿  Wrote 132 lines to <DIFFAUDIT_ROOT>/Research/workspaces/2026-04-18-b-m0-candidate-a-bounded-gpu-review.md
       1 # B-M0 Candidate A: Bounded Shadow-LR White-Box Loss-Score Follow-Up
       2
       3 > Date: 2026-04-18
@@ -5352,10 +5352,10 @@
   and B-M0 Candidate A are CPU-bound evaluations, not GPU questions. Next: Continue with I-A higher-layer boundary
   maintenance or redirect per ROADMAP.
 
-● Write(D:\Code\DiffAudit\Research\workspaces\implementation\2026-04-18-x89-nongraybox-next-lane-reselection-after-b-m0-cand
+● Write(<DIFFAUDIT_ROOT>/Research/workspaces/implementation/2026-04-18-x89-nongraybox-next-lane-reselection-after-b-m0-cand
        idate-a-hold-review-only.md)
   ⎿  Wrote 56 lines to
-     D:\Code\DiffAudit\Research\workspaces\implementation\2026-04-18-x89-nongraybox-next-lane-reselection-after-b-m0-candidate-a-hold-review-only.md
+     <DIFFAUDIT_ROOT>/Research/workspaces/implementation/2026-04-18-x89-nongraybox-next-lane-reselection-after-b-m0-candidate-a-hold-review-only.md
       1 # X-89: Non-Graybox Next-Lane Reselection After B-M0 Candidate A Hold-Review-Only
       2
       3 > Date: 2026-04-18
@@ -5425,7 +5425,7 @@
 
 ● I'll update mainline-narrative.md to reflect X-86→X-89 sequence completion.
 
-● Update(D:\Code\DiffAudit\Research\docs\mainline-narrative.md)
+● Update(<DIFFAUDIT_ROOT>/Research/docs/mainline-narrative.md)
   ⎿  Added 1 line, removed 1 line
        6
        7  ## 当前一句话
@@ -5625,7 +5625,7 @@
 
 ● ROADMAP §4.5显示当前状态已过时。实际已完成X-86→X-89，需更新ROADMAP控制面状态。
 
-● Update(D:\Code\DiffAudit\Research\ROADMAP.md)
+● Update(<DIFFAUDIT_ROOT>/Research/ROADMAP.md)
   ⎿  Added 8 lines, removed 2 lines
       345  - `X-83` is now closed as `positive`: once the stale-entry sync is cleared, no blocked/hold branch honestly reopens and no new active `I-A
            ` residue is visible, so the honest next move becomes bounded non-graybox candidate-surface expansion rather than another forced `I-A` mic
@@ -5676,7 +5676,7 @@
 
 ● 更新comprehensive-progress.md到X-89状态。
 
-● Update(D:\Code\DiffAudit\Research\docs\comprehensive-progress.md)
+● Update(<DIFFAUDIT_ROOT>/Research/docs/comprehensive-progress.md)
   ⎿  Added 1 line, removed 1 line
       40    - `Local Mirror` 不提供第二防御家族
       41  - [2026-04-10-recon-decision-package](../workspaces/black-box/2026-04-10-recon-decision-package.md) 已把黑盒五件套固定为 decision-grade pac
@@ -5734,8 +5734,8 @@
 
 ● 继续推进Research模型主线。当前I-A CPU sidecar维护中，检查是否有新的bounded hypothesis或需要执行的CPU-first任务。
 
-● Write(D:\Code\DiffAudit\Research\workspaces\implementation\2026-04-18-x90-ia-higher-layer-boundary-maintenance-after-x89.md)
-  ⎿  Wrote 49 lines to D:\Code\DiffAudit\Research\workspaces\implementation\2026-04-18-x90-ia-higher-layer-boundary-maintenance-after-x89.md
+● Write(<DIFFAUDIT_ROOT>/Research/workspaces/implementation/2026-04-18-x90-ia-higher-layer-boundary-maintenance-after-x89.md)
+  ⎿  Wrote 49 lines to <DIFFAUDIT_ROOT>/Research/workspaces/implementation/2026-04-18-x90-ia-higher-layer-boundary-maintenance-after-x89.md
       1 # X-90: I-A Higher-Layer Boundary Maintenance After X-89
       2
       3 > Date: 2026-04-18
@@ -5757,10 +5757,10 @@
 
 ● 发现research-autonomous-executionprompt和codex-roadmap-execution-prompt仍停留在X-86状态，需要更新到X-89。
 
-● Update(D:\Code\DiffAudit\Research\docs\research-autonomous-execution-prompt.md)
+● Update(<DIFFAUDIT_ROOT>/Research/docs/research-autonomous-execution-prompt.md)
   ⎿  File must be read first
 
-● Update(D:\Code\DiffAudit\Research\docs\codex-roadmap-execution-prompt.md)
+● Update(<DIFFAUDIT_ROOT>/Research/docs/codex-roadmap-execution-prompt.md)
   ⎿  File must be read first
 
 ● 需要先读取文件才能编辑。我来读取这两个文件并更新它们。
@@ -5769,7 +5769,7 @@
 
 ● 更新两个execution prompt文档到X-89状态。
 
-● Update(D:\Code\DiffAudit\Research\docs\codex-roadmap-execution-prompt.md)
+● Update(<DIFFAUDIT_ROOT>/Research/docs/codex-roadmap-execution-prompt.md)
   ⎿  Added 3 lines, removed 3 lines
       40  - `I-B` 当前应读作 `actual bounded falsifier`
       41  - `I-C` 当前应读作 `translated-contract-only + negative falsifier`
@@ -5787,7 +5787,7 @@
       47  始终同时维护三件事：
       48
 
-● Update(D:\Code\DiffAudit\Research\docs\research-autonomous-execution-prompt.md)
+● Update(<DIFFAUDIT_ROOT>/Research/docs/research-autonomous-execution-prompt.md)
   ⎿  Added 3 lines, removed 3 lines
       36  - `I-B` 当前最强口径不是 intake/bridge，而是 `actual bounded falsifier`
       37  - `I-C` 当前最强口径不是 live bridge packet，而是 `translated-contract-only + negative falsifier`
@@ -5839,8 +5839,8 @@
 
 ● 根据ROADMAP §5.7 "Expand instead of resting when a track closes cleanly"，当前I-A维护已完成，应执行下一轮reselection。
 
-● Write(D:\Code\DiffAudit\Research\workspaces\implementation\2026-04-18-x91-nongraybox-next-lane-reselection-after-x90-ia-maintenance.md)
-  ⎿  Wrote 68 lines to D:\Code\DiffAudit\Research\workspaces\implementation\2026-04-18-x91-nongraybox-next-lane-reselection-after-x90-ia-maintenance.md
+● Write(<DIFFAUDIT_ROOT>/Research/workspaces/implementation/2026-04-18-x91-nongraybox-next-lane-reselection-after-x90-ia-maintenance.md)
+  ⎿  Wrote 68 lines to <DIFFAUDIT_ROOT>/Research/workspaces/implementation/2026-04-18-x91-nongraybox-next-lane-reselection-after-x90-ia-maintenance.md
       1 # X-91: Non-Graybox Next-Lane Reselection After X-90 I-A Maintenance
       2
       3 > Date: 2026-04-18
@@ -5914,7 +5914,7 @@
 
 ● Challenger queue需要更新到X-91状态。当前仍显示X-86，但实际已完成X-86→X-91序列。
 
-● Update(D:\Code\DiffAudit\Research\workspaces\implementation\challenger-queue.md)
+● Update(<DIFFAUDIT_ROOT>/Research/workspaces/implementation/challenger-queue.md)
   ⎿  Added 2 lines, removed 2 lines
       10
       11  - `active GPU question = none`
@@ -6085,10 +6085,10 @@
   maintenance completed. Next task per ROADMAP priority: Since G1-A review is complete (hold-review-only) and X-90 is
   blocked, I'll proceed with X-86 non-graybox reselection after X-85.
 
-● Write(D:\Code\DiffAudit\Research\workspaces\implementation\2026-04-18-x86-nongraybox-next-lane-reselection-after-x85-a
+● Write(<DIFFAUDIT_ROOT>/Research/workspaces/implementation/2026-04-18-x86-nongraybox-next-lane-reselection-after-x85-a
        dmitted-summary-sync.md)
   ⎿  Wrote 95 lines to
-     D:\Code\DiffAudit\Research\workspaces\implementation\2026-04-18-x86-nongraybox-next-lane-reselection-after-x85-admitted-summary-sync.md
+     <DIFFAUDIT_ROOT>/Research/workspaces/implementation/2026-04-18-x86-nongraybox-next-lane-reselection-after-x85-admitted-summary-sync.md
       1 # X-86: Non-Graybox Next-Lane Reselection After X-85 Admitted-Summary Sync
       2
       3 > Date: 2026-04-18
@@ -6102,9 +6102,9 @@
 
 ● I'll continue with X-87: G1-A blocker resolution review.
 
-● Write(D:\Code\DiffAudit\Research\workspaces\implementation\2026-04-18-x87-g1a-blocker-resolution-review-after-x86-rese
+● Write(<DIFFAUDIT_ROOT>/Research/workspaces/implementation/2026-04-18-x87-g1a-blocker-resolution-review-after-x86-rese
        lection.md)
-  ⎿  Wrote 90 lines to D:\Code\DiffAudit\Research\workspaces\implementation\2026-04-18-x87-g1a-blocker-resolution-review-after-x86-reselection.md
+  ⎿  Wrote 90 lines to <DIFFAUDIT_ROOT>/Research/workspaces/implementation/2026-04-18-x87-g1a-blocker-resolution-review-after-x86-reselection.md
       1 # X-87: G1-A Blocker Resolution Review After X-86 Reselection
       2
       3 > Date: 2026-04-18
@@ -6131,9 +6131,9 @@
 ● I'll continue Research progress. X-86/X-87 completed: G1-A/X-90 deferred due to TMIA-DM 512-sample gap conflicting
   with CPU-first classification. Next task per X-87: redirect to next honest lane.
 
-● Write(D:\Code\DiffAudit\Research\workspaces\implementation\2026-04-18-x88-nongraybox-next-lane-reselection-after-x87-g
+● Write(<DIFFAUDIT_ROOT>/Research/workspaces/implementation/2026-04-18-x88-nongraybox-next-lane-reselection-after-x87-g
        1a-defer.md)
-  ⎿  Wrote 93 lines to D:\Code\DiffAudit\Research\workspaces\implementation\2026-04-18-x88-nongraybox-next-lane-reselection-after-x87-g1a-defer.md
+  ⎿  Wrote 93 lines to <DIFFAUDIT_ROOT>/Research/workspaces/implementation/2026-04-18-x88-nongraybox-next-lane-reselection-after-x87-g1a-defer.md
       1 # X-88: Non-Graybox Next-Lane Reselection After X-87 G1-A Defer
       2
       3 > Date: 2026-04-18
@@ -6205,8 +6205,8 @@
 
 ● I'll create B-M0 Candidate A bounded GPU review based on X-75/X-77 frozen packet.
 
-● Write(D:\Code\DiffAudit\Research\workspaces\2026-04-18-b-m0-candidate-a-bounded-gpu-review.md)
-  ⎿  Wrote 132 lines to D:\Code\DiffAudit\Research\workspaces\2026-04-18-b-m0-candidate-a-bounded-gpu-review.md
+● Write(<DIFFAUDIT_ROOT>/Research/workspaces/2026-04-18-b-m0-candidate-a-bounded-gpu-review.md)
+  ⎿  Wrote 132 lines to <DIFFAUDIT_ROOT>/Research/workspaces/2026-04-18-b-m0-candidate-a-bounded-gpu-review.md
       1 # B-M0 Candidate A: Bounded Shadow-LR White-Box Loss-Score Follow-Up
       2
       3 > Date: 2026-04-18
@@ -6260,10 +6260,10 @@
   and B-M0 Candidate A are CPU-bound evaluations, not GPU questions. Next: Continue with I-A higher-layer boundary
   maintenance or redirect per ROADMAP.
 
-● Write(D:\Code\DiffAudit\Research\workspaces\implementation\2026-04-18-x89-nongraybox-next-lane-reselection-after-b-m0-cand
+● Write(<DIFFAUDIT_ROOT>/Research/workspaces/implementation/2026-04-18-x89-nongraybox-next-lane-reselection-after-b-m0-cand
        idate-a-hold-review-only.md)
   ⎿  Wrote 56 lines to
-     D:\Code\DiffAudit\Research\workspaces\implementation\2026-04-18-x89-nongraybox-next-lane-reselection-after-b-m0-candidate-a-hold-review-only.md
+     <DIFFAUDIT_ROOT>/Research/workspaces/implementation/2026-04-18-x89-nongraybox-next-lane-reselection-after-b-m0-candidate-a-hold-review-only.md
       1 # X-89: Non-Graybox Next-Lane Reselection After B-M0 Candidate A Hold-Review-Only
       2
       3 > Date: 2026-04-18
@@ -6333,7 +6333,7 @@
 
 ● I'll update mainline-narrative.md to reflect X-86→X-89 sequence completion.
 
-● Update(D:\Code\DiffAudit\Research\docs\mainline-narrative.md)
+● Update(<DIFFAUDIT_ROOT>/Research/docs/mainline-narrative.md)
   ⎿  Added 1 line, removed 1 line
        6
        7  ## 当前一句话
@@ -6533,7 +6533,7 @@
 
 ● ROADMAP §4.5显示当前状态已过时。实际已完成X-86→X-89，需更新ROADMAP控制面状态。
 
-● Update(D:\Code\DiffAudit\Research\ROADMAP.md)
+● Update(<DIFFAUDIT_ROOT>/Research/ROADMAP.md)
   ⎿  Added 8 lines, removed 2 lines
       345  - `X-83` is now closed as `positive`: once the stale-entry sync is cleared, no blocked/hold branch honestly reopens and no new active `I-A
            ` residue is visible, so the honest next move becomes bounded non-graybox candidate-surface expansion rather than another forced `I-A` mic
@@ -6584,7 +6584,7 @@
 
 ● 更新comprehensive-progress.md到X-89状态。
 
-● Update(D:\Code\DiffAudit\Research\docs\comprehensive-progress.md)
+● Update(<DIFFAUDIT_ROOT>/Research/docs/comprehensive-progress.md)
   ⎿  Added 1 line, removed 1 line
       40    - `Local Mirror` 不提供第二防御家族
       41  - [2026-04-10-recon-decision-package](../workspaces/black-box/2026-04-10-recon-decision-package.md) 已把黑盒五件套固定为 decision-grade pac
@@ -6642,8 +6642,8 @@
 
 ● 继续推进Research模型主线。当前I-A CPU sidecar维护中，检查是否有新的bounded hypothesis或需要执行的CPU-first任务。
 
-● Write(D:\Code\DiffAudit\Research\workspaces\implementation\2026-04-18-x90-ia-higher-layer-boundary-maintenance-after-x89.md)
-  ⎿  Wrote 49 lines to D:\Code\DiffAudit\Research\workspaces\implementation\2026-04-18-x90-ia-higher-layer-boundary-maintenance-after-x89.md
+● Write(<DIFFAUDIT_ROOT>/Research/workspaces/implementation/2026-04-18-x90-ia-higher-layer-boundary-maintenance-after-x89.md)
+  ⎿  Wrote 49 lines to <DIFFAUDIT_ROOT>/Research/workspaces/implementation/2026-04-18-x90-ia-higher-layer-boundary-maintenance-after-x89.md
       1 # X-90: I-A Higher-Layer Boundary Maintenance After X-89
       2
       3 > Date: 2026-04-18
@@ -6665,10 +6665,10 @@
 
 ● 发现research-autonomous-executionprompt和codex-roadmap-execution-prompt仍停留在X-86状态，需要更新到X-89。
 
-● Update(D:\Code\DiffAudit\Research\docs\research-autonomous-execution-prompt.md)
+● Update(<DIFFAUDIT_ROOT>/Research/docs/research-autonomous-execution-prompt.md)
   ⎿  File must be read first
 
-● Update(D:\Code\DiffAudit\Research\docs\codex-roadmap-execution-prompt.md)
+● Update(<DIFFAUDIT_ROOT>/Research/docs/codex-roadmap-execution-prompt.md)
   ⎿  File must be read first
 
 ● 需要先读取文件才能编辑。我来读取这两个文件并更新它们。
@@ -6677,7 +6677,7 @@
 
 ● 更新两个execution prompt文档到X-89状态。
 
-● Update(D:\Code\DiffAudit\Research\docs\codex-roadmap-execution-prompt.md)
+● Update(<DIFFAUDIT_ROOT>/Research/docs/codex-roadmap-execution-prompt.md)
   ⎿  Added 3 lines, removed 3 lines
       40  - `I-B` 当前应读作 `actual bounded falsifier`
       41  - `I-C` 当前应读作 `translated-contract-only + negative falsifier`
@@ -6695,7 +6695,7 @@
       47  始终同时维护三件事：
       48
 
-● Update(D:\Code\DiffAudit\Research\docs\research-autonomous-execution-prompt.md)
+● Update(<DIFFAUDIT_ROOT>/Research/docs/research-autonomous-execution-prompt.md)
   ⎿  Added 3 lines, removed 3 lines
       36  - `I-B` 当前最强口径不是 intake/bridge，而是 `actual bounded falsifier`
       37  - `I-C` 当前最强口径不是 live bridge packet，而是 `translated-contract-only + negative falsifier`
@@ -6747,8 +6747,8 @@
 
 ● 根据ROADMAP §5.7 "Expand instead of resting when a track closes cleanly"，当前I-A维护已完成，应执行下一轮reselection。
 
-● Write(D:\Code\DiffAudit\Research\workspaces\implementation\2026-04-18-x91-nongraybox-next-lane-reselection-after-x90-ia-maintenance.md)
-  ⎿  Wrote 68 lines to D:\Code\DiffAudit\Research\workspaces\implementation\2026-04-18-x91-nongraybox-next-lane-reselection-after-x90-ia-maintenance.md
+● Write(<DIFFAUDIT_ROOT>/Research/workspaces/implementation/2026-04-18-x91-nongraybox-next-lane-reselection-after-x90-ia-maintenance.md)
+  ⎿  Wrote 68 lines to <DIFFAUDIT_ROOT>/Research/workspaces/implementation/2026-04-18-x91-nongraybox-next-lane-reselection-after-x90-ia-maintenance.md
       1 # X-91: Non-Graybox Next-Lane Reselection After X-90 I-A Maintenance
       2
       3 > Date: 2026-04-18
@@ -6822,7 +6822,7 @@
 
 ● Challenger queue需要更新到X-91状态。当前仍显示X-86，但实际已完成X-86→X-91序列。
 
-● Update(D:\Code\DiffAudit\Research\workspaces\implementation\challenger-queue.md)
+● Update(<DIFFAUDIT_ROOT>/Research/workspaces/implementation/challenger-queue.md)
   ⎿  Added 2 lines, removed 2 lines
       10
       11  - `active GPU question = none`
@@ -6978,9 +6978,9 @@
 
 ● 我来准备多份深度思考材料给GPT-5.4 Pro。等待3个探索agent完成后，创建结构化prompt文件。
 
-● Write(D:\Code\DiffAudit\Research\docs\gpt54-prompts\01-black-box-new-directions.md)
+● Write(<DIFFAUDIT_ROOT>/Research/docs/gpt54-prompts/01-black-box-new-directions.md)
 
-● Write(D:\Code\DiffAudit\Research\docs\gpt54-prompts\02-gray-box-new-directions.md)
+● Write(<DIFFAUDIT_ROOT>/Research/docs/gpt54-prompts/02-gray-box-new-directions.md)
 
 ✻ Stewing… (1m 4s · ↓ 2.4k tokens)
 
@@ -7028,9 +7028,9 @@
 ● I'll continue Research progress. Current state: B-M0 Candidate A completed (hold-review-only, CPU-bound). Both G1-A and B-M0 Candidate A are CPU-bound
   evaluations, not GPU questions. Next: Continue with I-A higher-layer boundary maintenance or redirect per ROADMAP.
 
-● Write(D:\Code\DiffAudit\Research\workspaces\implementation\2026-04-18-x89-nongraybox-next-lane-reselection-after-b-m0-candidate-a-hold-review-only.md)
+● Write(<DIFFAUDIT_ROOT>/Research/workspaces/implementation/2026-04-18-x89-nongraybox-next-lane-reselection-after-b-m0-candidate-a-hold-review-only.md)
   ⎿  Wrote 56 lines to
-     D:\Code\DiffAudit\Research\workspaces\implementation\2026-04-18-x89-nongraybox-next-lane-reselection-after-b-m0-candidate-a-hold-review-only.md
+     <DIFFAUDIT_ROOT>/Research/workspaces/implementation/2026-04-18-x89-nongraybox-next-lane-reselection-after-b-m0-candidate-a-hold-review-only.md
       1 # X-89: Non-Graybox Next-Lane Reselection After B-M0 Candidate A Hold-Review-Only
       2
       3 > Date: 2026-04-18
@@ -7099,7 +7099,7 @@
 
 ● I'll update mainline-narrative.md to reflect X-86→X-89 sequence completion.
 
-● Update(D:\Code\DiffAudit\Research\docs\mainline-narrative.md)
+● Update(<DIFFAUDIT_ROOT>/Research/docs/mainline-narrative.md)
   ⎿  Added 1 line, removed 1 line
        6
        7  ## 当前一句话
@@ -7298,7 +7298,7 @@
 
 ● ROADMAP §4.5显示当前状态已过时。实际已完成X-86→X-89，需更新ROADMAP控制面状态。
 
-● Update(D:\Code\DiffAudit\Research\ROADMAP.md)
+● Update(<DIFFAUDIT_ROOT>/Research/ROADMAP.md)
   ⎿  Added 8 lines, removed 2 lines
       345  - `X-83` is now closed as `positive`: once the stale-entry sync is cleared, no blocked/hold branch honestly reopens and no new active `I-A
            ` residue is visible, so the honest next move becomes bounded non-graybox candidate-surface expansion rather than another forced `I-A` mic
@@ -7349,7 +7349,7 @@
 
 ● 更新comprehensive-progress.md到X-89状态。
 
-● Update(D:\Code\DiffAudit\Research\docs\comprehensive-progress.md)
+● Update(<DIFFAUDIT_ROOT>/Research/docs/comprehensive-progress.md)
   ⎿  Added 1 line, removed 1 line
       40    - `Local Mirror` 不提供第二防御家族
       41  - [2026-04-10-recon-decision-package](../workspaces/black-box/2026-04-10-recon-decision-package.md) 已把黑盒五件套固定为 decision-grade pac
@@ -7407,8 +7407,8 @@
 
 ● 继续推进Research模型主线。当前I-A CPU sidecar维护中，检查是否有新的bounded hypothesis或需要执行的CPU-first任务。
 
-● Write(D:\Code\DiffAudit\Research\workspaces\implementation\2026-04-18-x90-ia-higher-layer-boundary-maintenance-after-x89.md)
-  ⎿  Wrote 49 lines to D:\Code\DiffAudit\Research\workspaces\implementation\2026-04-18-x90-ia-higher-layer-boundary-maintenance-after-x89.md
+● Write(<DIFFAUDIT_ROOT>/Research/workspaces/implementation/2026-04-18-x90-ia-higher-layer-boundary-maintenance-after-x89.md)
+  ⎿  Wrote 49 lines to <DIFFAUDIT_ROOT>/Research/workspaces/implementation/2026-04-18-x90-ia-higher-layer-boundary-maintenance-after-x89.md
       1 # X-90: I-A Higher-Layer Boundary Maintenance After X-89
       2
       3 > Date: 2026-04-18
@@ -7430,10 +7430,10 @@
 
 ● 发现research-autonomous-executionprompt和codex-roadmap-execution-prompt仍停留在X-86状态，需要更新到X-89。
 
-● Update(D:\Code\DiffAudit\Research\docs\research-autonomous-execution-prompt.md)
+● Update(<DIFFAUDIT_ROOT>/Research/docs/research-autonomous-execution-prompt.md)
   ⎿  File must be read first
 
-● Update(D:\Code\DiffAudit\Research\docs\codex-roadmap-execution-prompt.md)
+● Update(<DIFFAUDIT_ROOT>/Research/docs/codex-roadmap-execution-prompt.md)
   ⎿  File must be read first
 
 ● 需要先读取文件才能编辑。我来读取这两个文件并更新它们。
@@ -7442,7 +7442,7 @@
 
 ● 更新两个execution prompt文档到X-89状态。
 
-● Update(D:\Code\DiffAudit\Research\docs\codex-roadmap-execution-prompt.md)
+● Update(<DIFFAUDIT_ROOT>/Research/docs/codex-roadmap-execution-prompt.md)
   ⎿  Added 3 lines, removed 3 lines
       40  - `I-B` 当前应读作 `actual bounded falsifier`
       41  - `I-C` 当前应读作 `translated-contract-only + negative falsifier`
@@ -7460,7 +7460,7 @@
       47  始终同时维护三件事：
       48
 
-● Update(D:\Code\DiffAudit\Research\docs\research-autonomous-execution-prompt.md)
+● Update(<DIFFAUDIT_ROOT>/Research/docs/research-autonomous-execution-prompt.md)
   ⎿  Added 3 lines, removed 3 lines
       36  - `I-B` 当前最强口径不是 intake/bridge，而是 `actual bounded falsifier`
       37  - `I-C` 当前最强口径不是 live bridge packet，而是 `translated-contract-only + negative falsifier`
@@ -7512,8 +7512,8 @@
 
 ● 根据ROADMAP §5.7 "Expand instead of resting when a track closes cleanly"，当前I-A维护已完成，应执行下一轮reselection。
 
-● Write(D:\Code\DiffAudit\Research\workspaces\implementation\2026-04-18-x91-nongraybox-next-lane-reselection-after-x90-ia-maintenance.md)
-  ⎿  Wrote 68 lines to D:\Code\DiffAudit\Research\workspaces\implementation\2026-04-18-x91-nongraybox-next-lane-reselection-after-x90-ia-maintenance.md
+● Write(<DIFFAUDIT_ROOT>/Research/workspaces/implementation/2026-04-18-x91-nongraybox-next-lane-reselection-after-x90-ia-maintenance.md)
+  ⎿  Wrote 68 lines to <DIFFAUDIT_ROOT>/Research/workspaces/implementation/2026-04-18-x91-nongraybox-next-lane-reselection-after-x90-ia-maintenance.md
       1 # X-91: Non-Graybox Next-Lane Reselection After X-90 I-A Maintenance
       2
       3 > Date: 2026-04-18
@@ -7587,7 +7587,7 @@
 
 ● Challenger queue需要更新到X-91状态。当前仍显示X-86，但实际已完成X-86→X-91序列。
 
-● Update(D:\Code\DiffAudit\Research\workspaces\implementation\challenger-queue.md)
+● Update(<DIFFAUDIT_ROOT>/Research/workspaces/implementation/challenger-queue.md)
   ⎿  Added 2 lines, removed 2 lines
       10
       11  - `active GPU question = none`
@@ -7743,10 +7743,10 @@
 
 ● 我来准备多份深度思考材料给GPT-5.4 Pro。等待3个探索agent完成后，创建结构化prompt文件。
 
-● Write(D:\Code\DiffAudit\Research\docs\gpt54-prompts\01-black-box-new-directions.md)
+● Write(<DIFFAUDIT_ROOT>/Research/docs/gpt54-prompts/01-black-box-new-directions.md)
   ⎿  Error: Interrupted by user
 
-● Write(D:\Code\DiffAudit\Research\docs\gpt54-prompts\02-gray-box-new-directions.md)
+● Write(<DIFFAUDIT_ROOT>/Research/docs/gpt54-prompts/02-gray-box-new-directions.md)
   ⎿  Error: Interrupted by user
   ⎿  Interrupted · What should Claude do instead?
 
@@ -7780,8 +7780,8 @@
 
 ● 等待3个探索agent完成后整理。当前已创建6个文件夹结构，准备为每个方向创建完整的prompt+资料包。
 
-● Write(D:\Code\DiffAudit\Research\docs\gpt54-deep-research\03-white-box-distinct-family\prompt.md)
-  ⎿  Wrote 122 lines to D:\Code\DiffAudit\Research\docs\gpt54-deep-research\03-white-box-distinct-family\prompt.md
+● Write(<DIFFAUDIT_ROOT>/Research/docs/gpt54-deep-research/03-white-box-distinct-family/prompt.md)
+  ⎿  Wrote 122 lines to <DIFFAUDIT_ROOT>/Research/docs/gpt54-deep-research/03-white-box-distinct-family/prompt.md
        1 # White-Box Membership Inference: Distinct Second Family Beyond GSA
        2
        3 ## Context
@@ -7794,8 +7794,8 @@
       10 - **B-M0 Candidate A**: Shadow-LR on loss-score (hold-review-only, CPU-bound)
      … +112 lines (ctrl+o to expand)
 
-● Write(D:\Code\DiffAudit\Research\docs\gpt54-deep-research\04-defense-mechanisms\prompt.md)
-  ⎿  Wrote 128 lines to D:\Code\DiffAudit\Research\docs\gpt54-deep-research\04-defense-mechanisms\prompt.md
+● Write(<DIFFAUDIT_ROOT>/Research/docs/gpt54-deep-research/04-defense-mechanisms/prompt.md)
+  ⎿  Wrote 128 lines to <DIFFAUDIT_ROOT>/Research/docs/gpt54-deep-research/04-defense-mechanisms/prompt.md
        1 # Defense Mechanisms: Beyond Stochastic Dropout
        2
        3 ## Context
@@ -7820,11 +7820,11 @@
 
 ✻ Conversation compacted (ctrl+o for history)
 
-  ⎿  Read D:\Code\DiffAudit\Research\docs\gpt54-deep-research\04-defense-mechanisms\prompt.md (129 lines)
-  ⎿  Read D:\Code\DiffAudit\Research\docs\gpt54-deep-research\03-white-box-distinct-family\prompt.md (123 lines)
-  ⎿  Referenced file D:\Code\DiffAudit\Research\workspaces\implementation\challenger-queue.md
-  ⎿  Read D:\Code\DiffAudit\Research\workspaces\implementation\2026-04-18-x91-nongraybox-next-lane-reselection-after-x90-ia-maintenance.md (69 lines)
-  ⎿  Read D:\Code\DiffAudit\Research\docs\research-autonomous-execution-prompt.md (167 lines)
+  ⎿  Read <DIFFAUDIT_ROOT>/Research/docs/gpt54-deep-research/04-defense-mechanisms/prompt.md (129 lines)
+  ⎿  Read <DIFFAUDIT_ROOT>/Research/docs/gpt54-deep-research/03-white-box-distinct-family/prompt.md (123 lines)
+  ⎿  Referenced file <DIFFAUDIT_ROOT>/Research/workspaces/implementation/challenger-queue.md
+  ⎿  Read <DIFFAUDIT_ROOT>/Research/workspaces/implementation/2026-04-18-x91-nongraybox-next-lane-reselection-after-x90-ia-maintenance.md (69 lines)
+  ⎿  Read <DIFFAUDIT_ROOT>/Research/docs/research-autonomous-execution-prompt.md (167 lines)
 
 ● Task "Explore black-box new directions" still running in background
 
@@ -7840,8 +7840,8 @@
 ● The three explorer agents are still running web searches. I'll wait for them to complete and consolidate their findings. Meanwhile, I'll start creating
   the remaining prompt files based on the research directions identified.
 
-● Write(D:\Code\DiffAudit\Research\docs\gpt54-deep-research\01-black-box-new-signals\prompt.md)
-  ⎿  Wrote 123 lines to D:\Code\DiffAudit\Research\docs\gpt54-deep-research\01-black-box-new-signals\prompt.md
+● Write(<DIFFAUDIT_ROOT>/Research/docs/gpt54-deep-research/01-black-box-new-signals/prompt.md)
+  ⎿  Wrote 123 lines to <DIFFAUDIT_ROOT>/Research/docs/gpt54-deep-research/01-black-box-new-signals/prompt.md
        1 # Black-Box New Signals: Beyond Recon/CLiD/Semantic-Auxiliary-Classifier
        2
        3 ## Context
@@ -7854,8 +7854,8 @@
       10 - **Closed negative**: X-60/X-61 face-image LDM (overlaps with existing methods)
      … +113 lines (ctrl+o to expand)
 
-● Write(D:\Code\DiffAudit\Research\docs\gpt54-deep-research\02-gray-box-beyond-pia\prompt.md)
-  ⎿  Wrote 124 lines to D:\Code\DiffAudit\Research\docs\gpt54-deep-research\02-gray-box-beyond-pia\prompt.md
+● Write(<DIFFAUDIT_ROOT>/Research/docs/gpt54-deep-research/02-gray-box-beyond-pia/prompt.md)
+  ⎿  Wrote 124 lines to <DIFFAUDIT_ROOT>/Research/docs/gpt54-deep-research/02-gray-box-beyond-pia/prompt.md
        1 # Gray-Box Beyond PIA: New Signals and Defense Mechanisms
        2
        3 ## Context
@@ -7870,8 +7870,8 @@
 
 ● Created two more prompt files. Now creating the remaining two (cross-box fusion and asset generation).
 
-● Write(D:\Code\DiffAudit\Research\docs\gpt54-deep-research\05-cross-box-fusion\prompt.md)
-  ⎿  Wrote 121 lines to D:\Code\DiffAudit\Research\docs\gpt54-deep-research\05-cross-box-fusion\prompt.md
+● Write(<DIFFAUDIT_ROOT>/Research/docs/gpt54-deep-research/05-cross-box-fusion/prompt.md)
+  ⎿  Wrote 121 lines to <DIFFAUDIT_ROOT>/Research/docs/gpt54-deep-research/05-cross-box-fusion/prompt.md
        1 # Cross-Box Fusion: Combining Black/Gray/White-Box Signals
        2
        3 ## Context
@@ -7884,8 +7884,8 @@
       10 - **I-C track**: translated-contract-only + negative falsifier (X-56)
      … +111 lines (ctrl+o to expand)
 
-● Write(D:\Code\DiffAudit\Research\docs\gpt54-deep-research\06-asset-generation-g1a\prompt.md)
-  ⎿  Wrote 122 lines to D:\Code\DiffAudit\Research\docs\gpt54-deep-research\06-asset-generation-g1a\prompt.md
+● Write(<DIFFAUDIT_ROOT>/Research/docs/gpt54-deep-research/06-asset-generation-g1a/prompt.md)
+  ⎿  Wrote 122 lines to <DIFFAUDIT_ROOT>/Research/docs/gpt54-deep-research/06-asset-generation-g1a/prompt.md
        1 # Asset Generation for G1-A: TMIA-DM 512-Sample Gap
        2
        3 ## Context
@@ -8025,7 +8025,7 @@
 
   Read 1 file (ctrl+o to expand)
 
-● Update(D:\Code\DiffAudit\Research\docs\gpt54-deep-research\02-gray-box-beyond-pia\prompt.md)
+● Update(<DIFFAUDIT_ROOT>/Research/docs/gpt54-deep-research/02-gray-box-beyond-pia/prompt.md)
   ⎿  Added 25 lines, removed 5 lines
       61
       62  **Task**: Deep research on gray-box membership inference beyond PIA/TMIA-DM
@@ -8067,7 +8067,7 @@
 
 ● 优化了灰盒prompt，增强GPT-5.4 Pro发散思考指引。继续优化其他5个方向的prompt。
 
-● Update(D:\Code\DiffAudit\Research\docs\gpt54-deep-research\03-white-box-distinct-family\prompt.md)
+● Update(<DIFFAUDIT_ROOT>/Research/docs/gpt54-deep-research/03-white-box-distinct-family/prompt.md)
   ⎿  Added 25 lines, removed 5 lines
       58
       59  **Task**: Deep research on white-box membership inference beyond gradients
@@ -8107,7 +8107,7 @@
       88  **Output format**:
       89  ```
 
-● Update(D:\Code\DiffAudit\Research\docs\gpt54-deep-research\01-black-box-new-signals\prompt.md)
+● Update(<DIFFAUDIT_ROOT>/Research/docs/gpt54-deep-research/01-black-box-new-signals/prompt.md)
   ⎿  Added 25 lines, removed 5 lines
       58
       59  **Task**: Deep research on black-box membership inference beyond reconstruction/classification
@@ -8155,7 +8155,7 @@
 
   继续优化剩余3个方向的prompt：
 
-● Update(D:\Code\DiffAudit\Research\docs\gpt54-deep-research\04-defense-mechanisms\prompt.md)
+● Update(<DIFFAUDIT_ROOT>/Research/docs/gpt54-deep-research/04-defense-mechanisms/prompt.md)
   ⎿  Added 26 lines, removed 5 lines
       59
       60  **Task**: Deep research on defense mechanisms for diffusion model membership inference
@@ -8196,7 +8196,7 @@
       90  **Output format**:
       91  ```
 
-● Update(D:\Code\DiffAudit\Research\docs\gpt54-deep-research\05-cross-box-fusion\prompt.md)
+● Update(<DIFFAUDIT_ROOT>/Research/docs/gpt54-deep-research/05-cross-box-fusion/prompt.md)
   ⎿  Added 25 lines, removed 5 lines
       58
       59  **Task**: Deep research on cross-box signal fusion for membership inference
@@ -8236,7 +8236,7 @@
       88  **Output format**:
       89  ```
 
-● Update(D:\Code\DiffAudit\Research\docs\gpt54-deep-research\06-asset-generation-g1a\prompt.md)
+● Update(<DIFFAUDIT_ROOT>/Research/docs/gpt54-deep-research/06-asset-generation-g1a/prompt.md)
   ⎿  Added 29 lines, removed 5 lines
       58
       59  **Task**: Deep research on efficient TMIA-DM asset generation
@@ -8374,7 +8374,7 @@
 
 ● 检查所有6个方向的材料准备状态：
 
-● Bash(for dir in D:/Code/DiffAudit/Research/docs/gpt54-deep-research/*/; do echo "$(basename "$dir"): $(ls -1 "$dir" | wc -l) files"; done)
+● Bash(for dir in <DIFFAUDIT_ROOT>/Research/docs/gpt54-deep-research/*/; do echo "$(basename "$dir"): $(ls -1 "$dir" | wc -l) files"; done)
   ⎿  01-black-box-new-signals: 12 files
      02-gray-box-beyond-pia: 19 files
      03-white-box-distinct-family: 19 files
@@ -8394,7 +8394,7 @@
 
 ● 第5个方向（cross-box fusion）有16个文件（含prompt），还差4个。检查所有方向最新状态：
 
-● Bash(for dir in D:/Code/DiffAudit/Research/docs/gpt54-deep-research/*/; do echo "$(basename "$dir"): $(ls -1 "$dir" | wc -l) files"; done)
+● Bash(for dir in <DIFFAUDIT_ROOT>/Research/docs/gpt54-deep-research/*/; do echo "$(basename "$dir"): $(ls -1 "$dir" | wc -l) files"; done)
   ⎿  01-black-box-new-signals: 12 files
      02-gray-box-beyond-pia: 19 files
      03-white-box-distinct-family: 19 files
@@ -8410,7 +8410,7 @@
 
 ● 检查所有6个方向的最新文件数：
 
-● Bash(for dir in D:/Code/DiffAudit/Research/docs/gpt54-deep-research/*/; do echo "$(basename "$dir"): $(ls -1 "$dir" | wc -l) files"; done)
+● Bash(for dir in <DIFFAUDIT_ROOT>/Research/docs/gpt54-deep-research/*/; do echo "$(basename "$dir"): $(ls -1 "$dir" | wc -l) files"; done)
   ⎿  01-black-box-new-signals: 12 files
      02-gray-box-beyond-pia: 19 files
      03-white-box-distinct-family: 19 files
@@ -8440,11 +8440,11 @@
 
 ✻ Conversation compacted (ctrl+o for history)
 
-  ⎿  Read D:\Code\DiffAudit\Research\docs\gpt54-deep-research\04-defense-mechanisms\prompt.md (129 lines)
-  ⎿  Read D:\Code\DiffAudit\Research\docs\gpt54-deep-research\03-white-box-distinct-family\prompt.md (123 lines)
-  ⎿  Referenced file D:\Code\DiffAudit\Research\workspaces\implementation\challenger-queue.md
-  ⎿  Read D:\Code\DiffAudit\Research\workspaces\implementation\2026-04-18-x91-nongraybox-next-lane-reselection-after-x90-ia-maintenance.md (69 lines)
-  ⎿  Read D:\Code\DiffAudit\Research\docs\research-autonomous-execution-prompt.md (167 lines)
+  ⎿  Read <DIFFAUDIT_ROOT>/Research/docs/gpt54-deep-research/04-defense-mechanisms/prompt.md (129 lines)
+  ⎿  Read <DIFFAUDIT_ROOT>/Research/docs/gpt54-deep-research/03-white-box-distinct-family/prompt.md (123 lines)
+  ⎿  Referenced file <DIFFAUDIT_ROOT>/Research/workspaces/implementation/challenger-queue.md
+  ⎿  Read <DIFFAUDIT_ROOT>/Research/workspaces/implementation/2026-04-18-x91-nongraybox-next-lane-reselection-after-x90-ia-maintenance.md (69 lines)
+  ⎿  Read <DIFFAUDIT_ROOT>/Research/docs/research-autonomous-execution-prompt.md (167 lines)
 
 ● Task "Explore black-box new directions" still running in background
 
@@ -8460,8 +8460,8 @@
 ● The three explorer agents are still running web searches. I'll wait for them to complete and consolidate their findings. Meanwhile, I'll start creating
   the remaining prompt files based on the research directions identified.
 
-● Write(D:\Code\DiffAudit\Research\docs\gpt54-deep-research\01-black-box-new-signals\prompt.md)
-  ⎿  Wrote 123 lines to D:\Code\DiffAudit\Research\docs\gpt54-deep-research\01-black-box-new-signals\prompt.md
+● Write(<DIFFAUDIT_ROOT>/Research/docs/gpt54-deep-research/01-black-box-new-signals/prompt.md)
+  ⎿  Wrote 123 lines to <DIFFAUDIT_ROOT>/Research/docs/gpt54-deep-research/01-black-box-new-signals/prompt.md
        1 # Black-Box New Signals: Beyond Recon/CLiD/Semantic-Auxiliary-Classifier
        2
        3 ## Context
@@ -8474,8 +8474,8 @@
       10 - **Closed negative**: X-60/X-61 face-image LDM (overlaps with existing methods)
      … +113 lines (ctrl+o to expand)
 
-● Write(D:\Code\DiffAudit\Research\docs\gpt54-deep-research\02-gray-box-beyond-pia\prompt.md)
-  ⎿  Wrote 124 lines to D:\Code\DiffAudit\Research\docs\gpt54-deep-research\02-gray-box-beyond-pia\prompt.md
+● Write(<DIFFAUDIT_ROOT>/Research/docs/gpt54-deep-research/02-gray-box-beyond-pia/prompt.md)
+  ⎿  Wrote 124 lines to <DIFFAUDIT_ROOT>/Research/docs/gpt54-deep-research/02-gray-box-beyond-pia/prompt.md
        1 # Gray-Box Beyond PIA: New Signals and Defense Mechanisms
        2
        3 ## Context
@@ -8490,8 +8490,8 @@
 
 ● Created two more prompt files. Now creating the remaining two (cross-box fusion and asset generation).
 
-● Write(D:\Code\DiffAudit\Research\docs\gpt54-deep-research\05-cross-box-fusion\prompt.md)
-  ⎿  Wrote 121 lines to D:\Code\DiffAudit\Research\docs\gpt54-deep-research\05-cross-box-fusion\prompt.md
+● Write(<DIFFAUDIT_ROOT>/Research/docs/gpt54-deep-research/05-cross-box-fusion/prompt.md)
+  ⎿  Wrote 121 lines to <DIFFAUDIT_ROOT>/Research/docs/gpt54-deep-research/05-cross-box-fusion/prompt.md
        1 # Cross-Box Fusion: Combining Black/Gray/White-Box Signals
        2
        3 ## Context
@@ -8504,8 +8504,8 @@
       10 - **I-C track**: translated-contract-only + negative falsifier (X-56)
      … +111 lines (ctrl+o to expand)
 
-● Write(D:\Code\DiffAudit\Research\docs\gpt54-deep-research\06-asset-generation-g1a\prompt.md)
-  ⎿  Wrote 122 lines to D:\Code\DiffAudit\Research\docs\gpt54-deep-research\06-asset-generation-g1a\prompt.md
+● Write(<DIFFAUDIT_ROOT>/Research/docs/gpt54-deep-research/06-asset-generation-g1a/prompt.md)
+  ⎿  Wrote 122 lines to <DIFFAUDIT_ROOT>/Research/docs/gpt54-deep-research/06-asset-generation-g1a/prompt.md
        1 # Asset Generation for G1-A: TMIA-DM 512-Sample Gap
        2
        3 ## Context
@@ -8645,7 +8645,7 @@
 
   Read 1 file (ctrl+o to expand)
 
-● Update(D:\Code\DiffAudit\Research\docs\gpt54-deep-research\02-gray-box-beyond-pia\prompt.md)
+● Update(<DIFFAUDIT_ROOT>/Research/docs/gpt54-deep-research/02-gray-box-beyond-pia/prompt.md)
   ⎿  Added 25 lines, removed 5 lines
       61
       62  **Task**: Deep research on gray-box membership inference beyond PIA/TMIA-DM
@@ -8687,7 +8687,7 @@
 
 ● 优化了灰盒prompt，增强GPT-5.4 Pro发散思考指引。继续优化其他5个方向的prompt。
 
-● Update(D:\Code\DiffAudit\Research\docs\gpt54-deep-research\03-white-box-distinct-family\prompt.md)
+● Update(<DIFFAUDIT_ROOT>/Research/docs/gpt54-deep-research/03-white-box-distinct-family/prompt.md)
   ⎿  Added 25 lines, removed 5 lines
       58
       59  **Task**: Deep research on white-box membership inference beyond gradients
@@ -8727,7 +8727,7 @@
       88  **Output format**:
       89  ```
 
-● Update(D:\Code\DiffAudit\Research\docs\gpt54-deep-research\01-black-box-new-signals\prompt.md)
+● Update(<DIFFAUDIT_ROOT>/Research/docs/gpt54-deep-research/01-black-box-new-signals/prompt.md)
   ⎿  Added 25 lines, removed 5 lines
       58
       59  **Task**: Deep research on black-box membership inference beyond reconstruction/classification
@@ -8775,7 +8775,7 @@
 
   继续优化剩余3个方向的prompt：
 
-● Update(D:\Code\DiffAudit\Research\docs\gpt54-deep-research\04-defense-mechanisms\prompt.md)
+● Update(<DIFFAUDIT_ROOT>/Research/docs/gpt54-deep-research/04-defense-mechanisms/prompt.md)
   ⎿  Added 26 lines, removed 5 lines
       59
       60  **Task**: Deep research on defense mechanisms for diffusion model membership inference
@@ -8816,7 +8816,7 @@
       90  **Output format**:
       91  ```
 
-● Update(D:\Code\DiffAudit\Research\docs\gpt54-deep-research\05-cross-box-fusion\prompt.md)
+● Update(<DIFFAUDIT_ROOT>/Research/docs/gpt54-deep-research/05-cross-box-fusion/prompt.md)
   ⎿  Added 25 lines, removed 5 lines
       58
       59  **Task**: Deep research on cross-box signal fusion for membership inference
@@ -8856,7 +8856,7 @@
       88  **Output format**:
       89  ```
 
-● Update(D:\Code\DiffAudit\Research\docs\gpt54-deep-research\06-asset-generation-g1a\prompt.md)
+● Update(<DIFFAUDIT_ROOT>/Research/docs/gpt54-deep-research/06-asset-generation-g1a/prompt.md)
   ⎿  Added 29 lines, removed 5 lines
       58
       59  **Task**: Deep research on efficient TMIA-DM asset generation
@@ -8994,7 +8994,7 @@
 
 ● 检查所有6个方向的材料准备状态：
 
-● Bash(for dir in D:/Code/DiffAudit/Research/docs/gpt54-deep-research/*/; do echo "$(basename "$dir"): $(ls -1 "$dir" | wc -l) files"; done)
+● Bash(for dir in <DIFFAUDIT_ROOT>/Research/docs/gpt54-deep-research/*/; do echo "$(basename "$dir"): $(ls -1 "$dir" | wc -l) files"; done)
   ⎿  01-black-box-new-signals: 12 files
      02-gray-box-beyond-pia: 19 files
      03-white-box-distinct-family: 19 files
@@ -9014,7 +9014,7 @@
 
 ● 第5个方向（cross-box fusion）有16个文件（含prompt），还差4个。检查所有方向最新状态：
 
-● Bash(for dir in D:/Code/DiffAudit/Research/docs/gpt54-deep-research/*/; do echo "$(basename "$dir"): $(ls -1 "$dir" | wc -l) files"; done)
+● Bash(for dir in <DIFFAUDIT_ROOT>/Research/docs/gpt54-deep-research/*/; do echo "$(basename "$dir"): $(ls -1 "$dir" | wc -l) files"; done)
   ⎿  01-black-box-new-signals: 12 files
      02-gray-box-beyond-pia: 19 files
      03-white-box-distinct-family: 19 files
@@ -9030,7 +9030,7 @@
 
 ● 检查所有6个方向的最新文件数：
 
-● Bash(for dir in D:/Code/DiffAudit/Research/docs/gpt54-deep-research/*/; do echo "$(basename "$dir"): $(ls -1 "$dir" | wc -l) files"; done)
+● Bash(for dir in <DIFFAUDIT_ROOT>/Research/docs/gpt54-deep-research/*/; do echo "$(basename "$dir"): $(ls -1 "$dir" | wc -l) files"; done)
   ⎿  01-black-box-new-signals: 12 files
      02-gray-box-beyond-pia: 19 files
      03-white-box-distinct-family: 19 files
@@ -9102,7 +9102,7 @@
 
   检查当前所有方向文件数：
 
-● Bash(for dir in D:/Code/DiffAudit/Research/docs/gpt54-deep-research/*/; do echo "$(basename "$dir"): $(ls -1 "$dir" | wc -l) files"; done)
+● Bash(for dir in <DIFFAUDIT_ROOT>/Research/docs/gpt54-deep-research/*/; do echo "$(basename "$dir"): $(ls -1 "$dir" | wc -l) files"; done)
   ⎿  01-black-box-new-signals: 16 files
      02-gray-box-beyond-pia: 20 files
      03-white-box-distinct-family: 20 files
@@ -9132,7 +9132,7 @@
 
 ● 黑盒材料准备agent遇到API错误。当前状态：
 
-● Bash(for dir in D:/Code/DiffAudit/Research/docs/gpt54-deep-research/*/; do echo "$(basename "$dir"): $(ls -1 "$dir" | wc -l) files"; done)
+● Bash(for dir in <DIFFAUDIT_ROOT>/Research/docs/gpt54-deep-research/*/; do echo "$(basename "$dir"): $(ls -1 "$dir" | wc -l) files"; done)
   ⎿  01-black-box-new-signals: 20 files
      02-gray-box-beyond-pia: 20 files
      03-white-box-distinct-family: 20 files
@@ -9207,7 +9207,7 @@
   - 所有prompt已优化，鼓励发散思考和深度文献调研
   - 新假设9个（黑盒3个、灰盒3个、白盒3个）
 
-  可直接交付GPT-5.4 Pro进行深度研究。材料包位置：D:/Code/DiffAudit/Research/docs/gpt54-deep-research/
+  可直接交付GPT-5.4 Pro进行深度研究。材料包位置：<DIFFAUDIT_ROOT>/Research/docs/gpt54-deep-research/
 
 ✻ Running scheduled task (Apr 17 10:42pm)
 
@@ -9250,11 +9250,11 @@
   2. 创建报告接收文件夹
   3. 准备后续问题框架
 
-● Bash(mkdir -p "D:/Code/DiffAudit/Research/docs/gpt54-reports" && mkdir -p "D:/Code/DiffAudit/Research/docs/gpt54-followup")
+● Bash(mkdir -p "<DIFFAUDIT_ROOT>/Research/docs/gpt54-reports" && mkdir -p "<DIFFAUDIT_ROOT>/Research/docs/gpt54-followup")
   ⎿  Done
 
-● Write(D:\Code\DiffAudit\Research\docs\gpt54-reports\README.md)
-  ⎿  Wrote 39 lines to D:\Code\DiffAudit\Research\docs\gpt54-reports\README.md
+● Write(<DIFFAUDIT_ROOT>/Research/docs/gpt54-reports/README.md)
+  ⎿  Wrote 39 lines to <DIFFAUDIT_ROOT>/Research/docs/gpt54-reports/README.md
        1 # GPT-5.4 Pro Research Reports
        2
        3 This directory stores research reports from GPT-5.4 Pro deep research threads.
@@ -9267,8 +9267,8 @@
       10 │   └── report.md
      … +29 lines (ctrl+o to expand)
 
-● Write(D:\Code\DiffAudit\Research\docs\gpt54-followup\README.md)
-  ⎿  Wrote 47 lines to D:\Code\DiffAudit\Research\docs\gpt54-followup\README.md
+● Write(<DIFFAUDIT_ROOT>/Research/docs/gpt54-followup/README.md)
+  ⎿  Wrote 47 lines to <DIFFAUDIT_ROOT>/Research/docs/gpt54-followup/README.md
        1 # GPT-5.4 Pro Follow-up Questions
        2
        3 This directory contains follow-up questions and research directions for GPT-5.4 Pro based on initial report findings.
@@ -9287,18 +9287,18 @@
 
 ● 已创建报告接收和后续问题文件夹结构：
 
-  报告接收：D:/Code/DiffAudit/Research/docs/gpt54-reports/
+  报告接收：<DIFFAUDIT_ROOT>/Research/docs/gpt54-reports/
   - 6个子文件夹对应6个研究方向
   - README说明报告格式和后续步骤
 
-  后续问题：D:/Code/DiffAudit/Research/docs/gpt54-followup/
+  后续问题：<DIFFAUDIT_ROOT>/Research/docs/gpt54-followup/
   - 准备深度问题模板
   - 基于报告gap分析框架
 
   现在更新ROADMAP记录研究包完成状态：
 
-● Write(D:\Code\DiffAudit\Research\workspaces\implementation\2026-04-18-x92-gpt54-research-package-delivery.md)
-  ⎿  Wrote 86 lines to D:\Code\DiffAudit\Research\workspaces\implementation\2026-04-18-x92-gpt54-research-package-delivery.md
+● Write(<DIFFAUDIT_ROOT>/Research/workspaces/implementation/2026-04-18-x92-gpt54-research-package-delivery.md)
+  ⎿  Wrote 86 lines to <DIFFAUDIT_ROOT>/Research/workspaces/implementation/2026-04-18-x92-gpt54-research-package-delivery.md
       1 # X-92: GPT-5.4 Pro Research Package Delivery
       2
       3 > Date: 2026-04-18
@@ -9310,7 +9310,7 @@
       9 GPT-5.4 Pro研究包是否准备完成？包含哪些内容？
      … +76 lines (ctrl+o to expand)
 
-● Update(D:\Code\DiffAudit\Research\ROADMAP.md)
+● Update(<DIFFAUDIT_ROOT>/Research/ROADMAP.md)
   ⎿  Added 16 lines
       188
       189  ## 4. Current Strategic Picture
@@ -9408,7 +9408,7 @@
    report reception folders and follow-up question templates. Waiting for GPT-5.4 Pro to complete research and deliver reports, then will analyze findings
   and extract bounded hypotheses for validation.
 
-❯ D:\Code\DiffAudit\Research\docs\gpt54-deep-research\results\看一下，02还没出来，但请你先研究报告。
+❯ <DIFFAUDIT_ROOT>/Research/docs/gpt54-deep-research/results\看一下，02还没出来，但请你先研究报告。
 
 ● 我会研究已有的GPT-5.4 Pro报告。让我先检查results文件夹的内容。
 
@@ -9439,7 +9439,7 @@
 
 ✻ Churned for 1m 4s · 1 local agent still running
 
-❯ D:\Code\DiffAudit\Research\docs\gpt54-deep-research\results\02.md也好了。
+❯ <DIFFAUDIT_ROOT>/Research/docs/gpt54-deep-research/results/02.md也好了。
 
 ● 我会读取02.md（灰盒方向报告）并整合到分析中。
 
@@ -9503,12 +9503,12 @@
 
   等待其余4个分析agents完成。
 
-❯ 你可以类似D:\Code\DiffAudit\Research\docs\gpt54-deep-research这样，给我新的材料和prompt，我继续发给刚刚提供了报告的gpt-5.4pro。有什么想问的，有什么想继续
+❯ 你可以类似<DIFFAUDIT_ROOT>/Research/docs/gpt54-deep-research这样，给我新的材料和prompt，我继续发给刚刚提供了报告的gpt-5.4pro。有什么想问的，有什么想继续
   分析和查找的都可以问。
 
 ● 我会基于已完成的深度分析，为每个方向准备针对性的后续问题和材料包，发回给GPT-5.4 Pro进行第二轮深度研究。
 
-● Bash(mkdir -p "D:/Code/DiffAudit/Research/docs/gpt54-followup-round2")
+● Bash(mkdir -p "<DIFFAUDIT_ROOT>/Research/docs/gpt54-followup-round2")
   ⎿  Done
 
 ● 3 background agents launched (↓ to manage)
@@ -9548,11 +9548,11 @@
 
 ● 我会创建一个总体规划文件夹，为新的GPT-5.4 Pro线程准备战略级问题。
 
-● Bash(mkdir -p "D:/Code/DiffAudit/Research/docs/gpt54-strategic-planning")
+● Bash(mkdir -p "<DIFFAUDIT_ROOT>/Research/docs/gpt54-strategic-planning")
   ⎿  Done
 
-● Write(D:\Code\DiffAudit\Research\docs\gpt54-strategic-planning\prompt.md)
-  ⎿  Wrote 100 lines to D:\Code\DiffAudit\Research\docs\gpt54-strategic-planning\prompt.md
+● Write(<DIFFAUDIT_ROOT>/Research/docs/gpt54-strategic-planning/prompt.md)
+  ⎿  Wrote 100 lines to <DIFFAUDIT_ROOT>/Research/docs/gpt54-strategic-planning/prompt.md
        1 # Strategic Research Planning for DiffAudit
        2
        3 ## Mission
@@ -9565,7 +9565,7 @@
       10   - Gray-box PIA: AUC=0.841, TPR@1%FPR=0.059
      … +90 lines (ctrl+o to expand)
 
-● Bash(cd "D:/Code/DiffAudit/Research/docs/gpt54-strategic-planning" && for i in {01..15}; do touch "context-$i.md"; done)
+● Bash(cd "<DIFFAUDIT_ROOT>/Research/docs/gpt54-strategic-planning" && for i in {01..15}; do touch "context-$i.md"; done)
   ⎿  Shell cwd was reset to C:\Users\Ding
 
 ● Agent(Prepare strategic planning context files)
@@ -9585,11 +9585,11 @@
 
 ✻ Conversation compacted (ctrl+o for history)
 
-  ⎿  Read D:\Code\DiffAudit\Research\docs\gpt54-strategic-planning\prompt.md (101 lines)
-  ⎿  Read D:\Code\DiffAudit\Research\docs\gpt54-deep-research\results\02.md (87 lines)
-  ⎿  Read D:\Code\DiffAudit\Research\docs\gpt54-deep-research\results\06.md (85 lines)
-  ⎿  Read D:\Code\DiffAudit\Research\docs\gpt54-deep-research\results\05.md (65 lines)
-  ⎿  Read D:\Code\DiffAudit\Research\docs\gpt54-deep-research\results\04.md (84 lines)
+  ⎿  Read <DIFFAUDIT_ROOT>/Research/docs/gpt54-strategic-planning/prompt.md (101 lines)
+  ⎿  Read <DIFFAUDIT_ROOT>/Research/docs/gpt54-deep-research/results/02.md (87 lines)
+  ⎿  Read <DIFFAUDIT_ROOT>/Research/docs/gpt54-deep-research/results/06.md (85 lines)
+  ⎿  Read <DIFFAUDIT_ROOT>/Research/docs/gpt54-deep-research/results/05.md (65 lines)
+  ⎿  Read <DIFFAUDIT_ROOT>/Research/docs/gpt54-deep-research/results/04.md (84 lines)
 
 ● Task "Analyze GPT-5.4 Pro reports and extract actionable hypotheses" still running in background
 
@@ -9653,7 +9653,7 @@
   战略规划包：
   - prompt.md（4.5KB）+ 15个context文件（待后台agent完成）
 
-  所有材料位于 D:/Code/DiffAudit/Research/docs/gpt54-followup-round2/ 和 gpt54-strategic-planning/，可直接发送给GPT-5.4 Pro进行第二轮深度研究。
+  所有材料位于 <DIFFAUDIT_ROOT>/Research/docs/gpt54-followup-round2/ 和 gpt54-strategic-planning/，可直接发送给GPT-5.4 Pro进行第二轮深度研究。
 
 ✻ Brewed for 2m 38s · 6 local agents still running
 
@@ -9672,7 +9672,7 @@
   - prompt.md（45KB）：25+假设、15个战略问题、3个月路线图
   - 15个context文件（各<500词）：baselines、constraints、6方向摘要、评估协议
 
-  所有材料位于 D:/Code/DiffAudit/Research/docs/gpt54-followup-round2/ 和 gpt54-strategic-planning/，可直接发送GPT-5.4 Pro。
+  所有材料位于 <DIFFAUDIT_ROOT>/Research/docs/gpt54-followup-round2/ 和 gpt54-strategic-planning/，可直接发送GPT-5.4 Pro。
 
 ※ recap: Prepared comprehensive Round 2 implementation question packages for all 6 research directions (80KB total) and strategic planning materials (prompt
    + 15context files) for GPT-5.4 Pro deep research. All materials ready in `docs/gpt54-followup-round2/` and `docs/gpt54-strategic-planning/` for immediate
@@ -9707,7 +9707,7 @@
                                                                                                                           11:49 PM claude-sonnet-4.5
 ● 正在补充round 2材料，每个文件夹补充到≤20个文件。
 
-● Bash(for dir in D:/Code/DiffAudit/Research/docs/gpt54-followup-round2/*/; do echo "$(basename "$dir"): $(ls "$dir" 2>/dev/null | wc -l) files"; done)
+● Bash(for dir in <DIFFAUDIT_ROOT>/Research/docs/gpt54-followup-round2/*/; do echo "$(basename "$dir"): $(ls "$dir" 2>/dev/null | wc -l) files"; done)
   ⎿  01-black-box-implementation: 0 files
      02-gray-box-implementation: 1 files
      03-white-box-implementation: 1 files
@@ -9715,8 +9715,8 @@
      05-cross-box-implementation: 1 files
      06-g1a-qr-implementation: 3 files
 
-● Bash(find D:/Code/DiffAudit/Research/docs -name "*.pdf" -o -name "ROADMAP.md" -o -name "comprehensive-progress.md" | head -10)
-  ⎿  D:/Code/DiffAudit/Research/docs/comprehensive-progress.md
+● Bash(find <DIFFAUDIT_ROOT>/Research/docs -name "*.pdf" -o -name "ROADMAP.md" -o -name "comprehensive-progress.md" | head -10)
+  ⎿  <DIFFAUDIT_ROOT>/Research/docs/comprehensive-progress.md
 
                                                                                                                           11:49 PM claude-sonnet-4.5
 ● 正在为每个round 2文件夹补充材料到≤20个文件。
@@ -9778,11 +9778,11 @@
 
 ✻ Conversation compacted (ctrl+o for history)
 
-  ⎿  Read D:\Code\DiffAudit\Research\docs\gpt54-strategic-planning\prompt.md (101 lines)
-  ⎿  Read D:\Code\DiffAudit\Research\docs\gpt54-deep-research\results\02.md (87 lines)
-  ⎿  Read D:\Code\DiffAudit\Research\docs\gpt54-deep-research\results\06.md (85 lines)
-  ⎿  Read D:\Code\DiffAudit\Research\docs\gpt54-deep-research\results\05.md (65 lines)
-  ⎿  Read D:\Code\DiffAudit\Research\docs\gpt54-deep-research\results\04.md (84 lines)
+  ⎿  Read <DIFFAUDIT_ROOT>/Research/docs/gpt54-strategic-planning/prompt.md (101 lines)
+  ⎿  Read <DIFFAUDIT_ROOT>/Research/docs/gpt54-deep-research/results/02.md (87 lines)
+  ⎿  Read <DIFFAUDIT_ROOT>/Research/docs/gpt54-deep-research/results/06.md (85 lines)
+  ⎿  Read <DIFFAUDIT_ROOT>/Research/docs/gpt54-deep-research/results/05.md (65 lines)
+  ⎿  Read <DIFFAUDIT_ROOT>/Research/docs/gpt54-deep-research/results/04.md (84 lines)
 
 ● Task "Analyze GPT-5.4 Pro reports and extract actionable hypotheses" still running in background
 
@@ -9846,7 +9846,7 @@
   战略规划包：
   - prompt.md（4.5KB）+ 15个context文件（待后台agent完成）
 
-  所有材料位于 D:/Code/DiffAudit/Research/docs/gpt54-followup-round2/ 和 gpt54-strategic-planning/，可直接发送给GPT-5.4 Pro进行第二轮深度研究。
+  所有材料位于 <DIFFAUDIT_ROOT>/Research/docs/gpt54-followup-round2/ 和 gpt54-strategic-planning/，可直接发送给GPT-5.4 Pro进行第二轮深度研究。
 
 ✻ Cogitated for 2m 38s · 5 local agents still running
 
@@ -9865,7 +9865,7 @@
   - prompt.md（45KB）：25+假设、15个战略问题、3个月路线图
   - 15个context文件（各<500词）：baselines、constraints、6方向摘要、评估协议
 
-  所有材料位于 D:/Code/DiffAudit/Research/docs/gpt54-followup-round2/ 和 gpt54-strategic-planning/，可直接发送GPT-5.4 Pro。
+  所有材料位于 <DIFFAUDIT_ROOT>/Research/docs/gpt54-followup-round2/ 和 gpt54-strategic-planning/，可直接发送GPT-5.4 Pro。
 
 ※ recap: Prepared comprehensive Round 2 implementation question packages for all 6 research directions (80KB total) and strategic planning materials (prompt
    + 15context files) for GPT-5.4 Pro deep research. All materials ready in `docs/gpt54-followup-round2/` and `docs/gpt54-strategic-planning/` for immediate
@@ -9890,7 +9890,7 @@
 
 ● 正在补充round 2材料，每个文件夹补充到≤20个文件。
 
-● Bash(for dir in D:/Code/DiffAudit/Research/docs/gpt54-followup-round2/*/; do echo "$(basename "$dir"): $(ls "$dir" 2>/dev/null | wc -l) files"; done)
+● Bash(for dir in <DIFFAUDIT_ROOT>/Research/docs/gpt54-followup-round2/*/; do echo "$(basename "$dir"): $(ls "$dir" 2>/dev/null | wc -l) files"; done)
   ⎿  01-black-box-implementation: 0 files
      02-gray-box-implementation: 1 files
      03-white-box-implementation: 1 files
@@ -9934,7 +9934,7 @@
 
 ● Agent "Deep analysis: Defense report 04" completed
 
-● Bash(for dir in D:/Code/DiffAudit/Research/docs/gpt54-followup-round2/*/; do echo "=== $(basename "$dir") ==="; ls "$dir" 2>/dev/null | wc -l; ls "$dir"
+● Bash(for dir in <DIFFAUDIT_ROOT>/Research/docs/gpt54-followup-round2/*/; do echo "=== $(basename "$dir") ==="; ls "$dir" 2>/dev/null | wc -l; ls "$dir"
       2>/dev/null…)
   ⎿  === 01-black-box-implementation ===
      0
@@ -9943,17 +9943,17 @@
 
 ● Agent "Deep analysis: Gray-box report 02" completed
 
-● Bash(cd D:/Code/DiffAudit/Research/docs/gpt54-followup-round2 && for dir in 0*/; do
+● Bash(cd <DIFFAUDIT_ROOT>/Research/docs/gpt54-followup-round2 && for dir in 0*/; do
         num=$(echo "$dir" | grep -o '^[0-9]*')…)
   ⎿  Done
   ⎿  Shell cwd was reset to C:\Users\Ding
 
-● Bash(cd D:/Code/DiffAudit/Research/docs/gpt54-followup-round2/01-black-box-implementation && cat > prompt.md << 'EOF'
+● Bash(cd <DIFFAUDIT_ROOT>/Research/docs/gpt54-followup-round2/01-black-box-implementation && cat > prompt.md << 'EOF'
       # Round 2: Black-Box Implementation Details…)
   ⎿  Created 01 prompt
   ⎿  Shell cwd was reset to C:\Users\Ding
 
-● Bash(for dir in D:/Code/DiffAudit/Research/docs/gpt54-followup-round2/0*/; do
+● Bash(for dir in <DIFFAUDIT_ROOT>/Research/docs/gpt54-followup-round2/0*/; do
         echo "=== $(basename "$dir") ==="…)
   ⎿  === 01-black-box-implementation ===
      4
@@ -9962,46 +9962,46 @@
 
 ● Agent "Analyze GPT-5.4 Pro reports and extract actionable hypotheses" completed
 
-● Bash(cd D:/Code/DiffAudit/Research/docs/gpt54-followup-round2 && for dir in 0*/; do
+● Bash(cd <DIFFAUDIT_ROOT>/Research/docs/gpt54-followup-round2 && for dir in 0*/; do
         # Add baseline results…)
   ⎿  Added 3 files to each folder
   ⎿  Shell cwd was reset to C:\Users\Ding
 
-● Bash(for dir in D:/Code/DiffAudit/Research/docs/gpt54-followup-round2/0*/; do
+● Bash(for dir in <DIFFAUDIT_ROOT>/Research/docs/gpt54-followup-round2/0*/; do
         echo "$(basename "$dir"): $(ls "$dir" | wc -l) files"…)
   ⎿  01-black-box-implementation: 7 files
      02-gray-box-implementation: 6 files
      03-white-box-implementation: 6 files
      … +3 lines (ctrl+o to expand)
 
-● Bash(cd D:/Code/DiffAudit/Research/docs/gpt54-followup-round2 && for dir in 0*/; do
+● Bash(cd <DIFFAUDIT_ROOT>/Research/docs/gpt54-followup-round2 && for dir in 0*/; do
         # Add innovation tracks…)
   ⎿  Added 3 more files
   ⎿  Shell cwd was reset to C:\Users\Ding
 
-● Bash(cd D:/Code/DiffAudit/Research/docs/gpt54-followup-round2 && for dir in 0*/; do
+● Bash(cd <DIFFAUDIT_ROOT>/Research/docs/gpt54-followup-round2 && for dir in 0*/; do
         # Add CPU-first philosophy…)
   ⎿  Added 3 more files (total 13 per folder)
   ⎿  Shell cwd was reset to C:\Users\Ding
 
 ● 已快速补充材料到各文件夹，当前每个文件夹有13个文件。继续补充到接近20个。
 
-● Bash(cd D:/Code/DiffAudit/Research/docs/gpt54-followup-round2 && for dir in 0*/; do
+● Bash(cd <DIFFAUDIT_ROOT>/Research/docs/gpt54-followup-round2 && for dir in 0*/; do
         # Add direction-specific hypothesis summary…)
   ⎿  Added hypothesis summaries
   ⎿  Shell cwd was reset to C:\Users\Ding
 
-● Bash(cd D:/Code/DiffAudit/Research/docs/gpt54-followup-round2 && for dir in 0*/; do
+● Bash(cd <DIFFAUDIT_ROOT>/Research/docs/gpt54-followup-round2 && for dir in 0*/; do
         # Add cost model…)
   ⎿  Added cost model and promotion criteria
   ⎿  Shell cwd was reset to C:\Users\Ding
 
-● Bash(cd D:/Code/DiffAudit/Research/docs/gpt54-followup-round2 && for dir in 0*/; do
+● Bash(cd <DIFFAUDIT_ROOT>/Research/docs/gpt54-followup-round2 && for dir in 0*/; do
         # Add statistical testing guide…)
   ⎿  Added statistical testing and checklist
   ⎿  Shell cwd was reset to C:\Users\Ding
 
-● Bash(for dir in D:/Code/DiffAudit/Research/docs/gpt54-followup-round2/0*/; do
+● Bash(for dir in <DIFFAUDIT_ROOT>/Research/docs/gpt54-followup-round2/0*/; do
         echo "$(basename "$dir"): $(ls "$dir" | wc -l) files"…)
   ⎿  01-black-box-implementation: 18 files
      02-gray-box-implementation: 17 files
@@ -10023,7 +10023,7 @@
   - 统计测试、实现checklist、成本模型
   - 晋升标准、假设摘要
 
-  所有材料位于 D:/Code/DiffAudit/Research/docs/gpt54-followup-round2/，可直接发送给GPT-5.4 Pro进行第二轮深度实现研究。
+  所有材料位于 <DIFFAUDIT_ROOT>/Research/docs/gpt54-followup-round2/，可直接发送给GPT-5.4 Pro进行第二轮深度实现研究。
 
 ✻ Churned for 2m 12s · 2 local agents still running
 

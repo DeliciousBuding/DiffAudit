@@ -6,11 +6,11 @@ Can the repository land one bounded internal loss-score export surface on curren
 
 ## Inputs Reviewed
 
-- `D:\Code\DiffAudit\Research\workspaces\implementation\2026-04-18-x73-whitebox-same-asset-loss-score-export-surface-review-after-x72-contract-review.md`
-- `D:\Code\DiffAudit\Research\src\diffaudit\attacks\gsa.py`
-- `D:\Code\DiffAudit\Research\src\diffaudit\cli.py`
-- `D:\Code\DiffAudit\Research\tests\test_gsa_adapter.py`
-- `D:\Code\DiffAudit\Research\workspaces\white-box\runs\gsa-loss-score-export-bounded-smoke-20260418-r1\summary.json`
+- `<DIFFAUDIT_ROOT>/Research/workspaces/implementation/2026-04-18-x73-whitebox-same-asset-loss-score-export-surface-review-after-x72-contract-review.md`
+- `<DIFFAUDIT_ROOT>/Research/src/diffaudit/attacks/gsa.py`
+- `<DIFFAUDIT_ROOT>/Research/src/diffaudit/cli.py`
+- `<DIFFAUDIT_ROOT>/Research/tests/test_gsa_adapter.py`
+- `<DIFFAUDIT_ROOT>/Research/workspaces/white-box/runs/gsa-loss-score-export-bounded-smoke-20260418-r1/summary.json`
 
 ## Implementation Review
 
@@ -73,7 +73,7 @@ More precise reading:
 
 ## Canonical Evidence Anchor
 
-- `D:\Code\DiffAudit\Research\workspaces\white-box\runs\gsa-loss-score-export-bounded-smoke-20260418-r1\summary.json`
+- `<DIFFAUDIT_ROOT>/Research/workspaces/white-box/runs/gsa-loss-score-export-bounded-smoke-20260418-r1/summary.json`
 
 ## Control Decision
 

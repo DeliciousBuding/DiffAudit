@@ -6,18 +6,18 @@ After `X-35` restored `I-D` as the first honest newly-added non-graybox candidat
 
 ## Inputs Reviewed
 
-- `D:\Code\DiffAudit\ROADMAP.md`
-- `D:\Code\DiffAudit\Research\ROADMAP.md`
-- `D:\Code\DiffAudit\Research\docs\comprehensive-progress.md`
-- `D:\Code\DiffAudit\Research\docs\mainline-narrative.md`
-- `D:\Code\DiffAudit\Research\docs\reproduction-status.md`
-- `D:\Code\DiffAudit\Research\workspaces\implementation\challenger-queue.md`
-- `D:\Code\DiffAudit\Research\workspaces\implementation\2026-04-17-x35-non-graybox-candidate-surface-expansion-after-x34-reselection.md`
-- `D:\Code\DiffAudit\Research\workspaces\implementation\2026-04-17-id2-bounded-cfg-scale-probe-verdict.md`
-- `D:\Code\DiffAudit\Research\workspaces\implementation\2026-04-17-id3-bounded-cfg-randomization-defense-idea-verdict.md`
-- `D:\Code\DiffAudit\Research\workspaces\implementation\2026-04-17-id4-actual-runner-level-hidden-guidance-jitter-verdict.md`
-- `D:\Code\DiffAudit\Research\workspaces\implementation\2026-04-17-first-bounded-id-packet-pair-system-sync.md`
-- `D:\Code\DiffAudit\Research\workspaces\implementation\2026-04-17-ia-refresh-after-negative-id4-verdict.md`
+- `<DIFFAUDIT_ROOT>/ROADMAP.md`
+- `<DIFFAUDIT_ROOT>/Research/ROADMAP.md`
+- `<DIFFAUDIT_ROOT>/Research/docs/comprehensive-progress.md`
+- `<DIFFAUDIT_ROOT>/Research/docs/mainline-narrative.md`
+- `<DIFFAUDIT_ROOT>/Research/docs/reproduction-status.md`
+- `<DIFFAUDIT_ROOT>/Research/workspaces/implementation/challenger-queue.md`
+- `<DIFFAUDIT_ROOT>/Research/workspaces/implementation/2026-04-17-x35-non-graybox-candidate-surface-expansion-after-x34-reselection.md`
+- `<DIFFAUDIT_ROOT>/Research/workspaces/implementation/2026-04-17-id2-bounded-cfg-scale-probe-verdict.md`
+- `<DIFFAUDIT_ROOT>/Research/workspaces/implementation/2026-04-17-id3-bounded-cfg-randomization-defense-idea-verdict.md`
+- `<DIFFAUDIT_ROOT>/Research/workspaces/implementation/2026-04-17-id4-actual-runner-level-hidden-guidance-jitter-verdict.md`
+- `<DIFFAUDIT_ROOT>/Research/workspaces/implementation/2026-04-17-first-bounded-id-packet-pair-system-sync.md`
+- `<DIFFAUDIT_ROOT>/Research/workspaces/implementation/2026-04-17-ia-refresh-after-negative-id4-verdict.md`
 
 ## Successor Review
 
@@ -101,17 +101,17 @@ More precise reading:
 
 ## Canonical Evidence Anchor
 
-- `D:\Code\DiffAudit\Research\workspaces\implementation\2026-04-17-x36-id-conditional-future-surface-successor-selection-after-x35-expansion.md`
+- `<DIFFAUDIT_ROOT>/Research/workspaces/implementation/2026-04-17-x36-id-conditional-future-surface-successor-selection-after-x35-expansion.md`
 
 ## Handoff Decision
 
-- `D:\Code\DiffAudit\Research\ROADMAP.md`: update required
-- `D:\Code\DiffAudit\Research\workspaces\implementation\challenger-queue.md`: update required
-- `D:\Code\DiffAudit\Research\docs\comprehensive-progress.md`: update required
-- `D:\Code\DiffAudit\Research\docs\mainline-narrative.md`: update required
-- `D:\Code\DiffAudit\Research\docs\reproduction-status.md`: update required
-- `D:\Code\DiffAudit\Research\docs\leader-research-ready-summary.md`: update required
-- `D:\Code\DiffAudit\ROADMAP.md`: update required
+- `<DIFFAUDIT_ROOT>/Research/ROADMAP.md`: update required
+- `<DIFFAUDIT_ROOT>/Research/workspaces/implementation/challenger-queue.md`: update required
+- `<DIFFAUDIT_ROOT>/Research/docs/comprehensive-progress.md`: update required
+- `<DIFFAUDIT_ROOT>/Research/docs/mainline-narrative.md`: update required
+- `<DIFFAUDIT_ROOT>/Research/docs/reproduction-status.md`: update required
+- `<DIFFAUDIT_ROOT>/Research/docs/leader-research-ready-summary.md`: update required
+- `<DIFFAUDIT_ROOT>/ROADMAP.md`: update required
 - `platform_runtime_handoff = none`
 - `competition_material_sync = note-level only`
 

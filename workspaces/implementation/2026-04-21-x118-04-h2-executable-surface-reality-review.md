@@ -6,13 +6,13 @@ After `X-114` froze `04-H2 privacy-aware adapter` as fallback wording only, does
 
 ## Inputs Reviewed
 
-- `D:\Code\DiffAudit\Research\docs\report-bundles\gpt54\round2-results\04.md`
-- `D:\Code\DiffAudit\Research\workspaces\implementation\2026-04-18-x114-04-defense-post-h1-family-review.md`
-- `D:\Code\DiffAudit\Research\src\diffaudit\defenses\lora_ddpm.py`
-- `D:\Code\DiffAudit\Research\src\diffaudit\defenses\smp_lora.py`
-- `D:\Code\DiffAudit\Research\scripts\train_smp_lora.py`
-- `D:\Code\DiffAudit\Research\tests\test_lora_smoke.py`
-- `D:\Code\DiffAudit\Research\tests\test_smp_lora_runtime_tuning.py`
+- `<DIFFAUDIT_ROOT>/Research/docs/report-bundles/gpt54/round2-results/04.md`
+- `<DIFFAUDIT_ROOT>/Research/workspaces/implementation/2026-04-18-x114-04-defense-post-h1-family-review.md`
+- `<DIFFAUDIT_ROOT>/Research/src/diffaudit/defenses/lora_ddpm.py`
+- `<DIFFAUDIT_ROOT>/Research/src/diffaudit/defenses/smp_lora.py`
+- `<DIFFAUDIT_ROOT>/Research/scripts/train_smp_lora.py`
+- `<DIFFAUDIT_ROOT>/Research/tests/test_lora_smoke.py`
+- `<DIFFAUDIT_ROOT>/Research/tests/test_smp_lora_runtime_tuning.py`
 
 ## Method
 
@@ -21,11 +21,11 @@ After `X-114` froze `04-H2 privacy-aware adapter` as fallback wording only, does
 3. Execute one bounded CPU smoke:
 
 ```powershell
-python D:\Code\DiffAudit\Research\scripts\train_smp_lora.py `
+python <DIFFAUDIT_ROOT>/Research/scripts/train_smp_lora.py `
   --random_init `
-  --member_dir D:\Code\DiffAudit\Research\workspaces\implementation\runs\h2-smp-lora-contract-smoke-20260421-r1\member `
-  --nonmember_dir D:\Code\DiffAudit\Research\workspaces\implementation\runs\h2-smp-lora-contract-smoke-20260421-r1\nonmember `
-  --output_dir D:\Code\DiffAudit\Research\workspaces\implementation\runs\h2-smp-lora-contract-smoke-20260421-r1\output `
+  --member_dir <DIFFAUDIT_ROOT>/Research/workspaces/implementation/runs/h2-smp-lora-contract-smoke-20260421-r1/member `
+  --nonmember_dir <DIFFAUDIT_ROOT>/Research/workspaces/implementation/runs/h2-smp-lora-contract-smoke-20260421-r1/nonmember `
+  --output_dir <DIFFAUDIT_ROOT>/Research/workspaces/implementation/runs/h2-smp-lora-contract-smoke-20260421-r1/output `
   --rank 4 `
   --lambda_coeff 0.05 `
   --num_epochs 1 `
@@ -57,7 +57,7 @@ So the old `X-114` reading "no implementation / no test surface" is no longer fa
 
 Canonical smoke artifact:
 
-- `D:\Code\DiffAudit\Research\workspaces\implementation\runs\h2-smp-lora-contract-smoke-20260421-r1\summary.json`
+- `<DIFFAUDIT_ROOT>/Research/workspaces/implementation/runs/h2-smp-lora-contract-smoke-20260421-r1/summary.json`
 
 Key emitted artifacts:
 

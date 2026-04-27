@@ -6,14 +6,14 @@ After the first executable `I-B.6` packet landed as `execution-positive / defens
 
 ## Inputs Reviewed
 
-- `D:\Code\DiffAudit\Research\ROADMAP.md`
-- `D:\Code\DiffAudit\Research\workspaces\white-box\plan.md`
-- `D:\Code\DiffAudit\Research\workspaces\white-box\2026-04-17-finding-nemo-quality-vs-defense-metric-contract.md`
-- `D:\Code\DiffAudit\Research\workspaces\white-box\2026-04-17-finding-nemo-first-bounded-localization-intervention-packet-verdict.md`
-- `D:\Code\DiffAudit\Research\workspaces\white-box\2026-04-08-whitebox-attack-defense-table.md`
-- `D:\Code\DiffAudit\Research\workspaces\implementation\artifacts\unified-attack-defense-table.json`
-- `D:\Code\\DiffAudit\\Research\\src\\diffaudit\\cli.py`
-- `D:\Code\\DiffAudit\\Research\\src\\diffaudit\\attacks\\gsa.py`
+- `<DIFFAUDIT_ROOT>/Research/ROADMAP.md`
+- `<DIFFAUDIT_ROOT>/Research/workspaces/white-box/plan.md`
+- `<DIFFAUDIT_ROOT>/Research/workspaces/white-box/2026-04-17-finding-nemo-quality-vs-defense-metric-contract.md`
+- `<DIFFAUDIT_ROOT>/Research/workspaces/white-box/2026-04-17-finding-nemo-first-bounded-localization-intervention-packet-verdict.md`
+- `<DIFFAUDIT_ROOT>/Research/workspaces/white-box/2026-04-08-whitebox-attack-defense-table.md`
+- `<DIFFAUDIT_ROOT>/Research/workspaces/implementation/artifacts/unified-attack-defense-table.json`
+- `<DIFFAUDIT_ROOT>/Research/src/diffaudit/cli.py`
+- `<DIFFAUDIT_ROOT>/Research/src/diffaudit/attacks/gsa.py`
 
 ## Candidate Comparison
 

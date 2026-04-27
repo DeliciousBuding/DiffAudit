@@ -6,11 +6,11 @@ After `I-B.5` froze the first executable packet, can that packet actually run on
 
 ## Inputs Reviewed
 
-- `D:\Code\DiffAudit\Research\ROADMAP.md`
-- `D:\Code\DiffAudit\Research\workspaces\white-box\2026-04-17-finding-nemo-first-bounded-localization-intervention-packet-selection.md`
-- `D:\Code\DiffAudit\Research\workspaces\white-box\2026-04-17-finding-nemo-quality-vs-defense-metric-contract.md`
-- `D:\Code\DiffAudit\Research\workspaces\white-box\2026-04-17-cross-permission-inmodel-intervention-review.md`
-- `D:\Code\DiffAudit\Research\workspaces\white-box\runs\finding-nemo-first-bounded-localization-packet-20260417-r1\summary.json`
+- `<DIFFAUDIT_ROOT>/Research/ROADMAP.md`
+- `<DIFFAUDIT_ROOT>/Research/workspaces/white-box/2026-04-17-finding-nemo-first-bounded-localization-intervention-packet-selection.md`
+- `<DIFFAUDIT_ROOT>/Research/workspaces/white-box/2026-04-17-finding-nemo-quality-vs-defense-metric-contract.md`
+- `<DIFFAUDIT_ROOT>/Research/workspaces/white-box/2026-04-17-cross-permission-inmodel-intervention-review.md`
+- `<DIFFAUDIT_ROOT>/Research/workspaces/white-box/runs/finding-nemo-first-bounded-localization-packet-20260417-r1/summary.json`
 
 ## Executed Packet
 
@@ -18,11 +18,11 @@ CPU-only command:
 
 ```powershell
 conda run -n diffaudit-research python -m diffaudit export-gsa-observability-inmodel-packet `
-  --workspace D:\Code\DiffAudit\Research\workspaces\white-box\runs\finding-nemo-first-bounded-localization-packet-20260417-r1 `
-  --repo-root D:\Code\DiffAudit\Research\workspaces\white-box\external\GSA `
-  --assets-root D:\Code\DiffAudit\Research\workspaces\white-box\assets\gsa-cifar10-1k-3shadow-epoch300-rerun1 `
-  --checkpoint-root D:\Code\DiffAudit\Research\workspaces\white-box\assets\gsa-cifar10-1k-3shadow-epoch300-rerun1\checkpoints\target `
-  --checkpoint-dir D:\Code\DiffAudit\Research\workspaces\white-box\assets\gsa-cifar10-1k-3shadow-epoch300-rerun1\checkpoints\target\checkpoint-9600 `
+  --workspace <DIFFAUDIT_ROOT>/Research/workspaces/white-box/runs/finding-nemo-first-bounded-localization-packet-20260417-r1 `
+  --repo-root <DIFFAUDIT_ROOT>/Research/workspaces/white-box/external/GSA `
+  --assets-root <DIFFAUDIT_ROOT>/Research/workspaces/white-box/assets/gsa-cifar10-1k-3shadow-epoch300-rerun1 `
+  --checkpoint-root <DIFFAUDIT_ROOT>/Research/workspaces/white-box/assets/gsa-cifar10-1k-3shadow-epoch300-rerun1/checkpoints/target `
+  --checkpoint-dir <DIFFAUDIT_ROOT>/Research/workspaces/white-box/assets/gsa-cifar10-1k-3shadow-epoch300-rerun1/checkpoints/target/checkpoint-9600 `
   --split target-member `
   --sample-id target-member/00-data_batch_1-00965.png `
   --control-split target-nonmember `
@@ -41,7 +41,7 @@ conda run -n diffaudit-research python -m diffaudit export-gsa-observability-inm
 
 ## Run Anchor
 
-- `D:\Code\DiffAudit\Research\workspaces\white-box\runs\finding-nemo-first-bounded-localization-packet-20260417-r1\summary.json`
+- `<DIFFAUDIT_ROOT>/Research/workspaces/white-box/runs/finding-nemo-first-bounded-localization-packet-20260417-r1/summary.json`
 
 ## Result
 

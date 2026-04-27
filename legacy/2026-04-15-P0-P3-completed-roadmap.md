@@ -31,7 +31,7 @@ Frozen reference package:
 - download master list:
   - `docs/research-download-master-list.md`
 - download manifest:
-  - `D:\Code\DiffAudit\Download\manifests\research-download-manifest.json`
+  - `<DIFFAUDIT_ROOT>/Download/manifests/research-download-manifest.json`
 
 ---
 
@@ -78,7 +78,7 @@ Working principles:
 
 ### Download and staging
 
-- [x] `P0-DL-1` Verify all first-wave assets from `docs/research-download-master-list.md` are present in `D:\Code\DiffAudit\Download\...`
+- [x] `P0-DL-1` Verify all first-wave assets from `docs/research-download-master-list.md` are present in `<DIFFAUDIT_ROOT>/Download/...`
 - [x] `P0-DL-2` Ingest any newly downloaded assets into repo-consumable locations or config pointers
 - [x] `P0-DL-3` Record exact asset provenance / path mapping for anything newly staged
 

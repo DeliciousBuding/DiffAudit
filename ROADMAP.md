@@ -1,6 +1,6 @@
 # DiffAudit Research ROADMAP — Continuous Autonomous Mainline
 
-> Last updated: 2026-04-21 18:08
+> Last updated: 2026-04-28 00:18
 > Mode: continuous autonomous research
 > Owner: `Researcher`
 > Rule: one active GPU task at a time, every task must end in a concrete verdict
@@ -31,7 +31,7 @@ The correct reading is:
 
 ### 1.1 Root alignment
 
-This roadmap must stay aligned with root-level `D:\Code\DiffAudit\ROADMAP.md`, but it is not limited to "4C sprint mode".
+This roadmap must stay aligned with root-level `<DIFFAUDIT_ROOT>/ROADMAP.md`, but it is not limited to "4C sprint mode".
 
 For `Research`, root alignment means:
 
@@ -92,13 +92,13 @@ Also:
 
 Fresh sessions should always read in this order:
 
-1. `D:\Code\DiffAudit\ROADMAP.md`
-2. `D:\Code\DiffAudit\Research\ROADMAP.md`
-3. `D:\Code\DiffAudit\Research\AGENTS.md`
-4. `D:\Code\DiffAudit\Research\docs\researcher-agent-architecture.md`
-5. `D:\Code\DiffAudit\Research\README.md`
-6. `D:\Code\DiffAudit\Research\docs\comprehensive-progress.md`
-7. `D:\Code\DiffAudit\Download\manifests\research-download-manifest.json`
+1. `<DIFFAUDIT_ROOT>/ROADMAP.md`
+2. `<DIFFAUDIT_ROOT>/Research/ROADMAP.md`
+3. `<DIFFAUDIT_ROOT>/Research/AGENTS.md`
+4. `<DIFFAUDIT_ROOT>/Research/docs/researcher-agent-architecture.md`
+5. `<DIFFAUDIT_ROOT>/Research/README.md`
+6. `<DIFFAUDIT_ROOT>/Research/docs/comprehensive-progress.md`
+7. `<DIFFAUDIT_ROOT>/Download/manifests/research-download-manifest.json`
 8. lane-specific workspace docs only after the task is narrowed
 
 ---
@@ -510,7 +510,7 @@ Execution rule:
 - `next_gpu_candidate = none` (G1-A deferred-needs-assets, B-M0 Candidate A hold-review-only)
 - the current CPU sidecar is `I-A higher-layer boundary maintenance`
 - any new GPU release still requires a separate bounded GPU review that freezes shared-surface identity, host-fit budget, story delta, and kill gate before any fire decision
-- repo-hygiene sidecar truth is now sharper as well: the storage-boundary cleanup is now physically aligned, because `Research/external/downloads` has been removed, its raw-intake subtrees now live under `D:\Code\DiffAudit\Download\`, `recon-assets` is verified at `Download/black-box/supplementary/recon-assets`, `workspaces/README.md` is resynced, and `external/README.md`, `third_party/README.md`, `Download/README.md`, plus the tracked `third_party/secmi/LOCAL_ROLE.md` now explain the intended split; the remaining dual-surface cases are explicit rather than hidden: `external/SecMI` = full upstream reference clone, `third_party/secmi` = minimal vendored integration, `external/CLiD` = working clone, and `Download/.../clid-mia-supplementary` = raw supplementary mirror
+- repo-hygiene sidecar truth is now sharper as well: the storage-boundary cleanup is now physically aligned, because `Research/external/downloads` has been removed, its raw-intake subtrees now live under `<DIFFAUDIT_ROOT>/Download/`, `recon-assets` is verified at `Download/black-box/supplementary/recon-assets`, `workspaces/README.md` is resynced, and `external/README.md`, `third_party/README.md`, `Download/README.md`, plus the tracked `third_party/secmi/LOCAL_ROLE.md` now explain the intended split; the remaining dual-surface cases are explicit rather than hidden: `external/SecMI` = full upstream reference clone, `third_party/secmi` = minimal vendored integration, `external/CLiD` = working clone, and `Download/.../clid-mia-supplementary` = raw supplementary mirror
 
 Near-term priority order:
 
@@ -5546,8 +5546,9 @@ If that happens, the agent must add new branches and continue.
 | 2026-04-21 16:25 | Closed `X-139` as `negative but useful`: the selected minimal `4 / 4` follow-up is now real on admitted CIFAR10 assets, because `run-h2-defense-pilot` and `review-h2-defense-pilot` both land cleanly on the same frozen checkpoint/asset contract at `workspaces/implementation/runs/h2-run-defense-pilot-4x4-20260421-r1/summary.json` and `workspaces/implementation/runs/h2-review-defense-pilot-4x4-20260421-r1/summary.json`; this removes the pure-zero degeneracy of the first `1 / 1` board by producing non-null target-transfer metrics (`AUC = 0.5 / ASR = 0.375 / TPR@1%FPR = 0.5 / TPR@0.1%FPR = 0.5`), but baseline and defended metrics still remain exactly equal, so `H2` now reads `minimal contract-complete + bounded 4/4 follow-up negative but useful`, still below promotion and still below `next_gpu_candidate`; the next immediate move becomes `X-140 cross-box / system-consumable stale-entry sync after X-139`; canonical anchor is `workspaces/implementation/runs/h2-review-defense-pilot-4x4-20260421-r1/summary.json` |
 | 2026-04-21 16:25 | Closed `X-140` as `positive`: after `X-139`, the active entry surfaces still pointed fresh sessions to `X-138` as if packet-scale follow-up were pending, so the highest-value immediate move was one bounded stale-entry sync across `README`, `comprehensive-progress`, `reproduction-status`, `mainline-narrative`, `research-autonomous-execution-prompt`, `challenger-queue`, and the roadmap itself; those surfaces now carry the sharper `H2` truth (`minimal contract-complete + bounded 4/4 follow-up negative but useful`, `no current next_gpu_candidate`, and `04` should yield the next `CPU-first` slot absent a genuinely new bounded hypothesis`), while `active_gpu_question = none` and `next_gpu_candidate = none`; the next live lane becomes `X-141 non-graybox next-lane reselection after X-140 stale-entry sync`; canonical anchor is `workspaces/implementation/2026-04-21-x140-crossbox-system-sync-after-x139.md` |
 | 2026-04-21 16:25 | Closed storage-boundary audit as `positive`: the repository now has one explicit storage rule (`external` = upstream/exploratory code clones, `third_party` = minimal vendored code, `Download` = raw intake bundles, `workspaces/*/assets` = lane-normalized gateways, `workspaces/*/runs` = evidence), and `workspaces/README.md` is resynced to that rule; but the audit also freezes three real live inconsistencies as future cleanup targets: `external/recon-assets` is asset-heavy and belongs below `Download` rather than `external`, `external/SecMI` vs `third_party/secmi` still needs visible canonical/exploratory separation, and `external/CLiD` still mixes upstream code with supplementary-style outputs while `Download` also stores a CLiD supplementary mirror; canonical anchor is `workspaces/implementation/2026-04-21-research-storage-boundary-audit.md` |
-| 2026-04-23 09:00 | Closed storage-boundary cleanup pass as `positive`: the sharpest live inconsistency is now actually resolved, because `external/recon-assets` has been physically migrated to `D:\Code\DiffAudit\Download\black-box\supplementary\recon-assets`, active recon bundle references have been retargeted, `README` now points CLiD artifact summarization at the raw supplementary mirror under `Download`, and new role markers (`external/README.md`, `third_party/README.md`, `Download/README.md`, plus the tracked `third_party/secmi/LOCAL_ROLE.md`) now make the remaining dual-surface cases explicit instead of ambiguous; the repository storage rule is therefore materially more uniform even though some historical notes still preserve old path wording as historical context; canonical anchor is `workspaces/implementation/2026-04-21-research-storage-boundary-audit.md` |
-| 2026-04-26 00:00 | Closed storage-layout finalization as `positive`: the previously documented storage boundary is now physically true, because `Research/external/downloads` has been removed and its raw-intake subtrees (`black-box`, `gray-box`, `manifests`, `shared`, `white-box`) now live directly under `D:\Code\DiffAudit\Download\`; verification confirmed `Download\black-box\supplementary\recon-assets`, `Download\manifests\research-download-manifest.json`, and the shared dataset/weight roots are present, while active path search no longer finds live `Research/external/downloads` or `external/CLiD/inter_output` references; canonical anchor is `workspaces/implementation/2026-04-26-research-storage-layout-finalization.md` |
+| 2026-04-23 09:00 | Closed storage-boundary cleanup pass as `positive`: the sharpest live inconsistency is now actually resolved, because `external/recon-assets` has been physically migrated to `<DIFFAUDIT_ROOT>/Download/black-box/supplementary/recon-assets`, active recon bundle references have been retargeted, `README` now points CLiD artifact summarization at the raw supplementary mirror under `Download`, and new role markers (`external/README.md`, `third_party/README.md`, `Download/README.md`, plus the tracked `third_party/secmi/LOCAL_ROLE.md`) now make the remaining dual-surface cases explicit instead of ambiguous; the repository storage rule is therefore materially more uniform even though some historical notes still preserve old path wording as historical context; canonical anchor is `workspaces/implementation/2026-04-21-research-storage-boundary-audit.md` |
+| 2026-04-26 00:00 | Closed storage-layout finalization as `positive`: the previously documented storage boundary is now physically true, because `Research/external/downloads` has been removed and its raw-intake subtrees (`black-box`, `gray-box`, `manifests`, `shared`, `white-box`) now live directly under `<DIFFAUDIT_ROOT>/Download/`; verification confirmed `Download/black-box/supplementary/recon-assets`, `Download/manifests/research-download-manifest.json`, and the shared dataset/weight roots are present, while active path search no longer finds live `Research/external/downloads` or `external/CLiD/inter_output` references; canonical anchor is `workspaces/implementation/2026-04-26-research-storage-layout-finalization.md` |
+| 2026-04-28 00:18 | Closed portability hardening as `positive`: tracked docs, workspace notes, runtime job traces, experiment summaries, and teammate-facing setup surfaces no longer hard-code author-machine absolute repo roots or author-home paths, because cross-repo/raw-asset references now use `<DIFFAUDIT_ROOT>`, operator-local publishing paths are explicitly kept outside the portable `Research` contract, historical evidence is sanitized with portable placeholders, and executable defaults that mattered in code were hardened to derive from repo layout instead of one machine; validation passed with `python -m py_compile` on the touched code plus `29` targeted `pytest` cases; `active_gpu_question = none`, `next_gpu_candidate = none`, and no Runtime or Platform schema change is required; canonical anchor is `workspaces/implementation/2026-04-28-research-portability-hardening.md` |
 
 ---
 

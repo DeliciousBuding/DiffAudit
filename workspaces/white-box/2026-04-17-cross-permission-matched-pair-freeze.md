@@ -6,13 +6,13 @@ After `I-C.8` froze the same-packet identity contract, can the repository now bi
 
 ## Inputs Reviewed
 
-- `D:\Code\DiffAudit\Research\workspaces\white-box\2026-04-17-cross-permission-same-packet-intervention-contract.md`
-- `D:\Code\DiffAudit\Research\external\PIA\DDPM\CIFAR10_train_ratio0.5.npz`
-- `D:\Code\DiffAudit\Research\workspaces\white-box\assets\gsa-cifar10-1k-3shadow-epoch300-rerun1\datasets\target-member\`
-- `D:\Code\DiffAudit\Research\workspaces\white-box\assets\gsa-cifar10-1k-3shadow-epoch300-rerun1\datasets\target-nonmember\`
-- `D:\Code\DiffAudit\Research\workspaces\white-box\runs\cross-permission-matched-pairfreeze-20260417-r1\summary.json`
-- `D:\Code\DiffAudit\Research\workspaces\gray-box\runs\pia-packet-score-export-matched-pairfreeze-20260417-r1\summary.json`
-- `D:\Code\DiffAudit\Research\workspaces\gray-box\runs\pia-packet-score-export-matched-pairfreeze-20260417-r1\sample_scores.jsonl`
+- `<DIFFAUDIT_ROOT>/Research/workspaces/white-box/2026-04-17-cross-permission-same-packet-intervention-contract.md`
+- `<DIFFAUDIT_ROOT>/Research/external/PIA/DDPM/CIFAR10_train_ratio0.5.npz`
+- `<DIFFAUDIT_ROOT>/Research/workspaces/white-box/assets/gsa-cifar10-1k-3shadow-epoch300-rerun1/datasets/target-member\`
+- `<DIFFAUDIT_ROOT>/Research/workspaces/white-box/assets/gsa-cifar10-1k-3shadow-epoch300-rerun1/datasets/target-nonmember\`
+- `<DIFFAUDIT_ROOT>/Research/workspaces/white-box/runs/cross-permission-matched-pairfreeze-20260417-r1/summary.json`
+- `<DIFFAUDIT_ROOT>/Research/workspaces/gray-box/runs/pia-packet-score-export-matched-pairfreeze-20260417-r1/summary.json`
+- `<DIFFAUDIT_ROOT>/Research/workspaces/gray-box/runs/pia-packet-score-export-matched-pairfreeze-20260417-r1/sample_scores.jsonl`
 
 ## Selection Rule
 

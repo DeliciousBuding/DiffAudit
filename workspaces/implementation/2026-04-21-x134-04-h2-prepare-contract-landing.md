@@ -6,13 +6,13 @@ After `X-133` lands the admitted-asset probe, can `04-H2` freeze the second cano
 
 ## Inputs Reviewed
 
-- `D:\Code\DiffAudit\Research\workspaces\implementation\2026-04-21-x133-04-h2-probe-assets-contract-landing.md`
-- `D:\Code\DiffAudit\Research\src\diffaudit\defenses\h2_adapter.py`
-- `D:\Code\DiffAudit\Research\src\diffaudit\cli.py`
-- `D:\Code\DiffAudit\Research\tests\test_h2_adapter.py`
-- `D:\Code\DiffAudit\Research\workspaces\implementation\runs\h2-prepare-contract-20260421-r1\summary.json`
-- `D:\Code\DiffAudit\Research\workspaces\implementation\runs\h2-prepare-contract-20260421-r1\manifest.json`
-- `D:\Code\DiffAudit\Research\workspaces\implementation\runs\h2-prepare-contract-20260421-r1\probe-summary.json`
+- `<DIFFAUDIT_ROOT>/Research/workspaces/implementation/2026-04-21-x133-04-h2-probe-assets-contract-landing.md`
+- `<DIFFAUDIT_ROOT>/Research/src/diffaudit/defenses/h2_adapter.py`
+- `<DIFFAUDIT_ROOT>/Research/src/diffaudit/cli.py`
+- `<DIFFAUDIT_ROOT>/Research/tests/test_h2_adapter.py`
+- `<DIFFAUDIT_ROOT>/Research/workspaces/implementation/runs/h2-prepare-contract-20260421-r1/summary.json`
+- `<DIFFAUDIT_ROOT>/Research/workspaces/implementation/runs/h2-prepare-contract-20260421-r1/manifest.json`
+- `<DIFFAUDIT_ROOT>/Research/workspaces/implementation/runs/h2-prepare-contract-20260421-r1/probe-summary.json`
 
 ## Findings
 
@@ -75,7 +75,7 @@ It is still not:
 
 ## Canonical Evidence Anchor
 
-- `D:\Code\DiffAudit\Research\workspaces\implementation\runs\h2-prepare-contract-20260421-r1\summary.json`
+- `<DIFFAUDIT_ROOT>/Research/workspaces/implementation/runs/h2-prepare-contract-20260421-r1/summary.json`
 
 ## Control Decision
 

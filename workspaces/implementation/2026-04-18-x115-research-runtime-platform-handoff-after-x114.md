@@ -6,15 +6,15 @@ After `X-114` sharpened `04-defense` to `CPU-first family review`, does `Researc
 
 ## Inputs Reviewed
 
-- `D:\Code\DiffAudit\Research\workspaces\implementation\2026-04-18-x114-04-defense-post-h1-family-review.md`
-- `D:\Code\DiffAudit\Research\docs\local-api.md`
-- `D:\Code\DiffAudit\Research\docs\reproduction-status.md`
-- `D:\Code\DiffAudit\Platform\RUNBOOK.md`
-- `D:\Code\DiffAudit\Platform\docs\public-runtime-handoff.md`
-- `D:\Code\DiffAudit\Runtime-Server\README.md`
-- `D:\Code\DiffAudit\Platform\apps\api-go\README.md`
-- `D:\Code\DiffAudit\Platform\apps\api-go\scripts\publish_public_snapshot.py`
-- `D:\Code\DiffAudit\Research\workspaces\implementation\2026-04-18-platform-intake-from-research.md`
+- `<DIFFAUDIT_ROOT>/Research/workspaces/implementation/2026-04-18-x114-04-defense-post-h1-family-review.md`
+- `<DIFFAUDIT_ROOT>/Research/docs/local-api.md`
+- `<DIFFAUDIT_ROOT>/Research/docs/reproduction-status.md`
+- `<DIFFAUDIT_ROOT>/Platform/RUNBOOK.md`
+- `<DIFFAUDIT_ROOT>/Platform/docs/public-runtime-handoff.md`
+- `<DIFFAUDIT_ROOT>/Runtime-Server/README.md`
+- `<DIFFAUDIT_ROOT>/Platform/apps/api-go/README.md`
+- `<DIFFAUDIT_ROOT>/Platform/apps/api-go/scripts/publish_public_snapshot.py`
+- `<DIFFAUDIT_ROOT>/Research/workspaces/implementation/2026-04-18-platform-intake-from-research.md`
 
 ## What Was Checked
 
@@ -112,7 +112,7 @@ More precise reading:
 
 ## Canonical Evidence Anchor
 
-- `D:\Code\DiffAudit\Research\workspaces\implementation\2026-04-18-x115-research-runtime-platform-handoff-after-x114.md`
+- `<DIFFAUDIT_ROOT>/Research/workspaces/implementation/2026-04-18-x115-research-runtime-platform-handoff-after-x114.md`
 
 ## Handoff Decision
 

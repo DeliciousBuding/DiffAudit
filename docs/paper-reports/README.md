@@ -37,11 +37,11 @@ docs/paper-reports/
 
 This repo only defines the report content contract.
 
-Workspace-local Feishu publishing rules and commands now live outside `Research`:
+Workspace-local Feishu publishing rules and commands are operator-local surfaces outside `Research`.
 
-- `D:\Code\DiffAudit\LocalOps\feishu\README.md`
-- `D:\Code\DiffAudit\LocalOps\feishu\docs\workspace-rules.md`
-- `D:\Code\DiffAudit\LocalOps\feishu\docs\source-map.md`
+Do not treat historical `LocalOps/feishu/...` paths in old notes as a portable prerequisite.
+
+If you are working inside the full DiffAudit root workspace, start from `<DIFFAUDIT_ROOT>/Archive/LocalOps/README.md` and then follow the current machine-local publishing flow from there.
 
 Within `Research`, keep these expectations:
 

@@ -6,15 +6,15 @@ After `X-24` removed the last visible stale execution-order layer, which non-gra
 
 ## Inputs Reviewed
 
-- `D:\Code\DiffAudit\ROADMAP.md`
-- `D:\Code\DiffAudit\Research\ROADMAP.md`
-- `D:\Code\DiffAudit\Research\docs\comprehensive-progress.md`
-- `D:\Code\DiffAudit\Research\workspaces\implementation\challenger-queue.md`
-- `D:\Code\DiffAudit\Research\docs\mainline-narrative.md`
-- `D:\Code\DiffAudit\Research\workspaces\gray-box\2026-04-09-pia-provenance-dossier.md`
-- `D:\Code\DiffAudit\Research\workspaces\gray-box\2026-04-10-pia-provenance-upstream-identity-note.md`
-- `D:\Code\DiffAudit\Research\workspaces\gray-box\2026-04-10-pia-provenance-split-protocol-delta.md`
-- `D:\Code\DiffAudit\Research\workspaces\implementation\2026-04-17-x24-residual-stale-entry-cleanup-verdict.md`
+- `<DIFFAUDIT_ROOT>/ROADMAP.md`
+- `<DIFFAUDIT_ROOT>/Research/ROADMAP.md`
+- `<DIFFAUDIT_ROOT>/Research/docs/comprehensive-progress.md`
+- `<DIFFAUDIT_ROOT>/Research/workspaces/implementation/challenger-queue.md`
+- `<DIFFAUDIT_ROOT>/Research/docs/mainline-narrative.md`
+- `<DIFFAUDIT_ROOT>/Research/workspaces/gray-box/2026-04-09-pia-provenance-dossier.md`
+- `<DIFFAUDIT_ROOT>/Research/workspaces/gray-box/2026-04-10-pia-provenance-upstream-identity-note.md`
+- `<DIFFAUDIT_ROOT>/Research/workspaces/gray-box/2026-04-10-pia-provenance-split-protocol-delta.md`
+- `<DIFFAUDIT_ROOT>/Research/workspaces/implementation/2026-04-17-x24-residual-stale-entry-cleanup-verdict.md`
 
 ## Candidate Comparison
 
@@ -98,15 +98,15 @@ More precise reading:
 
 ## Canonical Evidence Anchor
 
-- `D:\Code\DiffAudit\Research\workspaces\implementation\2026-04-17-x25-next-lane-reselection-after-x24-cleanup.md`
+- `<DIFFAUDIT_ROOT>/Research/workspaces/implementation/2026-04-17-x25-next-lane-reselection-after-x24-cleanup.md`
 
 ## Handoff Decision
 
-- `D:\Code\DiffAudit\Research\ROADMAP.md`: update required
-- `D:\Code\DiffAudit\Research\docs\comprehensive-progress.md`: update required
-- `D:\Code\DiffAudit\Research\workspaces\implementation\challenger-queue.md`: update required
-- `D:\Code\DiffAudit\Research\docs\mainline-narrative.md`: update required
-- `D:\Code\DiffAudit\ROADMAP.md`: update required
+- `<DIFFAUDIT_ROOT>/Research/ROADMAP.md`: update required
+- `<DIFFAUDIT_ROOT>/Research/docs/comprehensive-progress.md`: update required
+- `<DIFFAUDIT_ROOT>/Research/workspaces/implementation/challenger-queue.md`: update required
+- `<DIFFAUDIT_ROOT>/Research/docs/mainline-narrative.md`: update required
+- `<DIFFAUDIT_ROOT>/ROADMAP.md`: update required
 - `platform_runtime_handoff = none`
 - `competition_material_sync = none`
 

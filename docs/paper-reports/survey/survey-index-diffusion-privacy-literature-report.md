@@ -22,7 +22,7 @@
 - Title: 相关文献整理
 - Authors if available: 正文未署名；PDF metadata 中 `/Author` 为 `233 Delicious`，当前报告将其视为整理者或本地生成账号，而非规范作者列表
 - Venue / year / version: 未见期刊、会议或版本声明；更像项目内部使用的索引材料；PDF metadata 创建时间为 `2026-04-04`
-- Local PDF path: `D:/Code/DiffAudit/Research/references/materials/survey/survey-index-diffusion-privacy-literature.pdf`
+- Local PDF path: `<DIFFAUDIT_ROOT>/Research/references/materials/survey/survey-index-diffusion-privacy-literature.pdf`
 - Source URL: 未在材料中给出
 
 ## Research Question

@@ -6,18 +6,18 @@ Given the already-frozen `I-C.1 / I-C.2 / I-C.3` packet shape, mask family, and 
 
 ## Inputs Reviewed
 
-- `D:\Code\DiffAudit\Research\ROADMAP.md`
-- `D:\Code\DiffAudit\Research\docs\comprehensive-progress.md`
-- `D:\Code\DiffAudit\Research\workspaces\white-box\2026-04-17-cross-permission-falsifiable-minimal-experiment.md`
-- `D:\Code\DiffAudit\Research\workspaces\white-box\2026-04-17-cross-permission-mask-selection.md`
-- `D:\Code\DiffAudit\Research\workspaces\white-box\2026-04-17-cross-permission-support-contract.md`
-- `D:\Code\DiffAudit\Research\workspaces\white-box\2026-04-17-finding-nemo-bounded-local-intervention-proposal.md`
-- `D:\Code\DiffAudit\Research\workspaces\white-box\2026-04-10-finding-nemo-activation-export-adapter-review.md`
-- `D:\Code\DiffAudit\Research\workspaces\gray-box\pia-intake-gate.md`
-- `D:\Code\DiffAudit\Research\workspaces\gray-box\2026-04-07-pia-real-asset-probe.md`
-- `D:\Code\DiffAudit\Research\src\diffaudit\attacks\gsa_observability.py`
-- `D:\Code\DiffAudit\Research\src\diffaudit\attacks\pia_adapter.py`
-- `D:\Code\DiffAudit\Research\src\diffaudit\cli.py`
+- `<DIFFAUDIT_ROOT>/Research/ROADMAP.md`
+- `<DIFFAUDIT_ROOT>/Research/docs/comprehensive-progress.md`
+- `<DIFFAUDIT_ROOT>/Research/workspaces/white-box/2026-04-17-cross-permission-falsifiable-minimal-experiment.md`
+- `<DIFFAUDIT_ROOT>/Research/workspaces/white-box/2026-04-17-cross-permission-mask-selection.md`
+- `<DIFFAUDIT_ROOT>/Research/workspaces/white-box/2026-04-17-cross-permission-support-contract.md`
+- `<DIFFAUDIT_ROOT>/Research/workspaces/white-box/2026-04-17-finding-nemo-bounded-local-intervention-proposal.md`
+- `<DIFFAUDIT_ROOT>/Research/workspaces/white-box/2026-04-10-finding-nemo-activation-export-adapter-review.md`
+- `<DIFFAUDIT_ROOT>/Research/workspaces/gray-box/pia-intake-gate.md`
+- `<DIFFAUDIT_ROOT>/Research/workspaces/gray-box/2026-04-07-pia-real-asset-probe.md`
+- `<DIFFAUDIT_ROOT>/Research/src/diffaudit/attacks/gsa_observability.py`
+- `<DIFFAUDIT_ROOT>/Research/src/diffaudit/attacks/pia_adapter.py`
+- `<DIFFAUDIT_ROOT>/Research/src/diffaudit/cli.py`
 
 ## Candidate Under Review
 

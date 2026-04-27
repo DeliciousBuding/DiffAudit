@@ -6,11 +6,11 @@ Can one final bounded CPU review rung materially improve `MoFit` score separatio
 
 ## Inputs Reviewed
 
-- `D:\Code\DiffAudit\Research\tests\test_mofit_scaffold.py`
-- `D:\Code\DiffAudit\Research\tests\test_mofit_interface_canary.py`
-- `D:\Code\DiffAudit\Research\scripts\run_mofit_interface_canary.py`
-- `D:\Code\DiffAudit\Research\workspaces\gray-box\runs\mofit-sd15-celeba-reviewrung-20260416-cpu-r2\summary.json`
-- `D:\Code\DiffAudit\Research\workspaces\gray-box\runs\mofit-sd15-celeba-reviewrung-20260416-cpu-r2\records.jsonl`
+- `<DIFFAUDIT_ROOT>/Research/tests/test_mofit_scaffold.py`
+- `<DIFFAUDIT_ROOT>/Research/tests/test_mofit_interface_canary.py`
+- `<DIFFAUDIT_ROOT>/Research/scripts/run_mofit_interface_canary.py`
+- `<DIFFAUDIT_ROOT>/Research/workspaces/gray-box/runs/mofit-sd15-celeba-reviewrung-20260416-cpu-r2/summary.json`
+- `<DIFFAUDIT_ROOT>/Research/workspaces/gray-box/runs/mofit-sd15-celeba-reviewrung-20260416-cpu-r2/records.jsonl`
 
 ## Verification
 
@@ -22,7 +22,7 @@ Regression sweep before launch:
 
 Fresh review-rung launch:
 
-- `conda run -n diffaudit-research python D:\Code\DiffAudit\Research\scripts\run_mofit_interface_canary.py --launch-profile cpu-review-rung --run-root D:\Code\DiffAudit\Research\workspaces\gray-box\runs\mofit-sd15-celeba-reviewrung-20260416-cpu-r2 --member-dir D:\Code\DiffAudit\Research\workspaces\black-box\runs\clid-paper-align-asset-prep-20260415-r1\datasets\member --nonmember-dir D:\Code\DiffAudit\Research\workspaces\black-box\runs\clid-paper-align-asset-prep-20260415-r1\datasets\nonmember --model-dir D:\Code\DiffAudit\Download\shared\weights\stable-diffusion-v1-5 --lora-dir D:\\Code\\DiffAudit\\Download\\black-box\\supplementary\\recon-assets\\ndss-2025-blackbox-membership-inference-fine-tuned-diffusion-models\model-checkpoints\celeba_partial_target\checkpoint-25000 --blip-dir D:\Code\DiffAudit\Download\shared\weights\blip-image-captioning-large`
+- `conda run -n diffaudit-research python <DIFFAUDIT_ROOT>/Research/scripts/run_mofit_interface_canary.py --launch-profile cpu-review-rung --run-root <DIFFAUDIT_ROOT>/Research/workspaces/gray-box/runs/mofit-sd15-celeba-reviewrung-20260416-cpu-r2 --member-dir <DIFFAUDIT_ROOT>/Research/workspaces/black-box/runs/clid-paper-align-asset-prep-20260415-r1/datasets/member --nonmember-dir <DIFFAUDIT_ROOT>/Research/workspaces/black-box/runs/clid-paper-align-asset-prep-20260415-r1/datasets/nonmember --model-dir <DIFFAUDIT_ROOT>/Download/shared/weights/stable-diffusion-v1-5 --lora-dir <DIFFAUDIT_ROOT>/Download/black-box/supplementary/recon-assets/ndss-2025-blackbox-membership-inference-fine-tuned-diffusion-models/model-checkpoints/celeba_partial_target/checkpoint-25000 --blip-dir <DIFFAUDIT_ROOT>/Download/shared/weights/blip-image-captioning-large`
 - final result:
   - `status = canary_executed`
   - `executed_member_count = 2`
@@ -32,7 +32,7 @@ Fresh review-rung launch:
 
 The final bounded CPU review rung now exists at:
 
-- `D:\Code\DiffAudit\Research\workspaces\gray-box\runs\mofit-sd15-celeba-reviewrung-20260416-cpu-r2`
+- `<DIFFAUDIT_ROOT>/Research/workspaces/gray-box/runs/mofit-sd15-celeba-reviewrung-20260416-cpu-r2`
 
 Execution shape:
 

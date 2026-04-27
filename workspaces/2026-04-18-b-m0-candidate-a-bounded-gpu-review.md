@@ -124,7 +124,7 @@ If shadow-LR transfer succeeds, it establishes that **white-box loss-feature att
 
 ## 7. Changelog Stub
 
-When the review closes, append one new X-series line to `D:/Code/DiffAudit/Research/ROADMAP.md` with:
+When the review closes, append one new X-series line to `<DIFFAUDIT_ROOT>/Research/ROADMAP.md` with:
 
 - review outcome
 - recommendation

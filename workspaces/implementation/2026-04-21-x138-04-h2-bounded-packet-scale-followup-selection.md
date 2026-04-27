@@ -6,11 +6,11 @@ After `X-137` confirms that `04-H2` is minimally contract-complete but still onl
 
 ## Inputs Reviewed
 
-- `D:\Code\DiffAudit\Research\workspaces\implementation\2026-04-21-x137-non-graybox-next-lane-reselection-after-x136.md`
-- `D:\Code\DiffAudit\Research\workspaces\implementation\runs\h2-run-defense-pilot-20260421-r1\summary.json`
-- `D:\Code\DiffAudit\Research\workspaces\implementation\runs\h2-review-defense-pilot-20260421-r1\summary.json`
-- `D:\Code\DiffAudit\Research\src\diffaudit\defenses\h2_adapter.py`
-- `D:\Code\DiffAudit\Research\src\diffaudit\cli.py`
+- `<DIFFAUDIT_ROOT>/Research/workspaces/implementation/2026-04-21-x137-non-graybox-next-lane-reselection-after-x136.md`
+- `<DIFFAUDIT_ROOT>/Research/workspaces/implementation/runs/h2-run-defense-pilot-20260421-r1/summary.json`
+- `<DIFFAUDIT_ROOT>/Research/workspaces/implementation/runs/h2-review-defense-pilot-20260421-r1/summary.json`
+- `<DIFFAUDIT_ROOT>/Research/src/diffaudit/defenses/h2_adapter.py`
+- `<DIFFAUDIT_ROOT>/Research/src/diffaudit/cli.py`
 
 ## Findings
 
@@ -53,7 +53,7 @@ with:
 
 ## Canonical Evidence Anchor
 
-- `D:\Code\DiffAudit\Research\workspaces\implementation\2026-04-21-x138-04-h2-bounded-packet-scale-followup-selection.md`
+- `<DIFFAUDIT_ROOT>/Research/workspaces/implementation/2026-04-21-x138-04-h2-bounded-packet-scale-followup-selection.md`
 
 ## Handoff
 

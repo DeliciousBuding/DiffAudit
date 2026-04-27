@@ -16,19 +16,19 @@ After `WB-1` removed the vague “gradient extraction may be broken” blocker a
 
 Target-member direct extraction:
 
-- `D:\Code\DiffAudit\Research\workspaces\white-box\runs\gsa-gradient-direct-attackmethod2-20260415-r2\target_member-gradients.pt`
+- `<DIFFAUDIT_ROOT>/Research/workspaces/white-box/runs/gsa-gradient-direct-attackmethod2-20260415-r2/target_member-gradients.pt`
 
 Target-nonmember direct extraction:
 
-- `D:\Code\DiffAudit\Research\workspaces\white-box\runs\gsa-gradient-direct-attackmethod2-20260415-r3\target_nonmember-gradients.pt`
+- `<DIFFAUDIT_ROOT>/Research/workspaces/white-box/runs/gsa-gradient-direct-attackmethod2-20260415-r3/target_nonmember-gradients.pt`
 
 Shadow-01-member direct extraction:
 
-- `D:\Code\DiffAudit\Research\workspaces\white-box\runs\gsa-gradient-direct-attackmethod2-20260416-shadow01-member-r1\shadow01_member-gradients.pt`
+- `<DIFFAUDIT_ROOT>/Research/workspaces/white-box/runs/gsa-gradient-direct-attackmethod2-20260416-shadow01-member-r1/shadow01_member-gradients.pt`
 
 Shadow-01-nonmember direct extraction:
 
-- `D:\Code\DiffAudit\Research\workspaces\white-box\runs\gsa-gradient-direct-attackmethod2-20260416-shadow01-nonmember-r1\shadow01_nonmember-gradients.pt`
+- `<DIFFAUDIT_ROOT>/Research/workspaces/white-box/runs/gsa-gradient-direct-attackmethod2-20260416-shadow01-nonmember-r1/shadow01_nonmember-gradients.pt`
 
 Shared canary contract:
 

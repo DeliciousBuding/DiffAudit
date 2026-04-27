@@ -10,14 +10,14 @@ After `I-C.14` closed the current translated cross-permission packet as `negativ
 
 ## Inputs Reviewed
 
-- `D:\Code\DiffAudit\Research\ROADMAP.md`
-- `D:\Code\DiffAudit\Research\docs\comprehensive-progress.md`
-- `D:\Code\DiffAudit\Research\workspaces\black-box\plan.md`
-- `D:\Code\DiffAudit\Research\workspaces\white-box\plan.md`
-- `D:\Code\DiffAudit\Research\workspaces\black-box\2026-04-17-blackbox-next-family-candidate-generation-refresh-review.md`
-- `D:\Code\DiffAudit\Research\workspaces\white-box\2026-04-17-whitebox-post-breadth-next-hypothesis-selection-review.md`
-- `D:\Code\DiffAudit\Research\workspaces\implementation\2026-04-16-crossbox-agreement-analysis-refresh.md`
-- `D:\Code\DiffAudit\Research\workspaces\white-box\2026-04-17-cross-permission-translated-falsifier-review.md`
+- `<DIFFAUDIT_ROOT>/Research/ROADMAP.md`
+- `<DIFFAUDIT_ROOT>/Research/docs/comprehensive-progress.md`
+- `<DIFFAUDIT_ROOT>/Research/workspaces/black-box/plan.md`
+- `<DIFFAUDIT_ROOT>/Research/workspaces/white-box/plan.md`
+- `<DIFFAUDIT_ROOT>/Research/workspaces/black-box/2026-04-17-blackbox-next-family-candidate-generation-refresh-review.md`
+- `<DIFFAUDIT_ROOT>/Research/workspaces/white-box/2026-04-17-whitebox-post-breadth-next-hypothesis-selection-review.md`
+- `<DIFFAUDIT_ROOT>/Research/workspaces/implementation/2026-04-16-crossbox-agreement-analysis-refresh.md`
+- `<DIFFAUDIT_ROOT>/Research/workspaces/white-box/2026-04-17-cross-permission-translated-falsifier-review.md`
 
 ## Candidate Review
 

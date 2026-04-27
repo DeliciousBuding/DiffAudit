@@ -17,15 +17,15 @@ If the service applies a mild deployment-side served-image sanitization before r
 
 Primary mitigation probe:
 
-- `D:\Code\DiffAudit\Research\workspaces\black-box\runs\clid-served-image-sanitization-probe-20260415-r1\summary.json`
+- `<DIFFAUDIT_ROOT>/Research/workspaces/black-box/runs/clid-served-image-sanitization-probe-20260415-r1/summary.json`
 
 Frozen local baseline:
 
-- `D:\Code\DiffAudit\Research\workspaces\black-box\runs\clid-recon-clip-target100-20260415-r1\summary.json`
+- `<DIFFAUDIT_ROOT>/Research/workspaces/black-box/runs/clid-recon-clip-target100-20260415-r1/summary.json`
 
 Supporting preparation script:
 
-- `D:\Code\DiffAudit\Research\scripts\prepare_clid_sanitized_probe.py`
+- `<DIFFAUDIT_ROOT>/Research/scripts/prepare_clid_sanitized_probe.py`
 
 ## Probe Configuration
 

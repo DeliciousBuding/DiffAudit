@@ -22,7 +22,7 @@
 - Title: DIFFENCE: Fencing Membership Privacy With Diffusion Models
 - Authors: Yuefeng Peng, Ali Naseh, Amir Houmansadr
 - Venue / year / version: NDSS 2025 conference paper; PDF metadata 同时标记 `arXiv:2312.04692v3`
-- Local PDF path: `D:/Code/DiffAudit/Research/references/materials/survey/2025-ndss-diffence-fencing-membership-privacy-diffusion-models.pdf`
+- Local PDF path: `<DIFFAUDIT_ROOT>/Research/references/materials/survey/2025-ndss-diffence-fencing-membership-privacy-diffusion-models.pdf`
 - Source URL: [https://doi.org/10.14722/ndss.2025.230298](https://doi.org/10.14722/ndss.2025.230298)
 
 ## Research Question

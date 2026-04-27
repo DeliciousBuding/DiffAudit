@@ -90,7 +90,7 @@
       ],
       "best_candidate": "mean_cos",
       "best_auc_gain_vs_mean_cos": 0.0,
-      "records_path": "D:/Code/DiffAudit/Research/workspaces/black-box/runs/semantic-aux-classifier-comparator-20260415-r1/outputs/records.json"
+      "records_path": "<DIFFAUDIT_ROOT>/Research/workspaces/black-box/runs/semantic-aux-classifier-comparator-20260415-r1/outputs/records.json"
     },
     {
       "sample_count": 64,
@@ -177,7 +177,7 @@
       ],
       "best_candidate": "cosine_pair_zmean",
       "best_auc_gain_vs_mean_cos": 0.001953,
-      "records_path": "D:/Code/DiffAudit/Research/workspaces/black-box/runs/semantic-aux-classifier-comparator-20260416-r2/outputs/records.json"
+      "records_path": "<DIFFAUDIT_ROOT>/Research/workspaces/black-box/runs/semantic-aux-classifier-comparator-20260416-r2/outputs/records.json"
     }
   ],
   "overall": {

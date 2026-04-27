@@ -16,12 +16,12 @@ On the current local `semantic-auxiliary-classifier` target-family outputs, does
 
 Primary run artifact:
 
-- `D:\Code\DiffAudit\Research\workspaces\black-box\runs\prompt-response-consistency-20260416-r1\summary.json`
+- `<DIFFAUDIT_ROOT>/Research/workspaces/black-box/runs/prompt-response-consistency-20260416-r1/summary.json`
 
 Input artifacts reused:
 
-- `D:\Code\DiffAudit\Research\workspaces\black-box\runs\semantic-aux-classifier-comparator-20260416-r2\outputs\records.json`
-- `D:\Code\DiffAudit\Research\workspaces\black-box\runs\semantic-aux-classifier-comparator-20260416-r2\outputs\generated`
+- `<DIFFAUDIT_ROOT>/Research/workspaces/black-box/runs/semantic-aux-classifier-comparator-20260416-r2/outputs/records.json`
+- `<DIFFAUDIT_ROOT>/Research/workspaces/black-box/runs/semantic-aux-classifier-comparator-20260416-r2/outputs/generated`
 
 ## Metrics
 

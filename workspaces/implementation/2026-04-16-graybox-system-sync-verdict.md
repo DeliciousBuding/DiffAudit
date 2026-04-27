@@ -15,17 +15,17 @@ After the recent `TMIA-DM` breakthrough, are the unified comparison artifacts st
 
 Primary sync targets:
 
-- `D:\Code\DiffAudit\Research\workspaces\implementation\2026-04-08-unified-attack-defense-table.md`
-- `D:\Code\DiffAudit\Research\workspaces\implementation\artifacts\unified-attack-defense-table.json`
+- `<DIFFAUDIT_ROOT>/Research/workspaces/implementation/2026-04-08-unified-attack-defense-table.md`
+- `<DIFFAUDIT_ROOT>/Research/workspaces/implementation/artifacts/unified-attack-defense-table.json`
 
 Gray-box reference anchors:
 
-- `D:\Code\DiffAudit\Research\workspaces\gray-box\2026-04-16-tmiadm-gpu-repeat-verdict.md`
-- `D:\Code\DiffAudit\Research\workspaces\gray-box\2026-04-16-tmiadm-gpu256-repeat-verdict.md`
-- `D:\Code\DiffAudit\Research\workspaces\gray-box\2026-04-16-tmiadm-dropout-defense-repeat-verdict.md`
-- `D:\Code\DiffAudit\Research\workspaces\gray-box\2026-04-16-tmiadm-dropout-defense-gpu256-repeat-verdict.md`
-- `D:\Code\DiffAudit\Research\workspaces\gray-box\2026-04-16-pia-vs-tmiadm-operating-point-comparison.md`
-- `D:\Code\DiffAudit\Research\workspaces\gray-box\2026-04-16-pia-vs-tmiadm-defended-operating-point-comparison.md`
+- `<DIFFAUDIT_ROOT>/Research/workspaces/gray-box/2026-04-16-tmiadm-gpu-repeat-verdict.md`
+- `<DIFFAUDIT_ROOT>/Research/workspaces/gray-box/2026-04-16-tmiadm-gpu256-repeat-verdict.md`
+- `<DIFFAUDIT_ROOT>/Research/workspaces/gray-box/2026-04-16-tmiadm-dropout-defense-repeat-verdict.md`
+- `<DIFFAUDIT_ROOT>/Research/workspaces/gray-box/2026-04-16-tmiadm-dropout-defense-gpu256-repeat-verdict.md`
+- `<DIFFAUDIT_ROOT>/Research/workspaces/gray-box/2026-04-16-pia-vs-tmiadm-operating-point-comparison.md`
+- `<DIFFAUDIT_ROOT>/Research/workspaces/gray-box/2026-04-16-pia-vs-tmiadm-defended-operating-point-comparison.md`
 
 ## Verdict
 

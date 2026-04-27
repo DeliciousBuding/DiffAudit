@@ -13,15 +13,15 @@
 
 ```powershell
 conda run -n diffaudit-research python -m diffaudit run-dpdm-w1-shadow-comparator `
-  --workspace D:\Code\DiffAudit\Research\workspaces\white-box\runs\dpdm-w1-shadow-comparator-20260408 `
-  --target-checkpoint-path D:\Code\DiffAudit\Research\external\DPDM\runs\dpdm-cifar10-32-eps10-gpu-smoke-v7\checkpoints\final_checkpoint.pth `
-  --shadow-checkpoint-path D:\Code\DiffAudit\Research\external\DPDM\runs\dpdm-cifar10-shadow01-eps10-gpu-smoke-v1\checkpoints\final_checkpoint.pth `
-  --target-member-dataset-dir D:\Code\DiffAudit\Research\workspaces\white-box\assets\gsa-cifar10-1k-3shadow\datasets\target-member `
-  --target-nonmember-dataset-dir D:\Code\DiffAudit\Research\workspaces\white-box\assets\gsa-cifar10-1k-3shadow\datasets\target-nonmember `
-  --shadow-member-dataset-dir D:\Code\DiffAudit\Research\workspaces\white-box\assets\gsa-cifar10-1k-3shadow\datasets\shadow-01-member `
-  --shadow-nonmember-dataset-dir D:\Code\DiffAudit\Research\workspaces\white-box\assets\gsa-cifar10-1k-3shadow\datasets\shadow-01-nonmember `
-  --dpdm-root D:\Code\DiffAudit\Research\external\DPDM `
-  --config-path D:\Code\DiffAudit\Research\external\DPDM\configs\cifar10_32\train_eps_10.0.yaml `
+  --workspace <DIFFAUDIT_ROOT>/Research/workspaces/white-box/runs/dpdm-w1-shadow-comparator-20260408 `
+  --target-checkpoint-path <DIFFAUDIT_ROOT>/Research/external/DPDM/runs/dpdm-cifar10-32-eps10-gpu-smoke-v7/checkpoints/final_checkpoint.pth `
+  --shadow-checkpoint-path <DIFFAUDIT_ROOT>/Research/external/DPDM/runs/dpdm-cifar10-shadow01-eps10-gpu-smoke-v1/checkpoints/final_checkpoint.pth `
+  --target-member-dataset-dir <DIFFAUDIT_ROOT>/Research/workspaces/white-box/assets/gsa-cifar10-1k-3shadow/datasets/target-member `
+  --target-nonmember-dataset-dir <DIFFAUDIT_ROOT>/Research/workspaces/white-box/assets/gsa-cifar10-1k-3shadow/datasets/target-nonmember `
+  --shadow-member-dataset-dir <DIFFAUDIT_ROOT>/Research/workspaces/white-box/assets/gsa-cifar10-1k-3shadow/datasets/shadow-01-member `
+  --shadow-nonmember-dataset-dir <DIFFAUDIT_ROOT>/Research/workspaces/white-box/assets/gsa-cifar10-1k-3shadow/datasets/shadow-01-nonmember `
+  --dpdm-root <DIFFAUDIT_ROOT>/Research/external/DPDM `
+  --config-path <DIFFAUDIT_ROOT>/Research/external/DPDM/configs/cifar10_32/train_eps_10.0.yaml `
   --device cuda `
   --sigma-points 4 `
   --max-samples 64

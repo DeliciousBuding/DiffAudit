@@ -6,13 +6,13 @@ Now that bounded same-asset loss-score export is real, what is the first honest 
 
 ## Inputs Reviewed
 
-- `D:\Code\DiffAudit\Research\workspaces\implementation\2026-04-18-x74-whitebox-bounded-internal-loss-score-export-implementation-after-x73-surface-review.md`
-- `D:\Code\DiffAudit\Research\workspaces\white-box\runs\gsa-loss-score-export-bounded-smoke-20260418-r1\summary.json`
-- `D:\Code\DiffAudit\Research\src\diffaudit\attacks\pia_adapter.py`
-- `D:\Code\DiffAudit\Research\src\diffaudit\attacks\recon.py`
-- `D:\Code\DiffAudit\Research\src\diffaudit\defenses\dpdm_w1.py`
-- `D:\Code\DiffAudit\Research\docs\paper-reports\ocr\white-box\2025-popets-white-box-membership-inference-diffusion-models\pages\page-0016.md`
-- `D:\Code\DiffAudit\Research\docs\paper-reports\ocr\white-box\2025-popets-white-box-membership-inference-diffusion-models\pages\page-0017.md`
+- `<DIFFAUDIT_ROOT>/Research/workspaces/implementation/2026-04-18-x74-whitebox-bounded-internal-loss-score-export-implementation-after-x73-surface-review.md`
+- `<DIFFAUDIT_ROOT>/Research/workspaces/white-box/runs/gsa-loss-score-export-bounded-smoke-20260418-r1/summary.json`
+- `<DIFFAUDIT_ROOT>/Research/src/diffaudit/attacks/pia_adapter.py`
+- `<DIFFAUDIT_ROOT>/Research/src/diffaudit/attacks/recon.py`
+- `<DIFFAUDIT_ROOT>/Research/src/diffaudit/defenses/dpdm_w1.py`
+- `<DIFFAUDIT_ROOT>/Research/docs/paper-reports/ocr/white-box/2025-popets-white-box-membership-inference-diffusion-models/pages/page-0016.md`
+- `<DIFFAUDIT_ROOT>/Research/docs/paper-reports/ocr/white-box/2025-popets-white-box-membership-inference-diffusion-models/pages/page-0017.md`
 
 ## Packet Selection Review
 

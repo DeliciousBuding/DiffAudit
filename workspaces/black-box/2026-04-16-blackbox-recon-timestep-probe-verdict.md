@@ -16,11 +16,11 @@ Given the current local `recon DDIM public-100 step30` score artifacts, does a b
 
 Primary run artifact:
 
-- `D:\Code\DiffAudit\Research\workspaces\black-box\runs\recon-timestep-probe-20260416-r1\summary.json`
+- `<DIFFAUDIT_ROOT>/Research/workspaces/black-box/runs/recon-timestep-probe-20260416-r1/summary.json`
 
 Source artifacts:
 
-- `D:\Code\DiffAudit\Research\experiments\recon-runtime-mainline-ddim-public-100-step30\score-artifacts`
+- `<DIFFAUDIT_ROOT>/Research/experiments/recon-runtime-mainline-ddim-public-100-step30/score-artifacts`
 
 ## Observed Structure
 

@@ -1,7 +1,7 @@
 # Defending Diffusion Models Against Membership Inference Attacks via Higher-Order Langevin Dynamics
 
 - Title: Defending Diffusion Models Against Membership Inference Attacks via Higher-Order Langevin Dynamics
-- Material Path: `D:/Code/DiffAudit/Research/references/materials/survey/2025-arxiv-defending-diffusion-models-membership-inference-higher-order-langevin-dynamics.pdf`
+- Material Path: `<DIFFAUDIT_ROOT>/Research/references/materials/survey/2025-arxiv-defending-diffusion-models-membership-inference-higher-order-langevin-dynamics.pdf`
 - Primary Track: `survey`
 - Venue / Year: `arXiv 2025 (v2; submitted to IEEE according to the PDF front matter)`
 - Threat Model Category: `Defense against gray-box membership inference on diffusion models, centered on PIA-style score access`
@@ -22,7 +22,7 @@
 - Title: Defending Diffusion Models Against Membership Inference Attacks via Higher-Order Langevin Dynamics
 - Authors: Benjamin Sterling, Yousef El-Laham, Monica F. Bugallo
 - Venue / year / version: arXiv preprint, 2025, arXiv:2509.14225v2
-- Local PDF path: `D:/Code/DiffAudit/Research/references/materials/survey/2025-arxiv-defending-diffusion-models-membership-inference-higher-order-langevin-dynamics.pdf`
+- Local PDF path: `<DIFFAUDIT_ROOT>/Research/references/materials/survey/2025-arxiv-defending-diffusion-models-membership-inference-higher-order-langevin-dynamics.pdf`
 - Source URL: `https://arxiv.org/abs/2509.14225` ; DOI metadata inside PDF points to `https://doi.org/10.48550/arXiv.2509.14225`
 
 ## Research Question

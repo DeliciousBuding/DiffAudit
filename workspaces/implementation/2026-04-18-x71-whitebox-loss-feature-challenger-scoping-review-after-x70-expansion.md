@@ -6,14 +6,14 @@ Does the restored `WB-CH-4 white-box loss-feature challenger family` contain one
 
 ## Inputs Reviewed
 
-- `D:\Code\DiffAudit\Research\workspaces\implementation\2026-04-18-x70-non-graybox-candidate-surface-expansion-after-x69-reselection.md`
-- `D:\Code\DiffAudit\Research\workspaces\white-box\plan.md`
-- `D:\Code\DiffAudit\Research\workspaces\white-box\2026-04-17-distinct-whitebox-defended-family-import-selection-review.md`
-- `D:\Code\DiffAudit\Research\docs\paper-reports\white-box\2025-popets-white-box-membership-inference-diffusion-models-report.md`
-- `D:\Code\DiffAudit\Research\docs\paper-reports\ocr\white-box\2025-popets-white-box-membership-inference-diffusion-models\pages\page-0016.md`
-- `D:\Code\DiffAudit\Research\docs\paper-reports\ocr\white-box\2025-popets-white-box-membership-inference-diffusion-models\pages\page-0017.md`
-- `D:\Code\DiffAudit\Research\docs\paper-reports\survey\2025-aaai-privacy-preserving-lora-membership-inference-latent-diffusion-models-report.md`
-- `D:\Code\DiffAudit\Research\workspaces\white-box\external\GSA\DDPM\gen_l2_gradients_DDPM.py`
+- `<DIFFAUDIT_ROOT>/Research/workspaces/implementation/2026-04-18-x70-non-graybox-candidate-surface-expansion-after-x69-reselection.md`
+- `<DIFFAUDIT_ROOT>/Research/workspaces/white-box/plan.md`
+- `<DIFFAUDIT_ROOT>/Research/workspaces/white-box/2026-04-17-distinct-whitebox-defended-family-import-selection-review.md`
+- `<DIFFAUDIT_ROOT>/Research/docs/paper-reports/white-box/2025-popets-white-box-membership-inference-diffusion-models-report.md`
+- `<DIFFAUDIT_ROOT>/Research/docs/paper-reports/ocr/white-box/2025-popets-white-box-membership-inference-diffusion-models/pages/page-0016.md`
+- `<DIFFAUDIT_ROOT>/Research/docs/paper-reports/ocr/white-box/2025-popets-white-box-membership-inference-diffusion-models/pages/page-0017.md`
+- `<DIFFAUDIT_ROOT>/Research/docs/paper-reports/survey/2025-aaai-privacy-preserving-lora-membership-inference-latent-diffusion-models-report.md`
+- `<DIFFAUDIT_ROOT>/Research/workspaces/white-box/external/GSA/DDPM/gen_l2_gradients_DDPM.py`
 
 ## Scoping Review
 

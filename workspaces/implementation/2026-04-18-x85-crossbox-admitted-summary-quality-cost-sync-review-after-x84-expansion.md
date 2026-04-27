@@ -16,7 +16,7 @@ The admitted summary should explicitly expose `Evidence Level` and `Quality / Co
 
 ## Canonical evidence anchor
 
-- `D:\Code\DiffAudit\Research\docs\admitted-results-summary.md`
+- `<DIFFAUDIT_ROOT>/Research/docs/admitted-results-summary.md`
 
 ## What changed
 

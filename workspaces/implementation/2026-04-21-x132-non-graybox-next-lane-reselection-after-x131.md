@@ -6,14 +6,14 @@ After `X-131` cleared the remaining active stale-entry layer, what is the highes
 
 ## Inputs Reviewed
 
-- `D:\Code\DiffAudit\Research\ROADMAP.md`
-- `D:\Code\DiffAudit\Research\workspaces\implementation\challenger-queue.md`
-- `D:\Code\DiffAudit\Research\workspaces\implementation\2026-04-21-x119-04-h2-canonical-contract-hardening.md`
-- `D:\Code\DiffAudit\Research\src\diffaudit\defenses\lora_ddpm.py`
-- `D:\Code\DiffAudit\Research\src\diffaudit\defenses\smp_lora.py`
-- `D:\Code\DiffAudit\Research\scripts\train_smp_lora.py`
-- `D:\Code\DiffAudit\Research\tests\test_lora_smoke.py`
-- `D:\Code\DiffAudit\Research\tests\test_smp_lora_runtime_tuning.py`
+- `<DIFFAUDIT_ROOT>/Research/ROADMAP.md`
+- `<DIFFAUDIT_ROOT>/Research/workspaces/implementation/challenger-queue.md`
+- `<DIFFAUDIT_ROOT>/Research/workspaces/implementation/2026-04-21-x119-04-h2-canonical-contract-hardening.md`
+- `<DIFFAUDIT_ROOT>/Research/src/diffaudit/defenses/lora_ddpm.py`
+- `<DIFFAUDIT_ROOT>/Research/src/diffaudit/defenses/smp_lora.py`
+- `<DIFFAUDIT_ROOT>/Research/scripts/train_smp_lora.py`
+- `<DIFFAUDIT_ROOT>/Research/tests/test_lora_smoke.py`
+- `<DIFFAUDIT_ROOT>/Research/tests/test_smp_lora_runtime_tuning.py`
 
 ## Findings
 
@@ -62,7 +62,7 @@ Sharper control truth:
 
 ## Canonical Evidence Anchor
 
-- `D:\Code\DiffAudit\Research\workspaces\implementation\2026-04-21-x132-non-graybox-next-lane-reselection-after-x131.md`
+- `<DIFFAUDIT_ROOT>/Research/workspaces/implementation/2026-04-21-x132-non-graybox-next-lane-reselection-after-x131.md`
 
 ## Handoff
 

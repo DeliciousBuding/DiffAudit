@@ -30,17 +30,23 @@ python scripts/bootstrap_research_env.py --install
 
 如果你用的是较新的 NVIDIA GPU，并且在默认环境里已经遇到 `no kernel image is available for execution on the device`，再把上面的 `environment.yml` 换成 `environment.gpu-cu128.yml` 重试；普通接仓不要默认改共享入口。
 
+如果你想直接复用下面文档里的 PowerShell 示例，也可以先在当前 shell 里设置：
+
+```powershell
+$env:DIFFAUDIT_ROOT = Split-Path -Parent (Resolve-Path .)
+```
+
 ## 2. 本地资产模板
 
 默认目录布局是：
 
 ```text
-D:\Code\DiffAudit\
+<DIFFAUDIT_ROOT>\
   Research\        # this git repo
   Download\        # raw datasets / weights / supplementary bundles
 ```
 
-`Download\` 不属于 git 仓库。新机器要么从项目资产镜像复制整个 `Download\`，要么按 [research-download-master-list.md](research-download-master-list.md) 的 first-wave 顺序下载。不要把这些大文件放回 `Research\external\`。
+`<DIFFAUDIT_ROOT>` 是你自己机器上的项目根目录，比如 `C:\Users\<you>\DiffAudit`、`D:\Projects\DiffAudit` 或 Linux/macOS 上的任意工作目录。`Download\` 不属于 git 仓库。新机器要么从项目资产镜像复制整个 `Download\`，要么按 [research-download-master-list.md](research-download-master-list.md) 的 first-wave 顺序下载。不要把这些大文件放回 `Research\external\`。
 
 不要直接改共享配置里的占位符。
 
@@ -79,8 +85,8 @@ python scripts/render_team_local_configs.py
 conda run -n diffaudit-research python -m diffaudit plan-recon --config configs/attacks/recon_plan.yaml
 conda run -n diffaudit-research python -m diffaudit plan-variation --config configs/attacks/variation_plan.yaml
 conda run -n diffaudit-research python -m diffaudit run-variation-synth-smoke --workspace experiments/variation-synth-smoke-local
-conda run -n diffaudit-research python -m diffaudit audit-recon-public-bundle --bundle-root D:\Code\DiffAudit\Download\black-box\supplementary\recon-assets\ndss-2025-blackbox-membership-inference-fine-tuned-diffusion-models
-python scripts/init_variation_query_set.py --root D:/path/to/variation-query-set
+conda run -n diffaudit-research python -m diffaudit audit-recon-public-bundle --bundle-root "$env:DIFFAUDIT_ROOT\Download\black-box\supplementary\recon-assets\ndss-2025-blackbox-membership-inference-fine-tuned-diffusion-models"
+python scripts/init_variation_query_set.py --root /absolute/path/to/variation-query-set
 ```
 
 ### 灰盒
@@ -124,6 +130,4 @@ conda run -n diffaudit-research python -m diffaudit probe-gsa-assets --repo-root
 4. 黑盒入口里误用 `SecMI`，它属于灰盒 baseline。
 5. `TMIA-DM` 已归档但属于灰盒候选，不要把它写成黑盒主线。
 6. `variation` 的真实恢复首先缺 query image set，不是先缺 API 代码。
-7. `D:\Code\DiffAudit\Download\manifests\research-download-manifest.json` 是本机 manifest；真正随仓库走的是 [research-download-master-list.md](research-download-master-list.md) 和 [data-and-assets-handoff.md](data-and-assets-handoff.md)。
-
-
+7. `<DIFFAUDIT_ROOT>\Download\manifests\research-download-manifest.json` 是本机 manifest；真正随仓库走的是 [research-download-master-list.md](research-download-master-list.md) 和 [data-and-assets-handoff.md](data-and-assets-handoff.md)。

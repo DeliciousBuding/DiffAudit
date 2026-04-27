@@ -6,11 +6,11 @@ After the first valid `2x2 / 2+4 / cpu` `MoFit` micro-rung, does the score shape
 
 ## Inputs Reviewed
 
-- `D:\Code\DiffAudit\Research\workspaces\gray-box\runs\mofit-sd15-celeba-microrung-20260416-cpu-r2\summary.json`
-- `D:\Code\DiffAudit\Research\workspaces\gray-box\runs\mofit-sd15-celeba-microrung-20260416-cpu-r2\records.jsonl`
-- `D:\Code\DiffAudit\Research\workspaces\gray-box\runs\mofit-sd15-celeba-microrung-20260416-cpu-r2\traces\embedding\member-000.json`
-- `D:\Code\DiffAudit\Research\workspaces\gray-box\runs\mofit-sd15-celeba-microrung-20260416-cpu-r2\traces\embedding\nonmember-000.json`
-- `D:\Code\DiffAudit\Research\workspaces\gray-box\2026-04-16-mofit-cpu-microrung-design.md`
+- `<DIFFAUDIT_ROOT>/Research/workspaces/gray-box/runs/mofit-sd15-celeba-microrung-20260416-cpu-r2/summary.json`
+- `<DIFFAUDIT_ROOT>/Research/workspaces/gray-box/runs/mofit-sd15-celeba-microrung-20260416-cpu-r2/records.jsonl`
+- `<DIFFAUDIT_ROOT>/Research/workspaces/gray-box/runs/mofit-sd15-celeba-microrung-20260416-cpu-r2/traces/embedding/member-000.json`
+- `<DIFFAUDIT_ROOT>/Research/workspaces/gray-box/runs/mofit-sd15-celeba-microrung-20260416-cpu-r2/traces/embedding/nonmember-000.json`
+- `<DIFFAUDIT_ROOT>/Research/workspaces/gray-box/2026-04-16-mofit-cpu-microrung-design.md`
 
 ## What The Micro-Rung Shows
 

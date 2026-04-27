@@ -6,10 +6,10 @@ Can the `MoFit` lane now tighten the first-launch budget in code so the default 
 
 ## Inputs Reviewed
 
-- `D:\Code\DiffAudit\Research\tests\test_mofit_interface_canary.py`
-- `D:\Code\DiffAudit\Research\tests\test_mofit_scaffold.py`
-- `D:\Code\DiffAudit\Research\scripts\run_mofit_interface_canary.py`
-- `D:\Code\DiffAudit\Research\workspaces\gray-box\2026-04-16-mofit-real-asset-canary-launch-gate-review.md`
+- `<DIFFAUDIT_ROOT>/Research/tests/test_mofit_interface_canary.py`
+- `<DIFFAUDIT_ROOT>/Research/tests/test_mofit_scaffold.py`
+- `<DIFFAUDIT_ROOT>/Research/scripts/run_mofit_interface_canary.py`
+- `<DIFFAUDIT_ROOT>/Research/workspaces/gray-box/2026-04-16-mofit-real-asset-canary-launch-gate-review.md`
 
 ## Verification
 

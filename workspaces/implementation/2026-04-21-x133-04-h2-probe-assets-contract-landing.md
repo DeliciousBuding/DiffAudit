@@ -6,14 +6,14 @@ Can `04-H2 privacy-aware adapter` land the first canonical `diffaudit` contract 
 
 ## Inputs Reviewed
 
-- `D:\Code\DiffAudit\Research\workspaces\implementation\2026-04-21-x119-04-h2-canonical-contract-hardening.md`
-- `D:\Code\DiffAudit\Research\src\diffaudit\defenses\h2_adapter.py`
-- `D:\Code\DiffAudit\Research\src\diffaudit\cli.py`
-- `D:\Code\DiffAudit\Research\tests\test_h2_adapter.py`
-- `D:\Code\DiffAudit\Research\workspaces\white-box\assets\gsa-cifar10-1k-3shadow-epoch300-rerun1\checkpoints\target`
-- `D:\Code\DiffAudit\Research\workspaces\white-box\assets\gsa-cifar10-1k-3shadow-epoch300-rerun1\datasets\target-member`
-- `D:\Code\DiffAudit\Research\workspaces\white-box\assets\gsa-cifar10-1k-3shadow-epoch300-rerun1\datasets\target-nonmember`
-- `D:\Code\DiffAudit\Research\workspaces\implementation\runs\h2-probe-assets-20260421-r1\summary.json`
+- `<DIFFAUDIT_ROOT>/Research/workspaces/implementation/2026-04-21-x119-04-h2-canonical-contract-hardening.md`
+- `<DIFFAUDIT_ROOT>/Research/src/diffaudit/defenses/h2_adapter.py`
+- `<DIFFAUDIT_ROOT>/Research/src/diffaudit/cli.py`
+- `<DIFFAUDIT_ROOT>/Research/tests/test_h2_adapter.py`
+- `<DIFFAUDIT_ROOT>/Research/workspaces/white-box/assets/gsa-cifar10-1k-3shadow-epoch300-rerun1/checkpoints/target`
+- `<DIFFAUDIT_ROOT>/Research/workspaces/white-box/assets/gsa-cifar10-1k-3shadow-epoch300-rerun1/datasets/target-member`
+- `<DIFFAUDIT_ROOT>/Research/workspaces/white-box/assets/gsa-cifar10-1k-3shadow-epoch300-rerun1/datasets/target-nonmember`
+- `<DIFFAUDIT_ROOT>/Research/workspaces/implementation/runs/h2-probe-assets-20260421-r1/summary.json`
 
 ## Findings
 
@@ -60,7 +60,7 @@ It still lacks:
 
 ## Canonical Evidence Anchor
 
-- `D:\Code\DiffAudit\Research\workspaces\implementation\runs\h2-probe-assets-20260421-r1\summary.json`
+- `<DIFFAUDIT_ROOT>/Research/workspaces/implementation/runs/h2-probe-assets-20260421-r1/summary.json`
 
 ## Control Decision
 

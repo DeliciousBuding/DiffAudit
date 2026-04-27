@@ -3,8 +3,8 @@
   "track": "black-box",
   "method_family": "prompt-response-consistency",
   "device": "cpu",
-  "records_source": "D:/Code/DiffAudit/Research/workspaces/black-box/runs/semantic-aux-classifier-comparator-20260416-r2/outputs/records.json",
-  "generated_dir": "D:/Code/DiffAudit/Research/workspaces/black-box/runs/semantic-aux-classifier-comparator-20260416-r2/outputs/generated",
+  "records_source": "<DIFFAUDIT_ROOT>/Research/workspaces/black-box/runs/semantic-aux-classifier-comparator-20260416-r2/outputs/records.json",
+  "generated_dir": "<DIFFAUDIT_ROOT>/Research/workspaces/black-box/runs/semantic-aux-classifier-comparator-20260416-r2/outputs/generated",
   "metrics": {
     "auc": 0.481445,
     "asr": 0.578125,

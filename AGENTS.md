@@ -1,6 +1,6 @@
 # Research AGENTS
 
-This file is the repository-level operating guide for `D:\Code\DiffAudit\Research`.
+This file is the repository-level operating guide for `Research/` under `<DIFFAUDIT_ROOT>`.
 
 It is written for:
 
@@ -62,14 +62,14 @@ This is the canonical fresh-session startup sequence.
 
 When entering this repository, always read in this order:
 
-1. `D:\Code\DiffAudit\ROADMAP.md`
-2. `D:\Code\DiffAudit\Research\ROADMAP.md`
-3. `D:\Code\DiffAudit\Research\AGENTS.md`
-4. `D:\Code\DiffAudit\Research\docs\researcher-agent-architecture.md`
-5. `D:\Code\DiffAudit\Research\README.md`
-6. `D:\Code\DiffAudit\Research\docs\comprehensive-progress.md`
-7. `D:\Code\DiffAudit\Research\docs\report-bundles\gpt54\round2-results` if the current task depends on GPT-5.4 raw round-2 reports; consult `D:\Code\DiffAudit\Research\docs\report-bundles\gpt54\round1-results` when first-round context is needed
-8. `D:\\Code\\DiffAudit\\Download\\manifests\research-download-manifest.json`
+1. `<DIFFAUDIT_ROOT>/ROADMAP.md`
+2. `<DIFFAUDIT_ROOT>/Research/ROADMAP.md`
+3. `<DIFFAUDIT_ROOT>/Research/AGENTS.md`
+4. `<DIFFAUDIT_ROOT>/Research/docs/researcher-agent-architecture.md`
+5. `<DIFFAUDIT_ROOT>/Research/README.md`
+6. `<DIFFAUDIT_ROOT>/Research/docs/comprehensive-progress.md`
+7. `<DIFFAUDIT_ROOT>/Research/docs/report-bundles/gpt54/round2-results` if the current task depends on GPT-5.4 raw round-2 reports; consult `<DIFFAUDIT_ROOT>/Research/docs/report-bundles/gpt54/round1-results` when first-round context is needed
+8. `<DIFFAUDIT_ROOT>/Download/manifests/research-download-manifest.json`
 9. the relevant workspace README or plan if the task is already lane-specific
 
 Do not start by editing code blindly.
@@ -329,11 +329,11 @@ Artifact contract:
 
 When a meaningful result, blocker, or strategic judgment changes, sync at least:
 
-- `D:\Code\DiffAudit\ROADMAP.md` if root-level story changes
-- `D:\Code\DiffAudit\Research\ROADMAP.md`
-- `D:\Code\DiffAudit\Research\AGENTS.md` if operating discipline changes
-- `D:\Code\DiffAudit\Research\docs\comprehensive-progress.md`
-- `D:\Code\DiffAudit\Research\docs\reproduction-status.md`
+- `<DIFFAUDIT_ROOT>/ROADMAP.md` if root-level story changes
+- `<DIFFAUDIT_ROOT>/Research/ROADMAP.md`
+- `<DIFFAUDIT_ROOT>/Research/AGENTS.md` if operating discipline changes
+- `<DIFFAUDIT_ROOT>/Research/docs/comprehensive-progress.md`
+- `<DIFFAUDIT_ROOT>/Research/docs/reproduction-status.md`
 - relevant workspace docs or notes
 
 If a result changes Platform- or Runtime-facing interpretation, sync that explicitly instead of assuming someone else will notice.

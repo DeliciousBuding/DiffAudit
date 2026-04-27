@@ -12,14 +12,16 @@
 默认目录布局是：
 
 ```text
-D:\Code\DiffAudit\
+<DIFFAUDIT_ROOT>\
   Research\        # this git repo
   Download\        # local raw datasets / weights / supplementary bundles
 ```
 
 `Download\` 不进 `Research` git 仓库。它是本机原始资产层，原因是这里会放大文件、许可受限文件、可重新下载的权重和压缩包。
 
-如果你的机器不使用 `D:\Code\DiffAudit\`，也可以换成自己的根目录，但必须保持同样的相对角色：
+`<DIFFAUDIT_ROOT>` 是你自己机器上的项目根目录。它可以是 `C:\Users\<you>\DiffAudit`、`D:\Projects\DiffAudit`、`~/work/DiffAudit`，关键是 `Research/` 和 `Download/` 的相对角色不要变。
+
+如果你的机器路径不同，也没关系，只要保持同样的相对角色：
 
 - `Research\external\` 只放外部代码 clone
 - `Research\third_party\` 只放最小 vendored 代码
@@ -29,13 +31,17 @@ D:\Code\DiffAudit\
 
 详细规则见 [storage-boundary.md](storage-boundary.md)。
 
+如果你想知道 `Download/` 里为什么有些目录名像资产名、有些像来源名，再看 [download-naming-policy.md](download-naming-policy.md)。
+
 ## 2. Fastest Way To Match Our Assets
 
 如果你能从项目机器或共享盘拿到完整资产目录，最快方式是直接复制整个目录：
 
 ```powershell
-Copy-Item -Recurse \\YOUR_ASSET_MIRROR\DiffAudit\Download D:\Code\DiffAudit\Download
+Copy-Item -Recurse \\YOUR_ASSET_MIRROR\DiffAudit\Download $env:DIFFAUDIT_ROOT\Download
 ```
+
+如果你没提前设置环境变量，也可以把 `$env:DIFFAUDIT_ROOT` 直接替换成你的真实绝对路径。
 
 复制后确认至少有这些入口：
 
@@ -102,17 +108,19 @@ Fill these fields first:
 
 ```yaml
 repo:
-  research_root: D:/Code/DiffAudit/Research
-  download_root: D:/Code/DiffAudit/Download
+  research_root: /absolute/path/to/DiffAudit/Research
+  download_root: /absolute/path/to/DiffAudit/Download
 
 shared:
-  cifar10_archive: D:/Code/DiffAudit/Download/shared/datasets/cifar-10-python.tar.gz
-  celeba_root: D:/Code/DiffAudit/Download/shared/datasets/celeba
-  sd15_model_dir: D:/Code/DiffAudit/Download/shared/weights/stable-diffusion-v1-5
-  clip_model_dir: D:/Code/DiffAudit/Download/shared/weights/clip-vit-large-patch14
-  blip_model_dir: D:/Code/DiffAudit/Download/shared/weights/blip-image-captioning-large
-  ddpm_cifar10_model_dir: D:/Code/DiffAudit/Download/shared/weights/google-ddpm-cifar10-32
+  cifar10_archive: /absolute/path/to/DiffAudit/Download/shared/datasets/cifar-10-python.tar.gz
+  celeba_root: /absolute/path/to/DiffAudit/Download/shared/datasets/celeba
+  sd15_model_dir: /absolute/path/to/DiffAudit/Download/shared/weights/stable-diffusion-v1-5
+  clip_model_dir: /absolute/path/to/DiffAudit/Download/shared/weights/clip-vit-large-patch14
+  blip_model_dir: /absolute/path/to/DiffAudit/Download/shared/weights/blip-image-captioning-large
+  ddpm_cifar10_model_dir: /absolute/path/to/DiffAudit/Download/shared/weights/google-ddpm-cifar10-32
 ```
+
+Windows 可以写成 `C:/...` 或 `D:/...`，Linux/macOS 可以写成 `/home/...` 或 `/Users/...`。这里的关键是“绝对路径”，不是盘符。
 
 Then render local configs:
 
@@ -137,7 +145,7 @@ Basic asset checks:
 ```powershell
 conda run -n diffaudit-research python -m diffaudit probe-pia-assets --config configs/attacks/pia_plan.yaml --member-split-root external/PIA/DDPM
 conda run -n diffaudit-research python -m diffaudit probe-gsa-assets --repo-root workspaces/white-box/external/GSA --assets-root workspaces/white-box/assets/gsa
-conda run -n diffaudit-research python -m diffaudit audit-recon-public-bundle --bundle-root D:\Code\DiffAudit\Download\black-box\supplementary\recon-assets\ndss-2025-blackbox-membership-inference-fine-tuned-diffusion-models
+conda run -n diffaudit-research python -m diffaudit audit-recon-public-bundle --bundle-root "$env:DIFFAUDIT_ROOT\Download\black-box\supplementary\recon-assets\ndss-2025-blackbox-membership-inference-fine-tuned-diffusion-models"
 ```
 
 Expected result:

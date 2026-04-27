@@ -6,10 +6,10 @@ On the first truly bounded admitted `GSA` target-anchored fixed-mask dual-run pa
 
 ## Inputs Reviewed
 
-- `D:\Code\DiffAudit\Research\ROADMAP.md`
-- `D:\Code\DiffAudit\Research\workspaces\white-box\2026-04-17-finding-nemo-first-truly-bounded-admitted-packet-launch-review.md`
-- `D:\Code\DiffAudit\Research\workspaces\white-box\runs\finding-nemo-first-truly-bounded-admitted-intervention-review-20260417-r1\summary.json`
-- `D:\Code\DiffAudit\Research\workspaces\white-box\runs\finding-nemo-first-bounded-localization-packet-20260417-r1\summary.json`
+- `<DIFFAUDIT_ROOT>/Research/ROADMAP.md`
+- `<DIFFAUDIT_ROOT>/Research/workspaces/white-box/2026-04-17-finding-nemo-first-truly-bounded-admitted-packet-launch-review.md`
+- `<DIFFAUDIT_ROOT>/Research/workspaces/white-box/runs/finding-nemo-first-truly-bounded-admitted-intervention-review-20260417-r1/summary.json`
+- `<DIFFAUDIT_ROOT>/Research/workspaces/white-box/runs/finding-nemo-first-bounded-localization-packet-20260417-r1/summary.json`
 
 ## Executed Packet
 
@@ -111,7 +111,7 @@ More precise reading:
 
 ## Canonical Evidence Anchor
 
-- `D:\Code\DiffAudit\Research\workspaces\white-box\runs\finding-nemo-first-truly-bounded-admitted-intervention-review-20260417-r1\summary.json`
+- `<DIFFAUDIT_ROOT>/Research/workspaces/white-box/runs/finding-nemo-first-truly-bounded-admitted-intervention-review-20260417-r1/summary.json`
 
 ## Next Step
 

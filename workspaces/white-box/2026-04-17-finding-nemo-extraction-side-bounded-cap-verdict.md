@@ -6,12 +6,12 @@ After `I-B.11` blocked the first admitted packet on execution-budget grounds, ca
 
 ## Inputs Reviewed
 
-- `D:\Code\DiffAudit\Research\ROADMAP.md`
-- `D:\Code\DiffAudit\Research\workspaces\white-box\2026-04-17-finding-nemo-first-admitted-fixed-mask-packet-execution-budget-review.md`
-- `D:\Code\DiffAudit\Research\src\diffaudit\cli.py`
-- `D:\Code\DiffAudit\Research\src\diffaudit\attacks\gsa.py`
-- `D:\Code\DiffAudit\Research\tests\test_gsa_adapter.py`
-- `D:\Code\DiffAudit\Research\tests\test_gsa_observability_adapter.py`
+- `<DIFFAUDIT_ROOT>/Research/ROADMAP.md`
+- `<DIFFAUDIT_ROOT>/Research/workspaces/white-box/2026-04-17-finding-nemo-first-admitted-fixed-mask-packet-execution-budget-review.md`
+- `<DIFFAUDIT_ROOT>/Research/src/diffaudit/cli.py`
+- `<DIFFAUDIT_ROOT>/Research/src/diffaudit/attacks/gsa.py`
+- `<DIFFAUDIT_ROOT>/Research/tests/test_gsa_adapter.py`
+- `<DIFFAUDIT_ROOT>/Research/tests/test_gsa_observability_adapter.py`
 
 ## Implementation
 
@@ -35,8 +35,8 @@ This means the first bounded intervention review can now be bounded at both laye
 Test commands:
 
 ```powershell
-conda run -n diffaudit-research python -m unittest D:\Code\DiffAudit\Research\tests\test_gsa_adapter.py
-conda run -n diffaudit-research python -m unittest D:\Code\DiffAudit\Research\tests\test_gsa_adapter.py D:\Code\DiffAudit\Research\tests\test_gsa_observability_adapter.py
+conda run -n diffaudit-research python -m unittest <DIFFAUDIT_ROOT>/Research/tests/test_gsa_adapter.py
+conda run -n diffaudit-research python -m unittest <DIFFAUDIT_ROOT>/Research/tests/test_gsa_adapter.py <DIFFAUDIT_ROOT>/Research/tests/test_gsa_observability_adapter.py
 ```
 
 Result:
@@ -77,7 +77,7 @@ More precise reading:
 
 ## Canonical Evidence Anchor
 
-- `D:\Code\DiffAudit\Research\workspaces\white-box\2026-04-17-finding-nemo-extraction-side-bounded-cap-verdict.md`
+- `<DIFFAUDIT_ROOT>/Research/workspaces/white-box/2026-04-17-finding-nemo-extraction-side-bounded-cap-verdict.md`
 
 ## Next Step
 

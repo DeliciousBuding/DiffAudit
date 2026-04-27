@@ -6,13 +6,13 @@ After `X-19` selected a bounded higher-layer stale-entry sync pass, did that syn
 
 ## Inputs Reviewed
 
-- `D:\Code\DiffAudit\ROADMAP.md`
-- `D:\Code\DiffAudit\Research\ROADMAP.md`
-- `D:\Code\DiffAudit\Research\docs\comprehensive-progress.md`
-- `D:\Code\DiffAudit\Research\workspaces\implementation\challenger-queue.md`
-- `D:\Code\DiffAudit\Research\docs\mainline-narrative.md`
-- `D:\Code\DiffAudit\Research\docs\leader-research-ready-summary.md`
-- `D:\Code\DiffAudit\Research\docs\competition-evidence-pack.md`
+- `<DIFFAUDIT_ROOT>/ROADMAP.md`
+- `<DIFFAUDIT_ROOT>/Research/ROADMAP.md`
+- `<DIFFAUDIT_ROOT>/Research/docs/comprehensive-progress.md`
+- `<DIFFAUDIT_ROOT>/Research/workspaces/implementation/challenger-queue.md`
+- `<DIFFAUDIT_ROOT>/Research/docs/mainline-narrative.md`
+- `<DIFFAUDIT_ROOT>/Research/docs/leader-research-ready-summary.md`
+- `<DIFFAUDIT_ROOT>/Research/docs/competition-evidence-pack.md`
 
 ## Review
 
@@ -73,11 +73,11 @@ More precise reading:
 
 ## Canonical Evidence Anchor
 
-- `D:\Code\DiffAudit\Research\workspaces\implementation\2026-04-17-x20-crossbox-system-stale-entry-sync-verdict.md`
+- `<DIFFAUDIT_ROOT>/Research/workspaces/implementation/2026-04-17-x20-crossbox-system-stale-entry-sync-verdict.md`
 
 ## Handoff Decision
 
-- `D:\Code\DiffAudit\ROADMAP.md`: updated in this pass
+- `<DIFFAUDIT_ROOT>/ROADMAP.md`: updated in this pass
 - `Research/ROADMAP.md`: update required
 - `docs/comprehensive-progress.md`: update required
 - `workspaces/implementation/challenger-queue.md`: update required

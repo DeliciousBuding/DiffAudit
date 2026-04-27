@@ -197,5 +197,5 @@ conda run -n diffaudit-research python scripts/evaluate_smp_lora_defense.py \
 ## 九、相关文档
 
 - 技术分析: `workspaces/intake/2026-04-11-dplora-comparability-note.md`
-- 任务看板: `D:/Code/DiffAudit/Agents/GLOBAL_TASK_BOARD.md`
+- 任务看板: `<DIFFAUDIT_ROOT>/Agents/GLOBAL_TASK_BOARD.md`
 - 攻击-防御总表: `workspaces/white-box/attack-defense-table.md`

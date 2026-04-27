@@ -6,13 +6,13 @@ After `X-41` generated the first genuinely new bounded `I-C` hypothesis, can tha
 
 ## Inputs Reviewed
 
-- `D:\Code\DiffAudit\Research\ROADMAP.md`
-- `D:\Code\DiffAudit\Research\Research\ROADMAP.md`
-- `D:\Code\DiffAudit\Research\docs\comprehensive-progress.md`
-- `D:\Code\DiffAudit\Research\workspaces\implementation\2026-04-17-x41-ic-fresh-bounded-crossbox-hypothesis-generation-after-x40-expansion.md`
-- `D:\Code\DiffAudit\Research\workspaces\implementation\2026-04-17-cross-permission-matched-pairfreeze-20260417-r1\summary.json`
-- `D:\Code\DiffAudit\Research\workspaces\gray-box\runs\pia-packet-score-export-matched-pairfreeze-20260417-r1\summary.json`
-- `D:\Code\DiffAudit\Research\workspaces\implementation\2026-04-17-post-translated-ic-falsifier-system-sync-verdict.md`
+- `<DIFFAUDIT_ROOT>/Research/ROADMAP.md`
+- `<DIFFAUDIT_ROOT>/Research/Research/ROADMAP.md`
+- `<DIFFAUDIT_ROOT>/Research/docs/comprehensive-progress.md`
+- `<DIFFAUDIT_ROOT>/Research/workspaces/implementation/2026-04-17-x41-ic-fresh-bounded-crossbox-hypothesis-generation-after-x40-expansion.md`
+- `<DIFFAUDIT_ROOT>/Research/workspaces/implementation/2026-04-17-cross-permission-matched-pairfreeze-20260417-r1/summary.json`
+- `<DIFFAUDIT_ROOT>/Research/workspaces/gray-box/runs/pia-packet-score-export-matched-pairfreeze-20260417-r1/summary.json`
+- `<DIFFAUDIT_ROOT>/Research/workspaces/implementation/2026-04-17-post-translated-ic-falsifier-system-sync-verdict.md`
 
 ## Contract Review
 
@@ -82,14 +82,14 @@ More precise reading:
 
 ## Canonical Evidence Anchor
 
-- `D:\Code\DiffAudit\Research\workspaces\implementation\2026-04-17-x42-ic-bounded-multipair-agreement-first-contract-review.md`
+- `<DIFFAUDIT_ROOT>/Research/workspaces/implementation/2026-04-17-x42-ic-bounded-multipair-agreement-first-contract-review.md`
 
 ## Handoff Decision
 
-- `D:\Code\DiffAudit\Research\ROADMAP.md`: update required
-- `D:\Code\DiffAudit\Research\workspaces\implementation\challenger-queue.md`: update required
-- `D:\Code\DiffAudit\Research\docs\comprehensive-progress.md`: update required
-- `D:\Code\DiffAudit\ROADMAP.md`: update required
+- `<DIFFAUDIT_ROOT>/Research/ROADMAP.md`: update required
+- `<DIFFAUDIT_ROOT>/Research/workspaces/implementation/challenger-queue.md`: update required
+- `<DIFFAUDIT_ROOT>/Research/docs/comprehensive-progress.md`: update required
+- `<DIFFAUDIT_ROOT>/ROADMAP.md`: update required
 - `platform_runtime_handoff = none`
 - `competition_material_sync = none`
 

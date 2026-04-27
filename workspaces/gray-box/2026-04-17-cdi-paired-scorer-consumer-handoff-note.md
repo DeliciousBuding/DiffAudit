@@ -118,7 +118,7 @@ Only these fields are safe to consume above the lane-local level without extra e
 
 Reviewed the contract-bearing paired artifact:
 
-- `D:\Code\DiffAudit\Research\workspaces\gray-box\runs\cdi-paired-canary-20260417-r3-contract\audit_summary.json`
+- `<DIFFAUDIT_ROOT>/Research/workspaces/gray-box/runs/cdi-paired-canary-20260417-r3-contract/audit_summary.json`
 
 Confirmed:
 

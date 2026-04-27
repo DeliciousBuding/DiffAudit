@@ -6,16 +6,16 @@ After `GB-67` yielded the immediate slot, what should become the next live non-g
 
 ## Inputs Reviewed
 
-- `D:\Code\DiffAudit\ROADMAP.md`
-- `D:\Code\DiffAudit\Research\ROADMAP.md`
-- `D:\Code\DiffAudit\Research\docs\comprehensive-progress.md`
-- `D:\Code\DiffAudit\Research\workspaces\implementation\2026-04-17-crossbox-closure-round-system-sync-review.md`
-- `D:\Code\DiffAudit\Research\workspaces\black-box\2026-04-16-blackbox-next-lane-score-package-selection-verdict.md`
-- `D:\Code\DiffAudit\Research\workspaces\black-box\plan.md`
-- `D:\Code\DiffAudit\Research\workspaces\white-box\2026-04-17-distinct-whitebox-defended-family-import-selection-review.md`
-- `D:\Code\DiffAudit\Research\workspaces\white-box\plan.md`
-- `D:\Code\DiffAudit\Research\workspaces\gray-box\2026-04-17-graybox-post-switch-lane-reselection-review.md`
-- `D:\Code\DiffAudit\Research\workspaces\implementation\2026-04-08-unified-attack-defense-table.md`
+- `<DIFFAUDIT_ROOT>/ROADMAP.md`
+- `<DIFFAUDIT_ROOT>/Research/ROADMAP.md`
+- `<DIFFAUDIT_ROOT>/Research/docs/comprehensive-progress.md`
+- `<DIFFAUDIT_ROOT>/Research/workspaces/implementation/2026-04-17-crossbox-closure-round-system-sync-review.md`
+- `<DIFFAUDIT_ROOT>/Research/workspaces/black-box/2026-04-16-blackbox-next-lane-score-package-selection-verdict.md`
+- `<DIFFAUDIT_ROOT>/Research/workspaces/black-box/plan.md`
+- `<DIFFAUDIT_ROOT>/Research/workspaces/white-box/2026-04-17-distinct-whitebox-defended-family-import-selection-review.md`
+- `<DIFFAUDIT_ROOT>/Research/workspaces/white-box/plan.md`
+- `<DIFFAUDIT_ROOT>/Research/workspaces/gray-box/2026-04-17-graybox-post-switch-lane-reselection-review.md`
+- `<DIFFAUDIT_ROOT>/Research/workspaces/implementation/2026-04-08-unified-attack-defense-table.md`
 
 ## Candidate Comparison
 

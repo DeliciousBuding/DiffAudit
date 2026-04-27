@@ -13,13 +13,13 @@ After `X-66` freezes the broader `I-B` paper-backed mechanism stack below active
 
 ## Inputs Reviewed
 
-- `D:\Code\DiffAudit\ROADMAP.md`
-- `D:\Code\DiffAudit\Research\ROADMAP.md`
-- `D:\Code\DiffAudit\Research\docs\comprehensive-progress.md`
-- `D:\Code\DiffAudit\Research\docs\mainline-narrative.md`
-- `D:\Code\DiffAudit\Research\workspaces\implementation\challenger-queue.md`
-- `D:\Code\DiffAudit\Research\workspaces\implementation\2026-04-18-x66-ib-paper-backed-localization-defense-scoping-review-after-x65-expansion.md`
-- `D:\Code\DiffAudit\Research\workspaces\implementation\2026-04-17-ia-trajectory-consistency-truth-hardening.md`
+- `<DIFFAUDIT_ROOT>/ROADMAP.md`
+- `<DIFFAUDIT_ROOT>/Research/ROADMAP.md`
+- `<DIFFAUDIT_ROOT>/Research/docs/comprehensive-progress.md`
+- `<DIFFAUDIT_ROOT>/Research/docs/mainline-narrative.md`
+- `<DIFFAUDIT_ROOT>/Research/workspaces/implementation/challenger-queue.md`
+- `<DIFFAUDIT_ROOT>/Research/workspaces/implementation/2026-04-18-x66-ib-paper-backed-localization-defense-scoping-review-after-x65-expansion.md`
+- `<DIFFAUDIT_ROOT>/Research/workspaces/implementation/2026-04-17-ia-trajectory-consistency-truth-hardening.md`
 
 ## Candidate Comparison
 
@@ -68,7 +68,7 @@ Why it wins:
 - `Research/workspaces/implementation/challenger-queue.md`: update required
 - `Research/docs/comprehensive-progress.md`: update required
 - `Research/docs/mainline-narrative.md`: update required
-- `D:\Code\DiffAudit\ROADMAP.md`: update required
+- `<DIFFAUDIT_ROOT>/ROADMAP.md`: update required
 - `Research/docs/research-autonomous-execution-prompt.md`: update required
 - `Research/docs/codex-roadmap-execution-prompt.md`: update required
 - `Platform / Runtime`: no immediate handoff required

@@ -65,7 +65,7 @@
 
 代码级验证：
 
-- `conda run -n diffaudit-research python -m pytest D:\Code\DiffAudit\Research\tests\test_gsa_observability_adapter.py -q`
+- `conda run -n diffaudit-research python -m pytest <DIFFAUDIT_ROOT>/Research/tests/test_gsa_observability_adapter.py -q`
   - `5 passed`
 
 真实 admitted 资产验证：

@@ -6,13 +6,13 @@ After launching the active `PIA 2048 shared-score surface` GPU rung for the `CDI
 
 ## Inputs Reviewed
 
-- `D:\Code\DiffAudit\Research\workspaces\gray-box\runs\pia-cifar10-runtime-mainline-20260415-gpu-1024-adaptive\summary.json`
+- `<DIFFAUDIT_ROOT>/Research/workspaces/gray-box/runs/pia-cifar10-runtime-mainline-20260415-gpu-1024-adaptive/summary.json`
 - active process state for:
   - `conda env = diffaudit-research`
   - `python -m diffaudit run-pia-runtime-mainline ... --max-samples 2048`
 - current `nvidia-smi` snapshots during execution
 - current run root:
-  - `D:\Code\DiffAudit\Research\workspaces\gray-box\runs\pia-cifar10-runtime-mainline-20260416-gpu-2048-cdi-r1`
+  - `<DIFFAUDIT_ROOT>/Research/workspaces/gray-box/runs/pia-cifar10-runtime-mainline-20260416-gpu-2048-cdi-r1`
 
 ## Current Facts
 

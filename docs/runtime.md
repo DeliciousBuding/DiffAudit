@@ -4,8 +4,8 @@
 
 当前活跃入口位于：
 
-- `D:\Code\DiffAudit\Runtime-Server\cmd\runtime`
-- `D:\Code\DiffAudit\Runtime-Server\run-runtime.ps1`
+- `<DIFFAUDIT_ROOT>/Runtime-Server/cmd/runtime`
+- `<DIFFAUDIT_ROOT>/Runtime-Server/run-runtime.ps1`
 
 目录名仍是 `Runtime-Server`，是因为本地目录重命名还在进行中；活跃语义已经统一切到 `Runtime`。
 

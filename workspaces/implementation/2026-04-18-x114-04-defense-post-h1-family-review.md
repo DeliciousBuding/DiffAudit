@@ -6,20 +6,20 @@ After `X-113` closed the current `04-H1` scalar-tuning space as `negative but us
 
 ## Inputs Reviewed
 
-- `D:\Code\DiffAudit\Research\workspaces\implementation\2026-04-18-x101-04-h1-risk-targeted-unlearning-step0-prep.md`
-- `D:\Code\DiffAudit\Research\workspaces\implementation\2026-04-18-x102-04-h1-first-actual-retain-forget-pilot.md`
-- `D:\Code\DiffAudit\Research\workspaces\implementation\2026-04-18-x106-04-h1-k16-changed-pilot-tri-board-review.md`
-- `D:\Code\DiffAudit\Research\workspaces\implementation\2026-04-18-x107-04-h1-k8-pure-intersection-followup-review.md`
-- `D:\Code\DiffAudit\Research\workspaces\implementation\2026-04-18-x108-04-h1-k16-next-followup-selection.md`
-- `D:\Code\DiffAudit\Research\workspaces\implementation\2026-04-18-x109-04-h1-k16-alpha-up-followup-review.md`
-- `D:\Code\DiffAudit\Research\workspaces\implementation\2026-04-18-x110-04-h1-post-alpha-parameter-selection-review.md`
-- `D:\Code\DiffAudit\Research\workspaces\implementation\2026-04-18-x112-04-h1-selective-variable-candidate-freeze.md`
-- `D:\Code\DiffAudit\Research\workspaces\implementation\2026-04-18-x113-04-h1-k16-mixture-lambda-down-followup-review.md`
-- `D:\Code\DiffAudit\Research\ROADMAP.md`
-- `D:\Code\DiffAudit\Research\docs\comprehensive-progress.md`
-- `D:\Code\DiffAudit\Research\docs\mainline-narrative.md`
-- `D:\Code\DiffAudit\Research\src\diffaudit\defenses\risk_targeted_unlearning.py`
-- `D:\Code\DiffAudit\Research\src\diffaudit\cli.py`
+- `<DIFFAUDIT_ROOT>/Research/workspaces/implementation/2026-04-18-x101-04-h1-risk-targeted-unlearning-step0-prep.md`
+- `<DIFFAUDIT_ROOT>/Research/workspaces/implementation/2026-04-18-x102-04-h1-first-actual-retain-forget-pilot.md`
+- `<DIFFAUDIT_ROOT>/Research/workspaces/implementation/2026-04-18-x106-04-h1-k16-changed-pilot-tri-board-review.md`
+- `<DIFFAUDIT_ROOT>/Research/workspaces/implementation/2026-04-18-x107-04-h1-k8-pure-intersection-followup-review.md`
+- `<DIFFAUDIT_ROOT>/Research/workspaces/implementation/2026-04-18-x108-04-h1-k16-next-followup-selection.md`
+- `<DIFFAUDIT_ROOT>/Research/workspaces/implementation/2026-04-18-x109-04-h1-k16-alpha-up-followup-review.md`
+- `<DIFFAUDIT_ROOT>/Research/workspaces/implementation/2026-04-18-x110-04-h1-post-alpha-parameter-selection-review.md`
+- `<DIFFAUDIT_ROOT>/Research/workspaces/implementation/2026-04-18-x112-04-h1-selective-variable-candidate-freeze.md`
+- `<DIFFAUDIT_ROOT>/Research/workspaces/implementation/2026-04-18-x113-04-h1-k16-mixture-lambda-down-followup-review.md`
+- `<DIFFAUDIT_ROOT>/Research/ROADMAP.md`
+- `<DIFFAUDIT_ROOT>/Research/docs/comprehensive-progress.md`
+- `<DIFFAUDIT_ROOT>/Research/docs/mainline-narrative.md`
+- `<DIFFAUDIT_ROOT>/Research/src/diffaudit/defenses/risk_targeted_unlearning.py`
+- `<DIFFAUDIT_ROOT>/Research/src/diffaudit/cli.py`
 
 ## What Was Checked
 
@@ -115,7 +115,7 @@ More precise reading:
 
 ## Canonical Evidence Anchor
 
-- `D:\Code\DiffAudit\Research\workspaces\implementation\2026-04-18-x114-04-defense-post-h1-family-review.md`
+- `<DIFFAUDIT_ROOT>/Research/workspaces/implementation/2026-04-18-x114-04-defense-post-h1-family-review.md`
 
 ## Handoff Decision
 

@@ -95,31 +95,31 @@
 当前固定启动命令：
 
 ```powershell
-$env:DIFFAUDIT_WORKSPACE_ROOT = "D:/Code/DiffAudit"
-$env:DIFFAUDIT_RESEARCH_PYTHON = "C:/Users/Ding/miniforge3/envs/diffaudit-research/python.exe"
-powershell -ExecutionPolicy Bypass -File D:/Code/DiffAudit/Research/scripts/launch_dpdm_training.ps1 `
-  -DataPath D:/Code/DiffAudit/Research/workspaces/white-box/assets/gsa-cifar10-1k-3shadow-epoch300-rerun1/datasets/target-member `
+$env:DIFFAUDIT_WORKSPACE_ROOT = "<DIFFAUDIT_ROOT>"
+$env:DIFFAUDIT_RESEARCH_PYTHON = "<RESEARCH_PYTHON>"
+powershell -ExecutionPolicy Bypass -File <DIFFAUDIT_ROOT>/Research/scripts/launch_dpdm_training.ps1 `
+  -DataPath <DIFFAUDIT_ROOT>/Research/workspaces/white-box/assets/gsa-cifar10-1k-3shadow-epoch300-rerun1/datasets/target-member `
   -Workdir runs/dpdm-cifar10-targetmember-eps10-gpu-sameproto-20260409 `
   -Epochs 3 `
   -SigmaNoiseSamples 2
 
-powershell -ExecutionPolicy Bypass -File D:/Code/DiffAudit/Research/scripts/launch_dpdm_training.ps1 `
-  -DataPath D:/Code/DiffAudit/Research/workspaces/white-box/assets/gsa-cifar10-1k-3shadow-epoch300-rerun1/datasets/shadow-01-member `
+powershell -ExecutionPolicy Bypass -File <DIFFAUDIT_ROOT>/Research/scripts/launch_dpdm_training.ps1 `
+  -DataPath <DIFFAUDIT_ROOT>/Research/workspaces/white-box/assets/gsa-cifar10-1k-3shadow-epoch300-rerun1/datasets/shadow-01-member `
   -Workdir runs/dpdm-cifar10-shadow01-eps10-gpu-sameproto3shadow-r2-20260409 `
   -Epochs 3 `
   -SigmaNoiseSamples 2 `
   -MasterPort 6132
 
-powershell -ExecutionPolicy Bypass -File D:/Code/DiffAudit/Research/scripts/launch_dpdm_training.ps1 `
-  -DataPath D:/Code/DiffAudit/Research/workspaces/white-box/assets/gsa-cifar10-1k-3shadow-epoch300-rerun1/datasets/shadow-02-member `
+powershell -ExecutionPolicy Bypass -File <DIFFAUDIT_ROOT>/Research/scripts/launch_dpdm_training.ps1 `
+  -DataPath <DIFFAUDIT_ROOT>/Research/workspaces/white-box/assets/gsa-cifar10-1k-3shadow-epoch300-rerun1/datasets/shadow-02-member `
   -Workdir runs/dpdm-cifar10-shadow02-eps10-gpu-sameproto3shadow-batch32-r1-20260409 `
   -BatchSize 32 `
   -Epochs 3 `
   -SigmaNoiseSamples 2 `
   -MasterPort 6333
 
-powershell -ExecutionPolicy Bypass -File D:/Code/DiffAudit/Research/scripts/launch_dpdm_training.ps1 `
-  -DataPath D:/Code/DiffAudit/Research/workspaces/white-box/assets/gsa-cifar10-1k-3shadow-epoch300-rerun1/datasets/shadow-03-member `
+powershell -ExecutionPolicy Bypass -File <DIFFAUDIT_ROOT>/Research/scripts/launch_dpdm_training.ps1 `
+  -DataPath <DIFFAUDIT_ROOT>/Research/workspaces/white-box/assets/gsa-cifar10-1k-3shadow-epoch300-rerun1/datasets/shadow-03-member `
   -Workdir runs/dpdm-cifar10-shadow03-eps10-gpu-sameproto3shadow-batch32-r1-20260409 `
   -BatchSize 32 `
   -Epochs 3 `

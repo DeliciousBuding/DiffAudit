@@ -6,9 +6,9 @@ After `X-110` ruled out another immediate pressure-based rerun, which single sel
 
 ## Inputs Reviewed
 
-- `D:\Code\DiffAudit\Research\workspaces\implementation\2026-04-18-x110-04-h1-post-alpha-parameter-selection-review.md`
-- `D:\Code\DiffAudit\Research\workspaces\defense\runs\risk-targeted-unlearning-pilot-k16-20260418-r1\summary.json`
-- `D:\Code\DiffAudit\Research\workspaces\defense\runs\risk-targeted-unlearning-pilot-k16-alpha075-20260418-r1\summary.json`
+- `<DIFFAUDIT_ROOT>/Research/workspaces/implementation/2026-04-18-x110-04-h1-post-alpha-parameter-selection-review.md`
+- `<DIFFAUDIT_ROOT>/Research/workspaces/defense/runs/risk-targeted-unlearning-pilot-k16-20260418-r1/summary.json`
+- `<DIFFAUDIT_ROOT>/Research/workspaces/defense/runs/risk-targeted-unlearning-pilot-k16-alpha075-20260418-r1/summary.json`
 - local schedule sanity check under Python `random.Random(0)` for `32` Bernoulli branch draws
 
 ## What Was Resolved
@@ -60,7 +60,7 @@ Boundary:
 
 ## Canonical Evidence Anchor
 
-- `D:\Code\DiffAudit\Research\workspaces\implementation\2026-04-18-x112-04-h1-selective-variable-candidate-freeze.md`
+- `<DIFFAUDIT_ROOT>/Research/workspaces/implementation/2026-04-18-x112-04-h1-selective-variable-candidate-freeze.md`
 
 ## Handoff Decision
 

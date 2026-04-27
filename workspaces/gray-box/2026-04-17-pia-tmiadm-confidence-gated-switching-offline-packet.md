@@ -6,11 +6,11 @@ After the bounded-positive `PIA vs TMIA-DM` same-split evidence and the follow-u
 
 ## Inputs Reviewed
 
-- `D:\Code\DiffAudit\Research\ROADMAP.md`
-- `D:\Code\DiffAudit\Research\workspaces\gray-box\2026-04-17-pia-tmiadm-confidence-gated-switching-design-review.md`
-- `D:\Code\DiffAudit\Research\workspaces\gray-box\runs\pia-tmiadm-confidence-switch-20260417-r1\summary.json`
-- `D:\Code\DiffAudit\Research\workspaces\gray-box\runs\pia-tmiadm-confidence-switch-20260417-r1\analysis.md`
-- `D:\Code\DiffAudit\Research\scripts\run_pia_tmiadm_confidence_switch.py`
+- `<DIFFAUDIT_ROOT>/Research/ROADMAP.md`
+- `<DIFFAUDIT_ROOT>/Research/workspaces/gray-box/2026-04-17-pia-tmiadm-confidence-gated-switching-design-review.md`
+- `<DIFFAUDIT_ROOT>/Research/workspaces/gray-box/runs/pia-tmiadm-confidence-switch-20260417-r1/summary.json`
+- `<DIFFAUDIT_ROOT>/Research/workspaces/gray-box/runs/pia-tmiadm-confidence-switch-20260417-r1/analysis.md`
+- `<DIFFAUDIT_ROOT>/Research/scripts/run_pia_tmiadm_confidence_switch.py`
 
 ## Packet Scope
 

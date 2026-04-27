@@ -142,7 +142,7 @@ class ValidateIntakeIndexTests(unittest.TestCase):
                             "target": "workspaces/white-box/assets/gsa/checkpoints/target",
                         },
                         "checkpoint_format": "accelerate-checkpoint-dir",
-                        "canonical_summary": r"D:\Code\DiffAudit\Research\workspaces\white-box\runs\gsa-runtime-mainline-20260408-cifar10-1k-3shadow\summary.json",
+                        "canonical_summary": r"C:\DiffAudit\Research\workspaces\white-box\runs\gsa-runtime-mainline-20260408-cifar10-1k-3shadow\summary.json",
                     }
                 ),
                 encoding="utf-8",

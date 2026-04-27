@@ -6,15 +6,15 @@ After the first actual runner-level `I-D.4` hidden-guidance-jitter rerun closed 
 
 ## Inputs Reviewed
 
-- `D:\Code\DiffAudit\Research\ROADMAP.md`
-- `D:\Code\DiffAudit\Research\docs\comprehensive-progress.md`
-- `D:\Code\DiffAudit\Research\docs\mainline-narrative.md`
-- `D:\Code\DiffAudit\Research\docs\research-boundary-card.md`
-- `D:\Code\DiffAudit\Research\docs\competition-defense-qa.md`
-- `D:\Code\DiffAudit\Research\docs\competition-innovation-summary.md`
-- `D:\Code\DiffAudit\Research\docs\admitted-results-summary.md`
-- `D:\Code\DiffAudit\Research\workspaces\implementation\2026-04-17-ia-trajectory-consistency-truth-hardening.md`
-- `D:\Code\DiffAudit\Research\workspaces\implementation\2026-04-17-id4-actual-runner-level-hidden-guidance-jitter-verdict.md`
+- `<DIFFAUDIT_ROOT>/Research/ROADMAP.md`
+- `<DIFFAUDIT_ROOT>/Research/docs/comprehensive-progress.md`
+- `<DIFFAUDIT_ROOT>/Research/docs/mainline-narrative.md`
+- `<DIFFAUDIT_ROOT>/Research/docs/research-boundary-card.md`
+- `<DIFFAUDIT_ROOT>/Research/docs/competition-defense-qa.md`
+- `<DIFFAUDIT_ROOT>/Research/docs/competition-innovation-summary.md`
+- `<DIFFAUDIT_ROOT>/Research/docs/admitted-results-summary.md`
+- `<DIFFAUDIT_ROOT>/Research/workspaces/implementation/2026-04-17-ia-trajectory-consistency-truth-hardening.md`
+- `<DIFFAUDIT_ROOT>/Research/workspaces/implementation/2026-04-17-id4-actual-runner-level-hidden-guidance-jitter-verdict.md`
 
 ## Review
 

@@ -6,13 +6,13 @@ After `I-B.9` froze the first honest contract, can the repository actually expos
 
 ## Inputs Reviewed
 
-- `D:\Code\DiffAudit\Research\ROADMAP.md`
-- `D:\Code\DiffAudit\Research\workspaces\white-box\2026-04-17-finding-nemo-first-intervention-on-off-bounded-review-contract-selection.md`
-- `D:\Code\DiffAudit\Research\workspaces\white-box\2026-04-17-finding-nemo-bounded-attack-side-evaluation-packet-control-verdict.md`
-- `D:\Code\DiffAudit\Research\src\diffaudit\cli.py`
-- `D:\Code\DiffAudit\Research\src\diffaudit\attacks\gsa.py`
-- `D:\Code\DiffAudit\Research\src\diffaudit\attacks\gsa_observability.py`
-- `D:\Code\DiffAudit\Research\tests\test_gsa_adapter.py`
+- `<DIFFAUDIT_ROOT>/Research/ROADMAP.md`
+- `<DIFFAUDIT_ROOT>/Research/workspaces/white-box/2026-04-17-finding-nemo-first-intervention-on-off-bounded-review-contract-selection.md`
+- `<DIFFAUDIT_ROOT>/Research/workspaces/white-box/2026-04-17-finding-nemo-bounded-attack-side-evaluation-packet-control-verdict.md`
+- `<DIFFAUDIT_ROOT>/Research/src/diffaudit/cli.py`
+- `<DIFFAUDIT_ROOT>/Research/src/diffaudit/attacks/gsa.py`
+- `<DIFFAUDIT_ROOT>/Research/src/diffaudit/attacks/gsa_observability.py`
+- `<DIFFAUDIT_ROOT>/Research/tests/test_gsa_adapter.py`
 
 ## Implementation
 
@@ -45,7 +45,7 @@ Current bounded scope:
 Test command:
 
 ```powershell
-conda run -n diffaudit-research python -m unittest D:\Code\DiffAudit\Research\tests\test_gsa_adapter.py
+conda run -n diffaudit-research python -m unittest <DIFFAUDIT_ROOT>/Research/tests/test_gsa_adapter.py
 ```
 
 Result:
@@ -101,7 +101,7 @@ More precise reading:
 
 ## Canonical Evidence Anchor
 
-- `D:\Code\DiffAudit\Research\workspaces\white-box\2026-04-17-finding-nemo-intervention-on-off-bounded-review-surface-verdict.md`
+- `<DIFFAUDIT_ROOT>/Research/workspaces/white-box/2026-04-17-finding-nemo-intervention-on-off-bounded-review-surface-verdict.md`
 
 ## Next Step
 

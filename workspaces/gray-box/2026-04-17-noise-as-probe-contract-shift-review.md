@@ -6,14 +6,14 @@ After confirming that `Noise as a Probe` has no honest direct promotion path on 
 
 ## Inputs Reviewed
 
-- `D:\Code\DiffAudit\Research\workspaces\gray-box\2026-04-17-noise-as-probe-promotion-gap-review.md`
-- `D:\Code\DiffAudit\Research\workspaces\gray-box\2026-04-16-noise-as-probe-protocol-asset-contract.md`
-- `D:\Code\DiffAudit\Research\workspaces\gray-box\2026-04-16-noise-as-probe-larger-rung-repeat-verdict.md`
-- `D:\Code\DiffAudit\Research\workspaces\gray-box\2026-04-16-mofit-protocol-asset-contract.md`
-- `D:\Code\DiffAudit\Research\workspaces\gray-box\2026-04-16-mofit-current-contract-hold-verdict.md`
-- `D:\Code\DiffAudit\Research\workspaces\gray-box\2026-04-16-mofit-final-cpu-reviewrung-verdict.md`
-- `D:\Code\DiffAudit\Research\workspaces\gray-box\2026-04-15-graybox-structural-memorization-smoke-note.md`
-- `D:\Code\DiffAudit\Research\workspaces\gray-box\2026-04-15-graybox-new-family-structural-memorization-feasibility.md`
+- `<DIFFAUDIT_ROOT>/Research/workspaces/gray-box/2026-04-17-noise-as-probe-promotion-gap-review.md`
+- `<DIFFAUDIT_ROOT>/Research/workspaces/gray-box/2026-04-16-noise-as-probe-protocol-asset-contract.md`
+- `<DIFFAUDIT_ROOT>/Research/workspaces/gray-box/2026-04-16-noise-as-probe-larger-rung-repeat-verdict.md`
+- `<DIFFAUDIT_ROOT>/Research/workspaces/gray-box/2026-04-16-mofit-protocol-asset-contract.md`
+- `<DIFFAUDIT_ROOT>/Research/workspaces/gray-box/2026-04-16-mofit-current-contract-hold-verdict.md`
+- `<DIFFAUDIT_ROOT>/Research/workspaces/gray-box/2026-04-16-mofit-final-cpu-reviewrung-verdict.md`
+- `<DIFFAUDIT_ROOT>/Research/workspaces/gray-box/2026-04-15-graybox-structural-memorization-smoke-note.md`
+- `<DIFFAUDIT_ROOT>/Research/workspaces/gray-box/2026-04-15-graybox-new-family-structural-memorization-feasibility.md`
 
 ## Candidate Same-Surface Board
 

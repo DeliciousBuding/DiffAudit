@@ -36,16 +36,16 @@ Why this was worth trying:
 
 Bounded smoke:
 
-- `D:\Code\DiffAudit\Research\workspaces\gray-box\runs\pia-cifar10-runtime-mainline-input-blur-defense-20260415-cpu-32\summary.json`
+- `<DIFFAUDIT_ROOT>/Research/workspaces/gray-box/runs/pia-cifar10-runtime-mainline-input-blur-defense-20260415-cpu-32/summary.json`
 
 Relevant comparison references:
 
 - baseline:
-  - `D:\Code\DiffAudit\Research\workspaces\gray-box\runs\pia-cifar10-runtime-mainline-20260408-cpu-32\summary.json`
+  - `<DIFFAUDIT_ROOT>/Research/workspaces/gray-box/runs/pia-cifar10-runtime-mainline-20260408-cpu-32/summary.json`
 - current defended mainline smoke:
-  - `D:\Code\DiffAudit\Research\workspaces\gray-box\runs\pia-cifar10-runtime-mainline-dropout-defense-20260408-cpu-32\summary.json`
+  - `<DIFFAUDIT_ROOT>/Research/workspaces/gray-box/runs/pia-cifar10-runtime-mainline-dropout-defense-20260408-cpu-32/summary.json`
 - previously rejected candidate:
-  - `D:\Code\DiffAudit\Research\workspaces\gray-box\2026-04-15-graybox-epsilon-output-noise-defense-verdict.md`
+  - `<DIFFAUDIT_ROOT>/Research/workspaces/gray-box/2026-04-15-graybox-epsilon-output-noise-defense-verdict.md`
 
 ## Metrics
 

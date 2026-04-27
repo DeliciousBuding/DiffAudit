@@ -6,17 +6,17 @@ Does the current `Research` repository actually follow one coherent storage boun
 
 ## Inputs Reviewed
 
-- `D:\Code\DiffAudit\Research\README.md`
-- `D:\Code\DiffAudit\Research\AGENTS.md`
-- `D:\Code\DiffAudit\Research\docs\storage-boundary.md`
-- `D:\Code\DiffAudit\Research\docs\README.md`
-- `D:\Code\DiffAudit\Research\workspaces\README.md`
+- `<DIFFAUDIT_ROOT>/Research/README.md`
+- `<DIFFAUDIT_ROOT>/Research/AGENTS.md`
+- `<DIFFAUDIT_ROOT>/Research/docs/storage-boundary.md`
+- `<DIFFAUDIT_ROOT>/Research/docs/README.md`
+- `<DIFFAUDIT_ROOT>/Research/workspaces/README.md`
 - live directory state under:
-  - `D:\Code\DiffAudit\Research\external`
-  - `D:\Code\DiffAudit\Research\third_party`
-  - `D:\Code\DiffAudit\Research\workspaces\gray-box\assets`
-  - `D:\Code\DiffAudit\Research\workspaces\white-box\assets`
-  - `D:\Code\DiffAudit\Download`
+  - `<DIFFAUDIT_ROOT>/Research/external`
+  - `<DIFFAUDIT_ROOT>/Research/third_party`
+  - `<DIFFAUDIT_ROOT>/Research/workspaces/gray-box/assets`
+  - `<DIFFAUDIT_ROOT>/Research/workspaces/white-box/assets`
+  - `<DIFFAUDIT_ROOT>/Download`
 
 ## Findings
 
@@ -123,4 +123,4 @@ Without doing risky bulk moves yet, the next honest cleanup pass should be:
 
 ## Canonical Evidence Anchor
 
-- `D:\Code\DiffAudit\Research\workspaces\implementation\2026-04-21-research-storage-boundary-audit.md`
+- `<DIFFAUDIT_ROOT>/Research/workspaces/implementation/2026-04-21-research-storage-boundary-audit.md`

@@ -16,15 +16,15 @@ After the first `TMIA-DM` protocol probe showed a positive `long_window` branch,
 
 Primary probe:
 
-- `D:\Code\DiffAudit\Research\workspaces\gray-box\runs\tmiadm-cifar10-protocol-probe-20260416-cpu-32-r1\summary.json`
+- `<DIFFAUDIT_ROOT>/Research/workspaces/gray-box/runs/tmiadm-cifar10-protocol-probe-20260416-cpu-32-r1/summary.json`
 
 Repeat probe:
 
-- `D:\Code\DiffAudit\Research\workspaces\gray-box\runs\tmiadm-cifar10-protocol-probe-20260416-cpu-32-r2-seed1\summary.json`
+- `<DIFFAUDIT_ROOT>/Research/workspaces/gray-box/runs/tmiadm-cifar10-protocol-probe-20260416-cpu-32-r2-seed1/summary.json`
 
 Prior protocol verdict:
 
-- `D:\Code\DiffAudit\Research\workspaces\gray-box\2026-04-16-tmiadm-protocol-probe-verdict.md`
+- `<DIFFAUDIT_ROOT>/Research/workspaces/gray-box/2026-04-16-tmiadm-protocol-probe-verdict.md`
 
 ## Metrics
 

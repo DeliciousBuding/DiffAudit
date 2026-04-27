@@ -6,14 +6,14 @@ After `I-A` truth-hardening landed, do the higher-layer `Research` entry docs no
 
 ## Inputs Reviewed
 
-- `D:\Code\DiffAudit\Research\docs\competition-defense-qa.md`
-- `D:\Code\DiffAudit\Research\docs\competition-innovation-summary.md`
-- `D:\Code\DiffAudit\Research\docs\research-boundary-card.md`
-- `D:\Code\DiffAudit\Research\docs\reproduction-status.md`
-- `D:\Code\DiffAudit\Research\docs\admitted-results-summary.md`
-- `D:\Code\DiffAudit\Research\workspaces\gray-box\2026-04-09-pia-provenance-dossier.md`
-- `D:\Code\DiffAudit\Research\workspaces\gray-box\2026-04-10-pia-provenance-split-protocol-delta.md`
-- `D:\Code\DiffAudit\Research\workspaces\implementation\2026-04-17-ia-trajectory-consistency-truth-hardening.md`
+- `<DIFFAUDIT_ROOT>/Research/docs/competition-defense-qa.md`
+- `<DIFFAUDIT_ROOT>/Research/docs/competition-innovation-summary.md`
+- `<DIFFAUDIT_ROOT>/Research/docs/research-boundary-card.md`
+- `<DIFFAUDIT_ROOT>/Research/docs/reproduction-status.md`
+- `<DIFFAUDIT_ROOT>/Research/docs/admitted-results-summary.md`
+- `<DIFFAUDIT_ROOT>/Research/workspaces/gray-box/2026-04-09-pia-provenance-dossier.md`
+- `<DIFFAUDIT_ROOT>/Research/workspaces/gray-box/2026-04-10-pia-provenance-split-protocol-delta.md`
+- `<DIFFAUDIT_ROOT>/Research/workspaces/implementation/2026-04-17-ia-trajectory-consistency-truth-hardening.md`
 
 ## Review
 

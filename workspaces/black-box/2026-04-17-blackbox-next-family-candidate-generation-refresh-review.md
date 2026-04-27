@@ -6,20 +6,20 @@ After the closure round froze current black-box wording around `Recon / semantic
 
 ## Inputs Reviewed
 
-- `D:\Code\DiffAudit\Research\ROADMAP.md`
-- `D:\Code\DiffAudit\Research\README.md`
-- `D:\Code\DiffAudit\Research\docs\comprehensive-progress.md`
-- `D:\Code\DiffAudit\Research\workspaces\black-box\plan.md`
-- `D:\Code\DiffAudit\Research\workspaces\black-box\README.md`
-- `D:\Code\DiffAudit\Research\workspaces\black-box\paper-matrix-2024-2026.md`
-- `D:\Code\DiffAudit\Research\workspaces\black-box\experiment-entrypoints.md`
-- `D:\Code\DiffAudit\Research\workspaces\black-box\2026-04-09-blackbox-method-boundary.md`
-- `D:\Code\DiffAudit\Research\workspaces\black-box\2026-04-15-blackbox-second-signal-semantic-aux-verdict.md`
-- `D:\Code\DiffAudit\Research\workspaces\black-box\2026-04-15-blackbox-new-family-semantic-auxiliary-classifier-feasibility.md`
-- `D:\Code\DiffAudit\Research\workspaces\black-box\2026-04-15-clid-paper-alignment-audit.md`
-- `D:\Code\DiffAudit\Research\workspaces\black-box\2026-04-16-post-second-signal-blackbox-next-question-review.md`
-- `D:\Code\DiffAudit\Research\workspaces\black-box\2026-04-16-variation-asset-contract-verdict.md`
-- `D:\Code\DiffAudit\Research\workspaces\implementation\challenger-queue.md`
+- `<DIFFAUDIT_ROOT>/Research/ROADMAP.md`
+- `<DIFFAUDIT_ROOT>/Research/README.md`
+- `<DIFFAUDIT_ROOT>/Research/docs/comprehensive-progress.md`
+- `<DIFFAUDIT_ROOT>/Research/workspaces/black-box/plan.md`
+- `<DIFFAUDIT_ROOT>/Research/workspaces/black-box/README.md`
+- `<DIFFAUDIT_ROOT>/Research/workspaces/black-box/paper-matrix-2024-2026.md`
+- `<DIFFAUDIT_ROOT>/Research/workspaces/black-box/experiment-entrypoints.md`
+- `<DIFFAUDIT_ROOT>/Research/workspaces/black-box/2026-04-09-blackbox-method-boundary.md`
+- `<DIFFAUDIT_ROOT>/Research/workspaces/black-box/2026-04-15-blackbox-second-signal-semantic-aux-verdict.md`
+- `<DIFFAUDIT_ROOT>/Research/workspaces/black-box/2026-04-15-blackbox-new-family-semantic-auxiliary-classifier-feasibility.md`
+- `<DIFFAUDIT_ROOT>/Research/workspaces/black-box/2026-04-15-clid-paper-alignment-audit.md`
+- `<DIFFAUDIT_ROOT>/Research/workspaces/black-box/2026-04-16-post-second-signal-blackbox-next-question-review.md`
+- `<DIFFAUDIT_ROOT>/Research/workspaces/black-box/2026-04-16-variation-asset-contract-verdict.md`
+- `<DIFFAUDIT_ROOT>/Research/workspaces/implementation/challenger-queue.md`
 
 ## Review
 

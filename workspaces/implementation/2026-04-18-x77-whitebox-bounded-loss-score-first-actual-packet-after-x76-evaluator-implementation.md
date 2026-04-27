@@ -18,9 +18,9 @@ The first real bounded actual packet now exists on current admitted `DDPM/CIFAR1
 ## Canonical evidence anchors
 
 - export packet:
-  - `D:\Code\DiffAudit\Research\workspaces\white-box\runs\gsa-loss-score-export-bounded-actual-20260418-r1\summary.json`
+  - `<DIFFAUDIT_ROOT>/Research/workspaces/white-box/runs/gsa-loss-score-export-bounded-actual-20260418-r1/summary.json`
 - threshold-eval packet:
-  - `D:\Code\DiffAudit\Research\workspaces\white-box\runs\gsa-loss-score-threshold-eval-bounded-actual-20260418-r1\summary.json`
+  - `<DIFFAUDIT_ROOT>/Research/workspaces/white-box/runs/gsa-loss-score-threshold-eval-bounded-actual-20260418-r1/summary.json`
 
 ## Packet outcome
 
@@ -30,9 +30,9 @@ Command:
 
 ```powershell
 conda run -n diffaudit-research python -m diffaudit export-gsa-loss-score-packet `
-  --workspace D:\Code\DiffAudit\Research\workspaces\white-box\runs\gsa-loss-score-export-bounded-actual-20260418-r1 `
-  --repo-root D:\Code\DiffAudit\Research\workspaces\white-box\external\GSA `
-  --assets-root D:\Code\DiffAudit\Research\workspaces\white-box\assets\gsa-cifar10-1k-3shadow-epoch300-rerun1 `
+  --workspace <DIFFAUDIT_ROOT>/Research/workspaces/white-box/runs/gsa-loss-score-export-bounded-actual-20260418-r1 `
+  --repo-root <DIFFAUDIT_ROOT>/Research/workspaces/white-box/external/GSA `
+  --assets-root <DIFFAUDIT_ROOT>/Research/workspaces/white-box/assets/gsa-cifar10-1k-3shadow-epoch300-rerun1 `
   --resolution 32 `
   --ddpm-num-steps 20 `
   --sampling-frequency 2 `
@@ -54,8 +54,8 @@ Command:
 
 ```powershell
 conda run -n diffaudit-research python -m diffaudit evaluate-gsa-loss-score-packet `
-  --workspace D:\Code\DiffAudit\Research\workspaces\white-box\runs\gsa-loss-score-threshold-eval-bounded-actual-20260418-r1 `
-  --packet-summary D:\Code\DiffAudit\Research\workspaces\white-box\runs\gsa-loss-score-export-bounded-actual-20260418-r1\summary.json
+  --workspace <DIFFAUDIT_ROOT>/Research/workspaces/white-box/runs/gsa-loss-score-threshold-eval-bounded-actual-20260418-r1 `
+  --packet-summary <DIFFAUDIT_ROOT>/Research/workspaces/white-box/runs/gsa-loss-score-export-bounded-actual-20260418-r1/summary.json
 ```
 
 Transferred target metrics:

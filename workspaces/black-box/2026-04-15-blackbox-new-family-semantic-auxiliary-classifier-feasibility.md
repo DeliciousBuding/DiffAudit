@@ -66,14 +66,14 @@ Attacker does **not** get:
 Primary local assets:
 
 - base model:
-  - `D:\Code\DiffAudit\Download\shared\weights\stable-diffusion-v1-5`
+  - `<DIFFAUDIT_ROOT>/Download/shared/weights/stable-diffusion-v1-5`
 - prompt bootstrapping:
-  - `D:\Code\DiffAudit\Download\shared\weights\blip-image-captioning-large`
+  - `<DIFFAUDIT_ROOT>/Download/shared/weights/blip-image-captioning-large`
 - candidate query splits:
-  - `D:\Code\DiffAudit\Research\workspaces\black-box\runs\clid-paper-align-asset-prep-20260415-r1\datasets\member`
-  - `D:\Code\DiffAudit\Research\workspaces\black-box\runs\clid-paper-align-asset-prep-20260415-r1\datasets\nonmember`
+  - `<DIFFAUDIT_ROOT>/Research/workspaces/black-box/runs/clid-paper-align-asset-prep-20260415-r1/datasets/member`
+  - `<DIFFAUDIT_ROOT>/Research/workspaces/black-box/runs/clid-paper-align-asset-prep-20260415-r1/datasets/nonmember`
 - target-side fine-tuned adapter:
-  - `D:\\Code\\DiffAudit\\Download\\black-box\\supplementary\\recon-assets\\ndss-2025-blackbox-membership-inference-fine-tuned-diffusion-models\model-checkpoints\celeba_target\checkpoint-25000`
+  - `<DIFFAUDIT_ROOT>/Download/black-box/supplementary/recon-assets/ndss-2025-blackbox-membership-inference-fine-tuned-diffusion-models/model-checkpoints/celeba_target/checkpoint-25000`
 
 Optional feature backbones:
 

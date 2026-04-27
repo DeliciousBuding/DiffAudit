@@ -9,7 +9,7 @@ Are Diffusion Models Vulnerable to Membership Inference Attacks?
 - 发表 venue / year / version：ICML 2023，PMLR 202
 - 论文主问题：当攻击者能够访问扩散过程某个时间步的中间去噪状态或其等价误差信号时，是否可以可靠地区分训练成员与非成员样本
 - 威胁模型类别：灰盒成员推断攻击
-- 本地 PDF 路径：`D:/Code/DiffAudit/Research/references/materials/gray-box/2023-icml-secmi-membership-inference-diffusion-models.pdf`
+- 本地 PDF 路径：`<DIFFAUDIT_ROOT>/Research/references/materials/gray-box/2023-icml-secmi-membership-inference-diffusion-models.pdf`
 - GitHub PDF 链接：[2023-icml-secmi-membership-inference-diffusion-models.pdf](https://github.com/DeliciousBuding/DiffAudit-Research/blob/main/references/materials/gray-box/2023-icml-secmi-membership-inference-diffusion-models.pdf)
 - OCR/Markdown 精修版链接：[OCR精修版：Are Diffusion Models Vulnerable to Membership Inference Attacks?](https://www.feishu.cn/docx/BsckdH7uNoHemwx1HfocgJhsnbg)
 - 飞书原生 PDF：[2023-icml-secmi-membership-inference-diffusion-models.pdf](https://ncn24qi9j5mt.feishu.cn/file/Oc72bykWdoE45MxU2FKcBTYQnQe)

@@ -6,12 +6,12 @@ Can `SimA` now emit a pairboard-ready packet surface on the current DDPM/CIFAR10
 
 ## Inputs Reviewed
 
-- `D:\Code\DiffAudit\Research\src\diffaudit\attacks\sima_adapter.py`
-- `D:\Code\DiffAudit\Research\src\diffaudit\cli.py`
-- `D:\Code\DiffAudit\Research\tests\test_sima_adapter.py`
-- `D:\Code\DiffAudit\Research\src\diffaudit\attacks\pia_adapter.py`
-- `D:\Code\DiffAudit\Research\src\diffaudit\attacks\crossbox_pairboard.py`
-- `D:\Code\DiffAudit\Research\workspaces\implementation\2026-04-21-x123-r25b-pia-sima-support-fusion-contract-review.md`
+- `<DIFFAUDIT_ROOT>/Research/src/diffaudit/attacks/sima_adapter.py`
+- `<DIFFAUDIT_ROOT>/Research/src/diffaudit/cli.py`
+- `<DIFFAUDIT_ROOT>/Research/tests/test_sima_adapter.py`
+- `<DIFFAUDIT_ROOT>/Research/src/diffaudit/attacks/pia_adapter.py`
+- `<DIFFAUDIT_ROOT>/Research/src/diffaudit/attacks/crossbox_pairboard.py`
+- `<DIFFAUDIT_ROOT>/Research/workspaces/implementation/2026-04-21-x123-r25b-pia-sima-support-fusion-contract-review.md`
 
 ## Changes Landed
 
@@ -60,11 +60,11 @@ Both validate exact-index or packet-local export semantics and pairboard-ready s
 
 Passed:
 
-- `python -m unittest D:\Code\DiffAudit\Research\tests\test_sima_adapter.py`
+- `python -m unittest <DIFFAUDIT_ROOT>/Research/tests/test_sima_adapter.py`
 
 Observed unrelated existing failure outside this task:
 
-- `python -m unittest D:\Code\DiffAudit\Research\tests\test_pia_adapter.py D:\Code\DiffAudit\Research\tests\test_sima_adapter.py`
+- `python -m unittest <DIFFAUDIT_ROOT>/Research/tests/test_pia_adapter.py <DIFFAUDIT_ROOT>/Research/tests/test_sima_adapter.py`
 - current unrelated drift is `run-pia-runtime-mainline --epsilon-precision-bins 32` not recognized by the present parser
 - this task does not modify that parser surface and does not rely on it
 
@@ -81,7 +81,7 @@ Sharper control truth:
 
 ## Canonical Evidence Anchor
 
-- `D:\Code\DiffAudit\Research\workspaces\implementation\2026-04-21-x124-r25c-sima-packet-score-export-contract-landing.md`
+- `<DIFFAUDIT_ROOT>/Research/workspaces/implementation/2026-04-21-x124-r25c-sima-packet-score-export-contract-landing.md`
 
 ## Handoff
 

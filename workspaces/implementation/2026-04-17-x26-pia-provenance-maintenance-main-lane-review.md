@@ -6,18 +6,18 @@ Now that `PIA provenance maintenance` has been promoted from sidecar to the main
 
 ## Inputs Reviewed
 
-- `D:\Code\DiffAudit\Research\ROADMAP.md`
-- `D:\Code\DiffAudit\Research\workspaces\gray-box\plan.md`
-- `D:\Code\DiffAudit\Research\workspaces\gray-box\pia-intake-gate.md`
-- `D:\Code\DiffAudit\Research\workspaces\gray-box\assets\pia\PROVENANCE.md`
-- `D:\Code\DiffAudit\Research\workspaces\gray-box\2026-04-09-pia-provenance-dossier.md`
-- `D:\Code\DiffAudit\Research\workspaces\gray-box\2026-04-10-pia-provenance-upstream-identity-note.md`
-- `D:\Code\DiffAudit\Research\workspaces\gray-box\2026-04-10-pia-provenance-split-protocol-delta.md`
-- `D:\Code\DiffAudit\Research\workspaces\gray-box\2026-04-09-pia-paper-alignment-gap.md`
-- `D:\Code\DiffAudit\Research\workspaces\gray-box\assets\pia\manifest.json`
-- `D:\Code\DiffAudit\Research\workspaces\intake\index.json`
-- `D:\Code\DiffAudit\Research\docs\admitted-results-summary.md`
-- `D:\Code\DiffAudit\Research\docs\asset-registry-local-api.md`
+- `<DIFFAUDIT_ROOT>/Research/ROADMAP.md`
+- `<DIFFAUDIT_ROOT>/Research/workspaces/gray-box/plan.md`
+- `<DIFFAUDIT_ROOT>/Research/workspaces/gray-box/pia-intake-gate.md`
+- `<DIFFAUDIT_ROOT>/Research/workspaces/gray-box/assets/pia/PROVENANCE.md`
+- `<DIFFAUDIT_ROOT>/Research/workspaces/gray-box/2026-04-09-pia-provenance-dossier.md`
+- `<DIFFAUDIT_ROOT>/Research/workspaces/gray-box/2026-04-10-pia-provenance-upstream-identity-note.md`
+- `<DIFFAUDIT_ROOT>/Research/workspaces/gray-box/2026-04-10-pia-provenance-split-protocol-delta.md`
+- `<DIFFAUDIT_ROOT>/Research/workspaces/gray-box/2026-04-09-pia-paper-alignment-gap.md`
+- `<DIFFAUDIT_ROOT>/Research/workspaces/gray-box/assets/pia/manifest.json`
+- `<DIFFAUDIT_ROOT>/Research/workspaces/intake/index.json`
+- `<DIFFAUDIT_ROOT>/Research/docs/admitted-results-summary.md`
+- `<DIFFAUDIT_ROOT>/Research/docs/asset-registry-local-api.md`
 
 ## Review
 
@@ -74,15 +74,15 @@ More precise reading:
 
 ## Canonical Evidence Anchor
 
-- `D:\Code\DiffAudit\Research\workspaces\implementation\2026-04-17-x26-pia-provenance-maintenance-main-lane-review.md`
+- `<DIFFAUDIT_ROOT>/Research/workspaces/implementation/2026-04-17-x26-pia-provenance-maintenance-main-lane-review.md`
 
 ## Handoff Decision
 
-- `D:\Code\DiffAudit\Research\ROADMAP.md`: update required
-- `D:\Code\DiffAudit\Research\docs\comprehensive-progress.md`: update required
-- `D:\Code\DiffAudit\Research\workspaces\implementation\challenger-queue.md`: update required
-- `D:\Code\DiffAudit\Research\docs\mainline-narrative.md`: update required
-- `D:\Code\DiffAudit\ROADMAP.md`: update required
+- `<DIFFAUDIT_ROOT>/Research/ROADMAP.md`: update required
+- `<DIFFAUDIT_ROOT>/Research/docs/comprehensive-progress.md`: update required
+- `<DIFFAUDIT_ROOT>/Research/workspaces/implementation/challenger-queue.md`: update required
+- `<DIFFAUDIT_ROOT>/Research/docs/mainline-narrative.md`: update required
+- `<DIFFAUDIT_ROOT>/ROADMAP.md`: update required
 - `platform_runtime_handoff = none`
 - `competition_material_sync = none`
 

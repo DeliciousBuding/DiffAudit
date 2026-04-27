@@ -10,11 +10,11 @@
 ### 1.1 SecMI OneDrive 权重包
 
 - 原始压缩包已归档到：
-  - `D:\\Code\\DiffAudit\\Download\\gray-box\supplementary\secmi-onedrive\raw\OneDrive_1_2026-4-15.zip`
-  - `D:\\Code\\DiffAudit\\Download\\gray-box\supplementary\secmi-onedrive\raw\OneDrive_1_2026-4-15-duplicate.zip`
+  - `<DIFFAUDIT_ROOT>\\Download\\gray-box\supplementary\secmi-onedrive\raw\OneDrive_1_2026-4-15.zip`
+  - `<DIFFAUDIT_ROOT>\\Download\\gray-box\supplementary\secmi-onedrive\raw\OneDrive_1_2026-4-15-duplicate.zip`
 - 已解压到：
-  - `D:\\Code\\DiffAudit\\Download\\gray-box\weights\secmi-cifar-bundle\CIFAR10\`
-  - `D:\\Code\\DiffAudit\\Download\\gray-box\weights\secmi-cifar-bundle\CIFAR100\`
+  - `<DIFFAUDIT_ROOT>\\Download\\gray-box\weights\secmi-cifar-bundle\CIFAR10\`
+  - `<DIFFAUDIT_ROOT>\\Download\\gray-box\weights\secmi-cifar-bundle\CIFAR100\`
 - 已确认解压结果包含：
   - `checkpoint.pt`
   - `flagfile.txt`
@@ -28,9 +28,9 @@
 ### 1.2 CLID_MIA supplementary 包
 
 - 原始压缩包已归档到：
-  - `D:\\Code\\DiffAudit\\Download\\black-box\supplementary\clid-mia-supplementary\raw\1311_Membership_Inference_on_T_Supplementary_Material.zip`
+  - `<DIFFAUDIT_ROOT>\\Download\\black-box\supplementary\clid-mia-supplementary\raw\1311_Membership_Inference_on_T_Supplementary_Material.zip`
 - 已解压到：
-  - `D:\\Code\\DiffAudit\\Download\\black-box\supplementary\clid-mia-supplementary\contents\CLID_MIA\`
+  - `<DIFFAUDIT_ROOT>\\Download\\black-box\supplementary\clid-mia-supplementary\contents\CLID_MIA\`
 - 已确认内容包括：
   - `cal_clid_th.py`
   - `cal_clid_xgb.py`
@@ -46,19 +46,19 @@
 以下资产已确认本地存在：
 
 - CIFAR-10：
-  `D:\\Code\\DiffAudit\\Download\\shared\datasets\cifar-10-python.tar.gz`
+  `<DIFFAUDIT_ROOT>\\Download\\shared\datasets\cifar-10-python.tar.gz`
 - CelebA 主图像包：
-  `D:\\Code\\DiffAudit\\Download\\shared\datasets\celeba\img_align_celeba.zip`
+  `<DIFFAUDIT_ROOT>\\Download\\shared\datasets\celeba\img_align_celeba.zip`
 - CelebA 标注与分割文件：
-  `D:\\Code\\DiffAudit\\Download\\shared\datasets\celeba\`
+  `<DIFFAUDIT_ROOT>\\Download\\shared\datasets\celeba\`
 - OpenAI CLIP ViT-L/14：
-  `D:\\Code\\DiffAudit\\Download\\shared\weights\clip-vit-large-patch14\`
+  `<DIFFAUDIT_ROOT>\\Download\\shared\weights\clip-vit-large-patch14\`
 - Google DDPM CIFAR-10 32：
-  `D:\\Code\\DiffAudit\\Download\\shared\weights\google-ddpm-cifar10-32\`
+  `<DIFFAUDIT_ROOT>\\Download\\shared\weights\google-ddpm-cifar10-32\`
 - Stable Diffusion v1.5：
-  `D:\\Code\\DiffAudit\\Download\\shared\weights\stable-diffusion-v1-5\`
+  `<DIFFAUDIT_ROOT>\\Download\\shared\weights\stable-diffusion-v1-5\`
 - BLIP image captioning large：
-  `D:\\Code\\DiffAudit\\Download\\shared\weights\blip-image-captioning-large\`
+  `<DIFFAUDIT_ROOT>\\Download\\shared\weights\blip-image-captioning-large\`
 
 ---
 
@@ -110,7 +110,7 @@
 
 建议落盘位置：
 
-- `D:\\Code\\DiffAudit\\Download\\shared\weights\stable-diffusion-v1-5\`
+- `<DIFFAUDIT_ROOT>\\Download\\shared\weights\stable-diffusion-v1-5\`
 
 ---
 

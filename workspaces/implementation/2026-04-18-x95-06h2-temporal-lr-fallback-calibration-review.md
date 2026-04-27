@@ -6,10 +6,10 @@ After `06-H1` missed the `256` teacher gates, can the first fixed `06-H2 RMIA / 
 
 ## Inputs Reviewed
 
-- `D:\Code\DiffAudit\Research\src\diffaudit\attacks\temporal_lr.py`
-- `D:\Code\DiffAudit\Research\docs\report-bundles\gpt54\round2-results\06.md`
-- `D:\Code\DiffAudit\Research\workspaces\gray-box\runs\temporal-surrogate-feature-packet-cifar10-teacher256-20260418-r1\feature-packet.json`
-- `D:\Code\DiffAudit\Research\workspaces\gray-box\runs\temporal-lr-eval-cifar10-cal256-20260418-r1\summary.json`
+- `<DIFFAUDIT_ROOT>/Research/src/diffaudit/attacks/temporal_lr.py`
+- `<DIFFAUDIT_ROOT>/Research/docs/report-bundles/gpt54/round2-results/06.md`
+- `<DIFFAUDIT_ROOT>/Research/workspaces/gray-box/runs/temporal-surrogate-feature-packet-cifar10-teacher256-20260418-r1/feature-packet.json`
+- `<DIFFAUDIT_ROOT>/Research/workspaces/gray-box/runs/temporal-lr-eval-cifar10-cal256-20260418-r1/summary.json`
 
 ## What Was Implemented
 
@@ -83,7 +83,7 @@ More precise reading:
 
 ## Canonical Evidence Anchor
 
-- `D:\Code\DiffAudit\Research\workspaces\gray-box\runs\temporal-lr-eval-cifar10-cal256-20260418-r1\summary.json`
+- `<DIFFAUDIT_ROOT>/Research/workspaces/gray-box/runs/temporal-lr-eval-cifar10-cal256-20260418-r1/summary.json`
 
 ## Handoff Decision
 

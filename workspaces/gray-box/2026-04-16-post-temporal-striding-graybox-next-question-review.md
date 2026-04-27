@@ -17,14 +17,14 @@ After `TMIA-DM late-window + temporal-striding(stride=2)` became the strongest d
 Primary references reviewed:
 
 - defended gray-box challenger update:
-  - `D:\Code\DiffAudit\Research\workspaces\gray-box\2026-04-16-tmiadm-temporal-striding-defense-verdict.md`
-  - `D:\Code\DiffAudit\Research\workspaces\gray-box\2026-04-16-pia-vs-tmiadm-temporal-striding-defended-comparison.md`
+  - `<DIFFAUDIT_ROOT>/Research/workspaces/gray-box/2026-04-16-tmiadm-temporal-striding-defense-verdict.md`
+  - `<DIFFAUDIT_ROOT>/Research/workspaces/gray-box/2026-04-16-pia-vs-tmiadm-temporal-striding-defended-comparison.md`
 - strengthened bounded challenger candidate boundary:
-  - `D:\Code\DiffAudit\Research\workspaces\gray-box\2026-04-16-noise-as-probe-challenger-boundary-review.md`
-  - `D:\Code\DiffAudit\Research\workspaces\gray-box\2026-04-16-noise-as-probe-defended-extension-feasibility-review.md`
+  - `<DIFFAUDIT_ROOT>/Research/workspaces/gray-box/2026-04-16-noise-as-probe-challenger-boundary-review.md`
+  - `<DIFFAUDIT_ROOT>/Research/workspaces/gray-box/2026-04-16-noise-as-probe-defended-extension-feasibility-review.md`
 - gray-box plan / summary state:
-  - `D:\Code\DiffAudit\Research\workspaces\gray-box\plan.md`
-  - `D:\Code\DiffAudit\Research\docs\comprehensive-progress.md`
+  - `<DIFFAUDIT_ROOT>/Research/workspaces/gray-box/plan.md`
+  - `<DIFFAUDIT_ROOT>/Research/docs/comprehensive-progress.md`
 
 ## Review
 

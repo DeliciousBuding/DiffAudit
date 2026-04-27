@@ -6,13 +6,13 @@ After both `Noise as a Probe promotion-gap review` and `Noise as a Probe contrac
 
 ## Inputs Reviewed
 
-- `D:\Code\DiffAudit\ROADMAP.md`
-- `D:\Code\DiffAudit\Research\ROADMAP.md`
-- `D:\Code\DiffAudit\Research\workspaces\gray-box\plan.md`
-- `D:\Code\DiffAudit\Research\workspaces\gray-box\2026-04-17-noise-as-probe-promotion-gap-review.md`
-- `D:\Code\DiffAudit\Research\workspaces\gray-box\2026-04-17-noise-as-probe-contract-shift-review.md`
-- `D:\Code\DiffAudit\Research\workspaces\black-box\plan.md`
-- `D:\Code\DiffAudit\Research\workspaces\white-box\plan.md`
+- `<DIFFAUDIT_ROOT>/ROADMAP.md`
+- `<DIFFAUDIT_ROOT>/Research/ROADMAP.md`
+- `<DIFFAUDIT_ROOT>/Research/workspaces/gray-box/plan.md`
+- `<DIFFAUDIT_ROOT>/Research/workspaces/gray-box/2026-04-17-noise-as-probe-promotion-gap-review.md`
+- `<DIFFAUDIT_ROOT>/Research/workspaces/gray-box/2026-04-17-noise-as-probe-contract-shift-review.md`
+- `<DIFFAUDIT_ROOT>/Research/workspaces/black-box/plan.md`
+- `<DIFFAUDIT_ROOT>/Research/workspaces/white-box/plan.md`
 
 ## Current Gray-Box Truth
 

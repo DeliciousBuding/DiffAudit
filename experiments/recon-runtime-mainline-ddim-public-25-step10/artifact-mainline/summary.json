@@ -5,13 +5,13 @@
   "paper": "BlackBox_Reconstruction_ArXiv2023",
   "mode": "artifact-mainline",
   "device": "cpu",
-  "workspace": "D:\\Code\\DiffAudit\\Research\\experiments\\recon-runtime-mainline-ddim-public-25-step10\\artifact-mainline",
+  "workspace": "<DIFFAUDIT_ROOT>/Research/experiments/recon-runtime-mainline-ddim-public-25-step10/artifact-mainline",
   "artifact_paths": {
-    "summary": "D:\\Code\\DiffAudit\\Research\\experiments\\recon-runtime-mainline-ddim-public-25-step10\\artifact-mainline\\summary.json",
-    "artifact_summary": "D:\\Code\\DiffAudit\\Research\\experiments\\recon-runtime-mainline-ddim-public-25-step10\\artifact-mainline\\artifact-summary\\summary.json",
-    "upstream_eval_summary": "D:\\Code\\DiffAudit\\Research\\experiments\\recon-runtime-mainline-ddim-public-25-step10\\artifact-mainline\\upstream-eval\\summary.json"
+    "summary": "<DIFFAUDIT_ROOT>/Research/experiments/recon-runtime-mainline-ddim-public-25-step10/artifact-mainline/summary.json",
+    "artifact_summary": "<DIFFAUDIT_ROOT>/Research/experiments/recon-runtime-mainline-ddim-public-25-step10/artifact-mainline/artifact-summary/summary.json",
+    "upstream_eval_summary": "<DIFFAUDIT_ROOT>/Research/experiments/recon-runtime-mainline-ddim-public-25-step10/artifact-mainline/upstream-eval/summary.json"
   },
-  "asset_source_dir": "D:\\Code\\DiffAudit\\Research\\experiments\\recon-runtime-mainline-ddim-public-25-step10\\score-artifacts",
+  "asset_source_dir": "<DIFFAUDIT_ROOT>/Research/experiments/recon-runtime-mainline-ddim-public-25-step10/score-artifacts",
   "checks": {
     "artifact_summary_ready": true,
     "upstream_eval_ready": true,
@@ -27,7 +27,7 @@
     "artifact_summary": {
       "status": "ready",
       "mode": "artifact-summary",
-      "summary_path": "D:\\Code\\DiffAudit\\Research\\experiments\\recon-runtime-mainline-ddim-public-25-step10\\artifact-mainline\\artifact-summary\\summary.json",
+      "summary_path": "<DIFFAUDIT_ROOT>/Research/experiments/recon-runtime-mainline-ddim-public-25-step10/artifact-mainline/artifact-summary/summary.json",
       "headline_metrics": {
         "auc": 0.776,
         "asr": null,
@@ -37,7 +37,7 @@
     "upstream_eval": {
       "status": "ready",
       "mode": "upstream-eval",
-      "summary_path": "D:\\Code\\DiffAudit\\Research\\experiments\\recon-runtime-mainline-ddim-public-25-step10\\artifact-mainline\\upstream-eval\\summary.json",
+      "summary_path": "<DIFFAUDIT_ROOT>/Research/experiments/recon-runtime-mainline-ddim-public-25-step10/artifact-mainline/upstream-eval/summary.json",
       "headline_metrics": {
         "auc": 0.768,
         "asr": 0.52,

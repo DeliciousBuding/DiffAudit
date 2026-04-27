@@ -14,7 +14,7 @@ DiffAudit 是一个面向扩散模型的隐私风险审计研究仓库。
 4. 用 `configs/assets/team.local.template.yaml` 复制出本机 `configs/assets/team.local.yaml`，只在本机文件里填个人路径。
 5. 运行 `python scripts/render_team_local_configs.py` 和 `python scripts/verify_env.py` 做接手自检。
 
-默认资产布局是 `D:\Code\DiffAudit\Research` 放仓库、`D:\Code\DiffAudit\Download` 放原始数据集/权重/补充包。不要把大数据集和模型权重放进 `Research/external`。
+默认资产布局是 `<DIFFAUDIT_ROOT>/Research` 放仓库、`<DIFFAUDIT_ROOT>/Download` 放原始数据集/权重/补充包。`<DIFFAUDIT_ROOT>` 是你自己机器上的项目根目录，不要求是 D 盘。不要把大数据集和模型权重放进 `Research/external`。
 
 ## 项目定位
 
@@ -90,7 +90,7 @@ DiffAudit 是一个面向扩散模型的隐私风险审计研究仓库。
 当前方法线的最新状态见 [docs/reproduction-status.md](docs/reproduction-status.md)。
 研究仓库的一页综合进度见 [docs/comprehensive-progress.md](docs/comprehensive-progress.md)。
 黑盒结果的统一机读汇总见 `experiments/blackbox-status/summary.json`。
-执行控制面说明见 `D:\Code\DiffAudit\Runtime-Server\README.md`。`Research` 只保留研究代码、资产与 admitted 结果，不再承载活跃 HTTP 服务入口。
+执行控制面说明见相邻仓库 `../Runtime-Server/README.md`。`Research` 只保留研究代码、资产与 admitted 结果，不再承载活跃 HTTP 服务入口。
 
 ## 仓库结构
 

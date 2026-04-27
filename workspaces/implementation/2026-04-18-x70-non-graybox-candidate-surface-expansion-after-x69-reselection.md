@@ -6,16 +6,16 @@ After `X-69` confirmed that no blocked/hold branch reopened above sidecar mainte
 
 ## Inputs Reviewed
 
-- `D:\Code\DiffAudit\ROADMAP.md`
-- `D:\Code\DiffAudit\Research\ROADMAP.md`
-- `D:\Code\DiffAudit\Research\docs\comprehensive-progress.md`
-- `D:\Code\DiffAudit\Research\docs\mainline-narrative.md`
-- `D:\Code\DiffAudit\Research\workspaces\implementation\challenger-queue.md`
-- `D:\Code\DiffAudit\Research\workspaces\white-box\README.md`
-- `D:\Code\DiffAudit\Research\workspaces\white-box\plan.md`
-- `D:\Code\DiffAudit\Research\workspaces\white-box\2026-04-17-distinct-whitebox-defended-family-import-selection-review.md`
-- `D:\Code\DiffAudit\Research\docs\paper-reports\white-box\2025-popets-white-box-membership-inference-diffusion-models-report.md`
-- `D:\Code\DiffAudit\Research\docs\paper-reports\survey\2025-aaai-privacy-preserving-lora-membership-inference-latent-diffusion-models-report.md`
+- `<DIFFAUDIT_ROOT>/ROADMAP.md`
+- `<DIFFAUDIT_ROOT>/Research/ROADMAP.md`
+- `<DIFFAUDIT_ROOT>/Research/docs/comprehensive-progress.md`
+- `<DIFFAUDIT_ROOT>/Research/docs/mainline-narrative.md`
+- `<DIFFAUDIT_ROOT>/Research/workspaces/implementation/challenger-queue.md`
+- `<DIFFAUDIT_ROOT>/Research/workspaces/white-box/README.md`
+- `<DIFFAUDIT_ROOT>/Research/workspaces/white-box/plan.md`
+- `<DIFFAUDIT_ROOT>/Research/workspaces/white-box/2026-04-17-distinct-whitebox-defended-family-import-selection-review.md`
+- `<DIFFAUDIT_ROOT>/Research/docs/paper-reports/white-box/2025-popets-white-box-membership-inference-diffusion-models-report.md`
+- `<DIFFAUDIT_ROOT>/Research/docs/paper-reports/survey/2025-aaai-privacy-preserving-lora-membership-inference-latent-diffusion-models-report.md`
 
 ## Expansion Review
 

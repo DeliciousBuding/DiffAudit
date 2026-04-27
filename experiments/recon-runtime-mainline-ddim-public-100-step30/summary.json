@@ -5,11 +5,11 @@
   "paper": "BlackBox_Reconstruction_ArXiv2023",
   "mode": "runtime-mainline",
   "device": "cuda:0",
-  "workspace": "D:\\Code\\DiffAudit\\Research\\experiments\\recon-runtime-mainline-ddim-public-100-step30",
+  "workspace": "<DIFFAUDIT_ROOT>/Research/experiments/recon-runtime-mainline-ddim-public-100-step30",
   "artifact_paths": {
-    "summary": "D:\\Code\\DiffAudit\\Research\\experiments\\recon-runtime-mainline-ddim-public-100-step30\\summary.json",
-    "score_artifact_dir": "D:\\Code\\DiffAudit\\Research\\experiments\\recon-runtime-mainline-ddim-public-100-step30\\score-artifacts",
-    "artifact_mainline_summary": "D:\\Code\\DiffAudit\\Research\\experiments\\recon-runtime-mainline-ddim-public-100-step30\\artifact-mainline\\summary.json"
+    "summary": "<DIFFAUDIT_ROOT>/Research/experiments/recon-runtime-mainline-ddim-public-100-step30/summary.json",
+    "score_artifact_dir": "<DIFFAUDIT_ROOT>/Research/experiments/recon-runtime-mainline-ddim-public-100-step30/score-artifacts",
+    "artifact_mainline_summary": "<DIFFAUDIT_ROOT>/Research/experiments/recon-runtime-mainline-ddim-public-100-step30/artifact-mainline/summary.json"
   },
   "checks": {
     "runtime_assets_ready": true,
@@ -45,17 +45,17 @@
       "repo_workspace_ready": true
     },
     "paths": {
-      "target_member_dataset": "D:\\Code\\DiffAudit\\Research\\external\\recon-assets\\ndss-2025-blackbox-membership-inference-fine-tuned-diffusion-models\\derived-public-100\\target_member.pt",
-      "target_non_member_dataset": "D:\\Code\\DiffAudit\\Research\\external\\recon-assets\\ndss-2025-blackbox-membership-inference-fine-tuned-diffusion-models\\derived-public-100\\target_non_member.pt",
-      "shadow_member_dataset": "D:\\Code\\DiffAudit\\Research\\external\\recon-assets\\ndss-2025-blackbox-membership-inference-fine-tuned-diffusion-models\\derived-public-100\\shadow_member_proxy.pt",
-      "shadow_non_member_dataset": "D:\\Code\\DiffAudit\\Research\\external\\recon-assets\\ndss-2025-blackbox-membership-inference-fine-tuned-diffusion-models\\derived-public-100\\shadow_non_member.pt",
-      "target_model_dir": "D:\\Code\\DiffAudit\\Research\\external\\recon-assets\\ndss-2025-blackbox-membership-inference-fine-tuned-diffusion-models\\model-checkpoints\\celeba_partial_target\\checkpoint-25000",
-      "shadow_model_dir": "D:\\Code\\DiffAudit\\Research\\external\\recon-assets\\ndss-2025-blackbox-membership-inference-fine-tuned-diffusion-models\\model-checkpoints\\celeba_shadow\\checkpoint-25000",
-      "repo_root": "D:\\Code\\DiffAudit\\Research\\external\\Reconstruction-based-Attack"
+      "target_member_dataset": "<DIFFAUDIT_ROOT>/Research/external/recon-assets/ndss-2025-blackbox-membership-inference-fine-tuned-diffusion-models/derived-public-100/target_member.pt",
+      "target_non_member_dataset": "<DIFFAUDIT_ROOT>/Research/external/recon-assets/ndss-2025-blackbox-membership-inference-fine-tuned-diffusion-models/derived-public-100/target_non_member.pt",
+      "shadow_member_dataset": "<DIFFAUDIT_ROOT>/Research/external/recon-assets/ndss-2025-blackbox-membership-inference-fine-tuned-diffusion-models/derived-public-100/shadow_member_proxy.pt",
+      "shadow_non_member_dataset": "<DIFFAUDIT_ROOT>/Research/external/recon-assets/ndss-2025-blackbox-membership-inference-fine-tuned-diffusion-models/derived-public-100/shadow_non_member.pt",
+      "target_model_dir": "<DIFFAUDIT_ROOT>/Research/external/recon-assets/ndss-2025-blackbox-membership-inference-fine-tuned-diffusion-models/model-checkpoints/celeba_partial_target/checkpoint-25000",
+      "shadow_model_dir": "<DIFFAUDIT_ROOT>/Research/external/recon-assets/ndss-2025-blackbox-membership-inference-fine-tuned-diffusion-models/model-checkpoints/celeba_shadow/checkpoint-25000",
+      "repo_root": "<DIFFAUDIT_ROOT>/Research/external/Reconstruction-based-Attack"
     },
     "dataset_profiles": {
       "target_member": {
-        "path": "D:\\Code\\DiffAudit\\Research\\external\\recon-assets\\ndss-2025-blackbox-membership-inference-fine-tuned-diffusion-models\\derived-public-100\\target_member.pt",
+        "path": "<DIFFAUDIT_ROOT>/Research/external/recon-assets/ndss-2025-blackbox-membership-inference-fine-tuned-diffusion-models/derived-public-100/target_member.pt",
         "exists": true,
         "keys": [
           "image",
@@ -67,7 +67,7 @@
         "non_empty": true
       },
       "target_non_member": {
-        "path": "D:\\Code\\DiffAudit\\Research\\external\\recon-assets\\ndss-2025-blackbox-membership-inference-fine-tuned-diffusion-models\\derived-public-100\\target_non_member.pt",
+        "path": "<DIFFAUDIT_ROOT>/Research/external/recon-assets/ndss-2025-blackbox-membership-inference-fine-tuned-diffusion-models/derived-public-100/target_non_member.pt",
         "exists": true,
         "keys": [
           "image",
@@ -79,7 +79,7 @@
         "non_empty": true
       },
       "shadow_member": {
-        "path": "D:\\Code\\DiffAudit\\Research\\external\\recon-assets\\ndss-2025-blackbox-membership-inference-fine-tuned-diffusion-models\\derived-public-100\\shadow_member_proxy.pt",
+        "path": "<DIFFAUDIT_ROOT>/Research/external/recon-assets/ndss-2025-blackbox-membership-inference-fine-tuned-diffusion-models/derived-public-100/shadow_member_proxy.pt",
         "exists": true,
         "keys": [
           "image",
@@ -91,7 +91,7 @@
         "non_empty": true
       },
       "shadow_non_member": {
-        "path": "D:\\Code\\DiffAudit\\Research\\external\\recon-assets\\ndss-2025-blackbox-membership-inference-fine-tuned-diffusion-models\\derived-public-100\\shadow_non_member.pt",
+        "path": "<DIFFAUDIT_ROOT>/Research/external/recon-assets/ndss-2025-blackbox-membership-inference-fine-tuned-diffusion-models/derived-public-100/shadow_non_member.pt",
         "exists": true,
         "keys": [
           "image",
@@ -112,44 +112,44 @@
     "target_member": {
       "status": "ready",
       "stage": "reused",
-      "dataset_path": "D:\\Code\\DiffAudit\\Research\\external\\recon-assets\\ndss-2025-blackbox-membership-inference-fine-tuned-diffusion-models\\derived-public-100\\target_member.pt",
-      "model_dir": "D:\\Code\\DiffAudit\\Research\\external\\recon-assets\\ndss-2025-blackbox-membership-inference-fine-tuned-diffusion-models\\model-checkpoints\\celeba_partial_target\\checkpoint-25000",
+      "dataset_path": "<DIFFAUDIT_ROOT>/Research/external/recon-assets/ndss-2025-blackbox-membership-inference-fine-tuned-diffusion-models/derived-public-100/target_member.pt",
+      "model_dir": "<DIFFAUDIT_ROOT>/Research/external/recon-assets/ndss-2025-blackbox-membership-inference-fine-tuned-diffusion-models/model-checkpoints/celeba_partial_target/checkpoint-25000",
       "membership": 1,
-      "generated_dir": "D:\\Code\\DiffAudit\\Research\\experiments\\recon-runtime-mainline-ddim-public-100-step30\\generated-images\\target_member",
-      "score_path": "D:\\Code\\DiffAudit\\Research\\experiments\\recon-runtime-mainline-ddim-public-100-step30\\score-artifacts\\target_member.pt",
+      "generated_dir": "<DIFFAUDIT_ROOT>/Research/experiments/recon-runtime-mainline-ddim-public-100-step30/generated-images/target_member",
+      "score_path": "<DIFFAUDIT_ROOT>/Research/experiments/recon-runtime-mainline-ddim-public-100-step30/score-artifacts/target_member.pt",
       "sample_count": 100,
       "label_sum": 100
     },
     "target_non_member": {
       "status": "ready",
       "stage": "reused",
-      "dataset_path": "D:\\Code\\DiffAudit\\Research\\external\\recon-assets\\ndss-2025-blackbox-membership-inference-fine-tuned-diffusion-models\\derived-public-100\\target_non_member.pt",
-      "model_dir": "D:\\Code\\DiffAudit\\Research\\external\\recon-assets\\ndss-2025-blackbox-membership-inference-fine-tuned-diffusion-models\\model-checkpoints\\celeba_partial_target\\checkpoint-25000",
+      "dataset_path": "<DIFFAUDIT_ROOT>/Research/external/recon-assets/ndss-2025-blackbox-membership-inference-fine-tuned-diffusion-models/derived-public-100/target_non_member.pt",
+      "model_dir": "<DIFFAUDIT_ROOT>/Research/external/recon-assets/ndss-2025-blackbox-membership-inference-fine-tuned-diffusion-models/model-checkpoints/celeba_partial_target/checkpoint-25000",
       "membership": 0,
-      "generated_dir": "D:\\Code\\DiffAudit\\Research\\experiments\\recon-runtime-mainline-ddim-public-100-step30\\generated-images\\target_non_member",
-      "score_path": "D:\\Code\\DiffAudit\\Research\\experiments\\recon-runtime-mainline-ddim-public-100-step30\\score-artifacts\\target_non_member.pt",
+      "generated_dir": "<DIFFAUDIT_ROOT>/Research/experiments/recon-runtime-mainline-ddim-public-100-step30/generated-images/target_non_member",
+      "score_path": "<DIFFAUDIT_ROOT>/Research/experiments/recon-runtime-mainline-ddim-public-100-step30/score-artifacts/target_non_member.pt",
       "sample_count": 100,
       "label_sum": 0
     },
     "shadow_member": {
       "status": "ready",
       "stage": "reused",
-      "dataset_path": "D:\\Code\\DiffAudit\\Research\\external\\recon-assets\\ndss-2025-blackbox-membership-inference-fine-tuned-diffusion-models\\derived-public-100\\shadow_member_proxy.pt",
-      "model_dir": "D:\\Code\\DiffAudit\\Research\\external\\recon-assets\\ndss-2025-blackbox-membership-inference-fine-tuned-diffusion-models\\model-checkpoints\\celeba_shadow\\checkpoint-25000",
+      "dataset_path": "<DIFFAUDIT_ROOT>/Research/external/recon-assets/ndss-2025-blackbox-membership-inference-fine-tuned-diffusion-models/derived-public-100/shadow_member_proxy.pt",
+      "model_dir": "<DIFFAUDIT_ROOT>/Research/external/recon-assets/ndss-2025-blackbox-membership-inference-fine-tuned-diffusion-models/model-checkpoints/celeba_shadow/checkpoint-25000",
       "membership": 1,
-      "generated_dir": "D:\\Code\\DiffAudit\\Research\\experiments\\recon-runtime-mainline-ddim-public-100-step30\\generated-images\\shadow_member",
-      "score_path": "D:\\Code\\DiffAudit\\Research\\experiments\\recon-runtime-mainline-ddim-public-100-step30\\score-artifacts\\shadow_member.pt",
+      "generated_dir": "<DIFFAUDIT_ROOT>/Research/experiments/recon-runtime-mainline-ddim-public-100-step30/generated-images/shadow_member",
+      "score_path": "<DIFFAUDIT_ROOT>/Research/experiments/recon-runtime-mainline-ddim-public-100-step30/score-artifacts/shadow_member.pt",
       "sample_count": 100,
       "label_sum": 100
     },
     "shadow_non_member": {
       "status": "ready",
       "stage": "generated",
-      "dataset_path": "D:\\Code\\DiffAudit\\Research\\external\\recon-assets\\ndss-2025-blackbox-membership-inference-fine-tuned-diffusion-models\\derived-public-100\\shadow_non_member.pt",
-      "model_dir": "D:\\Code\\DiffAudit\\Research\\external\\recon-assets\\ndss-2025-blackbox-membership-inference-fine-tuned-diffusion-models\\model-checkpoints\\celeba_shadow\\checkpoint-25000",
+      "dataset_path": "<DIFFAUDIT_ROOT>/Research/external/recon-assets/ndss-2025-blackbox-membership-inference-fine-tuned-diffusion-models/derived-public-100/shadow_non_member.pt",
+      "model_dir": "<DIFFAUDIT_ROOT>/Research/external/recon-assets/ndss-2025-blackbox-membership-inference-fine-tuned-diffusion-models/model-checkpoints/celeba_shadow/checkpoint-25000",
       "membership": 0,
-      "generated_dir": "D:\\Code\\DiffAudit\\Research\\experiments\\recon-runtime-mainline-ddim-public-100-step30\\generated-images\\shadow_non_member",
-      "score_path": "D:\\Code\\DiffAudit\\Research\\experiments\\recon-runtime-mainline-ddim-public-100-step30\\score-artifacts\\shadow_non_member.pt",
+      "generated_dir": "<DIFFAUDIT_ROOT>/Research/experiments/recon-runtime-mainline-ddim-public-100-step30/generated-images/shadow_non_member",
+      "score_path": "<DIFFAUDIT_ROOT>/Research/experiments/recon-runtime-mainline-ddim-public-100-step30/score-artifacts/shadow_non_member.pt",
       "sample_count": 100,
       "label_sum": 0,
       "inference": {
@@ -163,8 +163,8 @@
           "100%|\u2588\u2588\u2588\u2588\u2588\u2588\u2588\u2588\u2588\u2588| 30/30 [00:02<00:00, 11.98it/s]"
         ],
         "command": [
-          "C:\\Users\\Ding\\miniforge3\\envs\\diffaudit-research\\python.exe",
-          "D:\\Code\\DiffAudit\\Research\\external\\Reconstruction-based-Attack\\inference.py",
+          "<RESEARCH_PYTHON>",
+          "<DIFFAUDIT_ROOT>/Research/external/Reconstruction-based-Attack/inference.py",
           "--pretrained_model_name_or_path",
           "runwayml/stable-diffusion-v1-5",
           "--num_validation_images",
@@ -172,11 +172,11 @@
           "--inference",
           "30",
           "--output_dir",
-          "D:\\Code\\DiffAudit\\Research\\external\\recon-assets\\ndss-2025-blackbox-membership-inference-fine-tuned-diffusion-models\\model-checkpoints\\celeba_shadow\\checkpoint-25000",
+          "<DIFFAUDIT_ROOT>/Research/external/recon-assets/ndss-2025-blackbox-membership-inference-fine-tuned-diffusion-models/model-checkpoints/celeba_shadow/checkpoint-25000",
           "--data_dir",
-          "D:\\Code\\DiffAudit\\Research\\external\\recon-assets\\ndss-2025-blackbox-membership-inference-fine-tuned-diffusion-models\\derived-public-100\\shadow_non_member.pt",
+          "<DIFFAUDIT_ROOT>/Research/external/recon-assets/ndss-2025-blackbox-membership-inference-fine-tuned-diffusion-models/derived-public-100/shadow_non_member.pt",
           "--save_dir",
-          "D:\\Code\\DiffAudit\\Research\\experiments\\recon-runtime-mainline-ddim-public-100-step30\\generated-images\\shadow_non_member",
+          "<DIFFAUDIT_ROOT>/Research/experiments/recon-runtime-mainline-ddim-public-100-step30/generated-images/shadow_non_member",
           "--scheduler",
           "ddim"
         ]
@@ -192,12 +192,12 @@
           "100%|\u2588\u2588\u2588\u2588\u2588\u2588\u2588\u2588\u2588\u2588| 100/100 [00:05<00:00, 16.83it/s]"
         ],
         "command": [
-          "C:\\Users\\Ding\\miniforge3\\envs\\diffaudit-research\\python.exe",
-          "D:\\Code\\DiffAudit\\Research\\external\\Reconstruction-based-Attack\\cal_embedding.py",
+          "<RESEARCH_PYTHON>",
+          "<DIFFAUDIT_ROOT>/Research/external/Reconstruction-based-Attack/cal_embedding.py",
           "--data_dir",
-          "D:\\Code\\DiffAudit\\Research\\external\\recon-assets\\ndss-2025-blackbox-membership-inference-fine-tuned-diffusion-models\\derived-public-100\\shadow_non_member.pt",
+          "<DIFFAUDIT_ROOT>/Research/external/recon-assets/ndss-2025-blackbox-membership-inference-fine-tuned-diffusion-models/derived-public-100/shadow_non_member.pt",
           "--sample_file",
-          "D:\\Code\\DiffAudit\\Research\\experiments\\recon-runtime-mainline-ddim-public-100-step30\\generated-images\\shadow_non_member",
+          "<DIFFAUDIT_ROOT>/Research/experiments/recon-runtime-mainline-ddim-public-100-step30/generated-images/shadow_non_member",
           "--membership",
           "0",
           "--img_num",
@@ -205,7 +205,7 @@
           "--gpu",
           "0",
           "--save_dir",
-          "D:\\Code\\DiffAudit\\Research\\experiments\\recon-runtime-mainline-ddim-public-100-step30\\score-artifacts\\shadow_non_member.pt",
+          "<DIFFAUDIT_ROOT>/Research/experiments/recon-runtime-mainline-ddim-public-100-step30/score-artifacts/shadow_non_member.pt",
           "--method",
           "cosine",
           "--image_encoder",
@@ -217,7 +217,7 @@
   "stages": {
     "artifact_probe": {
       "status": "ready",
-      "artifact_dir": "D:\\Code\\DiffAudit\\Research\\experiments\\recon-runtime-mainline-ddim-public-100-step30\\score-artifacts",
+      "artifact_dir": "<DIFFAUDIT_ROOT>/Research/experiments/recon-runtime-mainline-ddim-public-100-step30/score-artifacts",
       "checks": {
         "target_member": true,
         "target_non_member": true,
@@ -228,10 +228,10 @@
         "all_binary_labels": true
       },
       "paths": {
-        "target_member": "D:\\Code\\DiffAudit\\Research\\experiments\\recon-runtime-mainline-ddim-public-100-step30\\score-artifacts\\target_member.pt",
-        "target_non_member": "D:\\Code\\DiffAudit\\Research\\experiments\\recon-runtime-mainline-ddim-public-100-step30\\score-artifacts\\target_non_member.pt",
-        "shadow_member": "D:\\Code\\DiffAudit\\Research\\experiments\\recon-runtime-mainline-ddim-public-100-step30\\score-artifacts\\shadow_member.pt",
-        "shadow_non_member": "D:\\Code\\DiffAudit\\Research\\experiments\\recon-runtime-mainline-ddim-public-100-step30\\score-artifacts\\shadow_non_member.pt"
+        "target_member": "<DIFFAUDIT_ROOT>/Research/experiments/recon-runtime-mainline-ddim-public-100-step30/score-artifacts/target_member.pt",
+        "target_non_member": "<DIFFAUDIT_ROOT>/Research/experiments/recon-runtime-mainline-ddim-public-100-step30/score-artifacts/target_non_member.pt",
+        "shadow_member": "<DIFFAUDIT_ROOT>/Research/experiments/recon-runtime-mainline-ddim-public-100-step30/score-artifacts/shadow_member.pt",
+        "shadow_non_member": "<DIFFAUDIT_ROOT>/Research/experiments/recon-runtime-mainline-ddim-public-100-step30/score-artifacts/shadow_non_member.pt"
       },
       "missing_keys": [],
       "missing": [],
@@ -263,7 +263,7 @@
     "artifact_mainline": {
       "status": "ready",
       "mode": "artifact-mainline",
-      "summary_path": "D:\\Code\\DiffAudit\\Research\\experiments\\recon-runtime-mainline-ddim-public-100-step30\\artifact-mainline\\summary.json"
+      "summary_path": "<DIFFAUDIT_ROOT>/Research/experiments/recon-runtime-mainline-ddim-public-100-step30/artifact-mainline/summary.json"
     }
   },
   "evaluation_method": "threshold",

@@ -26,13 +26,13 @@ Implemented a small-sample black-box probe with the following contract:
 
 Implementation artifact:
 
-- `D:\Code\DiffAudit\Research\scripts\run_blackbox_semantic_aux_probe.py`
+- `<DIFFAUDIT_ROOT>/Research/scripts/run_blackbox_semantic_aux_probe.py`
 
 ## Probe Result
 
 Completed run:
 
-- `D:\Code\DiffAudit\Research\workspaces\black-box\runs\semantic-aux-classifier-probe-20260415-r1\summary.json`
+- `<DIFFAUDIT_ROOT>/Research/workspaces/black-box/runs/semantic-aux-classifier-probe-20260415-r1/summary.json`
 
 Observed probe metrics:
 
@@ -57,7 +57,7 @@ Interpretation:
 
 Completed comparator run:
 
-- `D:\Code\DiffAudit\Research\workspaces\black-box\runs\semantic-aux-classifier-comparator-20260415-r1\summary.json`
+- `<DIFFAUDIT_ROOT>/Research/workspaces/black-box/runs/semantic-aux-classifier-comparator-20260415-r1/summary.json`
 
 Comparator scope:
 

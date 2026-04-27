@@ -5,7 +5,7 @@
 This note verifies first-wave assets referenced by:
 
 - `docs/research-download-master-list.md`
-- `D:\Code\DiffAudit\Download\manifests\research-download-manifest.json`
+- `<DIFFAUDIT_ROOT>/Download/manifests/research-download-manifest.json`
 
 It also records how newly downloaded assets are mapped into repo-consumable locations or local config pointers.
 
@@ -15,14 +15,14 @@ It also records how newly downloaded assets are mapped into repo-consumable loca
 
 | Asset ID | Local status | Verified path | Repo-consumable pointer |
 |---|---|---|---|
-| `SH-DS-01` | present | `D:\Code\DiffAudit\Download\shared\datasets\cifar-10-python.tar.gz` | `configs/assets/staged-downloads.local.yaml -> shared.cifar10_archive` |
-| `SH-DS-02` | present | `D:\Code\DiffAudit\Download\shared\datasets\celeba\img_align_celeba.zip` | `configs/assets/staged-downloads.local.yaml -> shared.celeba_root` |
-| `SH-DS-03` | present | `D:\Code\DiffAudit\Download\shared\datasets\celeba\` | `configs/assets/staged-downloads.local.yaml -> shared.celeba_root` |
-| `SH-WT-01` | present | `D:\Code\DiffAudit\Download\shared\weights\stable-diffusion-v1-5\` | `configs/assets/staged-downloads.local.yaml -> shared.sd15_model_dir` |
-| `SH-WT-02` | present | `D:\Code\DiffAudit\Download\shared\weights\clip-vit-large-patch14\` | `configs/assets/staged-downloads.local.yaml -> shared.clip_model_dir` |
-| `SH-WT-03` | present | `D:\Code\DiffAudit\Download\shared\weights\blip-image-captioning-large\` | `configs/assets/staged-downloads.local.yaml -> shared.blip_model_dir` |
-| `GB-WT-01` | present | `D:\Code\DiffAudit\Download\gray-box\weights\secmi-cifar-bundle\` | `workspaces/gray-box/assets/secmi/manifest.json` and `configs/assets/staged-downloads.local.yaml -> gray_box.secmi.*` |
-| `BB-SUP-02` | present via local staging | `D:\Code\DiffAudit\Download\black-box\supplementary\clid-mia-supplementary\contents\CLID_MIA\` | `configs/assets/staged-downloads.local.yaml -> black_box.clid.supplementary_root` |
+| `SH-DS-01` | present | `<DIFFAUDIT_ROOT>/Download/shared/datasets/cifar-10-python.tar.gz` | `configs/assets/staged-downloads.local.yaml -> shared.cifar10_archive` |
+| `SH-DS-02` | present | `<DIFFAUDIT_ROOT>/Download/shared/datasets/celeba/img_align_celeba.zip` | `configs/assets/staged-downloads.local.yaml -> shared.celeba_root` |
+| `SH-DS-03` | present | `<DIFFAUDIT_ROOT>/Download/shared/datasets/celeba\` | `configs/assets/staged-downloads.local.yaml -> shared.celeba_root` |
+| `SH-WT-01` | present | `<DIFFAUDIT_ROOT>/Download/shared/weights/stable-diffusion-v1-5\` | `configs/assets/staged-downloads.local.yaml -> shared.sd15_model_dir` |
+| `SH-WT-02` | present | `<DIFFAUDIT_ROOT>/Download/shared/weights/clip-vit-large-patch14\` | `configs/assets/staged-downloads.local.yaml -> shared.clip_model_dir` |
+| `SH-WT-03` | present | `<DIFFAUDIT_ROOT>/Download/shared/weights/blip-image-captioning-large\` | `configs/assets/staged-downloads.local.yaml -> shared.blip_model_dir` |
+| `GB-WT-01` | present | `<DIFFAUDIT_ROOT>/Download/gray-box/weights/secmi-cifar-bundle\` | `workspaces/gray-box/assets/secmi/manifest.json` and `configs/assets/staged-downloads.local.yaml -> gray_box.secmi.*` |
+| `BB-SUP-02` | present via local staging | `<DIFFAUDIT_ROOT>/Download/black-box/supplementary/clid-mia-supplementary/contents/CLID_MIA\` | `configs/assets/staged-downloads.local.yaml -> black_box.clid.supplementary_root` |
 
 ## Repo-Consumable Mapping Decisions
 
@@ -30,18 +30,18 @@ It also records how newly downloaded assets are mapped into repo-consumable loca
 
 - `SD1.5` should no longer depend on a user Hugging Face cache snapshot path.
 - Canonical local pointer is now:
-  - `D:\Code\DiffAudit\Download\shared\weights\stable-diffusion-v1-5\`
+  - `<DIFFAUDIT_ROOT>/Download/shared/weights/stable-diffusion-v1-5\`
 - `CLIP ViT-L/14` pointer is:
-  - `D:\Code\DiffAudit\Download\shared\weights\clip-vit-large-patch14\`
+  - `<DIFFAUDIT_ROOT>/Download/shared/weights/clip-vit-large-patch14\`
 - `BLIP large` pointer is:
-  - `D:\Code\DiffAudit\Download\shared\weights\blip-image-captioning-large\`
+  - `<DIFFAUDIT_ROOT>/Download/shared/weights/blip-image-captioning-large\`
 
 ### Gray-box SecMI
 
 - Raw external archive retained under:
-  - `D:\Code\DiffAudit\Download\gray-box\supplementary\secmi-onedrive\raw\`
+  - `<DIFFAUDIT_ROOT>/Download/gray-box/supplementary/secmi-onedrive/raw\`
 - Extracted download bundle retained under:
-  - `D:\Code\DiffAudit\Download\gray-box\weights\secmi-cifar-bundle\`
+  - `<DIFFAUDIT_ROOT>/Download/gray-box/weights/secmi-cifar-bundle\`
 - Current repo-canonical executable root remains:
   - `workspaces/gray-box/assets/secmi/checkpoints/CIFAR10`
 - Existing provenance artifact already covers the workspace staging:
@@ -51,7 +51,7 @@ It also records how newly downloaded assets are mapped into repo-consumable loca
 ### Black-box CLiD supplementary
 
 - Newly downloaded supplementary code/artifacts are retained under:
-  - `D:\Code\DiffAudit\Download\black-box\supplementary\clid-mia-supplementary\contents\CLID_MIA\`
+  - `<DIFFAUDIT_ROOT>/Download/black-box/supplementary/clid-mia-supplementary/contents/CLID_MIA\`
 - Current runnable local CLiD line still executes from:
   - `external/CLiD/`
 - The supplementary bundle is therefore staged as:

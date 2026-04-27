@@ -8,40 +8,40 @@ Verdict: `positive`
 
 The storage boundary cleanup is now physically aligned with the documented rule:
 
-- `D:\Code\DiffAudit\Research\external\` is for upstream or exploratory code clones.
-- `D:\Code\DiffAudit\Research\third_party\` is for minimal vendored integration code.
-- `D:\Code\DiffAudit\Download\` is the raw intake layer for datasets, weights, supplementary bundles, manifests, and author release mirrors.
-- `D:\Code\DiffAudit\Research\workspaces\<lane>\assets\` is for lane-normalized gateways and manifests.
-- `D:\Code\DiffAudit\Research\workspaces\<lane>\runs\` is for evidence and run outputs.
+- `<DIFFAUDIT_ROOT>/Research/external/` is for upstream or exploratory code clones.
+- `<DIFFAUDIT_ROOT>/Research/third_party/` is for minimal vendored integration code.
+- `<DIFFAUDIT_ROOT>/Download/` is the raw intake layer for datasets, weights, supplementary bundles, manifests, and author release mirrors.
+- `<DIFFAUDIT_ROOT>/Research/workspaces/<lane>/assets/` is for lane-normalized gateways and manifests.
+- `<DIFFAUDIT_ROOT>/Research/workspaces/<lane>/runs/` is for evidence and run outputs.
 
 ## Physical Cleanup
 
 Moved the raw intake tree out of the Research external-code surface:
 
-- from `D:\Code\DiffAudit\Research\external\downloads\black-box\`
-- from `D:\Code\DiffAudit\Research\external\downloads\gray-box\`
-- from `D:\Code\DiffAudit\Research\external\downloads\manifests\`
-- from `D:\Code\DiffAudit\Research\external\downloads\shared\`
-- from `D:\Code\DiffAudit\Research\external\downloads\white-box\`
+- from `<DIFFAUDIT_ROOT>/Research/external/downloads/black-box/`
+- from `<DIFFAUDIT_ROOT>/Research/external/downloads/gray-box/`
+- from `<DIFFAUDIT_ROOT>/Research/external/downloads/manifests/`
+- from `<DIFFAUDIT_ROOT>/Research/external/downloads/shared/`
+- from `<DIFFAUDIT_ROOT>/Research/external/downloads/white-box/`
 
 to:
 
-- `D:\Code\DiffAudit\Download\black-box\`
-- `D:\Code\DiffAudit\Download\gray-box\`
-- `D:\Code\DiffAudit\Download\manifests\`
-- `D:\Code\DiffAudit\Download\shared\`
-- `D:\Code\DiffAudit\Download\white-box\`
+- `<DIFFAUDIT_ROOT>/Download/black-box/`
+- `<DIFFAUDIT_ROOT>/Download/gray-box/`
+- `<DIFFAUDIT_ROOT>/Download/manifests/`
+- `<DIFFAUDIT_ROOT>/Download/shared/`
+- `<DIFFAUDIT_ROOT>/Download/white-box/`
 
-Then removed the now-empty `D:\Code\DiffAudit\Research\external\downloads\` staging directory.
+Then removed the now-empty `<DIFFAUDIT_ROOT>/Research/external/downloads/` staging directory.
 
 ## Verification
 
 Filesystem checks after the move:
 
-- `D:\Code\DiffAudit\Research\external\downloads\` does not exist.
-- `D:\Code\DiffAudit\Download\black-box\supplementary\recon-assets\` exists.
-- `D:\Code\DiffAudit\Download\manifests\research-download-manifest.json` exists.
-- `D:\Code\DiffAudit\Download\shared\datasets\` and `D:\Code\DiffAudit\Download\shared\weights\` exist under the root raw-intake tree.
+- `<DIFFAUDIT_ROOT>/Research/external/downloads/` does not exist.
+- `<DIFFAUDIT_ROOT>/Download/black-box/supplementary/recon-assets/` exists.
+- `<DIFFAUDIT_ROOT>/Download/manifests/research-download-manifest.json` exists.
+- `<DIFFAUDIT_ROOT>/Download/shared/datasets/` and `<DIFFAUDIT_ROOT>/Download/shared/weights/` exist under the root raw-intake tree.
 
 Path search after the move:
 

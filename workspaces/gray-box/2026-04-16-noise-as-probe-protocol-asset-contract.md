@@ -44,7 +44,7 @@ So the current contract should be read as:
 The first smoke requires all of the following:
 
 1. `pretrain base`
-   - `D:/Code/DiffAudit/Download/shared/weights/stable-diffusion-v1-5`
+   - `<DIFFAUDIT_ROOT>/Download/shared/weights/stable-diffusion-v1-5`
 2. `target model`
    - local target-family LoRA on `celeba_partial_target/checkpoint-25000`
 3. `sample pair`

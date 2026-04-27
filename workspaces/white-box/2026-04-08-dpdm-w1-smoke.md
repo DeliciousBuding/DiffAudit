@@ -31,17 +31,17 @@ Observed sequence:
 Current active smoke command:
 
 ```powershell
-conda run -n diffaudit-research python D:\Code\DiffAudit\Research\external\DPDM\main.py `
+conda run -n diffaudit-research python <DIFFAUDIT_ROOT>/Research/external/DPDM/main.py `
   --mode train `
   --workdir runs/dpdm-cifar10-32-eps10-gpu-smoke-v7 `
-  --config D:\Code\DiffAudit\Research\external\DPDM\configs\cifar10_32\train_eps_10.0.yaml `
-  --root_folder D:\Code\DiffAudit\Research\external\DPDM `
+  --config <DIFFAUDIT_ROOT>/Research/external/DPDM/configs/cifar10_32/train_eps_10.0.yaml `
+  --root_folder <DIFFAUDIT_ROOT>/Research/external/DPDM `
   -- setup.n_gpus_per_node=1 `
      setup.omp_n_threads=8 `
      setup.backend=gloo `
      setup.master_address=127.0.0.1 `
      setup.master_port=6028 `
-     data.path=D:\Code\DiffAudit\Research\external\DPDM\data\processed\cifar10.zip `
+     data.path=<DIFFAUDIT_ROOT>/Research/external/DPDM/data/processed/cifar10.zip `
      data.dataset_params.use_labels=true `
      data.dataset_params.xflip=false `
      train.batch_size=64 `

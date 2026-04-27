@@ -6,14 +6,14 @@ On the frozen `I-D.1` local conditional contract, does one bounded `CFG` scale c
 
 ## Inputs Reviewed
 
-- `D:\Code\DiffAudit\Research\workspaces\implementation\2026-04-17-id1-honest-conditional-target-contract.md`
-- `D:\Code\DiffAudit\Research\scripts\run_noise_as_probe_interface_canary.py`
-- `D:\Code\DiffAudit\Research\workspaces\gray-box\2026-04-16-noise-as-probe-interface-canary-verdict.md`
-- `D:\Code\DiffAudit\Research\workspaces\gray-box\2026-04-16-noise-as-probe-expansion-rung-verdict.md`
-- `D:\Code\DiffAudit\Research\workspaces\gray-box\2026-04-16-noise-as-probe-expansion-repeat-verdict.md`
-- `D:\Code\DiffAudit\Research\workspaces\gray-box\2026-04-16-noise-as-probe-threshold-hardening-verdict.md`
-- `D:\Code\DiffAudit\Research\workspaces\gray-box\runs\noise-as-probe-cfg-microprobe-20260417-gpu-r1-g35\summary.json`
-- `D:\Code\DiffAudit\Research\workspaces\gray-box\runs\noise-as-probe-cfg-microprobe-20260417-gpu-r1-g75\summary.json`
+- `<DIFFAUDIT_ROOT>/Research/workspaces/implementation/2026-04-17-id1-honest-conditional-target-contract.md`
+- `<DIFFAUDIT_ROOT>/Research/scripts/run_noise_as_probe_interface_canary.py`
+- `<DIFFAUDIT_ROOT>/Research/workspaces/gray-box/2026-04-16-noise-as-probe-interface-canary-verdict.md`
+- `<DIFFAUDIT_ROOT>/Research/workspaces/gray-box/2026-04-16-noise-as-probe-expansion-rung-verdict.md`
+- `<DIFFAUDIT_ROOT>/Research/workspaces/gray-box/2026-04-16-noise-as-probe-expansion-repeat-verdict.md`
+- `<DIFFAUDIT_ROOT>/Research/workspaces/gray-box/2026-04-16-noise-as-probe-threshold-hardening-verdict.md`
+- `<DIFFAUDIT_ROOT>/Research/workspaces/gray-box/runs/noise-as-probe-cfg-microprobe-20260417-gpu-r1-g35/summary.json`
+- `<DIFFAUDIT_ROOT>/Research/workspaces/gray-box/runs/noise-as-probe-cfg-microprobe-20260417-gpu-r1-g75/summary.json`
 
 ## Frozen Probe Contract
 
@@ -52,9 +52,9 @@ Budget:
 ## Run Anchors
 
 - `g = 3.5`:
-  - `D:\Code\DiffAudit\Research\workspaces\gray-box\runs\noise-as-probe-cfg-microprobe-20260417-gpu-r1-g35\summary.json`
+  - `<DIFFAUDIT_ROOT>/Research/workspaces/gray-box/runs/noise-as-probe-cfg-microprobe-20260417-gpu-r1-g35/summary.json`
 - `g = 7.5`:
-  - `D:\Code\DiffAudit\Research\workspaces\gray-box\runs\noise-as-probe-cfg-microprobe-20260417-gpu-r1-g75\summary.json`
+  - `<DIFFAUDIT_ROOT>/Research/workspaces/gray-box/runs/noise-as-probe-cfg-microprobe-20260417-gpu-r1-g75/summary.json`
 
 ## Result
 

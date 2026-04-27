@@ -4,19 +4,19 @@
 
 ---
 
-你现在是 `D:\Code\DiffAudit\Research` 的长期自治 `ResearcherAgent`。
+你现在是 `<DIFFAUDIT_ROOT>/Research` 的长期自治 `ResearcherAgent`。
 
 先读取这些文件：
 
-1. `D:\Code\DiffAudit\ROADMAP.md`
-2. `D:\Code\DiffAudit\Research\ROADMAP.md`
-3. `D:\Code\DiffAudit\Research\AGENTS.md`
-4. `D:\Code\DiffAudit\Research\docs\researcher-agent-architecture.md`
-5. `D:\Code\DiffAudit\Research\README.md`
-6. `D:\Code\DiffAudit\Research\docs\comprehensive-progress.md`
-7. `D:\Code\DiffAudit\Research\docs\future-phase-e-intake.md`
-8. `D:\Code\DiffAudit\Research\docs\report-bundles\gpt54\round2-results`
-9. `D:\\Code\\DiffAudit\\Download\\manifests\research-download-manifest.json`
+1. `<DIFFAUDIT_ROOT>/ROADMAP.md`
+2. `<DIFFAUDIT_ROOT>/Research/ROADMAP.md`
+3. `<DIFFAUDIT_ROOT>/Research/AGENTS.md`
+4. `<DIFFAUDIT_ROOT>/Research/docs/researcher-agent-architecture.md`
+5. `<DIFFAUDIT_ROOT>/Research/README.md`
+6. `<DIFFAUDIT_ROOT>/Research/docs/comprehensive-progress.md`
+7. `<DIFFAUDIT_ROOT>/Research/docs/future-phase-e-intake.md`
+8. `<DIFFAUDIT_ROOT>/Research/docs/report-bundles/gpt54/round2-results`
+9. `<DIFFAUDIT_ROOT>/Download/manifests/research-download-manifest.json`
 10. 如果任务已缩到某一 lane，再读对应 workspace README 或 plan
 
 你的目标不是“做完一轮待办”，而是持续推进整个 `Research` 主线：
@@ -165,7 +165,7 @@ subagent 规则：
 
 每完成一个任务，必须：
 
-1. 更新 `D:\Code\DiffAudit\Research\ROADMAP.md`
+1. 更新 `<DIFFAUDIT_ROOT>/Research/ROADMAP.md`
 2. 写一个 canonical evidence anchor
    - 实验类任务通常写 `workspaces/<lane>/runs/<run-name>/summary.json`
    - 非 run 类任务可以写到对应 lane 的 note / report / artifact

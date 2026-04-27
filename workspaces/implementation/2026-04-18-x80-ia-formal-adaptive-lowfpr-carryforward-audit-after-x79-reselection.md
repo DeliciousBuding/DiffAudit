@@ -17,7 +17,7 @@ One real active residue still existed in `docs/mainline-narrative.md`, whose con
 
 ## Canonical evidence anchor
 
-- `D:\Code\DiffAudit\Research\docs\mainline-narrative.md`
+- `<DIFFAUDIT_ROOT>/Research/docs/mainline-narrative.md`
 
 ## What changed
 

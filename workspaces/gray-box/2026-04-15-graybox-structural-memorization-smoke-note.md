@@ -23,11 +23,11 @@ Implemented a bounded local faithful-approximation smoke for the structural-memo
 
 Implementation artifact:
 
-- `D:\Code\DiffAudit\Research\scripts\run_structural_memorization_smoke.py`
+- `<DIFFAUDIT_ROOT>/Research/scripts/run_structural_memorization_smoke.py`
 
 Run artifact:
 
-- `D:\Code\DiffAudit\Research\workspaces\gray-box\runs\structural-memorization-smoke-20260415-r1\summary.json`
+- `<DIFFAUDIT_ROOT>/Research/workspaces/gray-box/runs/structural-memorization-smoke-20260415-r1/summary.json`
 
 ## Smoke Configuration
 

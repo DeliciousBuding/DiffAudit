@@ -87,9 +87,9 @@
 - `released_item`: `O01 unattended low-lambda rescue run`
 - `release_reason`: `2026-04-12 user-directed GPU utilization override; later closed as stalled-salvaged`
 - `launch_pid`: `38028`
-- `launch_output_dir`: `D:/Code/DiffAudit/Research/outputs/smp-lora-o01-lambda005-rerun-20260412-202122`
-- `launch_stdout`: `D:/Code/DiffAudit/Research/outputs/smp-lora-o01-lambda005-rerun-20260412-202122/stdout.log`
-- `launch_stderr`: `D:/Code/DiffAudit/Research/outputs/smp-lora-o01-lambda005-rerun-20260412-202122/stderr.log`
+- `launch_output_dir`: `<DIFFAUDIT_ROOT>/Research/outputs/smp-lora-o01-lambda005-rerun-20260412-202122`
+- `launch_stdout`: `<DIFFAUDIT_ROOT>/Research/outputs/smp-lora-o01-lambda005-rerun-20260412-202122/stdout.log`
+- `launch_stderr`: `<DIFFAUDIT_ROOT>/Research/outputs/smp-lora-o01-lambda005-rerun-20260412-202122/stderr.log`
 - `release_scope`: `historical O01 and O02 only; there is no current live GPU release`
 - `runtime_tuning_status`: `future-launch tuning landed and verified on 2026-04-12; O02 is now sealed after batch14 throughput x7, batch14 legacy, workers4/6, no-bench, no-TF32, and seed123/42 comparators. The current verdict is: batch14 throughput is the strongest candidate with variance note; batch14 legacy proves the gain is throughput-dependent; batch13 is no-gain; batch15 is unstable no-go; batch16 is degraded; workers4/6/no-bench/seeded are not stabilization answers; no-TF32 has only one positive sample`
 - `runtime_tuning_scope`: `recommended_num_workers helper + DataLoader persistent_workers/prefetch + intermediate checkpoints skip full training_log + throughput_mode defaults (bf16 autocast, TF32, cudnn benchmark, non_blocking transfers, save_every=500)`

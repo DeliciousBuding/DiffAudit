@@ -5,11 +5,11 @@
   "paper": "BlackBox_Reconstruction_ArXiv2023",
   "mode": "runtime-mainline",
   "device": "cuda:0",
-  "workspace": "D:\\Code\\DiffAudit\\Research\\experiments\\recon-runtime-mainline-kandinsky-public-smoke",
+  "workspace": "<DIFFAUDIT_ROOT>/Research/experiments/recon-runtime-mainline-kandinsky-public-smoke",
   "artifact_paths": {
-    "summary": "D:\\Code\\DiffAudit\\Research\\experiments\\recon-runtime-mainline-kandinsky-public-smoke\\summary.json",
-    "score_artifact_dir": "D:\\Code\\DiffAudit\\Research\\experiments\\recon-runtime-mainline-kandinsky-public-smoke\\score-artifacts",
-    "artifact_mainline_summary": "D:\\Code\\DiffAudit\\Research\\experiments\\recon-runtime-mainline-kandinsky-public-smoke\\artifact-mainline\\summary.json"
+    "summary": "<DIFFAUDIT_ROOT>/Research/experiments/recon-runtime-mainline-kandinsky-public-smoke/summary.json",
+    "score_artifact_dir": "<DIFFAUDIT_ROOT>/Research/experiments/recon-runtime-mainline-kandinsky-public-smoke/score-artifacts",
+    "artifact_mainline_summary": "<DIFFAUDIT_ROOT>/Research/experiments/recon-runtime-mainline-kandinsky-public-smoke/artifact-mainline/summary.json"
   },
   "checks": {
     "runtime_assets_ready": true,
@@ -50,22 +50,22 @@
       "kandinsky_entrypoint": true
     },
     "paths": {
-      "target_member_dataset": "D:\\Code\\DiffAudit\\Research\\external\\recon-assets\\ndss-2025-blackbox-membership-inference-fine-tuned-diffusion-models\\derived-smoke\\target_member.pt",
-      "target_non_member_dataset": "D:\\Code\\DiffAudit\\Research\\external\\recon-assets\\ndss-2025-blackbox-membership-inference-fine-tuned-diffusion-models\\derived-smoke\\target_non_member.pt",
-      "shadow_member_dataset": "D:\\Code\\DiffAudit\\Research\\external\\recon-assets\\ndss-2025-blackbox-membership-inference-fine-tuned-diffusion-models\\derived-smoke\\shadow_member.pt",
-      "shadow_non_member_dataset": "D:\\Code\\DiffAudit\\Research\\external\\recon-assets\\ndss-2025-blackbox-membership-inference-fine-tuned-diffusion-models\\derived-smoke\\shadow_non_member.pt",
-      "target_model_dir": "D:\\Code\\DiffAudit\\Research\\external\\recon-assets\\public-kandinsky-pokemon\\decoder\\pytorch_lora_weights.safetensors",
-      "shadow_model_dir": "D:\\Code\\DiffAudit\\Research\\external\\recon-assets\\public-kandinsky-pokemon\\decoder\\pytorch_lora_weights.safetensors",
-      "repo_root": "D:\\Code\\DiffAudit\\Research\\external\\Reconstruction-based-Attack",
-      "target_decoder_dir": "D:\\Code\\DiffAudit\\Research\\external\\recon-assets\\public-kandinsky-pokemon\\decoder\\pytorch_lora_weights.safetensors",
-      "target_prior_dir": "D:\\Code\\DiffAudit\\Research\\external\\recon-assets\\public-kandinsky-pokemon\\prior\\pytorch_lora_weights.safetensors",
-      "shadow_decoder_dir": "D:\\Code\\DiffAudit\\Research\\external\\recon-assets\\public-kandinsky-pokemon\\decoder\\pytorch_lora_weights.safetensors",
-      "shadow_prior_dir": "D:\\Code\\DiffAudit\\Research\\external\\recon-assets\\public-kandinsky-pokemon\\prior\\pytorch_lora_weights.safetensors",
-      "kandinsky_entrypoint": "D:\\Code\\DiffAudit\\Research\\external\\Reconstruction-based-Attack\\kandinsky2_2_inference.py"
+      "target_member_dataset": "<DIFFAUDIT_ROOT>/Research/external/recon-assets/ndss-2025-blackbox-membership-inference-fine-tuned-diffusion-models/derived-smoke/target_member.pt",
+      "target_non_member_dataset": "<DIFFAUDIT_ROOT>/Research/external/recon-assets/ndss-2025-blackbox-membership-inference-fine-tuned-diffusion-models/derived-smoke/target_non_member.pt",
+      "shadow_member_dataset": "<DIFFAUDIT_ROOT>/Research/external/recon-assets/ndss-2025-blackbox-membership-inference-fine-tuned-diffusion-models/derived-smoke/shadow_member.pt",
+      "shadow_non_member_dataset": "<DIFFAUDIT_ROOT>/Research/external/recon-assets/ndss-2025-blackbox-membership-inference-fine-tuned-diffusion-models/derived-smoke/shadow_non_member.pt",
+      "target_model_dir": "<DIFFAUDIT_ROOT>/Research/external/recon-assets/public-kandinsky-pokemon/decoder/pytorch_lora_weights.safetensors",
+      "shadow_model_dir": "<DIFFAUDIT_ROOT>/Research/external/recon-assets/public-kandinsky-pokemon/decoder/pytorch_lora_weights.safetensors",
+      "repo_root": "<DIFFAUDIT_ROOT>/Research/external/Reconstruction-based-Attack",
+      "target_decoder_dir": "<DIFFAUDIT_ROOT>/Research/external/recon-assets/public-kandinsky-pokemon/decoder/pytorch_lora_weights.safetensors",
+      "target_prior_dir": "<DIFFAUDIT_ROOT>/Research/external/recon-assets/public-kandinsky-pokemon/prior/pytorch_lora_weights.safetensors",
+      "shadow_decoder_dir": "<DIFFAUDIT_ROOT>/Research/external/recon-assets/public-kandinsky-pokemon/decoder/pytorch_lora_weights.safetensors",
+      "shadow_prior_dir": "<DIFFAUDIT_ROOT>/Research/external/recon-assets/public-kandinsky-pokemon/prior/pytorch_lora_weights.safetensors",
+      "kandinsky_entrypoint": "<DIFFAUDIT_ROOT>/Research/external/Reconstruction-based-Attack/kandinsky2_2_inference.py"
     },
     "dataset_profiles": {
       "target_member": {
-        "path": "D:\\Code\\DiffAudit\\Research\\external\\recon-assets\\ndss-2025-blackbox-membership-inference-fine-tuned-diffusion-models\\derived-smoke\\target_member.pt",
+        "path": "<DIFFAUDIT_ROOT>/Research/external/recon-assets/ndss-2025-blackbox-membership-inference-fine-tuned-diffusion-models/derived-smoke/target_member.pt",
         "exists": true,
         "keys": [
           "image",
@@ -77,7 +77,7 @@
         "non_empty": true
       },
       "target_non_member": {
-        "path": "D:\\Code\\DiffAudit\\Research\\external\\recon-assets\\ndss-2025-blackbox-membership-inference-fine-tuned-diffusion-models\\derived-smoke\\target_non_member.pt",
+        "path": "<DIFFAUDIT_ROOT>/Research/external/recon-assets/ndss-2025-blackbox-membership-inference-fine-tuned-diffusion-models/derived-smoke/target_non_member.pt",
         "exists": true,
         "keys": [
           "image",
@@ -89,7 +89,7 @@
         "non_empty": true
       },
       "shadow_member": {
-        "path": "D:\\Code\\DiffAudit\\Research\\external\\recon-assets\\ndss-2025-blackbox-membership-inference-fine-tuned-diffusion-models\\derived-smoke\\shadow_member.pt",
+        "path": "<DIFFAUDIT_ROOT>/Research/external/recon-assets/ndss-2025-blackbox-membership-inference-fine-tuned-diffusion-models/derived-smoke/shadow_member.pt",
         "exists": true,
         "keys": [
           "image",
@@ -101,7 +101,7 @@
         "non_empty": true
       },
       "shadow_non_member": {
-        "path": "D:\\Code\\DiffAudit\\Research\\external\\recon-assets\\ndss-2025-blackbox-membership-inference-fine-tuned-diffusion-models\\derived-smoke\\shadow_non_member.pt",
+        "path": "<DIFFAUDIT_ROOT>/Research/external/recon-assets/ndss-2025-blackbox-membership-inference-fine-tuned-diffusion-models/derived-smoke/shadow_non_member.pt",
         "exists": true,
         "keys": [
           "image",
@@ -122,11 +122,11 @@
     "target_member": {
       "status": "ready",
       "stage": "generated",
-      "dataset_path": "D:\\Code\\DiffAudit\\Research\\external\\recon-assets\\ndss-2025-blackbox-membership-inference-fine-tuned-diffusion-models\\derived-smoke\\target_member.pt",
-      "model_dir": "D:\\Code\\DiffAudit\\Research\\external\\recon-assets\\public-kandinsky-pokemon\\decoder\\pytorch_lora_weights.safetensors",
+      "dataset_path": "<DIFFAUDIT_ROOT>/Research/external/recon-assets/ndss-2025-blackbox-membership-inference-fine-tuned-diffusion-models/derived-smoke/target_member.pt",
+      "model_dir": "<DIFFAUDIT_ROOT>/Research/external/recon-assets/public-kandinsky-pokemon/decoder/pytorch_lora_weights.safetensors",
       "membership": 1,
-      "generated_dir": "D:\\Code\\DiffAudit\\Research\\experiments\\recon-runtime-mainline-kandinsky-public-smoke\\generated-images\\target_member",
-      "score_path": "D:\\Code\\DiffAudit\\Research\\experiments\\recon-runtime-mainline-kandinsky-public-smoke\\score-artifacts\\target_member.pt",
+      "generated_dir": "<DIFFAUDIT_ROOT>/Research/experiments/recon-runtime-mainline-kandinsky-public-smoke/generated-images/target_member",
+      "score_path": "<DIFFAUDIT_ROOT>/Research/experiments/recon-runtime-mainline-kandinsky-public-smoke/score-artifacts/target_member.pt",
       "sample_count": 1,
       "label_sum": 1,
       "inference": {
@@ -140,18 +140,18 @@
           "100%|\u2588\u2588\u2588\u2588\u2588\u2588\u2588\u2588\u2588\u2588| 30/30 [03:12<00:00,  6.40s/it]"
         ],
         "command": [
-          "C:\\Users\\Ding\\miniforge3\\envs\\diffaudit-research\\python.exe",
-          "D:\\Code\\DiffAudit\\Research\\external\\Reconstruction-based-Attack\\kandinsky2_2_inference.py",
+          "<RESEARCH_PYTHON>",
+          "<DIFFAUDIT_ROOT>/Research/external/Reconstruction-based-Attack/kandinsky2_2_inference.py",
           "--decoder_dir",
-          "D:\\Code\\DiffAudit\\Research\\external\\recon-assets\\public-kandinsky-pokemon\\decoder\\pytorch_lora_weights.safetensors",
+          "<DIFFAUDIT_ROOT>/Research/external/recon-assets/public-kandinsky-pokemon/decoder/pytorch_lora_weights.safetensors",
           "--prior_dir",
-          "D:\\Code\\DiffAudit\\Research\\external\\recon-assets\\public-kandinsky-pokemon\\prior\\pytorch_lora_weights.safetensors",
+          "<DIFFAUDIT_ROOT>/Research/external/recon-assets/public-kandinsky-pokemon/prior/pytorch_lora_weights.safetensors",
           "--save_dir",
-          "D:\\Code\\DiffAudit\\Research\\experiments\\recon-runtime-mainline-kandinsky-public-smoke\\generated-images\\target_member",
+          "<DIFFAUDIT_ROOT>/Research/experiments/recon-runtime-mainline-kandinsky-public-smoke/generated-images/target_member",
           "--gpu",
           "0",
           "--dataset_dir",
-          "D:\\Code\\DiffAudit\\Research\\external\\recon-assets\\ndss-2025-blackbox-membership-inference-fine-tuned-diffusion-models\\derived-smoke\\target_member.pt",
+          "<DIFFAUDIT_ROOT>/Research/external/recon-assets/ndss-2025-blackbox-membership-inference-fine-tuned-diffusion-models/derived-smoke/target_member.pt",
           "--num_validation_images",
           "1",
           "--inference_steps",
@@ -169,12 +169,12 @@
           "100%|\u2588\u2588\u2588\u2588\u2588\u2588\u2588\u2588\u2588\u2588| 1/1 [00:00<00:00,  1.18it/s]"
         ],
         "command": [
-          "C:\\Users\\Ding\\miniforge3\\envs\\diffaudit-research\\python.exe",
-          "D:\\Code\\DiffAudit\\Research\\external\\Reconstruction-based-Attack\\cal_embedding.py",
+          "<RESEARCH_PYTHON>",
+          "<DIFFAUDIT_ROOT>/Research/external/Reconstruction-based-Attack/cal_embedding.py",
           "--data_dir",
-          "D:\\Code\\DiffAudit\\Research\\external\\recon-assets\\ndss-2025-blackbox-membership-inference-fine-tuned-diffusion-models\\derived-smoke\\target_member.pt",
+          "<DIFFAUDIT_ROOT>/Research/external/recon-assets/ndss-2025-blackbox-membership-inference-fine-tuned-diffusion-models/derived-smoke/target_member.pt",
           "--sample_file",
-          "D:\\Code\\DiffAudit\\Research\\experiments\\recon-runtime-mainline-kandinsky-public-smoke\\generated-images\\target_member",
+          "<DIFFAUDIT_ROOT>/Research/experiments/recon-runtime-mainline-kandinsky-public-smoke/generated-images/target_member",
           "--membership",
           "1",
           "--img_num",
@@ -182,7 +182,7 @@
           "--gpu",
           "0",
           "--save_dir",
-          "D:\\Code\\DiffAudit\\Research\\experiments\\recon-runtime-mainline-kandinsky-public-smoke\\score-artifacts\\target_member.pt",
+          "<DIFFAUDIT_ROOT>/Research/experiments/recon-runtime-mainline-kandinsky-public-smoke/score-artifacts/target_member.pt",
           "--method",
           "cosine",
           "--image_encoder",
@@ -193,11 +193,11 @@
     "target_non_member": {
       "status": "ready",
       "stage": "generated",
-      "dataset_path": "D:\\Code\\DiffAudit\\Research\\external\\recon-assets\\ndss-2025-blackbox-membership-inference-fine-tuned-diffusion-models\\derived-smoke\\target_non_member.pt",
-      "model_dir": "D:\\Code\\DiffAudit\\Research\\external\\recon-assets\\public-kandinsky-pokemon\\decoder\\pytorch_lora_weights.safetensors",
+      "dataset_path": "<DIFFAUDIT_ROOT>/Research/external/recon-assets/ndss-2025-blackbox-membership-inference-fine-tuned-diffusion-models/derived-smoke/target_non_member.pt",
+      "model_dir": "<DIFFAUDIT_ROOT>/Research/external/recon-assets/public-kandinsky-pokemon/decoder/pytorch_lora_weights.safetensors",
       "membership": 0,
-      "generated_dir": "D:\\Code\\DiffAudit\\Research\\experiments\\recon-runtime-mainline-kandinsky-public-smoke\\generated-images\\target_non_member",
-      "score_path": "D:\\Code\\DiffAudit\\Research\\experiments\\recon-runtime-mainline-kandinsky-public-smoke\\score-artifacts\\target_non_member.pt",
+      "generated_dir": "<DIFFAUDIT_ROOT>/Research/experiments/recon-runtime-mainline-kandinsky-public-smoke/generated-images/target_non_member",
+      "score_path": "<DIFFAUDIT_ROOT>/Research/experiments/recon-runtime-mainline-kandinsky-public-smoke/score-artifacts/target_non_member.pt",
       "sample_count": 1,
       "label_sum": 0,
       "inference": {
@@ -211,18 +211,18 @@
           "100%|\u2588\u2588\u2588\u2588\u2588\u2588\u2588\u2588\u2588\u2588| 30/30 [02:48<00:00,  5.63s/it]"
         ],
         "command": [
-          "C:\\Users\\Ding\\miniforge3\\envs\\diffaudit-research\\python.exe",
-          "D:\\Code\\DiffAudit\\Research\\external\\Reconstruction-based-Attack\\kandinsky2_2_inference.py",
+          "<RESEARCH_PYTHON>",
+          "<DIFFAUDIT_ROOT>/Research/external/Reconstruction-based-Attack/kandinsky2_2_inference.py",
           "--decoder_dir",
-          "D:\\Code\\DiffAudit\\Research\\external\\recon-assets\\public-kandinsky-pokemon\\decoder\\pytorch_lora_weights.safetensors",
+          "<DIFFAUDIT_ROOT>/Research/external/recon-assets/public-kandinsky-pokemon/decoder/pytorch_lora_weights.safetensors",
           "--prior_dir",
-          "D:\\Code\\DiffAudit\\Research\\external\\recon-assets\\public-kandinsky-pokemon\\prior\\pytorch_lora_weights.safetensors",
+          "<DIFFAUDIT_ROOT>/Research/external/recon-assets/public-kandinsky-pokemon/prior/pytorch_lora_weights.safetensors",
           "--save_dir",
-          "D:\\Code\\DiffAudit\\Research\\experiments\\recon-runtime-mainline-kandinsky-public-smoke\\generated-images\\target_non_member",
+          "<DIFFAUDIT_ROOT>/Research/experiments/recon-runtime-mainline-kandinsky-public-smoke/generated-images/target_non_member",
           "--gpu",
           "0",
           "--dataset_dir",
-          "D:\\Code\\DiffAudit\\Research\\external\\recon-assets\\ndss-2025-blackbox-membership-inference-fine-tuned-diffusion-models\\derived-smoke\\target_non_member.pt",
+          "<DIFFAUDIT_ROOT>/Research/external/recon-assets/ndss-2025-blackbox-membership-inference-fine-tuned-diffusion-models/derived-smoke/target_non_member.pt",
           "--num_validation_images",
           "1",
           "--inference_steps",
@@ -240,12 +240,12 @@
           "100%|\u2588\u2588\u2588\u2588\u2588\u2588\u2588\u2588\u2588\u2588| 1/1 [00:00<00:00,  1.22it/s]"
         ],
         "command": [
-          "C:\\Users\\Ding\\miniforge3\\envs\\diffaudit-research\\python.exe",
-          "D:\\Code\\DiffAudit\\Research\\external\\Reconstruction-based-Attack\\cal_embedding.py",
+          "<RESEARCH_PYTHON>",
+          "<DIFFAUDIT_ROOT>/Research/external/Reconstruction-based-Attack/cal_embedding.py",
           "--data_dir",
-          "D:\\Code\\DiffAudit\\Research\\external\\recon-assets\\ndss-2025-blackbox-membership-inference-fine-tuned-diffusion-models\\derived-smoke\\target_non_member.pt",
+          "<DIFFAUDIT_ROOT>/Research/external/recon-assets/ndss-2025-blackbox-membership-inference-fine-tuned-diffusion-models/derived-smoke/target_non_member.pt",
           "--sample_file",
-          "D:\\Code\\DiffAudit\\Research\\experiments\\recon-runtime-mainline-kandinsky-public-smoke\\generated-images\\target_non_member",
+          "<DIFFAUDIT_ROOT>/Research/experiments/recon-runtime-mainline-kandinsky-public-smoke/generated-images/target_non_member",
           "--membership",
           "0",
           "--img_num",
@@ -253,7 +253,7 @@
           "--gpu",
           "0",
           "--save_dir",
-          "D:\\Code\\DiffAudit\\Research\\experiments\\recon-runtime-mainline-kandinsky-public-smoke\\score-artifacts\\target_non_member.pt",
+          "<DIFFAUDIT_ROOT>/Research/experiments/recon-runtime-mainline-kandinsky-public-smoke/score-artifacts/target_non_member.pt",
           "--method",
           "cosine",
           "--image_encoder",
@@ -264,11 +264,11 @@
     "shadow_member": {
       "status": "ready",
       "stage": "generated",
-      "dataset_path": "D:\\Code\\DiffAudit\\Research\\external\\recon-assets\\ndss-2025-blackbox-membership-inference-fine-tuned-diffusion-models\\derived-smoke\\shadow_member.pt",
-      "model_dir": "D:\\Code\\DiffAudit\\Research\\external\\recon-assets\\public-kandinsky-pokemon\\decoder\\pytorch_lora_weights.safetensors",
+      "dataset_path": "<DIFFAUDIT_ROOT>/Research/external/recon-assets/ndss-2025-blackbox-membership-inference-fine-tuned-diffusion-models/derived-smoke/shadow_member.pt",
+      "model_dir": "<DIFFAUDIT_ROOT>/Research/external/recon-assets/public-kandinsky-pokemon/decoder/pytorch_lora_weights.safetensors",
       "membership": 1,
-      "generated_dir": "D:\\Code\\DiffAudit\\Research\\experiments\\recon-runtime-mainline-kandinsky-public-smoke\\generated-images\\shadow_member",
-      "score_path": "D:\\Code\\DiffAudit\\Research\\experiments\\recon-runtime-mainline-kandinsky-public-smoke\\score-artifacts\\shadow_member.pt",
+      "generated_dir": "<DIFFAUDIT_ROOT>/Research/experiments/recon-runtime-mainline-kandinsky-public-smoke/generated-images/shadow_member",
+      "score_path": "<DIFFAUDIT_ROOT>/Research/experiments/recon-runtime-mainline-kandinsky-public-smoke/score-artifacts/shadow_member.pt",
       "sample_count": 1,
       "label_sum": 1,
       "inference": {
@@ -282,18 +282,18 @@
           "100%|\u2588\u2588\u2588\u2588\u2588\u2588\u2588\u2588\u2588\u2588| 30/30 [03:02<00:00,  6.08s/it]"
         ],
         "command": [
-          "C:\\Users\\Ding\\miniforge3\\envs\\diffaudit-research\\python.exe",
-          "D:\\Code\\DiffAudit\\Research\\external\\Reconstruction-based-Attack\\kandinsky2_2_inference.py",
+          "<RESEARCH_PYTHON>",
+          "<DIFFAUDIT_ROOT>/Research/external/Reconstruction-based-Attack/kandinsky2_2_inference.py",
           "--decoder_dir",
-          "D:\\Code\\DiffAudit\\Research\\external\\recon-assets\\public-kandinsky-pokemon\\decoder\\pytorch_lora_weights.safetensors",
+          "<DIFFAUDIT_ROOT>/Research/external/recon-assets/public-kandinsky-pokemon/decoder/pytorch_lora_weights.safetensors",
           "--prior_dir",
-          "D:\\Code\\DiffAudit\\Research\\external\\recon-assets\\public-kandinsky-pokemon\\prior\\pytorch_lora_weights.safetensors",
+          "<DIFFAUDIT_ROOT>/Research/external/recon-assets/public-kandinsky-pokemon/prior/pytorch_lora_weights.safetensors",
           "--save_dir",
-          "D:\\Code\\DiffAudit\\Research\\experiments\\recon-runtime-mainline-kandinsky-public-smoke\\generated-images\\shadow_member",
+          "<DIFFAUDIT_ROOT>/Research/experiments/recon-runtime-mainline-kandinsky-public-smoke/generated-images/shadow_member",
           "--gpu",
           "0",
           "--dataset_dir",
-          "D:\\Code\\DiffAudit\\Research\\external\\recon-assets\\ndss-2025-blackbox-membership-inference-fine-tuned-diffusion-models\\derived-smoke\\shadow_member.pt",
+          "<DIFFAUDIT_ROOT>/Research/external/recon-assets/ndss-2025-blackbox-membership-inference-fine-tuned-diffusion-models/derived-smoke/shadow_member.pt",
           "--num_validation_images",
           "1",
           "--inference_steps",
@@ -311,12 +311,12 @@
           "100%|\u2588\u2588\u2588\u2588\u2588\u2588\u2588\u2588\u2588\u2588| 1/1 [00:00<00:00,  1.05it/s]"
         ],
         "command": [
-          "C:\\Users\\Ding\\miniforge3\\envs\\diffaudit-research\\python.exe",
-          "D:\\Code\\DiffAudit\\Research\\external\\Reconstruction-based-Attack\\cal_embedding.py",
+          "<RESEARCH_PYTHON>",
+          "<DIFFAUDIT_ROOT>/Research/external/Reconstruction-based-Attack/cal_embedding.py",
           "--data_dir",
-          "D:\\Code\\DiffAudit\\Research\\external\\recon-assets\\ndss-2025-blackbox-membership-inference-fine-tuned-diffusion-models\\derived-smoke\\shadow_member.pt",
+          "<DIFFAUDIT_ROOT>/Research/external/recon-assets/ndss-2025-blackbox-membership-inference-fine-tuned-diffusion-models/derived-smoke/shadow_member.pt",
           "--sample_file",
-          "D:\\Code\\DiffAudit\\Research\\experiments\\recon-runtime-mainline-kandinsky-public-smoke\\generated-images\\shadow_member",
+          "<DIFFAUDIT_ROOT>/Research/experiments/recon-runtime-mainline-kandinsky-public-smoke/generated-images/shadow_member",
           "--membership",
           "1",
           "--img_num",
@@ -324,7 +324,7 @@
           "--gpu",
           "0",
           "--save_dir",
-          "D:\\Code\\DiffAudit\\Research\\experiments\\recon-runtime-mainline-kandinsky-public-smoke\\score-artifacts\\shadow_member.pt",
+          "<DIFFAUDIT_ROOT>/Research/experiments/recon-runtime-mainline-kandinsky-public-smoke/score-artifacts/shadow_member.pt",
           "--method",
           "cosine",
           "--image_encoder",
@@ -335,11 +335,11 @@
     "shadow_non_member": {
       "status": "ready",
       "stage": "generated",
-      "dataset_path": "D:\\Code\\DiffAudit\\Research\\external\\recon-assets\\ndss-2025-blackbox-membership-inference-fine-tuned-diffusion-models\\derived-smoke\\shadow_non_member.pt",
-      "model_dir": "D:\\Code\\DiffAudit\\Research\\external\\recon-assets\\public-kandinsky-pokemon\\decoder\\pytorch_lora_weights.safetensors",
+      "dataset_path": "<DIFFAUDIT_ROOT>/Research/external/recon-assets/ndss-2025-blackbox-membership-inference-fine-tuned-diffusion-models/derived-smoke/shadow_non_member.pt",
+      "model_dir": "<DIFFAUDIT_ROOT>/Research/external/recon-assets/public-kandinsky-pokemon/decoder/pytorch_lora_weights.safetensors",
       "membership": 0,
-      "generated_dir": "D:\\Code\\DiffAudit\\Research\\experiments\\recon-runtime-mainline-kandinsky-public-smoke\\generated-images\\shadow_non_member",
-      "score_path": "D:\\Code\\DiffAudit\\Research\\experiments\\recon-runtime-mainline-kandinsky-public-smoke\\score-artifacts\\shadow_non_member.pt",
+      "generated_dir": "<DIFFAUDIT_ROOT>/Research/experiments/recon-runtime-mainline-kandinsky-public-smoke/generated-images/shadow_non_member",
+      "score_path": "<DIFFAUDIT_ROOT>/Research/experiments/recon-runtime-mainline-kandinsky-public-smoke/score-artifacts/shadow_non_member.pt",
       "sample_count": 1,
       "label_sum": 0,
       "inference": {
@@ -353,18 +353,18 @@
           "100%|\u2588\u2588\u2588\u2588\u2588\u2588\u2588\u2588\u2588\u2588| 30/30 [02:41<00:00,  5.39s/it]"
         ],
         "command": [
-          "C:\\Users\\Ding\\miniforge3\\envs\\diffaudit-research\\python.exe",
-          "D:\\Code\\DiffAudit\\Research\\external\\Reconstruction-based-Attack\\kandinsky2_2_inference.py",
+          "<RESEARCH_PYTHON>",
+          "<DIFFAUDIT_ROOT>/Research/external/Reconstruction-based-Attack/kandinsky2_2_inference.py",
           "--decoder_dir",
-          "D:\\Code\\DiffAudit\\Research\\external\\recon-assets\\public-kandinsky-pokemon\\decoder\\pytorch_lora_weights.safetensors",
+          "<DIFFAUDIT_ROOT>/Research/external/recon-assets/public-kandinsky-pokemon/decoder/pytorch_lora_weights.safetensors",
           "--prior_dir",
-          "D:\\Code\\DiffAudit\\Research\\external\\recon-assets\\public-kandinsky-pokemon\\prior\\pytorch_lora_weights.safetensors",
+          "<DIFFAUDIT_ROOT>/Research/external/recon-assets/public-kandinsky-pokemon/prior/pytorch_lora_weights.safetensors",
           "--save_dir",
-          "D:\\Code\\DiffAudit\\Research\\experiments\\recon-runtime-mainline-kandinsky-public-smoke\\generated-images\\shadow_non_member",
+          "<DIFFAUDIT_ROOT>/Research/experiments/recon-runtime-mainline-kandinsky-public-smoke/generated-images/shadow_non_member",
           "--gpu",
           "0",
           "--dataset_dir",
-          "D:\\Code\\DiffAudit\\Research\\external\\recon-assets\\ndss-2025-blackbox-membership-inference-fine-tuned-diffusion-models\\derived-smoke\\shadow_non_member.pt",
+          "<DIFFAUDIT_ROOT>/Research/external/recon-assets/ndss-2025-blackbox-membership-inference-fine-tuned-diffusion-models/derived-smoke/shadow_non_member.pt",
           "--num_validation_images",
           "1",
           "--inference_steps",
@@ -382,12 +382,12 @@
           "100%|\u2588\u2588\u2588\u2588\u2588\u2588\u2588\u2588\u2588\u2588| 1/1 [00:01<00:00,  1.16s/it]"
         ],
         "command": [
-          "C:\\Users\\Ding\\miniforge3\\envs\\diffaudit-research\\python.exe",
-          "D:\\Code\\DiffAudit\\Research\\external\\Reconstruction-based-Attack\\cal_embedding.py",
+          "<RESEARCH_PYTHON>",
+          "<DIFFAUDIT_ROOT>/Research/external/Reconstruction-based-Attack/cal_embedding.py",
           "--data_dir",
-          "D:\\Code\\DiffAudit\\Research\\external\\recon-assets\\ndss-2025-blackbox-membership-inference-fine-tuned-diffusion-models\\derived-smoke\\shadow_non_member.pt",
+          "<DIFFAUDIT_ROOT>/Research/external/recon-assets/ndss-2025-blackbox-membership-inference-fine-tuned-diffusion-models/derived-smoke/shadow_non_member.pt",
           "--sample_file",
-          "D:\\Code\\DiffAudit\\Research\\experiments\\recon-runtime-mainline-kandinsky-public-smoke\\generated-images\\shadow_non_member",
+          "<DIFFAUDIT_ROOT>/Research/experiments/recon-runtime-mainline-kandinsky-public-smoke/generated-images/shadow_non_member",
           "--membership",
           "0",
           "--img_num",
@@ -395,7 +395,7 @@
           "--gpu",
           "0",
           "--save_dir",
-          "D:\\Code\\DiffAudit\\Research\\experiments\\recon-runtime-mainline-kandinsky-public-smoke\\score-artifacts\\shadow_non_member.pt",
+          "<DIFFAUDIT_ROOT>/Research/experiments/recon-runtime-mainline-kandinsky-public-smoke/score-artifacts/shadow_non_member.pt",
           "--method",
           "cosine",
           "--image_encoder",
@@ -407,7 +407,7 @@
   "stages": {
     "artifact_probe": {
       "status": "ready",
-      "artifact_dir": "D:\\Code\\DiffAudit\\Research\\experiments\\recon-runtime-mainline-kandinsky-public-smoke\\score-artifacts",
+      "artifact_dir": "<DIFFAUDIT_ROOT>/Research/experiments/recon-runtime-mainline-kandinsky-public-smoke/score-artifacts",
       "checks": {
         "target_member": true,
         "target_non_member": true,
@@ -418,10 +418,10 @@
         "all_binary_labels": true
       },
       "paths": {
-        "target_member": "D:\\Code\\DiffAudit\\Research\\experiments\\recon-runtime-mainline-kandinsky-public-smoke\\score-artifacts\\target_member.pt",
-        "target_non_member": "D:\\Code\\DiffAudit\\Research\\experiments\\recon-runtime-mainline-kandinsky-public-smoke\\score-artifacts\\target_non_member.pt",
-        "shadow_member": "D:\\Code\\DiffAudit\\Research\\experiments\\recon-runtime-mainline-kandinsky-public-smoke\\score-artifacts\\shadow_member.pt",
-        "shadow_non_member": "D:\\Code\\DiffAudit\\Research\\experiments\\recon-runtime-mainline-kandinsky-public-smoke\\score-artifacts\\shadow_non_member.pt"
+        "target_member": "<DIFFAUDIT_ROOT>/Research/experiments/recon-runtime-mainline-kandinsky-public-smoke/score-artifacts/target_member.pt",
+        "target_non_member": "<DIFFAUDIT_ROOT>/Research/experiments/recon-runtime-mainline-kandinsky-public-smoke/score-artifacts/target_non_member.pt",
+        "shadow_member": "<DIFFAUDIT_ROOT>/Research/experiments/recon-runtime-mainline-kandinsky-public-smoke/score-artifacts/shadow_member.pt",
+        "shadow_non_member": "<DIFFAUDIT_ROOT>/Research/experiments/recon-runtime-mainline-kandinsky-public-smoke/score-artifacts/shadow_non_member.pt"
       },
       "missing_keys": [],
       "missing": [],
@@ -453,7 +453,7 @@
     "artifact_mainline": {
       "status": "ready",
       "mode": "artifact-mainline",
-      "summary_path": "D:\\Code\\DiffAudit\\Research\\experiments\\recon-runtime-mainline-kandinsky-public-smoke\\artifact-mainline\\summary.json"
+      "summary_path": "<DIFFAUDIT_ROOT>/Research/experiments/recon-runtime-mainline-kandinsky-public-smoke/artifact-mainline/summary.json"
     }
   },
   "evaluation_method": "threshold",
@@ -461,10 +461,10 @@
     "backend": "kandinsky_v22",
     "scheduler": "default",
     "pretrained_model_name_or_path": "runwayml/stable-diffusion-v1-5",
-    "target_decoder_dir": "D:\\Code\\DiffAudit\\Research\\external\\recon-assets\\public-kandinsky-pokemon\\decoder\\pytorch_lora_weights.safetensors",
-    "target_prior_dir": "D:\\Code\\DiffAudit\\Research\\external\\recon-assets\\public-kandinsky-pokemon\\prior\\pytorch_lora_weights.safetensors",
-    "shadow_decoder_dir": "D:\\Code\\DiffAudit\\Research\\external\\recon-assets\\public-kandinsky-pokemon\\decoder\\pytorch_lora_weights.safetensors",
-    "shadow_prior_dir": "D:\\Code\\DiffAudit\\Research\\external\\recon-assets\\public-kandinsky-pokemon\\prior\\pytorch_lora_weights.safetensors",
+    "target_decoder_dir": "<DIFFAUDIT_ROOT>/Research/external/recon-assets/public-kandinsky-pokemon/decoder/pytorch_lora_weights.safetensors",
+    "target_prior_dir": "<DIFFAUDIT_ROOT>/Research/external/recon-assets/public-kandinsky-pokemon/prior/pytorch_lora_weights.safetensors",
+    "shadow_decoder_dir": "<DIFFAUDIT_ROOT>/Research/external/recon-assets/public-kandinsky-pokemon/decoder/pytorch_lora_weights.safetensors",
+    "shadow_prior_dir": "<DIFFAUDIT_ROOT>/Research/external/recon-assets/public-kandinsky-pokemon/prior/pytorch_lora_weights.safetensors",
     "num_validation_images": 1,
     "inference_steps": 30,
     "gpu": 0

@@ -6,13 +6,13 @@ After white-box breadth closed negatively and `DP-LoRA` stabilized into a bounde
 
 ## Inputs Reviewed
 
-- `D:\Code\DiffAudit\Research\workspaces\white-box\plan.md`
-- `D:\Code\DiffAudit\Research\workspaces\white-box\2026-04-16-whitebox-defense-breadth-closure-verdict.md`
-- `D:\Code\DiffAudit\Research\workspaces\white-box\2026-04-15-whitebox-second-line-verdict.md`
-- `D:\Code\DiffAudit\Research\workspaces\white-box\2026-04-16-whitebox-gsa2-bounded-comparator-verdict.md`
-- `D:\Code\DiffAudit\Research\workspaces\white-box\2026-04-16-dplora-post-harmonized-lane-status-review.md`
-- `D:\Code\DiffAudit\Research\workspaces\gray-box\plan.md`
-- `D:\Code\DiffAudit\Research\workspaces\black-box\plan.md`
+- `<DIFFAUDIT_ROOT>/Research/workspaces/white-box/plan.md`
+- `<DIFFAUDIT_ROOT>/Research/workspaces/white-box/2026-04-16-whitebox-defense-breadth-closure-verdict.md`
+- `<DIFFAUDIT_ROOT>/Research/workspaces/white-box/2026-04-15-whitebox-second-line-verdict.md`
+- `<DIFFAUDIT_ROOT>/Research/workspaces/white-box/2026-04-16-whitebox-gsa2-bounded-comparator-verdict.md`
+- `<DIFFAUDIT_ROOT>/Research/workspaces/white-box/2026-04-16-dplora-post-harmonized-lane-status-review.md`
+- `<DIFFAUDIT_ROOT>/Research/workspaces/gray-box/plan.md`
+- `<DIFFAUDIT_ROOT>/Research/workspaces/black-box/plan.md`
 
 ## Candidate Review
 

@@ -16,17 +16,17 @@ After `TMIA-DM late-window long_window` became GPU-eligible on bounded CPU evide
 
 Attempted GPU pilot target:
 
-- `D:\Code\DiffAudit\Research\workspaces\gray-box\runs\tmiadm-cifar10-late-window-protocol-probe-20260416-gpu-128-r1`
+- `<DIFFAUDIT_ROOT>/Research/workspaces/gray-box/runs/tmiadm-cifar10-late-window-protocol-probe-20260416-gpu-128-r1`
 
 Environment checks:
 
 - default `python`:
-  - executable: `C:\Users\Ding\AppData\Local\Programs\Python\Python312\python.exe`
+  - executable: `<PYTHON_EXE>`
   - `torch = 2.11.0+cpu`
   - `torch.version.cuda = None`
   - `torch.cuda.is_available() = False`
 - alternate `miniforge` python:
-  - executable: `C:\Users\Ding\miniforge3\python.exe`
+  - executable: `<CONDA_PYTHON>`
   - current state: `ModuleNotFoundError: No module named 'torch'`
 
 Observed host state:

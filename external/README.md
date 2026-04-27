@@ -8,10 +8,10 @@
 
 - `CLiD/`
   - canonical local working clone for upstream CLiD code
-  - raw CLiD supplementary mirror lives under `D:\Code\DiffAudit\Download\black-box\supplementary\clid-mia-supplementary\`
+  - raw CLiD supplementary mirror lives under `<DIFFAUDIT_ROOT>/Download/black-box/supplementary/clid-mia-supplementary/`
 - `SecMI/`
   - full upstream clone kept for upstream config / split / structure reference
-  - canonical in-repo minimal integration surface is `D:\Code\DiffAudit\Research\third_party\secmi\`
+  - canonical in-repo minimal integration surface is `<DIFFAUDIT_ROOT>/Research/third_party/secmi/`
 - `PIA/`, `Reconstruction-based-Attack/`, `DiT/`, `DPDM/`, `mia-diffusion/`
   - upstream or exploratory code clones
 
@@ -23,6 +23,6 @@
 
 Use:
 
-- `D:\Code\DiffAudit\Download\` for raw intake
-- `D:\Code\DiffAudit\Research\workspaces\<lane>\assets\` for lane-normalized gateways
-- `D:\Code\DiffAudit\Research\workspaces\<lane>\runs\` for evidence
+- `<DIFFAUDIT_ROOT>/Download/` for raw intake
+- `<DIFFAUDIT_ROOT>/Research/workspaces/<lane>/assets/` for lane-normalized gateways
+- `<DIFFAUDIT_ROOT>/Research/workspaces/<lane>/runs/` for evidence

@@ -6,12 +6,12 @@ After `X-133` and `X-134` land the first two canonical `H2` stages, can `04-H2` 
 
 ## Inputs Reviewed
 
-- `D:\Code\DiffAudit\Research\workspaces\implementation\2026-04-21-x134-04-h2-prepare-contract-landing.md`
-- `D:\Code\DiffAudit\Research\src\diffaudit\defenses\h2_adapter.py`
-- `D:\Code\DiffAudit\Research\src\diffaudit\cli.py`
-- `D:\Code\DiffAudit\Research\tests\test_h2_adapter.py`
-- `D:\Code\DiffAudit\Research\scripts\train_smp_lora.py`
-- `D:\Code\DiffAudit\Research\workspaces\implementation\runs\h2-run-defense-pilot-20260421-r1\summary.json`
+- `<DIFFAUDIT_ROOT>/Research/workspaces/implementation/2026-04-21-x134-04-h2-prepare-contract-landing.md`
+- `<DIFFAUDIT_ROOT>/Research/src/diffaudit/defenses/h2_adapter.py`
+- `<DIFFAUDIT_ROOT>/Research/src/diffaudit/cli.py`
+- `<DIFFAUDIT_ROOT>/Research/tests/test_h2_adapter.py`
+- `<DIFFAUDIT_ROOT>/Research/scripts/train_smp_lora.py`
+- `<DIFFAUDIT_ROOT>/Research/workspaces/implementation/runs/h2-run-defense-pilot-20260421-r1/summary.json`
 
 ## Findings
 
@@ -62,7 +62,7 @@ It still remains below:
 
 ## Canonical Evidence Anchor
 
-- `D:\Code\DiffAudit\Research\workspaces\implementation\runs\h2-run-defense-pilot-20260421-r1\summary.json`
+- `<DIFFAUDIT_ROOT>/Research/workspaces/implementation/runs/h2-run-defense-pilot-20260421-r1/summary.json`
 
 ## Control Decision
 

@@ -6,13 +6,13 @@ After `Noise as a Probe` has already completed its bounded gray-box branch and c
 
 ## Inputs Reviewed
 
-- `D:\Code\DiffAudit\Research\ROADMAP.md`
-- `D:\Code\DiffAudit\Research\docs\comprehensive-progress.md`
-- `D:\Code\DiffAudit\Research\workspaces\black-box\plan.md`
-- `D:\Code\DiffAudit\Research\workspaces\gray-box\plan.md`
-- `D:\Code\DiffAudit\Research\workspaces\white-box\plan.md`
-- `D:\Code\DiffAudit\Research\workspaces\gray-box\2026-04-16-graybox-new-family-shortlist-refresh-verdict.md`
-- `D:\Code\DiffAudit\Research\docs\paper-reports\markdown\gray-box\2026-openreview-mofit-caption-free-membership-inference\2026-openreview-mofit-caption-free-membership-inference-refined.md`
+- `<DIFFAUDIT_ROOT>/Research/ROADMAP.md`
+- `<DIFFAUDIT_ROOT>/Research/docs/comprehensive-progress.md`
+- `<DIFFAUDIT_ROOT>/Research/workspaces/black-box/plan.md`
+- `<DIFFAUDIT_ROOT>/Research/workspaces/gray-box/plan.md`
+- `<DIFFAUDIT_ROOT>/Research/workspaces/white-box/plan.md`
+- `<DIFFAUDIT_ROOT>/Research/workspaces/gray-box/2026-04-16-graybox-new-family-shortlist-refresh-verdict.md`
+- `<DIFFAUDIT_ROOT>/Research/docs/paper-reports/markdown/gray-box/2026-openreview-mofit-caption-free-membership-inference/2026-openreview-mofit-caption-free-membership-inference-refined.md`
 
 ## Current State
 

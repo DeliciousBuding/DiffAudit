@@ -6,21 +6,21 @@ After black-box and gray-box near-term selection both closed, does white-box now
 
 ## Inputs Reviewed
 
-- `D:\Code\DiffAudit\ROADMAP.md`
-- `D:\Code\DiffAudit\Research\ROADMAP.md`
-- `D:\Code\DiffAudit\Research\README.md`
-- `D:\Code\DiffAudit\Research\docs\comprehensive-progress.md`
-- `D:\Code\DiffAudit\Research\workspaces\white-box\README.md`
-- `D:\Code\DiffAudit\Research\workspaces\white-box\plan.md`
-- `D:\Code\DiffAudit\Research\workspaces\white-box\2026-04-15-whitebox-second-line-verdict.md`
-- `D:\Code\DiffAudit\Research\workspaces\white-box\2026-04-16-whitebox-defense-breadth-shortlist-verdict.md`
-- `D:\Code\DiffAudit\Research\workspaces\white-box\2026-04-16-whitebox-bounded-defense-selection-verdict.md`
-- `D:\Code\DiffAudit\Research\workspaces\white-box\2026-04-16-whitebox-defense-breadth-closure-verdict.md`
-- `D:\Code\DiffAudit\Research\workspaces\white-box\2026-04-16-whitebox-feature-trajectory-verdict.md`
-- `D:\Code\DiffAudit\Research\workspaces\white-box\2026-04-16-whitebox-gsa2-bounded-comparator-verdict.md`
-- `D:\Code\DiffAudit\Research\workspaces\white-box\2026-04-16-dplora-post-harmonized-lane-status-review.md`
-- `D:\Code\DiffAudit\Research\workspaces\white-box\2026-04-17-whitebox-post-breadth-next-hypothesis-selection-review.md`
-- `D:\Code\DiffAudit\Research\workspaces\implementation\challenger-queue.md`
+- `<DIFFAUDIT_ROOT>/ROADMAP.md`
+- `<DIFFAUDIT_ROOT>/Research/ROADMAP.md`
+- `<DIFFAUDIT_ROOT>/Research/README.md`
+- `<DIFFAUDIT_ROOT>/Research/docs/comprehensive-progress.md`
+- `<DIFFAUDIT_ROOT>/Research/workspaces/white-box/README.md`
+- `<DIFFAUDIT_ROOT>/Research/workspaces/white-box/plan.md`
+- `<DIFFAUDIT_ROOT>/Research/workspaces/white-box/2026-04-15-whitebox-second-line-verdict.md`
+- `<DIFFAUDIT_ROOT>/Research/workspaces/white-box/2026-04-16-whitebox-defense-breadth-shortlist-verdict.md`
+- `<DIFFAUDIT_ROOT>/Research/workspaces/white-box/2026-04-16-whitebox-bounded-defense-selection-verdict.md`
+- `<DIFFAUDIT_ROOT>/Research/workspaces/white-box/2026-04-16-whitebox-defense-breadth-closure-verdict.md`
+- `<DIFFAUDIT_ROOT>/Research/workspaces/white-box/2026-04-16-whitebox-feature-trajectory-verdict.md`
+- `<DIFFAUDIT_ROOT>/Research/workspaces/white-box/2026-04-16-whitebox-gsa2-bounded-comparator-verdict.md`
+- `<DIFFAUDIT_ROOT>/Research/workspaces/white-box/2026-04-16-dplora-post-harmonized-lane-status-review.md`
+- `<DIFFAUDIT_ROOT>/Research/workspaces/white-box/2026-04-17-whitebox-post-breadth-next-hypothesis-selection-review.md`
+- `<DIFFAUDIT_ROOT>/Research/workspaces/implementation/challenger-queue.md`
 
 ## Review
 

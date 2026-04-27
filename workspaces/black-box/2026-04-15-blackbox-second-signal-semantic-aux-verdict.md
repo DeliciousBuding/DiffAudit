@@ -5,7 +5,7 @@
 - `owner`: `ResearcherAgent`
 - `task_scope`: `BB-1`
 - `family`: `semantic-auxiliary-classifier`
-- `canonical_run`: `D:\Code\DiffAudit\Research\workspaces\black-box\runs\semantic-aux-classifier-comparator-20260415-r1\summary.json`
+- `canonical_run`: `<DIFFAUDIT_ROOT>/Research/workspaces/black-box/runs/semantic-aux-classifier-comparator-20260415-r1/summary.json`
 - `gpu_status`: `completed`
 
 ## Question
@@ -25,7 +25,7 @@ Bounded local comparator on the current CelebA target-family stack:
 Scaled follow-up comparator on `2026-04-16` (`32 / 32`, same protocol):
 
 - run anchor:
-  - `D:\Code\DiffAudit\Research\workspaces\black-box\runs\semantic-aux-classifier-comparator-20260416-r2\summary.json`
+  - `<DIFFAUDIT_ROOT>/Research/workspaces/black-box/runs/semantic-aux-classifier-comparator-20260416-r2/summary.json`
 - `AUC = 0.90918`
 - `ASR = 0.84375`
 - `TPR@1%FPR = 0.25`

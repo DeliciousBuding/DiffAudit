@@ -5,7 +5,7 @@
 - `owner`: `ResearcherAgent`
 - `task_scope`: `GB-2 / P2-GS-1`
 - `track`: `gray-box`
-- `canonical_run`: `D:\Code\DiffAudit\Research\workspaces\gray-box\runs\secmi-pia-disagreement-20260415-r1\summary.json`
+- `canonical_run`: `<DIFFAUDIT_ROOT>/Research/workspaces/gray-box/runs/secmi-pia-disagreement-20260415-r1/summary.json`
 - `gpu_status`: `completed`
 
 ## Question

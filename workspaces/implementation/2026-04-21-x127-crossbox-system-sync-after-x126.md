@@ -6,10 +6,10 @@ After `X-126` identified stale higher-layer read-path drift, are the remaining a
 
 ## Inputs Reviewed
 
-- `D:\Code\DiffAudit\Research\docs\mainline-narrative.md`
-- `D:\Code\DiffAudit\Research\docs\future-phase-e-intake.md`
-- `D:\Code\DiffAudit\Research\workspaces\implementation\2026-04-21-x125-r25b-pia-sima-support-fusion-bounded-review.md`
-- `D:\Code\DiffAudit\Research\workspaces\implementation\2026-04-21-x126-non-graybox-next-lane-reselection-after-x125.md`
+- `<DIFFAUDIT_ROOT>/Research/docs/mainline-narrative.md`
+- `<DIFFAUDIT_ROOT>/Research/docs/future-phase-e-intake.md`
+- `<DIFFAUDIT_ROOT>/Research/workspaces/implementation/2026-04-21-x125-r25b-pia-sima-support-fusion-bounded-review.md`
+- `<DIFFAUDIT_ROOT>/Research/workspaces/implementation/2026-04-21-x126-non-graybox-next-lane-reselection-after-x125.md`
 
 ## Changes Applied
 
@@ -44,7 +44,7 @@ Sharper control truth:
 
 ## Canonical Evidence Anchor
 
-- `D:\Code\DiffAudit\Research\workspaces\implementation\2026-04-21-x127-crossbox-system-sync-after-x126.md`
+- `<DIFFAUDIT_ROOT>/Research/workspaces/implementation/2026-04-21-x127-crossbox-system-sync-after-x126.md`
 
 ## Handoff
 

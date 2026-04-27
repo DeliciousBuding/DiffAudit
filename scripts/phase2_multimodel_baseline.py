@@ -19,10 +19,10 @@ from typing import Any
 research_root = Path(__file__).resolve().parents[1]
 sys.path.insert(0, str(research_root / "src"))
 
-CHECKPOINTS_BASE = Path("D:/Code/DiffAudit/Research/workspaces/white-box/assets/gsa-gpu-128/checkpoints")
-MEMBER_DIR = "D:/Code/DiffAudit/Research/workspaces/white-box/assets/gsa-cifar10-1k-3shadow/datasets/target-member"
-NONMEMBER_DIR = "D:/Code/DiffAudit/Research/workspaces/white-box/assets/gsa-cifar10-1k-3shadow/datasets/target-nonmember"
-OUTPUT_BASE = Path("D:/Code/DiffAudit/Research/outputs/smp-lora-phase2")
+CHECKPOINTS_BASE = research_root / "workspaces" / "white-box" / "assets" / "gsa-gpu-128" / "checkpoints"
+MEMBER_DIR = str(research_root / "workspaces" / "white-box" / "assets" / "gsa-cifar10-1k-3shadow" / "datasets" / "target-member")
+NONMEMBER_DIR = str(research_root / "workspaces" / "white-box" / "assets" / "gsa-cifar10-1k-3shadow" / "datasets" / "target-nonmember")
+OUTPUT_BASE = research_root / "outputs" / "smp-lora-phase2"
 
 MODELS = {
     "target-64": CHECKPOINTS_BASE / "target" / "checkpoint-64",
@@ -65,7 +65,7 @@ def train_smp_lora(model_name: str, model_path: Path, lambda_coeff: float, rank:
 
     cmd = [
         "conda", "run", "-n", "diffaudit-research",
-        "python", "D:/Code/DiffAudit/Research/scripts/train_smp_lora.py",
+        "python", str(research_root / "scripts" / "train_smp_lora.py"),
         "--local_model", str(model_path),
         "--member_dir", MEMBER_DIR,
         "--nonmember_dir", NONMEMBER_DIR,
@@ -88,7 +88,7 @@ def evaluate_smp_lora(name: str, lora_checkpoint: Path, base_model: Path) -> dic
 
     cmd = [
         "conda", "run", "-n", "diffaudit-research",
-        "python", "D:/Code/DiffAudit/Research/scripts/evaluate_smp_lora_defense.py",
+        "python", str(research_root / "scripts" / "evaluate_smp_lora_defense.py"),
         "--lora_checkpoint", str(lora_checkpoint),
         "--base_model", str(base_model),
         "--member_dir", MEMBER_DIR,
@@ -114,7 +114,7 @@ def evaluate_no_defense_baseline(model_name: str, model_path: Path) -> dict[str,
 
     script = f"""
 import sys
-sys.path.insert(0, 'D:/Code/DiffAudit/Research/src')
+sys.path.insert(0, r'{(research_root / "src").as_posix()}')
 import torch
 from pathlib import Path
 from diffusers import UNet2DModel, DDPMScheduler

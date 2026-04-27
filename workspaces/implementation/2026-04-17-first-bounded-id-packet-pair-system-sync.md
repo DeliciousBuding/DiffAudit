@@ -6,15 +6,15 @@ After `I-D.1`, `I-D.2`, and `I-D.3` all landed, what exact higher-layer wording 
 
 ## Inputs Reviewed
 
-- `D:\Code\DiffAudit\Research\ROADMAP.md`
-- `D:\Code\DiffAudit\Research\docs\comprehensive-progress.md`
-- `D:\Code\DiffAudit\Research\docs\leader-research-ready-summary.md`
-- `D:\Code\DiffAudit\Research\docs\mainline-narrative.md`
-- `D:\Code\DiffAudit\Research\docs\reproduction-status.md`
-- `D:\Code\DiffAudit\Research\docs\research-boundary-card.md`
-- `D:\Code\DiffAudit\Research\workspaces\implementation\2026-04-17-id1-honest-conditional-target-contract.md`
-- `D:\Code\DiffAudit\Research\workspaces\implementation\2026-04-17-id2-bounded-cfg-scale-probe-verdict.md`
-- `D:\Code\DiffAudit\Research\workspaces\implementation\2026-04-17-id3-bounded-cfg-randomization-defense-idea-verdict.md`
+- `<DIFFAUDIT_ROOT>/Research/ROADMAP.md`
+- `<DIFFAUDIT_ROOT>/Research/docs/comprehensive-progress.md`
+- `<DIFFAUDIT_ROOT>/Research/docs/leader-research-ready-summary.md`
+- `<DIFFAUDIT_ROOT>/Research/docs/mainline-narrative.md`
+- `<DIFFAUDIT_ROOT>/Research/docs/reproduction-status.md`
+- `<DIFFAUDIT_ROOT>/Research/docs/research-boundary-card.md`
+- `<DIFFAUDIT_ROOT>/Research/workspaces/implementation/2026-04-17-id1-honest-conditional-target-contract.md`
+- `<DIFFAUDIT_ROOT>/Research/workspaces/implementation/2026-04-17-id2-bounded-cfg-scale-probe-verdict.md`
+- `<DIFFAUDIT_ROOT>/Research/workspaces/implementation/2026-04-17-id3-bounded-cfg-randomization-defense-idea-verdict.md`
 
 ## Sync Decisions
 

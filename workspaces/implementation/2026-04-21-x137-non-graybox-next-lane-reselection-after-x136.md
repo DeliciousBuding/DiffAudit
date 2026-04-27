@@ -6,10 +6,10 @@ After `X-136` lands the first fully canonical `H2` same-packet review and that r
 
 ## Inputs Reviewed
 
-- `D:\Code\DiffAudit\Research\workspaces\implementation\2026-04-21-x136-04-h2-review-defense-pilot-contract-landing.md`
-- `D:\Code\DiffAudit\Research\workspaces\implementation\runs\h2-review-defense-pilot-20260421-r1\summary.json`
-- `D:\Code\DiffAudit\Research\workspaces\implementation\challenger-queue.md`
-- `D:\Code\DiffAudit\Research\ROADMAP.md`
+- `<DIFFAUDIT_ROOT>/Research/workspaces/implementation/2026-04-21-x136-04-h2-review-defense-pilot-contract-landing.md`
+- `<DIFFAUDIT_ROOT>/Research/workspaces/implementation/runs/h2-review-defense-pilot-20260421-r1/summary.json`
+- `<DIFFAUDIT_ROOT>/Research/workspaces/implementation/challenger-queue.md`
+- `<DIFFAUDIT_ROOT>/Research/ROADMAP.md`
 
 ## Finding
 

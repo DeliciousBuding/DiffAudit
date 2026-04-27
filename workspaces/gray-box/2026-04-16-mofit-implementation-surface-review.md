@@ -6,10 +6,10 @@ Given the current repo state, should the first `MoFit` implementation step exten
 
 ## Inputs Reviewed
 
-- `D:\Code\DiffAudit\Research\workspaces\gray-box\2026-04-16-mofit-protocol-asset-contract.md`
-- `D:\Code\DiffAudit\Research\scripts\run_structural_memorization_smoke.py`
-- `D:\Code\DiffAudit\Research\scripts\run_blackbox_semantic_aux_probe.py`
-- `D:\Code\DiffAudit\Research\workspaces\gray-box\2026-04-16-noise-as-a-probe-implementation-surface-review.md`
+- `<DIFFAUDIT_ROOT>/Research/workspaces/gray-box/2026-04-16-mofit-protocol-asset-contract.md`
+- `<DIFFAUDIT_ROOT>/Research/scripts/run_structural_memorization_smoke.py`
+- `<DIFFAUDIT_ROOT>/Research/scripts/run_blackbox_semantic_aux_probe.py`
+- `<DIFFAUDIT_ROOT>/Research/workspaces/gray-box/2026-04-16-noise-as-a-probe-implementation-surface-review.md`
 
 ## What Already Exists
 

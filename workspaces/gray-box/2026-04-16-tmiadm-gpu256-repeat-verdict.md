@@ -16,15 +16,15 @@ After the first positive `TMIA-DM late-window GPU256` rung, does a matched repea
 
 GPU256 runs:
 
-- `D:\Code\DiffAudit\Research\workspaces\gray-box\runs\tmiadm-cifar10-late-window-protocol-probe-20260416-gpu-256-r1\summary.json`
-- `D:\Code\DiffAudit\Research\workspaces\gray-box\runs\tmiadm-cifar10-late-window-protocol-probe-20260416-gpu-256-r2-seed1\summary.json`
+- `<DIFFAUDIT_ROOT>/Research/workspaces/gray-box/runs/tmiadm-cifar10-late-window-protocol-probe-20260416-gpu-256-r1/summary.json`
+- `<DIFFAUDIT_ROOT>/Research/workspaces/gray-box/runs/tmiadm-cifar10-late-window-protocol-probe-20260416-gpu-256-r2-seed1/summary.json`
 
 Current references:
 
 - `PIA GPU256 baseline`:
-  - `D:\Code\DiffAudit\Research\workspaces\gray-box\runs\pia-cifar10-runtime-mainline-20260408-gpu-256\summary.json`
+  - `<DIFFAUDIT_ROOT>/Research/workspaces/gray-box/runs/pia-cifar10-runtime-mainline-20260408-gpu-256/summary.json`
 - prior `TMIA-DM GPU256` rung note:
-  - `D:\Code\DiffAudit\Research\workspaces\gray-box\2026-04-16-tmiadm-gpu256-rung-verdict.md`
+  - `<DIFFAUDIT_ROOT>/Research/workspaces/gray-box/2026-04-16-tmiadm-gpu256-rung-verdict.md`
 
 ## Metrics
 

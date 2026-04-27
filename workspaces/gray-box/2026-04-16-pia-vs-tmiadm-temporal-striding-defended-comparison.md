@@ -17,13 +17,13 @@ Now that `TMIA-DM temporal-striding(stride=2)` has survived `cpu-32`, `GPU128`, 
 Defended references:
 
 - `PIA GPU256 defended`:
-  - `D:\Code\DiffAudit\Research\workspaces\gray-box\runs\pia-cifar10-runtime-mainline-dropout-defense-20260408-gpu-256\summary.json`
+  - `<DIFFAUDIT_ROOT>/Research/workspaces/gray-box/runs/pia-cifar10-runtime-mainline-dropout-defense-20260408-gpu-256/summary.json`
 - `TMIA-DM late-window + stochastic-dropout GPU256 r2`:
-  - `D:\Code\DiffAudit\Research\workspaces\gray-box\runs\tmiadm-cifar10-late-window-dropout-defense-20260416-gpu-256-r2-seed1\summary.json`
+  - `<DIFFAUDIT_ROOT>/Research/workspaces/gray-box/runs/tmiadm-cifar10-late-window-dropout-defense-20260416-gpu-256-r2-seed1/summary.json`
 - `TMIA-DM late-window + temporal-striding GPU256 r1`:
-  - `D:\Code\DiffAudit\Research\workspaces\gray-box\runs\tmiadm-cifar10-late-window-temporal-striding-defense-20260416-gpu-256-r1\summary.json`
+  - `<DIFFAUDIT_ROOT>/Research/workspaces/gray-box/runs/tmiadm-cifar10-late-window-temporal-striding-defense-20260416-gpu-256-r1/summary.json`
 - `TMIA-DM late-window + temporal-striding GPU256 r2`:
-  - `D:\Code\DiffAudit\Research\workspaces\gray-box\runs\tmiadm-cifar10-late-window-temporal-striding-defense-20260416-gpu-256-r2-seed1\summary.json`
+  - `<DIFFAUDIT_ROOT>/Research/workspaces/gray-box/runs/tmiadm-cifar10-late-window-temporal-striding-defense-20260416-gpu-256-r2-seed1/summary.json`
 
 Undefended context:
 

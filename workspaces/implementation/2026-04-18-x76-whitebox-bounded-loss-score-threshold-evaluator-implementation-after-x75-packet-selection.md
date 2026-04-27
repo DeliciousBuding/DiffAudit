@@ -38,9 +38,9 @@ This evaluator:
 
 ### Tests
 
-- `conda run -n diffaudit-research python -m pytest D:\Code\DiffAudit\Research\tests\test_gsa_adapter.py`
+- `conda run -n diffaudit-research python -m pytest <DIFFAUDIT_ROOT>/Research/tests/test_gsa_adapter.py`
   - `6 passed`
-- `conda run -n diffaudit-research python -m unittest D:\Code\DiffAudit\Research\tests\test_gsa_adapter.py`
+- `conda run -n diffaudit-research python -m unittest <DIFFAUDIT_ROOT>/Research/tests/test_gsa_adapter.py`
   - `OK`
 
 ### Real bounded smoke
@@ -49,13 +49,13 @@ Evaluator smoke command:
 
 ```powershell
 conda run -n diffaudit-research python -m diffaudit evaluate-gsa-loss-score-packet `
-  --workspace D:\Code\DiffAudit\Research\workspaces\white-box\runs\gsa-loss-score-threshold-eval-bounded-smoke-20260418-r1 `
-  --packet-summary D:\Code\DiffAudit\Research\workspaces\white-box\runs\gsa-loss-score-export-bounded-smoke-20260418-r1\summary.json
+  --workspace <DIFFAUDIT_ROOT>/Research/workspaces/white-box/runs/gsa-loss-score-threshold-eval-bounded-smoke-20260418-r1 `
+  --packet-summary <DIFFAUDIT_ROOT>/Research/workspaces/white-box/runs/gsa-loss-score-export-bounded-smoke-20260418-r1/summary.json
 ```
 
 Canonical run anchor:
 
-- `D:\Code\DiffAudit\Research\workspaces\white-box\runs\gsa-loss-score-threshold-eval-bounded-smoke-20260418-r1\summary.json`
+- `<DIFFAUDIT_ROOT>/Research/workspaces/white-box/runs/gsa-loss-score-threshold-eval-bounded-smoke-20260418-r1/summary.json`
 
 Observed smoke truth:
 

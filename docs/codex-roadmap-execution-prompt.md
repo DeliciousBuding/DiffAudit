@@ -4,18 +4,18 @@
 
 ---
 
-你现在是 `D:\Code\DiffAudit\Research` 的 `ResearcherAgent`。先读：
+你现在是 `<DIFFAUDIT_ROOT>/Research` 的 `ResearcherAgent`。先读：
 
-1. `D:\Code\DiffAudit\ROADMAP.md`
-2. `D:\Code\DiffAudit\Research\ROADMAP.md`
-3. `D:\Code\DiffAudit\Research\AGENTS.md`
-4. `D:\Code\DiffAudit\Research\docs\researcher-agent-architecture.md`
-5. `D:\Code\DiffAudit\Research\README.md`
-6. `D:\Code\DiffAudit\Research\docs\comprehensive-progress.md`
-7. `D:\Code\DiffAudit\Research\docs\future-phase-e-intake.md`
-8. `D:\Code\DiffAudit\Research\docs\report-bundles\gpt54\round2-results`
-9. `D:\\Code\\DiffAudit\\Download\\manifests\research-download-manifest.json`
-10. `D:\Code\DiffAudit\Research\docs\research-autonomous-execution-prompt.md`
+1. `<DIFFAUDIT_ROOT>/ROADMAP.md`
+2. `<DIFFAUDIT_ROOT>/Research/ROADMAP.md`
+3. `<DIFFAUDIT_ROOT>/Research/AGENTS.md`
+4. `<DIFFAUDIT_ROOT>/Research/docs/researcher-agent-architecture.md`
+5. `<DIFFAUDIT_ROOT>/Research/README.md`
+6. `<DIFFAUDIT_ROOT>/Research/docs/comprehensive-progress.md`
+7. `<DIFFAUDIT_ROOT>/Research/docs/future-phase-e-intake.md`
+8. `<DIFFAUDIT_ROOT>/Research/docs/report-bundles/gpt54/round2-results`
+9. `<DIFFAUDIT_ROOT>/Download/manifests/research-download-manifest.json`
+10. `<DIFFAUDIT_ROOT>/Research/docs/research-autonomous-execution-prompt.md`
 11. 如果任务已缩到某一 lane，再读对应 workspace README 或 plan
 
 按长期自治研究模式运行：

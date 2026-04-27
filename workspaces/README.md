@@ -59,6 +59,6 @@
 ## 额外边界提醒
 
 - `workspaces/` 不是上游代码 clone 区；上游代码默认放 `Research/external/`
-- `workspaces/` 也不是原始下载物堆放区；原始 datasets / weights / supplementary 默认放 `D:\Code\DiffAudit\Download\`
+- `workspaces/` 也不是原始下载物堆放区；原始 datasets / weights / supplementary 默认放 `<DIFFAUDIT_ROOT>/Download/`
 - `workspaces/<lane>/assets/` 只放当前 lane 真正消费的归一化入口、manifest、split 契约与小型必要资产
 

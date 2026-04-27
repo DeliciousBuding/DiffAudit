@@ -6,13 +6,13 @@ Can the current admitted `DDPM/CIFAR10` white-box asset line honestly support on
 
 ## Inputs Reviewed
 
-- `D:\Code\DiffAudit\Research\workspaces\implementation\2026-04-18-x71-whitebox-loss-feature-challenger-scoping-review-after-x70-expansion.md`
-- `D:\Code\DiffAudit\Research\workspaces\white-box\assets\gsa-cifar10-1k-3shadow-epoch300-rerun1\manifests\cifar10-ddpm-1k-3shadow-epoch300-rerun1.json`
-- `D:\Code\DiffAudit\Research\workspaces\white-box\runs\gsa-runtime-mainline-20260409-cifar10-1k-3shadow-epoch300-rerun1\summary.json`
-- `D:\Code\DiffAudit\Research\workspaces\white-box\external\GSA\DDPM\gen_l2_gradients_DDPM.py`
-- `D:\Code\DiffAudit\Research\src\diffaudit\attacks\gsa.py`
-- `D:\Code\DiffAudit\Research\docs\paper-reports\white-box\2025-popets-white-box-membership-inference-diffusion-models-report.md`
-- `D:\Code\DiffAudit\Research\docs\paper-reports\survey\2025-aaai-privacy-preserving-lora-membership-inference-latent-diffusion-models-report.md`
+- `<DIFFAUDIT_ROOT>/Research/workspaces/implementation/2026-04-18-x71-whitebox-loss-feature-challenger-scoping-review-after-x70-expansion.md`
+- `<DIFFAUDIT_ROOT>/Research/workspaces/white-box/assets/gsa-cifar10-1k-3shadow-epoch300-rerun1/manifests/cifar10-ddpm-1k-3shadow-epoch300-rerun1.json`
+- `<DIFFAUDIT_ROOT>/Research/workspaces/white-box/runs/gsa-runtime-mainline-20260409-cifar10-1k-3shadow-epoch300-rerun1/summary.json`
+- `<DIFFAUDIT_ROOT>/Research/workspaces/white-box/external/GSA/DDPM/gen_l2_gradients_DDPM.py`
+- `<DIFFAUDIT_ROOT>/Research/src/diffaudit/attacks/gsa.py`
+- `<DIFFAUDIT_ROOT>/Research/docs/paper-reports/white-box/2025-popets-white-box-membership-inference-diffusion-models-report.md`
+- `<DIFFAUDIT_ROOT>/Research/docs/paper-reports/survey/2025-aaai-privacy-preserving-lora-membership-inference-latent-diffusion-models-report.md`
 
 ## Contract Review
 

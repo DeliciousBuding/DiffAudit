@@ -16,22 +16,22 @@ Can the current local `CLiD` bridge already be treated as one minimum step close
 
 Released evaluator:
 
-- `D:\Code\DiffAudit\Download\black-box\supplementary\clid-mia-supplementary\contents\CLID_MIA\cal_clid_th.py`
+- `<DIFFAUDIT_ROOT>/Download/black-box/supplementary/clid-mia-supplementary/contents/CLID_MIA/cal_clid_th.py`
 
 Current executed local rung:
 
-- `D:\Code\DiffAudit\Research\workspaces\black-box\runs\clid-recon-clip-target100-20260415-r1\summary.json`
-- `D:\Code\DiffAudit\Research\workspaces\black-box\runs\clid-recon-clip-target100-20260415-r1\outputs\Atk_clid_clip_M_local_recon_target_DATA_member_TRTE_train_MAXsmp_1_T_0415_033616.txt`
-- `D:\Code\DiffAudit\Research\workspaces\black-box\runs\clid-recon-clip-target100-20260415-r1\outputs\Atk_clid_clip_M_local_recon_target_DATA_member_TRTE_test_MAXsmp_1_T_0415_033616.txt`
+- `<DIFFAUDIT_ROOT>/Research/workspaces/black-box/runs/clid-recon-clip-target100-20260415-r1/summary.json`
+- `<DIFFAUDIT_ROOT>/Research/workspaces/black-box/runs/clid-recon-clip-target100-20260415-r1/outputs/Atk_clid_clip_M_local_recon_target_DATA_member_TRTE_train_MAXsmp_1_T_0415_033616.txt`
+- `<DIFFAUDIT_ROOT>/Research/workspaces/black-box/runs/clid-recon-clip-target100-20260415-r1/outputs/Atk_clid_clip_M_local_recon_target_DATA_member_TRTE_test_MAXsmp_1_T_0415_033616.txt`
 
 Prepared staged-path bridge:
 
-- `D:\Code\DiffAudit\Research\workspaces\black-box\runs\clid-paper-align-asset-prep-20260415-r1\config.json`
-- `D:\Code\DiffAudit\Research\workspaces\black-box\runs\clid-paper-align-asset-prep-20260415-r1\mia_CLiD_clip_local.py`
+- `<DIFFAUDIT_ROOT>/Research/workspaces/black-box/runs/clid-paper-align-asset-prep-20260415-r1/config.json`
+- `<DIFFAUDIT_ROOT>/Research/workspaces/black-box/runs/clid-paper-align-asset-prep-20260415-r1/mia_CLiD_clip_local.py`
 
 Prior audit:
 
-- `D:\Code\DiffAudit\Research\workspaces\black-box\2026-04-15-clid-paper-alignment-audit.md`
+- `<DIFFAUDIT_ROOT>/Research/workspaces/black-box/2026-04-15-clid-paper-alignment-audit.md`
 
 ## Findings
 
@@ -47,7 +47,7 @@ The current target-side rung writes two score files that are already close to th
 
 The first header line of the current target-side local rung still records:
 
-- `diff_path = C:/Users/Ding/.cache/huggingface/hub/models--runwayml--stable-diffusion-v1-5/...`
+- `diff_path = C:/Users/<user>/.cache/huggingface/hub/models--runwayml--stable-diffusion-v1-5/...`
 
 So even though staged-path preparation now exists separately, the already-executed local benchmark evidence still points at the user cache snapshot rather than the canonical staged SD1.5 root.
 

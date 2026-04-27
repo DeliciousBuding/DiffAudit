@@ -17,9 +17,9 @@ CPU-only read-only contract probe:
 
 ```powershell
 conda run -n diffaudit-research python -m diffaudit probe-gsa-observability-contract `
-  --repo-root D:\Code\DiffAudit\Research\workspaces\white-box\external\GSA `
-  --assets-root D:\Code\DiffAudit\Research\workspaces\white-box\assets\gsa-cifar10-1k-3shadow-epoch300-rerun1 `
-  --checkpoint-root D:\Code\DiffAudit\Research\workspaces\white-box\assets\gsa-cifar10-1k-3shadow-epoch300-rerun1\checkpoints\target `
+  --repo-root <DIFFAUDIT_ROOT>/Research/workspaces/white-box/external/GSA `
+  --assets-root <DIFFAUDIT_ROOT>/Research/workspaces/white-box/assets/gsa-cifar10-1k-3shadow-epoch300-rerun1 `
+  --checkpoint-root <DIFFAUDIT_ROOT>/Research/workspaces/white-box/assets/gsa-cifar10-1k-3shadow-epoch300-rerun1/checkpoints/target `
   --split target-member `
   --sample-id target-member/00-data_batch_1-00965.png `
   --layer-selector mid_block.attentions.0.to_v `

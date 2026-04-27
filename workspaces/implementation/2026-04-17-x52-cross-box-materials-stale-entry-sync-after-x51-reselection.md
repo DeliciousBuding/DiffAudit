@@ -6,11 +6,11 @@ Can the repository clear the remaining materials-facing stale entry identified b
 
 ## Inputs Reviewed
 
-- `D:\Code\DiffAudit\Research\docs\competition-evidence-pack.md`
-- `D:\Code\DiffAudit\Research\docs\mainline-narrative.md`
-- `D:\Code\DiffAudit\Research\docs\comprehensive-progress.md`
-- `D:\Code\DiffAudit\Research\docs\admitted-results-summary.md`
-- `D:\Code\DiffAudit\Research\ROADMAP.md`
+- `<DIFFAUDIT_ROOT>/Research/docs/competition-evidence-pack.md`
+- `<DIFFAUDIT_ROOT>/Research/docs/mainline-narrative.md`
+- `<DIFFAUDIT_ROOT>/Research/docs/comprehensive-progress.md`
+- `<DIFFAUDIT_ROOT>/Research/docs/admitted-results-summary.md`
+- `<DIFFAUDIT_ROOT>/Research/ROADMAP.md`
 
 ## Sync Findings
 
@@ -44,6 +44,6 @@ More precise reading:
 
 - `Research/ROADMAP.md`: update required
 - `Research/workspaces/implementation/challenger-queue.md`: update required
-- `D:\Code\DiffAudit\ROADMAP.md`: update required because the current live lane advanced again
+- `<DIFFAUDIT_ROOT>/ROADMAP.md`: update required because the current live lane advanced again
 - `Leader/materials`: safe to reuse the refreshed gray-box challenger wording
 - `Platform / Runtime`: no schema change required

@@ -52,7 +52,7 @@ This is enough to prove local executability, but it also proves the current line
 The prepared local rung config recorded:
 
 - base model:
-  - `C:/Users/Ding/.cache/huggingface/hub/models--runwayml--stable-diffusion-v1-5/...`
+  - `C:/Users/<user>/.cache/huggingface/hub/models--runwayml--stable-diffusion-v1-5/...`
 
 That means the bridge initially depended on a user Hugging Face cache snapshot instead of a canonical repo-declared staged model root.
 
@@ -120,7 +120,7 @@ Switch the bridge from:
 
 to:
 
-- `D:/Code/DiffAudit/Download/shared/weights/stable-diffusion-v1-5`
+- `<DIFFAUDIT_ROOT>/Download/shared/weights/stable-diffusion-v1-5`
 
 This is a hygiene and reproducibility fix, not a scientific upgrade, but it is mandatory.
 
@@ -194,7 +194,7 @@ What changed:
 - the local CLiD bridge now reads staged shared assets from:
   - `configs/assets/staged-downloads.local.yaml`
 - the localized runnable script now points to:
-  - `D:/Code/DiffAudit/Download/shared/weights/stable-diffusion-v1-5`
+  - `<DIFFAUDIT_ROOT>/Download/shared/weights/stable-diffusion-v1-5`
 - the prepared run records:
   - staged SD1.5 root
   - staged CLIP root

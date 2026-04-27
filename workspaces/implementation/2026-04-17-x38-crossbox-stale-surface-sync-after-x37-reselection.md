@@ -6,21 +6,21 @@ After `X-37` selected one remaining stale material/system wording surface, what 
 
 ## Inputs Reviewed
 
-- `D:\Code\DiffAudit\Research\ROADMAP.md`
-- `D:\Code\DiffAudit\Research\docs\comprehensive-progress.md`
-- `D:\Code\DiffAudit\Research\docs\research-boundary-card.md`
-- `D:\Code\DiffAudit\Research\docs\competition-defense-qa.md`
-- `D:\Code\DiffAudit\Research\docs\competition-innovation-summary.md`
-- `D:\Code\DiffAudit\Research\docs\competition-evidence-pack.md`
-- `D:\Code\DiffAudit\Research\workspaces\implementation\2026-04-17-x36-id-conditional-future-surface-successor-selection-after-x35-expansion.md`
-- `D:\Code\DiffAudit\Research\docs\leader-research-ready-summary.md`
-- `D:\Code\DiffAudit\Research\docs\reproduction-status.md`
+- `<DIFFAUDIT_ROOT>/Research/ROADMAP.md`
+- `<DIFFAUDIT_ROOT>/Research/docs/comprehensive-progress.md`
+- `<DIFFAUDIT_ROOT>/Research/docs/research-boundary-card.md`
+- `<DIFFAUDIT_ROOT>/Research/docs/competition-defense-qa.md`
+- `<DIFFAUDIT_ROOT>/Research/docs/competition-innovation-summary.md`
+- `<DIFFAUDIT_ROOT>/Research/docs/competition-evidence-pack.md`
+- `<DIFFAUDIT_ROOT>/Research/workspaces/implementation/2026-04-17-x36-id-conditional-future-surface-successor-selection-after-x35-expansion.md`
+- `<DIFFAUDIT_ROOT>/Research/docs/leader-research-ready-summary.md`
+- `<DIFFAUDIT_ROOT>/Research/docs/reproduction-status.md`
 
 ## Stale Surface
 
 One active material-facing surface was still stale:
 
-- `D:\Code\DiffAudit\Research\docs\research-boundary-card.md`
+- `<DIFFAUDIT_ROOT>/Research/docs/research-boundary-card.md`
 
 Old wording problem:
 
@@ -63,15 +63,15 @@ More precise reading:
 
 ## Canonical Evidence Anchor
 
-- `D:\Code\DiffAudit\Research\workspaces\implementation\2026-04-17-x38-crossbox-stale-surface-sync-after-x37-reselection.md`
+- `<DIFFAUDIT_ROOT>/Research/workspaces/implementation/2026-04-17-x38-crossbox-stale-surface-sync-after-x37-reselection.md`
 
 ## Handoff Decision
 
-- `D:\Code\DiffAudit\Research\ROADMAP.md`: update required
-- `D:\Code\DiffAudit\Research\docs\comprehensive-progress.md`: update required
-- `D:\Code\DiffAudit\Research\workspaces\implementation\challenger-queue.md`: update required
-- `D:\Code\DiffAudit\ROADMAP.md`: update required
-- `D:\Code\DiffAudit\Research\docs\research-boundary-card.md`: update required
+- `<DIFFAUDIT_ROOT>/Research/ROADMAP.md`: update required
+- `<DIFFAUDIT_ROOT>/Research/docs/comprehensive-progress.md`: update required
+- `<DIFFAUDIT_ROOT>/Research/workspaces/implementation/challenger-queue.md`: update required
+- `<DIFFAUDIT_ROOT>/ROADMAP.md`: update required
+- `<DIFFAUDIT_ROOT>/Research/docs/research-boundary-card.md`: update required
 - `platform_runtime_handoff = none`
 - `competition_material_sync = yes`
 

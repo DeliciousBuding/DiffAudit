@@ -5,7 +5,7 @@
 - `owner`: `ResearcherAgent`
 - `task_scope`: `WB-1`
 - `track`: `white-box`
-- `canonical_run`: `D:\Code\DiffAudit\Research\workspaces\white-box\runs\gsa-gradient-direct-attackmethod2-20260415-r2\target_member-gradients.pt`
+- `canonical_run`: `<DIFFAUDIT_ROOT>/Research/workspaces/white-box/runs/gsa-gradient-direct-attackmethod2-20260415-r2/target_member-gradients.pt`
 - `gpu_status`: `completed`
 
 ## Question

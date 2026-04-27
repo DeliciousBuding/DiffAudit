@@ -4,6 +4,8 @@
 
 Replace the current Python FastAPI local service with a Go-based control plane that keeps the same HTTP contract while continuing to delegate real experiment execution to the existing Python research CLI.
 
+Archive note: this design document preserves the old `Services/Local-API` target name. The live root-level execution surface now lives under `<DIFFAUDIT_ROOT>/Runtime-Server`; read the old path below as historical architecture context.
+
 This design is intentionally narrow:
 
 - move only the local API control plane to Go

@@ -36,7 +36,7 @@ python -m diffaudit plan-pia --config configs/attacks/pia_plan.yaml
 python -m diffaudit probe-gsa-assets --repo-root workspaces/white-box/external/GSA --assets-root workspaces/white-box/assets/gsa
 ```
 
-第一次使用前，先复制 `configs/assets/team.local.template.yaml` 为本地 `configs/assets/team.local.yaml`，再填写自己的真实路径。大数据集、权重和 supplementary 包默认放在仓库外的 `D:\Code\DiffAudit\Download\`，不要放进 `Research\external\`。
+第一次使用前，先复制 `configs/assets/team.local.template.yaml` 为本地 `configs/assets/team.local.yaml`，再填写自己的真实路径。大数据集、权重和 supplementary 包默认放在仓库外的 `<DIFFAUDIT_ROOT>/Download/`，不要放进 `Research/external/`。
 
 如果当前 shell 还没激活 conda，也可以直接写成：
 
