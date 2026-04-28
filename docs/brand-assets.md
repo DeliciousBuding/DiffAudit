@@ -12,15 +12,23 @@ portable across GitHub, forks, local clones, and archived releases.
 | [assets/brand/diffaudit-mark.svg](assets/brand/diffaudit-mark.svg) | Compact mark for small placements on light backgrounds. |
 | [assets/brand/diffaudit-mark-white.svg](assets/brand/diffaudit-mark-white.svg) | Compact mark for small placements on dark backgrounds. |
 
-## README Usage
+## README And Docs Usage
 
-Use repository-relative paths for GitHub README and documentation images:
+Use paths relative to the Markdown file that contains the image.
+
+For the repository-root `README.md`, use the `docs/assets/...` path and
+GitHub's theme-specific image fragments:
 
 ```html
-<picture>
-  <source media="(prefers-color-scheme: dark)" srcset="docs/assets/brand/diffaudit-logo-white.svg">
-  <img src="docs/assets/brand/diffaudit-logo.svg" alt="DiffAudit" width="360">
-</picture>
+<img src="docs/assets/brand/diffaudit-logo.svg#gh-light-mode-only" alt="DiffAudit" width="360">
+<img src="docs/assets/brand/diffaudit-logo-white.svg#gh-dark-mode-only" alt="DiffAudit" width="360">
+```
+
+For Markdown files inside `docs/`, use the shorter `assets/...` path:
+
+```html
+<img src="assets/brand/diffaudit-logo.svg#gh-light-mode-only" alt="DiffAudit" width="360">
+<img src="assets/brand/diffaudit-logo-white.svg#gh-dark-mode-only" alt="DiffAudit" width="360">
 ```
 
 This keeps the visual identity versioned with the documentation and avoids

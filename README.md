@@ -1,9 +1,7 @@
 <div align="center">
 
-<picture>
-  <source media="(prefers-color-scheme: dark)" srcset="docs/assets/brand/diffaudit-logo-white.svg">
-  <img src="docs/assets/brand/diffaudit-logo.svg" alt="DiffAudit" width="360">
-</picture>
+<img src="docs/assets/brand/diffaudit-logo.svg#gh-light-mode-only" alt="DiffAudit" width="360">
+<img src="docs/assets/brand/diffaudit-logo-white.svg#gh-dark-mode-only" alt="DiffAudit" width="360">
 
 # DiffAudit Research
 
