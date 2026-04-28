@@ -1,15 +1,15 @@
-# Asset Registry Intake Contract (Local-API)
+# Asset Registry Intake Contract
 
-This document defines the smallest contract surface for integrating:
+This document defines the smallest Research-side contract surface for integrating:
 
-- the **Local-API SQLite registry + runner system** (`Services/Local-API`)
+- the **Runtime-Server SQLite registry + runner system** (`Runtime-Server/`)
 - the **Research-side machine-readable asset metadata** (`Research/workspaces/intake`)
 
 Scope boundary:
 
 - This is **not** a Platform design doc.
 - This is **not** a full asset hosting strategy.
-- It only standardizes the minimal, machine-checkable fields needed for Local-API to safely consume promoted assets.
+- It only standardizes the minimal, machine-checkable fields needed for Runtime to safely consume promoted assets.
 
 ## Canonical Machine-Readable Entry Points
 
@@ -19,14 +19,14 @@ Research-side (source of truth for assets/intake):
 - `Research/workspaces/**/assets/**/manifest*.json` (`diffaudit.intake.manifest.v1`)
 - `Research/workspaces/implementation/artifacts/unified-attack-defense-table.json` (`diffaudit.attack_defense_table.v1`) as the admitted cross-track result table
 
-Local-API-side (source of truth for contract registry / job routing):
+Runtime-side (source of truth for contract registry / job routing):
 
-- `Services/Local-API/internal/api/registry_seed.json` (seed payload)
-- `Services/Local-API/internal/api/registry_store.go` (SQLite schema for `contracts` + `jobs`)
+- `Runtime-Server/internal/api/registry_seed.json` (seed payload)
+- `Runtime-Server/internal/api/registry_store.go` (SQLite schema for `contracts` + `jobs`)
 
 ## Admitted Display Contract
 
-Platform / Local-API consuming the admitted results surface MUST treat:
+Platform / Runtime consuming the admitted results surface MUST treat:
 
 - `Research/workspaces/implementation/artifacts/unified-attack-defense-table.json`
 
@@ -76,8 +76,8 @@ Every manifest referenced by `Research/workspaces/intake/index.json` MUST contai
 Current boundary note:
 
 - `Research/workspaces/intake/index.json` currently covers promoted intake contracts, not every admitted research result.
-- `Research/workspaces/intake/index.json.entries[]` is the only Research-side surface covered by the Local-API intake contract.
-- `Research/workspaces/intake/phase-e-candidates.json` is a research-owned Phase E candidate ordering supplement and is not part of Local-API job routing.
+- `Research/workspaces/intake/index.json.entries[]` is the only Research-side surface covered by the Runtime intake contract.
+- `Research/workspaces/intake/phase-e-candidates.json` is a research-owned Phase E candidate ordering supplement and is not part of Runtime job routing.
 - `PIA` has a stable promoted intake surface.
 - `GSA` currently has a legacy intake surface plus a stronger admitted result tracked in the unified table and white-box docs.
 - `recon` and `DPDM` are currently admitted through the unified table plus frozen workspace docs, not standalone intake manifests.
@@ -94,7 +94,7 @@ Method-specific required fields MUST be declared in the intake index:
 
 - `entries[i].compatibility.commands[j].required_manifest_fields`
 
-And MUST exist in the referenced manifest. This is the minimal bridge that lets Local-API (later) validate asset readiness per job surface without hardcoding method-specific layouts.
+And MUST exist in the referenced manifest. This is the minimal bridge that lets Runtime validate asset readiness per job surface without hardcoding method-specific layouts.
 
 ## Path Semantics (Hard Rule)
 
@@ -106,14 +106,14 @@ All path strings in:
 
 MUST be **repo-relative paths**, so the intake registry stays portable across machines. (Untracked directories like `external/**` are allowed as long as they are still repo-relative.)
 
-Local-API resolves these paths by joining them with `research_root` at runtime.
+Runtime resolves these paths by joining them with `research_root` at runtime.
 
-## Local-API Registry Alignment (What Must Match)
+## Runtime Registry Alignment (What Must Match)
 
 For each `contract_key` that is represented in `index.json.entries[]`:
 
-1. `Services/Local-API/internal/api/registry_seed.json` MUST contain that `contract_key`.
-2. The Local-API `contracts.promoted_asset_roots_json` MUST point under the intake entry `paths.assets_root`.
+1. `Runtime-Server/internal/api/registry_seed.json` MUST contain that `contract_key`.
+2. The Runtime `contracts.promoted_asset_roots_json` MUST point under the intake entry `paths.assets_root`.
 
 Note: the registry seed currently uses `Research/workspaces/...`-prefixed roots while the intake index uses `workspaces/...`. Alignment is validated by treating `Research/` as an optional prefix for promoted roots.
 
@@ -128,7 +128,7 @@ When onboarding a new promoted asset set (or migrating an existing one):
    - `paths.assets_root`
    - `manifest` path
    - `compatibility.commands[].required_manifest_fields`
-4. Confirm the Local-API registry seed `promoted_asset_roots` all live under `paths.assets_root` for that contract.
+4. Confirm the Runtime registry seed `promoted_asset_roots` all live under `paths.assets_root` for that contract.
 5. Run the validation gates below and treat non-zero exit codes as a hard block.
 
 ## Validation (Must Pass Before Claiming "Ready")

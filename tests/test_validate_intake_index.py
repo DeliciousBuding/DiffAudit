@@ -66,6 +66,15 @@ class ValidateIntakeIndexTests(unittest.TestCase):
             self.assertNotIn("contract_key", item)
             self.assertNotIn("manifest", item)
 
+    def test_project_intake_index_validator_accepts_current_document_only_phase_e_state(self) -> None:
+        module = load_validate_module()
+        research_root = Path(__file__).resolve().parents[1]
+        index_path = research_root / "workspaces" / "intake" / "index.json"
+
+        exit_code = module.main(["--index", str(index_path)])
+
+        self.assertEqual(exit_code, 0)
+
     def test_validator_rejects_entry_without_contract_key(self) -> None:
         module = load_validate_module()
         research_root = Path(__file__).resolve().parents[1]

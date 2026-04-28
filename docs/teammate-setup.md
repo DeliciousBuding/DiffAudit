@@ -6,6 +6,8 @@
 
 如果只看一份数据/权重说明，先看 [data-and-assets-handoff.md](data-and-assets-handoff.md)。它记录了如何拿到和当前项目一致的 `Download\` 资产布局。
 
+如果只想找命令清单，看 [command-reference.md](command-reference.md)。根目录 `README.md` 只保留入口和导航。
+
 ## 1. 拉仓后的第一步
 
 在 `Research` 根目录执行：
@@ -104,19 +106,19 @@ conda run -n diffaudit-research python -m diffaudit probe-gsa-assets --repo-root
 
 ## 4. 当前主线优先级
 
-当前仓库按这个顺序推进：
+刚接仓时不要从历史日志反推优先级。当前真实优先级以这些文件为准：
 
-1. `PIA`
-2. `recon`
-3. `variation/Towards`
-4. `GSA`
-5. `W-1 / DPDM`
+1. [comprehensive-progress.md](comprehensive-progress.md)
+2. [reproduction-status.md](reproduction-status.md)
+3. [../ROADMAP.md](../ROADMAP.md)
+4. 对应 lane 的 `workspaces/<lane>/plan.md`
 
-如果只是刚接仓，不要一开始就扩展新数据集或新论文。
+如果只是刚接仓，不要一开始就扩展新数据集或新论文。先复现环境、自检资产、确认自己负责的 lane，再做新分支。
 
 ## 5. 当前最重要的入口文档
 
 - 综合进度：[comprehensive-progress.md](comprehensive-progress.md)
+- 命令参考：[command-reference.md](command-reference.md)
 - 严格三线计划：[mentor-strict-reproduction-plan.md](mentor-strict-reproduction-plan.md)
 - 黑盒计划：[../workspaces/black-box/plan.md](../workspaces/black-box/plan.md)
 - 灰盒计划：[../workspaces/gray-box/plan.md](../workspaces/gray-box/plan.md)

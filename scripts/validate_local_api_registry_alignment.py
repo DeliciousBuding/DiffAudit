@@ -16,7 +16,7 @@ def _norm_rel(p: str) -> str:
 def main(argv: list[str] | None = None) -> int:
     parser = argparse.ArgumentParser(
         prog="validate_local_api_registry_alignment",
-        description="Validate Research intake index alignment with Services/Local-API SQLite registry seed.",
+        description="Validate Research intake index alignment with the Runtime-Server registry seed.",
     )
     parser.add_argument(
         "--intake-index",
@@ -28,7 +28,7 @@ def main(argv: list[str] | None = None) -> int:
         "--registry-seed",
         type=Path,
         default=None,
-        help="Path to Services/Local-API internal/api/registry_seed.json.",
+        help="Path to Runtime-Server internal/api/registry_seed.json.",
     )
     args = parser.parse_args(argv)
 
@@ -38,7 +38,7 @@ def main(argv: list[str] | None = None) -> int:
     intake_index_path = (args.intake_index or (research_root / "workspaces" / "intake" / "index.json")).resolve()
     registry_seed_path = (
         args.registry_seed
-        or (workspace_root / "Services" / "Local-API" / "internal" / "api" / "registry_seed.json")
+        or (workspace_root / "Runtime-Server" / "internal" / "api" / "registry_seed.json")
     ).resolve()
 
     errors: list[str] = []
@@ -87,7 +87,7 @@ def main(argv: list[str] | None = None) -> int:
 
         contract = contracts_by_key.get(contract_key)
         if contract is None:
-            errors.append(f"entries[{i}] contract_key not found in Local-API registry seed: {contract_key!r}")
+            errors.append(f"entries[{i}] contract_key not found in Runtime registry seed: {contract_key!r}")
             continue
 
         entry_track = entry.get("track")

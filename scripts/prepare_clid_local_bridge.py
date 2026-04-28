@@ -10,7 +10,7 @@ import yaml
 
 REPO_ROOT = Path(__file__).resolve().parents[1]
 DEFAULT_TEMPLATE = REPO_ROOT / "external" / "CLiD" / "mia_CLiD_clip.py"
-DEFAULT_ASSET_CONFIG = REPO_ROOT / "configs" / "assets" / "staged-downloads.local.yaml"
+DEFAULT_ASSET_CONFIG = REPO_ROOT / "configs" / "assets" / "team.local.yaml"
 
 
 def parse_args() -> argparse.Namespace:
@@ -28,6 +28,11 @@ def parse_args() -> argparse.Namespace:
 
 
 def load_asset_config(path: Path) -> dict:
+    if not path.exists():
+        raise FileNotFoundError(
+            f"Asset config not found: {path}. Copy configs/assets/team.local.template.yaml "
+            "to configs/assets/team.local.yaml and fill your local paths, or pass --asset-config."
+        )
     return yaml.safe_load(path.read_text(encoding="utf-8"))
 
 

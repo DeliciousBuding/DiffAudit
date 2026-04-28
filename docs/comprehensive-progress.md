@@ -129,7 +129,7 @@
   - 作为当前算法主讲线
   - `TMIA-DM` 作为当前最强 packaged gray-box challenger
   - `Noise as a Probe` 作为新 latent-diffusion challenger candidate 的有界补充线
-  - 作为 `Local-API` contract-specific best summary 的首要 admitted 消费对象
+  - 作为 `Runtime-Server` contract-specific best summary 的首要 admitted 消费对象
   - 当前只允许写成 `workspace-verified + paper-alignment blocked by checkpoint/source provenance`
   - 截至 `2026-04-10`，`PIA provenance dossier` 已 closed 为 `remain long-term blocker`
 
