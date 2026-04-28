@@ -327,8 +327,14 @@ Artifact contract:
 
 ## 10. Public Documentation and Brand Surface
 
-`README.md`, `docs/README.md`, and documents directly linked from those entry
-points are part of the repository's public presentation surface.
+`README.md`, `docs/README.md`, and documents in the curated public onboarding,
+setup, reproducibility, data, licensing, security, and brand sections are part
+of the repository's public presentation surface.
+
+Not every file linked from `docs/README.md` is public onboarding material.
+Active progress ledgers, raw review bundles, agent prompts, and research
+planning notes may remain linked as internal research handoff material when
+they are explicitly labeled that way.
 
 Before adding or promoting material into that surface, check that it is written
 for external readers rather than for one local operator or one agent session.

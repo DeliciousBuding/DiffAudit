@@ -6,9 +6,10 @@ research planning and operating references.
 
 ## Public Surface Boundary
 
-The root [README](../README.md), this documentation map, and the setup,
-reproducibility, data, evidence, licensing, security, and brand documents linked
-below are the public front door for external readers.
+The root [README](../README.md), this documentation map, and the documents in
+the Public Onboarding, Setup And Reproducibility, Collaboration And Governance,
+and brand/licensing/security entries are the public front door for external
+readers.
 
 Internal planning artifacts may still live under `docs/`, but they should not
 be presented as product copy or onboarding material unless they have been

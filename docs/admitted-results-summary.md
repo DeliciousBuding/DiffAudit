@@ -1,7 +1,7 @@
 # Admitted Results Summary
 
 > This summary covers admitted evidence only. Candidate and exploratory assets
-> remain outside this table until they receive an explicit promoted status.
+> remain outside this table until they are explicitly promoted.
 > Each row is derived from the current `unified-attack-defense-table.json`
 > contract and keeps the evidence level, cost, and boundary language attached
 > to the reported metric values.
