@@ -27,6 +27,7 @@ research planning and operating references.
 | [repo-map.md](repo-map.md) | Directory and code responsibility map |
 | [getting-started.md](getting-started.md) | Short onboarding guide for contributors |
 | [licensing.md](licensing.md) | Project license scope and third-party material boundaries |
+| [brand-assets.md](brand-assets.md) | Logo assets and README image-hosting policy |
 
 ## Research Status And Planning
 
