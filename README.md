@@ -1,5 +1,8 @@
 <div align="center">
 
+<img src="docs/assets/brand/diffaudit-logo.svg#gh-light-mode-only" alt="DiffAudit" width="360">
+<img src="docs/assets/brand/diffaudit-logo-white.svg#gh-dark-mode-only" alt="DiffAudit" width="360">
+
 # DiffAudit Research
 
 **Evidence engine for diffusion-model privacy auditing.**<br>
@@ -16,6 +19,7 @@
 [Documentation](docs/README.md) ·
 [Reproducibility](docs/reproduction-status.md) ·
 [Data And Assets](docs/data-and-assets-handoff.md) ·
+[Brand Assets](docs/brand-assets.md) ·
 [Security](SECURITY.md)
 
 </div>
