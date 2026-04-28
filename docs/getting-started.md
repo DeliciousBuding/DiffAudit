@@ -9,10 +9,10 @@
 1. 阅读根目录 [README.md](../README.md)
 2. 阅读 [docs/teammate-setup.md](teammate-setup.md)
 3. 按 [docs/data-and-assets-handoff.md](data-and-assets-handoff.md) 补齐 `Download\` 资产并绑定本机路径
-4. 阅读 [docs/environment.md](environment.md)
-5. 阅读 [docs/github-collaboration.md](github-collaboration.md)
-6. 进入自己负责的工作区
-7. 跑一次环境验证、资产探针和 `dry-run`
+4. 按 [docs/command-reference.md](command-reference.md) 跑一次环境验证、资产探针和 `dry-run`
+5. 阅读 [docs/environment.md](environment.md)
+6. 阅读 [docs/github-collaboration.md](github-collaboration.md)
+7. 进入自己负责的工作区
 
 ## 你应该先知道的几件事
 
@@ -29,7 +29,7 @@ conda activate diffaudit-research
 python scripts/bootstrap_research_env.py --install
 python scripts/verify_env.py
 python -m diffaudit --help
-python -m unittest
+python -m pytest tests/test_cli_module_entrypoint.py tests/test_render_team_local_configs.py -q
 python -m diffaudit plan-variation --config configs/attacks/variation_plan.yaml
 python -m diffaudit run-variation-synth-smoke --workspace experiments/variation-synth-smoke-local
 python -m diffaudit plan-pia --config configs/attacks/pia_plan.yaml
@@ -43,7 +43,7 @@ python -m diffaudit probe-gsa-assets --repo-root workspaces/white-box/external/G
 ```powershell
 conda run -n diffaudit-research python scripts/verify_env.py
 conda run -n diffaudit-research python -m diffaudit --help
-conda run -n diffaudit-research python -m unittest
+conda run -n diffaudit-research python -m pytest tests/test_cli_module_entrypoint.py tests/test_render_team_local_configs.py -q
 conda run -n diffaudit-research python -m diffaudit probe-secmi-assets --config configs/attacks/secmi_plan.yaml
 ```
 
@@ -59,5 +59,5 @@ conda run -n diffaudit-research python -m diffaudit probe-secmi-assets --config 
 1. 先写计划
 2. 再写配置
 3. 再写 adapter / probe
-4. 先跑 `probe-secmi-assets`
+4. 先跑对应方向的 `probe-*` 命令
 5. 最后才跑真实实验

@@ -1,9 +1,51 @@
-assets:
-  dataset_root: D:/datasets/cifar10
-  model_dir: D:/models/secmi/cifar10
-  flagfile_path: D:/models/secmi/cifar10/flagfile.txt
-  checkpoint_hint: D:/models/secmi/cifar10/checkpoint.pt
-notes:
+team:
   owner: your-name
-  purpose: local-only asset mapping example
-  warning: do-not-commit real private asset paths into shared configs
+  machine: your-machine
+  os: windows-or-linux-or-macos
+
+repo:
+  research_root: /absolute/path/to/DiffAudit/Research
+  download_root: /absolute/path/to/DiffAudit/Download
+
+shared:
+  cifar10_archive: /absolute/path/to/DiffAudit/Download/shared/datasets/cifar-10-python.tar.gz
+  celeba_root: /absolute/path/to/DiffAudit/Download/shared/datasets/celeba
+  sd15_model_dir: /absolute/path/to/DiffAudit/Download/shared/weights/stable-diffusion-v1-5
+  clip_model_dir: /absolute/path/to/DiffAudit/Download/shared/weights/clip-vit-large-patch14
+  blip_model_dir: /absolute/path/to/DiffAudit/Download/shared/weights/blip-image-captioning-large
+  ddpm_cifar10_model_dir: /absolute/path/to/DiffAudit/Download/shared/weights/google-ddpm-cifar10-32
+
+black_box:
+  recon:
+    query_dataset_pt: /absolute/path/to/query_dataset.pt
+    lora_checkpoint_dir: /absolute/path/to/recon_lora_checkpoint
+  variation:
+    query_image_root: /absolute/path/to/variation-query-images
+    endpoint: REPLACE_WITH_VARIATION_API_OR_PROXY
+  clid:
+    dataset_train_ref: /absolute/path/to/train_dataset.pkl
+    dataset_test_ref: /absolute/path/to/test_dataset.pkl
+    model_dir: /absolute/path/to/DiffAudit/Download/shared/weights/stable-diffusion-v1-5
+    clip_model_dir: /absolute/path/to/DiffAudit/Download/shared/weights/clip-vit-large-patch14
+    supplementary_root: /absolute/path/to/DiffAudit/Download/black-box/supplementary/clid-mia-supplementary/contents/CLID_MIA
+
+gray_box:
+  pia:
+    dataset_parent: /absolute/path/to/pia/datasets
+    model_dir: /absolute/path/to/pia/checkpoints/cifar10_ddpm
+    member_split_root: external/PIA/DDPM
+  secmi:
+    dataset_root: /absolute/path/to/secmi/dataset
+    model_dir: /absolute/path/to/secmi/checkpoints
+    flagfile_path: /absolute/path/to/secmi/checkpoints/flagfile.txt
+
+white_box:
+  gsa:
+    repo_root: workspaces/white-box/external/GSA
+    assets_root: workspaces/white-box/assets/gsa
+  dpdm:
+    repo_root: external/DPDM
+
+notes:
+  warning: example-only-do-not-use-as-real-machine-config
+  purpose: portable placeholder shape for teammate-local asset binding

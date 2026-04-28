@@ -15,6 +15,7 @@
 | `workspaces/` | 多人协作工作区；方向计划、背景笔记、阻塞记录和阶段总结 |
 | `external/` | 本地浅克隆或探索代码，上游仓库上下文，不纳入版本控制 |
 | `third_party/` | 已被裁剪并纳入版本控制的上游依赖子集 |
+| `<DIFFAUDIT_ROOT>/Download/` | 仓库外原始资产层；放数据集、权重、supplementary 包和大文件 manifest |
 
 ## `src/diffaudit/`
 
@@ -44,8 +45,12 @@
 如果你刚接手仓库，建议按这个顺序看：
 
 1. [README.md](../README.md)
-2. [docs/reproduction-status.md](reproduction-status.md)
-3. [workspaces/black-box/plan.md](../workspaces/black-box/plan.md)
-4. [configs/README.md](../configs/README.md)
-5. [experiments/README.md](../experiments/README.md)
-6. [src/diffaudit/README.md](../src/diffaudit/README.md)
+2. [docs/teammate-setup.md](teammate-setup.md)
+3. [docs/data-and-assets-handoff.md](data-and-assets-handoff.md)
+4. [docs/command-reference.md](command-reference.md)
+5. [docs/reproduction-status.md](reproduction-status.md)
+6. [workspaces/black-box/plan.md](../workspaces/black-box/plan.md)
+7. [workspaces/gray-box/plan.md](../workspaces/gray-box/plan.md)
+8. [workspaces/white-box/plan.md](../workspaces/white-box/plan.md)
+9. [configs/README.md](../configs/README.md)
+10. [src/diffaudit/README.md](../src/diffaudit/README.md)

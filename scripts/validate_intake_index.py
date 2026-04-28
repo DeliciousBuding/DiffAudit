@@ -104,8 +104,12 @@ def _validate_phase_e_candidate_file(errors: list[str], research_root: Path, can
                 if forbidden in item:
                     errors.append(f"{prefix} must not define {forbidden!r}")
 
+    status = payload.get("status")
     execution_layer = payload.get("intake_review_priority_order")
-    if not isinstance(execution_layer, list) or not execution_layer:
+    allow_empty_execution_layer = status == "document-conditional-only"
+    if not isinstance(execution_layer, list):
+        errors.append("phase_e_candidates.intake_review_priority_order must be a list")
+    elif not execution_layer and not allow_empty_execution_layer:
         errors.append("phase_e_candidates.intake_review_priority_order must be a non-empty list")
     else:
         expected_order = 1
