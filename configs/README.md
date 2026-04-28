@@ -6,7 +6,7 @@
 
 - `attacks/`：攻击配置与超参数
 - `benchmarks/`：基准或 smoke 场景配置
-- `assets/`：本地资产映射示例，不直接作为共享实验配置提交
+- `assets/`：本地资产映射模板和占位示例，不提交个人真实路径
 
 ## 使用原则
 
@@ -23,5 +23,13 @@
 - `attacks/recon_plan.yaml`：作为纯黑盒 reconstruction 攻击探针与 smoke 的模板
 - `attacks/variation_plan.yaml`：作为 API-only 黑盒 variation 攻击探针与 smoke 的模板
 - `benchmarks/secmi_smoke.yaml`：作为最小 smoke 配置
-- `assets/example.local.yaml`：历史本地资产示例
+- `assets/example.local.yaml`：无真实机器绑定的占位示例
 - `assets/team.local.template.yaml`：作为队友接仓时统一填写的三线本地资产模板
+
+## 不要提交什么
+
+- `assets/team.local.yaml`
+- `assets/*.local.yaml` 中的个人机器路径
+- 指向 `<DIFFAUDIT_ROOT>/Download/` 内大文件的本机绝对路径快照
+
+如果脚本需要当前机器的真实资产位置，先复制 `assets/team.local.template.yaml` 到被忽略的 `assets/team.local.yaml`，再把该文件路径传给脚本或使用脚本默认值。

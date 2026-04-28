@@ -35,6 +35,9 @@ runs/
 tmp/
 outputs/
 
+# Local or generated session transcripts
+docs/handoff.md
+
 # Environment files
 .env
 .env.*
