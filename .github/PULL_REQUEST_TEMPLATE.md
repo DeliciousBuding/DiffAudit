@@ -1,31 +1,39 @@
-## 变更内容
+# Pull Request
+
+## Summary
 
 - 
 
-## 变更原因
+## Why
 
 - 
 
-## 验证方式
+## Validation
 
-- [ ] 已运行相关测试
-- [ ] 已说明未验证部分
-
-具体命令：
+- [ ] I ran the relevant checks.
+- [ ] I documented anything not verified.
+- [ ] I scanned for private local paths, credentials, and asset leaks when touching docs/configs.
 
 ```powershell
-$env:PYTHONPATH='src;.'
-python -m unittest
+python scripts/run_local_checks.py --fast
 ```
 
-## 影响范围
+## Scope
 
 - [ ] black-box
 - [ ] white-box
 - [ ] gray-box
 - [ ] implementation
 - [ ] docs
+- [ ] GitHub/repo governance
+- [ ] assets / Download handoff
+- [ ] third-party / licensing
 
-## 阻塞项 / 未完成项
+## Claim Boundary
+
+- [ ] This PR does not overstate smoke/dry-run results as benchmark claims.
+- [ ] This PR does not relicense or redistribute third-party datasets, weights, papers, or gated assets.
+
+## Blockers / Follow-ups
 
 - 

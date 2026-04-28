@@ -29,6 +29,15 @@ This directory contains stable project documentation for `Research/`. It should 
 | [researcher-agent-architecture.md](researcher-agent-architecture.md) | Long-running ResearcherAgent operating model |
 | [research-autonomous-execution-prompt.md](research-autonomous-execution-prompt.md) | Current autonomous execution prompt surface |
 
+## Open-Source Governance
+
+| Document | Purpose |
+| --- | --- |
+| [../SECURITY.md](../SECURITY.md) | Security reporting policy and scope |
+| [../CITATION.cff](../CITATION.cff) | Machine-readable repository citation metadata |
+| [../CONTRIBUTING.md](../CONTRIBUTING.md) | Contribution, branch, PR, test, and license rules |
+| [github-settings-baseline.md](github-settings-baseline.md) | GitHub repository setting baseline |
+
 ## Research Status And Planning
 
 | Document | Purpose |

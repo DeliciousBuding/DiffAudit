@@ -13,7 +13,8 @@
 [Teammate Setup](docs/teammate-setup.md) ·
 [Data And Assets](docs/data-and-assets-handoff.md) ·
 [Command Reference](docs/command-reference.md) ·
-[Current Status](docs/comprehensive-progress.md)
+[Current Status](docs/comprehensive-progress.md) ·
+[Security](SECURITY.md)
 
 </div>
 
@@ -210,7 +211,16 @@ before making reproduction claims.
 | Storage boundary | [docs/storage-boundary.md](docs/storage-boundary.md) |
 | GitHub workflow | [docs/github-collaboration.md](docs/github-collaboration.md) |
 | Licensing scope | [docs/licensing.md](docs/licensing.md) |
+| Security policy | [SECURITY.md](SECURITY.md) |
+| Citation metadata | [CITATION.cff](CITATION.cff) |
 | Contribution guide | [CONTRIBUTING.md](CONTRIBUTING.md) |
+
+## Citing
+
+If you use DiffAudit Research as a research artifact or reproducibility
+scaffold, cite the repository metadata in [CITATION.cff](CITATION.cff). If you
+use upstream papers, datasets, weights, or third-party code, cite those sources
+separately under their own terms.
 
 ## Collaboration Rules
 

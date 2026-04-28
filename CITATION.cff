@@ -1,0 +1,15 @@
+cff-version: 1.2.0
+message: "If you use DiffAudit Research, please cite this repository."
+title: "DiffAudit Research"
+abstract: "Research scaffolding for reproducible privacy-risk auditing of diffusion models."
+authors:
+  - name: "DiffAudit Team"
+repository-code: "https://github.com/DeliciousBuding/DiffAudit-Research"
+license: "Apache-2.0"
+version: "0.1.0"
+keywords:
+  - "diffusion-models"
+  - "membership-inference"
+  - "privacy-auditing"
+  - "reproducibility"
+  - "machine-learning-security"

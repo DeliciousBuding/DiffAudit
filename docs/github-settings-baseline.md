@@ -2,11 +2,22 @@
 
 这份文档定义 `Research` 研究仓库的 GitHub 后台设置基线。
 
+Last synchronized: 2026-04-28.
+
 ## 一、仓库定位
 
 - 仓库：`Research`
 - 类型：研究与实验主仓库
 - 当前可见性：`public`
+- Description: `Reproducible research scaffolding for privacy-risk auditing of diffusion models.`
+- Topics:
+  - `diffusion-models`
+  - `membership-inference`
+  - `privacy-auditing`
+  - `machine-learning-security`
+  - `reproducibility`
+  - `research`
+  - `python`
 - 目标：保证研究资产、实验代码、论文复现与状态文档可协作，同时避免把研究仓库按产品仓库方式管理
 
 ## 二、仓库级设置
@@ -15,9 +26,7 @@
 - Issues: `on`
 - Projects: `on`
 - Wiki: `off`
-- Discussions:
-  - 推荐值：`off`
-  - 备注：需要继续在网页端核对是否真正关闭
+- Discussions: `off`
 - Merge methods:
   - `squash`: `on`
   - `merge commit`: `off`
@@ -34,9 +43,18 @@
 - Required status checks:
   - `unit-tests`
 - Require branch up to date: `on`
-- Require 1 approval: `on`
-- Require CODEOWNERS review: `on`
-- Dismiss stale reviews: `on`
+- Require pull request review:
+  - 当前值：`off`
+  - 推荐值：有第二位 maintainer 后再打开
+- Required approval count:
+  - 当前值：`n/a`
+  - 推荐值：`1`
+- Require CODEOWNERS review:
+  - 当前值：`off`
+  - 推荐值：有第二位 maintainer 后再打开
+- Dismiss stale reviews:
+  - 当前值：`off`
+  - 推荐值：有稳定 review 人员后再打开
 - Require conversation resolution: `on`
 - Enforce for admins: `on`
 - Allow force pushes: `off`
@@ -80,6 +98,10 @@
 
 - version updates 可以开，但频率不宜太高
 - ML 依赖不应被频繁自动漂移
+- Dependabot version updates:
+  - GitHub Actions: weekly
+  - Python `pyproject.toml` runtime dependencies: weekly, grouped
+  - Conda environment drift: manual review only
 
 ## 六、自动合并
 
@@ -91,12 +113,38 @@
 - 满足 review 规则
 - 合并方式统一走 `squash`
 
-## 七、当前需要人工继续核对的项
+## 七、仓库内治理文件
 
-- `Discussions` 是否已真正关闭
+- `SECURITY.md`
+- `CITATION.cff`
+- `LICENSE`
+- `NOTICE`
+- `CONTRIBUTING.md`
+- `.github/dependabot.yml`
+- `.github/ISSUE_TEMPLATE/*.yml`
+- `.github/PULL_REQUEST_TEMPLATE.md`
+- `.github/CODEOWNERS`
+- `.github/copilot-instructions.md`
+
+## 八、Issue / PR 标签
+
+这些标签需要和 issue templates、Dependabot 配置保持一致：
+
+- `docs`
+- `reproducibility`
+- `research`
+- `dependencies`
+- `github-actions`
+- `python`
+
+默认 GitHub 标签可保留，但文档类 issue 默认使用 `docs`，不要依赖 `documentation`。
+
+## 九、当前需要人工继续核对的项
+
 - Copilot 自动 review 是否按你的预期启用
+- 是否要在第二位 maintainer 加入后启用 CODEOWNERS review 和 stale-review dismissal
 
-## 八、关联文档
+## 十、关联文档
 
 - `CONTRIBUTING.md`
 - `docs/github-collaboration.md`

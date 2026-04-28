@@ -15,6 +15,13 @@ import torch
 from . import resnet
 
 
+def _load_checkpoint(path):
+    try:
+        return torch.load(path, weights_only=True)
+    except TypeError:
+        return torch.load(path)
+
+
 def ddim_singlestep(model, FLAGS, x, t_c, t_target, requires_grad=False, device='cuda'):
 
     x = x.to(device)
@@ -126,7 +133,7 @@ def get_model(ckpt, FLAGS, WA=True):
         T=FLAGS.T, ch=FLAGS.ch, ch_mult=FLAGS.ch_mult, attn=FLAGS.attn,
         num_res_blocks=FLAGS.num_res_blocks, dropout=FLAGS.dropout)
     # load model and evaluate
-    ckpt = torch.load(ckpt)
+    ckpt = _load_checkpoint(ckpt)
 
     if WA:
         weights = ckpt['ema_model']

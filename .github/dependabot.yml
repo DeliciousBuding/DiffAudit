@@ -1,0 +1,30 @@
+version: 2
+updates:
+  - package-ecosystem: "github-actions"
+    directory: "/"
+    schedule:
+      interval: "weekly"
+      day: "monday"
+      time: "09:00"
+      timezone: "Asia/Hong_Kong"
+    labels:
+      - "dependencies"
+      - "github-actions"
+    open-pull-requests-limit: 3
+
+  - package-ecosystem: "pip"
+    directory: "/"
+    schedule:
+      interval: "weekly"
+      day: "monday"
+      time: "09:30"
+      timezone: "Asia/Hong_Kong"
+    labels:
+      - "dependencies"
+      - "python"
+    open-pull-requests-limit: 3
+    groups:
+      python-runtime:
+        patterns:
+          - "fastapi"
+          - "uvicorn"

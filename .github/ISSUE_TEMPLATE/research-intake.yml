@@ -1,0 +1,60 @@
+name: Research lane intake
+description: Propose a bounded research task, paper integration, or lane expansion.
+title: "[research]: "
+labels:
+  - "research"
+body:
+  - type: markdown
+    attributes:
+      value: |
+        Use this for bounded research proposals. A proposal is not an admitted result.
+  - type: dropdown
+    id: lane
+    attributes:
+      label: Lane
+      options:
+        - black-box
+        - gray-box
+        - white-box
+        - cross-box
+        - defense
+        - literature
+    validations:
+      required: true
+  - type: textarea
+    id: question
+    attributes:
+      label: Research question
+      description: What exact question should this task answer?
+    validations:
+      required: true
+  - type: textarea
+    id: evidence
+    attributes:
+      label: Evidence needed
+      description: What command, probe, dry-run, bounded packet, or paper artifact would close the question?
+    validations:
+      required: true
+  - type: textarea
+    id: assets
+    attributes:
+      label: Required assets
+      description: List required datasets, weights, external code, or paper material. Use portable locations.
+  - type: dropdown
+    id: gpu
+    attributes:
+      label: GPU required?
+      options:
+        - "No, CPU-first"
+        - "Maybe, after CPU probe"
+        - "Yes, bounded GPU run"
+    validations:
+      required: true
+  - type: textarea
+    id: claim_boundary
+    attributes:
+      label: Claim boundary
+      description: What should not be claimed even if the first result is positive?
+      placeholder: "Example: A DDPM/CIFAR10 smoke result must not be generalized to conditional diffusion."
+    validations:
+      required: true

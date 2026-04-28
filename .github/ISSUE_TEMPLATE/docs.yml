@@ -1,0 +1,32 @@
+name: Documentation issue
+description: Report unclear, stale, or non-portable documentation.
+title: "[docs]: "
+labels:
+  - "docs"
+body:
+  - type: textarea
+    id: location
+    attributes:
+      label: Document location
+      description: Link or path to the affected document.
+      placeholder: "Example: docs/data-and-assets-handoff.md"
+    validations:
+      required: true
+  - type: textarea
+    id: problem
+    attributes:
+      label: Problem
+      description: What is confusing, stale, overstated, or not portable?
+    validations:
+      required: true
+  - type: textarea
+    id: proposed
+    attributes:
+      label: Proposed correction
+      description: If known, describe the smallest change that would fix it.
+  - type: checkboxes
+    id: boundary
+    attributes:
+      label: Boundary check
+      options:
+        - label: This report does not include private local paths, credentials, gated asset links, or proprietary weights.

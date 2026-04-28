@@ -14,9 +14,13 @@ authors = [
 ]
 classifiers = [
   "License :: OSI Approved :: Apache Software License",
+  "Intended Audience :: Science/Research",
   "Programming Language :: Python :: 3",
   "Programming Language :: Python :: 3.10",
+  "Topic :: Scientific/Engineering :: Artificial Intelligence",
+  "Topic :: Security",
 ]
+keywords = ["diffusion-models", "membership-inference", "privacy-auditing", "reproducibility"]
 dependencies = [
   "fastapi>=0.115.0",
   "uvicorn>=0.32.0",
