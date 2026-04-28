@@ -25,6 +25,7 @@ This directory contains stable project documentation for `Research/`. It should 
 | [repo-map.md](repo-map.md) | Directory and code responsibility map |
 | [getting-started.md](getting-started.md) | Short onboarding guide for contributors |
 | [github-collaboration.md](github-collaboration.md) | Branch and PR collaboration rules |
+| [licensing.md](licensing.md) | Project license scope and third-party material boundaries |
 | [researcher-agent-architecture.md](researcher-agent-architecture.md) | Long-running ResearcherAgent operating model |
 | [research-autonomous-execution-prompt.md](research-autonomous-execution-prompt.md) | Current autonomous execution prompt surface |
 

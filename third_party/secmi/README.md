@@ -6,6 +6,10 @@ Source repository:
 
 - https://github.com/jinhaoduan/SecMI
 
+Upstream license:
+
+- MIT, retained in [LICENSE](LICENSE)
+
 Included files are limited to the attack-side modules and model definition that are needed to study or integrate the official SecMI attack path:
 
 - `model.py`

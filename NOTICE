@@ -1,0 +1,13 @@
+DiffAudit Research
+Copyright 2026 DiffAudit Team
+
+This product includes a minimal vendored subset of SecMI:
+
+  SecMI
+  Source: https://github.com/jinhaoduan/SecMI
+  Copyright (c) 2024 Jinhao Duan
+  License: MIT License
+  Vendored license: third_party/secmi/LICENSE
+
+This NOTICE file is for attribution only and does not modify the Apache
+License, Version 2.0.

@@ -7,7 +7,7 @@
 [![Tests](https://github.com/DeliciousBuding/DiffAudit-Research/actions/workflows/tests.yml/badge.svg)](https://github.com/DeliciousBuding/DiffAudit-Research/actions/workflows/tests.yml)
 ![Python](https://img.shields.io/badge/python-3.10%2B-3776AB)
 ![Status](https://img.shields.io/badge/status-research%20prototype-0F766E)
-![License](https://img.shields.io/badge/license-pending-lightgrey)
+[![License](https://img.shields.io/badge/license-Apache--2.0-blue.svg)](LICENSE)
 
 [Quick Start](#quick-start) ·
 [Teammate Setup](docs/teammate-setup.md) ·
@@ -209,6 +209,7 @@ before making reproduction claims.
 | Directory map | [docs/repo-map.md](docs/repo-map.md) |
 | Storage boundary | [docs/storage-boundary.md](docs/storage-boundary.md) |
 | GitHub workflow | [docs/github-collaboration.md](docs/github-collaboration.md) |
+| Licensing scope | [docs/licensing.md](docs/licensing.md) |
 | Contribution guide | [CONTRIBUTING.md](CONTRIBUTING.md) |
 
 ## Collaboration Rules
@@ -222,7 +223,11 @@ before making reproduction claims.
 
 ## License And Upstream Work
 
-This repository does not currently ship a top-level `LICENSE` file. Before
-redistributing code or materials, confirm the intended project license and the
-licenses of upstream papers, third-party code, weights, datasets, and
-supplementary bundles.
+First-party DiffAudit Research source code, configuration templates, tests,
+scripts, and original project documentation are licensed under the
+[Apache License 2.0](LICENSE).
+
+The project license does not relicense third-party code, paper PDFs, extracted
+figures, datasets, model weights, supplementary bundles, or ignored upstream
+clones. See [docs/licensing.md](docs/licensing.md) and [NOTICE](NOTICE) for the
+license scope and retained third-party notices.

@@ -135,7 +135,22 @@ python scripts/run_local_checks.py --fast
 
 `external/` 是本地探索区，不进 git。
 
-## 八、测试要求
+## 八、License 规则
+
+本仓库 first-party 代码、配置模板、测试、脚本和原创项目文档默认按 Apache License 2.0 贡献和发布。
+
+提交贡献即表示：除非你明确标记为 `Not a Contribution`，否则该贡献按 Apache License 2.0 授权给项目。
+
+第三方代码、论文、数据集、权重、supplementary 包、提取图像和 OCR 产物不因进入本仓库而自动变成 Apache 2.0。添加这类内容前必须记录：
+
+- 来源 URL
+- upstream license 或 terms
+- 是否允许再分发
+- 本地保留位置
+
+详细规则见 [docs/licensing.md](docs/licensing.md)。
+
+## 九、测试要求
 
 提交前最少运行：
 
@@ -158,7 +173,7 @@ conda run -n diffaudit-research python -m unittest tests.test_attack_registry te
 - `python scripts/render_team_local_configs.py --team-local configs/assets/team.local.template.yaml --output-dir tmp/configs/rendered-ci`
 - `pytest tests/test_variation_attack.py tests/test_render_team_local_configs.py -q`
 
-## 九、本地 hook / pre-commit
+## 十、本地 hook / pre-commit
 
 仓库当前提供：
 
@@ -174,7 +189,7 @@ pre-commit install
 
 安装后，提交前会自动执行基础文本检查与最小本地检查链。
 
-## 十、GitHub 协作建议
+## 十一、GitHub 协作建议
 
 最合适的团队模式是：
 
@@ -189,7 +204,7 @@ pre-commit install
 
 - `docs/github-settings-baseline.md`
 
-## 十一、Copilot Review 规则
+## 十二、Copilot Review 规则
 
 仓库已启用 Copilot code review。
 
