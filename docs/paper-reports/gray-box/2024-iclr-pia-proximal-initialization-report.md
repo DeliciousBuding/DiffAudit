@@ -10,7 +10,7 @@ An Efficient Membership Inference Attack for the Diffusion Model by Proximal Ini
 - 论文主问题：在只能访问扩散模型中间噪声相关输出的灰盒场景下，能否把成员推断的查询成本压到常数级，同时保持对成员与非成员的稳定区分
 - 威胁模型类别：灰盒查询式成员推断攻击
 - 材料索引路径：`references/materials/gray-box/2024-iclr-pia-proximal-initialization.pdf`
-- 上游来源 URL：见 `references/materials/manifest.csv` 中 `references/materials/gray-box/2024-iclr-pia-proximal-initialization.pdf` 对应的 `source_url` 字段
+- 上游来源 URL：见 `references/materials/manifest.csv` 中对应的 `source_url` 字段
 - OCR 精修版链接：[OCR精修版：An Efficient Membership Inference Attack for the Diffusion Model by Proximal Initialization](https://www.feishu.cn/docx/CVdhdm80qocjBPxNi87cwhARnuf)
 - 飞书原生 PDF：[2024-iclr-pia-proximal-initialization.pdf](https://ncn24qi9j5mt.feishu.cn/file/OALubF47DoG7UCxgFohcMwD6nDe)
 - 开源实现：[kong13661/PIA](https://github.com/kong13661/PIA)

@@ -10,7 +10,7 @@ Membership Inference on Text-to-image Diffusion Models via Conditional Likelihoo
 - 论文主问题：在文本到图像扩散模型中，如何利用图文条件关系而非单纯图像误差，稳定判断一条图文样本是否属于训练集
 - 威胁模型类别：灰盒查询式成员推断，与黑盒数据使用审计路线相邻，但不是严格的 output-only 黑盒
 - 材料索引路径：`references/materials/black-box/2024-neurips-clid-membership-inference-text-to-image-diffusion.pdf`
-- 上游来源 URL：见 `references/materials/manifest.csv` 中 `references/materials/black-box/2024-neurips-clid-membership-inference-text-to-image-diffusion.pdf` 对应的 `source_url` 字段
+- 上游来源 URL：见 `references/materials/manifest.csv` 中对应的 `source_url` 字段
 - OCR/Markdown 精修版链接：[OCR精修版：Membership Inference on Text-to-image Diffusion Models via Conditional Likelihood Discrepancy](https://www.feishu.cn/docx/TEmRdXDD2oYJ5Cxn1uFcznIxnZc)
 - 飞书原生 PDF：[2024-neurips-clid-membership-inference-text-to-image-diffusion.pdf](https://ncn24qi9j5mt.feishu.cn/file/Df7bbbOCZo3fflxq9PNcI0Fsn3b)
 - 开源实现链接：[zhaisf/CLiD](https://github.com/zhaisf/CLiD)

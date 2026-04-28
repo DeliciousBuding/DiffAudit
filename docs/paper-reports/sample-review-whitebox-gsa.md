@@ -8,7 +8,7 @@
 - 发表信息：Proceedings on Privacy Enhancing Technologies，2025(2)
 - 论文主问题：在白盒访问条件下，如何稳定地区分训练成员与非成员样本
 - 威胁模型类别：白盒成员推断攻击
-- 上游来源 URL：见 `references/materials/manifest.csv` 中 `references/materials/white-box/2025-popets-white-box-membership-inference-diffusion-models.pdf` 对应的 `source_url` 字段
+- 上游来源 URL：见 `references/materials/manifest.csv` 中对应的 `source_url` 字段
 - OCR 精修版：https://ncn24qi9j5mt.feishu.cn/docx/DXixdcCb4oZEI9xtqFUcEpt1nzc
 - 开源实现：https://github.com/py85252876/GSA
 - 报告状态：sample-review-v5

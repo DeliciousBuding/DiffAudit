@@ -10,7 +10,7 @@ Towards Black-Box Membership Inference Attack for Diffusion Models
 - 论文主问题：当攻击者只能调用图像变体 API 时，能否判断一张图像是否出现在扩散模型训练集中
 - 威胁模型类别：`black-box`，仅可访问 variation API，不可访问 U-Net、Transformer 中间状态、梯度或训练损失
 - 材料索引路径：`references/materials/black-box/2024-arxiv-towards-black-box-membership-inference-diffusion-models.pdf`
-- 上游来源 URL：见 `references/materials/manifest.csv` 中 `references/materials/black-box/2024-arxiv-towards-black-box-membership-inference-diffusion-models.pdf` 对应的 `source_url` 字段
+- 上游来源 URL：见 `references/materials/manifest.csv` 中对应的 `source_url` 字段
 - OCR/Markdown 精修版链接：[OCR精修版：Towards Black-Box Membership Inference Attack for Diffusion Models](https://www.feishu.cn/docx/OdTkdukm4ojA5vx9PhOcaUbInId)
 - 飞书原生 PDF：[2024-arxiv-towards-black-box-membership-inference-diffusion-models.pdf](https://ncn24qi9j5mt.feishu.cn/file/ANFUbPmGRoEDZWx586icD8isnde)
 - 开源实现：[lijingwei0502/diffusion_mia](https://github.com/lijingwei0502/diffusion_mia)

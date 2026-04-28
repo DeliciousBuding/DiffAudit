@@ -8,7 +8,7 @@ No Caption, No Problem: Caption-Free Membership Inference via Model-Fitted Embed
 - 论文主问题：在拿不到训练时真实 caption 的前提下，如何只凭查询图像对文生图 latent diffusion model 做成员推断
 - 威胁模型类别：灰盒，text-to-image diffusion membership inference，caption-free
 - 材料索引路径：`references/materials/gray-box/2026-openreview-mofit-caption-free-membership-inference.pdf`
-- 上游来源 URL：见 `references/materials/manifest.csv` 中 `references/materials/gray-box/2026-openreview-mofit-caption-free-membership-inference.pdf` 对应的 `source_url` 字段
+- 上游来源 URL：见 `references/materials/manifest.csv` 中对应的 `source_url` 字段
 - OCR / born-digital 精修版链接：[OCR精修版：No Caption, No Problem: Caption-Free Membership Inference via Model-Fitted Embeddings](https://www.feishu.cn/docx/EpTOdMzKposoRVxRP0KcKSDdnwe)
 - 飞书原生 PDF：[2026-openreview-mofit-caption-free-membership-inference.pdf](https://ncn24qi9j5mt.feishu.cn/file/RgGObebMJo6O3txk2K9c2y08nxf)
 - 开源实现：[JoonsungJeon/MoFit](https://github.com/JoonsungJeon/MoFit)

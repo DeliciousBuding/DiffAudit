@@ -11,7 +11,7 @@ SIDE: Surrogate Conditional Data Extraction from Diffusion Models
 - 论文主问题：在没有显式 prompt 或类别标签时，是否仍能从无条件扩散模型中定向提取训练样本
 - 威胁模型类别：主体是白盒训练数据提取；附录补充了黑盒查询式扩展与投毒微调后的后门提取扩展
 - 材料索引路径：`references/materials/gray-box/2024-arxiv-side-extracting-training-data-unconditional-diffusion-models.pdf`
-- 上游来源 URL：见 `references/materials/manifest.csv` 中 `references/materials/gray-box/2024-arxiv-side-extracting-training-data-unconditional-diffusion-models.pdf` 对应的 `source_url` 字段
+- 上游来源 URL：见 `references/materials/manifest.csv` 中对应的 `source_url` 字段
 - OCR 精修版链接：[OCR精修版：SIDE: Surrogate Conditional Data Extraction from Diffusion Models](https://www.feishu.cn/docx/RfqVdBxQfokTDzxjKsxcj9wWnJe)
 - 飞书原生 PDF：[2024-arxiv-side-extracting-training-data-unconditional-diffusion-models.pdf](https://ncn24qi9j5mt.feishu.cn/file/C1L2bJ2T9oOr6Kx1fQ7cvzlBnYx)
 - 开源实现：暂未找到官方代码

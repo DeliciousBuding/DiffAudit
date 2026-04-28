@@ -10,7 +10,7 @@ Unveiling Structural Memorization: Structural Membership Inference Attack for Te
 - 论文主问题：在大规模文生图扩散模型中，如何不用像素级噪声误差，而是利用结构记忆判断一张图像是否属于训练集成员
 - 威胁模型类别：灰盒成员推断，攻击者可访问目标文生图模型的编码器、解码器和前向扩散相关推理路径，但不依赖参数梯度
 - 材料索引路径：`references/materials/gray-box/2024-arxiv-structural-memorization-membership-inference-text-to-image-diffusion.pdf`
-- 上游来源 URL：见 `references/materials/manifest.csv` 中 `references/materials/gray-box/2024-arxiv-structural-memorization-membership-inference-text-to-image-diffusion.pdf` 对应的 `source_url` 字段
+- 上游来源 URL：见 `references/materials/manifest.csv` 中对应的 `source_url` 字段
 - OCR/Markdown 精修版链接：[OCR精修版：Unveiling Structural Memorization: Structural Membership Inference Attack for Text-to-Image Diffusion Models](https://www.feishu.cn/docx/CYJ7dkLHioaEhyxBMyQcNGHHnKf)
 - 飞书原生 PDF：[2024-arxiv-structural-memorization-membership-inference-text-to-image-diffusion.pdf](https://ncn24qi9j5mt.feishu.cn/file/PtWkbsbUZody0Yxkmk9cfV5Tnjh)
 - 开源实现链接：暂未找到

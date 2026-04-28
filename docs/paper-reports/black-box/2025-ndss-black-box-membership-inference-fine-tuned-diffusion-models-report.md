@@ -10,7 +10,7 @@ Black-box Membership Inference Attacks against Fine-tuned Diffusion Models
 - 论文主问题：在仅有文本到图像查询接口的条件下，如何判断给定图像或图文对是否属于目标模型的微调训练集
 - 威胁模型类别：黑盒成员推断攻击，目标为条件扩散模型的下游微调阶段
 - 材料索引路径：`references/materials/black-box/2025-ndss-black-box-membership-inference-fine-tuned-diffusion-models.pdf`
-- 上游来源 URL：见 `references/materials/manifest.csv` 中 `references/materials/black-box/2025-ndss-black-box-membership-inference-fine-tuned-diffusion-models.pdf` 对应的 `source_url` 字段
+- 上游来源 URL：见 `references/materials/manifest.csv` 中对应的 `source_url` 字段
 - OCR/Markdown 精修版链接：[OCR精修版：Black-box Membership Inference Attacks against Fine-tuned Diffusion Models](https://ncn24qi9j5mt.feishu.cn/docx/Or4UdDUsxoxvidxvSdDcKZ8fntb)
 - 飞书原生 PDF：[2025-ndss-black-box-membership-inference-fine-tuned-diffusion-models.pdf](https://ncn24qi9j5mt.feishu.cn/file/A43xbNYYfojZMdxyOdecmW8enmc)
 - 开源实现：[py85252876/Reconstruction-based-Attack](https://github.com/py85252876/Reconstruction-based-Attack)

@@ -8,7 +8,7 @@ Noise as a Probe: Membership Inference Attacks on Diffusion Models Leveraging In
 - 论文主问题：当攻击者只能控制初始噪声和 prompt、只能观察最终生成图像时，能否仍对微调扩散模型执行有效成员推断
 - 威胁模型类别：gray-box，text-to-image diffusion membership inference with controllable initial noise
 - 材料索引路径：`references/materials/gray-box/2026-arxiv-noise-as-a-probe-membership-inference-diffusion-models.pdf`
-- 上游来源 URL：见 `references/materials/manifest.csv` 中 `references/materials/gray-box/2026-arxiv-noise-as-a-probe-membership-inference-diffusion-models.pdf` 对应的 `source_url` 字段
+- 上游来源 URL：见 `references/materials/manifest.csv` 中对应的 `source_url` 字段
 - OCR / born-digital 精修版链接：[OCR精修版：Noise as a Probe: Membership Inference Attacks on Diffusion Models Leveraging Initial Noise](https://www.feishu.cn/docx/PiYudfHppo0h5wxigvncTsK3ncf)
 - 飞书原生 PDF：[2026-arxiv-noise-as-a-probe-membership-inference-diffusion-models.pdf](https://ncn24qi9j5mt.feishu.cn/file/KxRYbKM5rooeg0xU43VcLCZEnBe)
 - 开源实现：论文正文表示将公开实现，但 PDF 未给出仓库链接，当前记为暂未找到
