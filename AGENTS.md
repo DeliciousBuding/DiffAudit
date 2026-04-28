@@ -325,7 +325,65 @@ Artifact contract:
 - patch only when needed
 - do not casually rewrite upstream
 
-## 10. Sync Rules
+## 10. Public Documentation and Brand Surface
+
+`README.md`, `docs/README.md`, and documents in the curated public onboarding,
+setup, reproducibility, data, licensing, security, and brand sections are part
+of the repository's public presentation surface.
+
+Not every file linked from `docs/README.md` is public onboarding material.
+Active progress ledgers, raw review bundles, agent prompts, and research
+planning notes may remain linked as internal research handoff material when
+they are explicitly labeled that way.
+
+Before adding or promoting material into that surface, check that it is written
+for external readers rather than for one local operator or one agent session.
+
+### 10.1 Public-surface rules
+
+- use product-facing or research-facing language, not chat prompts, local task
+  orders, or private planning shorthand
+- use `<DIFFAUDIT_ROOT>`, `<DOWNLOAD_ROOT>`, environment variables, or
+  repository-relative paths instead of machine-specific paths
+- do not mention local-only roots such as personal Windows user directories,
+  drive-letter project paths, temporary presentation folders, or private
+  machine setup unless the path is deliberately shown as a sanitized example
+- do not put raw agent prompts, deadline pressure, competition-only notes,
+  GPT/Claude review dumps, or operator-local instructions into the public
+  front door
+- if internal planning artifacts must stay in `docs/`, frame them as internal
+  research operations or evidence support, and do not link them as product
+  onboarding material
+- claim only what the evidence ladder supports; dry-runs, smoke checks,
+  negative packets, and admitted results must keep their status labels
+
+### 10.2 Brand and image rules
+
+- keep small durable README/docs graphics in the repository under
+  `docs/assets/brand/`
+- use repository-relative SVG paths for GitHub README and docs pages
+- for GitHub light/dark behavior, prefer `#gh-light-mode-only` and
+  `#gh-dark-mode-only` image fragments over browser `prefers-color-scheme`
+- from the repository-root `README.md`, brand paths start with
+  `docs/assets/brand/...`
+- from Markdown files inside `docs/`, brand paths start with `assets/brand/...`
+- do not reference local presentation folders or design-source files such as
+  `.ai` from GitHub README/docs
+- use a website CDN or image host only for the website, marketing pages, social
+  previews, or raster assets that need CDN caching; do not make repository docs
+  depend on a private or external image host
+
+### 10.3 Pre-PR public-surface check
+
+When a change touches README/docs presentation material, run a focused scan for:
+
+- hardcoded local paths
+- local presentation/source asset references
+- broken relative image links
+- unsupported external image hosts
+- product claims without evidence-status qualifiers
+
+## 11. Sync Rules
 
 When a meaningful result, blocker, or strategic judgment changes, sync at least:
 
@@ -340,7 +398,7 @@ If a result changes Platform- or Runtime-facing interpretation, sync that explic
 
 If a result changes competition-facing claims or should alter package wording, record the competition-material sync decision explicitly instead of leaving it implicit.
 
-## 11. Evidence Language
+## 12. Evidence Language
 
 Organize research conclusions using:
 
@@ -363,7 +421,7 @@ Without runtime evidence, do not claim:
 - benchmark success
 - paper-level validation
 
-## 12. End-State Discipline
+## 13. End-State Discipline
 
 Do not interpret "current roadmap items are done" as "the research is done".
 

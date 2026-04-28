@@ -17,7 +17,7 @@
 [English](#diffaudit-research) ·
 [简体中文](#简体中文速览) ·
 [Documentation](docs/README.md) ·
-[Reproducibility](docs/reproduction-status.md) ·
+[Reproducibility](docs/README.md#public-onboarding-path) ·
 [Data And Assets](docs/data-and-assets-handoff.md) ·
 [Brand Assets](docs/brand-assets.md) ·
 [Security](SECURITY.md)
@@ -143,9 +143,8 @@ same research environment.
 | New teammate onboarding | [docs/teammate-setup.md](docs/teammate-setup.md) |
 | Data, weights, and external assets | [docs/data-and-assets-handoff.md](docs/data-and-assets-handoff.md) |
 | Command recipes | [docs/command-reference.md](docs/command-reference.md) |
-| Reproduction and evidence status | [docs/reproduction-status.md](docs/reproduction-status.md) |
-| Current progress snapshot | [docs/comprehensive-progress.md](docs/comprehensive-progress.md) |
-| Presentation-safe research story | [docs/mainline-narrative.md](docs/mainline-narrative.md) |
+| Detailed evidence ledger | [docs/reproduction-status.md](docs/reproduction-status.md) |
+| Admitted result summary | [docs/admitted-results-summary.md](docs/admitted-results-summary.md) |
 | Research-to-system boundary | [docs/research-boundary-card.md](docs/research-boundary-card.md) |
 | Licensing scope | [docs/licensing.md](docs/licensing.md) |
 | Contribution workflow | [CONTRIBUTING.md](CONTRIBUTING.md) |

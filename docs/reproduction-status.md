@@ -2,13 +2,13 @@
 
 这份文档用于汇总仓库当前各条攻击线的真实推进状态。
 
-如果你只想先看一页综合判断，而不是逐线细节，优先看 [comprehensive-progress.md](comprehensive-progress.md)。
+如果你只想先看公开摘要，优先看 [admitted-results-summary.md](admitted-results-summary.md)。如果你要接手当前研究调度，再看 [comprehensive-progress.md](comprehensive-progress.md)。
 
 口径约束：
 
 - 黑盒、灰盒、白盒三条线都已纳入统一研究规划
 - 统一规划只表示都在正式路线图内，不表示当前资源平均分配
-- 当前执行优先级已调整为：固定成熟三线与 higher-layer 边界第一，已完成的 stale intake/system sync 第二，新的 non-graybox next-lane reselection 第三；当前 `active GPU question = none / next_gpu_candidate = none`，白盒 bridge 继续 `closed-frozen`
+- 本文件记录复现与证据状态；即时执行调度以 `ROADMAP.md` 与 [comprehensive-progress.md](comprehensive-progress.md) 为准，不作为公开结论本身
 
 判断标准统一分为：
 
@@ -66,7 +66,7 @@
 15. 当前仓库已经不再缺“第一版统一总表”。[unified-attack-defense-table.md](../workspaces/implementation/2026-04-08-unified-attack-defense-table.md) 已经收口了 admitted main results；后续工作的重点从“有没有表”转成“是否继续补质量 / 成本列，以及是否纳入更多 admitted 行”。
 16. 当前 `white-box same-protocol bridge` 已正式以 `保持冻结` 收口；这是一条治理与资源排序决策，不是新的 benchmark 结果，也不改 admitted 合同。
 17. 截至当前，[2026-04-09-pia-provenance-dossier](../workspaces/gray-box/2026-04-09-pia-provenance-dossier.md) 已 closed 为 `remain long-term blocker`；因此当前 `PIA` 最强口径继续固定为 `workspace-verified + paper-aligned blocked by checkpoint/source provenance`，并且高层材料必须同时保留 `trajectory-consistency -> inference-time randomization` 的机制读法与四指标 read order。
-18. [2026-04-10-recon-decision-package](../workspaces/black-box/2026-04-10-recon-decision-package.md) 已把 `recon` 黑盒五件套冻结为 decision-grade package；在 `2026-04-12` 的 GPU 利用率重规划后，当前唯一 released GPU question 先切到 `SMP-LoRA O01` 的 `lambda=0.05` rescue run，但该 run 最终 stalled 于 `step_10200`，且 salvage evaluation 为 `AUC=0.5770 / Accuracy=0.5`、差于 baseline `AUC=0.5565`。随后 `O02` 的同路径结果继续扩展为：`rank1(batch12 throughput)=0.4056 / 0.4264 / 0.4773`、`rank1(batch12 legacy)=0.4224`、`rank1(batch13 throughput)=0.4482`、`rank1(batch14 throughput)=0.3708 / 0.4188 / 0.2971 / 0.4083 / 0.5250 / 0.4929 / 0.4431`、`rank1(batch14 legacy)=0.6485`、`rank1(batch14 workers4)=0.65625`、`rank1(batch14 workers6)=0.5322`、`rank1(batch14 no-bench)=0.6389`、`rank1(batch14 no-TF32)=0.3957`、`rank1(batch14 seed123)=0.6222`、`rank1(batch14 seed42)=0.6625`、`rank1(batch15 throughput)=0.3139 / 0.6250`、`rank1(batch16 throughput)=0.5554`、`rank2(batch12 throughput)=0.4847`、`rank4(batch12 throughput)=0.5532`、`rank4(batch8 throughput)=0.6159`、`rank4(batch8 legacy replay1/rerun2)=0.4872 / 0.4944`。这说明 `batch13` 没有超过 `batch12` 带宽，`batch15` 不是可复现最优而是 unstable no-go，`batch16` 已明确退化，而 `batch14` 虽然凭吞吐路径成为当前最强候选，但它的七次 workers8 结果仍只能支持 `strongest candidate with variance note`。`batch14 legacy=0.6485` 继续证明收益依赖 throughput_mode；`workers4/6`、`no-bench`、`seed123/42` 都没有给出稳定化答案，`no-TF32` 只有一次正向样本。当前 `active_gpu_question` 已回到 `none`，`PIA provenance` 保持 CPU sidecar blocker，`split/protocol mismatch` 继续只保留为边界与 review gate。
+18. [2026-04-10-recon-decision-package](../workspaces/black-box/2026-04-10-recon-decision-package.md) 已把 `recon` 黑盒五件套冻结为 decision-grade package；在 `2026-04-12` 的资源重规划后，后续 bounded follow-up 曾切到 `SMP-LoRA O01` 的 `lambda=0.05` rescue run，但该 run 最终 stalled 于 `step_10200`，且 salvage evaluation 为 `AUC=0.5770 / Accuracy=0.5`、差于 baseline `AUC=0.5565`。随后 `O02` 的同路径结果继续扩展为：`rank1(batch12 throughput)=0.4056 / 0.4264 / 0.4773`、`rank1(batch12 legacy)=0.4224`、`rank1(batch13 throughput)=0.4482`、`rank1(batch14 throughput)=0.3708 / 0.4188 / 0.2971 / 0.4083 / 0.5250 / 0.4929 / 0.4431`、`rank1(batch14 legacy)=0.6485`、`rank1(batch14 workers4)=0.65625`、`rank1(batch14 workers6)=0.5322`、`rank1(batch14 no-bench)=0.6389`、`rank1(batch14 no-TF32)=0.3957`、`rank1(batch14 seed123)=0.6222`、`rank1(batch14 seed42)=0.6625`、`rank1(batch15 throughput)=0.3139 / 0.6250`、`rank1(batch16 throughput)=0.5554`、`rank2(batch12 throughput)=0.4847`、`rank4(batch12 throughput)=0.5532`、`rank4(batch8 throughput)=0.6159`、`rank4(batch8 legacy replay1/rerun2)=0.4872 / 0.4944`。这说明 `batch13` 没有超过 `batch12` 带宽，`batch15` 不是可复现最优而是 unstable no-go，`batch16` 已明确退化，而 `batch14` 虽然凭吞吐路径成为当前最强候选，但它的七次 workers8 结果仍只能支持 `strongest candidate with variance note`。`batch14 legacy=0.6485` 继续证明收益依赖 throughput_mode；`workers4/6`、`no-bench`、`seed123/42` 都没有给出稳定化答案，`no-TF32` 只有一次正向样本。`PIA provenance` 继续作为 provenance blocker 保留，`split/protocol mismatch` 继续只保留为边界与 review gate。
 19. `Phase E` 当前仍只允许进入准入验证，不允许直接开跑；但它已经不再有活跃 intake-only 候选。当前 machine-readable 候选面只保留 `PIA paper-aligned confirmation` 作为 document-layer conditional，而 `Finding NeMo + local memorization + FB-Mem` 已经退出 intake ordering，转入 white-box 执行后边界。
 20. [2026-04-10-finding-nemo-mechanism-intake](../workspaces/white-box/2026-04-10-finding-nemo-mechanism-intake.md) 与 [2026-04-10-phase-e-finding-nemo-intake-hold-decision](../workspaces/intake/2026-04-10-phase-e-finding-nemo-intake-hold-decision.md) 现在只应被读作历史 intake gate，而不是当前 branch state；当前 `Finding NeMo` 的最强诚实口径已升级为 `non-admitted actual bounded falsifier`，不再是 `intake/eligibility only + zero-GPU hold`。
 21. [2026-04-10-finding-nemo-protocol-reconciliation](../workspaces/white-box/2026-04-10-finding-nemo-protocol-reconciliation.md) 仍然有效，但它当前定义的是 paper-faithful compatibility 边界和 future reconsideration 条件，而不是“当前只允许推进 zero-GPU observability smoke”。
@@ -105,7 +105,7 @@
    - 也已有 `tests/test_lora_smoke.py`、`tests/test_smp_lora_runtime_tuning.py` 与一条 bounded CPU smoke
    - 现在还新增了 canonical `probe-h2-assets`、`prepare-h2-contract`、`run-h2-defense-pilot` 与 `review-h2-defense-pilot`
    - 当前最诚实口径应写成 `minimal contract-complete + bounded 4/4 follow-up negative but useful`
-   - 第一张 same-packet review 确实是 `transfer-only + 1/1 + all-zero`，但最小 `4 / 4` follow-up 也已经落地并证明它不只是纯退化板；即便如此，baseline 与 defended 四项 delta 仍然全是 `0.0`，因此它依然不是 execution-ready successor，也不是 `next_gpu_candidate`
+   - 第一张 same-packet review 确实是 `transfer-only + 1/1 + all-zero`，但最小 `4 / 4` follow-up 也已经落地并证明它不只是纯退化板；即便如此，baseline 与 defended 四项 delta 仍然全是 `0.0`，因此它依然不是 execution-ready successor
 29. `SecMI` 当前也不再是 `SecMI unblock`；它已固定为：
    - `independent corroboration line`
    - 不再属于 asset-blocked baseline reopen

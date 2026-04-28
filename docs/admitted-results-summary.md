@@ -1,6 +1,10 @@
-# Admitted Results Summary (Admitted Side Only)
+# Admitted Results Summary
 
-> 该表严格覆盖 admitted 方向的证据，不含 candidate / exploratory 资产；SMP-LoRA 在当前比赛主讲表之外，仍被定位为 comparator-design 目标，不进入本表。每列都直接取自最新的 `unified-attack-defense-table.json` 与 `competition-evidence-pack.md` 的 mainline 口径，可被复制进 Leader 的 `project-report.md` / `project-summary.md`。
+> This summary covers admitted evidence only. Candidate and exploratory assets
+> remain outside this table until they are explicitly promoted.
+> Each row is derived from the current `unified-attack-defense-table.json`
+> contract and keeps the evidence level, cost, and boundary language attached
+> to the reported metric values.
 
 | Track | Method | Attack | Defense | AUC | ASR | TPR@1%FPR | TPR@0.1%FPR | Evidence Level | Quality / Cost | Evidence Location | Boundary |
 | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- |

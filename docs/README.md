@@ -4,17 +4,30 @@ This directory is the documentation map for DiffAudit Research. It separates
 public-facing setup, reproducibility, asset, and evidence documents from deeper
 research planning and operating references.
 
-## First Reading Path
+## Public Surface Boundary
+
+The root [README](../README.md), this documentation map, and the documents in
+the Public Onboarding, Setup And Reproducibility, Collaboration And Governance,
+and brand/licensing/security entries are the public front door for external
+readers.
+
+Internal planning artifacts may still live under `docs/`, but they should not
+be presented as product copy or onboarding material unless they have been
+rewritten for that audience. In particular, raw agent prompts, deadline-specific
+notes, review dumps, and operator-local instructions must remain separate from
+the public reading path.
+
+## Public Onboarding Path
 
 | Step | Document | Purpose |
 | --- | --- | --- |
 | 1 | [../README.md](../README.md) | Repository front door and quick orientation |
-| 2 | [teammate-setup.md](teammate-setup.md) | New-machine setup and first validation commands |
-| 3 | [data-and-assets-handoff.md](data-and-assets-handoff.md) | How to obtain the same datasets, weights, and supplementary bundles |
-| 4 | [command-reference.md](command-reference.md) | Runnable CLI recipes by track |
-| 5 | [comprehensive-progress.md](comprehensive-progress.md) | One-page current research progress |
+| 2 | [getting-started.md](getting-started.md) | Short onboarding guide for contributors |
+| 3 | [teammate-setup.md](teammate-setup.md) | New-machine setup and first validation commands |
+| 4 | [data-and-assets-handoff.md](data-and-assets-handoff.md) | How to obtain the same datasets, weights, and supplementary bundles |
+| 5 | [command-reference.md](command-reference.md) | Runnable CLI recipes by track |
 | 6 | [reproduction-status.md](reproduction-status.md) | Per-track reproduction and evidence state |
-| 7 | [mainline-narrative.md](mainline-narrative.md) | Claim boundaries and presentation-facing research story |
+| 7 | [admitted-results-summary.md](admitted-results-summary.md) | Human-readable admitted result summary |
 
 ## Setup And Reproducibility
 
@@ -33,7 +46,8 @@ research planning and operating references.
 
 | Document | Purpose |
 | --- | --- |
-| [admitted-results-summary.md](admitted-results-summary.md) | Human-readable admitted result summary |
+| [comprehensive-progress.md](comprehensive-progress.md) | Active research handoff and current progress ledger; not product copy |
+| [mainline-narrative.md](mainline-narrative.md) | Active research narrative draft and claim-boundary notes; extract public copy before reuse |
 | [future-phase-e-intake.md](future-phase-e-intake.md) | Candidate intake queue and entry gates |
 | [next-run-intake-index.md](next-run-intake-index.md) | Next-run entrypoint index and contracts |
 | [mentor-strict-reproduction-plan.md](mentor-strict-reproduction-plan.md) | Strict parallel reproduction plan |
