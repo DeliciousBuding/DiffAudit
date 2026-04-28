@@ -11,7 +11,7 @@
 - 优先复用 `experiments/*/summary.json` 与 `workspaces/*/artifacts/*.json`
 - 优先复用现有 runner 与研究仓 admitted 产物
 - 不复制实验大文件到平台仓库
-- 路径型字段保留绝对路径，便于本机调试
+- 路径型字段保留绝对路径，便于本地调试
 - 平台优先读取 admitted 结果，不自己重拼黑盒/灰盒/白盒口径
 
 当前 admitted 读源约束：
@@ -32,7 +32,7 @@ cd <DIFFAUDIT_ROOT>/Runtime-Server
 go run ./cmd/runtime --host 127.0.0.1 --port 8765
 ```
 
-覆盖本机目录：
+覆盖本地目录：
 
 ```powershell
 cd <DIFFAUDIT_ROOT>/Runtime-Server
@@ -53,7 +53,7 @@ go run ./cmd/runtime `
 
 ### `GET /health`
 
-返回服务状态和本机路径绑定：
+返回服务状态和本地路径绑定：
 
 ```json
 {
@@ -65,7 +65,7 @@ go run ./cmd/runtime `
 
 ### `GET /api/v1/models`
 
-返回当前本机已知的模型入口：
+返回当前本地已知的模型入口：
 
 - `sd15-ddim`
 - `kandinsky-v22`

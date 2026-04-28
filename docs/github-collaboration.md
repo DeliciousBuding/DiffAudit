@@ -1,12 +1,12 @@
-# GitHub 协作与权限管理
+# GitHub Collaboration And Permissions
 
-这份文档说明如何把当前公开仓库开放给队友协作，以及推荐的权限和分支保护策略。
+这份文档说明如何为贡献者开放仓库协作权限，以及推荐的权限和分支保护策略。
 
 根级 GitHub 设置基线见：
 
 - [github-settings-baseline.md](github-settings-baseline.md)
 
-## 一、怎么让队友可以 push
+## 一、怎么让贡献者可以 push
 
 最直接的做法不是共享你的账号，而是把他们加为仓库协作者。
 
@@ -15,12 +15,12 @@
 1. 打开仓库 `Settings`
 2. 进入 `Collaborators and teams`
 3. 点击 `Add people`
-4. 输入队友的 GitHub 用户名
+4. 输入贡献者的 GitHub 用户名
 5. 选择权限
 
 推荐权限：
 
-- `Write`：适合大多数算法同学，可以推自己的分支、提 PR
+- `Write`：适合大多数贡献者，可以推自己的分支、提 PR
 - `Maintain`：适合负责人或核心维护者
 
 一般不建议随便给：
@@ -56,7 +56,7 @@
 - 普通成员走 PR
 - owner 紧急情况可处理
 
-## 四、队友本地应该怎么开发
+## 四、贡献者本地应该怎么开发
 
 每个人：
 
@@ -99,7 +99,7 @@ git config user.email "你在GitHub已验证的邮箱"
 当前最合适的策略是：
 
 - 你作为仓库 owner
-- 三位算法同学都加为 collaborator
+- 将核心贡献者加为 collaborator
 - 给 `Write`
 - `main` 开保护
 - 统一通过 PR 合并

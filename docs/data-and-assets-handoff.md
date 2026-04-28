@@ -1,10 +1,10 @@
 # Data And Assets Handoff
 
-这份文档回答新同学接手时最容易卡住的问题：
+这份文档回答新成员或外部贡献者接手时最容易卡住的问题：
 
 - 数据集、权重、supplementary 包到底从哪里来
 - 下载后放到哪里
-- 如何让本机路径和仓库命令对上
+- 如何让本地路径和仓库命令对上
 - 如何验证自己已经拿到和当前项目一致的资产布局
 
 ## 1. Canonical Layout
@@ -17,7 +17,7 @@
   Download\        # local raw datasets / weights / supplementary bundles
 ```
 
-`Download\` 不进 `Research` git 仓库。它是本机原始资产层，原因是这里会放大文件、许可受限文件、可重新下载的权重和压缩包。
+`Download\` 不进 `Research` git 仓库。它是本地原始资产层，原因是这里会放大文件、许可受限文件、可重新下载的权重和压缩包。
 
 `<DIFFAUDIT_ROOT>` 是你自己机器上的项目根目录。它可以是 `C:\Users\<you>\DiffAudit`、`D:\Projects\DiffAudit`、`~/work/DiffAudit`，关键是 `Research/` 和 `Download/` 的相对角色不要变。
 
@@ -35,7 +35,7 @@
 
 ## 2. Fastest Way To Match Our Assets
 
-如果你能从项目机器或共享盘拿到完整资产目录，最快方式是直接复制整个目录：
+如果团队维护了共享资产镜像，最快方式是直接复制整个目录：
 
 ```powershell
 Copy-Item -Recurse \\YOUR_ASSET_MIRROR\DiffAudit\Download $env:DIFFAUDIT_ROOT\Download
@@ -61,7 +61,7 @@ Download\shared\weights\google-ddpm-cifar10-32\
 
 ## 3. First-Wave Asset List
 
-新机器优先拿这些，足够进入当前项目的大多数接手和验证路径：
+新机器优先准备这些资产，足够进入当前项目的大多数验证路径：
 
 | Asset ID | What | Source | Destination |
 |---|---|---|---|

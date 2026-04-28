@@ -1,6 +1,8 @@
-# Documentation Index
+# DiffAudit Research Documentation
 
-This directory contains stable project documentation for `Research/`. It should not become a dump for one-off prompts, private logs, or local machine instructions.
+This directory is the documentation map for DiffAudit Research. It separates
+public-facing setup, reproducibility, asset, and evidence documents from deeper
+research planning and operating references.
 
 ## First Reading Path
 
@@ -14,7 +16,7 @@ This directory contains stable project documentation for `Research/`. It should 
 | 6 | [reproduction-status.md](reproduction-status.md) | Per-track reproduction and evidence state |
 | 7 | [mainline-narrative.md](mainline-narrative.md) | Claim boundaries and presentation-facing research story |
 
-## Core Docs
+## Setup And Reproducibility
 
 | Document | Purpose |
 | --- | --- |
@@ -24,19 +26,7 @@ This directory contains stable project documentation for `Research/`. It should 
 | [research-download-master-list.md](research-download-master-list.md) | Rebuild list for first-wave datasets, weights, and supplementary bundles |
 | [repo-map.md](repo-map.md) | Directory and code responsibility map |
 | [getting-started.md](getting-started.md) | Short onboarding guide for contributors |
-| [github-collaboration.md](github-collaboration.md) | Branch and PR collaboration rules |
 | [licensing.md](licensing.md) | Project license scope and third-party material boundaries |
-| [researcher-agent-architecture.md](researcher-agent-architecture.md) | Long-running ResearcherAgent operating model |
-| [research-autonomous-execution-prompt.md](research-autonomous-execution-prompt.md) | Current autonomous execution prompt surface |
-
-## Open-Source Governance
-
-| Document | Purpose |
-| --- | --- |
-| [../SECURITY.md](../SECURITY.md) | Security reporting policy and scope |
-| [../CITATION.cff](../CITATION.cff) | Machine-readable repository citation metadata |
-| [../CONTRIBUTING.md](../CONTRIBUTING.md) | Contribution, branch, PR, test, and license rules |
-| [github-settings-baseline.md](github-settings-baseline.md) | GitHub repository setting baseline |
 
 ## Research Status And Planning
 
@@ -49,6 +39,16 @@ This directory contains stable project documentation for `Research/`. It should 
 | [mia-defense-research-index.md](mia-defense-research-index.md) | Research index for the MIA defense strategy |
 | [mia-defense-execution-checklist.md](mia-defense-execution-checklist.md) | Action checklist for the MIA defense strategy |
 | [innovation-evidence-map.md](innovation-evidence-map.md) | Evidence map for innovation claims |
+
+## Collaboration And Governance
+
+| Document | Purpose |
+| --- | --- |
+| [github-collaboration.md](github-collaboration.md) | Branch, permission, and PR collaboration guide |
+| [github-settings-baseline.md](github-settings-baseline.md) | GitHub repository setting baseline |
+| [../CONTRIBUTING.md](../CONTRIBUTING.md) | Contribution workflow |
+| [../SECURITY.md](../SECURITY.md) | Security reporting policy and scope |
+| [../CITATION.cff](../CITATION.cff) | Machine-readable repository citation metadata |
 
 ## Runtime And System Boundaries
 
@@ -68,10 +68,6 @@ This directory contains stable project documentation for `Research/`. It should 
 | [report-bundles/README.md](report-bundles/README.md) | External model result bundles retained for review |
 | [recon-public-asset-mapping.md](recon-public-asset-mapping.md) | Public recon asset mapping and semantic boundary |
 
-## Maintenance Rules
-
-- Keep the root README short and reader-facing.
-- Put command catalogues in [command-reference.md](command-reference.md), not in the root README.
-- Put data and path setup in [data-and-assets-handoff.md](data-and-assets-handoff.md) and ignored local config files.
-- Put current status in [comprehensive-progress.md](comprehensive-progress.md), [reproduction-status.md](reproduction-status.md), and `ROADMAP.md`.
-- Use `docs/` for stable documentation only. Temporary prompts, scratch context, and local operator logs should move to a workspace note or an ignored local file.
+The root [README](../README.md) remains the public front door. Detailed command
+catalogues, asset setup, and current evidence status live in the linked docs
+above so the landing page can stay concise.

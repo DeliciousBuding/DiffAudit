@@ -45,7 +45,7 @@ attack payloads in public issues, pull requests, screenshots, or logs.
 
 ## Response Expectations
 
-This is a student/research project, not a commercial support channel. We will
-prioritize reproducible reports with clear affected files, commands, and impact.
-When a report affects Runtime or Platform consumers, the fix should include a
-handoff note in the relevant documentation.
+DiffAudit Research is maintained as a research prototype. Response times may
+vary, but reports with clear affected files, commands, reproduction steps, and
+impact will be prioritized. When a report affects Runtime or Platform
+consumers, the fix should include a handoff note in the relevant documentation.

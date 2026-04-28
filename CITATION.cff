@@ -1,7 +1,7 @@
 cff-version: 1.2.0
 message: "If you use DiffAudit Research, please cite this repository."
 title: "DiffAudit Research"
-abstract: "Research scaffolding for reproducible privacy-risk auditing of diffusion models."
+abstract: "Evidence engine for reproducible privacy-risk auditing of diffusion models."
 authors:
   - name: "DiffAudit Team"
 repository-code: "https://github.com/DeliciousBuding/DiffAudit-Research"

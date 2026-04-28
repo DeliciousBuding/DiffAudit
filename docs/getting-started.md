@@ -1,6 +1,6 @@
-# 入手指南
+# Getting Started
 
-这份文档面向第一次进入 DiffAudit 仓库的组员。
+这份文档面向第一次进入 DiffAudit Research 仓库的新成员或外部贡献者。
 
 ## 先做什么
 
@@ -8,13 +8,13 @@
 
 1. 阅读根目录 [README.md](../README.md)
 2. 阅读 [docs/teammate-setup.md](teammate-setup.md)
-3. 按 [docs/data-and-assets-handoff.md](data-and-assets-handoff.md) 补齐 `Download\` 资产并绑定本机路径
+3. 按 [docs/data-and-assets-handoff.md](data-and-assets-handoff.md) 补齐 `Download\` 资产并绑定本地路径
 4. 按 [docs/command-reference.md](command-reference.md) 跑一次环境验证、资产探针和 `dry-run`
 5. 阅读 [docs/environment.md](environment.md)
 6. 阅读 [docs/github-collaboration.md](github-collaboration.md)
 7. 进入自己负责的工作区
 
-## 你应该先知道的几件事
+## 需要先知道的几件事
 
 - 这是研究仓库，不是产品仓库
 - 当前不是“只做黑盒”，而是三线并行、分层推进
@@ -47,7 +47,7 @@ conda run -n diffaudit-research python -m pytest tests/test_cli_module_entrypoin
 conda run -n diffaudit-research python -m diffaudit probe-secmi-assets --config configs/attacks/secmi_plan.yaml
 ```
 
-## 你应该去哪个工作区
+## 工作区选择
 
 - 负责黑盒：`workspaces/black-box/`
 - 负责白盒：`workspaces/white-box/`

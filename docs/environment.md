@@ -24,7 +24,7 @@
 - `conda`：负责隔离 Python 运行时
 - `pip`：负责大部分科研包和深度学习包
 
-这样做的原因是当前机器曾出现过 conda 科学计算包缓存损坏问题，使用混合方案更稳。
+这样做的原因是该组合在本项目的 Windows 和 CI 使用路径中更稳定，也更容易处理深度学习包的版本约束。
 
 ## 创建环境
 
@@ -49,7 +49,7 @@ diffaudit --help
 python scripts/bootstrap_research_env.py --install
 ```
 
-如果是队友第一次接仓，环境通过后继续执行：
+如果是新成员第一次设置仓库，环境通过后继续执行：
 
 ```powershell
 python scripts/render_team_local_configs.py
@@ -57,7 +57,7 @@ python scripts/render_team_local_configs.py
 
 ## 可选：较新 NVIDIA GPU 的 cu128 环境
 
-`environment.yml` 仍然是 CI 和新同学接仓的默认入口，不要把它当作“只要能点亮本机 GPU 就直接全员替换”的文件。
+`environment.yml` 仍然是 CI 和默认 setup 入口。只有在默认环境无法支持当前 GPU 时，才切换到 `environment.gpu-cu128.yml`。
 
 如果你用的是较新的 NVIDIA GPU，并且在默认环境里已经出现下面这种真实 CUDA 算子错误：
 
@@ -81,7 +81,7 @@ conda activate diffaudit-research
 python scripts/bootstrap_research_env.py --install
 ```
 
-这套可选环境当前用于较新的 GPU 兼容性补充，已在 `RTX 5070 Laptop GPU` 上通过真实 CUDA `matmul` smoke。
+这套可选环境当前用于较新的 GPU 兼容性补充；请在自己的硬件上先运行 CUDA smoke check，再投入长任务。
 
 ## 如果当前 shell 没有激活 conda
 
@@ -100,9 +100,9 @@ conda run -n diffaudit-research python -m diffaudit probe-secmi-assets --config 
 
 建议先用 `conda env list` 确认 `diffaudit-research` 确实存在，再执行后续命令。
 
-## 队友接仓推荐步骤
+## 新成员推荐步骤
 
-如果是新机器或新同学刚接仓，优先按 [teammate-setup.md](teammate-setup.md) 执行，不要直接手改共享配置。
+如果是新机器或新成员刚开始设置，优先按 [teammate-setup.md](teammate-setup.md) 执行，不要直接手改共享配置。
 
 ## 本地资产路径如何填写
 
