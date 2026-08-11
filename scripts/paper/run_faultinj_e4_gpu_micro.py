@@ -165,7 +165,7 @@ def main() -> int:
     ap.add_argument(
         "--dataset-root",
         type=Path,
-        default=Path(r"D:/Code/DiffAudit/Download/datasets-readable/cifar10"),
+        default=None,  # dataset path is required; pass --dataset explicitly
     )
     ap.add_argument(
         "--out-dir",
